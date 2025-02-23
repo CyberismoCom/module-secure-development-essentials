@@ -34,10 +34,4 @@ If the supplier of a 3rd party component has published information about their v
 
 === Manual checks
 
-Check the vulnerability management covers all technologies.
-
-Check that identified vulnerabilities have been addressed.
-
-Check that the identified security-related findings have been reported as security issues.
-
-Check that the information provided by the 3rd party suppliers regarding their vulnerabilities have been processed.
+A checklist for manual checks is provided in the template for the review of vulnerability management.

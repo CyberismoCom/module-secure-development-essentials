@@ -30,8 +30,5 @@ If the supplier of a 3rd party component has published information about their s
 
 === Manual checks
 
-Check that the 3rd party software update management covers all such technologies where 3rd party software update management is required.
+A checklist for manual checks is provided in the template for the review of software update vulnerability management.
 
-Check that 3rd party software update management has been executed.
-
-Check that all 3rd party software updates and the information provided by the 3rd party suppliers have been processed.

@@ -35,10 +35,3 @@ If test plans are created and test executions are managed a test management tool
   "name": "secdeva/reports/checkChildReviewStatus"
 {{/report}}
 
-
-#TODO: these checks should be automated:#
-
-Check that
-
-* test plan has been executed
-* security issues have been reported.
