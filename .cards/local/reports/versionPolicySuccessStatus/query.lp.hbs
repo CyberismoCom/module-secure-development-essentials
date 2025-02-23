@@ -1,0 +1,28 @@
+selectAll.
+
+% add successful checks from the project, except release tasks that would be versions or descendants of any version
+% TODO: this does not work if we have child projects
+result(Card) :-
+    policyCheckSuccess(Card, _, _),
+    ancestor({{cardKey}}, Project),
+    field(Project, "cardType", "secdeva/cardTypes/project"),
+    ancestor(Card, Project),
+    not field(Card, "cardType", "secdeva/cardTypes/version"),
+    not field(Ancestor, "cardType", "secdeva/cardTypes/version") :
+    ancestor(Card, Ancestor).
+
+% add the project itself if there is a successful check
+% TODO: this does not work if we have child projects
+result(Project) :-
+    ancestor({{cardKey}}, Project),
+    field(Project, "cardType", "secdeva/cardTypes/project"),
+    policyCheckSuccess(Project, _, _).
+
+% add successful checks from release tasks of the current release
+result(Card) :-
+    ancestor(Card, {{cardKey}}),
+    policyCheckSuccess(Card, _, _).
+
+% add this version, if there is a successful check
+result({{cardKey}}) :-
+    policyCheckSuccess({{cardKey}}, _, _).

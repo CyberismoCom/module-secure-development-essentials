@@ -1,0 +1,23 @@
+{{#unless results}}
+There are no successful policy checks for this version.
+{{/unless}}
+
+{{#if results}}
+
+== Successful policy checks
+
+[cols="3,3,4"]
+|===
+| Category | Policy check  | Card
+
+{{#each results}}
+{{#each this.policyChecks.successes}}
+| {{this.category}}
+| {{this.title}}
+| xref:{{../key}}.adoc[{{../title}}]
+{{/each}}
+{{/each}}
+
+|===
+{{/if}}
+

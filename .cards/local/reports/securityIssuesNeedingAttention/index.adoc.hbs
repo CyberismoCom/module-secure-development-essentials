@@ -1,0 +1,17 @@
+{{#if results}}
+
+== Security issues that require attention
+
+[cols="5,2,2"]
+|===
+| Security issue | Workflow State | Severity
+
+{{#each results}}
+|xref:{{this.key}}.adoc[{{this.title}}]
+|{{this.workflowState}}
+|{{this.[secdeva/fieldTypes/severity].displayValue}}
+{{/each}}
+
+|===
+
+{{/if}}

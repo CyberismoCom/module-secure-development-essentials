@@ -1,0 +1,8 @@
+{{#if results}}
+
+{{#each results}}
+* xref:{{this.key}}.adoc[{{this.title}}] [{{this.workflowState}}]
+{{/each}}
+{{else}}
+{{messageIfNoResults}}
+{{/if}}

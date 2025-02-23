@@ -1,0 +1,6 @@
+{
+    "displayName": "Version policy error status",
+    "description": "The status of policy check errors in a software version",
+    "category": "Secure Development Lifecycle",
+    "name": "secdeva/reports/versionPolicyErrorStatus"
+}

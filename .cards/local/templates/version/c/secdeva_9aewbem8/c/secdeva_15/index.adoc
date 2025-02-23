@@ -1,0 +1,146 @@
+== Review checklist
+
+The purpose of the release review is to ensure that we have complete visibility on the state of cybersecurity management for the release, so that we can accept the release from the point of view of security. The release review can be accepted either by noting that all security work has been done and tracked to closure, or that you accept the risk related to some unfinished security work.
+
+=== Security Issue Status
+
+Check that Security issues affecting this version have been tracked to closure or deferred to a future release with a justified reason.
+
+Use the checklist in the Appendix A below: +
+_Status of issues that affect this release_ should be empty.
+
+Notice that products must not be released if there are any known exploitable vulnerabilities.
+
+* [ ] OK
+* [ ] Not OK
+
+Comments, links:
+
+=== Security Tool Status
+
+Check that the security issues affecting this release have been managed in all the security testing tools such as static code analyzers and vulnerability tracking tools.
+
+The issues from these tools should be reported as security issues and managed according to the secure development process.
+
+* [ ] OK
+* [ ] Not OK
+
+Comments, links:
+
+=== Security Issue communication
+
+For each known Security Issue that cannot be tracked to closure in this release, check that the issue and possible user mitigation strategies and associated risks have been documented to users, or that there is a justified reason not to communicate the issue to product users.
+
+Check that all such Security Issues that identify a vulnerability in a component, including in an open source component, which is integrated in the product, have been reported to the person or entity maintaining the component.
+
+* [ ] OK
+* [ ] Not OK
+
+Comments, links:
+
+=== Secure development tasks
+
+All Secure development tasks should be OK or *Not Required* and reviewed within the past *6 months*
+
+* If there are unprocessed , then plan how they will be scoped, or in other words decided whether they are required
+* If there are controls that are required but not yet successfully done , then plan the work to perform these controls
+* If there are Secure development tasks that have not been reviewed recently enough, then plan when these controls can be reviewed and updated.
+
+This can be marked as OK if the missing actions are planned.
+
+Use the checklist in the Appendix A below: +
+_Secure development tasks that require attention_ should be empty
+
+* [ ] OK
+* [ ] Not OK
+
+Comments, links:
+
+=== Qualifying the released software
+
+Check that the software release has been verified not to introduce regressions. Note that this check needs to be done also for software updates of 3rd party components and platforms that the software depends on.
+
+If this software release is made to address specific security vulnerabilities, then check that the the release addresses the intended vulnerabilities.
+
+* [ ] OK
+* [ ] Not OK
+
+Comments, links:
+
+=== 3rd party component attribution
+
+Check that required license information about used 3rd party components are included in the release. a|
+
+* [ ] OK
+* [ ] Not OK
+* [ ] Not Applicable
+
+Comments, links:
+
+=== Configuration management
+
+Check that the configuration management process for this release has been completed
+
+* The included configuration items and their versions have been documented. You can use the version report template for documenting this information
+* Software Bill of Materials (SBOM) has been drawn up and archived
+* Technical documentation, product documentation and other configuration items have been drawn up and archived so that they will be available later when needed
+* The version information is updated to the dependency tracking tools, if manual version management is applicable
+
+* [ ] OK
+* [ ] Not OK
+
+Comments, links:
+
+=== Software update documentation and communication
+
+Check that
+
+* The software update has been documented to users. The security update documentation template can be used for this.
+* All applicable, including also rejected, security updates and patches have been communicated to the Security operations team
+
+* [ ] OK
+* [ ] Not OK
+* [ ] Not Applicable
+
+Comments, links:
+
+=== EU Conformity assessment
+
+If this is a product release on the EU market, then check that (security-related) EU conformity assessment procedures have been successfully carried out, a statement of conformity has been drawn up and a CE marking has been affixed.
+
+* [ ] OK
+* [ ] Not OK
+* [ ] Not Applicable
+
+Comments, links:
+
+=== Composite components
+
+Check that a similar release review has been successfully conducted for any composite components (child projects)
+
+* [ ] OK
+* [ ] Not OK
+* [ ] Not Applicable
+
+Comments, links:
+
+=== Release approval and sign-off
+
+#TODO: add here a conclusion, whether the release can be done and risks from the remaining open issues can be accepted, or whether the release cannot be made before specific items have been tracked to closure.#
+
+=== Action items
+
+#TODO: add action items#
+
+=== Appendix A: Review checklist
+
+* _TODO: Add here a way to see the current state of cybersecurity management in the development project. For example, this could be a Confluence macro that includes a reusable Review checklist. The checklist should include_
+
+* _Security Issues from the issue tracker that affect this release and that have not been tracked to closure._
+* _Findings from vulnerability tracking tools that have not been tracked to closure. Notice that there must be no known exploitable vulnerabilities_
+* _Secure development tasks that are in an acceptable state (reviewed recently enough and either OK or Not Required)_
+* _Secure development tasks that require attention: either not yet scoped, required but not yet done, done but not completely acceptable, or expired because of not having been reviewed recently enough_
+
+=== Appendix B: Release reviews of composite components
+
+* _TODO: add here links or a macro that shows the release reviews of composite components_

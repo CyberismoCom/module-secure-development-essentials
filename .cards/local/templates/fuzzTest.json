@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/templates/fuzzTest",
+    "displayName": "Fuzz test",
+    "description": "Fuzz testing of the validation of external input",
+    "category": "Security testing"
+}

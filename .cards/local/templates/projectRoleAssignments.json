@@ -1,0 +1,6 @@
+{
+    "displayName": "Project role assignments",
+    "description": "Assigning persons to security-related roles in a development project",
+    "category": "Secure development specifications",
+    "name": "secdeva/templates/projectRoleAssignments"
+}

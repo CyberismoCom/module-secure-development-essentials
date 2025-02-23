@@ -1,0 +1,37 @@
+= Cyberismo secure development essentials module
+
+== Copyright
+
+Copyright © Cyberismo Ltd and contributors 2025
+
+== License and trademark policy
+
+This is free content: you can redistribute it and/or modify it under the terms of the Creative Commons Attribution-ShareAlike 4.0 International Public License.
+
+The use of Cyberismo trademark is governed by the Cyberismo open source trademark policy. See separate file TRADEMARK.adoc.
+
+This content is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+See the Creative Commons Attribution-ShareAlike 4.0 International Public License in the separate LICENSE file for more details.
+
+== Contributing
+
+See separate file CONTRIBUTING.
+
+== About the Cyberismo secure development essentials module
+
+This module defines basic workflows, card types, and templates for managing secure development in a software project.
+
+== Using the Cyberismo secure development essentials module
+
+In order to use the secure development module content in your Cyberismo project, take the following steps:
+
+* Clone this repository alongside your Cyberismo project
+* Clone the base module alongside your Cyberismo project (`git clone git@githubcom:CyberismoCom/module-base.git`)
+* Change to your project directory
+* Import the base module and the secure development essentials module content with
+
+    cyberismo import module ../module-base
+    cyberismo import module ../module-secure-development-essentials
+
+For more details, see https://docs.cyberismo.com[Cyberismo documentation].

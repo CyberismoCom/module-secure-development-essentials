@@ -1,0 +1,23 @@
+selectAll.
+
+% add failures from the project, except release tasks that would be descendants of any version
+% TODO: this does not work if we have child projects
+result(Card) :-
+    policyCheckFailure(Card, _, _, _),
+    ancestor({{cardKey}}, Project),
+    field(Project, "cardType", "secdeva/cardTypes/project"),
+    ancestor(Card, Project),
+    not ancestor(Card, Version) :
+    field(Version, "cardType", "secdeva/cardTypes/version").
+
+% add the project itself if there is a failure
+% TODO: this does not work if we have child projects
+result(Project) :-
+    ancestor({{cardKey}}, Project),
+    field(Project, "cardType", "secdeva/cardTypes/project"),
+    policyCheckFailure(Project, _, _, _).
+
+% add failures from release tasks of the current release
+result(Card) :-
+    ancestor(Card, {{cardKey}}),
+    policyCheckFailure(Card, _, _, _).

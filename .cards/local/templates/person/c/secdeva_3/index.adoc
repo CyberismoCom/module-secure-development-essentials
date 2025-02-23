@@ -1,0 +1,10 @@
+{{#graph}}
+  "model": "secdeva/graphModels/dataflow",
+  "view": "secdeva/graphViews/entity",
+  "layout": "LR"
+{{/graph}}
+
+[TIP]
+====
+To add a data flow to or from this person, click the link symbol in the top level tool bar.
+====

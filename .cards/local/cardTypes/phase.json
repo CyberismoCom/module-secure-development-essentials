@@ -1,0 +1,15 @@
+{
+    "name": "secdeva/cardTypes/phase",
+    "workflow": "base/workflows/page",
+    "customFields": [
+        {
+            "name": "base/fieldTypes/adoptionStep",
+            "isCalculated": false,
+            "displayName": "Adoption step"
+        }
+    ],
+    "alwaysVisibleFields": [],
+    "optionallyVisibleFields": [
+        "base/fieldTypes/adoptionStep"
+    ]
+}

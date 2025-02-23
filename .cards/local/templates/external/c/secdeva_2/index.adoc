@@ -1,0 +1,14 @@
+{{#graph}}
+  "model": "secdeva/graphModels/dataflow",
+  "view": "secdeva/graphViews/entity",
+  "layout": "LR"
+{{/graph}}
+
+{{#report}}
+  "name": "secdeva/reports/entityInterfaces"
+{{/report}}
+
+[TIP]
+====
+To add a data flow to or from this external entity, click the link symbol in the top level tool bar.
+====

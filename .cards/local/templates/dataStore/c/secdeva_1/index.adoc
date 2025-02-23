@@ -1,0 +1,59 @@
+{{#graph}}
+  "model": "secdeva/graphModels/dataflow",
+  "view": "secdeva/graphViews/entity",
+  "layout": "LR"
+{{/graph}}
+
+== Composite elements
+
+[TIP]
+====
+To add a data flow to or from this data store, click the link symbol in the top level tool bar.
+====
+
+{{#createCards}}
+  "buttonLabel": "Create an interface",
+  "template": "secdeva/templates/interface"
+{{/createCards}}
+
+{{#createCards}}
+    "buttonLabel": "Create a trust boundary",
+    "template": "secdeva/templates/trustBoundary"
+{{/createCards}}
+
+{{#createCards}}
+  "buttonLabel": "Create an external entity",
+  "template": "secdeva/templates/external"
+{{/createCards}}
+
+{{#createCards}}
+  "buttonLabel": "Create a person",
+  "template": "secdeva/templates/person"
+{{/createCards}}
+
+{{#createCards}}
+  "buttonLabel": "Create a process",
+  "template": "secdeva/templates/process"
+{{/createCards}}
+
+{{#createCards}}
+  "buttonLabel": "Create a data store",
+  "template": "secdeva/templates/dataStore"
+{{/createCards}}
+
+== Interfaces
+
+{{#report}}
+  "name": "secdeva/reports/entityInterfaces"
+{{/report}}
+
+== Security issues
+
+{{#createCards}}
+  "template": "secdeva/templates/threat",
+  "buttonLabel": "Create a new security issue"
+{{/createCards}}
+
+{{#report}}
+  "name": "secdeva/reports/securityIssueList"
+{{/report}}

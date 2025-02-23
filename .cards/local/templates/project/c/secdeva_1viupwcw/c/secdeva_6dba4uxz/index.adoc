@@ -1,0 +1,4 @@
+{{#createCards}}
+    "template": "secdeva/templates/project",
+    "buttonLabel": "Create a new subproject"
+{{/createCards}}

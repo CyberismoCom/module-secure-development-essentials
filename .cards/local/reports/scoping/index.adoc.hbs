@@ -1,0 +1,46 @@
+{{#each results}}
+
+{{#if scopingNotDone}}
+
+IMPORTANT: Scoping is not ready. *{{this.scopingPercentage}}%* of the scoping has been completed.
+
+[caption=]
+.These tasks have not yet been scoped
+[cols="2,5,3"]
+|===
+| Phase | Title | State
+
+{{#each scopingNotDone}}
+|{{this.phase}}
+|xref:{{this.key}}.adoc[{{this.title}}]
+|{{this.scopingStatus}}
+{{/each}}
+
+|===
+
+{{else}}
+
+NOTE: You have scoped all secure development tasks. Well done!
+
+{{/if}}
+
+{{#if scopingDone}}
+
+[caption=]
+.These tasks have been scoped
+[cols="2,5,3"]
+|===
+| Phase | Title | State
+
+{{#each scopingDone}}
+|{{this.phase}}
+|xref:{{this.key}}.adoc[{{this.title}}]
+|{{this.scopingStatus}}
+{{/each}}
+|===
+
+{{else}}
+
+{{/if}}
+
+{{/each}}

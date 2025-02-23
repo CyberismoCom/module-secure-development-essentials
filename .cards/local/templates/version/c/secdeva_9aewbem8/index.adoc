@@ -1,0 +1,8 @@
+
+{{#report}}
+  "name": "secdeva/reports/versionPolicyErrorStatus"
+{{/report}}
+
+{{#report}}
+  "name": "secdeva/reports/versionPolicySuccessStatus"
+{{/report}}

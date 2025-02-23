@@ -1,0 +1,10 @@
+selectAll.
+
+result(Issue) :-
+    field(Issue, "cardType", "secdeva/cardTypes/securityIssue"),
+    secdeva_closestProject(Issue, Project),
+    secdeva_closestProject({{cardKey}}, Project),
+    not hiddenInTreeView(Issue),
+    not field(Issue, "workflowStateCategory", "closed").
+
+orderBy("rank", "ASC").
