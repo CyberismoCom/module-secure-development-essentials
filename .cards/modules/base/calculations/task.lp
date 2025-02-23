@@ -12,10 +12,6 @@ base_recurringTask(Task) :-
 base_recurringTask(Task) :-
     field(Task, "cardType", "base/cardTypes/annualTask").
 
-base_recurringTask(Task) :-
-    field(Task, "cardType", "base/cardTypes/reviewTask").
-
-
 transitionDenied(
     Task,
     "Review as not applicable",
