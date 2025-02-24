@@ -15,13 +15,26 @@ The goal of the 3rd party software update management of a technology is to ident
 
 == Review checklist
 
-* Check that the 3rd party software update management covers all such technologies where 3rd party software update management is required
-* Check that 3rd party software update management has been executed
-* Check that all 3rd party software updates and the information provided by the 3rd party suppliers have been processed.
+Check that the 3rd party software update management covers all such technologies where 3rd party software update management is required.
+
+* [ ] OK
+* [ ] Not OK
+
+Check that 3rd party software update management has been executed.
+
+* [ ] OK
+* [ ] Not OK
+
+Check that all 3rd party software updates and the information provided by the 3rd party suppliers have been processed.
+
+* [ ] OK
+* [ ] Not OK
 
 == Review notes
 
-#TOOD: add any review notes here#
+#TODO: if applicable, add a link or an attachment to external systems for more information or evidence.#
+
+#TODO: Describe any notes and remarks about the review here#
 
 == Version history
 

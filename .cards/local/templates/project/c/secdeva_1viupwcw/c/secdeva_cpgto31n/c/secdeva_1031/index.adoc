@@ -34,7 +34,7 @@ Create a review of static code analysis to record your notes.
 
 {{#report}}
   "name": "secdeva/reports/createChildReview",
-  "template": "secdeva/templates/review",
+  "template": "secdeva/templates/reviewOfStaticCodeAnalysis",
   "buttonLabel": "Create a review of static code analysis"
 {{/report}}
 
@@ -44,7 +44,3 @@ Create a review of static code analysis to record your notes.
   "name": "secdeva/reports/checkChildReviewStatus"
 {{/report}}
 
-* Check that the static code analysis tools have been documented either as an organization development tool or a project-specific development tool.
-* Check that static code analysis tool has been used for the programming languages where tools exist.
-* Check that static code analysis tool has been run on all source code changes including new source code.
-* Check that the identified security-related findings have been reported as security issues

@@ -1,0 +1,21 @@
+The management of security-related issues and defects includes reviewing and assessing newly arised issues, addressing the issues appropriately, and disclosing information about the issues to stakeholders.
+
+== How to decide if this secure development task is required
+
+This secure development task is always applicable.
+
+== How to implement
+
+Create a review of defect management and follow the instructions in the template.
+
+{{#report}}
+  "name": "secdeva/reports/createChildReview",
+  "template": "secdeva/templates/defectManagementReview",
+  "buttonLabel": "Create a review of defect management"
+{{/report}}
+
+== How to review this task
+
+{{#report}}
+  "name": "secdeva/reports/checkChildReviewStatus"
+{{/report}}

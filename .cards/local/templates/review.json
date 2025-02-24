@@ -1,6 +1,0 @@
-{
-    "name": "secdeva/templates/review",
-    "displayName": "Review",
-    "description": "A review with a possibility to create security issues from findings",
-    "category": "Secure development"
-}

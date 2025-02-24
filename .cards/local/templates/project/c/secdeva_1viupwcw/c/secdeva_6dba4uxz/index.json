@@ -3,7 +3,7 @@
     "cardType": "secdeva/cardTypes/phase",
     "workflowState": "",
     "rank": "0|q",
-    "base/fieldTypes/adoptionStep": "step2",
+    "base/fieldTypes/adoptionStep": "step1",
     "base/fieldTypes/owner": null,
     "base/fieldTypes/informationClassification": "internal",
     "links": [],

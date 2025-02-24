@@ -18,13 +18,13 @@ The input validation testing is scoped to include:
 
 #TODO: describe how and which parts of the input format must be tested. For instance:#
 
-#Normally expected inputs exercised using valid equivalence classes: Required/Not Required#
+Normally expected inputs exercised using valid equivalence classes: #Required/Not Required#
 
-#Boundary values from both sides of all boundaries of invalid input: Required/Not Required #
+Boundary values from both sides of all boundaries of invalid input: #Required/Not Required #
 
-#Anticipated occurrences: Required/Not Required#
+Anticipated occurrences: #Required/Not Required#
 
-#Unexpected inputs exercised using equivalence class selection of invalid values: Required/Not Required#
+Unexpected inputs exercised using equivalence class selection of invalid values: #Required/Not Required#
 
 === Documentation and reporting
 
