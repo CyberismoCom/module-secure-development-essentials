@@ -19,3 +19,21 @@ field(Card, "base/fieldTypes/progress", 100 * Closed / Total) :-
         ancestor(Task, Card),
         field(Task, "workflowStateCategory", "closed")
     }.
+
+policyCheckFailure(
+    Project,
+    "Secure development",
+    "Secure development tasks are not complete",
+    @concatenate("Only ", Progress, "% of secure development tasks have been completed. Complete all tasks or close them as not applicable.")
+    ) :-
+        field(Project, "cardType", "secdeva/cardTypes/project"),
+        field(Project, "base/fieldTypes/progress", Progress),
+        Progress < 100.
+
+policyCheckSuccess(
+    Project,
+    "Secure development",
+    "Secure development tasks are complete"
+    ) :-
+        field(Project, "cardType", "secdeva/cardTypes/project"),
+        field(Project, "base/fieldTypes/progress", 100).
