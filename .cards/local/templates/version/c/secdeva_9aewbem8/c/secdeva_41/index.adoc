@@ -47,5 +47,7 @@ The configuration management process requires that all artifacts of the included
 [width="100%",cols="34%,33%,33%",options="header",]
 |===
 |*Technology Vendor* |*Technology Name* |*Technology Version*
-| | |
+| (vendor)
+| (technology)
+| (version)
 |===

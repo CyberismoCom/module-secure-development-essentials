@@ -2,7 +2,7 @@
     "cardType": "base/cardTypes/annualTask",
     "title": "Manage 3rd party software updates",
     "workflowState": "",
-    "rank": "0|z",
+    "rank": "0|b",
     "lastUpdated": "2025-01-20T08:48:53.609Z",
     "links": [],
     "secdeva/fieldTypes/controlImplementer": "Development team",

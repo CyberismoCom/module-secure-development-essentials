@@ -1,13 +1,13 @@
 {
-    "cardType": "base/cardTypes/task",
+    "cardType": "base/cardTypes/review",
     "title": "Release review",
     "workflowState": "",
     "rank": "0|a",
     "base/fieldTypes/owner": null,
-    "base/fieldTypes/identifier": null,
-    "base/fieldTypes/adoptionStep": null,
-    "base/fieldTypes/dueDate": null,
+    "base/fieldTypes/identifier": "secdeva_review_release",
+    "base/fieldTypes/adoptionStep": "step1",
+    "base/fieldTypes/reviewPeriod": null,
+    "base/fieldTypes/lastReviewed": null,
     "base/fieldTypes/informationClassification": "internal",
-    "base/fieldTypes/justification": null,
     "lastUpdated": "2024-09-13T14:19:36.067Z"
 }
