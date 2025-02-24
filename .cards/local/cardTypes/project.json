@@ -7,6 +7,9 @@
             "displayName": "Target adoption step"
         },
         {
+            "name": "secdeva/fieldTypes/adoptionStepJustification"
+        },
+        {
             "name": "base/fieldTypes/owner"
         },
         {
@@ -42,7 +45,8 @@
         "base/fieldTypes/informationClassification",
         "ismsa/fieldTypes/assetCriticalityForOperations",
         "ismsa/fieldTypes/assetRiskEvaluationNeeded",
-        "base/fieldTypes/adoptionStep"
+        "base/fieldTypes/adoptionStep",
+        "secdeva/fieldTypes/adoptionStepJustification"
     ],
     "optionallyVisibleFields": [
         "ismsa/fieldTypes/assetType",

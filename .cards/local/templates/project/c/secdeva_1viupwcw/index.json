@@ -5,6 +5,7 @@
     "rank": "0|b",
     "base/fieldTypes/owner": null,
     "base/fieldTypes/adoptionStep": "step1",
+    "secdeva/fieldTypes/adoptionStepJustification": null,
     "base/fieldTypes/informationClassification": "internal",
     "ismsa/fieldTypes/assetCriticalityForOperations": null,
     "ismsa/fieldTypes/assetRiskEvaluationNeeded": null,
