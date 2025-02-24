@@ -38,6 +38,12 @@
         },
         {
             "name": "ismsa/fieldTypes/assetType"
+        },
+        {
+            "name": "secdeva/fieldTypes/acceptableSeverity"
+        },
+        {
+            "name": "secdeva/fieldTypes/deferrableSeverity"
         }
     ],
     "alwaysVisibleFields": [
@@ -54,6 +60,8 @@
         "ismsa/fieldTypes/assetIntegrity",
         "ismsa/fieldTypes/assetAvailability",
         "ismsa/fieldTypes/assetLocation",
-        "ismsa/fieldTypes/assetBackups"
+        "ismsa/fieldTypes/assetBackups",
+        "secdeva/fieldTypes/acceptableSeverity",
+        "secdeva/fieldTypes/deferrableSeverity"
     ]
 }

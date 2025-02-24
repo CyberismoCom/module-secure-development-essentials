@@ -1,0 +1,28 @@
+This card sums up the status of secure development for periodic reviews.
+
+== Annual wheel
+
+The following annual wheel shows the status of recurring secure development tasks.
+
+{{#report}}
+  "name": "secdeva/reports/annualWheel"
+{{/report}}
+
+== Security issues
+
+{{#report}}
+  "name": "secdeva/reports/securityIssuesNeedingAttention"
+{{/report}}
+
+== Periodic reviews
+
+Create a periodic review and follow the instructions in the template.
+
+{{#createCards}}
+  "template": "secdeva/templates/periodicReview",
+  "buttonLabel": "Create a periodic review"
+{{/createCards}}
+
+{{#report}}
+  "name": "base/reports/childrenTable"
+{{/report}}

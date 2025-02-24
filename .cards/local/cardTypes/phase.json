@@ -1,6 +1,6 @@
 {
     "name": "secdeva/cardTypes/phase",
-    "workflow": "base/workflows/page",
+    "workflow": "secdeva/workflows/void",
     "customFields": [
         {
             "name": "base/fieldTypes/adoptionStep",

@@ -11,7 +11,7 @@
     "base/fieldTypes/owner": null,
     "base/fieldTypes/informationClassification": "internal",
     "base/fieldTypes/reviewPeriod": 365,
-    "base/fieldTypes/reviewMonth": null,
+    "base/fieldTypes/reviewMonth": "october",
     "base/fieldTypes/lastReviewed": null,
     "base/fieldTypes/identifier": "secdeva_control_security-requirement-testing"
 }

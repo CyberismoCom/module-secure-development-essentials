@@ -10,6 +10,14 @@
             "category": "active"
         },
         {
+            "name": "Fix required",
+            "category": "active"
+        },
+        {
+            "name": "Fix deferred",
+            "category": "active"
+        },
+        {
             "name": "In progress",
             "category": "active"
         },
@@ -77,9 +85,23 @@
         {
             "name": "Fix required",
             "fromState": [
-                "Analysed"
+                "Analysed", "Fix deferred"
+            ],
+            "toState": "Fix required"
+        },
+        {
+            "name": "Start progress",
+            "fromState": [
+                "Fix required", "Fix deferred"
             ],
             "toState": "In progress"
+        },
+        {
+            "name": "Defer fix",
+            "fromState": [
+                "Analysed", "Fix required", "In progress"
+            ],
+            "toState": "Fix deferred"
         },
         {
             "name": "Accept risk",

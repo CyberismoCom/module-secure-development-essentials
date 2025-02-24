@@ -18,7 +18,7 @@ policyCheckFailure(Asset, "ISMS", "'Backup(s)' is a required field", "'Backup(s)
     field(Asset, "cardType", "secdeva/cardTypes/project"),
     not field(Asset, "ismsa/fieldTypes/assetBackups", _).
 
-% We are storing risks in a subregister, so we need a dedicated automated link
+% We are storing risks in a subcard, so we need a dedicated automated link
 link(DevelopmentProject, Risk, "ismsa/linkTypes/presentsRisk") :-
     field(DevelopmentProject, "cardType", "secdeva/cardTypes/project"),
     field(Risk, "cardType", "ismsa/cardTypes/risk"),

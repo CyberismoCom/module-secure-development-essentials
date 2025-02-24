@@ -14,5 +14,7 @@
     "ismsa/fieldTypes/assetIntegrity": null,
     "ismsa/fieldTypes/assetAvailability": null,
     "ismsa/fieldTypes/assetLocation": null,
-    "ismsa/fieldTypes/assetBackups": null
+    "ismsa/fieldTypes/assetBackups": null,
+    "secdeva/fieldTypes/acceptableSeverity": "low",
+    "secdeva/fieldTypes/deferrableSeverity": "medium"
 }
