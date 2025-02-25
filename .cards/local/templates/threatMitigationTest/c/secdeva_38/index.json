@@ -8,6 +8,6 @@
     "base/fieldTypes/owner": null,
     "base/fieldTypes/informationClassification": "internal",
     "base/fieldTypes/lastReviewed": null,
-    "base/fieldTypes/reviewPeriod": 360,
+    "base/fieldTypes/reviewPeriod": 365,
     "base/fieldTypes/identifier": "secdeva_test_threat-mitigation"
 }

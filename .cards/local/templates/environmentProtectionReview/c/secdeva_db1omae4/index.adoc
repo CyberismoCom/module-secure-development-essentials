@@ -18,7 +18,7 @@ Check that separate environments are available as required based on risk:
 * [ ] Not OK
 * [ ] Not applicable
 
-Check that basic cybersecurity controls that protect these environments, including for example access control, software updates, monitoring, network security, and backups, have been implemented.
+Check that basic cybersecurity controls that protect these environments, including for example access control, software updates, hardening and secure configuration, monitoring, network security, and backups, have been implemented.
 
 * [ ] OK
 * [ ] Not OK

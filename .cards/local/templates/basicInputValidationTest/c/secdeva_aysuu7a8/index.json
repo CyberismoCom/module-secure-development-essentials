@@ -6,5 +6,5 @@
     "base/fieldTypes/owner": null,
     "base/fieldTypes/informationClassification": "internal",
     "base/fieldTypes/lastReviewed": null,
-    "base/fieldTypes/reviewPeriod": null
+    "base/fieldTypes/reviewPeriod": 365
 }

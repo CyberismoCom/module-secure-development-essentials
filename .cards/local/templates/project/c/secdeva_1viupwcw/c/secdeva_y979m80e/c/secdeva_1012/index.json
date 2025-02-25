@@ -1,6 +1,6 @@
 {
     "cardType": "base/cardTypes/quarterlyTask",
-    "title": "Manage vulnerabilities",
+    "title": "Manage 3rd party vulnerabilities",
     "workflowState": "",
     "rank": "0|a",
     "lastUpdated": "2025-01-20T08:48:53.609Z",
