@@ -1,5 +1,19 @@
 This card sums up the status of secure development for periodic reviews.
 
+== Periodic reviews
+
+Create a periodic review and follow the instructions in the template. Perform the review in the light of the summaries given below.
+
+{{#createCards}}
+  "template": "secdeva/templates/periodicReview",
+  "buttonLabel": "Create a periodic review"
+{{/createCards}}
+
+{{#report}}
+  "name": "base/reports/childrenTable",
+  "tableCaption": "Periodic reviews"
+{{/report}}
+
 == Annual wheel
 
 The following annual wheel shows the status of recurring secure development tasks.
@@ -14,15 +28,7 @@ The following annual wheel shows the status of recurring secure development task
   "name": "secdeva/reports/securityIssuesNeedingAttention"
 {{/report}}
 
-== Periodic reviews
-
-Create a periodic review and follow the instructions in the template.
-
-{{#createCards}}
-  "template": "secdeva/templates/periodicReview",
-  "buttonLabel": "Create a periodic review"
-{{/createCards}}
-
 {{#report}}
-  "name": "base/reports/childrenTable"
+  "name": "secdeva/reports/phase"
 {{/report}}
+

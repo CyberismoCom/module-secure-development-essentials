@@ -6,6 +6,9 @@
             "name": "base/fieldTypes/adoptionStep",
             "isCalculated": false,
             "displayName": "Adoption step"
+        },
+        {
+            "name": "base/fieldTypes/identifier"
         }
     ],
     "alwaysVisibleFields": [],
