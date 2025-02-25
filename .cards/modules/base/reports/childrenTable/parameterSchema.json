@@ -15,6 +15,10 @@
     "cardType": {
       "description": "Optionally, limit the results to cards of a certain card type only.",
       "type": "string"
+    },
+    "tableCaption": {
+      "description": "Optionally, show a caption in the table",
+      "type": "string"
     }
   },
   "additionalProperties": false,
