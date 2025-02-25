@@ -51,3 +51,28 @@ Data store:: A data store stores information. For example, a database or a file.
   "template": "secdeva/templates/dataStore"
 {{/createCards}}
 
+== Decisions and design specifications
+
+Document a technical decision or create a design specification.
+
+{{#createCards}}
+  "buttonLabel": "Create a decision",
+  "template": "base/templates/decision"
+{{/createCards}}
+
+{{#createCards}}
+  "buttonLabel": "Create a specification",
+  "template": "base/templates/controlledDocument"
+{{/createCards}}
+
+{{#report}}
+  "name": "base/reports/childrenTable",
+  "cardType": "base/cardTypes/decision",
+  "tableCaption": "Decisions"
+{{/report}}
+
+{{#report}}
+  "name": "base/reports/childrenTable",
+  "cardType": "base/cardTypes/controlledDocument",
+  "tableCaption": "Specifications"
+{{/report}}
