@@ -1,6 +1,0 @@
-{
-    "displayName": "Version policy success status",
-    "description": "The status successful policy checks in a software version",
-    "category": "Secure development",
-    "name": "secdeva/reports/versionPolicySuccessStatus"
-}

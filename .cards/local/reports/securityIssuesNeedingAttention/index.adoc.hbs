@@ -12,12 +12,18 @@
 |{{this.[secdeva/fieldTypes/severity].displayValue}}
 {{/each}}
 |===
+
+{{else}}
+
+There are no security issues that need attention.
+
 {{/if}}
 
 {{#if deferredIssues}}
 .Security issues that have been deferred to future resolution ({{deferredIssueCount}})
 [%collapsible]
 ====
+
 [cols="5,2,2"]
 |===
 | Security issue | Workflow State | Severity
@@ -28,6 +34,7 @@
 |{{this.[secdeva/fieldTypes/severity].displayValue}}
 {{/each}}
 |===
+
 ====
 {{/if}}
 
@@ -35,6 +42,7 @@
 .Security issues that have been tracked to closure ({{closedIssueCount}})
 [%collapsible]
 ====
+
 [cols="5,2,2"]
 |===
 | Security issue | Workflow State | Severity
@@ -45,7 +53,8 @@
 |{{this.[secdeva/fieldTypes/severity].displayValue}}
 {{/each}}
 |===
-{{/if}}
 ====
+
+{{/if}}
 
 {{/each}}

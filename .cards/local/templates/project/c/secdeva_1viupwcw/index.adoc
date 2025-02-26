@@ -2,6 +2,8 @@
   "name": "secdeva/reports/projectSummary"
 {{/report}}
 
+== Security issues
+
 {{#report}}
   "name": "secdeva/reports/securityIssuesNeedingAttention"
 {{/report}}

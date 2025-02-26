@@ -16,9 +16,7 @@ Keep track of participation to mandatory trainings.
 
 Check that all nominated persons have completed the security training that is required in the organisation. Alternatively, check that the nominated persons have sufficient competence from previous experience.
 
-Different trainings are often provided for different roles. You can see the role assignments here:
-
-{{#report}}
+Different trainings are often provided for different roles. You can see the role assignments here: {{#report}}
   "name": "secdeva/reports/linkByIdentifier",
   "identifier": "secdeva_control_assign-people-to-project-roles"
 {{/report}}

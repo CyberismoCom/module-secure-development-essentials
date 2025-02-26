@@ -1,4 +1,4 @@
-This card sums up the status of secure development for periodic reviews.
+This card sums up the status of secure development for reviews.
 
 == Periodic reviews
 
@@ -24,6 +24,8 @@ The following annual wheel shows the status of recurring secure development task
 
 == Security issues
 
+All reported security issues must be analysed and either tracked to closure or justifiably deferred to future resolution.
+
 {{#report}}
   "name": "secdeva/reports/securityIssuesNeedingAttention"
 {{/report}}
@@ -32,3 +34,10 @@ The following annual wheel shows the status of recurring secure development task
   "name": "secdeva/reports/phase"
 {{/report}}
 
+== Policy checks
+
+Automatic policy checks must be processed and resolved.
+
+{{#report}}
+  "name": "secdeva/reports/projectPolicyChecks"
+{{/report}}

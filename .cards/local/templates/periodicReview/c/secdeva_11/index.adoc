@@ -2,7 +2,26 @@
 
 This is a periodic review for secure development. It is conducted to find out the current state of security work and to plan the security work for the next periods.
 
+Notice that you do not need to get a perfect score to close the review as passed, but it is sufficient if you understand the current status and have a plan to address any gaps during the next periods.
+
 == Review checklist
+
+=== Secure development tasks
+
+Check the annual wheel of secure development tasks in the parent card of this card.
+
+All Secure development tasks should have be *Closed as done* or *Closed as not applicable* and their review must not be expired.
+
+* If there are tasks in the *Open* state, then plan how they will be scoped, or in other words decided whether they are required
+* If there are secure development tasks that are required but not yet *Closed as OK*, then plan the work to perform these controls
+* If there are controls that are *Closed as OK* or that are *Closed as not applicable*, but their review has expired, then plan when these secure development tasks can be reviewed and updated.
+
+This can be marked as OK if the missing actions are planned.
+
+* [ ] OK
+* [ ] Not OK
+
+Comments, links:
 
 === Security issue status
 
@@ -35,22 +54,14 @@ Check that all such security issues that identify a vulnerability in a component
 
 Comments, links:
 
-=== Secure development tasks
+=== Automated policy checks
 
-Check the annual wheel of secure development tasks in the parent of this card.
-
-All Secure development tasks should have be *Closed as done* or *Closed as not applicable* and their review must not be expired.
-
-* If there are tasks in the *Open* state, then plan how they will be scoped, or in other words decided whether they are required
-* If there are secure development tasks that are required but not yet *Closed as OK*, then plan the work to perform these controls
-* If there are controls that are *Closed as OK* or that are *Closed as not applicable*, but their review has expired, then plan when these secure development tasks can be reviewed and updated.
+Check the status of automated policy checks in the parent card of this card.
 
 This can be marked as OK if the missing actions are planned.
 
 * [ ] OK
 * [ ] Not OK
-
-Comments, links:
 
 === Subprojects
 
