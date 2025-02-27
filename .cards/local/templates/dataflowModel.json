@@ -1,6 +1,6 @@
 {
-    "displayName": "Data flow model",
-    "description": "A top level container for the elements of a data flow model.",
-    "category": "Data flow model",
+    "displayName": "Dataflow model",
+    "description": "A top level container for the elements of a dataflow model.",
+    "category": "Dataflow model",
     "name": "secdeva/templates/dataflowModel"
 }

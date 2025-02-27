@@ -1,6 +1,6 @@
 {
     "displayName": "Trust boundary",
     "description": "A boundary between different trust zone levels",
-    "category": "Data flow model",
+    "category": "Dataflow model",
     "name": "secdeva/templates/trustBoundary"
 }

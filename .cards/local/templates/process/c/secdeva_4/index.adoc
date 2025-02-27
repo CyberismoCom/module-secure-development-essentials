@@ -8,7 +8,7 @@
 
 [TIP]
 ====
-To add a data flow to or from this process, click the link symbol in the top level tool bar.
+To add a dataflow to or from this process, click the link symbol in the top level tool bar. Optionally, if you want to model interfaces as well, you can create an interface and link any incoming dataflows to the interface.
 ====
 
 {{#createCards}}

@@ -13,7 +13,7 @@ secdeva_entityWithinTrustBoundary(Entity, Card) :-
 
 result(result).
 
-% external data flows
+% external dataflows
 
 % outbound external dataflow
 childResult(result, @concatenate(A, B, Title), "externalDataflow") :-
@@ -92,7 +92,7 @@ field(@concatenate(A, B, Title), "secdeva/fieldTypes/internalCardKey", B) :-
      secdeva_entityOutsideTrustBoundaries(A, {{cardKey}}),
      secdeva_entityWithinTrustBoundary(B, {{cardKey}}).
 
-% Internal data flows
+% Internal dataflows
 
 childResult(result, @concatenate(A, B, Title), "internalDataflows") :-
      link(A, B, "secdeva/linkTypes/dataflow", Title),

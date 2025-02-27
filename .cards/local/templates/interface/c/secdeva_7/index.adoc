@@ -1,39 +1,28 @@
 == Introduction
 
-This page documents the design of the interface Example. The document contains both advice for secure design and review instructions.
+This page documents the design of an interface. The document contains both advice for secure design and review instructions.
 
 == Interface review
 
 Review instructions
 
 * Review this document according to the review instructions of each chapter.
-* Document the results of the review in the table above
+* Document the results of the review in the review subtask
 
 == Classification of the interface
 
 [NOTE]
 .Review instructions
 ====
-To review this section:
+Interfaces are classified automatically based on the dataflow model. To review this section:
 
-. Check that the interface has been correctly classified as an external interface or internal interface.
-. Check that the relationship of this interface to the trust boundaries of the threat model (if applicable) have been correctly classified
+. Check that the interface has been correctly classified as an external interface or internal interface. If not, then improve the dataflows of dataflow model. External interfaces have dataflows from external entities or persons.
+. Check that the relationship of this interface to the trust boundaries have been correctly classified. If not, then improve the dataflows and trust boundaries of the dataflow model.
 ====
 
-The interface is: (Select one or both of the following options)
-
-* {blank}
-* External interface that may be used by external entities that are not part of the system
-* Internal interface that is exposed to other components or devices of the system
-
-For external interfaces, add here a pointer to the product documentation on how to use the interface: #TODO: add link#
-
-Trust boundary classification: (Select one of the following options)
-
-* This interface crosses a trust boundary: +
-- Add here the description of the trust boundary
-* This interface does not cross of a trust boundary
-* There is no applicable threat model.
+{{#report}}
+  "name": "secdeva/reports/interfaceClassification"
+{{/report}}
 
 == Product security context considerations
 
@@ -44,7 +33,11 @@ The _product security context_ refers to the security that is provided by the de
 
 To review this section:
 
-. Check what has been documented about the product security context of the product. The security context may be documented in a security context document.
+. Check what has been documented about the product security context of the product. The security context is documented in a security context document: {{#report}}
+  "name": "secdeva/reports/linkByIdentifier",
+  "identifier": "secdeva_document_security-context",
+  "messageIfNoResults": "#TODO# There are no product security context documents yet. Create a product security context document under *Design* → *Document product security context*."
+{{/report}}
 . Check that this section describes how the product security context has been taken into account for the security of this interface:
 * How the protections offered by the product security context have been used
 * How the vulnerabilities resulting from the product security context have been addressed
@@ -87,8 +80,12 @@ For example
 [width="100%",cols="16%,38%,46%",options="header",]
 |===
 |*Asset* |*Required privilege to read* |*Required privilege to modify*
-|Example asset 1 |Required privilege to read asset 1 through this interface |Required privilege to make changes to asset 1 through this interface
-|Example asset 2 |Required privilege to read asset 2 through this interface |Required privilege to make changes to asset 2 through this interface
+|Example asset 1
+|Required privilege to read asset 1 through this interface
+|Required privilege to make changes to asset 1 through this interface
+|Example asset 2
+|Required privilege to read asset 2 through this interface
+|Required privilege to make changes to asset 2 through this interface
 |===
 
 == Actors of the interface
@@ -96,7 +93,7 @@ For example
 [NOTE]
 .Review instructions
 ====
-. Identify the potential users of the interface.
+. Identify the potential users of the interface and check that they are represented in the dataflow model. See a summary above in *Classification of the interface*
 . Group the users into user categories based on similar needs of accessing the assets
 . Aim at a simple design
 

@@ -22,6 +22,11 @@ external(X) :- person(X).
 datastore(X) :- field(X, "cardType", "secdeva/cardTypes/dataStore").
 entity(X) :- datastore(X).
 
+% interfaces (always hidden)
+interface(X) :- field(X, "cardType", "secdeva/cardTypes/interface").
+entity(X) :- interface(X).
+hide(X) :- interface(X).
+
 % attributes of entities
 title(X, Title) :- entity(X), field(X, "title", Title).
 description(X, Description) :- entity(X), field(X, "secdeva/fieldTypes/description", Description).
@@ -126,8 +131,12 @@ node(X, toplevelGraph) :- entity(X), visible(X), consistsOf(Y, X), not graph(X, 
 % By an external dataflow, we mean a dataflow whose other endpoint is outside Z
 visible(dataflow(X, Y, N)) :- dataflow(X, Y, N), directlyVisible(X), entity(X), entity(Y), not contains(X, Y), not contains(Y, X), not hide(Y).
 visible(dataflow(X, Y, N)) :- dataflow(X, Y, N), directlyVisible(Y), entity(X), entity(Y), not contains(Y, X), not contains(X, Y), not hide(X).
+
 visible(dataflow(X, Y, N)) :- dataflow(X, Y, N), directlyVisible(Z), entity(Z), contains(Z, X), entity(X), entity(Y), not contains(Z, Y), not contains(X, Y), not contains(Y, X), not hide(Y).
+visible(dataflow(X, Y, N)) :- dataflow(X, Y, N), directlyVisible(Z), entity(Z), contains(Z, X), entity(X), entity(Y), not contains(Z, Y), not contains(X, Y), not contains(Y, X), not hide(Z).
+
 visible(dataflow(X, Y, N)) :- dataflow(X, Y, N), directlyVisible(Z), entity(Z), contains(Z, Y), entity(X), entity(Y), not contains(Z, X), not contains(X, Y), not contains(Y, X), not hide(X).
+visible(dataflow(X, Y, N)) :- dataflow(X, Y, N), directlyVisible(X), entity(Z), contains(Z, Y), entity(X), entity(Y), not contains(Z, X), not contains(X, Y), not contains(Y, X), not hide(Z).
 
 % representative(X, Y) means that entity X will represent entity Y when drawing dataflows
 % the existence of a representative doesn't imply anything about visibility of dataflows

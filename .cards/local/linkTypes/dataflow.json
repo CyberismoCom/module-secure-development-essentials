@@ -1,7 +1,7 @@
 {
     "name": "secdeva/linkTypes/dataflow",
-    "outboundDisplayName": "data flow to",
-    "inboundDisplayName": "data flow from",
+    "outboundDisplayName": "dataflow to",
+    "inboundDisplayName": "dataflow from",
     "sourceCardTypes": [
         "secdeva/cardTypes/external",
         "secdeva/cardTypes/person",
@@ -14,7 +14,8 @@
         "secdeva/cardTypes/person",
         "secdeva/cardTypes/process",
         "secdeva/cardTypes/dataStore",
-        "secdeva/cardTypes/trustBoundary"
+        "secdeva/cardTypes/trustBoundary",
+        "secdeva/cardTypes/interface"
     ],
     "enableLinkDescription": true
 }

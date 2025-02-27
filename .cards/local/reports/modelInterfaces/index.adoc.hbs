@@ -2,7 +2,7 @@
 
 {{#if externalDataflows}}
 
-.External data flows
+.External dataflows
 [cols="2,2,2,4"]
 |===
 |Direction | Internal element | External element | Dataflow
@@ -18,16 +18,16 @@
 
 {{else}}
 
-There are no external data flows. You can create them in the underlying data flow model.
+There are no external dataflows. You can create them in the underlying dataflow model.
 
 {{/if}}
 
 {{#if internalDataflows}}
 
-.Internal data flows
+.Internal dataflows
 [cols="2,2,4"]
 |===
-| Source | Destination | Data flow
+| Source | Destination | Dataflow
 
 {{#each internalDataflows}}
 |xref:{{this.[secdeva/fieldTypes/sourceCardKey]}}.adoc[{{this.[secdeva/fieldTypes/source]}}]
@@ -39,7 +39,7 @@ There are no external data flows. You can create them in the underlying data flo
 
 {{else}}
 
-There are no internal data flows. You can create them in the underlying data flow model.
+There are no internal dataflows. You can create them in the underlying dataflow model.
 
 {{/if}}
 
@@ -59,7 +59,7 @@ There are no internal data flows. You can create them in the underlying data flo
 
 {{else}}
 
-There are no interface specifications. You can create them in the underlying data flow model.
+There are no interface specifications. You can create them in the underlying dataflow model.
 
 {{/if}}
 

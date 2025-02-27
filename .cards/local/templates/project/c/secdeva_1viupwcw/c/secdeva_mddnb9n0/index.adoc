@@ -2,3 +2,7 @@
   "template": "secdeva/templates/version",
   "buttonLabel": "Create a new version"
 {{/createCards}}
+
+{{#report}}
+  "name": "secdeva/reports/phase"
+{{/report}}

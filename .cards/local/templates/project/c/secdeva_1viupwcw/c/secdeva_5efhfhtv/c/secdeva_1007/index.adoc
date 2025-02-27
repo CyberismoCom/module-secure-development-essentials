@@ -26,7 +26,7 @@ A top-level threat model is required on the topmost project level, if the projec
 
 Follow the instructions in the template.
 
-The data flow diagram is the most important part of this documentation.
+The  diagram is the most important part of this documentation.
 
 === 4. Identify weaknesses
 

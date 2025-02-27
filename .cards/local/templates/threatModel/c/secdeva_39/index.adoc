@@ -24,7 +24,7 @@ Product security context must be documented before a threat model can be approve
   "messageIfNoResults": "#TODO# There are no product security context documents yet. Create a product security context document under *Design* → *Document product security context*."
 {{/report}}
 
-== Data flow diagram
+== Dataflow diagram
 
 [NOTE]
 .Review instructions
@@ -34,7 +34,7 @@ When reviewing this section, check that the following aspects have been document
 * Processes
 * Data stores
 * Trust boundaries
-* Data flows, including all interfaces
+* Dataflows, including all interfaces
 * Interacting external entities
 
 You can evaluate whether the DFD describes the system with sufficient detail by trying to tell stories of a component's behavior. If the stories contain entities that are not in the model, then the DFD needs updating.
