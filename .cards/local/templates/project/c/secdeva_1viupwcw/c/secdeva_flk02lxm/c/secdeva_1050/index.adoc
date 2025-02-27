@@ -1,3 +1,8 @@
+{{#graph}}
+  "model": "secdeva/graphModels/processDiagram",
+  "view": "secdeva/graphViews/processTask"
+{{/graph}}
+
 The goal of threat mitigation testing is to ensure that the threat cannot be exploited and that the implemented mitigations work as planned.
 
 == How to decide if this secure development task is required

@@ -1,3 +1,8 @@
+{{#graph}}
+  "model": "secdeva/graphModels/processDiagram",
+  "view": "secdeva/graphViews/processTask"
+{{/graph}}
+
 The goal of the vulnerability management of a technology is to identify and characterize potential security vulnerabilities in the 3rd party technology, and to address the vulnerabilities.
 
 == How to decide if this secure development task is required

@@ -10,7 +10,7 @@
 
 {{#graph}}
   "model": "secdeva/graphModels/dataflow",
-  "view": "secdeva/graphViews/all",
+  "view": "secdeva/graphViews/allEntities",
   "layout": "LR"
 {{/graph}}
 

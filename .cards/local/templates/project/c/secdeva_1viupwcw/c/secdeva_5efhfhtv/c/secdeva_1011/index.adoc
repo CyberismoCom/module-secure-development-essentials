@@ -1,3 +1,7 @@
+{{#graph}}
+  "model": "secdeva/graphModels/processDiagram",
+  "view": "secdeva/graphViews/processTask"
+{{/graph}}
 
 Digital products and solutions typically use many 3rd party technologies, which range from small libraries and packages to major dependencies such as toolkits, frameworks or applications. These technologies may introduce cybersecurity risks that must be managed and periodically reviewed, as the risks change over time.
 

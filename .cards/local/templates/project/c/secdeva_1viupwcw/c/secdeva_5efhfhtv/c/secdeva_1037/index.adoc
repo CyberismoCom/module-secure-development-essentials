@@ -1,3 +1,8 @@
+{{#graph}}
+  "model": "secdeva/graphModels/processDiagram",
+  "view": "secdeva/graphViews/processTask"
+{{/graph}}
+
 Security requirements define required security capabilities, required security-related features or other required security-related characteristics of the product.
 
 == How to decide if this secure development task is required

@@ -53,7 +53,7 @@ You can evaluate whether the DFD describes the system with sufficient detail by 
 
 {{#graph}}
   "model": "secdeva/graphModels/dataflow",
-  "view": "secdeva/graphViews/all",
+  "view": "secdeva/graphViews/allEntities",
   "layout": "LR"
 {{/graph}}
 

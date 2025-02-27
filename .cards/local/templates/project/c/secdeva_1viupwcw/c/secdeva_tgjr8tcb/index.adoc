@@ -1,6 +1,6 @@
 {{#graph}}
-  "model": "ismsa/graphModels/assetsRisksControls",
-  "view": "ismsa/graphViews/asset"
+  "model": "secdeva/graphModels/processDiagram",
+  "view": "secdeva/graphViews/processTask"
 {{/graph}}
 
 Cybersecurity risk management evaluates potential risks and their impact on the development organisation or customer organisations as a whole.
