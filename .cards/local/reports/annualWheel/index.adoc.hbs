@@ -59,6 +59,12 @@
 |{{this.workflowState}}
 |{{this.[secdeva/fieldTypes/needsAttention]}}
 {{/each}}
+{{#each this.october}}
+| October
+|xref:{{this.key}}.adoc[{{this.title}}]
+|{{this.workflowState}}
+|{{this.[secdeva/fieldTypes/needsAttention]}}
+{{/each}}
 {{#each this.november}}
 | November
 |xref:{{this.key}}.adoc[{{this.title}}]
