@@ -1,7 +1,11 @@
+.View process diagram
+[%collapsible]
+====
 {{#graph}}
   "model": "secdeva/graphModels/processDiagram",
   "view": "secdeva/graphViews/processTask"
 {{/graph}}
+====
 
 A threat model identifies cyber security issues of the project based on the architecture and it is created in a systematic process. The purpose of threat modeling is to identify weaknesses, which can be addressed to minimize cybersecurity risks, prevent security incidents and minimize the impacts of security incidents.
 

@@ -1,7 +1,11 @@
+.View process diagram
+[%collapsible]
+====
 {{#graph}}
   "model": "secdeva/graphModels/processDiagram",
   "view": "secdeva/graphViews/processTask"
 {{/graph}}
+====
 
 Managing 3rd party software updates refers to keeping track of and characterizing the security updates from suppliers of dependent 3rd party components and operating systems. When applicable, 3rd party software updates are applied to the product or distributed to product users.
 

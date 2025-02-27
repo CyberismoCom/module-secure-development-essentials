@@ -1,7 +1,11 @@
+.View process diagram
+[%collapsible]
+====
 {{#graph}}
   "model": "secdeva/graphModels/processDiagram",
   "view": "secdeva/graphViews/processTask"
 {{/graph}}
+====
 
 Assigning persons to their security-related roles is done to ensure that the responsibilities get done and that people are aware of their responsibilities. Documenting the roles is also useful when planning the security trainings.
 

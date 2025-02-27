@@ -1,7 +1,11 @@
+.View process diagram
+[%collapsible]
+====
 {{#graph}}
   "model": "secdeva/graphModels/processDiagram",
   "view": "secdeva/graphViews/processTask"
 {{/graph}}
+====
 
 Interfaces are typically a significant attack vector. Documenting the interfaces according to the interface specification template ensures that secure design principles have been applied when designing the interface.
 

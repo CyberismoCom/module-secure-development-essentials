@@ -1,7 +1,11 @@
+.View process diagram
+[%collapsible]
+====
 {{#graph}}
   "model": "secdeva/graphModels/processDiagram",
   "view": "secdeva/graphViews/processTask"
 {{/graph}}
+====
 
 In a competitive commercial environment, it is never possible to have "perfect security". Resources are always limited, and we want to allocate them wisely. Therefore, it makes sense to start cybersecurity scoping from the business context. Taking a business view helps in prioritization and in choosing the controls that are proportional to the assets that we are protecting and to the risks that we have identified.
 

@@ -1,7 +1,11 @@
+.View process diagram
+[%collapsible]
+====
 {{#graph}}
   "model": "secdeva/graphModels/processDiagram",
   "view": "secdeva/graphViews/processTask"
 {{/graph}}
+====
 
 Product security context refers to the the security protections that are expected from the deployment environment. It is essential that the development team and the users of the product have the same understanding about the expected product security context.
 

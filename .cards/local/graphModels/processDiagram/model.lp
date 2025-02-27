@@ -1,5 +1,4 @@
 graph(toplevelGraph).
-attr(graph, toplevelGraph, rankdir, "LR").
 
 node(X, toplevelGraph) :- base_recurringTask(X), visible(X).
 
