@@ -2,10 +2,10 @@
 
 {{#if externalDataflows}}
 
-.External dataflows
+.Dataflows to and from this entity
 [cols="2,2,2,4"]
 |===
-|Direction | Internal element | External element | Dataflow
+|Direction | Inside element | Outside element | Dataflow
 
 {{#each externalDataflows}}
 |{{this.[secdeva/fieldTypes/direction]}}
@@ -18,20 +18,22 @@
 
 {{else}}
 
-There are no external dataflows.
+There are no dataflows to or from this entity.
 
 {{/if}}
 
 {{#if interfaces}}
 
 .Interfaces
-[cols="1,1"]
+[cols="3,3,2,2"]
 |===
-| Element | Interface
+| Element | Interface | External? | Crosses a trust boundary?
 
 {{#each interfaces}}
 |xref:{{this.[secdeva/fieldTypes/interfaceElementCardKey]}}.adoc[{{this.[secdeva/fieldTypes/interfaceElementTitle]}}]
 |xref:{{this.key}}.adoc[{{this.title}}]
+|{{this.[secdeva/fieldTypes/isExternal].displayValue}}
+|{{this.[secdeva/fieldTypes/crossesTrustBoundary].displayValue}}
 {{/each}}
 
 |===

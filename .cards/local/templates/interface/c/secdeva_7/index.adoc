@@ -1,6 +1,6 @@
 == Introduction
 
-This page documents the design of an interface. The document contains both advice for secure design and review instructions.
+This page documents the design of an interface.
 
 == Interface review
 

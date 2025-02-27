@@ -2,10 +2,10 @@
 
 {{#if externalDataflows}}
 
-.External dataflows
+.Dataflows with entities outside all trust boundaries
 [cols="2,2,2,4"]
 |===
-|Direction | Internal element | External element | Dataflow
+|Direction | Inside element | Outside element | Dataflow
 
 {{#each externalDataflows}}
 |{{this.[secdeva/fieldTypes/direction]}}
@@ -18,13 +18,13 @@
 
 {{else}}
 
-There are no external dataflows. You can create them in the underlying dataflow model.
+There are no dataflows with entities outside all trust boundaries. You can create them in the underlying dataflow model.
 
 {{/if}}
 
 {{#if internalDataflows}}
 
-.Internal dataflows
+.Dataflows within at least one trust boundary
 [cols="2,2,4"]
 |===
 | Source | Destination | Dataflow
@@ -39,20 +39,23 @@ There are no external dataflows. You can create them in the underlying dataflow 
 
 {{else}}
 
-There are no internal dataflows. You can create them in the underlying dataflow model.
+There are no dataflows inside at least one trust boundary. You can create them in the underlying dataflow model.
 
 {{/if}}
 
 {{#if interfaces}}
 
 .Interfaces
-[cols="1,1"]
+[cols="3,3,2,2"]
 |===
-| Element | Interface
+| Element | Interface | External? | Crosses trust boundary?
 
 {{#each interfaces}}
 |xref:{{this.[secdeva/fieldTypes/interfaceElementCardKey]}}.adoc[{{this.[secdeva/fieldTypes/interfaceElementTitle]}}]
 |xref:{{this.key}}.adoc[{{this.title}}]
+|{{this.[secdeva/fieldTypes/isExternal].displayValue}}
+|{{this.[secdeva/fieldTypes/crossesTrustBoundary].displayValue}}
+
 {{/each}}
 
 |===

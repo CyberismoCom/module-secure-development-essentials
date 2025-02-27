@@ -64,9 +64,8 @@ childResult((Source, {{cardKey}}, Description), TrustBoundary, "trustBoundaries"
     not ancestor(Source, TrustBoundary).
 
 field(result, "crossesTrustBoundary", "void") :-
-    childResult(_, _, "trustBoundaries").
+    field({{cardKey}}, "secdeva/fieldTypes/crossesTrustBoundary", "yes").
 
 field(result, "external", "void") :-
-    field((Source, Destination, Description), "sourceType", "External entity"),
-    childResult(result, (Source, Destination, Description), _ ).
+    field({{cardKey}}, "secdeva/fieldTypes/isExternal", "yes").
 
