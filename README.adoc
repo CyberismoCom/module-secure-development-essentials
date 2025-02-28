@@ -24,15 +24,5 @@ This module defines basic workflows, card types, and templates for managing secu
 
 == Using the Cyberismo secure development essentials module
 
-In order to use the secure development module content in your Cyberismo project, take the following steps:
 
-* Clone this repository alongside your Cyberismo project
-* Clone the base module alongside your Cyberismo project (`git clone git@githubcom:CyberismoCom/module-base.git`)
-* Clone the ISMS essentials module alongside your Cyberismo project (`git clone git@githubcom:CyberismoCom/module-isms-essentials.git`)
-* Import the above mentioned modules  with
-
-    cyberismo import module module-base -p <your project directory>
-    cyberismo import module module-isms-essentials -p <your project directory>
-    cyberismo import module module-secure-development-essentials -p <your project directory>
-
-For more details, see https://docs.cyberismo.com[Cyberismo documentation].
+See https://docs.cyberismo.com/cards/docs_krxdf4ke.html[Cyberismo documentation].
