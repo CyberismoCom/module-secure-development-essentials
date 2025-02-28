@@ -8,7 +8,7 @@ Notice that you do not need to get a perfect score to close the review as passed
 
 === Secure development tasks
 
-Check the annual wheel of secure development tasks in the parent card of this card.
+Check the annual plan of secure development tasks in the parent card of this card.
 
 All Secure development tasks should have be *Closed as done* or *Closed as not applicable* and their review must not be expired.
 

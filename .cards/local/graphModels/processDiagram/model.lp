@@ -59,7 +59,7 @@ edge((Task2, Task1, 1), toplevelGraph) :-
     link(Task1, Task2, "secdeva/linkTypes/requires"),
     visible(Task1),
     visible(Task2).
-attr(edge, (Task2, Task1, 1), label, "<<font point-size='24'>Prerequisite of</font>>") :-
+attr(edge, (Task2, Task1, 1), label, "<<font point-size='24'>Required by</font>>") :-
     link(Task1, Task2, "secdeva/linkTypes/requires"),
     visible(Task1),
     visible(Task2).

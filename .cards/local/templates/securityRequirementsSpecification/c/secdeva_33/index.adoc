@@ -4,11 +4,17 @@ The purpose of a security requirements specification is to document the requirem
 
 This specification must cover the requirements allocated to the product based on the security capability requirement allocation as defined in the Security requirement management process.
 
-== Scope and boundaries of the product
+== Scope and boundaries
 
-The security requirements must be defined in the light of the scope and the boundaries of the product. The scope and the boundaries must be documented in both a physical and a logical way.
+The security requirements must be defined in the light of the scope and the boundaries of the product or system. The scope and the boundaries must be documented in both a physical and a logical way.
 
-#TODO#: _Add here a description of the scope and the boundaries, in both a logical and a physical way._
+The following components and systems are in scope:
+
+* #TODO: Add here hardware components, software components, architectural entities, and other relevant assets that are in scope#
+
+The following components and systems are out of scope:
+
+* #TODO: If necessary, clarify here the hardware components, software components, architectural entities, and other relevant assets that are out of scope#
 
 == List of security requirements
 
