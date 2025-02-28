@@ -2,6 +2,30 @@ selectAll.
 
 result(result).
 
+childResult(result, Template, "uninstalledExtensions") :-
+    secdeva_extendPhase(PhaseIdentifier, _, Template, _, ExampleIdentifier),
+    field({{cardKey}}, "base/fieldTypes/identifier", PhaseIdentifier),
+    not field(Descendant, "base/fieldTypes/identifier", ExampleIdentifier) :
+    ancestor(Descendant, {{cardKey}}).
+
+field(Template, "moduleDescription", ModuleDescription) :-
+    secdeva_extendPhase(PhaseIdentifier, ModuleDescription, Template, _, _),
+    field({{cardKey}}, "base/fieldTypes/identifier", PhaseIdentifier).
+
+field(Template, "template", Template) :-
+    secdeva_extendPhase(PhaseIdentifier, _, Template, _, _),
+    field({{cardKey}}, "base/fieldTypes/identifier", PhaseIdentifier).
+
+field(Template, "buttonLabel", ButtonLabel) :-
+    secdeva_extendPhase(PhaseIdentifier, _, Template, ButtonLabel, _),
+    field({{cardKey}}, "base/fieldTypes/identifier", PhaseIdentifier).
+
+childResult(result, Template, "installedExtensions") :-
+    secdeva_extendPhase(PhaseIdentifier, _, Template, _, ExampleIdentifier),
+    field({{cardKey}}, "base/fieldTypes/identifier", PhaseIdentifier),
+    field(Descendant, "base/fieldTypes/identifier", ExampleIdentifier),
+    ancestor(Descendant, {{cardKey}}).
+
 childResult(result, Card, "tasks") :-
     ancestor(Card, {{cardKey}}),
     secdeva_closestProject(Card, Project),

@@ -19,7 +19,7 @@ Create a periodic review and follow the instructions in the template. Perform th
 The following annual plan shows the status of recurring secure development tasks.
 
 {{#report}}
-  "name": "secdeva/reports/annualWheel"
+  "name": "secdeva/reports/annualPlan"
 {{/report}}
 
 == Security issues
