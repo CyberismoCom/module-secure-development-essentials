@@ -1,5 +1,15 @@
 graph(toplevelGraph).
 
+% compliance requirement
+node(Requirement, toplevelGraph) :-
+    field(Requirement, "cardType", "ismsa/cardTypes/complianceRequirement"),
+    visible(Requirement).
+
+attr(node, Requirement, label, @concatenate("<<font point-size='32'> <b>", Title, "</b> </font> <br/> <font point-size='19'>Compliance requirement</font>>")) :-
+    field(Requirement, "cardType", "ismsa/cardTypes/complianceRequirement"),
+    field(Requirement, "title", Title),
+    visible(Requirement).
+
 % task
 node(Task, toplevelGraph) :- base_recurringTask(Task), visible(Task).
 
@@ -115,6 +125,8 @@ attr(edge, (X, Y, N), pendwidth, "3") :- edge((X, Y, N), _).
 attr(edge, (X, Y, N), arrowsize, "2") :- edge((X, Y, N), _).
 
 % shapes of nodes
+attr(node, X, shape, rectangle) :- node(X, _), field(X, "cardType", "ismsa/cardTypes/complianceRequirement"), not invisible(X).
+attr(node, X, style, rounded) :- node(X, _), field(X, "cardType", "ismsa/cardTypes/complianceRequirement"), not invisible(X).
 attr(node, X, shape, rectangle) :- node(X, _), base_recurringTask(X), not invisible(X).
 attr(node, X, style, rounded) :- node(X, _), base_recurringTask(X), not invisible(X).
 attr(node, X, shape, note) :- node(X, _), evidence(X), not invisible(X).
