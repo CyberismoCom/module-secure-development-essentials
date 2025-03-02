@@ -35,6 +35,7 @@ attr(node, Evidence, label, @concatenate("<<font point-size='32'>", Title, "</fo
     field(Evidence, "base/fieldTypes/identifier", EvidenceIdentifier),
     field(Evidence, "title", Title).
 
+
 % evidence placeholder
 evidencePlaceholder(@concatenate(Task, EvidenceIdentifier, EvidenceLabel)) :-
     base_recurringTask(Task),
@@ -53,6 +54,16 @@ attr(node, @concatenate(Task, EvidenceIdentifier, EvidenceLabel), label, @concat
     field(Task, "base/fieldTypes/identifier", TaskIdentifier),
     not field(Evidence, "base/fieldTypes/identifier", EvidenceIdentifier) :
     link(Evidence, Task, "secdeva/linkTypes/evidences").
+
+% "implements" relationship
+edge((Task2, Task1, 1), toplevelGraph) :-
+    link(Task1, Task2, "ismsa/linkTypes/implements"),
+    visible(Task1),
+    visible(Task2).
+attr(edge, (Task2, Task1, 1), label, "<<font point-size='24'>Implemented by</font>>") :-
+    link(Task1, Task2, "ismsa/linkTypes/implements"),
+    visible(Task1),
+    visible(Task2).
 
 % "precedes" relationship
 edge((Task1, Task2, 1), toplevelGraph) :-

@@ -8,7 +8,6 @@ link(First, Second, "secdeva/linkTypes/precedes") :-
     field(Second, "base/fieldTypes/identifier", SecondIdentifier),
     secdeva_precedingTask(FirstIdentifier, SecondIdentifier).
 
-
 link(Second, First, "secdeva/linkTypes/requires") :-
     not hiddenInTreeView(First),
     not hiddenInTreeView(Second),
@@ -17,6 +16,15 @@ link(Second, First, "secdeva/linkTypes/requires") :-
     field(First, "base/fieldTypes/identifier", FirstIdentifier),
     field(Second, "base/fieldTypes/identifier", SecondIdentifier),
     secdeva_prerequisiteTask(FirstIdentifier, SecondIdentifier).
+
+link(First, Second, "ismsa/linkTypes/implements") :-
+    not hiddenInTreeView(First),
+    not hiddenInTreeView(Second),
+    secdeva_closestProject(First, Project),
+    secdeva_closestProject(Second, Project),
+    field(First, "base/fieldTypes/identifier", FirstIdentifier),
+    field(Second, "base/fieldTypes/identifier", SecondIdentifier),
+    secdeva_implementationTask(FirstIdentifier, SecondIdentifier).
 
 secdeva_prerequisiteTask(
     "secdeva_control_assign-people-to-project-roles",

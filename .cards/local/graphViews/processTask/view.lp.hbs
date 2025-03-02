@@ -12,3 +12,5 @@ visible(Task) :-
 visible(Task) :-
     link(Task, {{cardKey}}, "secdeva/linkTypes/requires").
 
+visible(Task) :-
+    link({{cardKey}}, Task, "ismsa/linkTypes/implements").
