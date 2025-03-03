@@ -5,7 +5,7 @@ node(Requirement, toplevelGraph) :-
     field(Requirement, "cardType", "ismsa/cardTypes/complianceRequirement"),
     visible(Requirement).
 
-attr(node, Requirement, label, @concatenate("<<font point-size='32'> <b>", Title, "</b> </font> <br/> <font point-size='19'>Compliance requirement</font>>")) :-
+attr(node, Requirement, label, @concatenate("<<font point-size='32'> <b>", @wrap(Title), "</b> </font> <br/> <font point-size='19'>Compliance requirement</font>>")) :-
     field(Requirement, "cardType", "ismsa/cardTypes/complianceRequirement"),
     field(Requirement, "title", Title),
     visible(Requirement).
@@ -13,7 +13,7 @@ attr(node, Requirement, label, @concatenate("<<font point-size='32'> <b>", Title
 % task
 node(Task, toplevelGraph) :- base_recurringTask(Task), visible(Task).
 
-attr(node, Task, label, @concatenate("<<font point-size='32'> <b>", Title, "</b> </font> <br/> <font point-size='19'>Recurring task</font>>")) :-
+attr(node, Task, label, @concatenate("<<font point-size='32'> <b>", @wrap(Title), "</b> </font> <br/> <font point-size='19'>Recurring task</font>>")) :-
     base_recurringTask(Task),
     field(Task, "title", Title),
     visible(Task).
@@ -26,7 +26,7 @@ evidence(Evidence) :-
 
 node(Evidence, toplevelGraph) :- evidence(Evidence).
 
-attr(node, Evidence, label, @concatenate("<<font point-size='32'>", Title, "</font> <br/> <font point-size='19'>", EvidenceLabel , "</font>>")) :-
+attr(node, Evidence, label, @concatenate("<<font point-size='32'>", @wrap(Title), "</font> <br/> <font point-size='19'>", EvidenceLabel , "</font>>")) :-
     base_recurringTask(Task),
     visible(Task),
     link(Evidence, Task, "secdeva/linkTypes/evidences"),
@@ -34,7 +34,6 @@ attr(node, Evidence, label, @concatenate("<<font point-size='32'>", Title, "</fo
     field(Task, "base/fieldTypes/identifier", TaskIdentifier),
     field(Evidence, "base/fieldTypes/identifier", EvidenceIdentifier),
     field(Evidence, "title", Title).
-
 
 % evidence placeholder
 evidencePlaceholder(@concatenate(Task, EvidenceIdentifier, EvidenceLabel)) :-
@@ -47,7 +46,7 @@ evidencePlaceholder(@concatenate(Task, EvidenceIdentifier, EvidenceLabel)) :-
 
 node(Evidence, toplevelGraph) :- evidencePlaceholder(Evidence).
 
-attr(node, @concatenate(Task, EvidenceIdentifier, EvidenceLabel), label, @concatenate("<<font point-size='32'>", EvidenceLabel, "</font>>")) :-
+attr(node, @concatenate(Task, EvidenceIdentifier, EvidenceLabel), label, @concatenate("<<font point-size='32'>", @wrap(EvidenceLabel), "</font>>")) :-
     base_recurringTask(Task),
     visible(Task),
     secdeva_evidence(TaskIdentifier, EvidenceIdentifier, EvidenceLabel),
@@ -94,15 +93,13 @@ edge((Task, Evidence, 1), toplevelGraph) :-
     field(Task, "base/fieldTypes/identifier", TaskIdentifier),
     field(Evidence, "base/fieldTypes/identifier", EvidenceIdentifier),
     field(Evidence, "title", Title).
-attr(edge, (Evidence, 1), label, "<<font point-size='24'>Evidenced by</font>>") :-
+attr(edge, (Task, Evidence, 1), label, "<<font point-size='24'>Evidenced by</font>>") :-
     base_recurringTask(Task),
     visible(Task),
     link(Evidence, Task, "secdeva/linkTypes/evidences"),
     secdeva_evidence(TaskIdentifier, EvidenceIdentifier, _),
     field(Task, "base/fieldTypes/identifier", TaskIdentifier),
-    field(Evidence, "base/fieldTypes/identifier", EvidenceIdentifier),
-    field(Evidence, "title", Title).
-
+    field(Evidence, "base/fieldTypes/identifier", EvidenceIdentifier).
 
 % "evidences" relationship to evidence placeholders
 edge((Task, @concatenate(Task, EvidenceIdentifier, EvidenceLabel), 1), toplevelGraph) :-

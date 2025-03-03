@@ -249,8 +249,8 @@ attr(node, X, label, "<<font point-size='32'> <b> {{label}} </b> </font> <br/> <
 attr(node, X, label, "<<font point-size='32'> <b> {{label}} </b> </font> <br/> <font point-size='19'>[{{kind}}: {{technology}}]</font> <br/><font point-size='22'>{{description}}</font>>") :- description(X, _), technology(X, _), entity(X), node(X, G), not invisible(X).
 attr(node, X, label, "<<font point-size='32'> <b> {{label}} </b> </font> <br/> <font point-size='19'>[{{kind}}]</font>>") :- not description(X, _), not technology(X, _), entity(X), node(X, G), not invisible(X).
 attr(node, X, label, "<<font point-size='32'> <b> {{label}} </b> </font> <br/> <font point-size='19'>[{{kind}}: {{technology}}]</font>>") :- not description(X, _), technology(X, _), entity(X), node(X, G), not invisible(X).
-attr(node, X, (label, label), Title) :- title(X, Title), entity(X), node(X, G), not invisible(X).
-attr(node, X, (label, description), Description) :- description(X, Description), entity(X), node(X, G), not invisible(X).
+attr(node, X, (label, label), @wrap(Title)) :- title(X, Title), entity(X), node(X, G), not invisible(X).
+attr(node, X, (label, description), @wrap(Description)) :- description(X, Description), entity(X), node(X, G), not invisible(X).
 attr(node, X, (label, technology), Technology) :- entity(X), technology(X, Technology), node(X, _), not invisible(X).
 attr(node, X, (label, kind), "Person") :- person(X),  node(X, _), not invisible(X).
 attr(node, X, (label, kind), "External") :- external(X), not person(X), node(X, _), not invisible(X).
@@ -265,8 +265,8 @@ attr(graph, X, label, "<<font point-size='24'> <b> {{label}} </b> </font> <br/> 
 attr(graph, X, label, "<<font point-size='24'> <b> {{label}} </b> </font> <br/> <font point-size='19'>[{{kind}}: {{technology}}]</font>>") :- not description(X, _), technology(X, _), entity(X), graph(X, _).
 attr(graph, X, labelloc, b) :- entity(X), graph(X, _).
 attr(graph, X, labeljust, l) :- entity(X), graph(X, _).
-attr(graph, X, (label, label), Title) :- title(X, Title), entity(X), graph(X, _).
-attr(graph, X, (label, description), Description) :- description(X, Description), entity(X), graph(X, _).
+attr(graph, X, (label, label), @wrap(Title)) :- title(X, Title), entity(X), graph(X, _).
+attr(graph, X, (label, description), @wrap(Description)) :- description(X, Description), entity(X), graph(X, _).
 attr(graph, X, (label, technology), Technology) :- entity(X), technology(X, Technology), graph(X, _).
 attr(graph, X, (label, kind), "Person") :- person(X), graph(X, _).
 attr(graph, X, (label, kind), "External") :- external(X), not person(X), graph(X, _).
@@ -277,7 +277,7 @@ attr(graph, X, (label, kind), "Datastore") :- datastore(X), graph(X, _).
 % edge labels. Edges cannot have technology descriptions
 % for compatibility reasons, we have to use at least a whitespace the label
 attr(edge, (X, Y, Title), label, "<<font point-size='24'>{{label}}</font>>") :- edge((X, Y, Title), _).
-attr(edge, (X, Y, Title), (label, label), Title) :- edge((X, Y, Title), _), Title != "".
+attr(edge, (X, Y, Title), (label, label), @wrap(Title)) :- edge((X, Y, Title), _), Title != "".
 attr(edge, (X, Y, Title), (label, label), " ") :- edge((X, Y, Title), _), Title = "".
 
 % shapes of graphs
