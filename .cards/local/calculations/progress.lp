@@ -4,7 +4,7 @@ secdeva_calculateProgress(Phase) :-
 secdeva_calculateProgress(Project) :-
     field(Project, "cardType", "secdeva/cardTypes/project").
 
-field(Card, "base/fieldTypes/progress", 100 * Closed / Total) :-
+field(Card, "progress", 100 * Closed / Total) :-
     secdeva_calculateProgress(Card),
     Total = #count {
         card(Task) :
@@ -27,7 +27,7 @@ policyCheckFailure(
     @concatenate("Only ", Progress, "% of secure development tasks have been completed. Complete all tasks or close them as not applicable.")
     ) :-
         field(Project, "cardType", "secdeva/cardTypes/project"),
-        field(Project, "base/fieldTypes/progress", Progress),
+        field(Project, "progress", Progress),
         Progress < 100.
 
 policyCheckSuccess(
@@ -36,4 +36,4 @@ policyCheckSuccess(
     "Secure development tasks are complete"
     ) :-
         field(Project, "cardType", "secdeva/cardTypes/project"),
-        field(Project, "base/fieldTypes/progress", 100).
+        field(Project, "progress", 100).
