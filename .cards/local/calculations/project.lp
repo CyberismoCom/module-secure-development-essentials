@@ -12,8 +12,23 @@ secdeva_closestProject(Card, Project) :-
     ancestor(MiddleAncestor, Project),
     ancestor(Card, MiddleAncestor).
 
-% Backups is a mandatory field for development projects
+% Usually, ismsa/fieldTypes/assetRiskEvaluationNeeded is a user-defined field of an asset,
+% but for development projects, we can calculate it based on the risk assessment subtask
+field(Project, "ismsa/fieldTypes/assetRiskEvaluationNeeded", "yes") :-
+    field(Project, "cardType", "secdeva/cardTypes/project"),
+    parent(RiskAssessment, Project),
+    field(RiskAssessment, "base/fieldTypes/identifier", "secdeva_control_high-level-risks"),
+    field(RiskAssessment, "workflowState", State),
+    secdeva_scopingStatus(State, "In scope").
 
+field(Project, "ismsa/fieldTypes/assetRiskEvaluationNeeded", "no") :-
+    field(Project, "cardType", "secdeva/cardTypes/project"),
+    parent(RiskAssessment, Project),
+    field(RiskAssessment, "base/fieldTypes/identifier", "secdeva_control_high-level-risks"),
+    field(RiskAssessment, "workflowState", State),
+    secdeva_scopingStatus(State, "Out of scope").
+
+% Backups is a mandatory field for development projects
 policyCheckFailure(Asset, "ISMS", "'Backup(s)' is a required field", "'Backup(s)' has not been defined for this asset. Set this field.") :-
     field(Asset, "cardType", "secdeva/cardTypes/project"),
     not field(Asset, "ismsa/fieldTypes/assetBackups", _).

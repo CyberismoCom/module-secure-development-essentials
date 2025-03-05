@@ -34,7 +34,8 @@
             "name": "ismsa/fieldTypes/assetPersonalInformation"
         },
         {
-            "name": "ismsa/fieldTypes/assetRiskEvaluationNeeded"
+            "name": "ismsa/fieldTypes/assetRiskEvaluationNeeded",
+            "isCalculated": true
         },
         {
             "name": "ismsa/fieldTypes/assetType"
