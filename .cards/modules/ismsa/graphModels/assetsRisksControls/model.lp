@@ -4,19 +4,31 @@ attr(graph, toplevelGraph, rankdir, "LR").
 node(X, toplevelGraph) :- ismsa_asset(X, _), visible(X).
 node(X, toplevelGraph) :- field(X, "cardType", "ismsa/cardTypes/risk"), visible(X).
 node(X, toplevelGraph) :- field(X, "cardType", "ismsa/cardTypes/control"), visible(X).
+node(X, toplevelGraph) :- field(X, "cardType", "secdeva/cardTypes/requirement"), visible(X).
+node(X, toplevelGraph) :- base_recurringTask(X), visible(X).
 
-attr(node, X, label, @concatenate("<<font point-size='32'> <b>", Title, "</b> </font> <br/> <font point-size='19'>", Type, "</font>>")) :-
+attr(node, X, label, @concatenate("<<font point-size='32'> <b>", @wrap(Title), "</b> </font> <br/> <font point-size='19'>", Type, "</font>>")) :-
     ismsa_asset(X, Type),
     field(X, "title", Title),
     visible(X).
 
-attr(node, X, label, @concatenate("<<font point-size='32'> <b>", Title, "</b> </font> <br/><font point-size='19'>Risk</font>>")) :-
+attr(node, X, label, @concatenate("<<font point-size='32'> <b>", @wrap(Title), "</b> </font> <br/><font point-size='19'>Risk</font>>")) :-
     field(X, "cardType", "ismsa/cardTypes/risk"),
     field(X, "title", Title),
     visible(X).
 
-attr(node, X, label, @concatenate("<<font point-size='32'> <b>", Title, "</b> </font> <br/><font point-size='19'>Control</font>>")) :-
+attr(node, X, label, @concatenate("<<font point-size='32'> <b>", @wrap(Title), "</b> </font> <br/><font point-size='19'>Control</font>>")) :-
     field(X, "cardType", "ismsa/cardTypes/control"),
+    field(X, "title", Title),
+    visible(X).
+
+attr(node, X, label, @concatenate("<<font point-size='32'> <b>", @wrap(Title), "</b> </font> <br/><font point-size='19'>Requirement</font>>")) :-
+    field(X, "cardType", "secdeva/cardTypes/requirement"),
+    field(X, "title", Title),
+    visible(X).
+
+attr(node, X, label, @concatenate("<<font point-size='32'> <b>", @wrap(Title), "</b> </font> <br/><font point-size='19'>Recurring task</font>>")) :-
+    base_recurringTask(X),
     field(X, "title", Title),
     visible(X).
 

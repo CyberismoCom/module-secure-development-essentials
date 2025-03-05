@@ -19,3 +19,15 @@ visible(Control) :-
     field(Risk, "cardType", "ismsa/cardTypes/risk"),
     visible(Risk),
     link(Control, Risk, "ismsa/linkTypes/mitigates").
+
+visible(Requirement) :-
+    field(Requirement, "cardType", "secdeva/cardTypes/requirement"),
+    field(Risk, "cardType", "ismsa/cardTypes/risk"),
+    visible(Risk),
+    link(Requirement, Risk, "ismsa/linkTypes/mitigates").
+
+visible(Task) :-
+    base_recurringTask(Task),
+    field(Risk, "cardType", "ismsa/cardTypes/risk"),
+    visible(Risk),
+    link(Task, Risk, "ismsa/linkTypes/mitigates").

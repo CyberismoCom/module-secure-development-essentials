@@ -11,6 +11,9 @@
         "ismsa/cardTypes/register",
         "ismsa/cardTypes/riskRegister"
     ],
-    "destinationCardTypes": ["ismsa/cardTypes/control"],
+    "destinationCardTypes": [
+        "ismsa/cardTypes/control",
+        "ismsa/cardTypes/complianceRequirement"
+    ],
     "enableLinkDescription": false
 }

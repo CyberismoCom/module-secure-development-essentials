@@ -15,15 +15,17 @@ ismsa_asset(Card, "Device") :-
 ismsa_asset(Card, "Supplier") :-
     field(Card, "cardType", "ismsa/cardTypes/assetSupplier").
 
-% Criticality and risk evaluation need are mandatory for all assets
+% Criticality and risk evaluation needed are mandatory for all assets
+% Risk evaluation needed can be a calculated field
 policyCheckFailure(Asset, "ISMS", "'Criticality for operations' is a required field", "'Criticality for operations' has not been defined for this asset. Set this field.") :-
     ismsa_asset(Asset),
     not field(Asset, "ismsa/fieldTypes/assetCriticalityForOperations", _).
 
 policyCheckFailure(Asset, "ISMS", "'Risk evaluation needed' is a required field", "'Risk evaluation needed' has not been defined for this asset. Set this field.") :-
     ismsa_asset(Asset),
-    not field(Asset, "ismsa/fieldTypes/assetRiskEvaluationNeeded", _).
-
+    not field(Asset, "ismsa/fieldTypes/assetRiskEvaluationNeeded", _),
+    field(Asset, "cardType", CardType),
+    not calculatedField(CardType, "ismsa/fieldTypes/assetRiskEvaluationNeeded").
 
 % Access control, backup(s), security updates and logging & monitoring are mandatory for information systems
 policyCheckFailure(Asset, "ISMS", "'Access control' is a required field", "'Access control' has not been defined for this asset. Set this field.") :-

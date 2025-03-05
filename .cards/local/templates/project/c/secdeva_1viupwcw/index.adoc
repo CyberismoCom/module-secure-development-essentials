@@ -14,7 +14,7 @@ Document the following basic information about the development project in the fi
 
 * *Owner:* The owner and the main contact for this development project
 * *Criticality for operations:* The overall criticality of this development project for business operations
-* *Risk evaluation needed:* Whether a cybersecurity risk assessment is needed. If risk evaluation is needed, then identify at least one high-level cybersecurity risk under *Manage high-level risks*
+* *Risk evaluation needed:* This automatic field shows, whether the *Manage high-level risks* task is currently set as applicable. If risk evaluation is needed, then identify at least one high-level cybersecurity risk under *Manage high-level risks*
 * *Backups:* How the source code and other important files are backed up
 
 == Applicability of the secure development process

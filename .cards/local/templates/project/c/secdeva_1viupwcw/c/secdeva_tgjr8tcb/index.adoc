@@ -12,7 +12,7 @@ Cybersecurity risk management evaluates potential risks and their impact on the 
 The scope of this high-level risk management is broad, as it considers the organisation's overall risks that are related to this development project or the results of this development project.
 
 {{#createCards}}
-    "template": "ismsa/templates/risk",
+    "template": "secdeva/templates/productRisk",
     "buttonLabel": "Add a new high-level risk"
 {{/createCards}}
 
@@ -98,8 +98,13 @@ When applying the secure development process, you will identify security-related
 * Risks that may happen due toa chain or a combination of multiple security issues
 * Risks that may happen due to a large number of open security issues
 
+{{#report}}
+  "name": "secdeva/reports/securityIssuesNeedingAttention"
+{{/report}}
+
+
 == How to review this task
 
-Check that all identified risks have been reported as child cards to this card.
-
-Check that the risks have been processed.
+{{#report}}
+  "name": "secdeva/reports/checkRiskAssessmentStatus"
+{{/report}}

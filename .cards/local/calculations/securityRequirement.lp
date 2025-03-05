@@ -1,3 +1,8 @@
+link(Requirement, Risk, "ismsa/linkTypes/mitigates") :-
+    field(Risk, "cardType", "ismsa/cardTypes/risk"),
+    field(Requirement, "cardType", "secdeva/cardTypes/requirement"),
+    parent(Requirement, Risk).
+
 transitionDenied(
     Card,
     "Approve requirement",
