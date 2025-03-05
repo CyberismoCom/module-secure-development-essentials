@@ -8,7 +8,6 @@
     "secdeva/fieldTypes/adoptionStepJustification": null,
     "base/fieldTypes/informationClassification": "internal",
     "ismsa/fieldTypes/assetCriticalityForOperations": null,
-    "ismsa/fieldTypes/assetRiskEvaluationNeeded": null,
     "ismsa/fieldTypes/assetType": null,
     "ismsa/fieldTypes/assetPersonalInformation": null,
     "ismsa/fieldTypes/assetIntegrity": null,
