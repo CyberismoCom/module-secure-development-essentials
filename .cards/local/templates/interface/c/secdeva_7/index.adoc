@@ -24,24 +24,24 @@ Interfaces are classified automatically based on the dataflow model. To review t
   "name": "secdeva/reports/interfaceClassification"
 {{/report}}
 
-== Product security context considerations
+== Security context considerations
 
 [NOTE]
 .Review instructions
 ====
-The _product security context_ refers to the security that is provided by the deployment environment.
+The _security context_ refers to the security that is provided by the deployment environment.
 
 To review this section:
 
-. Check what has been documented about the product security context of the product. The security context is documented in a security context document: {{#report}}
+. Check what has been documented about the security context of the product. The security context is documented in a security context document: {{#report}}
   "name": "secdeva/reports/linkByIdentifier",
   "identifier": "secdeva_document_security-context",
-  "messageIfNoResults": "#TODO# There are no product security context documents yet. Create a product security context document under *Design* → *Document product security context*."
+  "messageIfNoResults": "#TODO# There are no security context documents yet. Create a security context document under *Design* → *Document security context*."
 {{/report}}
-. Check that this section describes how the product security context has been taken into account for the security of this interface:
-* How the protections offered by the product security context have been used
-* How the vulnerabilities resulting from the product security context have been addressed
-. Check that this section includes security considerations, assumptions and/or constraints associated with the use of the interface within the product security context
+. Check that this section describes how the security context has been taken into account for the security of this interface:
+* How the protections offered by the security context have been used
+* How the vulnerabilities resulting from the security context have been addressed
+. Check that this section includes security considerations, assumptions and/or constraints associated with the use of the interface within the security context
 . Any considerations or constraints that must be taken into account when using this interface
 ====
 
@@ -146,7 +146,7 @@ Consider whether the following aspects are relevant:
 * Logging
 * Compensating safeguards
 * Capabilities provided by 3rd party products that are used to implement this interface
-. Take into account the product security context considerations (see above)
+. Take into account the security context considerations (see above)
 . Take into account the relevant threats in the threat model
 . Take into account the relevant security requirements that have been allocated to the component
 . Include input validation, output handling and error handling
@@ -154,7 +154,7 @@ Consider whether the following aspects are relevant:
 
 To review this section
 
-. Check that the described security capabilities are sufficient and proportional to the product security context, identified threats and relevant security requirements
+. Check that the described security capabilities are sufficient and proportional to the security context, identified threats and relevant security requirements
 ====
 
 == 3rd party technologies

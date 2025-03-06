@@ -14,14 +14,14 @@ The most relevant assets that need protection are:
 
 * {blank}
 
-== Product security context
+== Security context
 
-Product security context must be documented before a threat model can be approved.
+Security context must be documented before a threat model can be approved.
 
 {{#report}}
   "name": "secdeva/reports/linkByIdentifier",
   "identifier": "secdeva_document_security-context",
-  "messageIfNoResults": "#TODO# There are no product security context documents yet. Create a product security context document under *Design* → *Document product security context*."
+  "messageIfNoResults": "#TODO# There are no security context documents yet. Create a security context document under *Design* → *Document security context*."
 {{/report}}
 
 == Dataflow diagram

@@ -1,6 +1,6 @@
 {
     "cardType": "base/cardTypes/annualTask",
-    "title": "Document product security context",
+    "title": "Document security context",
     "workflowState": "",
     "rank": "0|a",
     "lastUpdated": "2025-01-23T13:53:11.193Z",
@@ -13,5 +13,5 @@
     "base/fieldTypes/reviewPeriod": 365,
     "base/fieldTypes/reviewMonth": "april",
     "base/fieldTypes/lastReviewed": null,
-    "base/fieldTypes/identifier": "secdeva_control_product-security-context"
+    "base/fieldTypes/identifier": "secdeva_control_security-context"
 }

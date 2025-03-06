@@ -1,8 +1,36 @@
 == Introduction
 
-The security context for a product is a set of assumptions about the environment in which the product is intended to be used. The security context is a key factor in determining the security requirements of a product.
+The security context refers to a set of assumptions about the product or solution and the environment in which the product or solution is intended to be used. The security context is a key factor in determining the security requirements of a product.
 
-Security context defines the security provided by the environment, where the product or the solution is intended to be used.
+== Intended purpose
+
+The _intended purpose_ means the use for which the product or solution is intended by the manufacturer. The intended purpose includes the specific context and conditions of use.
+
+The intended purpose is #TODO: document the intended purpose#.
+
+== Foreseeable use
+
+The _reasonably foreseeable use_ means such use that is not necessarily the intended purpose supplied by the manufacturer, but which is likely to result from reasonably foreseeable human behaviour or technical operations or interactions.
+
+The foreseeable use includes:
+
+* #TODO: document the foreseeable use#
+
+== Forseeable misuse
+
+The _reasonably foreseeable misuse_ means the use of a product or a solution in a way that is not in accordance with its intended purpose, but which may result from reasonably foreseeable human behaviour or interaction with other systems,
+
+The foreseeable misuse includes:
+
+* #TODO: document the foreseeable misuse#
+
+== Essential functionalities
+
+Essential functionalities are such functionalities that are essential for the product or solution to meet its intended purpose.
+
+The essential functionalities are:
+
+* #TODO: document the essential functionalities of the product or solution.#
 
 == Security context
 

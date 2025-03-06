@@ -6,7 +6,7 @@ It is useful to analyse and document the business context for the following aspe
 
 * A high-level description of the product or system, including users and main use cases
 * Motivation: business goals, reasons for investing in cybersecurity and security objectives
-* Environment: security requirements, delivery chain and the lifecycle of the solution, competition and product security context
+* Environment: security requirements, delivery chain and the lifecycle of the solution, competition and security context
 * Assets that need protection
 * Damage scenarios and optionally, an analysis of threat agents
 * Conclusions about the scoping of cybersecurity work and recommended next steps
@@ -100,7 +100,7 @@ This section should also describe the lifecycle phases of this product or soluti
 ====
 Security context defines the security provided by the environment, where the target of evaluation is intended to be used.
 
-Check that the assumptions about the product security context have been documented.
+Check that the assumptions about the security context have been documented.
 
 The security context could include:
 
@@ -108,7 +108,7 @@ The security context could include:
 * Physical or cyber security that is required to be provided by the deployment environment
 * Whether isolation from network perspective is expected to be provided by the deployment environment
 
-You can describe the product security context here, or link to a separate document.
+You can describe the security context here, or link to a separate document.
 ====
 
 === Competition

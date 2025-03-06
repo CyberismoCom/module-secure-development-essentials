@@ -129,7 +129,7 @@ Comments, links:
 
 === Security context
 
-The technology is suitable for the planned product security context. The product security context refers to the security provided by the environment where the asset owner is expected to deploy and use the product.
+The technology is suitable for the planned security context. The security context refers to the security provided by the environment where the asset owner is expected to deploy and use the product.
 
 * [ ] OK
 * [ ] Not OK

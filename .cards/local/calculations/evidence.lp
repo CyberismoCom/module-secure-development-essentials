@@ -11,7 +11,7 @@ link(Evidence, Task, "secdeva/linkTypes/evidences") :-
 secdeva_evidence("secdeva_control_threat-models", "secdeva_document_threat-model", "Threat model").
 secdeva_evidence("secdeva_control_assign-people-to-project-roles", "secdeva_document_project-role-assignments", "Project role assignments").
 secdeva_evidence("secdeva_control_analyse-business-context", "secdeva_document_business-context-analysis", "Business context analysis").
-secdeva_evidence("secdeva_control_product-security-context", "secdeva_document_security-context", "Product security context").
+secdeva_evidence("secdeva_control_security-context", "secdeva_document_security-context", "Security context").
 secdeva_evidence("secdeva_control_interface-specifications", "secdeva_document_interface", "Interface description").
 secdeva_evidence("secdeva_control_threat-mitigation-testing", "secdeva_test_threat-mitigation", "Review of \nthreat mitigation testing").
 secdeva_evidence("secdeva_control_security-requirements", "secdeva_document_security-requirement-specification", "Security requirements specification").
