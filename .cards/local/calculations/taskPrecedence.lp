@@ -36,6 +36,18 @@ secdeva_precedingTask(
 
 secdeva_prerequisiteTask(
     "secdeva_control_security-context",
+    "secdeva_control_high-level-risks").
+
+secdeva_precedingTask(
+    "secdeva_control_threat-models",
+    "secdeva_control_high-level-risks").
+
+secdeva_precedingTask(
+    "secdeva_control_high-level-risks",
+    "secdeva_control_threat-models").
+
+secdeva_prerequisiteTask(
+    "secdeva_control_security-context",
     "secdeva_control_threat-models").
 
 secdeva_prerequisiteTask(
