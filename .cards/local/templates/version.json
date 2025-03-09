@@ -1,6 +1,6 @@
 {
     "displayName": "Release",
     "description": "A product release",
-    "category": "Secure development projects",
+    "category": "Secure development reviews",
     "name": "secdeva/templates/version"
 }
