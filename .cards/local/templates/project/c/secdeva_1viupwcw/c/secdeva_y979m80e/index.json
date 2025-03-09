@@ -1,6 +1,6 @@
 {
     "title": "Operations",
-    "cardType": "secdeva/cardTypes/phase",
+    "cardType": "secdeva/cardTypes/page",
     "workflowState": "",
     "rank": "0|h",
     "base/fieldTypes/adoptionStep": "step1",

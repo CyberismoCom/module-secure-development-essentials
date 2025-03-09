@@ -1,6 +1,6 @@
 {
     "title": "Subprojects",
-    "cardType": "secdeva/cardTypes/phase",
+    "cardType": "secdeva/cardTypes/page",
     "workflowState": "",
     "rank": "0|q",
     "base/fieldTypes/adoptionStep": "step1",

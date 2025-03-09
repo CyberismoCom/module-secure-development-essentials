@@ -1,5 +1,5 @@
 secdeva_calculateProgress(Phase) :-
-    field(Phase, "cardType", "secdeva/cardTypes/phase").
+    field(Phase, "cardType", "secdeva/cardTypes/page").
 
 secdeva_calculateProgress(Project) :-
     field(Project, "cardType", "secdeva/cardTypes/project").

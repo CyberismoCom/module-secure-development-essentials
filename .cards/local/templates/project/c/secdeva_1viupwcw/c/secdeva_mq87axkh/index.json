@@ -1,6 +1,6 @@
 {
     "title": "Compliance",
-    "cardType": "secdeva/cardTypes/phase",
+    "cardType": "secdeva/cardTypes/page",
     "workflowState": "",
     "rank": "0|b",
     "base/fieldTypes/adoptionStep": "step1",
