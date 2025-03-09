@@ -75,7 +75,7 @@ directlyVisible(X) :- entity(X), view(X, N), N > 0, not hide(X).
 % the user may define viewAll(N) to mean that all entities should be shown
 % with N levels of detail
 
-view(X, N) :- entity(X), entityLevel(X, 1), viewAll(N).
+view(X, N) :- entity(X), entityLevel(X, 1), viewAll(N), not hide(X).
 
 % graphs
 
@@ -136,7 +136,10 @@ visible(dataflow(X, Y, N)) :- dataflow(X, Y, N), directlyVisible(Z), entity(Z), 
 visible(dataflow(X, Y, N)) :- dataflow(X, Y, N), directlyVisible(Z), entity(Z), contains(Z, X), entity(X), entity(Y), not contains(Z, Y), not contains(X, Y), not contains(Y, X), not hide(Z).
 
 visible(dataflow(X, Y, N)) :- dataflow(X, Y, N), directlyVisible(Z), entity(Z), contains(Z, Y), entity(X), entity(Y), not contains(Z, X), not contains(X, Y), not contains(Y, X), not hide(X).
-visible(dataflow(X, Y, N)) :- dataflow(X, Y, N), directlyVisible(X), entity(Z), contains(Z, Y), entity(X), entity(Y), not contains(Z, X), not contains(X, Y), not contains(Y, X), not hide(Z).
+visible(dataflow(X, Y, N)) :- dataflow(X, Y, N), directlyVisible(Z), entity(Z), contains(Z, Y), entity(X), entity(Y), not contains(Z, X), not contains(X, Y), not contains(Y, X), not hide(Z).
+
+% for clarity, we make dataflows between visible entities visible
+visible(dataflow(X, Y, N)) :- dataflow(X, Y, N), visible(X), entity(X), visible(Y), entity(Y), not contains(X, Y), not contains(Y, X), not hide(X), not hide(Y).
 
 % representative(X, Y) means that entity X will represent entity Y when drawing dataflows
 % the existence of a representative doesn't imply anything about visibility of dataflows
@@ -165,30 +168,26 @@ highestLevelNonCommonAncestor(X, Y, Z) :-
     entityLevel(Z, ZN),
     ZN = #min {N : contains(Q, X), not contains(Q, Y), entityLevel(Q, N)}.
 
-% the following clauses figure out the neighbour end of a dataflow
-% that has a directly visible endpoint
+% the following clauses make the highest level non-common ancestors of dataflow endpoints visible
+% if there is no such ancestor, then the endpiont itself is made visible
 
 visible(Z) :-
     visible(dataflow(X, Y, _)),
-    directlyVisible(X),
     highestLevelNonCommonAncestor(Y, X, Z),
     not hide(Z).
 
 visible(Z) :-
     visible(dataflow(Y, X, _)),
-    directlyVisible(X),
     highestLevelNonCommonAncestor(Y, X, Z),
     not hide(Z).
 
 visible(Y) :-
     visible(dataflow(X, Y, _)),
-    directlyVisible(X),
     not highestLevelNonCommonAncestor(Y, X, _),
     not hide(Y).
 
 visible(Y) :-
     visible(dataflow(Y, X, _)),
-    directlyVisible(X),
     not highestLevelNonCommonAncestor(Y, X, _),
     not hide(Y).
 

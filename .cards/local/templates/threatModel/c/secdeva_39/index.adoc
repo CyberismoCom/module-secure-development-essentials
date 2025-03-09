@@ -45,16 +45,14 @@ You can evaluate whether the DFD describes the system with sufficient detail by 
 
 {{#graph}}
   "model": "secdeva/graphModels/dataflow",
-  "view": "secdeva/graphViews/context",
-  "layout": "LR"
+  "view": "secdeva/graphViews/context"
 {{/graph}}
 
 === Detailed diagram
 
 {{#graph}}
   "model": "secdeva/graphModels/dataflow",
-  "view": "secdeva/graphViews/allEntities",
-  "layout": "LR"
+  "view": "secdeva/graphViews/allEntities"
 {{/graph}}
 
 == List of external dependencies
