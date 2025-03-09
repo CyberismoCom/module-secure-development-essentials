@@ -1,13 +1,13 @@
 selectAll.
 
-secdeva_entityOutsideTrustBoundaries(Entity, Card) :-
-    ancestor(Entity, Card),
+secdeva_entityOutsideTrustBoundaries(Entity, Model) :-
+    ancestor(Entity, Model),
     not field(Ancestor, "cardType", "secdeva/cardTypes/trustBoundary") :
     ancestor(Entity, Ancestor).
 
-secdeva_entityWithinTrustBoundary(Entity, Card) :-
-     ancestor(Entity, Card),
-     ancestor(TrustBoundary, Card),
+secdeva_entityWithinTrustBoundary(Entity, Model) :-
+     ancestor(Entity, Model),
+     ancestor(TrustBoundary, Model),
      ancestor(Entity, TrustBoundary),
      field(TrustBoundary, "cardType", "secdeva/cardTypes/trustBoundary").
 
@@ -16,7 +16,7 @@ result(result).
 % external dataflows
 
 % outbound external dataflow
-childResult(result, @concatenate(A, B, Title), "externalDataflow") :-
+childResult(result, @concatenate(A, B, Title), "externalDataflows") :-
      link(A, B, "secdeva/linkTypes/dataflow", Title),
      secdeva_entityWithinTrustBoundary(A, {{cardKey}}),
      secdeva_entityOutsideTrustBoundaries(B, {{cardKey}}).

@@ -13,17 +13,17 @@ secdeva_closestProject(Card, Project) :-
     ancestor(Card, MiddleAncestor).
 
 % Usually, ismsa/fieldTypes/assetRiskEvaluationNeeded is a user-defined field of an asset,
-% but for development projects, we can calculate it based on the risk assessment subtask
+% but for development projects, we can calculate it based on the risk assessment task
 field(Project, "ismsa/fieldTypes/assetRiskEvaluationNeeded", "yes") :-
     field(Project, "cardType", "secdeva/cardTypes/project"),
-    parent(RiskAssessment, Project),
+    secdeva_closestProject(RiskAssessment, Project),
     field(RiskAssessment, "base/fieldTypes/identifier", "secdeva_control_high-level-risks"),
     field(RiskAssessment, "workflowState", State),
     secdeva_scopingStatus(State, "In scope").
 
 field(Project, "ismsa/fieldTypes/assetRiskEvaluationNeeded", "no") :-
     field(Project, "cardType", "secdeva/cardTypes/project"),
-    parent(RiskAssessment, Project),
+    secdeva_closestProject(RiskAssessment, Project),
     field(RiskAssessment, "base/fieldTypes/identifier", "secdeva_control_high-level-risks"),
     field(RiskAssessment, "workflowState", State),
     secdeva_scopingStatus(State, "Out of scope").
@@ -37,5 +37,6 @@ policyCheckFailure(Asset, "ISMS", "'Backup(s)' is a required field", "'Backup(s)
 link(DevelopmentProject, Risk, "ismsa/linkTypes/presentsRisk") :-
     field(DevelopmentProject, "cardType", "secdeva/cardTypes/project"),
     field(Risk, "cardType", "ismsa/cardTypes/risk"),
-    parent(Risk, Register),
-    parent(Register, DevelopmentProject).
+    parent(Risk, RiskTask),
+    secdeva_closestProject(RiskTask, DevelopmentProject),
+    field(RiskTask, "base/fieldTypes/identifier", "secdeva_control_high-level-risks").
