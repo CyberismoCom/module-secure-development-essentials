@@ -17,9 +17,10 @@
     ],
     "alwaysVisibleFields": [
         "base/fieldTypes/owner",
-        "base/fieldTypes/informationClassification",
         "base/fieldTypes/approver",
         "base/fieldTypes/approvalDate"
     ],
-    "optionallyVisibleFields": []
+    "optionallyVisibleFields": [
+        "base/fieldTypes/informationClassification"
+    ]
 }
