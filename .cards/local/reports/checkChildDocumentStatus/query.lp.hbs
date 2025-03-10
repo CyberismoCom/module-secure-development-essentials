@@ -54,7 +54,7 @@ field(Document, "reviewExpiration", "❗Last reviewed date not set in any review
     not field(Subtask, "base/fieldTypes/lastReviewed", _) :
     secdeva_reviewSubtask(Document, Subtask).
 
-field(Document, "reviewExpiration", "❗None of the review tasks has a non-exipired last reviewed date") :-
+field(Document, "reviewExpiration", "❗None of the review tasks has a non-expired last reviewed date") :-
     childResult(_, Document, _),
     field(Document, "workflowState", "Approved"),
     secdeva_reviewSubtask(Document, Subtask),
