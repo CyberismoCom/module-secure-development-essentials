@@ -32,9 +32,9 @@ The essential functionalities are:
 
 * #TODO: document the essential functionalities of the product or solution.#
 
-== Security context
+== Expected protection by the deployment environment
 
-The security context is closely related to the Defense in Depth structure and layers for the product. It is defined by the following factors:
+The security context includes the expected protection that the deployment environment is assumed to provide. This is closely related to the Defense in Depth structure and layers for the product. It is defined by the following factors:
 
 === Physical security
 
