@@ -6,5 +6,6 @@
     "base/fieldTypes/owner": null,
     "base/fieldTypes/informationClassification": "internal",
     "base/fieldTypes/lastReviewed": null,
-    "base/fieldTypes/reviewPeriod": 365
+    "base/fieldTypes/reviewPeriod": 365,
+    "base/fieldTypes/identifier": "secdeva_review_use-of-cryptography"
 }

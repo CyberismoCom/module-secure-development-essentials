@@ -1,10 +1,11 @@
 {
-    "title": "Untitled",
+    "title": "Review of environment protection for (scope)",
     "cardType": "base/cardTypes/review",
     "workflowState": "",
     "rank": "0|b",
     "base/fieldTypes/owner": null,
-    "base/fieldTypes/informationClassification": null,
+    "base/fieldTypes/informationClassification": "internal",
     "base/fieldTypes/lastReviewed": null,
-    "base/fieldTypes/reviewPeriod": null
+    "base/fieldTypes/reviewPeriod": 365,
+    "base/fieldTypes/identifier": "secdeva_review_protect-environments"
 }
