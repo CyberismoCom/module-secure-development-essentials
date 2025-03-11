@@ -26,7 +26,7 @@ The foreseeable misuse includes:
 
 == Essential functionalities
 
-Essential functionalities are such functionalities that are essential for the product or solution to meet its intended purpose.
+Essential functionalities are such functionalities that are essential for the product or solution to meet its intended purpose. Essential functions include such functions or capabilities that are required to protect the health and the safety of users, and the environment (HSE).
 
 The essential functionalities are:
 

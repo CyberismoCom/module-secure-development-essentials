@@ -41,6 +41,10 @@ Note that individual security requirements do not need to be ready and reviewed 
 {{/createCards}}
 
 {{#report}}
+    "name": "secdeva/reports/installableExtensions"
+{{/report}}
+
+{{#report}}
   "name": "secdeva/reports/requirementList"
 {{/report}}
 

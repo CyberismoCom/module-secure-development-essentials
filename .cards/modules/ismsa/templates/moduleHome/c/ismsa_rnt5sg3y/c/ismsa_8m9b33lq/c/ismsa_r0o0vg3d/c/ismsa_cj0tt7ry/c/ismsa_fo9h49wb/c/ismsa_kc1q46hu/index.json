@@ -7,11 +7,9 @@
     "base/fieldTypes/informationClassification": "internal",
     "ismsa/fieldTypes/riskInitialLikelihood": null,
     "ismsa/fieldTypes/riskInitialImpact": null,
-    "ismsa/fieldTypes/riskInitialRisk": null,
     "ismsa/fieldTypes/riskMitigationStrategy": null,
     "ismsa/fieldTypes/riskResidualLikelihood": null,
     "ismsa/fieldTypes/riskResidualImpact": null,
-    "ismsa/fieldTypes/riskResidualRisk": null,
     "links": [],
     "lastUpdated": "2025-01-15T14:43:13.645Z"
 }

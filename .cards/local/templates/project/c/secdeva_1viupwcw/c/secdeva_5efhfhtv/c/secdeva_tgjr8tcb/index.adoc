@@ -17,6 +17,10 @@ The scope of this high-level risk management is broad, as it considers the organ
 {{/createCards}}
 
 {{#report}}
+    "name": "secdeva/reports/installableExtensions"
+{{/report}}
+
+{{#report}}
     "name": "secdeva/reports/relatedRisks"
 {{/report}}
 

@@ -15,7 +15,8 @@
             "name": "ismsa/fieldTypes/riskInitialImpact"
         },
         {
-            "name": "ismsa/fieldTypes/riskInitialRisk"
+            "name": "ismsa/fieldTypes/riskInitialRisk",
+            "isCalculated": true
         },
         {
             "name": "ismsa/fieldTypes/riskMitigationStrategy"
@@ -27,7 +28,8 @@
             "name": "ismsa/fieldTypes/riskResidualImpact"
         },
         {
-            "name": "ismsa/fieldTypes/riskResidualRisk"
+            "name": "ismsa/fieldTypes/riskResidualRisk",
+            "isCalculated": true
         }
     ],
     "alwaysVisibleFields": [
