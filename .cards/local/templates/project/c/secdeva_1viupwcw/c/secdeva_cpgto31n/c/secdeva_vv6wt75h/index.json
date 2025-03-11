@@ -10,5 +10,5 @@
     "base/fieldTypes/quarterlyReviewMonth": "month2",
     "base/fieldTypes/lastReviewed": null,
     "base/fieldTypes/adoptionStep": "step1",
-    "base/fieldTypes/identifier": null
+    "base/fieldTypes/identifier": "secdeva_control_manage-defects"
 }
