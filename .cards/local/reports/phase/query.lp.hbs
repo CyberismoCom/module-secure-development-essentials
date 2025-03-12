@@ -2,6 +2,9 @@ selectAll.
 
 result(result).
 
+childResult(result, Project, "project") :-
+    secdeva_closestProject({{cardKey}}, Project).
+
 childResult(result, Template, "uninstalledExtensions") :-
     secdeva_installableExtension(PhaseIdentifier, _, Template, _, ExampleIdentifier),
     field({{cardKey}}, "base/fieldTypes/identifier", PhaseIdentifier),
@@ -32,6 +35,9 @@ childResult(result, Card, "tasks") :-
     secdeva_closestProject({{cardKey}}, Project),
     base_recurringTask(Card).
 
+field(Card, "visible", "Yes") :- childResult(result, Card, "tasks"), not hiddenInTreeView(Card).
+field(Card, "visible", "No") :- childResult(result, Card, "tasks"), hiddenInTreeView(Card).
+
 field(Card, "compoundRank", Rank) :-
     card(Card),
     not parent(Card, _),
@@ -43,4 +49,4 @@ field(Card, "compoundRank", @concatenate(ParentRank, " - ", Rank)) :-
     field(Card, "rank", Rank),
     field(Parent, "compoundRank", ParentRank).
 
-orderBy("compoundRank", "ASC").
+order(2, "tasks", 1, "compoundRank", "ASC").
