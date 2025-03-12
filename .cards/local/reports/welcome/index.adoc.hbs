@@ -1,11 +1,13 @@
 {{#each results}}
 
+{{#if this.project}}
+
 == Key performance indicators
 
 [cols="1,1",frame=none,grid=none]
 |===
 
-{{#each this.projectSummary}}
+{{#each this.project}}
 ^| pass:[<span style="font-size:6vw;">{{this.[base/fieldTypes/progress]}} %</span>]
 ^| pass:[<span style="font-size:6vw;">{{this.[secdeva/fieldTypes/issueCount]}}</span>]
 {{/each}}
@@ -73,6 +75,7 @@ There are no security issues that need attention.
 ====
 
 {{/if}}
+{{/if}}
 
 == Getting started
 
@@ -88,6 +91,8 @@ Examples of cases where secure development may not be applicable:
 * Sales and marketing demonstrations
 * Products that are being phased out
 
+{{#if this.project}}
+
 === 2. Decide the target adoption step
 
 The secure development process has been divided into three _adoption steps_. You can set the target adoption step on this page. By default, the target target adoption step is *Step 1*, which includes only the most fundamental tasks in the scope of the secure development lifecycle.
@@ -98,21 +103,23 @@ NOTE: The Cyberismo secure development essentials module includes tasks in the a
 
 Document the following information about the project in the fields of this card:
 
-{{#each this.projectSummary}}{{#if this.ownerAlreadySet}}
+{{#each this.project}}
+{{#if this.[base/fieldTypes/owner]}}
 * [x] *Owner:* The owner and the main contact for this development project
 {{else}}
 * [ ] *Owner:* The owner and the main contact for this development project
-{{/if}}{{/each}}
-{{#each this.projectSummary}}{{#if this.criticalityAlreadySet}}
+{{/if}}
+{{#if this.[ismsa/fieldTypes/assetCriticalityForOperations]}}
 * [x] *Criticality for operations:* The overall criticality of this project for business operations
 {{else}}
 * [ ] *Criticality for operations:* The overall criticality of this project for business operations
-{{/if}}{{/each}}
-{{#each this.projectSummary}}{{#if this.backupsAlreadySet}}
+{{/if}}
+{{#if this.[ismsa/fieldTypes/assetBackups]}}
 * [x] *Backups:* How the source code and other important files are backed up
 {{else}}
 * [ ] *Backups:* How the source code and other important files are backed up
-{{/if}}{{/each}}
+{{/if}}
+{{/each}}
 
 === 4. Start with the first secure development tasks
 
@@ -120,5 +127,8 @@ Document the following information about the project in the fields of this card:
 * Completing the task {{#each securityContextTask}}xref:{{this.key}}.adoc[{{this.title}}]{{/each}} will provide important background information for risk assessment and threat modeling
 * To identify the first cybersecurity risks, see {{#each riskManagementTask}}xref:{{this.key}}.adoc[{{this.title}}]{{/each}}
 * Documenting the architecture in a dataflow model will be useful in identifying weaknesses and in more detailed risk assessment. See {{#each threatModelTask}}xref:{{this.key}}.adoc[{{this.title}}]{{/each}}
+{{else}}
+As the *Target adoption step* has been set to *None*, secure development is not applicable.
+{{/if}}
 
 {{/each}}

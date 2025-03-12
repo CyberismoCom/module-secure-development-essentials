@@ -12,19 +12,7 @@ field(Project, "secdeva/fieldTypes/issueCount", Count) :-
         not field(Issue, "workflowStateCategory", "closed")
     }.
 
-field(Project, "ownerAlreadySet", void) :-
-    secdeva_closestProject({{cardKey}}, Project),
-    field(Project, "base/fieldTypes/owner", _).
-
-field(Project, "backupsAlreadySet", void) :-
-    secdeva_closestProject({{cardKey}}, Project),
-    field(Project, "ismsa/fieldTypes/assetBackups", _).
-
-field(Project, "criticalityAlreadySet", void) :-
-    secdeva_closestProject({{cardKey}}, Project),
-    field(Project, "ismsa/fieldTypes/assetCriticalityForOperations", _).
-
-childResult(welcome, Project, "projectSummary") :-
+childResult(welcome, Project, "project") :-
     secdeva_closestProject({{cardKey}}, Project),
     field(Project, "base/fieldTypes/adoptionStep", _).
 
@@ -75,6 +63,5 @@ childResult(welcome, Issue , "threatModelTask")  :-
     field(Issue, "base/fieldTypes/identifier", "secdeva_control_threat-models"),
     secdeva_closestProject(Issue, Project),
     secdeva_closestProject({{cardKey}}, Project).
-
 
 orderBy("title", "ASC").
