@@ -1,6 +1,6 @@
 == Introduction
 
-The purpose of a security requirements specification is to document the requirements of the security functions of the component or system. The requirements can arise from threat model, different standards, customer need or regulatory guidance. This document describes the security requirements for Example product.
+The purpose of a security requirements specification is to document the requirements of the security functions of the component or system. The requirements can arise from threat model, different standards, customer need or regulatory guidance. This document is a security requirements specification.
 
 This specification must cover the requirements allocated to the product based on the security capability requirement allocation as defined in the Security requirement management process.
 
