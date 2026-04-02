@@ -90,3 +90,4 @@
 {"timestamp":"2026-02-21T15:21:49.359Z","operation":"resource_update","target":"secdeva/workflows/version","parameters":{"type":"workflows","operation":"change","key":"description"}}
 {"timestamp":"2026-02-21T15:21:49.360Z","operation":"resource_update","target":"secdeva/workflows/void","parameters":{"type":"workflows","operation":"change","key":"description"}}
 {"timestamp":"2026-02-21T15:22:38.330Z","operation":"resource_update","target":"secdeva/graphViews/label","parameters":{"type":"graphViews","operation":"change","key":"description"}}
+{"timestamp":"2026-02-16T07:53:24.699Z","operation":"resource_update","target":"secdeva/reports/projectPolicyChecks","parameters":{"type":"reports","operation":"change","key":"displayName"}}
