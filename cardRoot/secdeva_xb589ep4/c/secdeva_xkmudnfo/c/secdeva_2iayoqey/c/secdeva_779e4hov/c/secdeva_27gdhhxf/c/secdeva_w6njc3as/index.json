@@ -1,0 +1,18 @@
+{
+    "cardType": "secdeva/cardTypes/interface",
+    "title": "Interface 3.2",
+    "workflowState": "Draft",
+    "rank": "0|b",
+    "lastUpdated": "2026-04-05T17:44:31.811Z",
+    "links": [],
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/identifier": "secdeva_document_interface",
+    "secdeva/fieldTypes/basicInputValidationTestingRequired": null,
+    "secdeva/fieldTypes/basicStressTestingRequired": null,
+    "secdeva/fieldTypes/fuzzTestingRequired": null,
+    "secdeva/fieldTypes/capacityTestingRequired": null,
+    "secdeva/fieldTypes/networkTrafficLoadTestingRequired": null,
+    "secdeva/fieldTypes/interfaceTestingScopingJustification": null,
+    "templateCardKey": "secdeva_7"
+}

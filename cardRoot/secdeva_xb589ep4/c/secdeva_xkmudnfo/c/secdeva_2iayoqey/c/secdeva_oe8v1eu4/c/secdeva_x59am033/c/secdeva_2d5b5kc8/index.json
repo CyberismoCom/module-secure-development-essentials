@@ -1,0 +1,27 @@
+{
+    "title": "Process 2.2",
+    "cardType": "secdeva/cardTypes/process",
+    "workflowState": "Draft",
+    "rank": "0|c",
+    "lastUpdated": "2026-04-05T17:44:58.055Z",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_c1lcwteb",
+            "linkDescription": "Call interface"
+        },
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_ffecyqt6",
+            "linkDescription": "Call process"
+        },
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_qll8gguk",
+            "linkDescription": "Call interface"
+        }
+    ],
+    "secdeva/fieldTypes/description": null,
+    "secdeva/fieldTypes/technology": null,
+    "templateCardKey": "secdeva_4"
+}

@@ -1,0 +1,16 @@
+{
+    "title": "Document review - Interface specification",
+    "cardType": "base/cardTypes/reviewTask",
+    "workflowState": "Open",
+    "rank": "0|b",
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/reviewPeriod": 365,
+    "base/fieldTypes/lastReviewed": null,
+    "base/fieldTypes/justification": null,
+    "base/fieldTypes/adoptionStep": null,
+    "base/fieldTypes/identifier": null,
+    "links": [],
+    "templateCardKey": "secdeva_gzqsxjw8",
+    "lastUpdated": "2026-04-05T17:35:39.557Z"
+}

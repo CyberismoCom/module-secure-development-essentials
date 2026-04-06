@@ -1,0 +1,31 @@
+{
+    "title": "User",
+    "cardType": "secdeva/cardTypes/person",
+    "workflowState": "Draft",
+    "rank": "0|b",
+    "secdeva/fieldTypes/description": null,
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_xicwct7f",
+            "linkDescription": "Call process"
+        },
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_ffecyqt6",
+            "linkDescription": "Call process"
+        },
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_c1lcwteb",
+            "linkDescription": "Call interface"
+        },
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_ls70gm8a",
+            "linkDescription": "Call interface"
+        }
+    ],
+    "templateCardKey": "secdeva_j2q6mk5m",
+    "lastUpdated": "2026-04-05T17:40:06.412Z"
+}
