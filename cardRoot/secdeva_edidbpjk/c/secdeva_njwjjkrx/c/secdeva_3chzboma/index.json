@@ -1,0 +1,15 @@
+{
+    "title": "Risks",
+    "cardType": "ismsa/cardTypes/register",
+    "workflowState": "Draft",
+    "rank": "0|c",
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/identifier": null,
+    "ismsa/fieldTypes/adoptionStep": "step1",
+    "ismsa/fieldTypes/progress": null,
+    "links": [],
+    "templateCardKey": "ismsa_cd388icw",
+    "createdAt": "2026-04-21T06:38:56.223Z",
+    "lastUpdated": "2026-04-21T06:39:01.691Z"
+}

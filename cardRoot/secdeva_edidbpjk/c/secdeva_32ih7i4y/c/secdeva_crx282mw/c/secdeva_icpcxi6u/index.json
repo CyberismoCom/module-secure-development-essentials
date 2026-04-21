@@ -1,0 +1,12 @@
+{
+    "title": "Technical writer",
+    "cardType": "base/cardTypes/roleAssignment",
+    "workflowState": "Draft",
+    "rank": "0|f",
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "links": [],
+    "templateCardKey": "secdeva_pkt9kvr0",
+    "createdAt": "2026-04-21T06:38:00.033Z",
+    "lastUpdated": "2026-04-21T06:38:00.045Z"
+}

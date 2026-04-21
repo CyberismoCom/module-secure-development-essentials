@@ -1,0 +1,18 @@
+{
+    "cardType": "base/cardTypes/annualTask",
+    "title": "Manage threat models",
+    "workflowState": "Open",
+    "rank": "0|b",
+    "lastUpdated": "2026-04-21T06:38:00.037Z",
+    "links": [],
+    "base/fieldTypes/adoptionStep": null,
+    "base/fieldTypes/justification": null,
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/reviewPeriod": 365,
+    "base/fieldTypes/reviewMonth": "march",
+    "base/fieldTypes/lastReviewed": null,
+    "base/fieldTypes/identifier": "secdeva_control_threat-models",
+    "templateCardKey": "secdeva_1007",
+    "createdAt": "2026-04-21T06:38:00.032Z"
+}

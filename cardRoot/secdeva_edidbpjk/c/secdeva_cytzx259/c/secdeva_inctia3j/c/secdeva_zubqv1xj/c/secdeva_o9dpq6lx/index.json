@@ -1,0 +1,18 @@
+{
+    "title": "Manage defects",
+    "cardType": "base/cardTypes/quarterlyTask",
+    "workflowState": "Open",
+    "rank": "0|e",
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/reviewPeriod": 90,
+    "base/fieldTypes/justification": null,
+    "base/fieldTypes/quarterlyReviewMonth": "month2",
+    "base/fieldTypes/lastReviewed": null,
+    "base/fieldTypes/adoptionStep": "step1",
+    "base/fieldTypes/identifier": "secdeva_control_manage-defects",
+    "links": [],
+    "lastUpdated": "2026-04-21T07:48:47.412Z",
+    "templateCardKey": "secdeva_vv6wt75h",
+    "createdAt": "2026-04-21T07:48:47.404Z"
+}

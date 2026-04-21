@@ -1,0 +1,14 @@
+{
+    "title": "Implementation",
+    "cardType": "secdeva/cardTypes/page",
+    "workflowState": "None",
+    "rank": "0|e",
+    "base/fieldTypes/adoptionStep": "step1",
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "links": [],
+    "lastUpdated": "2026-04-21T07:48:47.408Z",
+    "base/fieldTypes/identifier": "secdeva_phase_implementation",
+    "templateCardKey": "secdeva_cpgto31n",
+    "createdAt": "2026-04-21T07:48:47.404Z"
+}

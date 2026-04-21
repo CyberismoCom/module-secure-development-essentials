@@ -1,0 +1,18 @@
+{
+    "title": "Protect environments",
+    "cardType": "base/cardTypes/annualTask",
+    "workflowState": "Open",
+    "rank": "0|c",
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/reviewPeriod": 365,
+    "base/fieldTypes/justification": null,
+    "base/fieldTypes/reviewMonth": "october",
+    "base/fieldTypes/lastReviewed": null,
+    "base/fieldTypes/adoptionStep": "step2",
+    "base/fieldTypes/identifier": "secdeva_control_protect-environments",
+    "links": [],
+    "lastUpdated": "2026-04-21T07:49:03.628Z",
+    "templateCardKey": "secdeva_4c3ju5fl",
+    "createdAt": "2026-04-21T07:49:03.624Z"
+}

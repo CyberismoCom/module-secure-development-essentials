@@ -1,0 +1,12 @@
+{
+    "title": "Decisions and design specifications",
+    "cardType": "secdeva/cardTypes/page",
+    "workflowState": "None",
+    "rank": "0|z",
+    "base/fieldTypes/adoptionStep": null,
+    "base/fieldTypes/identifier": "secdeva_phase_decisions-and-specifications",
+    "links": [],
+    "templateCardKey": "secdeva_9wyfecx7",
+    "createdAt": "2026-04-21T07:48:47.405Z",
+    "lastUpdated": "2026-04-21T07:48:47.412Z"
+}

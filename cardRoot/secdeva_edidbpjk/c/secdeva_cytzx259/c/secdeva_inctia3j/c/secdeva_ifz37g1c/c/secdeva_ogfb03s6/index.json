@@ -1,0 +1,18 @@
+{
+    "cardType": "base/cardTypes/annualTask",
+    "title": "Document security context",
+    "workflowState": "Open",
+    "rank": "0|a",
+    "lastUpdated": "2026-04-21T07:48:47.412Z",
+    "links": [],
+    "base/fieldTypes/adoptionStep": null,
+    "base/fieldTypes/justification": null,
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/reviewPeriod": 365,
+    "base/fieldTypes/reviewMonth": "april",
+    "base/fieldTypes/lastReviewed": null,
+    "base/fieldTypes/identifier": "secdeva_control_security-context",
+    "templateCardKey": "secdeva_1017",
+    "createdAt": "2026-04-21T07:48:47.404Z"
+}

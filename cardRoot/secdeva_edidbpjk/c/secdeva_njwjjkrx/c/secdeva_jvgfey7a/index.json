@@ -1,0 +1,15 @@
+{
+    "title": "Assets",
+    "cardType": "ismsa/cardTypes/register",
+    "workflowState": "Draft",
+    "rank": "0|b",
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/identifier": null,
+    "ismsa/fieldTypes/adoptionStep": "step1",
+    "ismsa/fieldTypes/progress": null,
+    "links": [],
+    "templateCardKey": "ismsa_cd388icw",
+    "createdAt": "2026-04-21T06:38:36.457Z",
+    "lastUpdated": "2026-04-21T06:38:42.188Z"
+}

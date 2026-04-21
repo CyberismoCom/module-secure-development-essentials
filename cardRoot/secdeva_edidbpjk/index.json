@@ -1,0 +1,23 @@
+{
+    "title": "SDL workshop drafting",
+    "cardType": "secdeva/cardTypes/project",
+    "workflowState": "Draft",
+    "rank": "0|d",
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/adoptionStep": "step1",
+    "secdeva/fieldTypes/adoptionStepJustification": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/assetCriticalityForOperations": null,
+    "ismsa/fieldTypes/assetType": null,
+    "ismsa/fieldTypes/assetPersonalInformation": null,
+    "ismsa/fieldTypes/assetIntegrity": null,
+    "ismsa/fieldTypes/assetAvailability": null,
+    "ismsa/fieldTypes/assetLocation": null,
+    "ismsa/fieldTypes/assetBackups": null,
+    "secdeva/fieldTypes/acceptableSeverity": "low",
+    "secdeva/fieldTypes/deferrableSeverity": "medium",
+    "links": [],
+    "templateCardKey": "secdeva_1viupwcw",
+    "createdAt": "2026-04-21T06:38:00.030Z",
+    "lastUpdated": "2026-04-21T07:28:55.567Z"
+}

@@ -1,0 +1,12 @@
+{
+    "title": "Security advisor",
+    "cardType": "base/cardTypes/roleAssignment",
+    "workflowState": "Draft",
+    "rank": "0|e",
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "links": [],
+    "templateCardKey": "secdeva_kyc79mgv",
+    "createdAt": "2026-04-21T07:48:47.406Z",
+    "lastUpdated": "2026-04-21T07:48:47.418Z"
+}

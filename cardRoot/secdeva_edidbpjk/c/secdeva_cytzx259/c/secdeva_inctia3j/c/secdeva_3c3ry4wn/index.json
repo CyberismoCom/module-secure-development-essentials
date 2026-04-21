@@ -1,0 +1,14 @@
+{
+    "title": "Verification",
+    "cardType": "secdeva/cardTypes/page",
+    "workflowState": "None",
+    "rank": "0|f",
+    "base/fieldTypes/adoptionStep": "step1",
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "links": [],
+    "lastUpdated": "2026-04-21T07:48:47.408Z",
+    "base/fieldTypes/identifier": "secdeva_phase_verification",
+    "templateCardKey": "secdeva_flk02lxm",
+    "createdAt": "2026-04-21T07:48:47.404Z"
+}

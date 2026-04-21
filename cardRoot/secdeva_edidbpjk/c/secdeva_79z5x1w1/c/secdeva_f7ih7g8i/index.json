@@ -1,0 +1,18 @@
+{
+    "cardType": "base/cardTypes/annualTask",
+    "title": "Write security requirements specifications",
+    "workflowState": "Open",
+    "rank": "0|cn",
+    "lastUpdated": "2026-04-21T06:38:00.039Z",
+    "links": [],
+    "base/fieldTypes/adoptionStep": "step1",
+    "base/fieldTypes/justification": null,
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/reviewPeriod": 365,
+    "base/fieldTypes/reviewMonth": "may",
+    "base/fieldTypes/lastReviewed": null,
+    "base/fieldTypes/identifier": "secdeva_control_security-requirements",
+    "templateCardKey": "secdeva_1037",
+    "createdAt": "2026-04-21T06:38:00.032Z"
+}

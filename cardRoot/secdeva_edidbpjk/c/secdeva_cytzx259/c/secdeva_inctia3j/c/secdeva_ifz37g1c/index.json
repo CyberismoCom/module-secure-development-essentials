@@ -1,0 +1,14 @@
+{
+    "title": "Design",
+    "cardType": "secdeva/cardTypes/page",
+    "workflowState": "None",
+    "rank": "0|d",
+    "base/fieldTypes/adoptionStep": null,
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "links": [],
+    "lastUpdated": "2026-04-21T07:48:47.408Z",
+    "base/fieldTypes/identifier": "secdeva_phase_design",
+    "templateCardKey": "secdeva_5efhfhtv",
+    "createdAt": "2026-04-21T07:48:47.404Z"
+}

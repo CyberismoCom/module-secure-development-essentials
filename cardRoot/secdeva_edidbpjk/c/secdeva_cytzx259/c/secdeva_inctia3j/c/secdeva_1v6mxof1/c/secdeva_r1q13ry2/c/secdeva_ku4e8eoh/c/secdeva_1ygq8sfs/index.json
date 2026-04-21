@@ -1,0 +1,18 @@
+{
+    "cardType": "base/cardTypes/quarterlyTask",
+    "title": "Manage 3rd party vulnerabilities",
+    "workflowState": "Open",
+    "rank": "0|a",
+    "lastUpdated": "2026-04-21T07:49:03.627Z",
+    "links": [],
+    "base/fieldTypes/adoptionStep": "step1",
+    "base/fieldTypes/justification": null,
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/reviewPeriod": 365,
+    "base/fieldTypes/quarterlyReviewMonth": "month3",
+    "base/fieldTypes/lastReviewed": null,
+    "base/fieldTypes/identifier": "secdeva_control_vulnerability-management",
+    "templateCardKey": "secdeva_1012",
+    "createdAt": "2026-04-21T07:49:03.623Z"
+}

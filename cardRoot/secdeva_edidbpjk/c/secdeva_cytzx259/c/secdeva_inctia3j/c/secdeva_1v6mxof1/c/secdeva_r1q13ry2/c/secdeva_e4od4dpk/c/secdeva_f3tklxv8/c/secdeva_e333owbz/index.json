@@ -1,0 +1,12 @@
+{
+    "title": "Test engineer",
+    "cardType": "base/cardTypes/roleAssignment",
+    "workflowState": "Draft",
+    "rank": "0|d",
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "links": [],
+    "templateCardKey": "secdeva_adg7lslf",
+    "createdAt": "2026-04-21T07:49:03.625Z",
+    "lastUpdated": "2026-04-21T07:49:03.637Z"
+}

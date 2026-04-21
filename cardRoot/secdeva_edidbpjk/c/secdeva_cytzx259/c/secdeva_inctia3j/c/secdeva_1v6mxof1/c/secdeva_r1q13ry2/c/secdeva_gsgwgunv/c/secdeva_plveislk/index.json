@@ -1,0 +1,18 @@
+{
+    "cardType": "base/cardTypes/annualTask",
+    "title": "Scan for known vulnerabilities",
+    "workflowState": "Open",
+    "rank": "0|an",
+    "lastUpdated": "2026-04-21T07:49:03.630Z",
+    "links": [],
+    "base/fieldTypes/adoptionStep": "step1",
+    "base/fieldTypes/justification": null,
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/reviewPeriod": 365,
+    "base/fieldTypes/reviewMonth": "october",
+    "base/fieldTypes/lastReviewed": null,
+    "base/fieldTypes/identifier": "secdeva_control_known-vulnerability-scanning",
+    "templateCardKey": "secdeva_1020",
+    "createdAt": "2026-04-21T07:49:03.624Z"
+}

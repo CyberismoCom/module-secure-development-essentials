@@ -1,0 +1,18 @@
+{
+    "cardType": "base/cardTypes/annualTask",
+    "title": "Test threat mitigations",
+    "workflowState": "Open",
+    "rank": "0|a",
+    "lastUpdated": "2026-04-21T06:38:00.039Z",
+    "links": [],
+    "base/fieldTypes/adoptionStep": "step2",
+    "base/fieldTypes/justification": null,
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/reviewPeriod": 365,
+    "base/fieldTypes/reviewMonth": "november",
+    "base/fieldTypes/lastReviewed": null,
+    "base/fieldTypes/identifier": "secdeva_control_threat-mitigation-testing",
+    "templateCardKey": "secdeva_1050",
+    "createdAt": "2026-04-21T06:38:00.031Z"
+}
