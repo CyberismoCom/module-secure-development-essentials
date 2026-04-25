@@ -1,0 +1,12 @@
+{
+    "title": "Architect",
+    "cardType": "base/cardTypes/roleAssignment",
+    "workflowState": "Draft",
+    "rank": "0|b",
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "links": [],
+    "templateCardKey": "secdeva_5gf4oxrr",
+    "createdAt": "2026-04-25T13:01:24.527Z",
+    "lastUpdated": "2026-04-25T13:01:24.540Z"
+}

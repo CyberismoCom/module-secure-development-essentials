@@ -1,4 +1,4 @@
-You can document technical decisions and design specifications either as part of a dataflow model (under a threat model), or you can create them here. In both cases, the decisions and design specifications will be shown in the summary tables below.
+You can document technical decisions, architecture specifications and design specifications here.
 
 {{#createCards}}
   "buttonLabel": "Create a decision",
