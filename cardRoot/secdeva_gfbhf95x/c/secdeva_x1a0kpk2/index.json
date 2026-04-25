@@ -1,0 +1,12 @@
+{
+    "title": "Periodic reviews",
+    "cardType": "secdeva/cardTypes/page",
+    "workflowState": "None",
+    "rank": "0|u",
+    "base/fieldTypes/adoptionStep": "step1",
+    "links": [],
+    "lastUpdated": "2026-04-25T13:01:24.530Z",
+    "base/fieldTypes/identifier": "secdeva_phase_periodic-reviews",
+    "templateCardKey": "secdeva_g3gf3jwz",
+    "createdAt": "2026-04-25T13:01:24.525Z"
+}

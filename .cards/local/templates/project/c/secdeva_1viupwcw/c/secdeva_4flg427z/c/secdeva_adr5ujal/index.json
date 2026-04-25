@@ -1,0 +1,10 @@
+{
+    "title": "Role assignments",
+    "cardType": "secdeva/cardTypes/page",
+    "workflowState": "",
+    "rank": "0|r",
+    "base/fieldTypes/adoptionStep": "step1",
+    "base/fieldTypes/identifier": null,
+    "lastUpdated": "2026-04-25T13:49:44.244Z",
+    "links": []
+}

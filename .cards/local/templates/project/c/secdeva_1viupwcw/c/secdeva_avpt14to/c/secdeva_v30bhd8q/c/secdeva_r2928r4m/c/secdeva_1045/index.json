@@ -1,0 +1,16 @@
+{
+    "cardType": "base/cardTypes/annualTask",
+    "title": "Review code changes manually",
+    "workflowState": "",
+    "rank": "0|b",
+    "lastUpdated": "2026-04-25T13:38:13.201Z",
+    "links": [],
+    "base/fieldTypes/adoptionStep": "step2",
+    "base/fieldTypes/justification": null,
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/reviewPeriod": 365,
+    "base/fieldTypes/reviewMonth": "september",
+    "base/fieldTypes/lastReviewed": null,
+    "base/fieldTypes/identifier": "secdeva_control_manual-code-review"
+}

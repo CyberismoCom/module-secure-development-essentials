@@ -1,0 +1,18 @@
+{
+    "cardType": "base/cardTypes/annualTask",
+    "title": "Test input validation",
+    "workflowState": "Open",
+    "rank": "0|ad",
+    "lastUpdated": "2026-04-25T13:01:24.535Z",
+    "links": [],
+    "base/fieldTypes/adoptionStep": "step2",
+    "base/fieldTypes/justification": null,
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/reviewPeriod": 365,
+    "base/fieldTypes/reviewMonth": "may",
+    "base/fieldTypes/lastReviewed": null,
+    "base/fieldTypes/identifier": "secdeva_control_basic-input-validation-testing",
+    "templateCardKey": "secdeva_1052",
+    "createdAt": "2026-04-25T13:01:24.526Z"
+}

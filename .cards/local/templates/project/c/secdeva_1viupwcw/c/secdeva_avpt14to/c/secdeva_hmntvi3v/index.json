@@ -1,0 +1,12 @@
+{
+    "title": "Security issues",
+    "cardType": "ismsa/cardTypes/register",
+    "workflowState": "",
+    "rank": "0|g",
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": null,
+    "ismsa/fieldTypes/adoptionStep": null,
+    "ismsa/fieldTypes/progress": null,
+    "base/fieldTypes/identifier": null,
+    "lastUpdated": "2026-04-25T13:13:19.066Z"
+}

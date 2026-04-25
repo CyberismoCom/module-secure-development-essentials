@@ -1,0 +1,14 @@
+{
+    "title": "Subprojects",
+    "cardType": "secdeva/cardTypes/page",
+    "workflowState": "None",
+    "rank": "0|q",
+    "base/fieldTypes/adoptionStep": "step1",
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "links": [],
+    "lastUpdated": "2026-04-25T13:01:24.532Z",
+    "base/fieldTypes/identifier": "secdeva_phase_subprojects",
+    "templateCardKey": "secdeva_6dba4uxz",
+    "createdAt": "2026-04-25T13:01:24.525Z"
+}
