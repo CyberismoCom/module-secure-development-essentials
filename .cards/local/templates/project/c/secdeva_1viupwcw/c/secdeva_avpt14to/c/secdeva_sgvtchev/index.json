@@ -6,8 +6,8 @@
     "base/fieldTypes/owner": null,
     "base/fieldTypes/informationClassification": null,
     "ismsa/fieldTypes/adoptionStep": null,
-    "ismsa/fieldTypes/progress": null,
+    "ismsa/fieldTypes/progress": "compliance-progress",
     "base/fieldTypes/identifier": null,
-    "lastUpdated": "2026-04-25T13:42:42.279Z",
+    "lastUpdated": "2026-04-25T14:11:20.861Z",
     "links": []
 }
