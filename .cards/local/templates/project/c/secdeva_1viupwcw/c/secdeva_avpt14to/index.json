@@ -2,8 +2,9 @@
     "title": "Registers",
     "cardType": "secdeva/cardTypes/page",
     "workflowState": "",
-    "rank": "0|zn",
+    "rank": "0|q",
     "base/fieldTypes/adoptionStep": null,
     "base/fieldTypes/identifier": null,
-    "lastUpdated": "2026-04-25T13:06:18.243Z"
+    "lastUpdated": "2026-04-25T14:19:30.474Z",
+    "links": []
 }
