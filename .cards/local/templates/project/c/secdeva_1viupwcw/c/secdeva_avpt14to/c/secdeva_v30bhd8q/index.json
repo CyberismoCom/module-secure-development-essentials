@@ -6,7 +6,8 @@
     "base/fieldTypes/owner": null,
     "base/fieldTypes/informationClassification": null,
     "ismsa/fieldTypes/adoptionStep": null,
-    "ismsa/fieldTypes/progress": null,
+    "ismsa/fieldTypes/progress": "task-progress",
     "base/fieldTypes/identifier": null,
-    "lastUpdated": "2026-04-25T13:12:45.808Z"
+    "lastUpdated": "2026-04-25T14:09:25.300Z",
+    "links": []
 }

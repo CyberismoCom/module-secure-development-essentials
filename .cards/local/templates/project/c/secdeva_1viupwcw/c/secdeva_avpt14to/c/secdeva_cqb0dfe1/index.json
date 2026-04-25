@@ -1,0 +1,12 @@
+{
+    "title": "Security issues",
+    "cardType": "secdeva/cardTypes/securityIssueRegister",
+    "workflowState": "",
+    "rank": "0|h",
+    "secdeva/fieldTypes/acceptableSeverity": null,
+    "secdeva/fieldTypes/deferrableSeverity": null,
+    "ismsa/fieldTypes/adoptionStep": null,
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": null,
+    "lastUpdated": "2026-04-25T14:33:26.929Z"
+}
