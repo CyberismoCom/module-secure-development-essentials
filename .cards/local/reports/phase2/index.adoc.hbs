@@ -1,0 +1,17 @@
+{{#each results}}
+
+{{#if this.tasks}}
+Tasks:
+
+{{/if}}
+
+{{#each this.tasks}}
+{{#if (eq this.workflowStateCategory "closed")}}
+* [x] {{#xref}} "cardKey": "{{this.key}}" {{/xref}}
+{{else}}
+* [ ] {{#xref}} "cardKey": "{{this.key}}" {{/xref}}
+{{/if}}
+{{/each}}
+
+
+{{/each}}

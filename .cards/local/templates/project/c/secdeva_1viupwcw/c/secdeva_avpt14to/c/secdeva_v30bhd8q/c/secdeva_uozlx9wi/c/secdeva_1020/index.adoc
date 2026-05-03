@@ -14,9 +14,10 @@ When preparing for a product release, known vulnerability scanning should be per
 Create a review of known vulnerability scanning and follow the instructions in the template.
 
 {{#report}}
-  "name": "secdeva/reports/createChildReview",
+  "name": "secdeva/reports/createReview",
   "template": "secdeva/templates/knownVulnerabilityScan",
-  "buttonLabel": "Create a review of known vulnerability scanning"
+  "buttonLabel": "Create a review of known vulnerability scanning",
+  "phase": "secdeva_phase_verification"
 {{/report}}
 
 Known vulnerability scanning should take into account the different layers:

@@ -18,9 +18,10 @@ This control is required, if security requirements or security capability requir
 Create a security requirement tests and follow the instructions in the template.
 
 {{#report}}
-  "name": "secdeva/reports/createChildReview",
+  "name": "secdeva/reports/createReview",
   "template": "secdeva/templates/securityRequirementsTest",
-  "buttonLabel": "Create a review of security requirement testing"
+  "buttonLabel": "Create a review of security requirement testing",
+  "phase": "secdeva_phase_verification"
 {{/report}}
 
 The security validation test plan should also verify error handling.

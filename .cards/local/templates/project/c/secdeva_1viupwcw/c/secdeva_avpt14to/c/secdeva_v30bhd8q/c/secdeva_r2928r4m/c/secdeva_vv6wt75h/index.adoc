@@ -19,9 +19,10 @@ Disclose information about security related issues to suppliers, customers, user
 Create a review of defect management and follow the instructions in the template.
 
 {{#report}}
-  "name": "secdeva/reports/createChildReview",
+  "name": "secdeva/reports/createReview",
   "template": "secdeva/templates/defectManagementReview",
-  "buttonLabel": "Create a review of defect management"
+  "buttonLabel": "Create a review of defect management",
+  "phase": "secdeva_phase_implementation"
 {{/report}}
 
 == How to review this task

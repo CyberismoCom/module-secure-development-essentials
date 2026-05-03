@@ -32,9 +32,10 @@ The source for the known vulnerabilities should be the recent contents of an est
 If the supplier of a 3rd party component has published information about their vulnerabilities, then ensure that this information is taken into account. Update the threat model, other possible technical documentation and product documentation when applicable.
 
 {{#report}}
-  "name": "secdeva/reports/createChildReview",
+  "name": "secdeva/reports/createReview",
   "template": "secdeva/templates/vulnerabilityManagement",
-  "buttonLabel": "Create a review of vulnerability management"
+  "buttonLabel": "Create a review of vulnerability management",
+  "phase": "secdeva_phase_verification"
 {{/report}}
 
 == How to review this task

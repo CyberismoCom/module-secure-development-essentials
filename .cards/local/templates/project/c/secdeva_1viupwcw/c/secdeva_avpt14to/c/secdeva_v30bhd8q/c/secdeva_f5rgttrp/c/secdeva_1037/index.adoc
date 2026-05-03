@@ -28,9 +28,10 @@ You should create security requirements, when the requirement is non-trivial and
 Create a security requirement specification and follow the instructions in the template.
 
 {{#report}}
-  "name": "secdeva/reports/createChildDocument",
+  "name": "secdeva/reports/createDocument",
   "template": "secdeva/templates/securityRequirementsSpecification",
-  "buttonLabel": "Create a security requirements specification"
+  "buttonLabel": "Create a security requirements specification",
+  "phase": "secdeva_phase_design"
 {{/report}}
 
 Create individual security requirements as child cards of the security requirements specification. There is a button at the end of the document. Each security requirement includes review subtasks for 4 different roles. Write the description of the requirements and complete the reviews.

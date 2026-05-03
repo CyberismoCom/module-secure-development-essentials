@@ -26,9 +26,10 @@ Notice that 3rd party software update management shall continue even after activ
 If the supplier of a 3rd party component has published information about their security updates, then ensure that this information is taken into account. Update the threat model, other possible technical documentation and product documentation when applicable.
 
 {{#report}}
-  "name": "secdeva/reports/createChildReview",
+  "name": "secdeva/reports/createReview",
   "template": "secdeva/templates/softwareUpdateManagement",
-  "buttonLabel": "Create a review of software update management"
+  "buttonLabel": "Create a review of software update management",
+  "phase": "secdeva_phase_verification"
 {{/report}}
 
 == How to review this task

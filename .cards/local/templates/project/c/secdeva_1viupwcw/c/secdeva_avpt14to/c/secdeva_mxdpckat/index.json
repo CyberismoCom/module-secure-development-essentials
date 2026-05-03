@@ -4,9 +4,10 @@
     "workflowState": "",
     "rank": "0|f",
     "base/fieldTypes/owner": null,
-    "base/fieldTypes/informationClassification": null,
+    "base/fieldTypes/informationClassification": "internal",
     "ismsa/fieldTypes/adoptionStep": null,
     "ismsa/fieldTypes/progress": null,
-    "base/fieldTypes/identifier": null,
-    "lastUpdated": "2026-04-25T13:13:03.181Z"
+    "base/fieldTypes/identifier": "secdeva_register_security-requirements",
+    "lastUpdated": "2026-05-03T13:20:00.094Z",
+    "links": []
 }

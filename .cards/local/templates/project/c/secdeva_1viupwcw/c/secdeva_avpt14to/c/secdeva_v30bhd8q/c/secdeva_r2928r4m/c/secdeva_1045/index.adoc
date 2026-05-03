@@ -13,9 +13,10 @@ Ensure that code reviewers are aware of the applicable coding guidelines and sec
 Create a review document to record the review.
 
 {{#report}}
-  "name": "secdeva/reports/createChildReview",
+  "name": "secdeva/reports/createReview",
   "template": "secdeva/templates/reviewOfManualCodeReview",
-  "buttonLabel": "Create a review of manual code review practices"
+  "buttonLabel": "Create a review of manual code review practices",
+  "phase": "secdeva_phase_implementation"
 {{/report}}
 
 == How to review this task

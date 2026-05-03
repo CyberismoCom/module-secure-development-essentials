@@ -15,9 +15,10 @@ This secure development task is applicable if the project uses cryptography.
 Create a review of the use of cryptography and follow the instructions in the template.
 
 {{#report}}
-  "name": "secdeva/reports/createChildReview",
+  "name": "secdeva/reports/createReview",
   "template": "secdeva/templates/cryptographyReview",
-  "buttonLabel": "Create a review of the use of cryptography"
+  "buttonLabel": "Create a review of the use of cryptography",
+  "phase": "secdeva_phase_design"
 {{/report}}
 
 == How to review this task
