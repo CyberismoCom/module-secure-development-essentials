@@ -4,9 +4,9 @@
     "workflowState": "",
     "rank": "0|bn",
     "base/fieldTypes/owner": null,
-    "base/fieldTypes/informationClassification": null,
-    "ismsa/fieldTypes/acceptableRiskLevel": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/acceptableRiskLevel": "low",
     "ismsa/fieldTypes/adoptionStep": null,
-    "lastUpdated": "2026-04-25T14:22:07.692Z",
+    "lastUpdated": "2026-05-03T13:20:48.966Z",
     "links": []
 }

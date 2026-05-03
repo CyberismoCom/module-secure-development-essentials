@@ -18,9 +18,10 @@ Security context must be documented at least on the topmost project level.
 The security context documentation defines, where the product is intended to be used.
 
 {{#report}}
-  "name": "secdeva/reports/createChildDocument",
+  "name": "secdeva/reports/createDocument",
   "template": "secdeva/templates/securityContext",
-  "buttonLabel": "Create a security context document"
+  "buttonLabel": "Create a security context document",
+  "phase": "secdeva_phase_design"
 {{/report}}
 
 == How to review this task

@@ -33,9 +33,10 @@ Depending on their settings, static code analysis tools may generate a large num
 Create a review of static code analysis to record your notes.
 
 {{#report}}
-  "name": "secdeva/reports/createChildReview",
+  "name": "secdeva/reports/createReview",
   "template": "secdeva/templates/reviewOfStaticCodeAnalysis",
-  "buttonLabel": "Create a review of static code analysis"
+  "buttonLabel": "Create a review of static code analysis",
+  "phase": "secdeva_phase_implementation"
 {{/report}}
 
 == How to review this task

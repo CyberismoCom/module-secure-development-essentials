@@ -9,9 +9,10 @@ A secure development management plan is required for each project unless the sec
 Create a secure development management plan and follow the instructions in the template.
 
 {{#report}}
-  "name": "secdeva/reports/createChildDocument",
+  "name": "secdeva/reports/createDocument",
   "template": "secdeva/templates/managementPlan",
-  "buttonLabel": "Create a management plan"
+  "buttonLabel": "Create a management plan",
+  "phase": "secdeva_phase_foundation"
 {{/report}}
 
 == How to review this task

@@ -20,9 +20,10 @@ Decide together with a security specialist whether a high-level business context
 Create a business context analysis document and follow the instructions in the template.
 
 {{#report}}
-  "name": "secdeva/reports/createChildDocument",
+  "name": "secdeva/reports/createDocument",
   "template": "secdeva/templates/businessContextAnalysis",
-  "buttonLabel": "Create a business context analysis"
+  "buttonLabel": "Create a business context analysis",
+  "phase": "secdeva_phase_foundation"
 {{/report}}
 
 == How to review this task

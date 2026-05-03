@@ -26,9 +26,10 @@ A top-level threat model is required on the topmost project level, if the projec
 === 2. Create a threat model document
 
 {{#report}}
-  "name": "secdeva/reports/createChildDocument",
+  "name": "secdeva/reports/createDocument",
   "template": "secdeva/templates/threatModel",
-  "buttonLabel": "Create a threat model"
+  "buttonLabel": "Create a threat model",
+  "phase": "secdeva_phase_design"
 {{/report}}
 
 === 3. Document the target of the threat model

@@ -13,9 +13,10 @@ This control is common to all interfaces and parsers of the product. Please docu
 Create a review of basic input validation testing and follow the instructions in the template.
 
 {{#report}}
-  "name": "secdeva/reports/createChildReview",
+  "name": "secdeva/reports/createReview",
   "template": "secdeva/templates/basicInputValidationTest",
-  "buttonLabel": "Create a review of basic input validation testing"
+  "buttonLabel": "Create a review of basic input validation testing",
+  "phase": "secdeva_phase_verification"
 {{/report}}
 
 == How to review this task

@@ -4,10 +4,10 @@
     "workflowState": "",
     "rank": "0|f",
     "base/fieldTypes/owner": null,
-    "base/fieldTypes/informationClassification": null,
+    "base/fieldTypes/informationClassification": "internal",
     "ismsa/fieldTypes/adoptionStep": null,
     "ismsa/fieldTypes/progress": "task-progress",
-    "base/fieldTypes/identifier": null,
-    "lastUpdated": "2026-04-25T14:10:00.301Z",
+    "base/fieldTypes/identifier": "secdeva_register_operations-controls",
+    "lastUpdated": "2026-05-03T13:20:06.425Z",
     "links": []
 }
