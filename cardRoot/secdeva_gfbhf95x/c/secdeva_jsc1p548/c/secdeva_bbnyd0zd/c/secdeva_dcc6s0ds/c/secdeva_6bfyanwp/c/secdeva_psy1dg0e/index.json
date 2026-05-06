@@ -1,0 +1,11 @@
+{
+    "title": "User",
+    "cardType": "secdeva/cardTypes/person",
+    "workflowState": "Draft",
+    "rank": "0|b",
+    "secdeva/fieldTypes/description": null,
+    "links": [],
+    "templateCardKey": "secdeva_j2q6mk5m",
+    "createdAt": "2026-05-03T13:15:59.458Z",
+    "lastUpdated": "2026-05-03T13:15:59.459Z"
+}

@@ -1,0 +1,15 @@
+{
+    "cardType": "base/cardTypes/controlledDocument",
+    "title": "Threat model for Old project template",
+    "workflowState": "Draft",
+    "rank": "0|b",
+    "lastUpdated": "2026-05-03T13:15:59.537Z",
+    "links": [],
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/approver": null,
+    "base/fieldTypes/approvalDate": null,
+    "base/fieldTypes/identifier": "secdeva_document_threat-model",
+    "templateCardKey": "secdeva_39",
+    "createdAt": "2026-05-03T13:15:59.457Z"
+}
