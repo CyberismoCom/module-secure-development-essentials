@@ -1,5 +1,5 @@
 {
-    "cardType": "base/cardTypes/annualTask",
+    "cardType": "ismsa/cardTypes/internalControl",
     "title": "Write security requirements specifications",
     "workflowState": "",
     "rank": "0|e",
@@ -9,7 +9,7 @@
     "base/fieldTypes/justification": null,
     "base/fieldTypes/owner": null,
     "base/fieldTypes/informationClassification": "internal",
-    "base/fieldTypes/reviewPeriod": 365,
+    "ismsa/fieldTypes/internalControlReviewPeriod": "12months",
     "base/fieldTypes/reviewMonth": "may",
     "base/fieldTypes/lastReviewed": null,
     "base/fieldTypes/identifier": "secdeva_control_security-requirements"

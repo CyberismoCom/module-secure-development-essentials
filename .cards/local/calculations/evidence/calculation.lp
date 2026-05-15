@@ -1,7 +1,7 @@
 % secdeva_evidence declares that a certain identifier is evidence of a certain task:
 % secdeva_evidence(TaskIdentifier, EvidenceIdentifier, EvidenceTitle)
 
-link(Evidence, Task, "secdeva/linkTypes/evidences") :-
+link(Evidence, Task, "ismsa/linkTypes/evidences") :-
     secdeva_closestProject(Task, Project),
     secdeva_closestProject(Evidence, Project),
     secdeva_evidence(TaskIdentifier, EvidenceIdentifier, _),
@@ -32,7 +32,7 @@ secdeva_evidence("secdeva_control_manage-defects", "secdeva_review_manage-defect
 % secdeva_evidenceByCardType declares that a certain card type is evidence of a certain task:
 % secdeva_evidenceByCardType(TaskIdentifier, EvidenceCardType, EvidenceTitle)
 
-link(Evidence, Task, "secdeva/linkTypes/evidences") :-
+link(Evidence, Task, "ismsa/linkTypes/evidences") :-
     secdeva_closestProject(Task, Project),
     secdeva_closestProject(Evidence, Project),
     secdeva_evidenceByCardType(TaskIdentifier, EvidenceCardType, _),

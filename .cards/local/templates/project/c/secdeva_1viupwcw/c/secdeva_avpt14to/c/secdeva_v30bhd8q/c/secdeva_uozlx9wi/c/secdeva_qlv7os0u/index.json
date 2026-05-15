@@ -1,11 +1,11 @@
 {
     "title": "Test error handling",
-    "cardType": "base/cardTypes/annualTask",
+    "cardType": "ismsa/cardTypes/internalControl",
     "workflowState": "",
     "rank": "0|d",
     "base/fieldTypes/owner": null,
     "base/fieldTypes/informationClassification": "internal",
-    "base/fieldTypes/reviewPeriod": 365,
+    "ismsa/fieldTypes/internalControlReviewPeriod": "12months",
     "base/fieldTypes/justification": null,
     "base/fieldTypes/reviewMonth": null,
     "base/fieldTypes/lastReviewed": null,
