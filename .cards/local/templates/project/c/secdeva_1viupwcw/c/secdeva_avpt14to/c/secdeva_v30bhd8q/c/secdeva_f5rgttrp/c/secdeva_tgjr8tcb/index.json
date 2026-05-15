@@ -1,16 +1,16 @@
 {
     "title": "Manage high-level risks",
-    "cardType": "base/cardTypes/quarterlyTask",
+    "cardType": "ismsa/cardTypes/internalControl",
     "workflowState": "",
     "rank": "0|b",
     "base/fieldTypes/owner": null,
     "base/fieldTypes/informationClassification": "internal",
     "base/fieldTypes/adoptionStep": null,
     "base/fieldTypes/identifier": "secdeva_control_high-level-risks",
-    "base/fieldTypes/reviewPeriod": 90,
+    "ismsa/fieldTypes/internalControlReviewPeriod": "3months",
     "base/fieldTypes/lastReviewed": null,
     "base/fieldTypes/justification": null,
-    "base/fieldTypes/quarterlyReviewMonth": "month1",
+    "base/fieldTypes/reviewMonth": "january",
     "links": [],
     "lastUpdated": "2026-04-25T13:39:40.240Z"
 }

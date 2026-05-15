@@ -1,17 +1,33 @@
 {{#each results}}
 
 {{#if this.tasks}}
-Tasks:
+
+[cols="2,3,3"]
+|===
+| Internal control | Assessment | Evidence
 
 {{/if}}
 
 {{#each this.tasks}}
-{{#if (eq this.workflowStateCategory "closed")}}
-* [x] {{#xref}} "cardKey": "{{this.key}}" {{/xref}}
+
+{{#if (eq this.[base/fieldTypes/assessment].value "ok")}}
+a| &#9745; {{#xref}} "cardKey": "{{this.key}}" {{/xref}}
+{{else if (eq this.[base/fieldTypes/assessment].value "notApplicable")}}
+a| &#9745; {{#xref}} "cardKey": "{{this.key}}" {{/xref}}
 {{else}}
-* [ ] {{#xref}} "cardKey": "{{this.key}}" {{/xref}}
+a| &#9744; {{#xref}} "cardKey": "{{this.key}}" {{/xref}}
 {{/if}}
+| *{{this.[base/fieldTypes/assessment].displayValue}}*: {{this.[base/fieldTypes/assessmentExplanation]}}
+
+a| {{#each this.evidence}} * {{#xref}} "cardKey": "{{this.key}}" {{/xref}}
+
+{{/each}}
+
+{{/each}}
+|===
 {{/each}}
 
 
-{{/each}}
+
+
+

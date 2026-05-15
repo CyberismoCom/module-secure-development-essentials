@@ -7,7 +7,11 @@ childResult(result, Card, "tasks") :-
     field(ControlRegister, "base/fieldTypes/identifier", "{{controls}}"),
     secdeva_closestProject(ControlRegister, Project),
     secdeva_closestProject({{cardKey}}, Project),
-    base_recurringTask(Card).
+    field(Card, "cardType", "ismsa/cardTypes/internalControl").
+
+childResult(Task, Evidence, "evidence") :-
+    childResult(result, Task, "tasks"),
+    link(Evidence, Task, "ismsa/linkTypes/evidences").
 
 field(Card, "visible", "Yes") :- childResult(result, Card, "tasks"), not hiddenInTreeView(Card).
 field(Card, "visible", "No") :- childResult(result, Card, "tasks"), hiddenInTreeView(Card).
