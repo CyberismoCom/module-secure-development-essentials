@@ -24,10 +24,15 @@
             "linkType": "secdeva/linkTypes/dataflow",
             "cardKey": "secdeva_ls70gm8a",
             "linkDescription": "Call interface"
+        },
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_xzgbmuu7",
+            "linkDescription": "Call process"
         }
     ],
     "templateCardKey": "secdeva_j2q6mk5m",
-    "lastUpdated": "2026-05-06T20:03:59.098Z",
+    "lastUpdated": "2026-05-07T05:26:07.028Z",
     "labels": [
         "example"
     ]
