@@ -11,11 +11,11 @@
 {{#each this.tasks}}
 
 {{#if (eq this.[base/fieldTypes/assessment].value "ok")}}
-a| &#9745; {{#xref}} "cardKey": "{{this.key}}" {{/xref}}
+a| * [x] {{#xref}} "cardKey": "{{this.key}}" {{/xref}}
 {{else if (eq this.[base/fieldTypes/assessment].value "notApplicable")}}
-a| &#9745; {{#xref}} "cardKey": "{{this.key}}" {{/xref}}
+a| * [x] {{#xref}} "cardKey": "{{this.key}}" {{/xref}}
 {{else}}
-a| &#9744; {{#xref}} "cardKey": "{{this.key}}" {{/xref}}
+a| * [ ] {{#xref}} "cardKey": "{{this.key}}" {{/xref}}
 {{/if}}
 | *{{this.[base/fieldTypes/assessment].displayValue}}*: {{this.[base/fieldTypes/assessmentExplanation]}}
 
