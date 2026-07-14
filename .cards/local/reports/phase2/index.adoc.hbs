@@ -18,11 +18,13 @@ a| * [x] {{#xref}} "cardKey": "{{this.key}}" {{/xref}}
 a| * [ ] {{#xref}} "cardKey": "{{this.key}}" {{/xref}}
 {{/if}}
 | *{{this.[base/fieldTypes/assessment].displayValue}}*: {{this.[base/fieldTypes/assessmentExplanation]}}
-
+{{#if (eq this.[base/fieldTypes/assessment].value "notApplicable")}}
+| Not required
+{{else}}
 a| {{#each this.evidence}} * {{#xref}} "cardKey": "{{this.key}}" {{/xref}}
 
 {{/each}}
-
+{{/if}}
 {{/each}}
 |===
 {{/each}}

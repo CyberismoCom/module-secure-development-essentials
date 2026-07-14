@@ -2,12 +2,12 @@
     "title": "Security requirements",
     "cardType": "ismsa/cardTypes/register",
     "workflowState": "",
-    "rank": "0|f",
+    "rank": "0|cg",
     "base/fieldTypes/owner": null,
     "base/fieldTypes/informationClassification": "internal",
     "ismsa/fieldTypes/adoptionStep": null,
     "ismsa/fieldTypes/progress": null,
     "base/fieldTypes/identifier": "secdeva_register_security-requirements",
-    "lastUpdated": "2026-05-03T13:20:00.094Z",
+    "lastUpdated": "2026-07-14T12:11:40.899Z",
     "links": []
 }
