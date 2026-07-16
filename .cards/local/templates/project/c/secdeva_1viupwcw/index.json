@@ -2,7 +2,7 @@
     "title": "Untitled development project",
     "cardType": "secdeva/cardTypes/project",
     "workflowState": "",
-    "rank": "0|b",
+    "rank": "0|e",
     "base/fieldTypes/owner": null,
     "base/fieldTypes/adoptionStep": "step1",
     "secdeva/fieldTypes/adoptionStepJustification": null,
@@ -17,5 +17,5 @@
     "secdeva/fieldTypes/acceptableSeverity": "low",
     "secdeva/fieldTypes/deferrableSeverity": "medium",
     "links": [],
-    "lastUpdated": "2026-07-16T09:47:19.965Z"
+    "lastUpdated": "2026-07-16T10:30:36.092Z"
 }
