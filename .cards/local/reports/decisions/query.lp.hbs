@@ -1,0 +1,8 @@
+selectAll.
+
+result(Decision) :-
+    secdeva_closestProject({{cardKey}}, Project),
+    secdeva_closestProject(Decision, Project),
+    field(Decision, "cardType", "base/cardTypes/decision").
+
+orderBy("title", "ASC").

@@ -1,13 +1,13 @@
 {
-    "title": "Internal controls",
+    "title": "Decisions",
     "cardType": "ismsa/cardTypes/register",
     "workflowState": "",
-    "rank": "0|eo",
+    "rank": "0|en",
     "base/fieldTypes/owner": null,
     "base/fieldTypes/informationClassification": "internal",
     "ismsa/fieldTypes/adoptionStep": null,
-    "ismsa/fieldTypes/progress": "task-progress",
-    "base/fieldTypes/identifier": "secdeva_register_internal-controls",
-    "lastUpdated": "2026-07-16T13:46:39.315Z",
+    "ismsa/fieldTypes/progress": null,
+    "base/fieldTypes/identifier": "secdeva_register_decisions",
+    "lastUpdated": "2026-07-16T14:24:06.253Z",
     "links": []
 }

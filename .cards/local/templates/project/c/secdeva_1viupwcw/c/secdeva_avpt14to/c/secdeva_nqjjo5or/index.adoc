@@ -1,0 +1,12 @@
+You can document decisions here. 
+
+TIP: If you need to create longer specifications, see {{#report}}"name":"xref","identifier":"secdeva_phase_design"{{/report}}.
+
+{{#createCards}}
+  "buttonLabel": "Create a decision",
+  "template": "base/templates/decision"
+{{/createCards}}
+
+{{#report}}
+    "name": "secdeva/reports/decisions"
+{{/report}}
