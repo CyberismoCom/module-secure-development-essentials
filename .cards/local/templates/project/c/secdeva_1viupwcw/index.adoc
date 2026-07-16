@@ -1,3 +1,24 @@
-== Secure development documentation
+== The scope of this secure development project
 
-#TODO: describe the development project and its scope on a high level#
+#TODO: Briefly describe what the product or solution is, who it serves, and its primary value proposition in 1-3 sentences.#
+
+== Project security objectives & scope
+#TODO: Define what success in cybersecurity looks like#
+ 
+Primary security goal: #TODO. e.g., Launch the beta version with core authentication features.#
+ 
+Out of scope (currently): #TODO: what cybersecurity topics are we explicitly NOT doing right now?#
+ 
+== Target audience & stakeholders
+The following stakeholders will use this product and/or care about its security.
+ 
+End users: #TODO: Description of the user base#
+
+Internal stakeholders: #TODO: e.g., Legal, Compliance, CTO#
+
+NOTE: Set the owner field of this card to denote the person, who is responsible for cybersecurity of this development project. 
+
+== Success metrics (KPIs)
+How will we measure if the security integration was successful?
+
+#TODO: document or link to documentation about how the compliance, cybersecurity management and vulnerability management are measured#
