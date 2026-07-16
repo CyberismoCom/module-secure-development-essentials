@@ -3,7 +3,7 @@
     "cardType": "secdeva/cardTypes/process",
     "workflowState": "Draft",
     "rank": "0|b",
-    "lastUpdated": "2026-04-05T17:37:12.273Z",
+    "lastUpdated": "2026-05-06T20:07:11.250Z",
     "links": [
         {
             "linkType": "secdeva/linkTypes/dataflow",
@@ -18,5 +18,6 @@
     ],
     "secdeva/fieldTypes/description": null,
     "secdeva/fieldTypes/technology": null,
-    "templateCardKey": "secdeva_4"
+    "templateCardKey": "secdeva_4",
+    "labels": []
 }
