@@ -1,6 +1,23 @@
 *Design* includes tasks for managing requirements, threat models, and various specifications.
 
+== Internal controls and their evidence
+
 {{#report}}
   "name": "secdeva/reports/phase2",
   "controls": "secdeva_register_design-controls"
+{{/report}}
+
+== Architecture and design specifications
+
+You can document architecture or design in a specification here.
+
+TIP: If you need to document architecture or design decisions, see {{#report}}"name":"xref","identifier":"secdeva_register_decisions"{{/report}}.
+
+{{#createCards}}
+  "buttonLabel": "Create a specification",
+  "template": "secdeva/templates/designSpecification"
+{{/createCards}}
+
+{{#report}}
+    "name": "secdeva/reports/designSpecifications"
 {{/report}}
