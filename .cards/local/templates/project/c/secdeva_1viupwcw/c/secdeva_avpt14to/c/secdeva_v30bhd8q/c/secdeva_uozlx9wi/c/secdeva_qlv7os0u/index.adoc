@@ -15,10 +15,10 @@ Create a review of error handling testing and follow the instructions in the tem
   "phase": "secdeva_phase_verification"
 {{/report}}
 
-== How to review this task
+== Assessment
 
 {{#report}}
-  "name": "secdeva/reports/checkChildReviewStatus"
+  "name": "secdeva/reports/internalControlAssessment"
 {{/report}}
 
 == References

@@ -56,10 +56,10 @@ Update the threat model, if the design changes.
 
 Review the threat model at least annually and record the review in a review subtask of the threat model document.
 
-== How to review this task
+== Assessment
 
 {{#report}}
-  "name": "secdeva/reports/checkChildDocumentStatus"
+  "name": "secdeva/reports/internalControlAssessment"
 {{/report}}
 
 == References

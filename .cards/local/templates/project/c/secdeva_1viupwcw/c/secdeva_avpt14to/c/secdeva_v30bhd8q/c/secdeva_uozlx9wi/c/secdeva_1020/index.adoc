@@ -30,10 +30,10 @@ Also ensure that test executions are documented.
 
 If test plans are created and test executions are managed a test management tool, then link the test plan from the issue tracker to the known vulnerability scanning test plan document.
 
-== How to review this task
+== Assessment
 
 {{#report}}
-  "name": "secdeva/reports/checkChildReviewStatus"
+  "name": "secdeva/reports/internalControlAssessment"
 {{/report}}
 
 == References

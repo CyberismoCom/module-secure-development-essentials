@@ -15,10 +15,10 @@ Create a secure development management plan and follow the instructions in the t
   "phase": "secdeva_phase_foundation"
 {{/report}}
 
-== How to review this task
+== Assessment
 
 {{#report}}
-  "name": "secdeva/reports/checkChildDocumentStatus"
+  "name": "secdeva/reports/internalControlAssessment"
 {{/report}}
 
 == References
