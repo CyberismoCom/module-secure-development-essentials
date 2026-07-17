@@ -21,10 +21,10 @@ Create a review of the use of cryptography and follow the instructions in the te
   "phase": "secdeva_phase_design"
 {{/report}}
 
-== How to review this task
+== Assessment
 
 {{#report}}
-  "name": "secdeva/reports/checkChildReviewStatus"
+  "name": "secdeva/reports/internalControlAssessment"
 {{/report}}
 
 

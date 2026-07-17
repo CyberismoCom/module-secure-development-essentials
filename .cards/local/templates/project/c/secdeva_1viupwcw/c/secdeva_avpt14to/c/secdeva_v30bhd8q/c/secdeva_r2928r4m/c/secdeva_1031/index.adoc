@@ -39,10 +39,10 @@ Create a review of static code analysis to record your notes.
   "phase": "secdeva_phase_implementation"
 {{/report}}
 
-== How to review this task
+== Assessment
 
 {{#report}}
-  "name": "secdeva/reports/checkChildReviewStatus"
+  "name": "secdeva/reports/internalControlAssessment"
 {{/report}}
 
 == References

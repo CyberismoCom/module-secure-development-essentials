@@ -38,15 +38,11 @@ If the supplier of a 3rd party component has published information about their v
   "phase": "secdeva_phase_verification"
 {{/report}}
 
-== How to review this task
+== Assessment
 
 {{#report}}
-  "name": "secdeva/reports/checkChildReviewStatus"
+  "name": "secdeva/reports/internalControlAssessment"
 {{/report}}
-
-=== Manual checks
-
-A checklist for manual checks is provided in the template for the review of vulnerability management.
 
 == References
 

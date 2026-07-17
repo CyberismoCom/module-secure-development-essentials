@@ -25,10 +25,10 @@ Create a review of defect management and follow the instructions in the template
   "phase": "secdeva_phase_implementation"
 {{/report}}
 
-== How to review this task
+== Assessment
 
 {{#report}}
-  "name": "secdeva/reports/checkChildReviewStatus"
+  "name": "secdeva/reports/internalControlAssessment"
 {{/report}}
 
 == References
