@@ -37,6 +37,8 @@ secdeva_copyProgressMetric("secdeva_register_verification-controls", "secdeva_ph
 secdeva_copyProgressMetric("secdeva_register_operations-controls", "secdeva_phase_operations").
 
 field(Phase, "base/fieldTypes/progress", Progress) :-
+    secdeva_closestProject(Phase, Project),
+    secdeva_closestProject(ControlRegister, Project),
     field(Phase, "ismsa/fieldTypes/progress", "secdeva_phase-progress"),
     field(ControlRegister, "base/fieldTypes/progress", Progress),
     field(Phase, "base/fieldTypes/identifier", PhaseIdentifier),
