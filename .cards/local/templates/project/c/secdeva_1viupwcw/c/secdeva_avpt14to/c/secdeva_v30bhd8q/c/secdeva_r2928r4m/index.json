@@ -5,9 +5,9 @@
     "rank": "0|d",
     "base/fieldTypes/owner": null,
     "base/fieldTypes/informationClassification": "internal",
-    "ismsa/fieldTypes/adoptionStep": null,
-    "ismsa/fieldTypes/progress": "task-progress",
+    "ismsa/fieldTypes/adoptionStep": "step1",
+    "ismsa/fieldTypes/progress": "secdeva_internal-control-progress",
     "base/fieldTypes/identifier": "secdeva_register_implementation-controls",
-    "lastUpdated": "2026-05-03T13:20:17.726Z",
+    "lastUpdated": "2026-07-17T06:13:58.506Z",
     "links": []
 }

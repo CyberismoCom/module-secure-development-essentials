@@ -1,12 +1,13 @@
 {
     "title": "Verification",
-    "cardType": "secdeva/cardTypes/page",
+    "cardType": "ismsa/cardTypes/register",
     "workflowState": "",
     "rank": "0|f",
-    "base/fieldTypes/adoptionStep": "step1",
+    "ismsa/fieldTypes/adoptionStep": "step1",
     "base/fieldTypes/owner": null,
     "base/fieldTypes/informationClassification": "internal",
     "links": [],
     "lastUpdated": "2026-05-03T16:41:52.674Z",
-    "base/fieldTypes/identifier": "secdeva_phase_verification"
+    "base/fieldTypes/identifier": "secdeva_phase_verification",
+    "ismsa/fieldTypes/progress": "secdeva_phase-progress"
 }
