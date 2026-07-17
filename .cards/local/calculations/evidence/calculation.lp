@@ -10,7 +10,11 @@ link(Evidence, Task, "ismsa/linkTypes/evidences") :-
 
 secdeva_evidence("secdeva_control_management-plan", "secdeva_document_management-plan", "Management plan").
 secdeva_evidence("secdeva_control_threat-models", "secdeva_document_threat-model", "Threat model").
+% TODO: the rule about secdeva_document_project-role-assignments supports backwards compatibility to content
+% that has been created from old versions of the development project template.
+% This rule can be removed, once there are no more users for the old content 
 secdeva_evidence("secdeva_control_assign-people-to-project-roles", "secdeva_document_project-role-assignments", "Project role assignments").
+secdeva_evidence("secdeva_control_assign-people-to-project-roles", "secdeva_review_project-role-assignments", "Project role assignments").
 secdeva_evidence("secdeva_control_analyse-business-context", "secdeva_document_business-context-analysis", "Business context analysis").
 secdeva_evidence("secdeva_control_security-context", "secdeva_document_security-context", "Security context").
 secdeva_evidence("secdeva_control_interface-specifications", "secdeva_document_interface", "Interface description").
@@ -32,12 +36,24 @@ secdeva_evidence("secdeva_control_manage-defects", "secdeva_review_manage-defect
 % secdeva_evidenceByCardType declares that a certain card type is evidence of a certain task:
 % secdeva_evidenceByCardType(TaskIdentifier, EvidenceCardType, EvidenceTitle)
 
+
+% TODO: the rule about individual role assignments "base/cardTypes/roleAssignment" supports backwards 
+% compatibility to content that has been created from old versions of the development project template.
+% In the old content format, role assignments were created directly under the control
+% This rule can be removed, once there are no more users for the old content 
+link(RoleAssignment, Task, "ismsa/linkTypes/evidences") :-
+    secdeva_closestProject(Task, Project),
+    secdeva_closestProject(RoleAssignment, Project),
+    field(Task, "base/fieldTypes/identifier", "secdeva_control_assign-people-to-project-roles"),
+    field(RoleAssignment, "cardType", "base/cardTypes/roleAssignment"),
+    parent(RoleAssignment, RoleAssignments),
+    field(RoleAssignments, "base/fieldTypes/identifier", "secdeva_control_assign-people-to-project-roles").
+
 link(Evidence, Task, "ismsa/linkTypes/evidences") :-
     secdeva_closestProject(Task, Project),
     secdeva_closestProject(Evidence, Project),
     secdeva_evidenceByCardType(TaskIdentifier, EvidenceCardType, _),
     field(Task, "base/fieldTypes/identifier", TaskIdentifier),
     field(Evidence, "cardType", EvidenceCardType).
-
-secdeva_evidenceByCardType("secdeva_control_assign-people-to-project-roles", "base/cardTypes/roleAssignment", "Role assignment").
+    
 secdeva_evidenceByCardType("secdeva_control_high-level-risks", "ismsa/cardTypes/risk", "Risk").

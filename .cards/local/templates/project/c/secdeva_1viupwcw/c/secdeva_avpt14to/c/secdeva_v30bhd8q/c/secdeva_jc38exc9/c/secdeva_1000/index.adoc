@@ -15,22 +15,20 @@ This control is always required, because persons need to be assigned to roles to
 
 == How to implement this task
 
-Assign people to the security-related roles by editing the child cards. Add new role assignments, as needed.
-
-{{#createCards}}
-  "template": "base/templates/roleAssignment",
-  "buttonLabel": "Add a role assignment"
-{{/createCards}}
+Create and edit role assignments and follow the instructions in the template.
 
 {{#report}}
-  "name": "base/reports/roleAssignments"
+  "name": "secdeva/reports/createReview",
+  "template": "secdeva/templates/roleAssignments",
+  "buttonLabel": "Create roles assignments",
+  "phase": "secdeva_phase_foundation"
 {{/report}}
 
 == How to review this task
 
-* Check that all the required roles have been assigned
-* Ensure that the nominations are up to date.
-* If needed, confirm with the assignee that they are aware of this role assignment.
+{{#report}}
+  "name": "secdeva/reports/checkChildReviewStatus"
+{{/report}}
 
 == References
 
