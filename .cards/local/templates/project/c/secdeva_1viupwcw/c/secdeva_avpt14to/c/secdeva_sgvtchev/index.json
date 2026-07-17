@@ -5,9 +5,9 @@
     "rank": "0|d",
     "base/fieldTypes/owner": null,
     "base/fieldTypes/informationClassification": "internal",
-    "ismsa/fieldTypes/adoptionStep": null,
+    "ismsa/fieldTypes/adoptionStep": "step1",
     "ismsa/fieldTypes/progress": "compliance-progress",
     "base/fieldTypes/identifier": "secdeva_register_compliance-controls",
-    "lastUpdated": "2026-05-03T13:20:36.855Z",
+    "lastUpdated": "2026-07-17T05:37:30.141Z",
     "links": []
 }
