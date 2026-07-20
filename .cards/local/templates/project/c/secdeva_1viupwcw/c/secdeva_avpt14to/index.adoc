@@ -1,0 +1,3 @@
+{{#report}}
+  "name": "base/reports/childrenList"
+{{/report}}
