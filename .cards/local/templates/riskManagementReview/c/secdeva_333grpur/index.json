@@ -1,13 +1,12 @@
 {
-    "title": "Project structure review",
+    "title": "Review of risk management",
     "cardType": "base/cardTypes/review",
     "workflowState": "",
-    "rank": "0|b",
+    "rank": "0|zn",
     "base/fieldTypes/owner": null,
     "base/fieldTypes/informationClassification": "internal",
     "base/fieldTypes/lastReviewed": null,
     "base/fieldTypes/reviewPeriod": null,
-    "base/fieldTypes/identifier": "secdeva_review_project-structure",
-    "lastUpdated": "2026-07-20T13:26:54.345Z",
+    "lastUpdated": "2026-07-20T13:27:20.100Z",
     "links": []
 }

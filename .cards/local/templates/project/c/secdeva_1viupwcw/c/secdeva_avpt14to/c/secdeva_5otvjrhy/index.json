@@ -7,6 +7,7 @@
     "base/fieldTypes/informationClassification": "internal",
     "ismsa/fieldTypes/acceptableRiskLevel": "low",
     "ismsa/fieldTypes/adoptionStep": null,
+    "base/fieldTypes/identifier": "secdeva_register_risks",
     "lastUpdated": "2026-05-03T13:20:48.966Z",
     "links": []
 }

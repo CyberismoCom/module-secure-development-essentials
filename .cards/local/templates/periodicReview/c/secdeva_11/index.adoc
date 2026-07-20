@@ -70,18 +70,6 @@ Comments, links:
 
 #TODO: add here a conclusion. The review can be accepted, if the current state of cybersecurity management is known and the required actions have been planned.#
 
-== Version history
-
-[cols="1,1,3"]
-|===============
-|Version | Date | Changes/Author
-
-| 0.1
-| 2024-01-01
-| XYZ changed by N.N.
-
-|===============
-
 == Security issues identified from this review
 
 {{#createCards}}
