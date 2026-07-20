@@ -15,6 +15,7 @@ secdeva_evidence("secdeva_control_threat-models", "secdeva_document_threat-model
 % This rule can be removed, once there are no more users for the old content 
 secdeva_evidence("secdeva_control_assign-people-to-project-roles", "secdeva_document_project-role-assignments", "Project role assignments").
 secdeva_evidence("secdeva_control_assign-people-to-project-roles", "secdeva_review_project-role-assignments", "Project role assignments").
+secdeva_evidence("secdeva_control_ensure-competence", "secdeva_review_competence", "Competence review").
 secdeva_evidence("secdeva_control_analyse-business-context", "secdeva_document_business-context-analysis", "Business context analysis").
 secdeva_evidence("secdeva_control_security-context", "secdeva_document_security-context", "Security context").
 secdeva_evidence("secdeva_control_interface-specifications", "secdeva_document_interface", "Interface description").
@@ -35,7 +36,6 @@ secdeva_evidence("secdeva_control_manage-defects", "secdeva_review_manage-defect
 
 % secdeva_evidenceByCardType declares that a certain card type is evidence of a certain task:
 % secdeva_evidenceByCardType(TaskIdentifier, EvidenceCardType, EvidenceTitle)
-
 
 % TODO: the rule about individual role assignments "base/cardTypes/roleAssignment" supports backwards 
 % compatibility to content that has been created from old versions of the development project template.
