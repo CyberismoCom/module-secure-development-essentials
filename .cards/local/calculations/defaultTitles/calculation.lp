@@ -19,6 +19,9 @@ secdeva_defaultTitlePrefix("secdeva_review_vulnerability-management", "Vulnerabi
 secdeva_defaultTitlePrefix("secdeva_test_threat-mitigation", "Threat mitigation test for ").
 secdeva_defaultTitlePrefix("secdeva_document_threat-model", "Threat model for ").
 secdeva_defaultTitlePrefix("secdeva_review_software-update-management", "Review of software update management for ").
+secdeva_defaultTitlePrefix("secdeva_review_project-role-assignments", "Role assignments - ").
+secdeva_defaultTitlePrefix("secdeva_review_project-structure", "Project structure review - ").
+secdeva_defaultTitlePrefix("secdeva_review_competence", "Competence review - ").
 
 onTransitionSetField(
     Card,

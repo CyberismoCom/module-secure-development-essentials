@@ -10,12 +10,25 @@ Notes:
 
 == How to decide if this secure development task is required
 
-This control is required, if the project has possible subprojects or suppliers that develop custom components.
+This control is required, if the project has possible subprojects or suppliers that develop custom components, if the development project makes substantial modifications to 3rd party products, or rebrands 3rd party products.
+
+If none of these is applicable, you can mark this control out of scope.
 
 == How to implement
 
 If the project includes an independent subproject, then set up secure development for the new project.
 
-== How to review this task
+Create a review of the project structure and follow the instructions in the template.
 
-Check that components correctly identified in the project's security documentation.
+{{#report}}
+  "name": "secdeva/reports/createReview",
+  "template": "secdeva/templates/projectStructureReview",
+  "buttonLabel": "Create a project structure review",
+  "phase": "secdeva_phase_design"
+{{/report}}
+
+== Assessment
+
+{{#report}}
+  "name": "secdeva/reports/internalControlAssessment"
+{{/report}}
