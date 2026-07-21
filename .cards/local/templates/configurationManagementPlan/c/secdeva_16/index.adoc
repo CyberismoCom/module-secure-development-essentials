@@ -49,7 +49,7 @@ The development process shall include tracking the traceability of requirements 
 * Backward traceability from threat mitigation tests to security threats
 * Forward traceability from requirements to architectural design
 
-#TODO: Document here how traceabilty is implemented. For example, it may be based on specific usage of issue tracker links, and links between cards in this tool. #
+#TODO: Document here how traceabilty is implemented. For example, it may be based on specific usage of issue tracker links, and links between cards in this tool.#
 
 == Configuration management lifecycle and configuration list
 
