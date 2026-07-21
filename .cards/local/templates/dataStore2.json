@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/templates/dataStore2",
+    "displayName": "Data store",
+    "category": "Dataflow model",
+    "description": "An entity in a dataflow model that stores information. For example, a database or a file."
+}
