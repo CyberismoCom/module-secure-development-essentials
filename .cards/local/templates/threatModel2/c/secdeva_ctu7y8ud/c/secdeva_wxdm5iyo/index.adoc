@@ -7,13 +7,8 @@
 
 [TIP]
 ====
-To add a dataflow to or from this process, click the link symbol in the top level tool bar. Optionally, if you want to model interfaces as well, you can create an interface and link any incoming dataflows to the interface.
+To add a dataflow to or from this trust boundary, click the link symbol in the top level tool bar to create a link. Optionally, if you want to model interfaces as well, you can create an interface and link any incoming dataflows to the interface.
 ====
-
-{{#createCards}}
-  "buttonLabel": "Create an interface",
-  "template": "secdeva/templates/interface2"
-{{/createCards}}
 
 {{#createCards}}
   "buttonLabel": "Create a trust boundary",
@@ -54,12 +49,6 @@ To add a dataflow to or from this process, click the link symbol in the top leve
 
 {{#report}}
   "name": "secdeva/reports/securityIssueList"
-{{/report}}
-
-== Security requirements
-
-{{#report}}
-  "name": "secdeva/reports/createSecurityRequirement"
 {{/report}}
 
 == Decisions and design specifications
