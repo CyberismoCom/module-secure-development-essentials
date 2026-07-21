@@ -11,7 +11,7 @@ Risks have been identified in sufficient level of detail and recorded in the ris
 * [ ] OK
 * [ ] Not OK
 
-Review notes about the overall status of risk treatment:
+Review notes about the overall status of risk identification:
 
 #TODO: Describe any notes and remarks about the review here#
 

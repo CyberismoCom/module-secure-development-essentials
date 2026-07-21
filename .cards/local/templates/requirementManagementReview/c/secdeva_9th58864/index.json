@@ -1,13 +1,13 @@
 {
-    "title": "Review of risk management",
+    "title": "Review of security requirement management for (Scope)",
     "cardType": "base/cardTypes/review",
     "workflowState": "",
-    "rank": "0|zn",
+    "rank": "0|b",
     "base/fieldTypes/owner": null,
     "base/fieldTypes/informationClassification": "internal",
     "base/fieldTypes/lastReviewed": null,
     "base/fieldTypes/reviewPeriod": null,
-    "base/fieldTypes/identifier": "secdeva_review_risk-management",
-    "lastUpdated": "2026-07-21T11:40:13.851Z",
+    "base/fieldTypes/identifier": "secdeva_review_requirement-management",
+    "lastUpdated": "2026-07-21T11:39:55.885Z",
     "links": []
 }
