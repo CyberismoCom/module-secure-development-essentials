@@ -25,23 +25,23 @@ You should create security requirements, when the requirement is non-trivial and
 
 == How to implement
 
-Create a security requirement specification and follow the instructions in the template.
+1. Document the scope and boundaries of the product or system, and the required IEC 62443 security capability level in the security requirement register {{#report}}"name": "secdeva/reports/xref", "identifier":"secdeva_register_security-requirements"{{/report}}.
+
+2. Create individual security requirements in the security requirement register {{#report}}"name": "secdeva/reports/xref", "identifier":"secdeva_register_security-requirements"{{/report}}. Each security requirement includes review subtasks for 4 different roles. Write the description of the requirements and complete the reviews.
+
+3. Conduct a review of security requirement management to ensure that all relevant requirements have been identified.
 
 {{#report}}
-  "name": "secdeva/reports/createDocument",
-  "template": "secdeva/templates/securityRequirementsSpecification",
-  "buttonLabel": "Create a security requirements specification",
+  "name": "secdeva/reports/createReview",
+  "template": "secdeva/templates/requirementManagementReview",
+  "buttonLabel": "Create a review of security requirement management",
   "phase": "secdeva_phase_design"
 {{/report}}
 
-Create individual security requirements as child cards of the security requirements specification. There is a button at the end of the document. Each security requirement includes review subtasks for 4 different roles. Write the description of the requirements and complete the reviews.
-
-Review and approve the security requirement specification to ensure that all relevant requirements have been identified.
-
-== How to review this task
+== Assessment
 
 {{#report}}
-  "name": "secdeva/reports/checkChildDocumentStatus"
+  "name": "secdeva/reports/internalControlAssessment"
 {{/report}}
 
 #TODO: add an automated check for ensuring that the requirement reviews have been completed#

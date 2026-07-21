@@ -1,10 +1,14 @@
 {
     "title": "Registers",
-    "cardType": "secdeva/cardTypes/page",
+    "cardType": "ismsa/cardTypes/register",
     "workflowState": "",
     "rank": "0|q",
     "base/fieldTypes/adoptionStep": null,
     "base/fieldTypes/identifier": "secdeva_registers",
     "lastUpdated": "2026-07-17T12:21:28.936Z",
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/adoptionStep": null,
+    "ismsa/fieldTypes/progress": null,
     "links": []
 }
