@@ -1,5 +1,14 @@
 You can document decisions here. 
 
+[TIP]
+====
+Recording decisions explicitly may be useful for
+
+* Architecture and design decisions
+* Operations decisions
+* Significant changes
+====
+
 TIP: If you need to create longer specifications, see {{#report}}"name":"xref","identifier":"secdeva_phase_design"{{/report}}.
 
 {{#createCards}}
