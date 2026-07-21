@@ -1,12 +1,21 @@
-The secure development processes assume that a rather mature general product development life-cycle exists. A secure development management plan describes how the secure development processes will be integrated to the existing development processes and how secure development will be managed in general. This includes the usage of general configuration management.
+Configuration Management (CM) is the systematic process of identifying, controlling, and tracking all components of a software system throughout its development, testing, deployment, and maintenance lifecycle. Configuration management covers how different _configuration items_ are managed in terms of the following aspects:
+
+* Storage and tooling
+* Access control
+* Versioning and unique identification
+* Change history
+* Authorisation of changes
+* Acceptance
+* Integrity protection
+* Backup and recovery
 
 == How to decide if this secure development task is required
 
-A secure development management plan is required for each project unless the secure development management plan is documented elsewhere, such as in general or global security documentation.
+Configuration management is typically planned in the organisation in general for all development projects. A configuration management plan is required in the development project, if the plan has not been documented elsewhere.
 
 == How to implement
 
-Create a secure development management plan and follow the instructions in the template.
+Create a configuration management plan and follow the instructions in the template.
 
 {{#report}}
   "name": "secdeva/reports/createDocument",
