@@ -1,9 +1,9 @@
 {
     "cardType": "ismsa/cardTypes/internalControl",
-    "title": "Ensure that secure development process is appropriately organized in possible subprojects",
+    "title": "Ensure secure development in subprojects",
     "workflowState": "",
     "rank": "0|gg",
-    "lastUpdated": "2026-07-21T05:47:47.381Z",
+    "lastUpdated": "2026-07-21T10:11:48.147Z",
     "links": [],
     "base/fieldTypes/adoptionStep": "step2",
     "base/fieldTypes/justification": null,
