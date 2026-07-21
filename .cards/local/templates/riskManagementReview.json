@@ -1,6 +1,6 @@
 {
     "name": "secdeva/templates/riskManagementReview",
     "displayName": "Review of risk management",
-    "category": "Secure development",
+    "category": "Secure development reviews",
     "description": "Review of cybersecurity risk management"
 }

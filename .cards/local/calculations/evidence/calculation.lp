@@ -34,6 +34,7 @@ secdeva_evidence("secdeva_control_known-vulnerability-scanning", "secdeva_test_k
 secdeva_evidence("secdeva_control_basic-input-validation-testing", "secdeva_test_basic-input-validation", "Review of \ninput validation testing").
 secdeva_evidence("secdeva_control_error-handling-testing", "secdeva_test_error-handling", "Review of \nerror handling testing").
 secdeva_evidence("secdeva_control_manage-defects", "secdeva_review_manage-defects", "Review of defect management").
+secdeva_evidence("secdeva_control_configuration-management-plan", "secdeva_document_configuration-management-plan", "Configuration management plan").
 
 % secdeva_evidenceByCardType declares that a certain card type is evidence of a certain task:
 % secdeva_evidenceByCardType(TaskIdentifier, EvidenceCardType, EvidenceTitle)

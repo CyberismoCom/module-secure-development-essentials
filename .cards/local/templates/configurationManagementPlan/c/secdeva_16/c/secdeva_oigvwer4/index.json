@@ -2,12 +2,14 @@
     "title": "Document review - Management plan",
     "cardType": "base/cardTypes/reviewTask",
     "workflowState": "",
-    "rank": "0|b",
+    "rank": "0|a",
     "base/fieldTypes/owner": null,
     "base/fieldTypes/informationClassification": "internal",
     "base/fieldTypes/reviewPeriod": 365,
     "base/fieldTypes/lastReviewed": null,
     "base/fieldTypes/justification": null,
     "base/fieldTypes/adoptionStep": null,
-    "base/fieldTypes/identifier": null
+    "base/fieldTypes/identifier": null,
+    "links": [],
+    "lastUpdated": "2026-07-21T08:00:47.811Z"
 }
