@@ -10,9 +10,9 @@ Create a secure development management plan and follow the instructions in the t
 
 {{#report}}
   "name": "secdeva/reports/createDocument",
-  "template": "secdeva/templates/managementPlan",
-  "buttonLabel": "Create a management plan",
-  "phase": "secdeva_phase_foundation"
+  "template": "secdeva/templates/configurationManagementPlan",
+  "buttonLabel": "Create a configuration management plan",
+  "phase": "secdeva_phase_design"
 {{/report}}
 
 == Assessment

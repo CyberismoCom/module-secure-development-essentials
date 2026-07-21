@@ -22,3 +22,19 @@ NOTE: Set the owner field of this card to denote the person, who is responsible 
 How will we measure if the security integration was successful?
 
 #TODO: document or link to documentation about how the compliance, cybersecurity management and vulnerability management are measured#
+
+== Milestones and checkpoints
+
+[TIP]
+====
+It is recommended to have 2–6 checkpoints per year to keep secure development work on track. You can integrate secure development checkpoints into practices you already have, such as:
+
+* Program increment reviews
+* Quarterly reviews
+* Milestone reviews
+* Gate reviews
+
+====
+
+#TODO: Add a description or link showing your general milestone/checkpoint practices and how secure development reviews fit into them#
+

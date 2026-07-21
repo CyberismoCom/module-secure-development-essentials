@@ -9,7 +9,7 @@ secdeva_defaultTitlePrefix("secdeva_document_design-specification", "Design spec
 secdeva_defaultTitlePrefix("secdeva_review_protect-environments", "Review of environment protection for ").
 secdeva_defaultTitlePrefix("secdeva_test_error-handling", "Error handling test for ").
 secdeva_defaultTitlePrefix("secdeva_test_known-vulnerability", "Known vulnerability scanning of ").
-secdeva_defaultTitlePrefix("secdeva_document_management-plan", "Management plan for ").
+secdeva_defaultTitlePrefix("secdeva_document_configuration-management-plan", "Configuration management plan for ").
 secdeva_defaultTitlePrefix("secdeva_review_manual-code-review", "Review of manual code review practices - ").
 secdeva_defaultTitlePrefix("secdeva_review_static-code-analysis", "Review of static code analysis - ").
 secdeva_defaultTitlePrefix("secdeva_document_security-context", "Security context for ").
