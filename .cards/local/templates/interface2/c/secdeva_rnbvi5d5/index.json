@@ -1,0 +1,16 @@
+{
+    "title": "Untitled interface",
+    "cardType": "secdeva/cardTypes/interface",
+    "workflowState": "",
+    "rank": "0|b",
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "secdeva/fieldTypes/basicInputValidationTestingRequired": null,
+    "secdeva/fieldTypes/basicStressTestingRequired": null,
+    "secdeva/fieldTypes/fuzzTestingRequired": null,
+    "secdeva/fieldTypes/capacityTestingRequired": null,
+    "secdeva/fieldTypes/networkTrafficLoadTestingRequired": null,
+    "secdeva/fieldTypes/interfaceTestingScopingJustification": null,
+    "lastUpdated": "2026-07-21T13:40:28.764Z",
+    "links": []
+}
