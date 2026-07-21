@@ -2,28 +2,49 @@
 Configuration management covers how different configuration items are managed. This card describes the configuration management plan for a single configuration item type.
 
 == Configuration item type and scope
-#TODO: name the configuration item type this card covers (for example source code, firmware images, build and CI/CD scripts, third-party components, hardware bill of materials, design documents) and state what is in and out of scope.#
+
+This card covers the configuration management for source code, including application code, scripts, and configuration files stored in version control.
+
+#TODO: state what is in and out of scope. For example, clarify whether firmware, infrastructure-as-code, or test automation code is included here or covered by separate configuration item cards.#
 
 == Storage and tooling
-#TODO: document which tool and which repository or artifact store is used to manage these configuration items, and where they are stored.#
+
+Source code is managed in a Git repository.
+
+#TODO: document which Git hosting service is used (e.g., GitHub, GitLab, Bitbucket), the repository URL(s), and any relevant repository structure or conventions (e.g., monorepo vs. multi-repo).#
 
 == Access control
-#TODO: describe who may read and who may modify these configuration items, and how access rights are granted, reviewed and revoked.#
+
+Access to the source code repository is controlled by the Git hosting service.
+
+#TODO: describe the access control model — who may read and who may modify the repository, how access rights are granted (e.g., team membership, role-based), how they are reviewed periodically, and how they are revoked when no longer needed.#
 
 == Versioning and unique identification
-#TODO: document how this type of configuration item is versioned (including the versioning scheme), how each configuration item is uniquely identified, and how those identifiers relate to component or product versions.#
+
+Source code is versioned using Git commits. Each commit has a unique SHA hash that identifies it.
+
+#TODO: document the branching strategy (e.g., trunk-based, GitFlow), how releases are tagged, how version numbers are assigned (e.g., semantic versioning), and how component versions relate to product versions.#
 
 == Change history
-#TODO: document how change history between component or system versions is recorded, and how to automatically generate a list of changes between two component versions for this configuration item type. Each recorded change should include the originator, the date and time, and the nature of the change.#
+
+Git records the full change history, including the author, date and time, and commit message for each change.
+
+#TODO: document how to generate a changelog or list of changes between two versions (e.g., git log, automated release notes), and any conventions for commit messages.#
 
 == Authorization of changes
-#TODO: describe the mechanisms that ensure only authorized changes are made, including any review or approval steps and segregation of duties, and how the authorization is evidenced.#
+
+#TODO: describe the mechanisms that ensure only authorized changes are made, for example: branch protection rules, required code reviews (pull/merge requests), minimum number of approvers, CI checks that must pass before merge, and any segregation of duties.#
 
 == Acceptance
-#TODO: describe how new or newly modified configuration items are accepted, including the acceptance criteria, who is responsible for acceptance, and how acceptance is recorded.#
+
+#TODO: describe how new or modified source code is accepted, including the acceptance criteria (e.g., passing tests, code review approval), who is responsible for acceptance, and how acceptance is recorded (e.g., merge commit, approval record in the Git hosting service).#
 
 == Integrity protection
-#TODO: describe how the integrity of these configuration items is protected against unauthorized or undetected modification (for example access controls, signing, checksums or hashes), and how tampering would be detected.#
+
+Git protects the integrity of the repository through its content-addressable storage model — every object is identified by its SHA hash, making unauthorized modifications detectable.
+
+#TODO: describe any additional integrity protection measures, such as signed commits, branch protection against force-pushes, or audit logs provided by the Git hosting service.#
 
 == Backup and recovery
-#TODO: describe how these configuration items are backed up, how long they are retained, and how they can be recovered.#
+
+#TODO: describe how source code repositories are backed up, how frequently, how long backups are retained, and how they can be recovered. Consider that each developer clone also acts as a backup of the repository history.#

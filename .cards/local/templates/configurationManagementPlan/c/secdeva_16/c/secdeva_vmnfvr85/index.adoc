@@ -25,10 +25,16 @@ See the separate configuration item description for Cyberismo content.
 See the separate configuration item description for Cyberismo content.
 
 == Authorization of changes
-#TODO: describe the mechanisms that ensure only authorized changes are made, including any review or approval steps and segregation of duties, and how the authorization is evidenced.#
+
+See the separate configuration item description for Cyberismo content.
+
+#TODO: describe any additional authorization mechanisms specific to risk management, such as who may accept, modify, or close risks.#
 
 == Acceptance
-#TODO: describe how new or newly modified configuration items are accepted, including the acceptance criteria, who is responsible for acceptance, and how acceptance is recorded.#
+
+Acceptance of risks is tracked by their workflow status in the Cyberismo tool.
+
+#TODO: describe any additional acceptance criteria specific to risks, such as required risk owner approval or periodic risk review.#
 
 == Integrity protection
 #TODO: describe how the integrity of these configuration items is protected against unauthorized or undetected modification (for example access controls, signing, checksums or hashes), and how tampering would be detected.#
