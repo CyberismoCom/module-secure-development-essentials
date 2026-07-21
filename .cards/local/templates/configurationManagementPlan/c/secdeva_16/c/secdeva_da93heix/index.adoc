@@ -11,14 +11,24 @@ Cyberismo content is managed in a Git repository.
 
 The Cyberismo command line tool is used on the user computers and in the build pipeline.
 
-#TODO: include the following, if Cyberismo Cloud is being used.#
+[NOTE]
+.If using Cyberismo Cloud
+====
+Delete this note if you are not using the Cyberismo Cloud SaaS service. If you are using it, keep the following paragraph and remove this note block.
+====
 
 Cyberismo content is also managed using the Cyberismo Cloud SaaS service.   
 
 == Access control
 #TODO: describe who may read and who may modify these configuration items, and how access rights are granted, reviewed and revoked.#
 
-As Cybersimo content is managed in a Git repository, access control is implemented by the Git service. See the configuration item description for source code.
+As Cyberismo content is managed in a Git repository, access control is implemented by the Git service. See the configuration item description for source code.
+
+[NOTE]
+.If using Cyberismo Cloud
+====
+Delete this paragraph if you are not using Cyberismo Cloud. Otherwise, keep it and remove this note.
+====
 
 With Cyberismo Cloud, access is controlled by the Cyberismo Cloud application.
 

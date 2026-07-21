@@ -33,10 +33,16 @@ See the separate configuration item description for Cyberismo content.
 See the separate configuration item description for Cyberismo content.
 
 == Authorization of changes
-#TODO: describe the mechanisms that ensure only authorized changes are made, including any review or approval steps and segregation of duties, and how the authorization is evidenced.#
+
+See the separate configuration item description for Cyberismo content.
+
+#TODO: describe any additional authorization mechanisms specific to technical documentation, such as review and approval workflows for design specifications.#
 
 == Acceptance
-#TODO: describe how new or newly modified configuration items are accepted, including the acceptance criteria, who is responsible for acceptance, and how acceptance is recorded.#
+
+Acceptance of technical documentation is tracked by the workflow status and review tasks of the relevant cards in the Cyberismo tool.
+
+#TODO: describe any additional acceptance criteria specific to technical documentation.#
 
 == Integrity protection
 #TODO: describe how the integrity of these configuration items is protected against unauthorized or undetected modification (for example access controls, signing, checksums or hashes), and how tampering would be detected.#

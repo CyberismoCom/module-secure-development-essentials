@@ -8,7 +8,8 @@ This card covers the configuration management for security-related issues.
 Security issues are managed in the Cyberismo tool using the Security issue card type.
 
 == Storage and tooling
-#TODO: document which tool and which repository or artifact store is used to manage these configuration items, and where they are stored.#
+
+See the separate configuration item description for Cyberismo content.
 
 == Access control
 #TODO: describe who may read and who may modify these configuration items, and how access rights are granted, reviewed and revoked.#
@@ -26,10 +27,16 @@ See the separate configuration item description for Cyberismo content.
 See the separate configuration item description for Cyberismo content.
 
 == Authorization of changes
-#TODO: describe the mechanisms that ensure only authorized changes are made, including any review or approval steps and segregation of duties, and how the authorization is evidenced.#
+
+See the separate configuration item description for Cyberismo content.
+
+#TODO: describe any additional authorization mechanisms specific to security-related issues, such as mandatory triage or security team approval before closure.#
 
 == Acceptance
-#TODO: describe how new or newly modified configuration items are accepted, including the acceptance criteria, who is responsible for acceptance, and how acceptance is recorded.#
+
+Acceptance of security-related issues is tracked by their workflow status in the Cyberismo tool.
+
+#TODO: describe any additional acceptance criteria specific to security issues, such as verification of fix effectiveness.#
 
 == Integrity protection
 #TODO: describe how the integrity of these configuration items is protected against unauthorized or undetected modification (for example access controls, signing, checksums or hashes), and how tampering would be detected.#
