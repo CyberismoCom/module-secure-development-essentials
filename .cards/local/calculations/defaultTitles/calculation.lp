@@ -24,6 +24,7 @@ secdeva_defaultTitle("secdeva_test_security-requirements", "Security requirement
 secdeva_defaultTitleWithDate("secdeva_review_vulnerability-management", "Vulnerability management for ").
 secdeva_defaultTitle("secdeva_test_threat-mitigation", "Threat mitigation test for ").
 secdeva_defaultTitle("secdeva_document_threat-model", "Threat model for ").
+secdeva_defaultTitle("secdeva_document_dataflow-model", "Dataflow model for ").
 secdeva_defaultTitleWithDate("secdeva_review_software-update-management", "Review of software update management for ").
 secdeva_defaultTitle("secdeva_review_project-role-assignments", "Role assignments - ").
 secdeva_defaultTitleWithDate("secdeva_review_project-structure", "Project structure review - ").

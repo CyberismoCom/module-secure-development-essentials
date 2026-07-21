@@ -3,7 +3,9 @@
     "displayName": "Applies to",
     "outboundDisplayName": "applies to",
     "inboundDisplayName": "is subject to",
-    "sourceCardTypes": [],
+    "sourceCardTypes": [
+        "secdeva/cardTypes/requirement"
+    ],
     "destinationCardTypes": [
         "secdeva/cardTypes/dataStore",
         "secdeva/cardTypes/dataflowModel",
