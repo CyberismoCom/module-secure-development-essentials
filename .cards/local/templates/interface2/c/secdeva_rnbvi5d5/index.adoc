@@ -226,10 +226,14 @@ Security testing for interface tests fall into the following categories.
   "name": "secdeva/reports/createSecurityRequirement"
 {{/report}}
 
-== Related decisions
+== Related decisions and design specifications
 
 {{#report}}
   "name": "secdeva/reports/createDecision"
+{{/report}}
+
+{{#report}}
+  "name": "secdeva/reports/createDesignSpecification"
 {{/report}}
 
 == Reviews

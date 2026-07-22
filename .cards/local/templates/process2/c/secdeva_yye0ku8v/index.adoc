@@ -72,13 +72,6 @@ Document a technical decision or create a design specification.
   "name": "secdeva/reports/createDecision"
 {{/report}}
 
-{{#createCards}}
-  "buttonLabel": "Create a specification",
-  "template": "secdeva/templates/designSpecification"
-{{/createCards}}
-
 {{#report}}
-  "name": "base/reports/childrenTable",
-  "cardType": "base/cardTypes/controlledDocument",
-  "tableCaption": "Specifications"
+  "name": "secdeva/reports/createDesignSpecification"
 {{/report}}
