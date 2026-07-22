@@ -9,5 +9,7 @@
     "base/fieldTypes/lastReviewed": null,
     "base/fieldTypes/justification": null,
     "base/fieldTypes/adoptionStep": null,
-    "base/fieldTypes/identifier": null
+    "base/fieldTypes/identifier": null,
+    "links": [],
+    "lastUpdated": "2026-07-22T10:25:48.202Z"
 }

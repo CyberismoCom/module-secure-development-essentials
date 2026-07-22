@@ -1,3 +1,8 @@
+[TIP]
+====
+Create a risk if you identify a cyber threat — something that can cause harm by exploiting one or more vulnerabilities.
+====
+
 {{#each results}}
 
 {{#if risks}}
@@ -17,11 +22,11 @@
 
 Create another risk, if needed:
 {{else}}
-You have not yet created any risks.
+You have not yet created or linked any risks.
 {{/if}}
 
 {{#createCards}}
-    "template": "ismsa/templates/risk",
+    "template": "secdeva/templates/productRisk2",
     "buttonLabel": "Create a risk",
     "cardKey": "{{register.key}}",
     "link": {

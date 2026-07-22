@@ -18,7 +18,8 @@ To add a dataflow to or from this external entity, click the link symbol in the 
   "name": "secdeva/reports/createRisk"
 {{/report}}
 
+== Related security issues
 
 {{#report}}
-  "name": "secdeva/reports/createThreat"
+  "name": "secdeva/reports/createSecurityIssue"
 {{/report}}

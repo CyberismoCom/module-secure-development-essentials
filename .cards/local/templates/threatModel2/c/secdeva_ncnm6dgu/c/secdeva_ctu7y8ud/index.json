@@ -2,9 +2,9 @@
     "title": "Dataflow model for (Scope)",
     "cardType": "secdeva/cardTypes/dataflowModel",
     "workflowState": "",
-    "rank": "0|c",
+    "rank": "0|an",
     "links": [],
     "secdeva/fieldTypes/description": null,
     "base/fieldTypes/identifier": "secdeva_document_dataflow-model",
-    "lastUpdated": "2026-07-21T18:44:34.850Z"
+    "lastUpdated": "2026-07-22T10:25:48.201Z"
 }
