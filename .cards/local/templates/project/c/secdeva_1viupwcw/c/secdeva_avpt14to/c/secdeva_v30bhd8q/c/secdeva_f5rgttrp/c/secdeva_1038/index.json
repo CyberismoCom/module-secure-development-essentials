@@ -1,9 +1,9 @@
 {
     "cardType": "ismsa/cardTypes/internalControl",
-    "title": "Write interface specifications",
+    "title": "Document interfaces",
     "workflowState": "",
     "rank": "0|d",
-    "lastUpdated": "2026-04-25T13:40:26.145Z",
+    "lastUpdated": "2026-07-22T12:41:08.583Z",
     "links": [],
     "base/fieldTypes/adoptionStep": "step2",
     "base/fieldTypes/justification": null,

@@ -10,7 +10,6 @@ link(Evidence, Task, "ismsa/linkTypes/evidences") :-
 
 secdeva_evidence("secdeva_control_management-plan", "secdeva_document_management-plan", "Management plan").
 secdeva_evidence("secdeva_control_threat-models", "secdeva_document_threat-model", "Threat model").
-secdeva_evidence("secdeva_control_threat-models", "secdeva_document_dataflow-model", "Threat model").
 % TODO: the rule about secdeva_document_project-role-assignments supports backwards compatibility to content
 % that has been created from old versions of the development project template.
 % This rule can be removed, once there are no more users for the old content 
