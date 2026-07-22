@@ -8,6 +8,12 @@
 To add a dataflow to or from this person, click the link symbol in the top level tool bar.
 ====
 
+== Related risks
+
+{{#report}}
+  "name": "secdeva/reports/createRisk"
+{{/report}}
+
 {{#report}}
   "name": "secdeva/reports/createThreat"
 {{/report}}

@@ -94,6 +94,17 @@ field(Control, "base/fieldTypes/assessmentExplanation", "The control is in scope
   ismsa_evidenceOk(Evidence) :
   link(Evidence, Control, "ismsa/linkTypes/evidences").
 
+policyCheckSuccess(Control, "Internal control assessment", @concatenate("Control is acceptable: ", Explanation)) :-
+  field(Control, "cardType", "ismsa/cardTypes/internalControl"),
+  field(Control, "base/fieldTypes/assessment", "ok"),
+  field(Control, "base/fieldTypes/assessmentExplanation", Explanation).
+
+policyCheckSuccess(Control, "Internal control assessment", @concatenate("Control is acceptable: ", Explanation)) :-
+  field(Control, "cardType", "ismsa/cardTypes/internalControl"),
+  field(Control, "base/fieldTypes/assessment", "notApplicable"),
+  field(Control, "base/fieldTypes/assessmentExplanation", Explanation).
+
+  
 %
 % Justification is required if the control is out of scope
 %

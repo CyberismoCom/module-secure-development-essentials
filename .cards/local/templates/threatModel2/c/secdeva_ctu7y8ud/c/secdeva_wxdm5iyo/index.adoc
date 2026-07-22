@@ -41,7 +41,13 @@ To add a dataflow to or from this trust boundary, click the link symbol in the t
   "name": "secdeva/reports/entityInterfaces"
 {{/report}}
 
-== Security issues
+== Related risks
+
+{{#report}}
+  "name": "secdeva/reports/createRisk"
+{{/report}}
+
+== Related security issues
 
 {{#report}}
   "name": "secdeva/reports/createThreat"
