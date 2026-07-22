@@ -3,27 +3,27 @@ TIP: The list of assets includes processes, interfaces and data stores from the 
 Document assets that cannot be created in the dataflow model by clicking one of the following buttons.
 
 {{#createCards}}
-  "template": "ismsa/templates/asset",
+  "template": "secdeva/templates/asset",
   "buttonLabel": "Add a new generic asset"
 {{/createCards}}
 
 {{#createCards}}
-  "template": "ismsa/templates/assetData",
+  "template": "secdeva/templates/assetData",
   "buttonLabel": "Add a new data asset"
 {{/createCards}}
 
 {{#createCards}}
-  "template": "ismsa/templates/assetDevice",
+  "template": "secdeva/templates/assetDevice",
   "buttonLabel": "Add a new device asset"
 {{/createCards}}
 
 {{#createCards}}
-  "template": "ismsa/templates/assetInformationSystem",
+  "template": "secdeva/templates/assetInformationSystem",
   "buttonLabel": "Add a new information system asset"
 {{/createCards}}
 
 {{#createCards}}
-  "template": "ismsa/templates/assetSupplier",
+  "template": "secdeva/templates/assetSupplier",
   "buttonLabel": "Add a new supplier"
 {{/createCards}}
 
