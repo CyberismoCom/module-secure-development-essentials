@@ -9,16 +9,11 @@
 
 == Related risks
 
-{{#createCards}}
-  "template": "ismsa/templates/risk",
-  "buttonLabel": "Add new risk"
-{{/createCards}}
-
 {{#report}}
-  "name": "ismsa/reports/relatedRisks"
+  "name": "secdeva/reports/createRisk"
 {{/report}}
 
-== Security requirements
+== Related security requirements
 
 {{#report}}
   "name": "secdeva/reports/createSecurityRequirement"

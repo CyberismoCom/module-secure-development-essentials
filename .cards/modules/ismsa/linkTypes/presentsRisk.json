@@ -13,7 +13,8 @@
         "secdeva/cardTypes/dataStore",
         "secdeva/cardTypes/external",
         "secdeva/cardTypes/person",
-        "secdeva/cardTypes/trustBoundary"
+        "secdeva/cardTypes/trustBoundary",
+        "secdeva/cardTypes/interface"
     ],
     "destinationCardTypes": [
         "ismsa/cardTypes/risk",

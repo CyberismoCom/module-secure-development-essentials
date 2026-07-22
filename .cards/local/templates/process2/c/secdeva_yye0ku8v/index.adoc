@@ -46,7 +46,13 @@ To add a dataflow to or from this process, click the link symbol in the top leve
   "name": "secdeva/reports/entityInterfaces"
 {{/report}}
 
-== Security issues
+== Related risks
+
+{{#report}}
+  "name": "secdeva/reports/createRisk"
+{{/report}}
+
+== Related security issues
 
 {{#report}}
   "name": "secdeva/reports/createThreat"
@@ -56,7 +62,7 @@ To add a dataflow to or from this process, click the link symbol in the top leve
   "name": "secdeva/reports/securityIssueList"
 {{/report}}
 
-== Security requirements
+== Related security requirements
 
 {{#report}}
   "name": "secdeva/reports/createSecurityRequirement"

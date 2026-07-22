@@ -1,6 +1,6 @@
 {
     "name": "secdeva/templates/threat",
-    "displayName": "Security threat",
+    "displayName": "Security issue from threat modelling",
     "description": "A security issue identified in threat modelling",
     "category": "Security issues"
 }

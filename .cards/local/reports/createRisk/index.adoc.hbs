@@ -1,0 +1,34 @@
+{{#each results}}
+
+{{#if risks}}
+
+[caption=]
+.Existing risks
+[cols="5,2"]
+|===
+| Risk | Workflow State
+
+{{#each risks}}
+|xref:{{this.key}}.adoc[{{this.title}}]
+|{{this.workflowState}}
+{{/each}}
+
+|===
+
+Create another risk, if needed:
+{{else}}
+You have not yet created any risks.
+{{/if}}
+
+{{#createCards}}
+    "template": "ismsa/templates/risk",
+    "buttonLabel": "Create a risk",
+    "cardKey": "{{register.key}}",
+    "link": {
+      "linkType": "ismsa/linkTypes/presentsRisk",
+      "direction": "outbound",
+      "cardKey": "{{../cardKey}}"
+    }
+{{/createCards}}
+
+{{/each}}
