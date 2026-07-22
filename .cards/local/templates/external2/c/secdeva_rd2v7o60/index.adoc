@@ -23,3 +23,9 @@ To add a dataflow to or from this external entity, click the link symbol in the 
 {{#report}}
   "name": "secdeva/reports/createSecurityIssue"
 {{/report}}
+
+== Decisions
+
+{{#report}}
+  "name": "secdeva/reports/createDecision"
+{{/report}}

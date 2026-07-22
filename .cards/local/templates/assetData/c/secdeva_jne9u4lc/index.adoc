@@ -24,3 +24,9 @@
 {{#report}}
   "name": "secdeva/reports/createSecurityRequirement"
 {{/report}}
+
+== Related decisions
+
+{{#report}}
+  "name": "secdeva/reports/createDecision"
+{{/report}}
