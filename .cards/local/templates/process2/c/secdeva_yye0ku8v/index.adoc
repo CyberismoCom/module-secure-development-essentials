@@ -64,25 +64,18 @@ To add a dataflow to or from this process, click the link symbol in the top leve
   "name": "secdeva/reports/createSecurityRequirement"
 {{/report}}
 
-== Decisions and design specifications
+== Related decisions and design specifications
 
 Document a technical decision or create a design specification.
 
-{{#createCards}}
-  "buttonLabel": "Create a decision",
-  "template": "base/templates/decision"
-{{/createCards}}
+{{#report}}
+  "name": "secdeva/reports/createDecision"
+{{/report}}
 
 {{#createCards}}
   "buttonLabel": "Create a specification",
   "template": "secdeva/templates/designSpecification"
 {{/createCards}}
-
-{{#report}}
-  "name": "base/reports/childrenTable",
-  "cardType": "base/cardTypes/decision",
-  "tableCaption": "Decisions"
-{{/report}}
 
 {{#report}}
   "name": "base/reports/childrenTable",
