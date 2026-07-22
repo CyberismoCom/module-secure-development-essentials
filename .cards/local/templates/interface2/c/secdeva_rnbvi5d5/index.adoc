@@ -208,6 +208,12 @@ Security testing for interface tests fall into the following categories.
 * Performance and scalability tests
 ====
 
+== Security requirements
+
+{{#report}}
+  "name": "secdeva/reports/createSecurityRequirement"
+{{/report}}
+
 == Reviews
 
 {{#createCards}}

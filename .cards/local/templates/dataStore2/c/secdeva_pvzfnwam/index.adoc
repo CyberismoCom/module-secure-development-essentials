@@ -56,6 +56,12 @@ To add a dataflow to or from this data store, click the link symbol in the top l
   "name": "secdeva/reports/securityIssueList"
 {{/report}}
 
+== Security requirements
+
+{{#report}}
+  "name": "secdeva/reports/createSecurityRequirement"
+{{/report}}
+
 == Decisions and design specifications
 
 Document a technical decision or create a design specification.
