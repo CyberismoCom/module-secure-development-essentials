@@ -61,18 +61,6 @@ Configuration management is commonly based on the concept of a baseline, which d
 
 #TODO: explain how and for how long configuration items will be archived. Notice that the EU cyber resilience act requires the product supplier to keep the technical documentation available for authorities for 10 years.#
 
-== Version history
-
-[cols="1,1,3"]
-|===============
-|Version | Date | Changes/Author
-
-| 0.1
-| 2024-01-01
-| XYZ changed by N.N.
-
-|===============
-
 == Reviews
 
 {{#createCards}}

@@ -208,18 +208,6 @@ Security testing for interface tests fall into the following categories.
 * Performance and scalability tests
 ====
 
-== Version history
-
-[cols="1,1,3"]
-|===============
-|Version | Date | Changes/Author
-
-| 0.1
-| 2024-01-01
-| XYZ changed by N.N.
-
-|===============
-
 == Reviews
 
 {{#createCards}}
