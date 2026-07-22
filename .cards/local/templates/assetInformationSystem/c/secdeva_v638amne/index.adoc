@@ -25,6 +25,12 @@
   "name": "secdeva/reports/createSecurityRequirement"
 {{/report}}
 
+== Related technology assessments
+
+{{#report}}
+  "name": "secdeva/reports/createTechnologyAssessment"
+{{/report}}
+
 == Related decisions and design specifications
 
 {{#report}}

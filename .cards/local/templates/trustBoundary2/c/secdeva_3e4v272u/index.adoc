@@ -59,6 +59,12 @@ To add a dataflow to or from this trust boundary, click the link symbol in the t
   "name": "secdeva/reports/createSecurityRequirement"
 {{/report}}
 
+== Related technology assessments
+
+{{#report}}
+  "name": "secdeva/reports/createTechnologyAssessment"
+{{/report}}
+
 == Related decisions and design specifications
 
 Document a technical decision or create a design specification.

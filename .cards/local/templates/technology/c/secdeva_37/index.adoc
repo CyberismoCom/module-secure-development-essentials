@@ -19,7 +19,7 @@ The technology can be adopted for use once the following conditions are met:
 
 Remember to inform all impacted stakeholders of the product about the decision!
 
-== Technology selection checklist
+== Technology assessment checklist
 
 === Business goals
 
@@ -213,18 +213,15 @@ The support and maintenance responsibilities for the technology have been define
 
 Comments, links:
 
-== Conclusion on the technology selection
-
-How to decide about the technology selection
+== Conclusion on the technology assessment
 
 The technology can be adopted for use once the following conditions are met:
 
-* The owner of this document has filled in the technology selection checklist and conducted the possibly required escalations, so that the identified risks can be accepted
+* The owner of this document has filled in the technology assessment checklist and conducted the possibly required escalations, so that the identified risks can be accepted
 
 The proposed technology
 
 * [ ] is approved for use
 * [ ] is rejected for use
 
-for the planned purpose of #TODO: document the purpose#.
-
+for the purpose of #TODO: document the purpose#.
