@@ -13,12 +13,15 @@ attr(node, Requirement, label, @concatenate("<<font point-size='32'> <b>", @wrap
     field(Requirement, "title", Title),
     visible(Requirement).
 
-% task
-drawableCard(Task) :- base_recurringTask(Task).
-node(Task, toplevelGraph) :- base_recurringTask(Task), visible(Task).
+% internal control
+internalControl(Task) :- base_recurringTask(Task).
+internalControl(Task) :- field(Task, "cardType", "ismsa/cardTypes/internalControl").
+
+drawableCard(Task) :- internalControl(Task).
+node(Task, toplevelGraph) :- internalControl(Task), visible(Task).
 
 attr(node, Task, label, @concatenate("<<font point-size='32'> <b>", @wrap(Title), "</b> </font> <br/> <font point-size='19'>Recurring task</font>>")) :-
-    base_recurringTask(Task),
+    internalControl(Task),
     field(Task, "title", Title),
     visible(Task).
 
@@ -35,7 +38,7 @@ attr(node, Requirement, label, @concatenate("<<font point-size='32'> <b>", @wrap
 drawableCard(Document) :- field(Document, "cardType", "base/cardTypes/controlledDocument").
 drawableCard(Review) :- field(Review, "cardType", "base/cardTypes/review").
 evidence(Evidence) :-
-    base_recurringTask(Task),
+    internalControl(Task),
     visible(Task),
     drawableCard(Evidence),
     link(Evidence, Task, "ismsa/linkTypes/evidences").
@@ -43,7 +46,7 @@ evidence(Evidence) :-
 node(Evidence, toplevelGraph) :- evidence(Evidence).
 
 attr(node, Evidence, label, @concatenate("<<font point-size='32'>", @wrap(Title), "</font> <br/> <font point-size='19'>", EvidenceLabel , "</font>>")) :-
-    base_recurringTask(Task),
+    internalControl(Task),
     visible(Task),
     link(Evidence, Task, "ismsa/linkTypes/evidences"),
     secdeva_evidence(TaskIdentifier, EvidenceIdentifier, EvidenceLabel),
@@ -53,7 +56,7 @@ attr(node, Evidence, label, @concatenate("<<font point-size='32'>", @wrap(Title)
 
 % evidence placeholder
 evidencePlaceholder(@concatenate(Task, EvidenceIdentifier, EvidenceLabel)) :-
-    base_recurringTask(Task),
+    internalControl(Task),
     visible(Task),
     secdeva_evidence(TaskIdentifier, EvidenceIdentifier, EvidenceLabel),
     field(Task, "base/fieldTypes/identifier", TaskIdentifier),
@@ -63,7 +66,7 @@ evidencePlaceholder(@concatenate(Task, EvidenceIdentifier, EvidenceLabel)) :-
 node(Evidence, toplevelGraph) :- evidencePlaceholder(Evidence).
 
 attr(node, @concatenate(Task, EvidenceIdentifier, EvidenceLabel), label, @concatenate("<<font point-size='32'>", @wrap(EvidenceLabel), "</font>>")) :-
-    base_recurringTask(Task),
+    internalControl(Task),
     visible(Task),
     secdeva_evidence(TaskIdentifier, EvidenceIdentifier, EvidenceLabel),
     field(Task, "base/fieldTypes/identifier", TaskIdentifier),
@@ -102,7 +105,7 @@ attr(edge, (Task2, Task1, 1), label, "<<font point-size='24'>Required by</font>>
 
 % "evidences" relationship
 edge((Task, Evidence, 1), toplevelGraph) :-
-    base_recurringTask(Task),
+    internalControl(Task),
     visible(Task),
     link(Evidence, Task, "ismsa/linkTypes/evidences"),
     secdeva_evidence(TaskIdentifier, EvidenceIdentifier, _),
@@ -110,7 +113,7 @@ edge((Task, Evidence, 1), toplevelGraph) :-
     field(Evidence, "base/fieldTypes/identifier", EvidenceIdentifier),
     field(Evidence, "title", Title).
 attr(edge, (Task, Evidence, 1), label, "<<font point-size='24'>Evidenced by</font>>") :-
-    base_recurringTask(Task),
+    internalControl(Task),
     visible(Task),
     link(Evidence, Task, "ismsa/linkTypes/evidences"),
     secdeva_evidence(TaskIdentifier, EvidenceIdentifier, _),
@@ -119,14 +122,14 @@ attr(edge, (Task, Evidence, 1), label, "<<font point-size='24'>Evidenced by</fon
 
 % "evidences" relationship to evidence placeholders
 edge((Task, @concatenate(Task, EvidenceIdentifier, EvidenceLabel), 1), toplevelGraph) :-
-    base_recurringTask(Task),
+    internalControl(Task),
     visible(Task),
     secdeva_evidence(TaskIdentifier, EvidenceIdentifier, EvidenceLabel),
     field(Task, "base/fieldTypes/identifier", TaskIdentifier),
     not field(Evidence, "base/fieldTypes/identifier", EvidenceIdentifier) :
     link(Evidence, Task, "ismsa/linkTypes/evidences").
 attr(edge, (Task, @concatenate(Task, EvidenceIdentifier, EvidenceLabel), 1), label, "<<font point-size='24'>Evidenced by</font>>") :-
-    base_recurringTask(Task),
+    internalControl(Task),
     visible(Task),
     secdeva_evidence(TaskIdentifier, EvidenceIdentifier, EvidenceLabel),
     field(Task, "base/fieldTypes/identifier", TaskIdentifier),
@@ -154,8 +157,8 @@ attr(edge, (X, Y, N), arrowsize, "2") :- edge((X, Y, N), _).
 % shapes of nodes
 attr(node, X, shape, rectangle) :- node(X, _), field(X, "cardType", "ismsa/cardTypes/complianceRequirement").
 attr(node, X, style, rounded) :- node(X, _), field(X, "cardType", "ismsa/cardTypes/complianceRequirement").
-attr(node, X, shape, rectangle) :- node(X, _), base_recurringTask(X).
-attr(node, X, style, rounded) :- node(X, _), base_recurringTask(X).
+attr(node, X, shape, rectangle) :- node(X, _), internalControl(X).
+attr(node, X, style, rounded) :- node(X, _), internalControl(X).
 attr(node, X, shape, note) :- node(X, _), evidence(X).
 attr(node, X, shape, note) :- node(X, _), field(X, "cardType", "secdeva/cardTypes/requirement").
 attr(node, X, shape, note) :- node(X, _), evidencePlaceholder(X).
