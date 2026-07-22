@@ -1,0 +1,8 @@
+selectAll.
+
+result(Risk) :-
+  secdeva_closestProject({{cardKey}}, Project),
+  secdeva_closestProject(Risk, Project),
+  field(Risk, "cardType", "ismsa/cardTypes/risk").
+
+orderBy("title", "ASC").

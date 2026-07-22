@@ -1,3 +1,10 @@
+TIP: Security issues represent concrete weaknesses or problems that already exists — for example a vulnerability, misconfiguration, or control gap. A security issue is something to fix and close.
+
+{{#createCards}}
+  "template": "secdeva/templates/securityIssue",
+  "buttonLabel": "Create a security issue"
+{{/createCards}}
+
 {{#report}}
   "name": "secdeva/reports/securityIssuesNeedingAttention"
 {{/report}}

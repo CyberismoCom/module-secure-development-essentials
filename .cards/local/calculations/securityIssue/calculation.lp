@@ -1,3 +1,7 @@
+hiddenInTreeView(Issue) :-
+  ancestor(Issue, SecurityIssueRegister),
+  field(SecurityIssueRegister, "base/fieldTypes/identifier", "secdeva_register_security-issues").  
+
 transitionDenied(
     Issue,
     "Analyse",
