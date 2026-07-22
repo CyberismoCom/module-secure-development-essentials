@@ -55,11 +55,7 @@ To add a dataflow to or from this process, click the link symbol in the top leve
 == Related security issues
 
 {{#report}}
-  "name": "secdeva/reports/createThreat"
-{{/report}}
-
-{{#report}}
-  "name": "secdeva/reports/securityIssueList"
+  "name": "secdeva/reports/createSecurityIssue"
 {{/report}}
 
 == Related security requirements

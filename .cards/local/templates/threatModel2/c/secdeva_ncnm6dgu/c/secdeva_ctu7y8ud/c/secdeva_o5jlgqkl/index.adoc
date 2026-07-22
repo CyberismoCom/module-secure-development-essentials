@@ -14,7 +14,8 @@ To add a dataflow to or from this person, click the link symbol in the top level
   "name": "secdeva/reports/createRisk"
 {{/report}}
 
+== Related security issues
 
 {{#report}}
-  "name": "secdeva/reports/createThreat"
+  "name": "secdeva/reports/createSecurityIssue"
 {{/report}}

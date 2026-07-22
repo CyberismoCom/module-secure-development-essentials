@@ -13,6 +13,12 @@
   "name": "secdeva/reports/createRisk"
 {{/report}}
 
+== Related security issues
+
+{{#report}}
+  "name": "secdeva/reports/createSecurityIssue"
+{{/report}}
+
 == Related security requirements
 
 {{#report}}

@@ -27,6 +27,11 @@
             "name": "base/fieldTypes/informationClassification",
             "displayName": "",
             "isCalculated": false
+        },
+        {
+            "name": "base/fieldTypes/identifier",
+            "displayName": "",
+            "isCalculated": false
         }
     ],
     "alwaysVisibleFields": [

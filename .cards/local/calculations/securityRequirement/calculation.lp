@@ -1,3 +1,7 @@
+hiddenInTreeView(Requirement) :-
+  ancestor(Requirement, RequirementRegister),
+  field(RequirementRegister, "base/fieldTypes/identifier", "secdeva_register_security-requirements").  
+
 link(Requirement, Risk, "ismsa/linkTypes/mitigates") :-
     field(Risk, "cardType", "ismsa/cardTypes/risk"),
     field(Requirement, "cardType", "secdeva/cardTypes/requirement"),
