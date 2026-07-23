@@ -1,0 +1,47 @@
+== Getting started with secure development
+
+This project guides you through the IEC 62443-4-1 Secure Development Lifecycle using the Cyberismo tool. It is structured into phases and adoption steps that align with your product's journey from initial planning to production operations.
+
+=== How this project is organized
+
+[mermaid]
+----
+flowchart TB
+    F[Foundation] --> P
+    subgraph P[Product development cycle]
+      direction LR
+      D[Design] --> I[Implementation]
+      I --> V[Verification]
+      V --> R[Releases]
+      R --> O[Operations]
+      O -- Enhance --> D
+    end
+----
+
+Each phase contains security controls and tasks relevant to that stage:
+
+* *Foundation* — Establish security governance, training, and tooling before development begins.
+* *Design* — Define security requirements, perform threat modeling, and create specifications.
+* *Implementation* — Apply secure coding practices and manage third-party dependencies.
+* *Verification* — Conduct security testing and validate that requirements are met.
+* *Releases* — Prepare secure release artifacts and documentation.
+* *Operations* — Handle vulnerability disclosures, patches, and end-of-life planning.
+
+=== Adoption steps
+
+Controls and tasks are assigned an adoption step (1–3) so you can roll out secure development incrementally:
+
+* *Step 1* — Essential practices. Start here to establish baseline security across all phases.
+* *Step 2* — Strengthened practices. Expand coverage once Step 1 is in place.
+* *Step 3* — Advanced practices. Achieve full IEC 62443-4-1 compliance maturity.
+
+Focus on completing all Step 1 items before moving to Step 2. This ensures the most critical security practices are in place first.
+
+=== Where to start
+
+. Fill in the project scope and objectives on the parent card (*Main page*).
+. Work through the *Foundation* phase to set up essential security practices.
+. As development progresses, address controls in each subsequent phase.
+. Use *Status & next steps* to track overall progress and identify gaps.
+
+TIP: You do not need to complete all phases at once. Start with Foundation and expand as your product matures.
