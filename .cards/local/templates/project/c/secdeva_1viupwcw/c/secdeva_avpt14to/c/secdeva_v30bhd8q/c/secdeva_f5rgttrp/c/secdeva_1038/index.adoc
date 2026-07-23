@@ -7,7 +7,7 @@
 {{/graph}}
 ====
 
-Interfaces are typically a significant attack vector. Documenting the interfaces according to the interface specification template ensures that secure design principles have been applied when designing the interface.
+APIs, protocols, physical connections, and other interfaces are typically a significant attack vector. Documenting the interfaces according to the interface specification template ensures that secure design principles have been applied when designing the interface.
 
 Examples of interfaces include
 
