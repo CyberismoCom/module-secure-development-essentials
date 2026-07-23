@@ -1,18 +1,14 @@
 == Introduction
 
-Threat modelling is a process to identify security threats based on the projected product architecture.
-
-== Scope
-
-This model consideres the following scope:
-
-* {blank}
+Threat modelling is a process to identify security threats based on the projected product architecture. This threat model covers the scope of development project.
 
 == Assets
 
-The most relevant assets that need protection are:
+Assets are documented as part of the dataflow model and, if necessary, separately in the asset register, see {{#report}}"name": "secdeva/reports/xref", "identifier": "secdeva_register_assets"{{/report}}.
 
-* {blank}
+{{#report}}
+  "name": "secdeva/reports/assets"
+{{/report}}
 
 == Security context
 
@@ -26,10 +22,12 @@ Security context must be documented before a threat model can be approved.
 
 == Dataflow diagram
 
+.Instructions
+[%collapsible]
+=====
 [NOTE]
-.Review instructions
 ====
-When reviewing this section, check that the following aspects have been documented in the data flow diagram:
+When reviewing this section, check that the following aspects have been documented in the data flow model:
 
 * Processes
 * Data stores
@@ -40,6 +38,7 @@ When reviewing this section, check that the following aspects have been document
 You can evaluate whether the DFD describes the system with sufficient detail by trying to tell stories of a component's behavior. If the stories contain entities that are not in the model, then the DFD needs updating.
 
 ====
+=====
 
 == Context diagram
 
@@ -54,12 +53,6 @@ You can evaluate whether the DFD describes the system with sufficient detail by 
   "model": "secdeva/graphModels/dataflow",
   "view": "secdeva/graphViews/allEntities"
 {{/graph}}
-
-== Interfaces
-
-{{#report}}
-  "name": "secdeva/reports/modelInterfaces"
-{{/report}}
 
 == Create a top-level element
 
@@ -98,60 +91,40 @@ Data store:: A data store stores information. For example, a database or a file.
   "template": "secdeva/templates/dataStore2"
 {{/createCards}}
 
-== List of external dependencies
+== 3rd party technologies
 
+.Instructions
+[%collapsible]
+=====
 [NOTE]
-.Review instructions
 ====
-When reviewing this section, check that all code that is developed by a 3rd party and linked into the product is listed. That may include
+When reviewing this section, check that technologies that are developed by a 3rd party and linked into the product are listed. That may include
 
 * Applications
 * Command line tools
 * Libraries
 * Drivers
 ====
+=====
+
+Major 3rd party technologies are documented as part of the dataflow model or directly in {{#report}}"name": "xref", "identifier": "secdeva_register_technology-assessments"{{/report}}:
 
 {{#report}}
   "name": "secdeva/reports/projectTechnologies"
 {{/report}}
 
-In addition to the documented 3rd party technologies, the following external dependencies have been identified:
-
-* {blank}
-* {blank}
-
-== Internal and external interfaces
-
-[NOTE]
-.Review instructions
-====
-When reviewing this section, check that all internal and external interfaces, such as communication protocols are listed. Create dataflows and interface descriptions in the underlying dataflow model.
-====
+== Interfaces and physical connections
 
 {{#report}}
   "name": "secdeva/reports/modelInterfaces"
 {{/report}}
 
-== Physical ports and connections
-
-[NOTE]
-.Review instructions
-====
-When reviewing this section, check that all physical ports and connections are listed.
-
-* Externally accessible physical ports, including debug ports
-* Circuit board connections such as as Joint Test Action Group (JTAG) connections or debug headers which might be used to attack the hardware
-====
-
-Identified physical ports and connections are:
-
-* {blank}
-* {blank}
-
 == Potential attack vectors and attack surface
 
+.Instructions
+[%collapsible]
+=====
 [NOTE]
-.Review instructions
 ====
 An attack vector is a _route_ or _means_ by which an attacker can attack the system. Examples of attack vectors include
 
@@ -175,16 +148,18 @@ Attack surface: The attack surface of a system or a component is the sum of the 
 
 You can use this list of attack vectors to understand the attack surface of the product
 ====
+=====
 
-Identified attack vectors are:
-
-* {blank}
-* ...
+{{#report}}
+  "name": "secdeva/reports/createAttackVector"
+{{/report}}
 
 == List of identified security issues
 
-[NOTE]
 .Review instructions
+[%collapsible]
+=====
+[NOTE]
 ====
 When reviewing the list of security issues identified in threat modelling, check that
 
@@ -196,6 +171,7 @@ When reviewing the list of security issues identified in threat modelling, check
 
 Note that handling of security issues is not part of threat model review.
 ====
+=====
 
 {{#createCards}}
   "template": "secdeva/templates/threat",
@@ -206,7 +182,7 @@ Note that handling of security issues is not part of threat model review.
   "name": "secdeva/reports/securityIssueList"
 {{/report}}
 
-== Reviews
+== Threat model reviews
 
 {{#createCards}}
     "template": "base/templates/reviewTask",

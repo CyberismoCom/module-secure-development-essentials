@@ -6,3 +6,7 @@ If you cannot create a technology assessment from the related elements of the th
   "template": "secdeva/templates/technology",
   "buttonLabel": "Create a technology assessment"
 {{/createCards}}
+
+{{#report}}
+  "name": "secdeva/reports/projectTechnologies"
+{{/report}}

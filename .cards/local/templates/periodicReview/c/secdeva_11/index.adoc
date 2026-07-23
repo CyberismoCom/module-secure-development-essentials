@@ -66,6 +66,10 @@ Check that a similar periodic review has been successfully conducted for any sub
 
 Comments, links:
 
+=== Retrospective
+
+TIP: Document here what went well in this period, and what could be improved in the next periods. 
+
 == Conclusion
 
 #TODO: add here a conclusion. The review can be accepted, if the current state of cybersecurity management is known and the required actions have been planned.#

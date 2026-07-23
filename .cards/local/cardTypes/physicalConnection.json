@@ -1,0 +1,10 @@
+{
+    "name": "secdeva/cardTypes/physicalConnection",
+    "displayName": "Physical connection",
+    "workflow": "secdeva/workflows/void",
+    "customFields": [],
+    "alwaysVisibleFields": [],
+    "optionallyVisibleFields": [],
+    "category": "Threat model",
+    "description": "A physical port or connection"
+}

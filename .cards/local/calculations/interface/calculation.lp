@@ -4,36 +4,41 @@ secdeva_externalEntity(Card) :-
 secdeva_externalEntity(Card) :-
     field(Card, "cardType", "secdeva/cardTypes/person").
 
-field(Interface, "secdeva/fieldTypes/isExternal", "yes") :-
-    field(Interface, "cardType", "secdeva/cardTypes/interface"),
-    link(Source, Interface, "secdeva/linkTypes/dataflow", _),
+secdeva_interfaceOrPhysicalConnection(Card) :-
+    field(Card, "cardType", "secdeva/cardTypes/interface").
+
+secdeva_interfaceOrPhysicalConnection(Card) :-
+    field(Card, "cardType", "secdeva/cardTypes/physicalConnection").
+
+field(Card, "secdeva/fieldTypes/isExternal", "yes") :-
+    secdeva_interfaceOrPhysicalConnection(Card),
+    link(Source, Card, "secdeva/linkTypes/dataflow", _),
     secdeva_externalEntity(Source).
 
-field(Interface, "secdeva/fieldTypes/isExternal", "no") :-
-    field(Interface, "cardType", "secdeva/cardTypes/interface"),
+field(Card, "secdeva/fieldTypes/isExternal", "no") :-
+    secdeva_interfaceOrPhysicalConnection(Card),
     not secdeva_externalEntity(Source) :
-    link(Source, Interface, "secdeva/linkTypes/dataflow", _).
+    link(Source, Card, "secdeva/linkTypes/dataflow", _).
 
-field(Interface, "secdeva/fieldTypes/isExternal", "noInfo") :-
-    field(Interface, "cardType", "secdeva/cardTypes/interface"),
-    not link(_, Interface, "secdeva/linkTypes/dataflow", _).
+field(Card, "secdeva/fieldTypes/isExternal", "noInfo") :-
+    secdeva_interfaceOrPhysicalConnection(Card),
+    not link(_, Card, "secdeva/linkTypes/dataflow", _).
 
-field(Interface, "secdeva/fieldTypes/crossesTrustBoundary", "noInfo") :-
-    field(Interface, "cardType", "secdeva/cardTypes/interface"),
-    not link(_, Interface, "secdeva/linkTypes/dataflow", _).
+field(Card, "secdeva/fieldTypes/crossesTrustBoundary", "noInfo") :-
+    secdeva_interfaceOrPhysicalConnection(Card),
+    not link(_, Card, "secdeva/linkTypes/dataflow", _).
 
-
-field(Interface, "secdeva/fieldTypes/crossesTrustBoundary", "yes") :-
-    field(Interface, "cardType", "secdeva/cardTypes/interface"),
-    link(Source, Interface, "secdeva/linkTypes/dataflow", _),
+field(Card, "secdeva/fieldTypes/crossesTrustBoundary", "yes") :-
+    secdeva_interfaceOrPhysicalConnection(Card),
+    link(Source, Card, "secdeva/linkTypes/dataflow", _),
     field(TrustBoundary, "cardType", "secdeva/cardTypes/trustBoundary"),
-    ancestor(Interface, TrustBoundary),
+    ancestor(Card, TrustBoundary),
     not ancestor(Source, TrustBoundary).
 
-field(Interface, "secdeva/fieldTypes/crossesTrustBoundary", "no") :-
-    field(Interface, "cardType", "secdeva/cardTypes/interface"),
-    link(_, Interface, "secdeva/linkTypes/dataflow", _),
+field(Card, "secdeva/fieldTypes/crossesTrustBoundary", "no") :-
+    secdeva_interfaceOrPhysicalConnection(Card),
+    link(_, Card, "secdeva/linkTypes/dataflow", _),
     ancestor(Source, TrustBoundary) :
-    link(Source, Interface, "secdeva/linkTypes/dataflow", _),
+    link(Source, Card, "secdeva/linkTypes/dataflow", _),
     field(TrustBoundary, "cardType", "secdeva/cardTypes/trustBoundary"),
-    ancestor(Interface, TrustBoundary).
+    ancestor(Card, TrustBoundary).

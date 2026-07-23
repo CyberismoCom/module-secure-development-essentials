@@ -16,6 +16,11 @@ To add a dataflow to or from this data store, click the link symbol in the top l
 {{/createCards}}
 
 {{#createCards}}
+  "buttonLabel": "Create a physical port or connection",
+  "template": "secdeva/templates/physicalConnection"
+{{/createCards}}
+
+{{#createCards}}
     "buttonLabel": "Create a trust boundary",
     "template": "secdeva/templates/trustBoundary2"
 {{/createCards}}

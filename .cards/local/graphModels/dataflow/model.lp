@@ -22,8 +22,9 @@ external(X) :- person(X).
 datastore(X) :- field(X, "cardType", "secdeva/cardTypes/dataStore").
 entity(X) :- datastore(X).
 
-% interfaces (always hidden)
+% interfaces and physical ports and connections (always hidden)
 interface(X) :- field(X, "cardType", "secdeva/cardTypes/interface").
+interface(X) :- field(X, "cardType", "secdeva/cardTypes/physicalConnection").
 entity(X) :- interface(X).
 hide(X) :- interface(X).
 

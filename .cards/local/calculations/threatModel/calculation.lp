@@ -131,3 +131,7 @@ policyCheckFailure(ReviewTask, "Threat model control", "Reviewer cannot be the s
     field(ReviewTask, "base/fieldTypes/owner", Reviewer),
     DocumentOwner = Reviewer.
 
+% Individual attack vector cards are not shown in the navigation
+
+hiddenInTreeView(AttackVector) :-
+    field(AttackVector, "base/fieldTypes/identifier", "secdeva_attack-vector").
