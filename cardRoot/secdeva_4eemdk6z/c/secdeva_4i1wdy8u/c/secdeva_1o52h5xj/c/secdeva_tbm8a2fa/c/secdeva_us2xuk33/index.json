@@ -1,0 +1,18 @@
+{
+    "title": "Use cryptography properly and effectively",
+    "cardType": "ismsa/cardTypes/internalControl",
+    "workflowState": "Open",
+    "rank": "0|g",
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/internalControlReviewPeriod": "12months",
+    "base/fieldTypes/justification": null,
+    "base/fieldTypes/reviewMonth": null,
+    "base/fieldTypes/lastReviewed": null,
+    "base/fieldTypes/adoptionStep": "step2",
+    "base/fieldTypes/identifier": "secdeva_control_use-of-cryptography",
+    "links": [],
+    "lastUpdated": "2026-07-23T10:42:47.754Z",
+    "templateCardKey": "secdeva_vwe7qosc",
+    "createdAt": "2026-07-23T10:42:47.746Z"
+}

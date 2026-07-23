@@ -1,0 +1,16 @@
+{
+    "title": "Registers",
+    "cardType": "ismsa/cardTypes/register",
+    "workflowState": "Draft",
+    "rank": "0|q",
+    "base/fieldTypes/adoptionStep": null,
+    "base/fieldTypes/identifier": "secdeva_registers",
+    "lastUpdated": "2026-07-23T10:42:47.748Z",
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/adoptionStep": null,
+    "ismsa/fieldTypes/progress": null,
+    "links": [],
+    "templateCardKey": "secdeva_avpt14to",
+    "createdAt": "2026-07-23T10:42:47.744Z"
+}

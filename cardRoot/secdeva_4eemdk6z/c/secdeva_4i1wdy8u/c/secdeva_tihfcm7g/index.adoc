@@ -1,0 +1,32 @@
+TIP: An asset is anything that has value to an organisation or to the users of a product or a service and therefore requires protection, such as data, processes, technology, facilities, competences, or suppliers. The list of assets includes processes, interfaces and data stores from the dataflow model of your threat model  {{#report}}"name":"secdeva/reports/xref","identifier":"secdeva_document_threat-model"{{/report}} - add this kind of assets directly in the threat model.
+
+Document assets that cannot be created in the threat model by clicking one of the following buttons.
+
+{{#createCards}}
+  "template": "secdeva/templates/asset",
+  "buttonLabel": "Add a new generic asset"
+{{/createCards}}
+
+{{#createCards}}
+  "template": "secdeva/templates/assetData",
+  "buttonLabel": "Add a new data asset"
+{{/createCards}}
+
+{{#createCards}}
+  "template": "secdeva/templates/assetDevice",
+  "buttonLabel": "Add a new device asset"
+{{/createCards}}
+
+{{#createCards}}
+  "template": "secdeva/templates/assetInformationSystem",
+  "buttonLabel": "Add a new information system asset"
+{{/createCards}}
+
+{{#createCards}}
+  "template": "secdeva/templates/assetSupplier",
+  "buttonLabel": "Add a new supplier"
+{{/createCards}}
+
+{{#report}}
+  "name": "secdeva/reports/assets"
+{{/report}}

@@ -1,0 +1,15 @@
+{
+    "title": "Operations",
+    "cardType": "ismsa/cardTypes/register",
+    "workflowState": "Draft",
+    "rank": "0|f",
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/adoptionStep": "step1",
+    "ismsa/fieldTypes/progress": "secdeva_internal-control-progress",
+    "base/fieldTypes/identifier": "secdeva_register_operations-controls",
+    "lastUpdated": "2026-07-23T10:42:47.752Z",
+    "links": [],
+    "templateCardKey": "secdeva_unkzaglu",
+    "createdAt": "2026-07-23T10:42:47.744Z"
+}

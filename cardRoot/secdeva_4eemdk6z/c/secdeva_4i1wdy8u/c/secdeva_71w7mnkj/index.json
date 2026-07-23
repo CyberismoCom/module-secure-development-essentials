@@ -1,0 +1,15 @@
+{
+    "title": "Security requirements",
+    "cardType": "ismsa/cardTypes/register",
+    "workflowState": "Draft",
+    "rank": "0|cg",
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/adoptionStep": null,
+    "ismsa/fieldTypes/progress": null,
+    "base/fieldTypes/identifier": "secdeva_register_security-requirements",
+    "lastUpdated": "2026-07-23T10:42:47.750Z",
+    "links": [],
+    "templateCardKey": "secdeva_mxdpckat",
+    "createdAt": "2026-07-23T10:42:47.744Z"
+}

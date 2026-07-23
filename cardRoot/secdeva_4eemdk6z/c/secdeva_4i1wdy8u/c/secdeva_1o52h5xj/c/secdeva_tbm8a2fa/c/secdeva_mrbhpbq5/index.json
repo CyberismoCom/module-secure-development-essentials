@@ -1,0 +1,18 @@
+{
+    "cardType": "ismsa/cardTypes/internalControl",
+    "title": "Manage 3rd party technologies",
+    "workflowState": "Open",
+    "rank": "0|f",
+    "lastUpdated": "2026-07-23T10:42:47.753Z",
+    "links": [],
+    "base/fieldTypes/adoptionStep": "step1",
+    "base/fieldTypes/justification": null,
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/internalControlReviewPeriod": "12months",
+    "base/fieldTypes/reviewMonth": "march",
+    "base/fieldTypes/lastReviewed": null,
+    "base/fieldTypes/identifier": "secdeva_control_3rd-party-technologies",
+    "templateCardKey": "secdeva_1011",
+    "createdAt": "2026-07-23T10:42:47.745Z"
+}

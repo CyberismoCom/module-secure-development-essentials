@@ -1,0 +1,10 @@
+TIP: Create a risk if you identify a cyber threat — something that can cause harm by exploiting one or more vulnerabilities. A risk is the potential for loss: how likely a threat is to exploit a vulnerability, and how severe the resulting harm would be.
+
+{{#createCards}}
+  "template": "secdeva/templates/productRisk2",
+  "buttonLabel": "Create a risk"
+{{/createCards}}
+
+{{#report}}
+  "name": "secdeva/reports/risks"
+{{/report}}

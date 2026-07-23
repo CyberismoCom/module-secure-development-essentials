@@ -1,0 +1,15 @@
+{
+    "title": "Decisions",
+    "cardType": "ismsa/cardTypes/register",
+    "workflowState": "Draft",
+    "rank": "0|en",
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/adoptionStep": null,
+    "ismsa/fieldTypes/progress": null,
+    "base/fieldTypes/identifier": "secdeva_register_decisions",
+    "lastUpdated": "2026-07-23T10:42:47.750Z",
+    "links": [],
+    "templateCardKey": "secdeva_nqjjo5or",
+    "createdAt": "2026-07-23T10:42:47.744Z"
+}

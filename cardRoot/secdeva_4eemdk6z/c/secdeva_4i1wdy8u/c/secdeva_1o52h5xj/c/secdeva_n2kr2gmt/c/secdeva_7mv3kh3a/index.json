@@ -1,0 +1,18 @@
+{
+    "title": "Manage defects",
+    "cardType": "ismsa/cardTypes/internalControl",
+    "workflowState": "Open",
+    "rank": "0|c",
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/internalControlReviewPeriod": "3months",
+    "base/fieldTypes/justification": null,
+    "base/fieldTypes/reviewMonth": "february",
+    "base/fieldTypes/lastReviewed": null,
+    "base/fieldTypes/adoptionStep": "step1",
+    "base/fieldTypes/identifier": "secdeva_control_manage-defects",
+    "links": [],
+    "lastUpdated": "2026-07-23T10:42:47.753Z",
+    "templateCardKey": "secdeva_vv6wt75h",
+    "createdAt": "2026-07-23T10:42:47.745Z"
+}

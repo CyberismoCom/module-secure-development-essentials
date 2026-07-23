@@ -1,0 +1,23 @@
+{
+    "title": "Context creation",
+    "cardType": "secdeva/cardTypes/project",
+    "workflowState": "Draft",
+    "rank": "0|e",
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/adoptionStep": "step1",
+    "secdeva/fieldTypes/adoptionStepJustification": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/assetCriticalityForOperations": null,
+    "ismsa/fieldTypes/assetType": null,
+    "ismsa/fieldTypes/assetPersonalInformation": null,
+    "ismsa/fieldTypes/assetIntegrity": null,
+    "ismsa/fieldTypes/assetAvailability": null,
+    "ismsa/fieldTypes/assetLocation": null,
+    "ismsa/fieldTypes/assetBackups": null,
+    "secdeva/fieldTypes/acceptableSeverity": "low",
+    "secdeva/fieldTypes/deferrableSeverity": "medium",
+    "links": [],
+    "lastUpdated": "2026-07-23T10:43:08.242Z",
+    "templateCardKey": "secdeva_1viupwcw",
+    "createdAt": "2026-07-23T10:42:47.743Z"
+}

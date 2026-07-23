@@ -1,0 +1,15 @@
+{
+    "title": "Implementation",
+    "cardType": "ismsa/cardTypes/register",
+    "workflowState": "Draft",
+    "rank": "0|d",
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/adoptionStep": "step1",
+    "ismsa/fieldTypes/progress": "secdeva_internal-control-progress",
+    "base/fieldTypes/identifier": "secdeva_register_implementation-controls",
+    "lastUpdated": "2026-07-23T10:42:47.752Z",
+    "links": [],
+    "templateCardKey": "secdeva_r2928r4m",
+    "createdAt": "2026-07-23T10:42:47.744Z"
+}

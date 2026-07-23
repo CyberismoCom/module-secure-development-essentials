@@ -1,0 +1,12 @@
+{
+    "title": "Getting started",
+    "cardType": "secdeva/cardTypes/page",
+    "workflowState": "None",
+    "rank": "0|a",
+    "base/fieldTypes/adoptionStep": "step1",
+    "base/fieldTypes/identifier": null,
+    "lastUpdated": "2026-07-23T10:42:47.748Z",
+    "links": [],
+    "templateCardKey": "secdeva_4y3o1bb8",
+    "createdAt": "2026-07-23T10:42:47.743Z"
+}

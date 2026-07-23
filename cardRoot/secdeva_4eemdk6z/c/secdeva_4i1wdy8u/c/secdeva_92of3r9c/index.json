@@ -1,0 +1,15 @@
+{
+    "title": "Compliance controls",
+    "cardType": "ismsa/cardTypes/register",
+    "workflowState": "Draft",
+    "rank": "0|d",
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/adoptionStep": "step1",
+    "ismsa/fieldTypes/progress": "compliance-progress",
+    "base/fieldTypes/identifier": "secdeva_register_compliance-controls",
+    "lastUpdated": "2026-07-23T10:42:47.751Z",
+    "links": [],
+    "templateCardKey": "secdeva_sgvtchev",
+    "createdAt": "2026-07-23T10:42:47.744Z"
+}
