@@ -97,7 +97,7 @@ The technology is widely used, or already in use within the product.
 
 Comments, links:
 
-=== Overlapping technologies
+=== No overlapping technologies
 
 The technology is not redundant or overlapping with another technology that the product is already using for the same purpose. For example, if the product already includes a crypto library, ensure that this technology is not another, overlapping crypto library.
 
