@@ -154,39 +154,33 @@ You can use this list of attack vectors to understand the attack surface of the 
   "name": "secdeva/reports/createAttackVector"
 {{/report}}
 
-== List of identified security issues
+== Identified risks and security issues
 
-.Review instructions
+.Instructions
 [%collapsible]
 =====
 [NOTE]
 ====
-When reviewing the list of security issues identified in threat modelling, check that
+When reviewing the lists of identified risks and security issues, check that
 
-* Threat modelling was performed in an acceptable level of detail
-* According to your best current understanding, all the threats that were identified are included in the list of threats
-* The security issues have been processed and the mitigation and/or dispositions have been documented
-* The planned mitigations minimize cybersecurity risks, prevent cybersecurity incidents and minimize the impacts of such incidents.
-* Threat modeling has taken into account possible impacts of cybersecurity risks to the health and safety of users.
+* Threat modelling was performed in an acceptable level of detail, taking into account possible impacts of cybersecurity risks to the health and safety of users
+* According to your best current understanding, all relevant findings have been listed
+* The identified risks and security issues have been processed and treatment plans have been documented
+* The planned treatment minimise cybersecurity risks, prevent cybersecurity incidents and minimize the impacts of such incidents.
 
-Note that handling of security issues is not part of threat model review.
+Note that implementing the treatment plan is not part of threat model review.
 ====
 =====
 
-{{#createCards}}
-  "template": "secdeva/templates/threat",
-  "buttonLabel": "Create a new security issue"
-{{/createCards}}
-
 {{#report}}
-  "name": "secdeva/reports/securityIssueList"
+  "name": "secdeva/reports/threatModelFindings"
 {{/report}}
 
 == Threat model reviews
 
 {{#createCards}}
     "template": "base/templates/reviewTask",
-    "buttonLabel": "Add new review task"
+    "buttonLabel": "Add a new review task"
 {{/createCards}}
 
 {{#report}}
