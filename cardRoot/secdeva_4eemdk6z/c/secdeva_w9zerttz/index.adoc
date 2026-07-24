@@ -1,6 +1,6 @@
 == Getting started with secure development
 
-This project guides you through the IEC 62443-4-1 Secure Development Lifecycle using the Cyberismo tool. It is structured into phases and adoption steps that align with your product's journey from initial planning to production operations.
+This project guides you through the Secure Development Lifecycle using the Cyberismo tool. It is structured into phases and adoption steps that align with your product's journey from initial planning to production operations.
 
 === How this project is organized
 
@@ -33,7 +33,7 @@ Controls and tasks are assigned an adoption step (1–3) so you can roll out sec
 
 * *Step 1* — Essential practices. Start here to establish baseline security across all phases.
 * *Step 2* — Strengthened practices. Expand coverage once Step 1 is in place.
-* *Step 3* — Advanced practices. Achieve full IEC 62443-4-1 compliance maturity.
+* *Step 3* — Advanced practices. Achieve standards compliance.
 
 Focus on completing all Step 1 items before moving to Step 2. This ensures the most critical security practices are in place first.
 
