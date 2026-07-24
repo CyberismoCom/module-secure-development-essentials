@@ -1,14 +1,26 @@
-{{#if results }}
+{{#each results}}
+{{#if requirements}}
 
 [cols="5,2"]
 |===
 | Requirement | Workflow State
 
-{{#each results}}
+{{#each requirements}}
 |xref:{{this.key}}.adoc[{{this.title}}] 
 |{{this.workflowState}}
 {{/each}}
 
 |===
 
+{{#if (eq registerStatus "Ready")}}
+The {{#xref}}"cardKey": "{{register}}"{{/xref}} register has been marked *Ready*. 
+{{else}}
+The status of {{#xref}}"cardKey": "{{register}}"{{/xref}} register is {{registerStatus}}. If all relevant security requirements have been identified and approved, then you can mark the register as *Ready*.
 {{/if}}
+
+{{else}}
+
+There are no security requirements in this project.
+
+{{/if}}
+{{/each}}

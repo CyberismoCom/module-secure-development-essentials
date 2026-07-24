@@ -1,9 +1,22 @@
 selectAll.
-result(Card) :-
+
+result(result).
+
+resultField(result, "register", Register, "shortText") :-
+    secdeva_closestProject({{cardKey}}, Project),
+    secdeva_closestProject(Register, Project),
+    field(Register, "base/fieldTypes/identifier", "secdeva_register_security-requirements").
+resultField(result, "registerStatus", Status, "shortText") :-
+    secdeva_closestProject({{cardKey}}, Project),
+    secdeva_closestProject(Register, Project),
+    field(Register, "base/fieldTypes/identifier", "secdeva_register_security-requirements"),
+    field(Register, "workflowState", Status).
+
+childResult(result, Card, "requirements") :-
     ancestor(Card, {{cardKey}}),
     field(Card, "cardType", "secdeva/cardTypes/requirement").
 
-result(Card) :-
+childResult(result, Card, "requirements") :-
     secdeva_closestProject({{cardKey}}, Project),
     secdeva_closestProject(Card, Project),
     field(Card, "cardType", "secdeva/cardTypes/requirement").

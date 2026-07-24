@@ -1,12 +1,27 @@
 selectAll.
 
-result(Risk) :-
+result(result).
+
+resultField(result, "register", Register, "shortText") :-
+    secdeva_closestProject({{cardKey}}, Project),
+    secdeva_closestProject(Register, Project),
+    field(Register, "base/fieldTypes/identifier", "secdeva_register_risks").
+resultField(result, "registerStatus", Status, "shortText") :-
+    secdeva_closestProject({{cardKey}}, Project),
+    secdeva_closestProject(Register, Project),
+    field(Register, "base/fieldTypes/identifier", "secdeva_register_risks"),
+    field(Register, "workflowState", Status).
+
+secdeva_riskResult(Risk) :-
   secdeva_closestProject({{cardKey}}, Project),
   secdeva_closestProject(Risk, Project),
   field(Risk, "cardType", "ismsa/cardTypes/risk").
 
+childResult(result, Risk, "risks") :-
+  secdeva_riskResult(Risk).
+
 childResult(Risk, Asset, "affectedAssets") :-
-  result(Risk),
+  secdeva_riskResult(Risk),
   link(Asset, Risk, "ismsa/linkTypes/presentsRisk").
 
 orderBy("title", "ASC").

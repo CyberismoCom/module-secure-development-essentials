@@ -1,17 +1,26 @@
-{{#if results}}
+{{#each results}}
+{{#if assets}}
 
 [cols="4,3,2"]
 |===
 | Asset | Owner  | Status
 
-{{#each results}}
+{{#each assets}}
 | xref:{{this.key}}.adoc[{{this.title}}]
 | {{this.[base/fieldTypes/owner]}}
 | {{this.workflowState}}
 {{/each}}
 |===
+
+{{#if (eq registerStatus "Ready")}}
+The {{#xref}}"cardKey": "{{register}}"{{/xref}} register has been marked *Ready*. 
+{{else}}
+The status of {{#xref}}"cardKey": "{{register}}"{{/xref}} register is {{registerStatus}}. If all relevant assets have been identified and documented, then you can mark the register as *Ready*.
+{{/if}}
+
 {{else}}
 
 There are no assets in this project.
 
 {{/if}}
+{{/each}}
