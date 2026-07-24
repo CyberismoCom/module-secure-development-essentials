@@ -4,21 +4,26 @@ This page documents the design of an interface.
 
 == Interface review
 
-Review instructions
-
+.Review instructions
+[%collapsible]
+====
 * Review this document according to the review instructions of each chapter.
 * Document the results of the review in the review subtask
+====
 
 == Classification of the interface
 
+.Instructions
+[%collapsible]
+=====
 [NOTE]
-.Review instructions
 ====
 Interfaces are classified automatically based on the dataflow model. To review this section:
 
 . Check that the interface has been correctly classified as an external interface or internal interface. If not, then improve the dataflows of dataflow model. External interfaces have dataflows from external entities or persons.
 . Check that the relationship of this interface to the trust boundaries have been correctly classified. If not, then improve the dataflows and trust boundaries of the dataflow model.
 ====
+=====
 
 {{#report}}
   "name": "secdeva/reports/interfaceClassification"
@@ -26,8 +31,10 @@ Interfaces are classified automatically based on the dataflow model. To review t
 
 == Security context considerations
 
+.Instructions
+[%collapsible]
+=====
 [NOTE]
-.Review instructions
 ====
 The _security context_ refers to the security that is provided by the deployment environment.
 
@@ -44,11 +51,14 @@ To review this section:
 . Check that this section includes security considerations, assumptions and/or constraints associated with the use of the interface within the security context
 . Any considerations or constraints that must be taken into account when using this interface
 ====
+=====
 
 == Assets and privileges
 
+.Instructions
+[%collapsible]
+=====
 [NOTE]
-.Review instructions
 ====
 Consider the following aspects:
 
@@ -74,6 +84,7 @@ For example
 * Memory resources
 . Check that the required privileges, rights or access control permissions have been defined in the second column of the table below
 ====
+=====
 
 #TODO: document the reachable assets (both directly and indirectly), and the required privileges. For example, you may use the format of the table below.#
 
@@ -90,8 +101,10 @@ For example
 
 == Actors of the interface
 
+.Instructions
+[%collapsible]
+=====
 [NOTE]
-.Review instructions
 ====
 . Identify the potential users of the interface and check that they are represented in the dataflow model. See a summary above in *Classification of the interface*
 . Group the users into user categories based on similar needs of accessing the assets
@@ -102,6 +115,7 @@ To review this section:
 . Check that this section describes the potential user categories of the interface correctly
 . Check that the granted privileges have been documented correctly
 ====
+=====
 
 #TODO: Document the actors who may use the interface, and their required privileges, rights or permissions. For example, you may use the format of the table below.#
 
@@ -116,8 +130,10 @@ To review this section:
 
 == Protocol description
 
+.Instructions
+[%collapsible]
+=====
 [NOTE]
-.Review instructions
 ====
 
 This section is optional.
@@ -130,11 +146,14 @@ If applicable, the protocol description may include
 * Extensibility, versioning and version compatibility
 * Exceptions and error messages
 ====
+=====
 
 == Security capabilities
 
+.Instructions
+[%collapsible]
+=====
 [NOTE]
-.Review instructions
 ====
 
 Consider whether the following aspects are relevant:
@@ -156,11 +175,14 @@ To review this section
 
 . Check that the described security capabilities are sufficient and proportional to the security context, identified threats and relevant security requirements
 ====
+=====
 
 == 3rd party technologies
 
+.Instructions
+[%collapsible]
+=====
 [NOTE]
-.Review instructions
 ====
 
 To review this section:
@@ -168,6 +190,7 @@ To review this section:
 . Check that a technology selection document has been created for all 3rd party products that are used to implement this interface
 . Check that the used 3rd party technologies are listed in this section
 ====
+=====
 
 The implementation of this interface: (Select one of the following options)
 
@@ -178,7 +201,13 @@ The implementation of this interface: (Select one of the following options)
 
 == Design insights
 
-Review instructions: Documenting design insights
+
+.Instructions
+[%collapsible]
+=====
+[NOTE]
+====
+Documenting design insights
 
 In this optional section, you can specify additional information about the design of this interface:
 
@@ -189,11 +218,15 @@ In this optional section, you can specify additional information about the desig
 * Dependability considerations
 * Redundancy considerations
 * Diagnostics, logging and auditing considerations
+====
+=====
 
 == Security testing
 
+.Instructions
+[%collapsible]
+=====
 [NOTE]
-.Review instructions
 ====
 
 Security testing activities may be applicable to interface. Document the scoping decisions (which of the testing activities are applicable) and the justification of the decisions in the metadata of this card.
@@ -207,6 +240,7 @@ Security testing for interface tests fall into the following categories.
 * Network traffic load tests
 * Performance and scalability tests
 ====
+=====
 
 == Related risks
 
