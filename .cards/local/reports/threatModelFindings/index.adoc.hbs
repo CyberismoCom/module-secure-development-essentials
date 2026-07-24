@@ -10,6 +10,7 @@ If the risk affects a certain element such as a process or a data store, then cr
 ====
 
 {{#if this.risks}}
+.All risks in this project
 [cols="5,2,3"]
 |===
 | Risk | State | Affected assets
@@ -35,8 +36,6 @@ No risks have been identified in this threat model.
 
 {{/if}}
 
-See the risk register ({{#report}}"name": "secdeva/reports/xref", "identifier": "secdeva_register_risks"{{/report}}) for a complete list of risks in this project.
-
 {{#createCards}}
     "template": "secdeva/templates/productRisk2",
     "buttonLabel": "Create a risk that affects the entire product",
@@ -60,6 +59,7 @@ If the security issue affects a certain element such as a process or a data stor
 
 {{#if this.securityIssues}}
 
+.Security issues related to the assets in the threat model
 [cols="5,2,3"]
 |===
 | Security issue | State | Affected assets

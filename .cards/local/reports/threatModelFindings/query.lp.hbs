@@ -20,7 +20,8 @@ resultField(result, "riskRegister", Register, "shortText") :-
 childResult(result, Risk, "risks") :-
   field(Risk, "cardType", "ismsa/cardTypes/risk"),
   link(AffectedCard, Risk, "ismsa/linkTypes/presentsRisk"),
-  threatModelEntity(AffectedCard).
+  secdeva_closestProject(Risk, Project),
+  secdeva_closestProject({{cardKey}}, Project).
 
 childResult(result, Issue, "securityIssues") :-
   field(Issue, "cardType", "secdeva/cardTypes/securityIssue"),
