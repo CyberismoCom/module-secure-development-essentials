@@ -1,6 +1,6 @@
 == Introduction
 
-This document is a review of the security requirement management for #TODO: describe scope#.
+This document is a review of the security requirement management
 
 == Review checklist
 

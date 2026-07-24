@@ -1,5 +1,5 @@
 {
-    "title": "Review of security requirement management for (Scope)",
+    "title": "Review of 3rd party technologies",
     "cardType": "base/cardTypes/review",
     "workflowState": "",
     "rank": "0|b",
@@ -7,7 +7,7 @@
     "base/fieldTypes/informationClassification": "internal",
     "base/fieldTypes/lastReviewed": null,
     "base/fieldTypes/reviewPeriod": null,
-    "base/fieldTypes/identifier": "secdeva_review_requirement-management",
-    "lastUpdated": "2026-07-24T09:28:47.008Z",
+    "lastUpdated": "2026-07-24T09:49:10.844Z",
+    "base/fieldTypes/identifier": "secdeva_review_3rd-party-technologies",
     "links": []
 }

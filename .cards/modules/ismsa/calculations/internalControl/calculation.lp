@@ -38,6 +38,7 @@ field(Control, "base/fieldTypes/assessmentExplanation", "The control is in scope
 
 ismsa_evidenceStateReady("Approved").
 ismsa_evidenceStateReady("Passed").
+ismsa_evidenceStateReady("Ready").
 
 field(Control, "base/fieldTypes/assessment", "notOk") :-
   field(Control, "cardType", "ismsa/cardTypes/internalControl"),

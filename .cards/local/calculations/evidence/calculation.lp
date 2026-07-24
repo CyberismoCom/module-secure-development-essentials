@@ -27,7 +27,8 @@ secdeva_evidence("secdeva_control_security-requirements", "secdeva_document_secu
 secdeva_evidence("secdeva_control_security-requirements", "secdeva_review_requirement-management", "Review of \nsecurity requirements management").
 secdeva_evidence("secdeva_control_security-requirements", "secdeva_register_security-requirements", "Security requirement register").
 secdeva_evidence("secdeva_control_security-requirement-testing", "secdeva_test_security-requirements", "Review of \nsecurity requirement testing").
-secdeva_evidence("secdeva_control_3rd-party-technologies", "secdeva_document_technology", "Technology description").
+secdeva_evidence("secdeva_control_3rd-party-technologies", "secdeva_register_technology-assessments", "Technology assessments").
+secdeva_evidence("secdeva_control_3rd-party-technologies", "secdeva_review_3rd-party-technologies", "Review of 3rd party technologies").
 secdeva_evidence("secdeva_control_vulnerability-management", "secdeva_review_vulnerability-management", "Review of 3rd party \nvulnerability management").
 secdeva_evidence("secdeva_control_software-update-management", "secdeva_review_software-update-management", "Review of 3rd party \nsoftware update management").
 secdeva_evidence("secdeva_control_use-of-cryptography", "secdeva_review_use-of-cryptography", "Review of \nthe use of cryptograpy").

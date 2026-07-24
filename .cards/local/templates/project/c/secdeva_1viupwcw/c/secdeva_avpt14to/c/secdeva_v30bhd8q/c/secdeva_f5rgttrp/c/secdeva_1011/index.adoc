@@ -17,23 +17,26 @@ Reusing components from other internal projects may also introduce risks. Theref
 
 == How to implement
 
-For libraries and packages, the code reviewer shall consider the license, security and quality risks before approving a pull request that adds a new 3rd party dependency. Vulnerability management shall be in place. The development team should review the used 3rd party libraries and packages periodically, to remove unnecessary dependencies and to consider the risks that may have changed over time.
+1. For libraries and packages, the code reviewer shall consider the license, security and quality risks before approving a pull request that adds a new 3rd party dependency. Vulnerability management shall be in place. The development team should review the used 3rd party libraries and packages periodically, to remove unnecessary dependencies and to consider the risks that may have changed over time.
 
-For applications, frameworks, databases, toolkits and other significant 3rd party technologies, create a technology assessment document and follow the instructions from the template. The developent team should review the used significant 3rd party technologies periodically, to remove unnecessary dependencies and to consider the risks that may have changed over time.
+2. For applications, frameworks, databases, toolkits and other significant 3rd party technologies, create a technology assessment document and follow the instructions from the template. The developent team should review the used significant 3rd party technologies periodically, to remove unnecessary dependencies and to consider the risks that may have changed over time. See {{#report}}"name": "xref", "identifier": "secdeva_register_technology-assessments"{{/report}} for how to create technology assessments.
 
-In general, the development team must ensure that all 3rd party libraries, packages and significant dependencies are documented. Typically, libraries and packages are documented using a package manager or a package declaration as part of the source code. Other 3rd party technologies may be documented by creating a technology assessment document for each technology.
+3. In general, the development team must ensure that all 3rd party libraries, packages and significant dependencies are documented in a software bill of material (SBOM). 
 
-See {{#report}}"name": "xref", "identifier": "secdeva_register_technology-assessments"{{/report}} for how to create technology assessments.
+4. Conduct a review of 3rd party technologies to ensure that 3rd party technologies have been identified and assessed. This review focuses on the identification and selection of the technolgies, vulnerability management is reviewed separately.
 
 {{#report}}
-  "name": "secdeva/reports/projectTechnologies"
+  "name": "secdeva/reports/createReview",
+  "template": "secdeva/templates/reviewOf3rdPartyTechnologies",
+  "buttonLabel": "Create a review of 3rd party technologies management",
+  "phase": "secdeva_phase_design"
 {{/report}}
 
-== How to review this task
+== Assessment
 
-For libraries and packages, check that the team's code review practice includes review of new 3rd party dependencies. Notice that there are separate secure development tasks for vulnerability management and open source license compliance.
-
-Check that significant 3rd party technologies have been documented as technology assessments, which have been approved.
+{{#report}}
+  "name": "secdeva/reports/internalControlAssessment"
+{{/report}}
 
 == References
 
@@ -44,4 +47,3 @@ Check that significant 3rd party technologies have been documented as technology
 * EU CRA Annex I (2) (1)
 * EU CRA Annex I (2) (2)
 * EU CRA Annex I (2) (4)
-

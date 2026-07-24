@@ -1,6 +1,6 @@
 == Introduction
 
-This document is a review of the cybersecurity risk management for #TODO: describe scope#.
+This document is a review of the cybersecurity risk management.
 
 == Review checklist
 
