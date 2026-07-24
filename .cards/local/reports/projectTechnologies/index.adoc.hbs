@@ -1,19 +1,27 @@
-{{#if results}}
+{{#each results}}
+{{#if technologies}}
 
 [cols="4,2"]
 .3rd party technologies
 |===
 |Technology | Workflow state
 
-{{#each results}}
+{{#each technologies}}
 |xref:{{this.key}}.adoc[{{this.title}}]
 |{{this.workflowState}}
 {{/each}}
 
 |===
 
+{{#if (eq registerStatus "Ready")}}
+The {{#xref}}"cardKey": "{{register}}"{{/xref}} register has been marked *Ready*. 
+{{else}}
+The status of {{#xref}}"cardKey": "{{register}}"{{/xref}} register is {{registerStatus}}. If all relevant technologies have been identified and the assessments have been approved, then you can mark the register as *Ready*.
+{{/if}}
+
 {{else}}
 
 There are no 3rd party technology documents.
 
 {{/if}}
+{{/each}}
