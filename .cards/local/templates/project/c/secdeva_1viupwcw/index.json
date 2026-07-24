@@ -16,6 +16,7 @@
     "ismsa/fieldTypes/assetBackups": null,
     "secdeva/fieldTypes/acceptableSeverity": "low",
     "secdeva/fieldTypes/deferrableSeverity": "medium",
+    "base/fieldTypes/identifier": "secdeva_project",
     "links": [],
     "lastUpdated": "2026-07-21T06:45:56.584Z"
 }
