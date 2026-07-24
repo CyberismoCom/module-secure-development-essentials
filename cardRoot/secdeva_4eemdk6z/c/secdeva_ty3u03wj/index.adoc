@@ -2,9 +2,7 @@
 
 The Operations phase covers ongoing security responsibilities that continue after a product is released. These controls apply throughout both the active development and support periods to keep your product and its infrastructure secure.
 
-=== What this phase covers
-
-.Show details
+.*What this phase covers*
 [%collapsible]
 ====
 [mermaid]

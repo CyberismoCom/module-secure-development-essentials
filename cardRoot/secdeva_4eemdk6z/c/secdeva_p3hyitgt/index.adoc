@@ -2,9 +2,7 @@
 
 The Design phase ensures that security is built into your product architecture from the start. These controls run throughout active development — revisit them whenever the design evolves or new components are introduced.
 
-=== What this phase covers
-
-.Show details
+.*What this phase covers*
 [%collapsible]
 ====
 [mermaid]

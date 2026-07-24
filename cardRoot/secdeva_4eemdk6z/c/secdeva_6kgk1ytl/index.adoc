@@ -2,9 +2,7 @@
 
 The Implementation phase focuses on catching security issues as code is written. These controls ensure that defects are found early through automated and manual analysis, and that identified issues are tracked to resolution.
 
-=== What this phase covers
-
-.Show details
+.*What this phase covers*
 [%collapsible]
 ====
 [mermaid]

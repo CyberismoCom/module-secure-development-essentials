@@ -2,9 +2,7 @@
 
 The Verification phase validates that your product meets its security requirements and can withstand attack. It combines automated scanning with targeted manual testing to confirm that defences work as intended.
 
-=== What this phase covers
-
-.Show details
+.*What this phase covers*
 [%collapsible]
 ====
 [mermaid]

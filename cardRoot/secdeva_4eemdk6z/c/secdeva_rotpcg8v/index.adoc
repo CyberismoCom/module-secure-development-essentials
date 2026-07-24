@@ -2,9 +2,7 @@
 
 The Releases phase ensures that every version shipped to customers has passed a structured security gate. It covers the release review, internal documentation of what was included, and external communication to customers.
 
-=== What this phase covers
-
-.Show details
+.*What this phase covers*
 [%collapsible]
 ====
 [mermaid]

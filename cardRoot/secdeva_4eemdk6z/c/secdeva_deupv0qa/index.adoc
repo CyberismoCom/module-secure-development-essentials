@@ -2,9 +2,7 @@
 
 The Foundation phase establishes the prerequisites for secure development. Complete these tasks before or in parallel with early development work — they ensure your team has the right people, knowledge, and context to make security decisions throughout the project.
 
-=== What this phase covers
-
-.Show details
+.*What this phase covers*
 [%collapsible]
 ====
 [mermaid]
