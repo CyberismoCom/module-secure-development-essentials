@@ -14,7 +14,7 @@ flowchart TB
       I --> V[Verification]
       V --> R[Releases]
       R --> O[Operations]
-      O -- Enhance --> D
+      O --> D
     end
 ----
 
@@ -39,7 +39,7 @@ Focus on completing all Step 1 items before moving to Step 2. This ensures the m
 
 === Where to start
 
-. Fill in the project scope and objectives on the parent card (*Main page*).
+. Fill in the project scope and objectives on the parent card (*Main page [or dynamic reference to main page]*).
 . Work through the *Foundation* phase to set up essential security practices.
 . As development progresses, address controls in each subsequent phase.
 . Use *Status & next steps* to track overall progress and identify gaps.
