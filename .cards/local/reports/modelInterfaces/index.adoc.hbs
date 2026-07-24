@@ -66,7 +66,7 @@ When reviewing this section, check that all internal and external interfaces, su
 .Interfaces
 [cols="3,3,2,2"]
 |===
-| Element | Interface | External? | Crosses trust boundary?
+| Asset | Interface | External? | Crosses trust boundary?
 
 {{#each interfaces}}
 |xref:{{this.[secdeva/fieldTypes/interfaceElementCardKey]}}.adoc[{{this.[secdeva/fieldTypes/interfaceElementTitle]}}]
@@ -101,13 +101,14 @@ When reviewing this section, check that all physical ports and connections are l
 {{#if physicalConnections}}
 
 .Physical ports and connections
-[cols="3,3,2,2"]
+[cols="3,3,1, 2,2"]
 |===
-| Element | Physical connection | External? | Crosses trust boundary?
+| Asset | Physical connection | Count |External? | Crosses trust boundary?
 
 {{#each physicalConnections}}
 |xref:{{this.[secdeva/fieldTypes/physicalConnectionElementCardKey]}}.adoc[{{this.[secdeva/fieldTypes/physicalConnectionElementTitle]}}]
 |xref:{{this.key}}.adoc[{{this.title}}]
+|{{this.[secdeva/fieldTypes/physicalConnectionCount]}}
 |{{this.[secdeva/fieldTypes/isExternal].displayValue}}
 |{{this.[secdeva/fieldTypes/crossesTrustBoundary].displayValue}}
 
