@@ -10,13 +10,21 @@ If the risk affects a certain element such as a process or a data store, then cr
 ====
 
 {{#if this.risks}}
-[cols="5,2"]
+[cols="5,2,3"]
 |===
-| Risk | State
+| Risk | State | Affected assets
 
 {{#each this.risks}}
 |xref:{{this.key}}.adoc[{{this.title}}]
 |{{this.workflowState}}
+{{#if this.affectedCard}}
+|
+{{#each this.affectedCard}}
+* xref:{{this.key}}.adoc[{{this.title}}]
+{{/each}}
+{{else}}
+|
+{{/if}}
 {{/each}}
 
 |===
@@ -52,13 +60,21 @@ If the security issue affects a certain element such as a process or a data stor
 
 {{#if this.securityIssues}}
 
-[cols="5,2"]
+[cols="5,2,3"]
 |===
-| Security issue | State
+| Security issue | State | Affected assets
 
 {{#each this.securityIssues}}
 |xref:{{this.key}}.adoc[{{this.title}}]
 |{{this.workflowState}}
+{{#if this.affectedCard}}
+|
+{{#each this.affectedCard}}
+* xref:{{this.key}}.adoc[{{this.title}}]
+{{/each}}
+{{else}}
+|
+{{/if}}
 {{/each}}
 
 |===
