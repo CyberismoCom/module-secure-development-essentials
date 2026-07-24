@@ -25,6 +25,9 @@ How will we measure if the security integration was successful?
 
 == Milestones and checkpoints
 
+.Instructions
+[%collapsible]
+=====
 [TIP]
 ====
 It is recommended to have 2–6 checkpoints per year to keep secure development work on track. You can integrate secure development checkpoints into practices you already have, such as:
@@ -35,6 +38,7 @@ It is recommended to have 2–6 checkpoints per year to keep secure development 
 * Gate reviews
 
 ====
+=====
 
 #TODO: Add a description or link showing your general milestone/checkpoint practices and how secure development reviews fit into them#
 
