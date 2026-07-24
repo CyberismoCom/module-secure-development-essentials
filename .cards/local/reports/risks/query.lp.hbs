@@ -5,4 +5,8 @@ result(Risk) :-
   secdeva_closestProject(Risk, Project),
   field(Risk, "cardType", "ismsa/cardTypes/risk").
 
+childResult(Risk, Asset, "affectedAssets") :-
+  result(Risk),
+  link(Asset, Risk, "ismsa/linkTypes/presentsRisk").
+
 orderBy("title", "ASC").

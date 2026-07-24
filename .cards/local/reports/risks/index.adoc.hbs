@@ -1,13 +1,21 @@
 {{#if results}}
 
-[cols="4,3,2"]
+[cols="4,3,2,3"]
 |===
-| Risk | Owner  | Status
+| Risk | Owner  | Status | Affected assets
 
 {{#each results}}
 | xref:{{this.key}}.adoc[{{this.title}}]
 | {{this.[base/fieldTypes/owner]}}
 | {{this.workflowState}}
+{{#if this.affectedAssets}}
+|
+{{#each this.affectedAssets}}
+* xref:{{this.key}}.adoc[{{this.title}}]
+{{/each}}
+{{else}}
+|
+{{/if}}
 {{/each}}
 |===
 {{else}}

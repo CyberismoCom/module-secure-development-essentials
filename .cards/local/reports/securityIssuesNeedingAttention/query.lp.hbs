@@ -27,4 +27,8 @@ childResult(result, Issue, "closedIssues") :-
     secdeva_closestProject({{cardKey}}, Project),
     field(Issue, "workflowStateCategory", "closed").
 
+childResult(Issue, Asset, "affectedAssets") :-
+    childResult(result, Issue, _),
+    link(Asset, Issue, "ismsa/linkTypes/presentsRisk").
+
 orderBy("rank", "ASC").
