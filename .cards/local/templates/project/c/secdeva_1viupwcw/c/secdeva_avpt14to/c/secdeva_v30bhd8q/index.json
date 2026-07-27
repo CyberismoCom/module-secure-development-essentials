@@ -1,11 +1,10 @@
 {
     "title": "Internal controls",
-    "cardType": "ismsa/cardTypes/register",
+    "cardType": "secdeva/cardTypes/register",
     "workflowState": "",
     "rank": "0|eo",
     "base/fieldTypes/owner": null,
     "base/fieldTypes/informationClassification": "internal",
-    "ismsa/fieldTypes/adoptionStep": null,
     "ismsa/fieldTypes/progress": "secdeva_internal-control-progress",
     "base/fieldTypes/identifier": "secdeva_register_internal-controls",
     "lastUpdated": "2026-07-17T12:21:59.368Z",

@@ -1,18 +1,8 @@
 {
-    "name": "secdeva/cardTypes/securityIssueRegister",
-    "displayName": "Security issue register",
+    "name": "secdeva/cardTypes/register",
+    "displayName": "Register",
     "workflow": "secdeva/workflows/void",
     "customFields": [
-        {
-            "name": "secdeva/fieldTypes/acceptableSeverity",
-            "displayName": "",
-            "isCalculated": false
-        },
-        {
-            "name": "secdeva/fieldTypes/deferrableSeverity",
-            "displayName": "",
-            "isCalculated": false
-        },
         {
             "name": "base/fieldTypes/owner",
             "displayName": "",
@@ -20,6 +10,11 @@
         },
         {
             "name": "base/fieldTypes/informationClassification",
+            "displayName": "",
+            "isCalculated": false
+        },
+        {
+            "name": "ismsa/fieldTypes/progress",
             "displayName": "",
             "isCalculated": false
         },
@@ -43,10 +38,11 @@
         "base/fieldTypes/owner",
         "base/fieldTypes/assessment",
         "base/fieldTypes/assessmentExplanation",
-        "base/fieldTypes/informationClassification",
-        "secdeva/fieldTypes/acceptableSeverity",
-        "secdeva/fieldTypes/deferrableSeverity"
+        "base/fieldTypes/informationClassification"
     ],
-    "optionallyVisibleFields": [],
-    "description": "A register for managing security issues. Defines the severities for issues that can be accepted and deferred."
+    "optionallyVisibleFields": [
+        "base/fieldTypes/identifier"
+    ],
+    "description": "A register that groups and tracks related items.",
+    "category": "Secure development"
 }

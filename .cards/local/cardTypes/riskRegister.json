@@ -1,18 +1,8 @@
 {
-    "name": "secdeva/cardTypes/securityIssueRegister",
-    "displayName": "Security issue register",
+    "name": "secdeva/cardTypes/riskRegister",
+    "displayName": "Risk register",
     "workflow": "secdeva/workflows/void",
     "customFields": [
-        {
-            "name": "secdeva/fieldTypes/acceptableSeverity",
-            "displayName": "",
-            "isCalculated": false
-        },
-        {
-            "name": "secdeva/fieldTypes/deferrableSeverity",
-            "displayName": "",
-            "isCalculated": false
-        },
         {
             "name": "base/fieldTypes/owner",
             "displayName": "",
@@ -37,16 +27,21 @@
             "name": "base/fieldTypes/assessmentExplanation",
             "displayName": "",
             "isCalculated": true
+        },
+        {
+            "name": "ismsa/fieldTypes/acceptableRiskLevel",
+            "displayName": "",
+            "isCalculated": false
         }
     ],
     "alwaysVisibleFields": [
         "base/fieldTypes/owner",
         "base/fieldTypes/assessment",
         "base/fieldTypes/assessmentExplanation",
-        "base/fieldTypes/informationClassification",
-        "secdeva/fieldTypes/acceptableSeverity",
-        "secdeva/fieldTypes/deferrableSeverity"
+        "ismsa/fieldTypes/acceptableRiskLevel",
+        "base/fieldTypes/informationClassification"
     ],
     "optionallyVisibleFields": [],
-    "description": "A register for managing security issues. Defines the severities for issues that can be accepted and deferred."
+    "description": "A register for managing cybersecurity risks with an acceptable risk threshold",
+    "category": "Secure development"
 }

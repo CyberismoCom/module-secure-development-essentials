@@ -13,9 +13,11 @@ resultField(result, "registerStatus", Status, "shortText") :-
     field(Register, "workflowState", Status).
 
 secdeva_riskResult(Risk) :-
+  secdeva_registerMember(Risk, Register),
+  secdeva_closestProject(Register, Project),
   secdeva_closestProject({{cardKey}}, Project),
   secdeva_closestProject(Risk, Project),
-  field(Risk, "cardType", "ismsa/cardTypes/risk").
+  field(Register, "base/fieldTypes/identifier", "secdeva_register_risks").
 
 childResult(result, Risk, "risks") :-
   secdeva_riskResult(Risk).
