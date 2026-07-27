@@ -1,29 +1,59 @@
-This card sums up the status of secure development for reviews and shows what to do next.
+== Status
 
-== Annual plan
+=== Maturity overview
 
-The following annual plan shows the status of recurring secure development tasks.
+[mermaid]
+----
+flowchart LR
+    subgraph Project[Context Creation ◈ Status]
+      direction LR
+      F[Foundation\n◈ Status] --> D[Design\n◈ Status]
+      D --> I[Implementation\n◈ Status]
+      I --> V[Verification\n◈ Status]
+      V --> R[Releases\n◈ Status]
+      R --> O[Operations\n◈ Status]
+    end
+----
 
-{{#report}}
-  "name": "secdeva/reports/annualPlan"
-{{/report}}
-
-== Security issues
-
-All reported security issues must be analysed and either tracked to closure or justifiably deferred to future resolution.
-
-{{#report}}
-  "name": "secdeva/reports/securityIssuesNeedingAttention"
-{{/report}}
+NOTE: The diagram above is a conceptual placeholder. In practice, the phase status report below shows actual progress per phase.
 
 {{#report}}
   "name": "secdeva/reports/phase"
 {{/report}}
 
-== Policy checks
+=== Open security issues
 
-Automatic policy checks must be processed and resolved.
+{{#report}}
+  "name": "secdeva/reports/securityIssuesNeedingAttention"
+{{/report}}
+
+== Next steps
+
+=== Controls which are in progress
+
+NOTE: Here a table that includes controls which are initalised  but not yet in finnish state and need still some attention. E.g. Document review - Security context is in state 'in progress' or Role assigment is in state 'Draft'
+
+=== Controls which need attention
+
+NOTE: Here a table that includes controls which renew date is expired or at the current or following month. 
+
+=== Registry status
+
+NOTE: Registry violation check and state
+
+=== Policy corrections required
+
+The following policy violations must be resolved before the next review checkpoint. Each item links to the control or task that needs attention.
 
 {{#report}}
   "name": "secdeva/reports/projectPolicyChecks"
 {{/report}}
+
+=== Recommended actions
+
+Based on current status, focus on these areas:
+
+. *Resolve policy violations* — Address every item listed above. Policy errors indicate controls that are not met and may block release reviews.
+. *Close open security issues* — Analyse reported issues and either fix them or document a justified deferral.
+. *Advance to the next adoption step* — Once all Step 1 controls are fulfilled across phases, begin working on Step 2 items.
+. *Prepare for review checkpoint* — Use this page as the basis for your next milestone or gate review.

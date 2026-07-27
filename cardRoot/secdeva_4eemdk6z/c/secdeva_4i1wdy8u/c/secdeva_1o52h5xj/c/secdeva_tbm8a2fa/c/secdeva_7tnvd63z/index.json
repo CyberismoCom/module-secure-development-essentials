@@ -3,16 +3,17 @@
     "title": "Manage threat models",
     "workflowState": "Open",
     "rank": "0|at",
-    "lastUpdated": "2026-07-23T10:42:47.753Z",
+    "lastUpdated": "2026-07-27T09:44:16.030Z",
     "links": [],
     "base/fieldTypes/adoptionStep": null,
     "base/fieldTypes/justification": null,
-    "base/fieldTypes/owner": null,
+    "base/fieldTypes/owner": "jep@a.com",
     "base/fieldTypes/informationClassification": "internal",
     "ismsa/fieldTypes/internalControlReviewPeriod": "12months",
     "base/fieldTypes/reviewMonth": "march",
     "base/fieldTypes/lastReviewed": null,
     "base/fieldTypes/identifier": "secdeva_control_threat-models",
     "templateCardKey": "secdeva_1007",
-    "createdAt": "2026-07-23T10:42:47.745Z"
+    "createdAt": "2026-07-23T10:42:47.745Z",
+    "lastTransitioned": "2026-07-27T09:44:16.030Z"
 }
