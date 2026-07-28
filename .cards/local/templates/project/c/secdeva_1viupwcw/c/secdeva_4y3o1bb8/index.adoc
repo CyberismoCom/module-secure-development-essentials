@@ -39,9 +39,33 @@ Focus on completing all Step 1 items before moving to Step 2. This ensures the m
 
 === Where to start
 
-. Fill in the project scope and objectives on the parent card *{{#report}}"name": "xref", "identifier": "secdeva_project"{{/report}}*.
-. Work through the *{{#report}}"name": "xref", "identifier": "secdeva_phase_foundation"{{/report}}* phase to set up essential security practices.
-. As development progresses, address controls in each subsequent phase.
-. Use *{{#report}}"name": "xref", "identifier": "secdeva_status-and-next-steps"{{/report}}* to track overall progress and identify gaps.
+[mermaid]
+----
+flowchart LR
+    subgraph F[Foundation]
+      direction TB
+      R[Assign people to security-related project roles] --> C[Ensure competence]
+    end
+    subgraph D[Design]
+      direction TB
+      SC[Document product security context] --> TM[Manage threat models]
+      TM --> RI[Identify risks]
+      RI --> SR[Derive security requirements]
+    end
+    F --> D
+    D --> Next[Perform security controls scoping]
+----
 
-TIP: You do not need to complete all phases at once. Start with Foundation and expand as your product matures.
+. Fill in the project scope and objectives on the parent card *{{#report}}"name": "xref", "identifier": "secdeva_project"{{/report}}*.
+. *Assign people to security-related project roles* — Define who is responsible for security in the project. Without clear ownership, tasks will not get done.
+. *Ensure competence* — Verify that assigned people have adequate cybersecurity knowledge, and arrange training where needed.
+. *Document product security context* — Describe the product's operating environment, trust boundaries, and key security assumptions. This context guides threat modeling and requirements work.
+. *Manage threat models* — Model your system's architecture and identify how it could be attacked. This reveals the risks that matter most.
+.. You are able to indentify and document risks for the entire product or for a specific asset
+. *Derive security requirements* — Turn identified risks into concrete security requirements that guide implementation and testing.
+.. You are able to write security requirements for the product or for a specific asset
+. *Preform security controls scoping* — Go through security controls to perform risk based security controls scoping
+. As development progresses, address controls in each subsequent phase.
+. Use *Status & next steps* to track overall progress and identify gaps.
+
+TIP: You do not need to complete all phases at once. Start with Foundation and Design, then expand as your product matures.

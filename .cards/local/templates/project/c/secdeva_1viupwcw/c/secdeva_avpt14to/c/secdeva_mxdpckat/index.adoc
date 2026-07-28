@@ -1,3 +1,7 @@
+This register captures the security requirements for your product or system. Security requirements translate identified risks into specific, testable statements about what the product must do (or not do) to remain secure. They bridge the gap between threat modeling and implementation. Without security requirements, developers lack clear guidance on what to build and testers lack criteria for what to verify.
+
+TIP: Start by defining the scope and boundaries of your product, then document requirements derived from your risk analysis and any applicable standards. You can also create security requirements in the related risk card, an element of the threat model, or a related asset card. 
+
 == Scope and boundaries
 
 The security requirements must be defined in the light of the scope and the boundaries of the product or system. The scope and the boundaries must be documented in both a physical and a logical way.

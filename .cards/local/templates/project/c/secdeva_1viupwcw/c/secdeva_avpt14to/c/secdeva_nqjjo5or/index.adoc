@@ -1,4 +1,4 @@
-You can document decisions here. 
+This register captures key decisions made during the project. Documenting decisions and the reasoning behind them prevents revisiting the same questions, clarifies intent for new team members, and provides an audit trail when stakeholders ask why a particular approach was chosen.
 
 [TIP]
 ====

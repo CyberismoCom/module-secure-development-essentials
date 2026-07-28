@@ -1,1 +1,1 @@
-*Compliance* refers to ensuring that the development project and its results meet the applicable external requirements from authorities, regulations, standards, and customers.
+This register lists the external compliance obligations that apply to your product or system: regulations, standards, and customer contractual requirements.
