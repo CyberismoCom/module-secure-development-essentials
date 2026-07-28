@@ -1,3 +1,7 @@
+This register tracks security issues — concrete weaknesses that need to be fixed. Issues can surface from security testing, code reviews, vulnerability disclosures, or operational monitoring. Tracking them here ensures nothing falls through the cracks and provides visibility into the product's security posture over time.
+
+Unlike risks (which describe potential future harm), security issues describe problems that already exist and require action.
+
 TIP: Security issues represent concrete weaknesses or problems that already exists — for example a vulnerability, misconfiguration, or control gap. A security issue is something to fix and close.
 
 {{#createCards}}

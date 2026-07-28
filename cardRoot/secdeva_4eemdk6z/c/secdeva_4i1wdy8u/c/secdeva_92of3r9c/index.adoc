@@ -1,1 +1,5 @@
+This register lists the external compliance obligations that apply to your product — regulations, standards, and customer contractual requirements. Tracking them here ensures that compliance is addressed systematically rather than discovered late in the project when remediation is costly.
+
+Use this register to map applicable requirements to your security controls and verify that obligations are met before release.
+
 *Compliance* refers to ensuring that the development project and its results meet the applicable external requirements from authorities, regulations, standards, and customers.

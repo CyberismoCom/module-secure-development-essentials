@@ -1,3 +1,7 @@
+This register captures identified security risks for your product. Risks connect threats to your assets and drive concrete action — each risk can lead to security requirements, design decisions, or testing activities. Without documented risks, security work lacks focus and prioritisation.
+
+Risks are typically identified during threat modeling but can emerge at any point in the lifecycle. Maintaining this register ensures that known risks are tracked, evaluated, and addressed rather than forgotten.
+
 TIP: Create a risk if you identify a cyber threat — something that can cause harm by exploiting one or more vulnerabilities. A risk is the potential for loss: how likely a threat is to exploit a vulnerability, and how severe the resulting harm would be.
 
 {{#createCards}}

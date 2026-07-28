@@ -1,3 +1,5 @@
+Understanding what you are protecting is a prerequisite for effective security work. This register captures the assets — things of value — associated with your product. It feeds directly into threat modeling and risk identification: you cannot assess threats without knowing what is at stake.
+
 TIP: An asset is anything that has value to an organisation or to the users of a product or a service and therefore requires protection, such as data, processes, technology, facilities, competences, or suppliers. The list of assets includes processes, interfaces and data stores from the dataflow model of your threat model  {{#report}}"name":"secdeva/reports/xref","identifier":"secdeva_document_threat-model"{{/report}} - add this kind of assets directly in the threat model.
 
 Document assets that cannot be created in the threat model by clicking one of the following buttons.

@@ -29,11 +29,11 @@ NOTE: The diagram above is a conceptual placeholder. In practice, the phase stat
 
 == Next steps
 
-=== Controls which are in progress
+=== In progress
 
 NOTE: Here a table that includes controls which are initalised  but not yet in finnish state and need still some attention. E.g. Document review - Security context is in state 'in progress' or Role assigment is in state 'Draft'
 
-=== Controls which need attention
+=== Need attention
 
 NOTE: Here a table that includes controls which renew date is expired or at the current or following month. 
 
