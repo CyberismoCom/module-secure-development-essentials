@@ -1,3 +1,5 @@
+% Identify whether the interface is external
+
 secdeva_externalEntity(Card) :-
     field(Card, "cardType", "secdeva/cardTypes/external").
 
@@ -24,6 +26,8 @@ field(Card, "secdeva/fieldTypes/isExternal", "noInfo") :-
     secdeva_interfaceOrPhysicalConnection(Card),
     not link(_, Card, "secdeva/linkTypes/dataflow", _).
 
+% Identify whether dataflows to the interface cross a tryst boundary
+
 field(Card, "secdeva/fieldTypes/crossesTrustBoundary", "noInfo") :-
     secdeva_interfaceOrPhysicalConnection(Card),
     not link(_, Card, "secdeva/linkTypes/dataflow", _).
@@ -42,3 +46,104 @@ field(Card, "secdeva/fieldTypes/crossesTrustBoundary", "no") :-
     link(Source, Card, "secdeva/linkTypes/dataflow", _),
     field(TrustBoundary, "cardType", "secdeva/cardTypes/trustBoundary"),
     ancestor(Card, TrustBoundary).
+
+% Mandatory fields
+
+policyCheckFailure(Interface, "Interfaces", "Mandatory field not set", "Decide whether basic input validation testing is required.", "secdeva/fieldTypes/basicInputValidationTestingRequired") :-
+  field(Interface, "cardType", "secdeva/cardTypes/interface"),
+  not field(Interface, "secdeva/fieldTypes/basicInputValidationTestingRequired", _).
+
+policyCheckFailure(Interface, "Interfaces", "Mandatory field not set", "Decide whether basic stress testing is required.","secdeva/fieldTypes/basicStressTestingRequired") :-
+  field(Interface, "cardType", "secdeva/cardTypes/interface"),
+  not field(Interface, "secdeva/fieldTypes/basicStressTestingRequired", _).
+  
+policyCheckFailure(Interface, "Interfaces", "Mandatory field not set", "Decide whether fuzz testing is required.","secdeva/fieldTypes/fuzzTestingRequired") :-
+  field(Interface, "cardType", "secdeva/cardTypes/interface"),
+  not field(Interface, "secdeva/fieldTypes/fuzzTestingRequired", _).
+
+policyCheckFailure(Interface, "Interfaces", "Mandatory field not set", "Decide whether capacity testing is required.","secdeva/fieldTypes/capacityTestingRequired") :-
+  field(Interface, "cardType", "secdeva/cardTypes/interface"),
+  not field(Interface, "secdeva/fieldTypes/capacityTestingRequired", _).
+
+policyCheckFailure(Interface, "Interfaces", "Mandatory field not set", "Decide whether network traffic load testing is required.","secdeva/fieldTypes/networkTrafficLoadTestingRequired") :-
+  field(Interface, "cardType", "secdeva/cardTypes/interface"),
+  not field(Interface, "secdeva/fieldTypes/networkTrafficLoadTestingRequired", _).
+
+policyCheckFailure(Interface, "Interfaces", "Mandatory field not set", "Document the justification for security testing.","secdeva/fieldTypes/interfaceTestingScopingJustification") :-
+  field(Interface, "cardType", "secdeva/cardTypes/interface"),
+  not field(Interface, "secdeva/fieldTypes/interfaceTestingScopingJustification", _).
+
+% Assessment
+
+% Helper: true when an interface has an open review task with policy check failures
+secdeva_interfaceReviewTaskPolicyFailure(Interface) :-
+    parent(ReviewTask, Interface),
+    field(Interface, "cardType", "secdeva/cardTypes/interface"),
+    field(ReviewTask, "cardType", "base/cardTypes/reviewTask"),
+    base_policyCheckFailure(ReviewTask, _, _, _).
+
+% Assessment: "open" when the interface is in initial state or not yet approved without policy failures
+
+field(Interface, "base/fieldTypes/assessment", "open") :-
+    field(Interface, "cardType", "secdeva/cardTypes/interface"),
+    field(Interface, "workflowStateCategory", "initial").
+
+field(Interface, "base/fieldTypes/assessmentExplanation", "The interface has not yet been approved") :-
+    field(Interface, "cardType", "secdeva/cardTypes/interface"),
+    field(Interface, "workflowStateCategory", "initial").
+
+field(Interface, "base/fieldTypes/assessment", "open") :-
+    field(Interface, "cardType", "secdeva/cardTypes/interface"),
+    not field(Interface, "workflowStateCategory", "initial"),
+    not field(Interface, "workflowState", "Approved"),
+    not field(Interface, "workflowState", "Archived"),
+    not base_policyCheckFailure(Interface, _, _, _),
+    not secdeva_interfaceReviewTaskPolicyFailure(Interface).
+
+field(Interface, "base/fieldTypes/assessmentExplanation", "The interface is being prepared or reviewed") :-
+    field(Interface, "cardType", "secdeva/cardTypes/interface"),
+    not field(Interface, "workflowStateCategory", "initial"),
+    not field(Interface, "workflowState", "Approved"),
+    not field(Interface, "workflowState", "Archived"),
+    not base_policyCheckFailure(Interface, _, _, _),
+    not secdeva_interfaceReviewTaskPolicyFailure(Interface).
+
+% Assessment: "notOk" when the interface has policy check failures
+
+field(Interface, "base/fieldTypes/assessment", "notOk") :-
+    field(Interface, "cardType", "secdeva/cardTypes/interface"),
+    not field(Interface, "workflowStateCategory", "initial"),
+    base_policyCheckFailure(Interface, _, _, _).
+
+field(Interface, "base/fieldTypes/assessmentExplanation", "The interface has policy check failures") :-
+    field(Interface, "cardType", "secdeva/cardTypes/interface"),
+    not field(Interface, "workflowStateCategory", "initial"),
+    base_policyCheckFailure(Interface, _, _, _).
+
+field(Interface, "base/fieldTypes/assessment", "notOk") :-
+    field(Interface, "cardType", "secdeva/cardTypes/interface"),
+    not field(Interface, "workflowStateCategory", "initial"),
+    not field(Interface, "workflowState", "Approved"),
+    not field(Interface, "workflowState", "Archived"),
+    not base_policyCheckFailure(Interface, _, _, _),
+    secdeva_interfaceReviewTaskPolicyFailure(Interface).
+
+field(Interface, "base/fieldTypes/assessmentExplanation", "One or more review tasks have policy check failures") :-
+    field(Interface, "cardType", "secdeva/cardTypes/interface"),
+    not field(Interface, "workflowStateCategory", "initial"),
+    not field(Interface, "workflowState", "Approved"),
+    not field(Interface, "workflowState", "Archived"),
+    not base_policyCheckFailure(Interface, _, _, _),
+    secdeva_interfaceReviewTaskPolicyFailure(Interface).
+
+% Assessment: "ok" when the interface is approved and has no policy check failures
+
+field(Interface, "base/fieldTypes/assessment", "ok") :-
+    field(Interface, "cardType", "secdeva/cardTypes/interface"),
+    field(Interface, "workflowState", "Approved"),
+    not base_policyCheckFailure(Interface, _, _, _).
+
+field(Interface, "base/fieldTypes/assessmentExplanation", "The interface is approved and has no policy check failures") :-
+    field(Interface, "cardType", "secdeva/cardTypes/interface"),
+    field(Interface, "workflowState", "Approved"),
+    not base_policyCheckFailure(Interface, _, _, _).

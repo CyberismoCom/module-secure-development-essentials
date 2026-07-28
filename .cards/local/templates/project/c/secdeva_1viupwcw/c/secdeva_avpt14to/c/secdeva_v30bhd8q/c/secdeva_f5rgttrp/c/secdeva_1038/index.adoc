@@ -29,7 +29,7 @@ An interface document is required for all exposed interfaces, for which the deve
 
 == How to implement
 
-Interfaces are documented as part of the dataflow models that are included in threat models.
+Interfaces are documented as part of the threat models that are included in threat models.
 
 {{#report}}
   "name": "secdeva/reports/projectInterfaces"

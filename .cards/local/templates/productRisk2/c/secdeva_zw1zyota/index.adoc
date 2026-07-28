@@ -9,7 +9,7 @@
 
 This risk is related to the development project or its results.
 
-#TODO: If necessary, add links to related more detailed assets in the dataflow model or the asset register using the 'affects asset' link type.#
+#TODO: If necessary, add links to related more detailed assets in the threat model or the asset register using the 'affects asset' link type.#
 
 === Threat
 

@@ -2,5 +2,5 @@
     "name": "secdeva/templates/person2",
     "displayName": "Person",
     "category": "Threat model",
-    "description": "A user, an administrator or another human stakeholder in a dataflow model. A special case of an external entity."
+    "description": "A user, an administrator or another human stakeholder in a threat model. A special case of an external entity."
 }

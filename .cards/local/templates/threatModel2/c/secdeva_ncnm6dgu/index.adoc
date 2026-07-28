@@ -4,7 +4,7 @@ Threat modelling is a process to identify security threats based on the projecte
 
 == Assets
 
-Assets are documented as part of the dataflow model and, if necessary, separately in the asset register, see {{#report}}"name": "secdeva/reports/xref", "identifier": "secdeva_register_assets"{{/report}}.
+Assets are documented as part of the threat model and, if necessary, separately in the asset register, see {{#report}}"name": "secdeva/reports/xref", "identifier": "secdeva_register_assets"{{/report}}.
 
 {{#report}}
   "name": "secdeva/reports/assets"
@@ -107,7 +107,7 @@ When reviewing this section, check that technologies that are developed by a 3rd
 ====
 =====
 
-Major 3rd party technologies are documented as part of the dataflow model or directly in {{#report}}"name": "xref", "identifier": "secdeva_register_technology-assessments"{{/report}}:
+Major 3rd party technologies are documented as part of the threat model or directly in {{#report}}"name": "xref", "identifier": "secdeva_register_technology-assessments"{{/report}}:
 
 {{#report}}
   "name": "secdeva/reports/projectTechnologies"
