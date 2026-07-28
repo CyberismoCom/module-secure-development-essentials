@@ -36,6 +36,7 @@ attr(node, Requirement, label, @concatenate("<<font point-size='32'> <b>", @wrap
 
 % evidence
 drawableCard(Document) :- field(Document, "cardType", "base/cardTypes/controlledDocument").
+drawableCard(Register) :- secdeva_register(Register).
 drawableCard(Review) :- field(Review, "cardType", "base/cardTypes/review").
 evidence(Evidence) :-
     internalControl(Task),

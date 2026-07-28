@@ -3,10 +3,10 @@
 {{#if reviews}}
 
 [caption=]
-.Existing documents
+.Existing reviews
 [cols="5,2"]
 |===
-| Document | Workflow State
+| Review | Workflow State
 
 {{#each reviews}}
 |xref:{{this.key}}.adoc[{{this.title}}]
@@ -15,9 +15,9 @@
 
 |===
 
-Create another document, if needed:
+Create another review, if needed:
 {{else}}
-You have not yet created any documents.
+You have not yet created any reviews.
 {{/if}}
 
 {{#createCards}}

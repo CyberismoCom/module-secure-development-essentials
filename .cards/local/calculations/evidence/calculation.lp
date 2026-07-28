@@ -2,18 +2,28 @@
 % secdeva_evidence(TaskIdentifier, EvidenceIdentifier, EvidenceTitle)
 
 link(Evidence, Task, "ismsa/linkTypes/evidences") :-
-    secdeva_closestProject(Task, Project),
-    secdeva_closestProject(Evidence, Project),
-    secdeva_evidence(TaskIdentifier, EvidenceIdentifier, _),
-    field(Task, "base/fieldTypes/identifier", TaskIdentifier),
-    field(Evidence, "base/fieldTypes/identifier", EvidenceIdentifier).
+  secdeva_closestProject(Task, Project),
+  secdeva_closestProject(Evidence, Project),
+  secdeva_evidence(TaskIdentifier, EvidenceIdentifier, _),
+  field(Task, "base/fieldTypes/identifier", TaskIdentifier),
+  field(Evidence, "base/fieldTypes/identifier", EvidenceIdentifier).
+
+% TODO: the secdeva_legacyEvidence facts support backwards compatibility to content
+% that has been created from old versions of the development project template.
+% These facts and the corresponding rule below can be removed, once there are no more users for the old content 
+
+link(Evidence, Task, "ismsa/linkTypes/evidences") :-
+  secdeva_closestProject(Task, Project),
+  secdeva_closestProject(Evidence, Project),
+  secdeva_legacyEvidence(TaskIdentifier, EvidenceIdentifier, _),
+  field(Task, "base/fieldTypes/identifier", TaskIdentifier),
+  field(Evidence, "base/fieldTypes/identifier", EvidenceIdentifier).
 
 secdeva_evidence("secdeva_control_management-plan", "secdeva_document_management-plan", "Management plan").
 secdeva_evidence("secdeva_control_threat-models", "secdeva_document_threat-model", "Threat model").
-% TODO: the rule about secdeva_document_project-role-assignments supports backwards compatibility to content
-% that has been created from old versions of the development project template.
-% This rule can be removed, once there are no more users for the old content 
-secdeva_evidence("secdeva_control_assign-people-to-project-roles", "secdeva_document_project-role-assignments", "Project role assignments").
+secdeva_evidence("secdeva_control_high-level-risks", "secdeva_review_risk-management", "Review of risk management").
+secdeva_evidence("secdeva_control_high-level-risks", "secdeva_register_risks", "Risk register").
+secdeva_legacyEvidence("secdeva_control_assign-people-to-project-roles", "secdeva_document_project-role-assignments", "Project role assignments").
 secdeva_evidence("secdeva_control_assign-people-to-project-roles", "secdeva_review_project-role-assignments", "Project role assignments").
 secdeva_evidence("secdeva_control_ensure-competence", "secdeva_review_competence", "Competence review").
 secdeva_evidence("secdeva_control_analyse-business-context", "secdeva_document_business-context-analysis", "Business context analysis").
@@ -23,7 +33,7 @@ secdeva_evidence("secdeva_control_subprojects", "secdeva_review_project-structur
 secdeva_evidence("secdeva_control_static-code-analysis", "secdeva_review_static-code-analysis", "Review of \nstatic code analysis").
 secdeva_evidence("secdeva_control_manual-code-review", "secdeva_review_manual-code-review", "Review of \nmanual code review").
 secdeva_evidence("secdeva_control_threat-mitigation-testing", "secdeva_test_threat-mitigation", "Review of \nthreat mitigation testing").
-secdeva_evidence("secdeva_control_security-requirements", "secdeva_document_security-requirement-specification", "Security requirements specification").
+secdeva_legacyEvidence("secdeva_control_security-requirements", "secdeva_document_security-requirement-specification", "Security requirements specification").
 secdeva_evidence("secdeva_control_security-requirements", "secdeva_review_requirement-management", "Review of \nsecurity requirements management").
 secdeva_evidence("secdeva_control_security-requirements", "secdeva_register_security-requirements", "Security requirement register").
 secdeva_evidence("secdeva_control_security-requirement-testing", "secdeva_test_security-requirements", "Review of \nsecurity requirement testing").
@@ -47,18 +57,25 @@ secdeva_evidence("secdeva_control_configuration-management-plan", "secdeva_docum
 % In the old content format, role assignments were created directly under the control
 % This rule can be removed, once there are no more users for the old content 
 link(RoleAssignment, Task, "ismsa/linkTypes/evidences") :-
-    secdeva_closestProject(Task, Project),
-    secdeva_closestProject(RoleAssignment, Project),
-    field(Task, "base/fieldTypes/identifier", "secdeva_control_assign-people-to-project-roles"),
-    field(RoleAssignment, "cardType", "base/cardTypes/roleAssignment"),
-    parent(RoleAssignment, RoleAssignments),
-    field(RoleAssignments, "base/fieldTypes/identifier", "secdeva_control_assign-people-to-project-roles").
+  secdeva_closestProject(Task, Project),
+  secdeva_closestProject(RoleAssignment, Project),
+  field(Task, "base/fieldTypes/identifier", "secdeva_control_assign-people-to-project-roles"),
+  field(RoleAssignment, "cardType", "base/cardTypes/roleAssignment"),
+  parent(RoleAssignment, RoleAssignments),
+  field(RoleAssignments, "base/fieldTypes/identifier", "secdeva_control_assign-people-to-project-roles").
 
 link(Evidence, Task, "ismsa/linkTypes/evidences") :-
-    secdeva_closestProject(Task, Project),
-    secdeva_closestProject(Evidence, Project),
-    secdeva_evidenceByCardType(TaskIdentifier, EvidenceCardType, _),
-    field(Task, "base/fieldTypes/identifier", TaskIdentifier),
-    field(Evidence, "cardType", EvidenceCardType).
+  secdeva_closestProject(Task, Project),
+  secdeva_closestProject(Evidence, Project),
+  secdeva_evidenceByCardType(TaskIdentifier, EvidenceCardType, _),
+  field(Task, "base/fieldTypes/identifier", TaskIdentifier),
+  field(Evidence, "cardType", EvidenceCardType).
     
 secdeva_evidenceByCardType("secdeva_control_high-level-risks", "ismsa/cardTypes/risk", "Risk").
+
+ismsa_internalControlMissingEvidence(Task) :-
+  secdeva_evidence(TaskIdentifier, EvidenceIdentifier, _),
+  field(Task, "base/fieldTypes/identifier", TaskIdentifier),
+  link(_, Task, "ismsa/linkTypes/evidences"),
+  not field(Evidence, "base/fieldTypes/identifier", EvidenceIdentifier) :
+  link(Evidence, Task, "ismsa/linkTypes/evidences").

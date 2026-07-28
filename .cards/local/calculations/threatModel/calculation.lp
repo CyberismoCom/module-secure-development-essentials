@@ -131,6 +131,16 @@ policyCheckFailure(ReviewTask, "Threat model control", "Reviewer cannot be the s
     field(ReviewTask, "base/fieldTypes/owner", Reviewer),
     DocumentOwner = Reviewer.
 
+policyCheckFailure(Document, "Document control", "Review has expired", "Complete a new review of this document.") :-
+    field(Document, "cardType", "base/cardTypes/threatModel"),
+    field(Document, "workflowState", "Approved"),
+    field(Document, "base/fieldTypes/reviewPeriod", ReviewPeriod),
+    @daysSince(LastReviewed) > ReviewPeriod :
+    parent(ReviewTask, Document),
+    field(ReviewTask, "cardType", "base/cardTypes/reviewTask"),
+    field(ReviewTask, "workflowState", "Closed as done"),
+    field(ReviewTask, "base/fieldTypes/lastReviewed", LastReviewed).
+
 % Individual attack vector cards are not shown in the navigation
 
 hiddenInTreeView(AttackVector) :-
