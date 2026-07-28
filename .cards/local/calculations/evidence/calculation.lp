@@ -29,6 +29,7 @@ secdeva_evidence("secdeva_control_ensure-competence", "secdeva_review_competence
 secdeva_evidence("secdeva_control_analyse-business-context", "secdeva_document_business-context-analysis", "Business context analysis").
 secdeva_evidence("secdeva_control_security-context", "secdeva_document_security-context", "Security context").
 secdeva_evidence("secdeva_control_interface-specifications", "secdeva_document_interface", "Interface description").
+secdeva_evidence("secdeva_control_interface-specifications", "secdeva_review_interfaces", "Review of interfaces").
 secdeva_evidence("secdeva_control_subprojects", "secdeva_review_project-structure", "Project structure review").
 secdeva_evidence("secdeva_control_static-code-analysis", "secdeva_review_static-code-analysis", "Review of \nstatic code analysis").
 secdeva_evidence("secdeva_control_manual-code-review", "secdeva_review_manual-code-review", "Review of \nmanual code review").
