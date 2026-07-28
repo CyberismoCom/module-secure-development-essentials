@@ -1,12 +1,13 @@
 {{#each results}}
 {{#if assets}}
 
-[cols="4,3,2"]
+[cols="4,3,3,2"]
 |===
-| Asset | Owner  | Status
+| Asset | Type | Owner  | Status
 
 {{#each assets}}
 | xref:{{this.key}}.adoc[{{this.title}}]
+| {{this.type}}
 | {{this.[base/fieldTypes/owner]}}
 | {{this.workflowState}}
 {{/each}}

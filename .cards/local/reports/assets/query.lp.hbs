@@ -19,4 +19,9 @@ childResult(result, Asset, "assets") :-
   secdeva_closestProject(Asset, Project),
   field(Register, "base/fieldTypes/identifier", "secdeva_register_assets").
 
+resultField(Asset, "type", Type, "shortText") :-
+  childResult(result, Asset, "assets"),
+  field(Asset, "cardType", CardType),
+  field(CardType, "displayName", Type).
+
 orderBy("title", "ASC").
