@@ -6,7 +6,7 @@ The use of specific algorithms, key lengths, and key management arrangements mus
 
 Whenever human actions are required, the roles and responsibilities for implementing cryptographic controls must be defined.
 
-== How to decide if this secure development task is required
+== How to decide if this control is required
 
 This secure development task is applicable if the project uses cryptography.
 

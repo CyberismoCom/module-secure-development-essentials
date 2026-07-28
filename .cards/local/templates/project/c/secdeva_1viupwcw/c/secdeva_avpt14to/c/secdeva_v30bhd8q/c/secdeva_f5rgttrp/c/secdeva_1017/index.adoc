@@ -9,7 +9,7 @@
 
 Security context refers to a set of assumptions about the product or solution and about the security protections that are expected from the deployment environment. Security context includes descriptions of the intended purpose, foreseeable use, foreseeable misuse, and the essential functionalities. It is important that the development team and the users of the product have the same understanding about the security context.
 
-== How to decide if this secure development task is required
+== How to decide if this control is required
 
 Security context must be documented at least on the topmost project level.
 

@@ -1,6 +1,6 @@
 Development projects require different environments for implementation, testing/staging, customer demonstrations, and production. Protecting these environments is important for ensuring the confidentiality, integrity, and availability of the results of the development project and of the information that is processed.
 
-== How to decide if this secure development task is required
+== How to decide if this control is required
 
 This task is required for all applicable environments.
 

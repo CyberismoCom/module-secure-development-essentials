@@ -8,7 +8,7 @@ Notes:
 
 * A component may be used as a building block in other projects. To avoid duplicate work, the secure development for the project is documented just once, where it was originally done, and it is referred elsewhere as a technology selection.
 
-== How to decide if this secure development task is required
+== How to decide if this control is required
 
 This control is required, if the project has possible subprojects or suppliers that develop custom components, if the development project makes substantial modifications to 3rd party products, or rebrands 3rd party products.
 

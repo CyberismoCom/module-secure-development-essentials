@@ -1,6 +1,6 @@
 Input validation testing verifies that input validation works as specified. This refers to basic checks such as edge and boundary value testing, equivalence class testing or testing of object schema validation functionality that are not specifically targeted at security.
 
-== How to decide if this secure development task is required
+== How to decide if this control is required
 
 This control is applicable, if the project includes or implements interfaces.
 

@@ -1,6 +1,6 @@
 Manual code review is an effective way to avoid programming and design errors that may lead to security vulnerabilities. Code review also helps with avoiding bugs, sharing information and in the induction of new persons.
 
-== How to decide if this secure development task is required
+== How to decide if this control is required
 
 This secure development task is applicable if the project contains custom developed code. This control applies to full variability programming languages only, such as C, C++, Java or JavaScript. The control  is not applicable to limited variability languages such as function blocks, ladder logic or other application-specific languages that only combine a predefined set of library functionality.
 

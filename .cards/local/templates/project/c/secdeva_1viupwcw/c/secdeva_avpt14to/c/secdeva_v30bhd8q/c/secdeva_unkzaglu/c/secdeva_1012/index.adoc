@@ -9,7 +9,7 @@
 
 The goal of the vulnerability management is to identify, characterize, address, and communicate potential security vulnerabilities in 3rd party technology.
 
-== How to decide if this secure development task is required
+== How to decide if this control is required
 
 Vulnerability management is required for all 3rd party technology.
 

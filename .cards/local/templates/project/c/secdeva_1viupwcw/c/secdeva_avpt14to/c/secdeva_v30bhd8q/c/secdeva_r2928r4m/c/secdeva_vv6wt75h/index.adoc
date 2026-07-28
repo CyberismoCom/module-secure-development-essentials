@@ -1,6 +1,6 @@
 The management of security-related issues and defects includes reviewing and assessing newly arised issues, addressing the issues appropriately, and disclosing information about the issues to stakeholders.
 
-== How to decide if this secure development task is required
+== How to decide if this control is required
 
 This secure development task is always applicable.
 

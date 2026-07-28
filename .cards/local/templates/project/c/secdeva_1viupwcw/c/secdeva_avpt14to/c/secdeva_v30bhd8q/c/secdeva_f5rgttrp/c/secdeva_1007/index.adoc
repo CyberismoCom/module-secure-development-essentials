@@ -9,7 +9,7 @@
 
 A threat model identifies cyber security issues of the project based on the architecture and it is created in a systematic process. The purpose of threat modeling is to identify weaknesses, which can be addressed to minimize cybersecurity risks, prevent security incidents and minimize the impacts of security incidents.
 
-== How to decide if this secure development task is required
+== How to decide if this control is required
 
 A top-level threat model is required on the topmost project level, if the project includes custom software development and the project is responsible for the security of the architecture.
 

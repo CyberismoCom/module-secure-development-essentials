@@ -1,6 +1,6 @@
 Static code analysis or static application security testing (SAST) refers to automated testing techniques that identify potential security issues from the source code.
 
-== How to decide if this secure development task is required
+== How to decide if this control is required
 
 Static code analysis is required for all programming languages where tools are available.
 

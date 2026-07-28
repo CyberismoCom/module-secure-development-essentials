@@ -2,12 +2,12 @@
     "title": "Review of risk management",
     "cardType": "base/cardTypes/review",
     "workflowState": "",
-    "rank": "0|zn",
+    "rank": "0|b",
     "base/fieldTypes/owner": null,
     "base/fieldTypes/informationClassification": "internal",
     "base/fieldTypes/lastReviewed": null,
     "base/fieldTypes/reviewPeriod": null,
     "base/fieldTypes/identifier": "secdeva_review_risk-management",
-    "lastUpdated": "2026-07-24T09:29:04.132Z",
+    "lastUpdated": "2026-07-28T12:48:15.728Z",
     "links": []
 }

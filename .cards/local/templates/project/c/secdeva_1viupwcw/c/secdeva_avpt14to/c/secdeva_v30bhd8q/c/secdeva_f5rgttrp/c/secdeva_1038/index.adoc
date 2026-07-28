@@ -18,7 +18,7 @@ Examples of interfaces include
 * Media ports such as SD card slots
 * Wireless connections
 
-== How to decide if this secure development task is required
+== How to decide if this control is required
 
 This review item is applicable, if the system includes or implements interfaces.
 

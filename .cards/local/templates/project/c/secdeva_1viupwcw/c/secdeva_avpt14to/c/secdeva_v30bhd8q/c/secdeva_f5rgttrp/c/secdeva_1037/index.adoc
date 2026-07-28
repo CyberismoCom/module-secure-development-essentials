@@ -9,7 +9,7 @@
 
 Security requirements define required security capabilities, required security-related features or other required security-related characteristics of the product.
 
-== How to decide if this secure development task is required
+== How to decide if this control is required
 
 Security requirements specification is required, if security requirements have been identified in the project.
 
@@ -43,8 +43,6 @@ You should create security requirements, when the requirement is non-trivial and
 {{#report}}
   "name": "secdeva/reports/internalControlAssessment"
 {{/report}}
-
-#TODO: add an automated check for ensuring that the requirement reviews have been completed#
 
 == References
 

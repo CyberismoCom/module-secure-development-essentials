@@ -9,7 +9,7 @@
 
 The goal of threat mitigation testing is to ensure that the threat cannot be exploited and that the implemented mitigations work as planned.
 
-== How to decide if this secure development task is required
+== How to decide if this control is required
 
 Threat mitigation testing is required if security threats have been identified.
 

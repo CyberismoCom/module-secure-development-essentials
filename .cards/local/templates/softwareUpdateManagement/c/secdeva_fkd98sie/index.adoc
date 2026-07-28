@@ -36,14 +36,3 @@ Check that all 3rd party software updates and the information provided by the 3r
 
 #TODO: Describe any notes and remarks about the review here#
 
-== Reviews
-
-{{#createCards}}
-    "template": "base/templates/reviewTask",
-    "buttonLabel": "Add new review task"
-{{/createCards}}
-
-{{#report}}
-  "name": "base/reports/childrenTable",
-  "cardType": "base/cardTypes/reviewTask"
-{{/report}}

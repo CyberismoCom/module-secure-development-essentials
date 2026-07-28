@@ -9,7 +9,7 @@
 
 People involved in the development projects are required to have sufficient security knowledge. Ensuring that the staff has a good cybersecurity competence is one of the most cost-effective ways to improve security.
 
-== How to decide if this secure development task is required
+== How to decide if this control is required
 
 This task is required, if the project is responsible for ensuring the competence of the team. The task is not required, if competence is ensured on some other level, such as top level project or centrally.
 

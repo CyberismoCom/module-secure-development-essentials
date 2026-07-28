@@ -9,7 +9,7 @@
 
 Security requirement testing ensures that security requirements have been correctly implemented and that error handling works correctly.
 
-== How to decide if this secure development task is required
+== How to decide if this control is required
 
 This control is required, if security requirements or security capability requirements have been identified.
 

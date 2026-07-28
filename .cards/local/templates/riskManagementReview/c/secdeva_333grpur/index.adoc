@@ -100,15 +100,3 @@ There are automatic policy checks to ensure that risk treatment is working. Chec
 Review notes about the overall status of risk treatment:
 
 #TODO: Describe any notes and remarks about the review here#
-
-== Reviews
-
-{{#createCards}}
-    "template": "base/templates/reviewTask",
-    "buttonLabel": "Add new review task"
-{{/createCards}}
-
-{{#report}}
-  "name": "base/reports/childrenTable",
-  "cardType": "base/cardTypes/reviewTask"
-{{/report}}

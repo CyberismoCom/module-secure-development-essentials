@@ -1,7 +1,7 @@
 
 The goal of the known vulnerability scanning is to detect known security issues from the hardware devices, host and application software.
 
-== How to decide if this secure development task is required
+== How to decide if this control is required
 
 Vulnerability scanning is required, but the frequency of it shall be estimated based on risk.
 

@@ -9,7 +9,7 @@
 
 Assigning persons to their security-related roles is done to ensure that the responsibilities get done and that people are aware of their responsibilities. Documenting the roles is also useful when planning the security trainings.
 
-== How to decide if this secure development task is required
+== How to decide if this control is required
 
 This control is always required, because persons need to be assigned to roles to execute the secure development processes.
 
