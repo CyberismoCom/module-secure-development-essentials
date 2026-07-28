@@ -4,7 +4,7 @@
     "workflowState": "Draft",
     "rank": "0|e",
     "base/fieldTypes/owner": null,
-    "base/fieldTypes/adoptionStep": "step1",
+    "base/fieldTypes/adoptionStep": "step3",
     "secdeva/fieldTypes/adoptionStepJustification": null,
     "base/fieldTypes/informationClassification": "internal",
     "ismsa/fieldTypes/assetCriticalityForOperations": null,
@@ -17,7 +17,7 @@
     "secdeva/fieldTypes/acceptableSeverity": "low",
     "secdeva/fieldTypes/deferrableSeverity": "medium",
     "links": [],
-    "lastUpdated": "2026-07-23T10:43:08.242Z",
+    "lastUpdated": "2026-07-28T07:33:54.719Z",
     "templateCardKey": "secdeva_1viupwcw",
     "createdAt": "2026-07-23T10:42:47.743Z"
 }

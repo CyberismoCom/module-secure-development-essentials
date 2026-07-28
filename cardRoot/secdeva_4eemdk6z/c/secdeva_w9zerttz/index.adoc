@@ -48,7 +48,8 @@ flowchart LR
     end
     subgraph D[Design]
       direction TB
-      TM[Manage threat models] --> RI[Identify risks]
+      SC[Document product security context] --> TM[Manage threat models]
+      TM --> RI[Identify risks]
       RI --> SR[Derive security requirements]
     end
     F --> D
@@ -58,6 +59,7 @@ flowchart LR
 . Fill in the project scope and objectives on the parent card (*Main page* [or dynamic reference to main page]).
 . *Assign people to security-related project roles* — Define who is responsible for security in the project. Without clear ownership, tasks will not get done.
 . *Ensure competence* — Verify that assigned people have adequate cybersecurity knowledge, and arrange training where needed.
+. *Document product security context* — Describe the product's operating environment, trust boundaries, and key security assumptions. This context guides threat modeling and requirements work.
 . *Manage threat models* — Model your system's architecture and identify how it could be attacked. This reveals the risks that matter most.
 .. You are able to indentify and document risks for the entire product or for a specific asset
 . *Derive security requirements* — Turn identified risks into concrete security requirements that guide implementation and testing.
@@ -65,24 +67,5 @@ flowchart LR
 . *Preform security controls scoping* — Go through security controls to perform risk based security controls scoping
 . As development progresses, address controls in each subsequent phase.
 . Use *Status & next steps* to track overall progress and identify gaps.
-
-.Table to start from
-[cols="1,1, 1"]
-|===
-| Internal controls | Assesment | Evidence
-
-| Assign people to security-related project roles
-| Open: The control has not been scoped yet
-|
-
-| Ensure competence
-| Open: The control has not been scoped yet
-|
-
-| Manage threat models
-| Open: The control has not been scoped yet
-|
-|===
-
 
 TIP: You do not need to complete all phases at once. Start with Foundation and Design, then expand as your product matures.
