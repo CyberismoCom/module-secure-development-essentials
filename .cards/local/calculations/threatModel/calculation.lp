@@ -43,6 +43,10 @@ ismsa_asset(Card, "External entity") :-
 ismsa_asset(Card, "Interface") :-
     field(Card, "cardType", "secdeva/cardTypes/interface").
 
+% Disable ISMS essentials asset control for threat model elements
+
+ismsa_disableAssetControl(Card) :- secdeva_threatModelComponent(Card).
+
 % Threat model is similar to a controlled document, but it is a separate card type,
 % so we need to include similar rules for it as there are for controlled documents in the base module:
 
