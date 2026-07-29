@@ -12,6 +12,7 @@
         "secdeva/cardTypes/interface",
         "secdeva/cardTypes/process",
         "secdeva/cardTypes/project",
+        "secdeva/cardTypes/project2",
         "ismsa/cardTypes/asset",
         "ismsa/cardTypes/assetData",
         "ismsa/cardTypes/assetDevice",

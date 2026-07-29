@@ -50,8 +50,6 @@ secdeva_evidence("secdeva_control_error-handling-testing", "secdeva_test_error-h
 secdeva_evidence("secdeva_control_manage-defects", "secdeva_review_manage-defects", "Review of defect management").
 secdeva_evidence("secdeva_control_configuration-management-plan", "secdeva_document_configuration-management-plan", "Configuration management plan").
 
-% secdeva_evidenceByCardType declares that a certain card type is evidence of a certain task:
-% secdeva_evidenceByCardType(TaskIdentifier, EvidenceCardType, EvidenceTitle)
 
 % TODO: the rule about individual role assignments "base/cardTypes/roleAssignment" supports backwards 
 % compatibility to content that has been created from old versions of the development project template.
@@ -65,14 +63,14 @@ link(RoleAssignment, Task, "ismsa/linkTypes/evidences") :-
   parent(RoleAssignment, RoleAssignments),
   field(RoleAssignments, "base/fieldTypes/identifier", "secdeva_control_assign-people-to-project-roles").
 
+
+% TODO: the following rule supports backwards compatibility to legacy content
 link(Evidence, Task, "ismsa/linkTypes/evidences") :-
   secdeva_closestProject(Task, Project),
   secdeva_closestProject(Evidence, Project),
-  secdeva_evidenceByCardType(TaskIdentifier, EvidenceCardType, _),
-  field(Task, "base/fieldTypes/identifier", TaskIdentifier),
-  field(Evidence, "cardType", EvidenceCardType).
-    
-secdeva_evidenceByCardType("secdeva_control_high-level-risks", "ismsa/cardTypes/risk", "Risk").
+  field(Project, "cardType", "secdeva/cardTypes/project"),
+  field(Task, "base/fieldTypes/identifier", "secdeva_control_high-level-risks"),
+  field(Evidence, "cardType", "ismsa/cardTypes/risk").
 
 ismsa_internalControlMissingEvidence(Task) :-
   secdeva_evidence(TaskIdentifier, EvidenceIdentifier, _),

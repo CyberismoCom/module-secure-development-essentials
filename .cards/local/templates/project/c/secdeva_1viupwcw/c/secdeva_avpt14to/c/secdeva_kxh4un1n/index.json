@@ -7,6 +7,8 @@
     "base/fieldTypes/informationClassification": null,
     "ismsa/fieldTypes/progress": null,
     "base/fieldTypes/identifier": "secdeva_register_technology-assessments",
-    "lastUpdated": "2026-07-28T15:09:21.463Z",
-    "links": []
+    "lastUpdated": "2026-07-29T13:55:02.954Z",
+    "links": [],
+    "secdeva/fieldTypes/adoptionStepJustification": null,
+    "base/fieldTypes/adoptionStep": null
 }
