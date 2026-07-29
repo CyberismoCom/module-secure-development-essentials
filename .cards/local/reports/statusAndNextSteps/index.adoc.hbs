@@ -1,0 +1,48 @@
+{{#each results}}
+== Maturity overview
+
+[mermaid]
+----
+flowchart LR
+    subgraph Project[{{this.project.title}} {{this.project.progress}}% on Adoption {{this.project.[base/fieldTypes/adoptionStep].displayValue}}]
+      direction LR
+      F[Foundation\n{{this.foundationPhase.progress}}%] --> D[Design\n{{this.designPhase.progress}}%]
+      D --> I[Implementation\n{{this.implementationPhase.progress}}%]
+      I --> V[Verification\n{{this.verificationPhase.progress}}%]
+      V --> R[Releases\n ]
+      R --> O[Operations\n{{this.operationsPhase.progress}}%]
+    end
+----
+
+== Open security issues
+
+{{#report}}
+  "name": "secdeva/reports/securityIssuesNeedingAttention"
+{{/report}}
+
+== Next steps
+
+Internal controls define the security practices and activities your team performs throughout the development lifecycle.
+
+{{#report}}
+  "name": "secdeva/reports/projectInternalControls"
+{{/report}}
+
+== Policy corrections required
+
+Policy violations must be resolved before the next review checkpoint.
+
+{{#report}}
+  "name": "secdeva/reports/projectPolicyChecks"
+{{/report}}
+
+== Recommended actions
+
+Based on current status, focus on these areas:
+
+. *Resolve policy violations* — Address every item listed above. Policy errors indicate controls that are not met and may block release reviews.
+. *Close open security issues* — Analyse reported issues and either fix them or document a justified deferral.
+. *Advance to the next adoption step* — Once all Step 1 controls are fulfilled across phases, begin working on Step 2 items.
+. *Prepare for review checkpoint* — Use this page as the basis for your next milestone or gate review.
+
+{{/each}}

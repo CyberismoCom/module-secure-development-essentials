@@ -2,9 +2,8 @@
 
 This document is a review of the cybersecurity risk management.
 
-== Review checklist
 
-=== Risk identification
+== Risk identification
 
 Risks have been identified in sufficient level of detail and recorded in the risk register:
 
@@ -15,14 +14,28 @@ Review notes about the overall status of risk identification:
 
 #TODO: Describe any notes and remarks about the review here#
 
-You can cross check your identified risks against the following checklists to ensure that you did not miss anything important:
+You can cross check your identified risks against the checklists in the appendix to ensure that you did not miss anything important.
 
-=== Risks related to information systems or products
+== Risk treatment
+
+Once risks have been identified, you must assess them to determine their priority, plan and implement their treatment, and monitor the risks that could not be tracked to closure.
+
+There are automatic policy checks to ensure that risk treatment is working. Check the list of risks in {{#report}}"name": "secdeva/reports/xref", "identifier": "secdeva_register_risks"{{/report}} and fix any policy check failures. 
+
+Review notes about the overall status of risk treatment:
+
+#TODO: Describe any notes and remarks about the review here#
+
+'''
+
+.*Appendix: Risk identification checklist*
+[%collapsible]
+=====
+
+*Identify risks related to information systems or products*
 
 If the development project is developing an information system, then consider the following types of risks:
 
-[%collapsible]
-====
 * Leaks from/corruption of/destruction of important databases or data storage
 * Loss of IPR
 * Loss or major changes at key suppliers, supply chain attack
@@ -31,14 +44,10 @@ If the development project is developing an information system, then consider th
 * Lack of proper (internal/customer) documentation
 * Defects in software maintenance/updating
 * Insufficient protection of cryptographic assets (e.g., signing keys)
-====
 
-=== Risks related to products
+*Identify risks related to products*
 
 If the development project is developing a product, the cybersecurity risk assessment should comprise:
-
-[%collapsible]
-====
 
 General:
 
@@ -77,9 +86,7 @@ IPR:
 * Theft of intellectual property
 * Counterfeit products
 
-====
-
-=== Risks identified from security issues
+*Identify risks from security issues*
 
 When applying the secure development process, you will identify security-related issues in design, implementation, 3rd party technology, documentation, and testing. Consider, whether there are following kinds of high-level cybersecurity risks:
 
@@ -91,12 +98,4 @@ When applying the secure development process, you will identify security-related
   "name": "secdeva/reports/securityIssuesNeedingAttention"
 {{/report}}
 
-=== Risk treatment
-
-Once risks have been identified, you must assess them to determine their priority, plan and implement their treatment, and monitor the risks that could not be tracked to closure.
-
-There are automatic policy checks to ensure that risk treatment is working. Check the list of risks in {{#report}}"name": "secdeva/reports/xref", "identifier": "secdeva_register_risks"{{/report}} and fix any policy check failures. 
-
-Review notes about the overall status of risk treatment:
-
-#TODO: Describe any notes and remarks about the review here#
+=====

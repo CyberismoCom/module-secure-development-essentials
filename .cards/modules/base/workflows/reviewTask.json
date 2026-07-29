@@ -78,6 +78,13 @@
             "fromState": [
                 "Changes required"
             ]
+        },
+        {
+            "name": "Mark as done",
+            "toState": "Closed as done",
+            "fromState": [
+                "Open"
+            ]
         }
     ],
     "displayName": "Review task",

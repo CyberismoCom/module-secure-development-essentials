@@ -31,6 +31,8 @@ secdeva_defaultTitleWithDate("secdeva_review_project-structure", "Project struct
 secdeva_defaultTitleWithDate("secdeva_review_competence", "Competence review - ").
 secdeva_defaultTitleWithDate("secdeva_review_periodic", "Periodic review for ").
 secdeva_defaultTitleWithDate("secdeva_review_3rd-party-technologies", "Review of 3rd party technologies - ").
+secdeva_defaultTitleWithDate("secdeva_review_risk-management", "Review of risk management - ").
+secdeva_defaultTitleWithDate("secdeva_review_interfaces", "Review of interfaces - ").
 
 onTransitionSetField(
     Card,

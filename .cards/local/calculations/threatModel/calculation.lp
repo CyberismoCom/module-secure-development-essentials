@@ -72,9 +72,8 @@ transitionDenied(Document, "Approve", "Fill in the information classification fi
     field(Document, "cardType", "secdeva/cardTypes/threatModel"),
     not field(Document, "base/fieldTypes/informationClassification", _).
 
-transitionDenied(Document, "Approve", "Fill in the approval date field before approving") :-
-    field(Document, "cardType", "secdeva/cardTypes/threatModel"),
-    not field(Document, "base/fieldTypes/approvalDate", _).
+onTransitionSetField(Document, "Approve", Document, "base/fieldTypes/approvalDate", @today) :-
+    field(Document, "cardType", "secdeva/cardTypes/threatModel").
 
 transitionDenied(Document, "Approve", "Complete the review task(s) before approving") :-
     field(Document, "cardType", "secdeva/cardTypes/threatModel"),

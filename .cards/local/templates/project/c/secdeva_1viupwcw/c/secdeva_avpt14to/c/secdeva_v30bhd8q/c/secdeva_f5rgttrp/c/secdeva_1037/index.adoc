@@ -1,4 +1,4 @@
-.View process diagram
+.View diagram
 [%collapsible]
 ====
 {{#graph}}

@@ -1,11 +1,10 @@
-{{#each results}}
-{{#if risks}}
+{{#if results}}
 
 [cols="4,3,2,3"]
 |===
 | Risk | Owner  | Status | Affected assets
 
-{{#each risks}}
+{{#each results}}
 | xref:{{this.key}}.adoc[{{this.title}}]
 | {{this.[base/fieldTypes/owner]}}
 | {{this.workflowState}}
@@ -19,16 +18,8 @@
 {{/if}}
 {{/each}}
 |===
-
-{{#if (eq registerStatus "Ready")}}
-The {{#xref}}"cardKey": "{{register}}"{{/xref}} register has been marked *Ready*. 
-{{else}}
-The status of {{#xref}}"cardKey": "{{register}}"{{/xref}} register is {{registerStatus}}. If all relevant risks have been identified and treated, then you can mark the register as *Ready*.
-{{/if}}
-
 {{else}}
 
 There are no risks in this project.
 
 {{/if}}
-{{/each}}

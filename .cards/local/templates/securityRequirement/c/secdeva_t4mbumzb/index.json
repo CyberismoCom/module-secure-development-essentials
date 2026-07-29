@@ -5,6 +5,7 @@
     "rank": "0|b",
     "base/fieldTypes/owner": null,
     "base/fieldTypes/informationClassification": "internal",
-    "base/fieldTypes/identifier": "secdeva_security_requirement"
-
+    "base/fieldTypes/identifier": "secdeva_security_requirement",
+    "links": [],
+    "lastUpdated": "2026-07-29T10:27:32.024Z"
 }

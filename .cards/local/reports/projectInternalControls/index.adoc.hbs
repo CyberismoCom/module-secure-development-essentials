@@ -1,0 +1,124 @@
+{{#each results}}
+
+{{#if gettingStarted}}
+
+First, ensure that the following essential internal controls have been completed. See {{#report}}"name":"secdeva/reports/xref", "identifier": "secdeva_getting-started"{{/report}} for more information.
+
+=== Essential internal controls
+
+[cols="3,3,4"]
+|===
+| Control | Assessment  | Assessment explanation
+
+{{#each gettingStarted}}
+| {{#xref}}"cardKey": "{{this.key}}"{{/xref}}
+| {{this.[base/fieldTypes/assessment].displayValue}}
+| {{this.[base/fieldTypes/assessmentExplanation]}}
+
+{{/each}}
+|===
+
+{{else}}
+
+You have commpleted the essential internal controls for getting started.
+
+{{/if}}
+
+{{#if inProgress}}
+=== Internal controls in progress
+
+[cols="3,3,4"]
+|===
+| Control | Assessment  | Assessment explanation
+
+{{#each inProgress}}
+| {{#xref}}"cardKey": "{{this.key}}"{{/xref}}
+| {{this.[base/fieldTypes/assessment].displayValue}}
+| {{this.[base/fieldTypes/assessmentExplanation]}}
+
+{{/each}}
+|===
+
+{{/if}}
+
+{{#if notOk}}
+=== Internal controls that require attention
+
+[cols="3,3,4"]
+|===
+| Control | Assessment  | Assessment explanation
+
+{{#each notOk}}
+| {{#xref}}"cardKey": "{{this.key}}"{{/xref}}
+| {{this.[base/fieldTypes/assessment].displayValue}}
+| {{this.[base/fieldTypes/assessmentExplanation]}}
+
+{{/each}}
+|===
+
+{{/if}}
+
+{{#if open}}
+=== Internal controls that have not been started
+
+.See open controls
+[%collapsible]
+=====
+[cols="3,3,4"]
+|===
+| Control | Assessment  | Assessment explanation
+
+{{#each open}}
+| {{#xref}}"cardKey": "{{this.key}}"{{/xref}}
+| {{this.[base/fieldTypes/assessment].displayValue}}
+| {{this.[base/fieldTypes/assessmentExplanation]}}
+
+{{/each}}
+|===
+=====
+{{/if}}
+
+
+{{#if notApplicable}}
+=== Internal controls that are out of scope
+
+.See controls that are out of scope
+[%collapsible]
+=====
+[cols="3,3,4"]
+|===
+| Control | Assessment  | Assessment explanation
+
+{{#each notApplicable}}
+| {{#xref}}"cardKey": "{{this.key}}"{{/xref}}
+| {{this.[base/fieldTypes/assessment].displayValue}}
+| {{this.[base/fieldTypes/assessmentExplanation]}}
+
+{{/each}}
+|===
+=====
+
+{{/if}}
+
+{{#if ok}}
+=== Internal controls that OK
+
+.See controls that OK
+[%collapsible]
+=====
+[cols="3,3,4"]
+|===
+| Control | Assessment  | Assessment explanation
+
+{{#each ok}}
+| {{#xref}}"cardKey": "{{this.key}}"{{/xref}}
+| {{this.[base/fieldTypes/assessment].displayValue}}
+| {{this.[base/fieldTypes/assessmentExplanation]}}
+
+{{/each}}
+|===
+=====
+
+{{/if}}
+
+{{/each}}

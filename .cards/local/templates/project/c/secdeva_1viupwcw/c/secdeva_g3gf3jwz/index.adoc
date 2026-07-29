@@ -1,29 +1,3 @@
-This card sums up the status of secure development for reviews and shows what to do next.
-
-== Annual plan
-
-The following annual plan shows the status of recurring secure development tasks.
-
 {{#report}}
-  "name": "secdeva/reports/annualPlan"
-{{/report}}
-
-== Security issues
-
-All reported security issues must be analysed and either tracked to closure or justifiably deferred to future resolution.
-
-{{#report}}
-  "name": "secdeva/reports/securityIssuesNeedingAttention"
-{{/report}}
-
-{{#report}}
-  "name": "secdeva/reports/phase"
-{{/report}}
-
-== Policy checks
-
-Automatic policy checks must be processed and resolved.
-
-{{#report}}
-  "name": "secdeva/reports/projectPolicyChecks"
+  "name": "secdeva/reports/statusAndNextSteps"
 {{/report}}
