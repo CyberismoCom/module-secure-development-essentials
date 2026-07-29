@@ -42,3 +42,6 @@ It is recommended to have 2–6 checkpoints per year to keep secure development 
 
 #TODO: Add a description or link showing your general milestone/checkpoint practices and how secure development reviews fit into them#
 
+== Activation
+
+Once you have filled in this template, use the "Activate" workflow transition to mark this card ready.
