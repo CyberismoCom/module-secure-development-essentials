@@ -1,10 +1,11 @@
-{{#if results}}
+{{#each results}}
 
+{{#if risks}}
 [cols="4,3,2,3"]
 |===
 | Risk | Owner  | Status | Affected assets
 
-{{#each results}}
+{{#each risks}}
 | xref:{{this.key}}.adoc[{{this.title}}]
 | {{this.[base/fieldTypes/owner]}}
 | {{this.workflowState}}
@@ -21,5 +22,6 @@
 {{else}}
 
 There are no risks in this project.
-
 {{/if}}
+
+{{/each}}
