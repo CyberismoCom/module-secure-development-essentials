@@ -3,6 +3,8 @@
 secdeva_register(Register) :- field(Register, "cardType", "secdeva/cardTypes/register").
 secdeva_register(Register) :- field(Register, "cardType", "secdeva/cardTypes/riskRegister").
 secdeva_register(Register) :- field(Register, "cardType", "secdeva/cardTypes/securityIssueRegister").
+secdeva_register(Register) :- field(Register, "cardType", "secdeva/cardTypes/periodicReviewRegister").
+
 
 % secdeva_registerMember(Item, Register) means that Item belongs to the register Register
 

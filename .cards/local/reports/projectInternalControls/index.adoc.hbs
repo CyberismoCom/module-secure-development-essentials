@@ -1,12 +1,25 @@
 {{#each results}}
+The current adoption step of this project is *{{this.project.[base/fieldTypes/adoptionStep].displayValue}}*. 
+{{#unless (eq this.project.[base/fieldTypes/adoptionStep].value "step3")}}
+The following tables do not include internal controls on higher adoption steps. You can change the target adoption step field in {{#report}}"name":"secdeva/reports/xref", "identifier":"secdeva_project"{{/report}}.
+{{#unless inProgress}}
+{{#unless notOk}}
+{{#unless open}}
+
+TIP: You have completed the internal controls on the current adoption step, so you can begin working on the items on the next adoption step. Change the target adoption step field in {{#report}}"name":"secdeva/reports/xref", "identifier":"secdeva_project"{{/report}}.
+
+{{/unless}}
+{{/unless}}
+{{/unless}}
+{{/unless}}
 
 {{#if gettingStarted}}
 
-First, ensure that the following essential internal controls have been completed. See {{#report}}"name":"secdeva/reports/xref", "identifier": "secdeva_getting-started"{{/report}} for more information.
-
 === Essential internal controls
 
-[cols="3,3,4"]
+First, ensure that the following fundamental internal controls have been completed. See {{#report}}"name":"secdeva/reports/xref", "identifier": "secdeva_getting-started"{{/report}} for more information.
+
+[cols="3,1,4"]
 |===
 | Control | Assessment  | Assessment explanation
 
@@ -27,7 +40,9 @@ You have commpleted the essential internal controls for getting started.
 {{#if inProgress}}
 === Internal controls in progress
 
-[cols="3,3,4"]
+Complete the following controls that are in progress:
+
+[cols="3,1,4"]
 |===
 | Control | Assessment  | Assessment explanation
 
@@ -44,7 +59,9 @@ You have commpleted the essential internal controls for getting started.
 {{#if notOk}}
 === Internal controls that require attention
 
-[cols="3,3,4"]
+The following controls are not OK and require attention:
+
+[cols="3,1,4"]
 |===
 | Control | Assessment  | Assessment explanation
 
@@ -61,10 +78,12 @@ You have commpleted the essential internal controls for getting started.
 {{#if open}}
 === Internal controls that have not been started
 
+You have not started working on the following internal controls:
+
 .See open controls
 [%collapsible]
 =====
-[cols="3,3,4"]
+[cols="3,1,4"]
 |===
 | Control | Assessment  | Assessment explanation
 
@@ -85,7 +104,7 @@ You have commpleted the essential internal controls for getting started.
 .See controls that are out of scope
 [%collapsible]
 =====
-[cols="3,3,4"]
+[cols="3,1,4"]
 |===
 | Control | Assessment  | Assessment explanation
 
@@ -106,7 +125,7 @@ You have commpleted the essential internal controls for getting started.
 .See controls that OK
 [%collapsible]
 =====
-[cols="3,3,4"]
+[cols="3,1,4"]
 |===
 | Control | Assessment  | Assessment explanation
 
