@@ -1,13 +1,12 @@
 {
     "title": "Operations",
-    "cardType": "ismsa/cardTypes/register",
+    "cardType": "secdeva/cardTypes/phase",
     "workflowState": "",
     "rank": "0|h",
     "ismsa/fieldTypes/adoptionStep": "step1",
-    "base/fieldTypes/owner": null,
-    "base/fieldTypes/informationClassification": "internal",
     "links": [],
-    "lastUpdated": "2026-07-24T10:57:30.003Z",
+    "lastUpdated": "2026-07-30T07:30:28.769Z",
     "base/fieldTypes/identifier": "secdeva_phase_operations",
-    "ismsa/fieldTypes/progress": "secdeva_phase-progress"
+    "ismsa/fieldTypes/progress": "secdeva_phase-progress",
+    "base/fieldTypes/adoptionStep": null
 }
