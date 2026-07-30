@@ -45,7 +45,7 @@ To add a dataflow to or from this data store, click the link symbol in the top l
   "template": "secdeva/templates/dataStore2"
 {{/createCards}}
 
-== Interfaces
+== Interfaces and physical connections
 
 {{#report}}
   "name": "secdeva/reports/entityInterfaces"
