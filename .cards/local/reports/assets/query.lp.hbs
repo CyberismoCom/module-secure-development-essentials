@@ -24,4 +24,13 @@ resultField(Asset, "type", Type, "shortText") :-
   field(Asset, "cardType", CardType),
   field(CardType, "displayName", Type).
 
+childResult(Asset, Risk, "risks") :-
+  childResult(result, Asset, "assets"),
+  link(Asset, Risk, "ismsa/linkTypes/presentsRisk").
+
+childResult(Asset, Requirement, "securityRequirements") :-
+  childResult(result, Asset, "assets"),
+  link(Requirement, Asset, "secdeva/linkTypes/appliesTo"),
+  field(Requirement, "cardType", "secdeva/cardTypes/requirement").
+
 orderBy("title", "ASC").
