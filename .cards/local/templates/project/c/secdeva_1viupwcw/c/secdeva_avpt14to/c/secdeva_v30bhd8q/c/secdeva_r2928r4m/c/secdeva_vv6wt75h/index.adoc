@@ -16,12 +16,12 @@ Disclose information about security related issues to suppliers, customers, user
   "name": "secdeva/reports/securityIssuesNeedingAttention"
 {{/report}}
 
-Create a review of defect management and follow the instructions in the template.
+Create a review of security issue management and follow the instructions in the template.
 
 {{#report}}
   "name": "secdeva/reports/createReview",
   "template": "secdeva/templates/defectManagementReview",
-  "buttonLabel": "Create a review of defect management",
+  "buttonLabel": "Create a security issue of defect management",
   "phase": "secdeva_phase_implementation"
 {{/report}}
 

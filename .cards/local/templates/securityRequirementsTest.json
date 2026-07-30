@@ -1,5 +1,5 @@
 {
-    "displayName": "Security requirements test",
+    "displayName": "Review of security requirements testing",
     "description": "Testing of the security requirements",
     "category": "Security testing",
     "name": "secdeva/templates/securityRequirementsTest"

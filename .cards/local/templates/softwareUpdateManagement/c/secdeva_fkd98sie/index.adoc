@@ -36,3 +36,14 @@ Check that all 3rd party software updates and the information provided by the 3r
 
 #TODO: Describe any notes and remarks about the review here#
 
+== Identified security issues from this review
+
+{{#createCards}}
+  "template": "secdeva/templates/securityIssue",
+  "buttonLabel": "Create a new security issue"
+{{/createCards}}
+
+{{#report}}
+  "name": "secdeva/reports/securityIssueList"
+{{/report}}
+

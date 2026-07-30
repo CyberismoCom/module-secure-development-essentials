@@ -43,12 +43,12 @@
     ],
     "alwaysVisibleFields": [
         "base/fieldTypes/owner",
+        "base/fieldTypes/justification",
         "base/fieldTypes/assessment",
         "base/fieldTypes/assessmentExplanation"
     ],
     "optionallyVisibleFields": [
         "base/fieldTypes/informationClassification",
-        "base/fieldTypes/justification",
         "base/fieldTypes/adoptionStep",
         "ismsa/fieldTypes/internalControlReviewPeriod",
         "base/fieldTypes/reviewMonth",

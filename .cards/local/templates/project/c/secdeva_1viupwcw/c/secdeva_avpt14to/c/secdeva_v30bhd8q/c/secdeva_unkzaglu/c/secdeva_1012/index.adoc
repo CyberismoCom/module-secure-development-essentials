@@ -35,7 +35,7 @@ If the supplier of a 3rd party component has published information about their v
   "name": "secdeva/reports/createReview",
   "template": "secdeva/templates/vulnerabilityManagement",
   "buttonLabel": "Create a review of vulnerability management",
-  "phase": "secdeva_phase_verification"
+  "phase": "secdeva_phase_operations"
 {{/report}}
 
 == Assessment

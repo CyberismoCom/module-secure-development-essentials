@@ -1,9 +1,9 @@
 {
     "cardType": "base/cardTypes/review",
-    "title": "Software update management for (Scope)",
+    "title": "Review of software update management - (Scope)",
     "workflowState": "",
     "rank": "0|a",
-    "lastUpdated": "2026-07-28T12:48:38.864Z",
+    "lastUpdated": "2026-07-30T11:09:24.228Z",
     "base/fieldTypes/owner": null,
     "base/fieldTypes/informationClassification": "internal",
     "base/fieldTypes/reviewPeriod": 365,

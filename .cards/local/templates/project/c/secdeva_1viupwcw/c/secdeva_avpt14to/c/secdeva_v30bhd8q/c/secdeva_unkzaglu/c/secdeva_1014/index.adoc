@@ -29,7 +29,7 @@ If the supplier of a 3rd party component has published information about their s
   "name": "secdeva/reports/createReview",
   "template": "secdeva/templates/softwareUpdateManagement",
   "buttonLabel": "Create a review of software update management",
-  "phase": "secdeva_phase_verification"
+  "phase": "secdeva_phase_operations"
 {{/report}}
 
 == Assessment

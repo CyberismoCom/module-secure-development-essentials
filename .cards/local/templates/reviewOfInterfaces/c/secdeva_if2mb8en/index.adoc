@@ -16,3 +16,14 @@ Relevant interfaces have been identified in the threat model:
 
 * [ ] OK
 * [ ] Not OK
+
+== Identified security issues from this review
+
+{{#createCards}}
+  "template": "secdeva/templates/securityIssue",
+  "buttonLabel": "Create a new security issue"
+{{/createCards}}
+
+{{#report}}
+  "name": "secdeva/reports/securityIssueList"
+{{/report}}

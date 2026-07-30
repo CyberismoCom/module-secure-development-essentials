@@ -1,6 +1,6 @@
 == Introduction
 
-This document records a review of defect management in the development project.
+This document records a review of security issue management in the development project.
 
 == Review checklist
 

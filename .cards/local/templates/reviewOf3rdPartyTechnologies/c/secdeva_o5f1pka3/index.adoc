@@ -30,3 +30,14 @@ A software bill of materials (SBOM) has been drawn up, all 3rd party dependencie
 
 * [ ] Not OK
 * [ ] OK
+
+== Identified security issues from this review
+
+{{#createCards}}
+  "template": "secdeva/templates/securityIssue",
+  "buttonLabel": "Create a new security issue"
+{{/createCards}}
+
+{{#report}}
+  "name": "secdeva/reports/securityIssueList"
+{{/report}}

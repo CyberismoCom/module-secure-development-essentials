@@ -26,6 +26,18 @@ Review notes about the overall status of risk treatment:
 
 #TODO: Describe any notes and remarks about the review here#
 
+== Identified security issues from this review
+
+{{#createCards}}
+  "template": "secdeva/templates/securityIssue",
+  "buttonLabel": "Create a new security issue"
+{{/createCards}}
+
+{{#report}}
+  "name": "secdeva/reports/securityIssueList"
+{{/report}}
+
+
 '''
 
 .*Appendix: Risk identification checklist*
