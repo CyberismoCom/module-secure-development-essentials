@@ -1,13 +1,28 @@
 {{#each results}}
 {{#if requirements}}
 
-[cols="5,2"]
+[cols="4,3,3"]
 |===
-| Requirement | Workflow State
+| Requirement | Risks | Assets
 
 {{#each requirements}}
-|xref:{{this.key}}.adoc[{{this.title}}]
-|{{this.workflowState}}
+|xref:{{this.key}}.adoc[{{this.title}}] [*{{this.workflowState}}*]
+{{#if this.risks}}
+|
+{{#each this.risks}}
+* xref:{{this.key}}.adoc[{{this.title}}]
+{{/each}}
+{{else}}
+|
+{{/if}}
+{{#if this.assets}}
+|
+{{#each this.assets}}
+* xref:{{this.key}}.adoc[{{this.title}}]
+{{/each}}
+{{else}}
+|
+{{/if}}
 {{/each}}
 
 |===

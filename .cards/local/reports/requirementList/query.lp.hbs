@@ -19,4 +19,12 @@ childResult(result, Requirement, "requirements") :-
   secdeva_closestProject(Requirement, Project),
   field(Register, "base/fieldTypes/identifier", "secdeva_register_security-requirements").
 
+childResult(Requirement, Risk, "risks") :-
+  childResult(result, Requirement, "requirements"),
+  link(Requirement, Risk, "ismsa/linkTypes/mitigates").
+
+childResult(Requirement, Asset, "assets") :-
+  childResult(result, Requirement, "requirements"),
+  link(Requirement, Asset, "secdeva/linkTypes/appliesTo").
+
 orderBy("rank", "ASC").

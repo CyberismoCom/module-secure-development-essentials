@@ -26,4 +26,9 @@ childResult(Risk, Asset, "affectedAssets") :-
   secdeva_riskResult(Risk),
   link(Asset, Risk, "ismsa/linkTypes/presentsRisk").
 
+childResult(Risk, Requirement, "securityRequirements") :-
+  secdeva_riskResult(Risk),
+  link(Requirement, Risk, "ismsa/linkTypes/mitigates"),
+  field(Requirement, "cardType", "secdeva/cardTypes/requirement").
+
 orderBy("title", "ASC").

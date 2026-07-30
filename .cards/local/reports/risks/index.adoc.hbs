@@ -1,17 +1,24 @@
 {{#each results}}
 
 {{#if risks}}
-[cols="4,3,2,3"]
+[cols="4,3,3,3"]
 |===
-| Risk | Owner  | Status | Affected assets
+| Risk | Owner  | Affected assets | Mitigating security requirements
 
 {{#each risks}}
-| xref:{{this.key}}.adoc[{{this.title}}]
+| xref:{{this.key}}.adoc[{{this.title}}] [*{{this.workflowState}}*]
 | {{this.[base/fieldTypes/owner]}}
-| {{this.workflowState}}
 {{#if this.affectedAssets}}
 |
 {{#each this.affectedAssets}}
+* xref:{{this.key}}.adoc[{{this.title}}]
+{{/each}}
+{{else}}
+|
+{{/if}}
+{{#if this.securityRequirements}}
+|
+{{#each this.securityRequirements}}
 * xref:{{this.key}}.adoc[{{this.title}}]
 {{/each}}
 {{else}}

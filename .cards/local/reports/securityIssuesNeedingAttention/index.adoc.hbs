@@ -3,13 +3,12 @@
 {{#if issuesNeedingAttention}}
 [caption=]
 .Security issues that need attention
-[cols="5,2,2,3"]
+[cols="5,2,3"]
 |===
-| Security issue | Workflow State | Severity | Affected assets
+| Security issue | Severity | Affected assets
 
 {{#each issuesNeedingAttention}}
-|xref:{{this.key}}.adoc[{{this.title}}]
-|{{this.workflowState}}
+|xref:{{this.key}}.adoc[{{this.title}}] [*{{this.workflowState}}*]
 |{{this.[secdeva/fieldTypes/severity].displayValue}}
 {{#if this.affectedAssets}}
 |
@@ -33,13 +32,12 @@ There are no security issues that need attention.
 [%collapsible]
 ====
 
-[cols="5,2,2,3"]
+[cols="5,2,3"]
 |===
-| Security issue | Workflow State | Severity | Affected assets
+| Security issue | Severity | Affected assets
 
 {{#each deferredIssues}}
-|xref:{{this.key}}.adoc[{{this.title}}]
-|{{this.workflowState}}
+|xref:{{this.key}}.adoc[{{this.title}}] [*{{this.workflowState}}*]
 |{{this.[secdeva/fieldTypes/severity].displayValue}}
 {{#if this.affectedAssets}}
 |
