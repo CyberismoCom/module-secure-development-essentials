@@ -1,4 +1,5 @@
 selectAll.
+select(2, "reviews", "policyChecks").
 
 result(result).
 
@@ -13,7 +14,7 @@ resultField(result, "daysSincePreviousReview", DaysSinceReview, "integer") :-
   secdeva_closestProject({{cardKey}}, Project),
   DaysSinceReview != #sup,
   DaysSinceReview = #min {
-    Days : 
+    Days :
     secdeva_registerMember(Review, Register),
     not field(Review, "workflowState", "Draft"),
     field(Review, "base/fieldTypes/lastReviewed", LastReviewed),

@@ -1,9 +1,9 @@
 {{#each results}}
 {{#if requirements}}
 
-[cols="4,3,3"]
+[cols="4,3,3,3"]
 |===
-| Requirement | Risks | Assets
+| Requirement | Risks | Assets | Policy violations
 
 {{#each requirements}}
 |xref:{{this.key}}.adoc[{{this.title}}] [*{{this.workflowState}}*]
@@ -19,6 +19,14 @@
 |
 {{#each this.assets}}
 * xref:{{this.key}}.adoc[{{this.title}}]
+{{/each}}
+{{else}}
+|
+{{/if}}
+{{#if this.policyChecks.failures}}
+a|
+{{#each this.policyChecks.failures}}
+* {{this.title}}
 {{/each}}
 {{else}}
 |

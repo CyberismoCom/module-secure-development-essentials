@@ -49,27 +49,27 @@ field(Card, "secdeva/fieldTypes/crossesTrustBoundary", "no") :-
 
 % Mandatory fields
 
-policyCheckFailure(Interface, "Interfaces", "Mandatory field not set", "Decide whether basic input validation testing is required.", "secdeva/fieldTypes/basicInputValidationTestingRequired") :-
+policyCheckFailure(Interface, "Interfaces", "Basic input validation testing is a required field", "Whether basic input validation testing is required has not been defined.", "secdeva/fieldTypes/basicInputValidationTestingRequired") :-
   field(Interface, "cardType", "secdeva/cardTypes/interface"),
   not field(Interface, "secdeva/fieldTypes/basicInputValidationTestingRequired", _).
 
-policyCheckFailure(Interface, "Interfaces", "Mandatory field not set", "Decide whether basic stress testing is required.","secdeva/fieldTypes/basicStressTestingRequired") :-
+policyCheckFailure(Interface, "Interfaces", "Basic stress testing is a required field", "Whether basic stress testing is required has not been defined.","secdeva/fieldTypes/basicStressTestingRequired") :-
   field(Interface, "cardType", "secdeva/cardTypes/interface"),
   not field(Interface, "secdeva/fieldTypes/basicStressTestingRequired", _).
   
-policyCheckFailure(Interface, "Interfaces", "Mandatory field not set", "Decide whether fuzz testing is required.","secdeva/fieldTypes/fuzzTestingRequired") :-
+policyCheckFailure(Interface, "Interfaces", "Fuzz testing is a required field", "Whether fuzz testing is required has not been defined.","secdeva/fieldTypes/fuzzTestingRequired") :-
   field(Interface, "cardType", "secdeva/cardTypes/interface"),
   not field(Interface, "secdeva/fieldTypes/fuzzTestingRequired", _).
 
-policyCheckFailure(Interface, "Interfaces", "Mandatory field not set", "Decide whether capacity testing is required.","secdeva/fieldTypes/capacityTestingRequired") :-
+policyCheckFailure(Interface, "Interfaces", "Capacity testing is a required field", "Whether capacity testing is required has not been defined.","secdeva/fieldTypes/capacityTestingRequired") :-
   field(Interface, "cardType", "secdeva/cardTypes/interface"),
   not field(Interface, "secdeva/fieldTypes/capacityTestingRequired", _).
 
-policyCheckFailure(Interface, "Interfaces", "Mandatory field not set", "Decide whether network traffic load testing is required.","secdeva/fieldTypes/networkTrafficLoadTestingRequired") :-
+policyCheckFailure(Interface, "Interfaces", "Network traffic load testing is a required field", "Whether network traffic load testing is required has not been defined.","secdeva/fieldTypes/networkTrafficLoadTestingRequired") :-
   field(Interface, "cardType", "secdeva/cardTypes/interface"),
   not field(Interface, "secdeva/fieldTypes/networkTrafficLoadTestingRequired", _).
 
-policyCheckFailure(Interface, "Interfaces", "Mandatory field not set", "Document the justification for security testing.","secdeva/fieldTypes/interfaceTestingScopingJustification") :-
+policyCheckFailure(Interface, "Interfaces", "Justification for security testing is a required field", "The justification for security testing has not been defined.","secdeva/fieldTypes/interfaceTestingScopingJustification") :-
   field(Interface, "cardType", "secdeva/cardTypes/interface"),
   not field(Interface, "secdeva/fieldTypes/interfaceTestingScopingJustification", _).
 
