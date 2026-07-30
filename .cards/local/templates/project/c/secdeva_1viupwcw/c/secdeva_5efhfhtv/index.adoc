@@ -61,6 +61,16 @@ Fixing security weaknesses in design is far less costly than fixing them in prod
   "controls": "secdeva_register_design-controls"
 {{/report}}
 
+=== Design documentation in the registers
+
+Many design-related aspects are documented in the following registers:
+
+* Processes, interfaces, data stores of the threat model and other assets are in {{#report}}"name":"xref","identifier":"secdeva_register_assets"{{/report}}
+* Cybersecurity risks are in {{#report}}"name":"xref","identifier":"secdeva_register_risks"{{/report}}
+* Security requirements are in {{#report}}"name":"xref","identifier":"secdeva_register_security-requirements"{{/report}}
+* Assessments of 3rd party technologies are in {{#report}}"name":"xref","identifier":"secdeva_register_technology-assessments"{{/report}}.
+* Decisions are in {{#report}}"name":"xref","identifier":"secdeva_register_decisions"{{/report}}
+
 === Architecture and design specifications
 
 You can document architecture or design in a specification here.
