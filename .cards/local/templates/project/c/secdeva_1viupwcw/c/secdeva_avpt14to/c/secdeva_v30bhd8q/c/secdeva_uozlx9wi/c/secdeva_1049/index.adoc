@@ -7,7 +7,7 @@
 {{/graph}}
 ====
 
-Security requirement testing ensures that security requirements have been correctly implemented and that error handling works correctly.
+Security requirement testing ensures that security requirements have been correctly implemented.
 
 When security requirements mitigate cyber risks, security requirement testing acts as mitigation testing. In this case, the testing should include, where practical, tests that attempt to defeat (thwart) the mitigation.
 
@@ -21,17 +21,15 @@ Create a security requirement tests and follow the instructions in the template.
 
 {{#report}}
   "name": "secdeva/reports/createReview",
-  "template": "secdeva/templates/securityRequirementsTest",
+  "template": "secdeva/templates/securityRequirementTestingReview",
   "buttonLabel": "Create a review of security requirement testing",
   "phase": "secdeva_phase_verification"
 {{/report}}
 
-The security validation test plan should also verify error handling.
-
-== How to review this task
+== Assessment
 
 {{#report}}
-  "name": "secdeva/reports/securityRequirementTestCoverage"
+  "name": "secdeva/reports/internalControlAssessment"
 {{/report}}
 
 == References

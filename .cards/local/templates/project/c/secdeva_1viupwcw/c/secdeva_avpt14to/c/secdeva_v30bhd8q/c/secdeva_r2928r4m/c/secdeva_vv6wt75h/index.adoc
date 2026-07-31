@@ -21,7 +21,7 @@ Create a review of security issue management and follow the instructions in the 
 {{#report}}
   "name": "secdeva/reports/createReview",
   "template": "secdeva/templates/defectManagementReview",
-  "buttonLabel": "Create a security issue of defect management",
+  "buttonLabel": "Create a review of security issue management",
   "phase": "secdeva_phase_implementation"
 {{/report}}
 

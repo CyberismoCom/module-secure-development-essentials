@@ -16,6 +16,7 @@ link(Evidence, Task, "ismsa/linkTypes/evidences") :-
   secdeva_closestProject(Task, Project),
   secdeva_closestProject(Evidence, Project),
   secdeva_legacyEvidence(TaskIdentifier, EvidenceIdentifier, _),
+  field(Project, "cardType", "secdeva/cardTypes/project"),
   field(Task, "base/fieldTypes/identifier", TaskIdentifier),
   field(Evidence, "base/fieldTypes/identifier", EvidenceIdentifier).
 
@@ -37,7 +38,8 @@ secdeva_evidence("secdeva_control_threat-mitigation-testing", "secdeva_test_thre
 secdeva_legacyEvidence("secdeva_control_security-requirements", "secdeva_document_security-requirement-specification", "Security requirements specification").
 secdeva_evidence("secdeva_control_security-requirements", "secdeva_review_requirement-management", "Review of \nsecurity requirements management").
 secdeva_evidence("secdeva_control_security-requirements", "secdeva_register_security-requirements", "Security requirement register").
-secdeva_evidence("secdeva_control_security-requirement-testing", "secdeva_test_security-requirements", "Review of \nsecurity requirement testing").
+secdeva_legacyEvidence("secdeva_control_security-requirement-testing", "secdeva_test_security-requirements", "Review of \nsecurity requirement testing").
+secdeva_evidence("secdeva_control_security-requirement-testing", "secdeva_review_security-requirement-testing", "Review of \nsecurity requirement testing").
 secdeva_evidence("secdeva_control_3rd-party-technologies", "secdeva_register_technology-assessments", "Technology assessments").
 secdeva_evidence("secdeva_control_3rd-party-technologies", "secdeva_review_3rd-party-technologies", "Review of 3rd party technologies").
 secdeva_evidence("secdeva_control_vulnerability-management", "secdeva_review_vulnerability-management", "Review of 3rd party \nvulnerability management").
