@@ -23,6 +23,8 @@ secdeva_isAcceptableInProgressCalculation(Control) :-
 % calculate progress for the entire project
 secdeva_calculateProgress(Project) :-
     field(Project, "cardType", "secdeva/cardTypes/project").
+secdeva_calculateProgress(Project) :-
+    field(Project, "cardType", "secdeva/cardTypes/project2").
 
 % calculate progress for internal control registers
 secdeva_calculateProgress(ControlRegister) :-
