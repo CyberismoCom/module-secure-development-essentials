@@ -150,6 +150,10 @@ hiddenInTreeView(AttackVector) :-
     field(AttackVector, "base/fieldTypes/identifier", "secdeva_attack-vector").
 
 
+%
+% Threat model assessment
+%
+
 % Helper: true when a threat model has an open review task with policy check failures
 ismsa_reviewTaskPolicyFailure(ThreatModel) :-
     parent(ReviewTask, ThreatModel),
@@ -163,7 +167,7 @@ field(ThreatModel, "base/fieldTypes/assessment", "open") :-
     field(ThreatModel, "cardType", "secdeva/cardTypes/threatModel"),
     field(ThreatModel, "workflowStateCategory", "initial").
 
-field(ThreatModel, "base/fieldTypes/assessmentExplanation", "The document has not yet been submitted for approval") :-
+field(ThreatModel, "base/fieldTypes/assessmentExplanation", "The threat model has not yet been submitted for approval") :-
     field(ThreatModel, "cardType", "secdeva/cardTypes/threatModel"),
     field(ThreatModel, "workflowStateCategory", "initial").
 
@@ -175,7 +179,7 @@ field(ThreatModel, "base/fieldTypes/assessment", "open") :-
     not base_policyCheckFailure(ThreatModel, _, _, _),
     not ismsa_reviewTaskPolicyFailure(ThreatModel).
 
-field(ThreatModel, "base/fieldTypes/assessmentExplanation", "The document is being prepared or reviewed") :-
+field(ThreatModel, "base/fieldTypes/assessmentExplanation", "The threat model is being prepared or reviewed") :-
     field(ThreatModel, "cardType", "secdeva/cardTypes/threatModel"),
     not field(ThreatModel, "workflowStateCategory", "initial"),
     not field(ThreatModel, "workflowState", "Approved"),
@@ -190,7 +194,7 @@ field(ThreatModel, "base/fieldTypes/assessment", "notOk") :-
     not field(ThreatModel, "workflowStateCategory", "initial"),
     base_policyCheckFailure(ThreatModel, _, _, _).
 
-field(ThreatModel, "base/fieldTypes/assessmentExplanation", "The document has policy check failures") :-
+field(ThreatModel, "base/fieldTypes/assessmentExplanation", "The threat model has policy check failures") :-
     field(ThreatModel, "cardType", "secdeva/cardTypes/threatModel"),
     not field(ThreatModel, "workflowStateCategory", "initial"),
     base_policyCheckFailure(ThreatModel, _, _, _).
@@ -218,7 +222,7 @@ field(ThreatModel, "base/fieldTypes/assessment", "ok") :-
     field(ThreatModel, "workflowState", "Approved"),
     not base_policyCheckFailure(ThreatModel, _, _, _).
 
-field(ThreatModel, "base/fieldTypes/assessmentExplanation", "The document is approved and has no policy check failures") :-
+field(ThreatModel, "base/fieldTypes/assessmentExplanation", "The threat model is approved and has no policy check failures") :-
     field(ThreatModel, "cardType", "secdeva/cardTypes/threatModel"),
     field(ThreatModel, "workflowState", "Approved"),
     not base_policyCheckFailure(ThreatModel, _, _, _).
