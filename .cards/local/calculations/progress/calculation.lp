@@ -57,11 +57,12 @@ secdeva_calculateProgress(Phase) :-
 
 field(Card, "base/fieldTypes/progress", 100 * Closed / Total) :-
     secdeva_calculateProgress(Card),
+    secdeva_closestProject(Card, Project),
     Total = #count {
         card(Task) :
         ancestor(Task, Card),
         secdeva_includeInProgressCalculation(Task),
-        not hiddenInTreeView(Task)
+        not base_greaterAdoptionStep(Task, Project)
     },
     Total > 0,
     Closed = #count {
@@ -69,7 +70,7 @@ field(Card, "base/fieldTypes/progress", 100 * Closed / Total) :-
         secdeva_includeInProgressCalculation(Task),
         ancestor(Task, Card),
         secdeva_isAcceptableInProgressCalculation(Task),
-        not hiddenInTreeView(Task)
+        not base_greaterAdoptionStep(Task, Project)
     }.
 
 policyCheckFailure(
