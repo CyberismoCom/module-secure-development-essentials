@@ -14,6 +14,7 @@ policyCheckFailure(Issue, "Secure development", "Severity is required", "Severit
         field(Issue, "cardType", "secdeva/cardTypes/securityIssue"),
         not field(Issue, "workflowStateCategory", "initial"),
         not field(Issue, "workflowState", "Closed as duplicate"),
+        not field(Issue, "workflowState", "Closed as not applicable"),
         not field(Issue, "secdeva/fieldTypes/severity", _).
 
 transitionDenied(
@@ -28,6 +29,7 @@ policyCheckFailure(Issue, "Secure development", "Root cause category is required
         field(Issue, "cardType", "secdeva/cardTypes/securityIssue"),
         not field(Issue, "workflowStateCategory", "initial"),
         not field(Issue, "workflowState", "Closed as duplicate"),
+        not field(Issue, "workflowState", "Closed as not applicable"),
         not field(Issue, "secdeva/fieldTypes/rootCauseCategory", _).
 
 transitionDenied(
@@ -42,6 +44,7 @@ policyCheckFailure(Issue, "Secure development", "Reporting is required", "Report
         field(Issue, "cardType", "secdeva/cardTypes/securityIssue"),
         not field(Issue, "workflowStateCategory", "initial"),
         not field(Issue, "workflowState", "Closed as duplicate"),
+        not field(Issue, "workflowState", "Closed as not applicable"),
         not field(Issue, "secdeva/fieldTypes/reporting", _).
 
 transitionDenied(

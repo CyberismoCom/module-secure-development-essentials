@@ -148,3 +148,77 @@ policyCheckFailure(Document, "Document control", "Review has expired", "Complete
 
 hiddenInTreeView(AttackVector) :-
     field(AttackVector, "base/fieldTypes/identifier", "secdeva_attack-vector").
+
+
+% Helper: true when a threat model has an open review task with policy check failures
+ismsa_reviewTaskPolicyFailure(ThreatModel) :-
+    parent(ReviewTask, ThreatModel),
+    field(ThreatModel, "cardType", "secdeva/cardTypes/threatModel"),
+    field(ReviewTask, "cardType", "base/cardTypes/reviewTask"),
+    base_policyCheckFailure(ReviewTask, _, _, _).
+
+% Assessment: "open" when the threat model is in initial state or not yet approved without policy failures
+
+field(ThreatModel, "base/fieldTypes/assessment", "open") :-
+    field(ThreatModel, "cardType", "secdeva/cardTypes/threatModel"),
+    field(ThreatModel, "workflowStateCategory", "initial").
+
+field(ThreatModel, "base/fieldTypes/assessmentExplanation", "The document has not yet been submitted for approval") :-
+    field(ThreatModel, "cardType", "secdeva/cardTypes/threatModel"),
+    field(ThreatModel, "workflowStateCategory", "initial").
+
+field(ThreatModel, "base/fieldTypes/assessment", "open") :-
+    field(ThreatModel, "cardType", "secdeva/cardTypes/threatModel"),
+    not field(ThreatModel, "workflowStateCategory", "initial"),
+    not field(ThreatModel, "workflowState", "Approved"),
+    not field(ThreatModel, "workflowState", "Archived"),
+    not base_policyCheckFailure(ThreatModel, _, _, _),
+    not ismsa_reviewTaskPolicyFailure(ThreatModel).
+
+field(ThreatModel, "base/fieldTypes/assessmentExplanation", "The document is being prepared or reviewed") :-
+    field(ThreatModel, "cardType", "secdeva/cardTypes/threatModel"),
+    not field(ThreatModel, "workflowStateCategory", "initial"),
+    not field(ThreatModel, "workflowState", "Approved"),
+    not field(ThreatModel, "workflowState", "Archived"),
+    not base_policyCheckFailure(ThreatModel, _, _, _),
+    not ismsa_reviewTaskPolicyFailure(ThreatModel).
+
+% Assessment: "notOk" when the document has policy check failures
+
+field(ThreatModel, "base/fieldTypes/assessment", "notOk") :-
+    field(ThreatModel, "cardType", "secdeva/cardTypes/threatModel"),
+    not field(ThreatModel, "workflowStateCategory", "initial"),
+    base_policyCheckFailure(ThreatModel, _, _, _).
+
+field(ThreatModel, "base/fieldTypes/assessmentExplanation", "The document has policy check failures") :-
+    field(ThreatModel, "cardType", "secdeva/cardTypes/threatModel"),
+    not field(ThreatModel, "workflowStateCategory", "initial"),
+    base_policyCheckFailure(ThreatModel, _, _, _).
+
+field(ThreatModel, "base/fieldTypes/assessment", "notOk") :-
+    field(ThreatModel, "cardType", "secdeva/cardTypes/threatModel"),
+    not field(ThreatModel, "workflowStateCategory", "initial"),
+    not field(ThreatModel, "workflowState", "Approved"),
+    not field(ThreatModel, "workflowState", "Archived"),
+    not base_policyCheckFailure(ThreatModel, _, _, _),
+    ismsa_reviewTaskPolicyFailure(ThreatModel).
+
+field(ThreatModel, "base/fieldTypes/assessmentExplanation", "One or more review tasks have policy check failures") :-
+    field(ThreatModel, "cardType", "secdeva/cardTypes/threatModel"),
+    not field(ThreatModel, "workflowStateCategory", "initial"),
+    not field(ThreatModel, "workflowState", "Approved"),
+    not field(ThreatModel, "workflowState", "Archived"),
+    not base_policyCheckFailure(ThreatModel, _, _, _),
+    ismsa_reviewTaskPolicyFailure(ThreatModel).
+
+% Assessment: "ok" when the document is approved and has no policy check failures
+
+field(ThreatModel, "base/fieldTypes/assessment", "ok") :-
+    field(ThreatModel, "cardType", "secdeva/cardTypes/threatModel"),
+    field(ThreatModel, "workflowState", "Approved"),
+    not base_policyCheckFailure(ThreatModel, _, _, _).
+
+field(ThreatModel, "base/fieldTypes/assessmentExplanation", "The document is approved and has no policy check failures") :-
+    field(ThreatModel, "cardType", "secdeva/cardTypes/threatModel"),
+    field(ThreatModel, "workflowState", "Approved"),
+    not base_policyCheckFailure(ThreatModel, _, _, _).
