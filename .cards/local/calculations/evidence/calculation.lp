@@ -44,7 +44,8 @@ secdeva_evidence("secdeva_control_3rd-party-technologies", "secdeva_register_tec
 secdeva_evidence("secdeva_control_3rd-party-technologies", "secdeva_review_3rd-party-technologies", "Review of 3rd party technologies").
 secdeva_evidence("secdeva_control_vulnerability-management", "secdeva_review_vulnerability-management", "Review of 3rd party \nvulnerability management").
 secdeva_evidence("secdeva_control_software-update-management", "secdeva_review_software-update-management", "Review of 3rd party \nsoftware update management").
-secdeva_evidence("secdeva_control_use-of-cryptography", "secdeva_review_use-of-cryptography", "Review of \nthe use of cryptograpy").
+secdeva_legacyEvidence("secdeva_control_use-of-cryptography", "secdeva_review_use-of-cryptography", "Review of \nthe use of cryptograpy").
+secdeva_evidence("secdeva_control_use-of-cryptography", "secdeva_document_use-of-cryptography", "Use of cryptograpy document").
 secdeva_evidence("secdeva_control_protect-environments", "secdeva_review_protect-environments", "Review of\nprotecting environments").
 secdeva_evidence("secdeva_control_known-vulnerability-scanning", "secdeva_test_known-vulnerability", "Review of \nknown vulnerability scanning").
 secdeva_evidence("secdeva_control_basic-input-validation-testing", "secdeva_test_basic-input-validation", "Review of \ninput validation testing").

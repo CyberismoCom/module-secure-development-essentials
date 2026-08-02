@@ -1,6 +1,6 @@
 == Introduction
 
-This document records a review of the use of cryptography in the development project.
+This document documents the use of cryptography in a development project to ensure that cryptography is used properly and effectively.
 
 == Use cases for cryptography
 
@@ -40,11 +40,17 @@ In this use case, cryptography is used properly and effectively, and the algorit
 * [ ] Not OK
 * [ ] Not applicable
 
-== Review notes
+== Reviews
 
-#TODO: if applicable, add a link or an attachment to external systems for more information or evidence.#
+{{#createCards}}
+    "template": "base/templates/reviewTask",
+    "buttonLabel": "Add new review task"
+{{/createCards}}
 
-#TODO: Describe any notes and remarks about the review here#
+{{#report}}
+  "name": "base/reports/childrenTable",
+  "cardType": "base/cardTypes/reviewTask"
+{{/report}}
 
 == Identified security issues from this review
 
@@ -56,4 +62,6 @@ In this use case, cryptography is used properly and effectively, and the algorit
 {{#report}}
   "name": "secdeva/reports/securityIssueList"
 {{/report}}
+
+
 

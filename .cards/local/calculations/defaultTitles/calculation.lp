@@ -10,6 +10,8 @@
 secdeva_defaultTitleWithDate("secdeva_test_basic-input-validation", "Review of basic input validation testing - ").
 secdeva_defaultTitle("secdeva_document_business-context-analysis", "Business context analysis - ").
 secdeva_defaultTitleWithDate("secdeva_review_use-of-cryptography", "Review of the use of cryptography - ").
+secdeva_defaultTitleWithDate("secdeva_document_use-of-cryptography", "Use of cryptography - ").
+
 secdeva_defaultTitleWithDate("secdeva_review_manage-defects", "Review of security issue management - ").
 secdeva_defaultTitle("secdeva_document_design-specification", "Design specification - ").
 secdeva_defaultTitleWithDate("secdeva_review_protect-environments", "Review of environment protection - ").
