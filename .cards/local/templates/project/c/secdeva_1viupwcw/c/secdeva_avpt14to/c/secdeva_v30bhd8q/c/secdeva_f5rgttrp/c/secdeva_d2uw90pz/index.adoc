@@ -1,0 +1,63 @@
+.View diagram
+[%collapsible]
+====
+{{#graph}}
+  "model": "secdeva/graphModels/processDiagram",
+  "view": "secdeva/graphViews/processTask"
+{{/graph}}
+====
+
+Process scoping refers to deciding which internal controls are applicable for the development project. To do this, analyse the project characteristics, intended use, and risk profile to determine which secure development tasks must be carried out.
+
+== How to decide if this secure development task is required
+
+Process scoping is always required. Every development project must determine which internal controls apply, regardless of size or complexity.
+
+== How to implement
+
+Review the list of internal controls and determine which ones are required for this project. The scoping decision shall be based on the following considerations:
+
+* The intended use and deployment environment of the product
+* The risk level based on the security context and threat landscape
+* The type of product (e.g. standalone software, embedded system, cloud service)
+* Whether the product handles personal data, safety-critical functions, or financial transactions
+* The maturity of the development organization's security practices
+* The scoping advice provided in the description of the control
+
+Transition each internal control to the appropriate workflow state:
+
+* *In scope* — the control must be implemented
+* *Out of scope* — the control does not apply. Document the justification in the *Scoping justification field*.
+
+You can see a summary of the scoping decisions in the internal control register, see {{#report}}"name": "xref", "identifier": "secdeva_register_internal-controls"{{/report}}.
+
+Create a review of scoping and follow the instructions in the template. The review should be performed by a security specialist with sufficient competence.
+
+{{#report}}
+  "name": "secdeva/reports/createReview",
+  "template": "secdeva/templates/scopingReview",
+  "buttonLabel": "Create a review of process scoping",
+  "phase": "secdeva_phase_design"
+{{/report}}
+
+== How to review this task
+
+{{#report}}
+  "name": "secdeva/reports/checkChildReviewStatus"
+{{/report}}
+
+=== Manual checks
+
+A checklist for manual checks is provided in the template for the review of process scoping.
+
+== References
+
+* IEC 62443-4-1 SM-1
+* IEC 62443-4-1 SM-2
+* EU CRA Article 13 (1)
+
+== Assessment
+
+{{#report}}
+  "name": "secdeva/reports/internalControlAssessment"
+{{/report}}

@@ -10,7 +10,7 @@ link(Evidence, Task, "ismsa/linkTypes/evidences") :-
 
 % TODO: the secdeva_legacyEvidence facts support backwards compatibility to content
 % that has been created from old versions of the development project template.
-% These facts and the corresponding rule below can be removed, once there are no more users for the old content 
+% These facts and the corresponding rule below can be removed, once there are no more users for the old content
 
 link(Evidence, Task, "ismsa/linkTypes/evidences") :-
   secdeva_closestProject(Task, Project),
@@ -53,11 +53,13 @@ secdeva_evidence("secdeva_control_error-handling-testing", "secdeva_test_error-h
 secdeva_evidence("secdeva_control_manage-defects", "secdeva_review_manage-defects", "Review of defect management").
 secdeva_evidence("secdeva_control_configuration-management-plan", "secdeva_document_configuration-management-plan", "Configuration management plan").
 
+secdeva_evidence("secdeva_control_scope-secure-development-activities", "secdeva_review_process-scoping", "Review of process scoping").
 
-% TODO: the rule about individual role assignments "base/cardTypes/roleAssignment" supports backwards 
+
+% TODO: the rule about individual role assignments "base/cardTypes/roleAssignment" supports backwards
 % compatibility to content that has been created from old versions of the development project template.
 % In the old content format, role assignments were created directly under the control
-% This rule can be removed, once there are no more users for the old content 
+% This rule can be removed, once there are no more users for the old content
 link(RoleAssignment, Task, "ismsa/linkTypes/evidences") :-
   secdeva_closestProject(Task, Project),
   secdeva_closestProject(RoleAssignment, Project),

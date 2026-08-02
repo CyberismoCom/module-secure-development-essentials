@@ -62,6 +62,10 @@ secdeva_precedingTask(
     "secdeva_control_high-level-risks",
     "secdeva_control_security-requirements").
 
+secdeva_precedingTask(
+    "secdeva_control_high-level-risks",
+    "secdeva_control_scope-secure-development-activities").
+
 secdeva_prerequisiteTask(
     "secdeva_control_security-requirements",
     "secdeva_control_security-requirement-testing").

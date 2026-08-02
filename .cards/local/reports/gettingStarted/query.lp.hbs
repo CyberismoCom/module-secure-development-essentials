@@ -163,6 +163,25 @@ resultField(result, "securityRequirementsCheckbox", "[x]", "shortText") :-
   field(Card, "base/fieldTypes/assessment", Assessment),
   secdeva_tickCheckbox(Assessment).
 
+resultField(result, "processScoping", Card, "shortText") :-
+  secdeva_closestProject(Card, Project),
+  secdeva_closestProject({{cardKey}}, Project),
+  field(Card, "base/fieldTypes/identifier", "secdeva_control_scope-secure-development-activities").
+
+resultField(result, "processScopingCheckbox", "[ ]", "shortText") :-
+  secdeva_closestProject(Card, Project),
+  secdeva_closestProject({{cardKey}}, Project),
+  field(Card, "base/fieldTypes/identifier", "secdeva_control_scope-secure-development-activities"),
+  field(Card, "base/fieldTypes/assessment", Assessment),
+  not secdeva_tickCheckbox(Assessment).
+
+resultField(result, "processScopingCheckbox", "[x]", "shortText") :-
+  secdeva_closestProject(Card, Project),
+  secdeva_closestProject({{cardKey}}, Project),
+  field(Card, "base/fieldTypes/identifier", "secdeva_control_scope-secure-development-activities"),
+  field(Card, "base/fieldTypes/assessment", Assessment),
+  secdeva_tickCheckbox(Assessment).
+
 resultField(result, "statusNextSteps", Card, "shortText") :-
   secdeva_closestProject(Card, Project),
   secdeva_closestProject({{cardKey}}, Project),

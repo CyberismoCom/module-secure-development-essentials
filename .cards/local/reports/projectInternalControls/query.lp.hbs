@@ -8,6 +8,7 @@ secdeva_gettingStartedTask("secdeva_control_security-context").
 secdeva_gettingStartedTask("secdeva_control_threat-models").
 secdeva_gettingStartedTask("secdeva_control_high-level-risks").
 secdeva_gettingStartedTask("secdeva_control_security-requirements").
+secdeva_gettingStartedTask("secdeva_control_scope-secure-development-activities").
 
 childObject(result, Project, "project") :-
   secdeva_closestProject({{cardKey}}, Project).
@@ -69,4 +70,6 @@ field(Card, "compoundRank", @concatenate(ParentRank, " - ", Rank)) :-
   field(Card, "rank", Rank),
   field(Parent, "compoundRank", ParentRank).
 
-orderBy("compoundRank", "ASC").
+order(2, "open", 1, "compoundRank", "ASC").
+order(2, "inScope", 1, "compoundRank", "ASC").
+order(2, "outOfScope", 1, "compoundRank", "ASC").

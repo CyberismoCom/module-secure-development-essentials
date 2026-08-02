@@ -11,6 +11,7 @@ secdeva_defaultTitleWithDate("secdeva_test_basic-input-validation", "Review of b
 secdeva_defaultTitle("secdeva_document_business-context-analysis", "Business context analysis - ").
 secdeva_defaultTitleWithDate("secdeva_review_use-of-cryptography", "Review of the use of cryptography - ").
 secdeva_defaultTitleWithDate("secdeva_document_use-of-cryptography", "Use of cryptography - ").
+secdeva_defaultTitleWithDate("secdeva_review_process-scoping", "Review of process scoping - ").
 
 secdeva_defaultTitleWithDate("secdeva_review_manage-defects", "Review of security issue management - ").
 secdeva_defaultTitle("secdeva_document_design-specification", "Design specification - ").
@@ -36,6 +37,8 @@ secdeva_defaultTitleWithDate("secdeva_review_periodic", "Periodic review - ").
 secdeva_defaultTitleWithDate("secdeva_review_3rd-party-technologies", "Review of 3rd party technologies - ").
 secdeva_defaultTitleWithDate("secdeva_review_risk-management", "Review of risk management - ").
 secdeva_defaultTitleWithDate("secdeva_review_interfaces", "Review of interfaces - ").
+secdeva_defaultTitleWithDate("secdeva_review_process-scoping", "Review of process scoping - ").
+
 
 onTransitionSetField(
     Card,

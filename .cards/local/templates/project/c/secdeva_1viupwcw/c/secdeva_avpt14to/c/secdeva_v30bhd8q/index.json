@@ -7,7 +7,7 @@
     "base/fieldTypes/informationClassification": "internal",
     "ismsa/fieldTypes/progress": "secdeva_internal-control-progress",
     "base/fieldTypes/identifier": "secdeva_register_internal-controls",
-    "lastUpdated": "2026-07-29T13:55:02.959Z",
+    "lastUpdated": "2026-08-02T19:48:46.327Z",
     "links": [],
     "secdeva/fieldTypes/adoptionStepJustification": null,
     "base/fieldTypes/adoptionStep": null
