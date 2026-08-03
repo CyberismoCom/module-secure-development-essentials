@@ -9,7 +9,7 @@ Primary security goal: #TODO. e.g., Launch the beta version with core authentica
  
 Out of scope (currently): #TODO: what cybersecurity topics are we explicitly NOT doing right now?#
 
-You can see a summary of the scoping of internal controls in {{#report}}"name": "xref", "identifier": "secdeva_register_internal-controls"{{/report}}.
+You can see a summary of the scoping of internal controls in {{#report}}"name": "secdeva/reports/xref", "identifier": "secdeva_register_internal-controls"{{/report}}.
  
 == Target audience & stakeholders
 The following stakeholders will use this product and/or care about its security.
