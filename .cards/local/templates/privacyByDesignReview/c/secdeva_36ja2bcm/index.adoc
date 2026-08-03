@@ -1,6 +1,6 @@
 == Introduction
 
-This page documents the results of a privacy by design review of #Add scope#.
+This page documents the results of a privacy by design review.
 
 == Personal data processed in the product
 

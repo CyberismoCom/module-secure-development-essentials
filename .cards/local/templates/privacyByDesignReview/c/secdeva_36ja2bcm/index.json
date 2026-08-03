@@ -1,5 +1,5 @@
 {
-    "title": "Privacy by design review of (Scope)",
+    "title": "Review of privacy by design - Scope",
     "cardType": "base/cardTypes/review",
     "workflowState": "",
     "rank": "0|b",
@@ -7,7 +7,7 @@
     "base/fieldTypes/informationClassification": null,
     "base/fieldTypes/lastReviewed": null,
     "base/fieldTypes/reviewPeriod": null,
-    "lastUpdated": "2026-08-03T09:02:54.505Z",
+    "lastUpdated": "2026-08-03T11:27:00.613Z",
     "links": [],
     "base/fieldTypes/identifier": "secdeva_review_privacy-by-design"
 }
