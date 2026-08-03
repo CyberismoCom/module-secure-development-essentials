@@ -24,12 +24,12 @@ Review the list of internal controls and determine which ones are required for t
 * The maturity of the development organization's security practices
 * The scoping advice provided in the description of the control
 
-Transition each internal control to the appropriate workflow state:
+For each internal control, set an owner and transition the control to the appropriate workflow state:
 
-* *In scope* — the control must be implemented
-* *Out of scope* — the control does not apply. Document the justification in the *Scoping justification field*.
+* Mark *in scope* — the control must be implemented
+* Mark *out of scope* — the control does not apply. Document the justification in the *Scoping justification field*.
 
-You can see a summary of the scoping decisions in the internal control register, see {{#report}}"name": "xref", "identifier": "secdeva_register_internal-controls"{{/report}}.
+TIP: You can see a summary of the scoping decisions in the internal control register, see {{#report}}"name": "xref", "identifier": "secdeva_register_internal-controls"{{/report}}.
 
 Create a review of scoping and follow the instructions in the template. The review should be performed by a security specialist with sufficient competence.
 
@@ -39,22 +39,6 @@ Create a review of scoping and follow the instructions in the template. The revi
   "buttonLabel": "Create a review of process scoping",
   "phase": "secdeva_phase_design"
 {{/report}}
-
-== How to review this task
-
-{{#report}}
-  "name": "secdeva/reports/checkChildReviewStatus"
-{{/report}}
-
-=== Manual checks
-
-A checklist for manual checks is provided in the template for the review of process scoping.
-
-== References
-
-* IEC 62443-4-1 SM-1
-* IEC 62443-4-1 SM-2
-* EU CRA Article 13 (1)
 
 == Assessment
 
