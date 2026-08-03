@@ -1,13 +1,13 @@
 {
-    "title": "Security design review for (Scope)",
+    "title": "Review of security design - (Scope)",
     "cardType": "base/cardTypes/review",
     "workflowState": "",
     "rank": "0|b",
     "base/fieldTypes/owner": null,
-    "base/fieldTypes/informationClassification": null,
+    "base/fieldTypes/informationClassification": "internal",
     "base/fieldTypes/lastReviewed": null,
     "base/fieldTypes/reviewPeriod": null,
-    "lastUpdated": "2026-08-03T09:02:14.680Z",
+    "lastUpdated": "2026-08-03T14:07:03.786Z",
     "links": [],
     "base/fieldTypes/identifier": "secdeva_review_security-design"
 }
