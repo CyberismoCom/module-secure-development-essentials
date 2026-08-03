@@ -55,6 +55,14 @@ secdeva_evidence("secdeva_control_configuration-management-plan", "secdeva_docum
 
 secdeva_evidence("secdeva_control_scope-secure-development-activities", "secdeva_review_process-scoping", "Review of process scoping").
 
+secdeva_evidence("secdeva_control_security-design-review", "secdeva_review_security-design", "Security design review").
+secdeva_evidence("secdeva_control_privacy-by-design-review", "secdeva_review_privacy-by-design", "Privacy by design review").
+secdeva_evidence("secdeva_control_document-attack-surface", "secdeva_document_attack-surface", "Attack surface specification").
+secdeva_evidence("secdeva_control_product-documentation-review", "secdeva_review_product-documentation", "Product documentation review").
+secdeva_evidence("secdeva_control_integrity-protection-of-release", "secdeva_review_integrity-protection-of-release", "Review of \nrelease integrity protection").
+secdeva_evidence("secdeva_control_attack-surface-analysis", "secdeva_review_attack-surface", "Attack surface analysis").
+secdeva_evidence("secdeva_control_penetration-testing", "secdeva_test_penetration", "Penetration test").
+
 
 % TODO: the rule about individual role assignments "base/cardTypes/roleAssignment" supports backwards
 % compatibility to content that has been created from old versions of the development project template.

@@ -39,6 +39,14 @@ secdeva_defaultTitleWithDate("secdeva_review_risk-management", "Review of risk m
 secdeva_defaultTitleWithDate("secdeva_review_interfaces", "Review of interfaces - ").
 secdeva_defaultTitleWithDate("secdeva_review_process-scoping", "Review of process scoping - ").
 
+secdeva_defaultTitleWithDate("secdeva_review_security-design", "Security design review - ").
+secdeva_defaultTitleWithDate("secdeva_review_privacy-by-design", "Privacy by design review - ").
+secdeva_defaultTitle("secdeva_document_attack-surface", "Attack surface specification - ").
+secdeva_defaultTitleWithDate("secdeva_review_product-documentation", "Product documentation review - ").
+secdeva_defaultTitleWithDate("secdeva_review_integrity-protection-of-release", "Review of release integrity protection - ").
+secdeva_defaultTitleWithDate("secdeva_review_attack-surface", "Attack surface analysis - ").
+secdeva_defaultTitleWithDate("secdeva_test_penetration", "Penetration test - ").
+
 
 onTransitionSetField(
     Card,

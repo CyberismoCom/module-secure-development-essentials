@@ -1,0 +1,13 @@
+{
+    "title": "Review of release integrity protection",
+    "cardType": "base/cardTypes/review",
+    "workflowState": "",
+    "rank": "0|b",
+    "base/fieldTypes/owner": null,
+    "base/fieldTypes/informationClassification": null,
+    "base/fieldTypes/lastReviewed": null,
+    "base/fieldTypes/reviewPeriod": null,
+    "lastUpdated": "2026-08-03T09:03:56.955Z",
+    "links": [],
+    "base/fieldTypes/identifier": "secdeva_review_integrity-protection-of-release"
+}
