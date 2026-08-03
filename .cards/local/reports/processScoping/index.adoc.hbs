@@ -22,6 +22,23 @@ The following tables do not include internal controls on higher adoption steps. 
 
 {{/if}}
 
+{{#if inScope}}
+=== Internal controls that are in scope
+
+[cols="3,2,4"]
+|===
+| Control | Workflow state  | Scoping justification
+
+{{#each inScope}}
+| {{#xref}}"cardKey": "{{this.key}}"{{/xref}}
+| {{this.workflowState}}
+| {{this.[base/fieldTypes/justification]}}
+
+{{/each}}
+|===
+
+{{/if}}
+
 {{#if outOfScope}}
 === Internal controls that are out of scope
 
@@ -39,22 +56,6 @@ The following tables do not include internal controls on higher adoption steps. 
 
 {{/if}}
 
-{{#if inScope}}
-=== Internal controls that are in scope
-
-[cols="3,2,4"]
-|===
-| Control | Workflow state  | Scoping justification
-
-{{#each inScope}}
-| {{#xref}}"cardKey": "{{this.key}}"{{/xref}}
-| {{this.workflowState}}
-| {{this.[base/fieldTypes/justification]}}
-
-{{/each}}
-|===
-
-{{/if}}
 
 {{/each}}
 
