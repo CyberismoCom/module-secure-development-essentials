@@ -59,3 +59,4 @@
 {"timestamp":"2026-07-31T12:34:30.957Z","operation":"resource_delete","target":"secdeva/cardTypes/test","parameters":{"type":"cardTypes"}}
 {"timestamp":"2026-07-31T12:34:37.155Z","operation":"resource_delete","target":"secdeva/cardTypes/testExecution","parameters":{"type":"cardTypes"}}
 {"timestamp":"2026-08-02T16:27:10.090Z","operation":"resource_rename","target":"secdeva/templates/cryptographyReview","parameters":{"type":"templates","operation":{"name":"change","target":"secdeva/templates/cryptographyReview","to":"secdeva/templates/useOfCryptography"}}}
+{"timestamp":"2026-08-10T17:49:04.780Z","operation":"resource_rename","target":"secdeva/templates/configurationManagementPlan","parameters":{"type":"templates","operation":{"name":"change","target":"secdeva/templates/configurationManagementPlan","to":"secdeva/templates/managementPlan"}}}

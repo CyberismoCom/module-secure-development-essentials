@@ -1,0 +1,11 @@
+{
+    "title": "Review of cryptography - Scope",
+    "cardType": "base/cardTypes/review",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|b",
+    "lastUpdated": "2026-08-10T19:15:00.593Z",
+    "base/fieldTypes/identifier": "secdeva_review_use-of-cryptography",
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/reviewPeriod": 365
+}
