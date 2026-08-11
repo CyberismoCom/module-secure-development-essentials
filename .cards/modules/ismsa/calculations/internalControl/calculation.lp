@@ -28,6 +28,11 @@ ismsa_internalControlMissingEvidence(Control) :-
   field(Control, "cardType", "ismsa/cardTypes/internalControl"),
   not link(_, Control, "ismsa/linkTypes/evidences").
 
+ismsa_internalControlEvidenceFailure(Control) :-
+  field(Control, "cardType", "ismsa/cardTypes/internalControl"),
+  link(Evidence, Control, "ismsa/linkTypes/evidences"),
+  base_policyCheckFailure(Evidence, _, _, _).
+
 fieldCalculated(Control, "base/fieldTypes/assessment", "notOk") :-
   field(Control, "cardType", "ismsa/cardTypes/internalControl"),
   field(Control, "workflowState", "In scope"),
@@ -89,7 +94,7 @@ fieldCalculated(Control, "base/fieldTypes/assessmentExplanation", "The control i
   not ismsa_internalControlMissingEvidence(Control),
   link(Evidence, Control, "ismsa/linkTypes/evidences"),
   base_policyCheckFailure(Evidence, _, _, _),
-  not field(Evidence2, "base/fieldTypes/assessment", "ok") :
+  field(Evidence2, "base/fieldTypes/assessment", "ok") :
   link(Evidence2, Control, "ismsa/linkTypes/evidences").
 
 % OK because there is evidence and all linked evidence is ok
@@ -99,6 +104,7 @@ fieldCalculated(Control, "base/fieldTypes/assessment", "ok") :-
   field(Control, "workflowState", "In scope"),
   not base_policyCheckFailure(Control, _, _, _),
   not ismsa_internalControlMissingEvidence(Control),
+  not ismsa_internalControlEvidenceFailure(Control),
   link(_, Control, "ismsa/linkTypes/evidences"),
   field(Evidence, "base/fieldTypes/assessment", "ok"):
   link(Evidence, Control, "ismsa/linkTypes/evidences").
@@ -108,6 +114,7 @@ fieldCalculated(Control, "base/fieldTypes/assessmentExplanation", "The control i
   field(Control, "workflowState", "In scope"),
   not base_policyCheckFailure(Control, _, _, _),
   not ismsa_internalControlMissingEvidence(Control),
+  not ismsa_internalControlEvidenceFailure(Control),
   link(_, Control, "ismsa/linkTypes/evidences"),
   field(Evidence, "base/fieldTypes/assessment", "ok") :
   link(Evidence, Control, "ismsa/linkTypes/evidences").
@@ -146,7 +153,7 @@ policyCheckFailure(
     not field(Control, "base/fieldTypes/justification", _).
 
 %
-% Policy check: Assessment has been overridden but the explanation has not been updated 
+% Policy check: Assessment has been overridden but the explanation has not been updated
 %
 
 policyCheckFailure(
