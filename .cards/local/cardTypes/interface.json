@@ -47,13 +47,41 @@
             "displayName": "",
             "isCalculated": false,
             "enableOverride": false
+        },
+        {
+            "name": "secdeva/fieldTypes/port",
+            "displayName": "",
+            "isCalculated": false,
+            "enableOverride": false
+        },
+        {
+            "name": "secdeva/fieldTypes/interfaceAuthentication",
+            "displayName": "",
+            "isCalculated": false,
+            "enableOverride": false
+        },
+        {
+            "name": "secdeva/fieldTypes/transportSecurity",
+            "displayName": "",
+            "isCalculated": false,
+            "enableOverride": false
+        },
+        {
+            "name": "secdeva/fieldTypes/interfacePurpose",
+            "displayName": "",
+            "isCalculated": false,
+            "enableOverride": false
         }
     ],
     "alwaysVisibleFields": [
         "base/fieldTypes/owner",
         "base/fieldTypes/informationClassification",
         "secdeva/fieldTypes/interfaceType",
-        "secdeva/fieldTypes/physicalConnectionCount"
+        "secdeva/fieldTypes/physicalConnectionCount",
+        "secdeva/fieldTypes/port",
+        "secdeva/fieldTypes/interfaceAuthentication",
+        "secdeva/fieldTypes/transportSecurity",
+        "secdeva/fieldTypes/interfacePurpose"
     ],
     "optionallyVisibleFields": [
         "secdeva/fieldTypes/basicInputValidationTestingRequired",
