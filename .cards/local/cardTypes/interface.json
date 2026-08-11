@@ -35,11 +35,25 @@
         {
             "name": "secdeva/fieldTypes/interfaceTestingScopingJustification",
             "isCalculated": false
+        },
+        {
+            "name": "secdeva/fieldTypes/physicalConnectionCount",
+            "displayName": "",
+            "isCalculated": false,
+            "enableOverride": false
+        },
+        {
+            "name": "secdeva/fieldTypes/interfaceType",
+            "displayName": "",
+            "isCalculated": false,
+            "enableOverride": false
         }
     ],
     "alwaysVisibleFields": [
         "base/fieldTypes/owner",
-        "base/fieldTypes/informationClassification"
+        "base/fieldTypes/informationClassification",
+        "secdeva/fieldTypes/interfaceType",
+        "secdeva/fieldTypes/physicalConnectionCount"
     ],
     "optionallyVisibleFields": [
         "secdeva/fieldTypes/basicInputValidationTestingRequired",
