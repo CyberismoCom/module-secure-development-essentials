@@ -1,0 +1,13 @@
+{
+    "title": "Process 1.1.1",
+    "cardType": "secdeva/cardTypes/process",
+    "workflowState": "Draft",
+    "rank": "0|b",
+    "lastUpdated": "2026-08-16T20:28:21.140Z",
+    "links": [],
+    "templateCardKey": "secdeva_4",
+    "createdAt": "2026-05-06T20:07:41.635Z",
+    "labels": [
+        "example"
+    ]
+}
