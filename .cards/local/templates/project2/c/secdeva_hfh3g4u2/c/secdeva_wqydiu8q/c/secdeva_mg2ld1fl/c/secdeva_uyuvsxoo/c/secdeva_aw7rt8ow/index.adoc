@@ -22,7 +22,7 @@ Create a review of the project structure and follow the instructions in the temp
 
 {{#report}}
   "name": "secdeva/reports/createReview",
-  "template": "secdeva/templates/project2StructureReview",
+  "template": "secdeva/templates/projectStructureReview",
   "buttonLabel": "Create a project structure review",
   "phase": "secdeva_phase_design"
 {{/report}}

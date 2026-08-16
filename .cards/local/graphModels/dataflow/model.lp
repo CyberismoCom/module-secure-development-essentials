@@ -24,7 +24,6 @@ entity(X) :- datastore(X).
 
 % interfaces and physical ports and connections (always hidden)
 interface(X) :- field(X, "cardType", "secdeva/cardTypes/interface").
-interface(X) :- field(X, "cardType", "secdeva/cardTypes/physicalConnection").
 entity(X) :- interface(X).
 hide(X) :- interface(X).
 
