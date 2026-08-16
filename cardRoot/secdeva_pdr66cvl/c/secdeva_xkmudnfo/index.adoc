@@ -12,6 +12,14 @@
   "view": "secdeva/graphViews/allEntities"
 {{/graph}}
 
+== Label diagram
+
+{{#graph}}
+  "model": "secdeva/graphModels/dataflow",
+  "view": "secdeva/graphViews/label",
+  "labels": ["example"]
+{{/graph}}
+
 == Interfaces
 
 {{#report}}
