@@ -3,14 +3,11 @@
     "title": "Analyse the business context",
     "workflowState": "",
     "rank": "0|a",
-    "lastUpdated": "2026-07-17T09:28:04.600Z",
+    "lastUpdated": "2026-08-16T20:28:21.164Z",
     "links": [],
     "base/fieldTypes/adoptionStep": "step1",
-    "base/fieldTypes/justification": null,
-    "base/fieldTypes/owner": null,
     "base/fieldTypes/informationClassification": "internal",
     "ismsa/fieldTypes/internalControlReviewPeriod": "12months",
     "base/fieldTypes/reviewMonth": "january",
-    "base/fieldTypes/lastReviewed": null,
     "base/fieldTypes/identifier": "secdeva_control_analyse-business-context"
 }

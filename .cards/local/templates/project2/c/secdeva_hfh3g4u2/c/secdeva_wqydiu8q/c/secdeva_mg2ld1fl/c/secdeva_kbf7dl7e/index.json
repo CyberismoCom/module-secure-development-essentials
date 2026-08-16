@@ -3,11 +3,10 @@
     "cardType": "ismsa/cardTypes/register",
     "workflowState": "",
     "rank": "0|b",
-    "base/fieldTypes/owner": null,
     "base/fieldTypes/informationClassification": "internal",
     "ismsa/fieldTypes/adoptionStep": "step1",
     "ismsa/fieldTypes/progress": "secdeva_internal-control-progress",
     "base/fieldTypes/identifier": "secdeva_register_foundation-controls",
-    "lastUpdated": "2026-08-07T07:54:47.242Z",
+    "lastUpdated": "2026-08-16T20:28:21.159Z",
     "links": []
 }

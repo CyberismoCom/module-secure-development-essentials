@@ -3,17 +3,10 @@
     "title": "Interface 2.2",
     "workflowState": "Draft",
     "rank": "0|b",
-    "lastUpdated": "2026-08-11T20:07:44.539Z",
+    "lastUpdated": "2026-08-16T20:28:21.138Z",
     "links": [],
-    "base/fieldTypes/owner": null,
     "base/fieldTypes/informationClassification": "internal",
     "base/fieldTypes/identifier": "secdeva_document_interface",
-    "secdeva/fieldTypes/basicInputValidationTestingRequired": null,
-    "secdeva/fieldTypes/basicStressTestingRequired": null,
-    "secdeva/fieldTypes/fuzzTestingRequired": null,
-    "secdeva/fieldTypes/capacityTestingRequired": null,
-    "secdeva/fieldTypes/networkTrafficLoadTestingRequired": null,
-    "secdeva/fieldTypes/interfaceTestingScopingJustification": null,
     "templateCardKey": "secdeva_7",
     "secdeva/fieldTypes/port": "443/tcp"
 }

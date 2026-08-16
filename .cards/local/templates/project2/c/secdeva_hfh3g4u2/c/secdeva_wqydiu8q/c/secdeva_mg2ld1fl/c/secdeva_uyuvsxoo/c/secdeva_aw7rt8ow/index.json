@@ -3,14 +3,11 @@
     "title": "Ensure secure development in subprojects",
     "workflowState": "",
     "rank": "0|gj",
-    "lastUpdated": "2026-08-16T18:49:06.653Z",
+    "lastUpdated": "2026-08-16T20:28:21.163Z",
     "links": [],
     "base/fieldTypes/adoptionStep": "step2",
-    "base/fieldTypes/justification": null,
-    "base/fieldTypes/owner": null,
     "base/fieldTypes/informationClassification": "internal",
     "ismsa/fieldTypes/internalControlReviewPeriod": "12months",
     "base/fieldTypes/reviewMonth": "june",
-    "base/fieldTypes/lastReviewed": null,
     "base/fieldTypes/identifier": "secdeva_control_subprojects"
 }
