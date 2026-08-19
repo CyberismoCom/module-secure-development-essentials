@@ -1,6 +1,0 @@
-{
-    "name": "secdeva/reports/threatModelExternal",
-    "displayName": "External entity in a threat model",
-    "category": "Threat model",
-    "description": "The full content of an external entity in a threat model: entity graph, interfaces and physical connections, and related risks, security issues, decisions and design specifications."
-}

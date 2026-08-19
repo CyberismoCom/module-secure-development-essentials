@@ -1,3 +1,4 @@
 {{#report}}
-  "name": "secdeva/reports/threatModelProcess"
+  "name": "secdeva/reports/threatModelEntity",
+  "variant": "process"
 {{/report}}

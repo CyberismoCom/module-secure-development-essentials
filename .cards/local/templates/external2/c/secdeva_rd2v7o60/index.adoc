@@ -1,3 +1,4 @@
 {{#report}}
-  "name": "secdeva/reports/threatModelExternal"
+  "name": "secdeva/reports/threatModelEntity",
+  "variant": "external"
 {{/report}}

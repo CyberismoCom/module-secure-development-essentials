@@ -1,110 +1,88 @@
-{{#graph}}
-  "model": "secdeva/graphModels/dataflow",
-  "view": "secdeva/graphViews/entity"
-{{/graph}}
+== Classification of the interface
 
-== Composite elements
-
-[TIP]
+.Instructions
+[%collapsible]
+=====
+[NOTE]
 ====
-To add a dataflow to or from this trust boundary, click the link symbol in the top level tool bar to create a link. Optionally, if you want to model interfaces as well, you can create an interface and link any incoming dataflows to the interface.
+Interfaces are classified automatically based on the threat model. To review this section:
+
+. Check that the interface has been correctly classified as an external interface or internal interface. If not, then improve the dataflows of threat model. External interfaces have dataflows from external entities or persons.
+. Check that the relationship of this interface to the trust boundaries have been correctly classified. If not, then improve the dataflows and trust boundaries of the threat model.
 ====
-
-{{#createCards}}
-  "buttonLabel": "Create a trust boundary",
-  "template": "secdeva/templates/trustBoundary2"
-{{/createCards}}
-
-{{#createCards}}
-  "buttonLabel": "Create an external entity",
-  "template": "secdeva/templates/external2"
-{{/createCards}}
-
-{{#createCards}}
-  "buttonLabel": "Create a person",
-  "template": "secdeva/templates/person2"
-{{/createCards}}
-
-{{#createCards}}
-  "buttonLabel": "Create a process",
-  "template": "secdeva/templates/process2"
-{{/createCards}}
-
-{{#createCards}}
-  "buttonLabel": "Create a data store",
-  "template": "secdeva/templates/dataStore2"
-{{/createCards}}
+=====
 
 {{#each results}}
 
-== Interfaces
+{{#if parentDataflows}}
 
-{{#if externalDataflows}}
+IMPORTANT: There are dataflows to the parent card *{{parentName}}*. Automatic classification of interfaces does not work, unless dataflows are rerouted to interfaces. Change the destination of these dataflows to be one of the interfaces of *{{parentName}}*.
 
-.Dataflows to and from this entity
-[cols="2,2,2,4"]
+.Dataflows to {{parentName}} that should be rerouted to one of its interfaces
+[cols="2,3"]
 |===
-|Direction | Inside element | Outside element | Dataflow
+| Source | Description
 
-{{#each externalDataflows}}
-|{{this.[secdeva/fieldTypes/direction]}}
-|xref:{{this.[secdeva/fieldTypes/internalCardKey]}}.adoc[{{this.[secdeva/fieldTypes/internalTitle]}}]
-|xref:{{this.[secdeva/fieldTypes/externalCardKey]}}.adoc[{{this.[secdeva/fieldTypes/externalTitle]}}]
-|{{this.[secdeva/fieldTypes/title]}}
+{{#each parentDataflows}}
+|{{this.sourceType}} xref:{{this.sourceCardKey}}.adoc[{{this.sourceTitle}}]
+|{{this.description}}
 {{/each}}
-
 |===
+{{/if}}
 
+This interface is:
+
+{{#if external}}
+* [x] External interface that may be used by external entities or users that are not part of the system (see the table below for details)
+* [ ] Internal interface
 {{else}}
-
-There are no dataflows to or from this entity.
+* [ ] External interface that may be used by external entities that are not part of the system
+* [x] Internal interface (no dataflows from external entities or users found)
 
 {{/if}}
 
-{{#if interfaces}}
+This interface:
 
-.Interfaces
-[cols="3,3,2,2,2"]
-|===
-| Element | Interface | External? | Crosses a trust boundary? | Port(s)
-
-{{#each interfaces}}
-|xref:{{this.[secdeva/fieldTypes/interfaceElementCardKey]}}.adoc[{{this.[secdeva/fieldTypes/interfaceElementTitle]}}]
-|xref:{{this.key}}.adoc[{{this.title}}]
-|{{this.[secdeva/fieldTypes/isExternal].displayValue}}
-|{{this.[secdeva/fieldTypes/crossesTrustBoundary].displayValue}}
-|{{this.[secdeva/fieldTypes/port]}}
-{{/each}}
-
-|===
-
+{{#if crossesTrustBoundary}}
+* [x] Crosses a trust boundary (see details in the table below)
+* [ ] Does not cross a trust boundary
 {{else}}
-
-There are no interfaces.
+* [ ] Crosses a trust boundary
+* [x] Does not cross a trust boundary (no dataflows crossing trust boundaries found)
 
 {{/if}}
 
-{{#if physicalConnections}}
+{{#if dataflows}}
 
-.Physical ports and connections
-[cols="3,3,1"]
+.Dataflows to this interface
+[cols="2,3,1,2"]
 |===
-| Element | Physical connection | Count
+| Source | Description | External? | Crosses trust boundary?
 
-{{#each physicalConnections}}
-|xref:{{this.[secdeva/fieldTypes/physicalConnectionElementCardKey]}}.adoc[{{this.[secdeva/fieldTypes/physicalConnectionElementTitle]}}]
-|xref:{{this.key}}.adoc[{{this.title}}]
-|{{this.[secdeva/fieldTypes/physicalConnectionCount]}}
-
-
+{{#each dataflows}}
+|{{this.sourceType}} xref:{{this.sourceCardKey}}.adoc[{{this.sourceTitle}}]
+|{{this.description}}
+|{{this.external}}
+|{{#if this.trustBoundaries}}Yes: {{#each this.trustBoundaries}}xref:{{this.key}}.adoc[{{this.title}}]{{#unless @last}}, {{/unless}}{{/each}}{{else}} No {{/if}}
 {{/each}}
-
 |===
 
 {{else}}
 
-There are no physical connections.
+IMPORTANT: The dataflow model does not include any dataflows to this interface. Create dataflows as links in the dataflow model.
 
+{{/if}}
+
+== Security context of the product
+
+The security context refers to the security that is provided by the deployment environment. It is documented in the security context document of the project:
+
+{{#if securityContextDocuments}}
+{{#each securityContextDocuments}}
+xref:{{this.key}}.adoc[{{this.title}}]{{#unless @last}}, {{/unless}}
+{{/each}}
+{{else}}
+#TODO# There are no security context documents yet. Create a security context document under *Design* → *Document security context*.
 {{/if}}
 
 == Related risks
@@ -296,7 +274,7 @@ You have not yet created or linked any decisions.
 .Existing specifications
 [cols="5,2"]
 |===
-| Decision | Workflow State
+| Design specification | Workflow State
 
 {{#each specifications}}
 |xref:{{this.key}}.adoc[{{this.title}}]
@@ -320,5 +298,28 @@ You have not yet created or linked any specifications.
       "cardKey": "{{../cardKey}}"
     }
 {{/createCards}}
+
+== Reviews
+
+{{#createCards}}
+    "template": "base/templates/reviewTask",
+    "buttonLabel": "Add new review task"
+{{/createCards}}
+
+{{#if reviewTasks}}
+
+[cols="5,5,2"]
+|===
+| Title | Owner | State
+
+{{#each reviewTasks}}
+|xref:{{this.key}}.adoc[{{this.title}}]
+|{{this.[base/fieldTypes/owner]}}
+|{{this.workflowState}}
+{{/each}}
+
+|===
+
+{{/if}}
 
 {{/each}}

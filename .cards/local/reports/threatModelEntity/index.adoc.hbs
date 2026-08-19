@@ -3,8 +3,63 @@
   "view": "secdeva/graphViews/entity"
 {{/graph}}
 
+{{#unless (eq variant "external")}}
+== Composite elements
+
+[TIP]
+====
+To add a dataflow to or from this {{#if (eq variant "process")}}process{{/if}}{{#if (eq variant "dataStore")}}data store{{/if}}{{#if (eq variant "trustBoundary")}}trust boundary{{/if}}, click the link symbol in the top level tool bar.{{#unless (eq variant "trustBoundary")}} Optionally, if you want to model interfaces as well, you can create an interface and link any incoming dataflows to the interface.{{/unless}}
+====
+
+{{#unless (eq variant "trustBoundary")}}
+{{#createCards}}
+  "buttonLabel": "Create an interface",
+  "template": "secdeva/templates/interface2"
+{{/createCards}}
+
+{{#createCards}}
+  "buttonLabel": "Create a physical port or connection",
+  "template": "secdeva/templates/physicalConnection"
+{{/createCards}}
+
+{{/unless}}
+{{#createCards}}
+  "buttonLabel": "Create a trust boundary",
+  "template": "secdeva/templates/trustBoundary2"
+{{/createCards}}
+
+{{#createCards}}
+  "buttonLabel": "Create an external entity",
+  "template": "secdeva/templates/external2"
+{{/createCards}}
+
+{{#createCards}}
+  "buttonLabel": "Create a person",
+  "template": "secdeva/templates/person2"
+{{/createCards}}
+
+{{#createCards}}
+  "buttonLabel": "Create a process",
+  "template": "secdeva/templates/process2"
+{{/createCards}}
+
+{{#createCards}}
+  "buttonLabel": "Create a data store",
+  "template": "secdeva/templates/dataStore2"
+{{/createCards}}
+
+{{/unless}}
 {{#each results}}
 
+== Interfaces and physical connections
+
+{{#if (eq ../variant "external")}}
+[TIP]
+====
+To add a dataflow to or from this external entity, click the link symbol in the top level tool bar.
+====
+
+{{/if}}
 {{#if externalDataflows}}
 
 .Dataflows to and from this entity
@@ -72,11 +127,6 @@ There are no interfaces.
 There are no physical connections.
 
 {{/if}}
-
-[TIP]
-====
-To add a dataflow to or from this external entity, click the link symbol in the top level tool bar.
-====
 
 == Related risks
 
@@ -154,7 +204,81 @@ You have not yet created or linked any security issues.
     }
 {{/createCards}}
 
-== Decisions and design specifications
+{{#unless (eq ../variant "external")}}
+== Related security requirements
+
+{{#if requirements}}
+
+[caption=]
+.Existing requirements
+[cols="5,2"]
+|===
+| Requirement | Workflow State
+
+{{#each requirements}}
+|xref:{{this.key}}.adoc[{{this.title}}]
+|{{this.workflowState}}
+{{/each}}
+
+|===
+
+Create another requirement, if needed:
+{{else}}
+You have not yet created or linked any requirements.
+{{/if}}
+
+{{#createCards}}
+    "template": "secdeva/templates/securityRequirement",
+    "buttonLabel": "Create a security requirement",
+    "cardKey": "{{securityRequirementRegister.key}}",
+    "link": {
+      "linkType": "secdeva/linkTypes/appliesTo",
+      "direction": "inbound",
+      "cardKey": "{{../cardKey}}"
+    }
+{{/createCards}}
+
+== Related technology assessments
+
+[TIP]
+====
+Create a technology assessment for significant 3rd party technologies such as databases, frameworks, or toolkits.
+You do not need to create assessments for smaller libraries and packages, as they are assessed as part of code review.
+====
+
+{{#if technologies}}
+
+[caption=]
+.Existing technology assessments
+[cols="5,2"]
+|===
+| Technology | Workflow State
+
+{{#each technologies}}
+|xref:{{this.key}}.adoc[{{this.title}}]
+|{{this.workflowState}}
+{{/each}}
+
+|===
+
+Create another technology assessment, if needed:
+{{else}}
+You have not yet created or linked any technology assessments.
+{{/if}}
+
+{{#createCards}}
+    "template": "secdeva/templates/technology",
+    "buttonLabel": "Create a technology assessment",
+    "cardKey": "{{technologyAssessmentRegister.key}}",
+    "link": {
+      "linkType": "base/linkTypes/relatesTo",
+      "direction": "outbound",
+      "cardKey": "{{../cardKey}}"
+    }
+{{/createCards}}
+
+{{/unless}}
+== Related decisions
 
 {{#if decisions}}
 
@@ -187,13 +311,15 @@ You have not yet created or linked any decisions.
     }
 {{/createCards}}
 
+== Related design specifications
+
 {{#if specifications}}
 
 [caption=]
 .Existing specifications
 [cols="5,2"]
 |===
-| Decision | Workflow State
+| Design specification | Workflow State
 
 {{#each specifications}}
 |xref:{{this.key}}.adoc[{{this.title}}]

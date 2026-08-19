@@ -1,6 +1,0 @@
-{
-    "name": "secdeva/reports/threatModelTrustBoundary",
-    "displayName": "Trust boundary in a threat model",
-    "category": "Threat model",
-    "description": "The full content of a trust boundary entity in a threat model: entity graph, composite element buttons, interfaces, and related risks, security issues, security requirements, technology assessments, decisions and design specifications."
-}

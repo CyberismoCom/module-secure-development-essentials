@@ -1,3 +1,4 @@
 {{#report}}
-  "name": "secdeva/reports/threatModelDataStore"
+  "name": "secdeva/reports/threatModelEntity",
+  "variant": "dataStore"
 {{/report}}
