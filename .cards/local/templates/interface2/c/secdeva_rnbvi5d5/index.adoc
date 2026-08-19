@@ -169,17 +169,17 @@ To review this section
 
 To review this section:
 
-. Check that a technology selection document has been created for all 3rd party products that are used to implement this interface
-. Check that the used 3rd party technologies are listed in this section. The technology assessments that have been linked to this interface are listed in *Related technology assessments* at the end of this page.
+. Check that a technology asssessment document has been created for the relevant 3rd party products that are used to implement this interface
+. Check that any other used 3rd party technologies are listed in this section. The technology assessments that have been linked to this interface are listed in *Related technology assessments* at the end of this page.
 ====
 =====
 
 The implementation of this interface: (Select one of the following options)
 
 * [ ] Does not use 3rd party technologies
-* [ ] Uses the following 3rd party technologies:
+* [ ] Uses 3rd party technologies
 
-- List the used 3rd party technologies here, or refer to another document
+- #TODO# List the used 3rd party technologies here, or add technology assessments at the end of this page, or refer to another document
 
 == Design insights
 
