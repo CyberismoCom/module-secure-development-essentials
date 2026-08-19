@@ -1,6 +1,6 @@
 {
-    "displayName": "Business context analysis",
+    "displayName": "Business context analysis (deprecated)",
     "description": "Documents the business environment and other cybersecurity basics",
-    "category": "Secure development specifications",
+    "category": "Deprecated",
     "name": "secdeva/templates/businessContextAnalysis"
 }
