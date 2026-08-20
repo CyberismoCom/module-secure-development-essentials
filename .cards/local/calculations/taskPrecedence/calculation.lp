@@ -30,6 +30,11 @@ secdeva_prerequisiteTask(
     "secdeva_control_assign-people-to-project-roles",
     "secdeva_control_ensure-competence").
 
+% Legacy fact:
+secdeva_precedingTask(
+    "secdeva_control_analyse-business-context",
+    "secdeva_control_high-level-risks").
+
 secdeva_prerequisiteTask(
     "secdeva_control_security-context",
     "secdeva_control_high-level-risks").

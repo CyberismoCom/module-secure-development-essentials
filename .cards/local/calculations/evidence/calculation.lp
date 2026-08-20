@@ -27,6 +27,7 @@ secdeva_evidence("secdeva_control_high-level-risks", "secdeva_register_risks", "
 secdeva_legacyEvidence("secdeva_control_assign-people-to-project-roles", "secdeva_document_project-role-assignments", "Project role assignments").
 secdeva_evidence("secdeva_control_assign-people-to-project-roles", "secdeva_review_project-role-assignments", "Project role assignments").
 secdeva_evidence("secdeva_control_ensure-competence", "secdeva_review_competence", "Competence review").
+secdeva_legacyEvidence("secdeva_control_analyse-business-context", "secdeva_document_business-context-analysis", "Business context analysis").
 secdeva_evidence("secdeva_control_security-context", "secdeva_document_security-context", "Security context").
 % The interfaces control moved to the Secure Development Extended module (secdevb).
 % These facts remain only for the deprecated secdeva/templates/project (v1), which still
@@ -54,6 +55,7 @@ secdeva_evidence("secdeva_control_known-vulnerability-scanning", "secdeva_test_k
 secdeva_evidence("secdeva_control_basic-input-validation-testing", "secdeva_test_basic-input-validation", "Review of \ninput validation testing").
 secdeva_evidence("secdeva_control_error-handling-testing", "secdeva_test_error-handling", "Review of \nerror handling testing").
 secdeva_evidence("secdeva_control_manage-defects", "secdeva_review_manage-defects", "Review of defect management").
+secdeva_legacyEvidence("secdeva_control_configuration-management-plan", "secdeva_document_configuration-management-plan", "Configuration management plan").
 
 secdeva_evidence("secdeva_control_scope-secure-development-activities", "secdeva_review_process-scoping", "Review of process scoping").
 
