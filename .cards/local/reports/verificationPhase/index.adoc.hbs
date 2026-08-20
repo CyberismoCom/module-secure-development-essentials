@@ -15,7 +15,7 @@ flowchart TB
     end
     subgraph Testing[Security testing]
       direction LR
-      SR[Test security requirements] --> TM[Test threat mitigations]
+      SR[Test security requirements] --> TM[Test risk mitigations]
       IV[Test input validation] --> EH[Test error handling]
     end
     Scanning --> PE[Protect environments]
@@ -31,7 +31,7 @@ flowchart TB
 *Security testing*
 
 * *Test security requirements* — Confirm that security requirements are implemented correctly, including error handling validation.
-* *Test threat mitigations* — Attempt to bypass mitigations to verify they work as designed.
+* *Test risk mitigations* — Attempt to defeat the mitigations of risks to verify that they work as designed.
 * *Test input validation* — Verify boundary, edge, and schema checks on all external interfaces.
 * *Test error handling* — Ensure the product handles exceptional and fatal error conditions safely.
 

@@ -73,6 +73,14 @@ secdeva_prerequisiteTask(
     "secdeva_control_security-requirement-testing").
 
 secdeva_prerequisiteTask(
+    "secdeva_control_high-level-risks",
+    "secdeva_control_risk-mitigation-testing").
+
+secdeva_precedingTask(
+    "secdeva_control_security-requirement-testing",
+    "secdeva_control_risk-mitigation-testing").
+
+secdeva_prerequisiteTask(
     "secdeva_control_3rd-party-technologies",
     "secdeva_control_vulnerability-management").
 

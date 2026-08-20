@@ -25,6 +25,7 @@ secdeva_defaultTitle("secdeva_document_security-context", "Security context - ")
 secdeva_defaultTitleWithDate("secdeva_review_requirement-management", "Review of security requirement management - ").
 secdeva_defaultTitleWithDate("secdeva_test_security-requirements", "Security requirement test - ").
 secdeva_defaultTitleWithDate("secdeva_review_security-requirement-testing", "Review of security requirement testing - ").
+secdeva_defaultTitleWithDate("secdeva_review_risk-mitigation-testing", "Review of risk mitigation testing - ").
 secdeva_defaultTitleWithDate("secdeva_review_vulnerability-management", "Review of vulnerability management - ").
 secdeva_defaultTitle("secdeva_test_threat-mitigation", "Threat mitigation test - ").
 secdeva_defaultTitle("secdeva_document_threat-model", "Threat model - ").

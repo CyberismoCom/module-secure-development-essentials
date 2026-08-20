@@ -35,6 +35,7 @@ secdeva_evidence("secdeva_control_subprojects", "secdeva_review_project-structur
 secdeva_evidence("secdeva_control_static-code-analysis", "secdeva_review_static-code-analysis", "Review of \nstatic code analysis").
 secdeva_evidence("secdeva_control_manual-code-review", "secdeva_review_manual-code-review", "Review of \nmanual code review").
 secdeva_evidence("secdeva_control_threat-mitigation-testing", "secdeva_test_threat-mitigation", "Review of \nthreat mitigation testing").
+secdeva_evidence("secdeva_control_risk-mitigation-testing", "secdeva_review_risk-mitigation-testing", "Review of \nrisk mitigation testing").
 secdeva_legacyEvidence("secdeva_control_security-requirements", "secdeva_document_security-requirement-specification", "Security requirements specification").
 secdeva_evidence("secdeva_control_security-requirements", "secdeva_review_requirement-management", "Review of \nsecurity requirements management").
 secdeva_evidence("secdeva_control_security-requirements", "secdeva_register_security-requirements", "Security requirement register").
