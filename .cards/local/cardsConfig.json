@@ -3,7 +3,7 @@
     "cardKeyPrefix": "secdeva",
     "name": "Secure Development Essentials",
     "description": "",
-    "version": "1.4.1",
+    "version": "1.4.2",
     "modules": [
         {
             "name": "base",
