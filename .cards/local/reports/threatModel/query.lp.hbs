@@ -263,13 +263,25 @@ childResult(result, Issue, "securityIssues") :-
     link(AffectedCard, Issue, "ismsa/linkTypes/presentsRisk"),
     secdeva_threatModelEntity(AffectedCard).
 
-childResult(Card, AffectedCard, "affectedCard") :-
+% The affected card is wrapped in a (Card, AffectedCard) tuple key rather than
+% used as a bare card key. A bare key would let the same card appear both as a
+% parent and as a child of another result, and childResult cycles make the
+% result tree unbounded, which hangs grounding. See also "assetRisks" above,
+% which walks the same presentsRisk link in the opposite direction.
+childResult(Card, (Card, AffectedCard), "affectedCard") :-
     childResult(result, Card, "allRisks"),
     link(AffectedCard, Card, "ismsa/linkTypes/presentsRisk").
 
-childResult(Card, AffectedCard, "affectedCard") :-
+childResult(Card, (Card, AffectedCard), "affectedCard") :-
     childResult(result, Card, "securityIssues"),
     link(AffectedCard, Card, "ismsa/linkTypes/presentsRisk").
+
+resultField((Card, AffectedCard), "key", AffectedCard, "shortText") :-
+    childResult(Card, (Card, AffectedCard), "affectedCard").
+
+resultField((Card, AffectedCard), "title", Title, "shortText") :-
+    childResult(Card, (Card, AffectedCard), "affectedCard"),
+    field(AffectedCard, "title", Title).
 
 childResult(result, Card, "securityIssueRegisterRefs") :-
     secdeva_closestProject(Card, Project),
