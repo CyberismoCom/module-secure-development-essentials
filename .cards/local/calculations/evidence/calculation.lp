@@ -29,7 +29,10 @@ secdeva_evidence("secdeva_control_assign-people-to-project-roles", "secdeva_revi
 secdeva_evidence("secdeva_control_ensure-competence", "secdeva_review_competence", "Competence review").
 secdeva_legacyEvidence("secdeva_control_analyse-business-context", "secdeva_document_business-context-analysis", "Business context analysis").
 secdeva_evidence("secdeva_control_security-context", "secdeva_document_security-context", "Security context").
-secdeva_evidence("secdeva_control_interface-specifications", "secdeva_document_interface", "Interface description").
+% The interfaces control moved to the Secure Development Extended module (secdevb).
+% These facts remain only for the deprecated secdeva/templates/project (v1), which still
+% ships the "Write interface specifications" control card.
+secdeva_legacyEvidence("secdeva_control_interface-specifications", "secdeva_document_interface", "Interface description").
 secdeva_legacyEvidence("secdeva_control_interface-specifications", "secdeva_review_interfaces", "Review of interfaces").
 secdeva_evidence("secdeva_control_subprojects", "secdeva_review_project-structure", "Project structure review").
 secdeva_evidence("secdeva_control_static-code-analysis", "secdeva_review_static-code-analysis", "Review of \nstatic code analysis").

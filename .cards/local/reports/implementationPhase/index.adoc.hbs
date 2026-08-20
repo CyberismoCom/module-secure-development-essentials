@@ -10,19 +10,19 @@ The Implementation phase focuses on catching security issues as code is written.
 flowchart LR
     subgraph Detection
       direction TB
-      SAST[Use static code analysis] --> D[Manage defects]
+      SAST[Use static code analysis] --> D[Manage security issues]
       CR[Review code changes manually] --> D
     end
 ----
 
 * *Use static code analysis* — Run automated SAST tools to detect potential security issues directly from source code.
 * *Review code changes manually* — Peer review code to catch security-relevant programming and design errors that tooling may miss.
-* *Manage defects* — Track security issues to closure or documented risk acceptance, and communicate findings to stakeholders.
+* *Manage security issues* — Track security issues to closure or documented risk acceptance, and communicate findings to stakeholders.
 ====
 
 === Why it matters
 
-The earlier a vulnerability is found, the cheaper it is to fix. Static analysis and code review form complementary detection layers — automated tools catch common patterns at scale, while human reviewers spot logic and design flaws. Defect management ensures nothing slips through unresolved.
+The earlier a vulnerability is found, the cheaper it is to fix. Static analysis and code review form complementary detection layers — automated tools catch common patterns at scale, while human reviewers spot logic and design flaws. Managing security issues ensures nothing slips through unresolved.
 
 === Controls
 

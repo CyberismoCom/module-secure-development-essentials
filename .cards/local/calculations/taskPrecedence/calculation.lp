@@ -47,7 +47,8 @@ secdeva_prerequisiteTask(
     "secdeva_control_security-context",
     "secdeva_control_threat-models").
 
-% Legacy fact:
+% Legacy fact: the interfaces control moved to secdevb. This remains only for the
+% deprecated secdeva/templates/project (v1), which still ships that control card.
 secdeva_prerequisiteTask(
     "secdeva_control_threat-models",
     "secdeva_control_interface-specifications").
