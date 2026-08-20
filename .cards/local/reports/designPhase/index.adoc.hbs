@@ -15,13 +15,11 @@ flowchart LR
     subgraph AT[Architecture and threat analysis]
       direction LR
       TM[Manage threat models] --> HR[Manage high-level risks]
-      TM --> MI[Manage interfaces]
     end
-    subgraph TC[Technology and configuration]
+    subgraph TC[Technology and cryptography]
       direction TB
       TP[Manage 3rd party technologies]
-      CM[Configuration management plan]
-      CR2[Use cryptography properly]
+      CR2[Use cryptography properly and effectively]
     end
     CR --> AT
     CR --> TC
@@ -37,12 +35,10 @@ flowchart LR
 
 * *Manage threat models* — Create and maintain threat models to identify design weaknesses and drive security improvements.
 * *Manage high-level risks* — Track broad cybersecurity risks tied to the project and product outcomes.
-* *Manage interfaces* — Document exposed interfaces as potential attack surfaces.
 
-*Technology and configuration*
+*Technology and cryptography*
 
 * *Manage 3rd party technologies* — Assess and periodically review external and internal dependencies.
-* *Make a configuration management plan* — Define how configuration items are stored, versioned, and protected.
 * *Use cryptography properly and effectively* — Justify algorithm and key management choices with a dedicated review.
 
 *Supply chain*
