@@ -9,7 +9,7 @@ flowchart LR
       F[Foundation\n{{this.foundationPhase.progress}}%] --> D[Design\n{{this.designPhase.progress}}%]
       D --> I[Implementation\n{{this.implementationPhase.progress}}%]
       I --> V[Verification\n{{this.verificationPhase.progress}}%]
-      V --> R[Releases\n ]
+      V --> R[Releases\n{{this.releasesPhase.progress}}%]
       R --> O[Operations\n{{this.operationsPhase.progress}}%]
     end
 ----
