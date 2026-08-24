@@ -1,6 +1,6 @@
 {
-    "name": "ismsa/fieldTypes/assetAvailability",
-    "displayName": "Criticality of availability",
+    "name": "ismsa/fieldTypes/assetConfidentiality",
+    "displayName": "Criticality of confidentiality",
     "dataType": "enum",
     "enumValues": [
         {
@@ -20,5 +20,5 @@
             "enumDisplayValue": "Not Applicable"
         }
     ],
-    "description": "The impact if this asset is not available when it is needed."
+    "description": "The impact if the confidentiality of this asset is compromised. This concerns the asset itself; the sensitivity of this card is defined separately in the information classification field."
 }
