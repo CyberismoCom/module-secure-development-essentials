@@ -79,7 +79,7 @@
             "enableOverride": false
         },
         {
-            "name": "secdeva/fieldTypes/dataCategories",
+            "name": "ismsa/fieldTypes/dataCategories",
             "displayName": "",
             "isCalculated": false
         }
@@ -95,7 +95,7 @@
         "secdeva/fieldTypes/interfacePurpose"
     ],
     "optionallyVisibleFields": [
-        "secdeva/fieldTypes/dataCategories",
+        "ismsa/fieldTypes/dataCategories",
         "secdeva/fieldTypes/basicInputValidationTestingRequired",
         "secdeva/fieldTypes/basicStressTestingRequired",
         "secdeva/fieldTypes/networkTrafficLoadTestingRequired",

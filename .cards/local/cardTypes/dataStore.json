@@ -17,7 +17,7 @@
             "enableOverride": true
         },
         {
-            "name": "secdeva/fieldTypes/dataCategories",
+            "name": "ismsa/fieldTypes/dataCategories",
             "displayName": "",
             "isCalculated": false
         }
@@ -25,7 +25,7 @@
     "alwaysVisibleFields": [
         "secdeva/fieldTypes/description",
         "secdeva/fieldTypes/technology",
-        "secdeva/fieldTypes/dataCategories"
+        "ismsa/fieldTypes/dataCategories"
     ],
     "optionallyVisibleFields": [
         "base/fieldTypes/owner"
