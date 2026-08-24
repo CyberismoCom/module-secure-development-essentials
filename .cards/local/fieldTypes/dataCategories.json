@@ -1,0 +1,64 @@
+{
+    "name": "secdeva/fieldTypes/dataCategories",
+    "displayName": "Data categories",
+    "dataType": "list",
+    "enumValues": [
+        {
+            "enumValue": "personalData",
+            "enumDisplayValue": "Personal data",
+            "enumDescription": "Data relating to an identified or identifiable person"
+        },
+        {
+            "enumValue": "credentials",
+            "enumDisplayValue": "Credentials",
+            "enumDescription": "Passwords, API keys and shared secrets."
+        },
+        {
+            "enumValue": "cryptographicKeyMaterial",
+            "enumDisplayValue": "Cryptographic key material",
+            "enumDescription": "Private keys, symmetric keys, certificates and seeds"
+        },
+        {
+            "enumValue": "authenticationToken",
+            "enumDisplayValue": "Authentication token",
+            "enumDescription": "Session tokens, access tokens and refresh tokens."
+        },
+        {
+            "enumValue": "logData",
+            "enumDisplayValue": "Log data",
+            "enumDescription": "Audit trails, event journals, alarm and event history. The recorded past."
+        },
+        {
+            "enumValue": "configuration",
+            "enumDisplayValue": "Configuration",
+            "enumDescription": "How the product is set up: parameters, policy and rules. Persistent, changed deliberately, usually by an administrator."
+        },
+        {
+            "enumValue": "controlData",
+            "enumDisplayValue": "Control data",
+            "enumDescription": "Setpoints, commands, recipes and actuation requests. Data that determines what the product, or the equipment it drives, actually does."
+        },
+        {
+            "enumValue": "operationalData",
+            "enumDisplayValue": "Operational data",
+            "enumDescription": "The data the product exists to handle: process values, measurements, live alarm state, transactions, orders, documents and records."
+        },
+        {
+            "enumValue": "firmwareOrSoftwareImage",
+            "enumDisplayValue": "Firmware or software image",
+            "enumDescription": "Update payloads, signed artefacts and control programs."
+        },
+        {
+            "enumValue": "telemetry",
+            "enumDisplayValue": "Telemetry",
+            "enumDescription": "Data about the product sent back to the manufacturer: usage, diagnostics and crash reports. Not data the product handles for the customer."
+        },
+        {
+            "enumValue": "safetyRelevantData",
+            "enumDisplayValue": "Safety relevant data",
+            "enumDescription": "Data whose corruption or loss has health, safety or environmental consequences."
+        }
+    ],
+    "description": "The categories of data that this element stores, processes or transmits",
+    "category": "Threat model"
+}
