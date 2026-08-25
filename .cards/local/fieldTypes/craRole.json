@@ -1,0 +1,30 @@
+{
+    "name": "secdeva/fieldTypes/craRole",
+    "displayName": "Planned CRA role",
+    "dataType": "enum",
+    "enumValues": [
+        {
+            "enumValue": "manufacturer",
+            "enumDisplayValue": "Manufacturer"
+        },
+        {
+            "enumValue": "importer",
+            "enumDisplayValue": "Importer"
+        },
+        {
+            "enumValue": "distributor",
+            "enumDisplayValue": "Distributor"
+        },
+        {
+            "enumValue": "integratedComponent",
+            "enumDisplayValue": "Integrated component",
+            "enumDescription": "Absorbed into one of our products as a built-in component, so our manufacturer obligations cover it and no separate economic operator role arises."
+        },
+        {
+            "enumValue": "none",
+            "enumDisplayValue": "No role"
+        }
+    ],
+    "description": "The economic operator role we plan to take for this product under the EU Cyber Resilience Act. An input to a legal review, not its output.",
+    "category": "Solution structure"
+}

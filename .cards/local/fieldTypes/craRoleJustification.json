@@ -1,0 +1,7 @@
+{
+    "name": "secdeva/fieldTypes/craRoleJustification",
+    "displayName": "CRA role justification",
+    "dataType": "longText",
+    "description": "Why the planned CRA role differs from the derived one, or why the derived role is correct in a borderline case",
+    "category": "Solution structure"
+}

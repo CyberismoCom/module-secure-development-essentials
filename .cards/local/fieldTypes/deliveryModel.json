@@ -1,0 +1,34 @@
+{
+    "name": "secdeva/fieldTypes/deliveryModel",
+    "displayName": "Delivery model",
+    "dataType": "enum",
+    "enumValues": [
+        {
+            "enumValue": "weDeliver",
+            "enumDisplayValue": "We deliver it (already on the EU market)",
+            "enumDescription": "We include a product that is already available on the Union market, whether from an EU manufacturer or through an importer who brought it in before us."
+        },
+        {
+            "enumValue": "weImportAndDeliver",
+            "enumDisplayValue": "We import it into the EU and deliver it",
+            "enumDescription": "We are the first to place this product on the Union market, from a manufacturer established outside the Union."
+        },
+        {
+            "enumValue": "weRebrandAndDeliver",
+            "enumDisplayValue": "We deliver it under our own name, or substantially modified",
+            "enumDescription": "Placing a product on the market under your own name or trademark, or modifying it substantially, makes you its manufacturer under the CRA."
+        },
+        {
+            "enumValue": "customerProvides",
+            "enumDisplayValue": "The customer provides it",
+            "enumDescription": "We depend on it but never ship it. Part of the environment rather than of the delivery."
+        },
+        {
+            "enumValue": "weOperateAsService",
+            "enumDisplayValue": "We use it to operate a service",
+            "enumDescription": "We run it ourselves rather than shipping it to anyone, so it is not placed on the market."
+        }
+    ],
+    "description": "What we actually do with this product. Determines the planned CRA role.",
+    "category": "Solution structure"
+}

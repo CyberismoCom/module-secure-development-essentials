@@ -1,0 +1,7 @@
+{
+    "name": "secdeva/fieldTypes/productVersion",
+    "displayName": "Version",
+    "dataType": "shortText",
+    "description": "The product version, used as the version branch in CSAF documents",
+    "category": "Solution structure"
+}

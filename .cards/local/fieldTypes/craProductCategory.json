@@ -1,0 +1,33 @@
+{
+    "name": "secdeva/fieldTypes/craProductCategory",
+    "displayName": "CRA product category",
+    "dataType": "enum",
+    "enumValues": [
+        {
+            "enumValue": "default",
+            "enumDisplayValue": "Default category"
+        },
+        {
+            "enumValue": "importantClassI",
+            "enumDisplayValue": "Important, class I",
+            "enumDescription": "EU CRA Annex III, class I."
+        },
+        {
+            "enumValue": "importantClassII",
+            "enumDisplayValue": "Important, class II",
+            "enumDescription": "EU CRA Annex III, class II."
+        },
+        {
+            "enumValue": "critical",
+            "enumDisplayValue": "Critical",
+            "enumDescription": "EU CRA Annex IV."
+        },
+        {
+            "enumValue": "outOfScope",
+            "enumDisplayValue": "Out of scope",
+            "enumDescription": "Not a product with digital elements placed on the Union market, for example a hosted service."
+        }
+    ],
+    "description": "The product category under the EU Cyber Resilience Act, which determines the conformity assessment procedure",
+    "category": "Solution structure"
+}

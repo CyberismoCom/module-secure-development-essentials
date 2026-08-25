@@ -1,0 +1,7 @@
+{
+    "name": "secdeva/fieldTypes/supportPeriodEnd",
+    "displayName": "End of support period",
+    "dataType": "date",
+    "description": "The end date of the support period that is declared for this product",
+    "category": "Solution structure"
+}

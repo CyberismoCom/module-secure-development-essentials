@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/reports/registerSolutionStructure",
+    "displayName": "Solution structure register",
+    "category": "Solution structure",
+    "description": "The register page for the products and components that make up the solution"
+}

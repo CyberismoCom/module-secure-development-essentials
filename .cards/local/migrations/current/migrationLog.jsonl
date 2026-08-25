@@ -1,1 +1,2 @@
 {"timestamp":"2026-08-24T18:35:19.613Z","operation":"resource_delete","target":"secdeva/fieldTypes/dataCategories","parameters":{"type":"fieldTypes"}}
+{"timestamp":"2026-08-25T03:58:40.508Z","operation":"resource_rename","target":"secdeva/reports/threatModelProduct","parameters":{"type":"reports","operation":{"name":"change","target":"secdeva/reports/threatModelProduct","to":"secdeva/reports/product"}}}

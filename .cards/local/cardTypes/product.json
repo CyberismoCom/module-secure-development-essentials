@@ -1,0 +1,105 @@
+{
+    "name": "secdeva/cardTypes/product",
+    "displayName": "Product",
+    "workflow": "ismsa/workflows/asset",
+    "customFields": [
+        {
+            "name": "base/fieldTypes/owner",
+            "displayName": "",
+            "isCalculated": true,
+            "enableOverride": true
+        },
+        {
+            "name": "secdeva/fieldTypes/productOrigin",
+            "displayName": "",
+            "isCalculated": false
+        },
+        {
+            "name": "secdeva/fieldTypes/productVendor",
+            "displayName": "",
+            "isCalculated": false
+        },
+        {
+            "name": "secdeva/fieldTypes/productVersion",
+            "displayName": "",
+            "isCalculated": false
+        },
+        {
+            "name": "secdeva/fieldTypes/deliveryModel",
+            "displayName": "",
+            "isCalculated": false
+        },
+        {
+            "name": "secdeva/fieldTypes/craRole",
+            "displayName": "",
+            "isCalculated": true,
+            "enableOverride": true
+        },
+        {
+            "name": "secdeva/fieldTypes/craRoleJustification",
+            "displayName": "",
+            "isCalculated": false
+        },
+        {
+            "name": "secdeva/fieldTypes/craProductCategory",
+            "displayName": "",
+            "isCalculated": false
+        },
+        {
+            "name": "secdeva/fieldTypes/supportPeriodEnd",
+            "displayName": "",
+            "isCalculated": false
+        },
+        {
+            "name": "base/fieldTypes/informationClassification",
+            "displayName": "",
+            "isCalculated": false
+        },
+        {
+            "name": "secdeva/fieldTypes/sbomComponentType",
+            "displayName": "",
+            "isCalculated": false
+        },
+        {
+            "name": "secdeva/fieldTypes/sbomComponentGroup",
+            "displayName": "",
+            "isCalculated": false
+        },
+        {
+            "name": "secdeva/fieldTypes/sbomComponentName",
+            "displayName": "",
+            "isCalculated": false
+        },
+        {
+            "name": "secdeva/fieldTypes/sbomComponentCpe",
+            "displayName": "",
+            "isCalculated": false
+        },
+        {
+            "name": "secdeva/fieldTypes/sbomComponentPurl",
+            "displayName": "",
+            "isCalculated": false
+        }
+    ],
+    "alwaysVisibleFields": [
+        "base/fieldTypes/owner",
+        "secdeva/fieldTypes/productOrigin",
+        "secdeva/fieldTypes/productVendor",
+        "secdeva/fieldTypes/productVersion",
+        "secdeva/fieldTypes/deliveryModel",
+        "secdeva/fieldTypes/craRole"
+    ],
+    "optionallyVisibleFields": [
+        "secdeva/fieldTypes/craRoleJustification",
+        "secdeva/fieldTypes/craProductCategory",
+        "secdeva/fieldTypes/supportPeriodEnd",
+        "base/fieldTypes/informationClassification",
+        "secdeva/fieldTypes/sbomComponentType",
+        "secdeva/fieldTypes/sbomComponentGroup",
+        "secdeva/fieldTypes/sbomComponentName",
+        "secdeva/fieldTypes/sbomComponentCpe",
+        "secdeva/fieldTypes/sbomComponentPurl"
+    ],
+    "description": "A product or component that is part of the solution, whether developed in-house or obtained from a third party",
+    "category": "Solution structure"
+}
