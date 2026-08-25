@@ -11,18 +11,6 @@
 To add a dataflow to or from this {{#if (eq variant "process")}}process{{/if}}{{#if (eq variant "dataStore")}}data store{{/if}}{{#if (eq variant "trustBoundary")}}trust boundary{{/if}}, click the link symbol in the top level tool bar.{{#unless (eq variant "trustBoundary")}} Optionally, if you want to model interfaces as well, you can create an interface and link any incoming dataflows to the interface.{{/unless}}
 ====
 
-{{#unless (eq variant "trustBoundary")}}
-{{#createCards}}
-  "buttonLabel": "Create an interface",
-  "template": "secdeva/templates/interface2"
-{{/createCards}}
-
-{{#createCards}}
-  "buttonLabel": "Create a physical port or connection",
-  "template": "secdeva/templates/physicalConnection"
-{{/createCards}}
-
-{{/unless}}
 {{#createCards}}
   "buttonLabel": "Create a trust boundary",
   "template": "secdeva/templates/trustBoundary2"
@@ -48,6 +36,18 @@ To add a dataflow to or from this {{#if (eq variant "process")}}process{{/if}}{{
   "template": "secdeva/templates/dataStore2"
 {{/createCards}}
 
+{{#unless (eq variant "trustBoundary")}}
+{{#createCards}}
+  "buttonLabel": "Create an interface",
+  "template": "secdeva/templates/interface2"
+{{/createCards}}
+
+{{#createCards}}
+  "buttonLabel": "Create a physical port or connection",
+  "template": "secdeva/templates/physicalConnection"
+{{/createCards}}
+
+{{/unless}}
 {{/unless}}
 {{#each results}}
 
@@ -242,21 +242,20 @@ You have not yet created or linked any requirements.
 
 [TIP]
 ====
-Record which products implement this element. Link a product that is already in the solution structure register; create one only if it is not there yet, so the same component does not end up as two cards.
+Record which own products, commercial 3rd party products, and open source products implement this element. Link a product that is already in the solution structure register; create one only if it is not there yet, so the same component does not end up as two cards.
 ====
 
 {{#if products}}
 
 [caption=]
 .Products that implement this element
-[cols="4,2,2"]
+[cols="4,2"]
 |===
-| Product | Origin | Planned CRA role
+| Product | Origin 
 
 {{#each products}}
 |xref:{{this.key}}.adoc[{{this.title}}]
 |{{this.[secdeva/fieldTypes/productOrigin].displayValue}}
-|{{this.[secdeva/fieldTypes/craRole].displayValue}}
 {{/each}}
 
 |===

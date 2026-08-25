@@ -16,11 +16,11 @@ Record how this product relates to the others in the solution by linking it with
 
 Choose the link type that matches how this product relates to the other one:
 
-* *is a default component of* — it ships as a built-in part of the other product, not as a distinct product
-* *is an external component of* — the other product needs it as an external dependency or library
-* *is installed on* — it runs on top of the other product, such as an operating system or hardware platform
-* *is installed with* — it is bundled and installed alongside the other product during setup
-* *is an optional component of* — it is an add-on, plug-in or licensed extra for the other product
+* *default component of* — it ships as a built-in part of the other product, not as a distinct product
+* *external component of* — the other product needs it as an external dependency or library
+* *installed on* — it runs on top of the other product, such as an operating system or hardware platform
+* *installed with* — it is bundled and installed alongside the other product during setup
+* *optional component of* — it is an add-on, plug-in or licensed extra for the other product
 
 These are the relationship categories defined by the CSAF standard, so the security advisories and the SBOM can be generated from them directly.
 ====
@@ -78,15 +78,11 @@ The link is what makes impact analysis possible. When a vulnerability is reporte
 
 {{#if implements}}
 
-[cols="5"]
-|===
-| Element
+Threat model elements:
 
 {{#each implements}}
-| xref:{{this.key}}.adoc[{{this.title}}]
+* {{#xref}}"cardKey":"{{this.key}}"{{/xref}}
 {{/each}}
-
-|===
 
 {{else}}
 
