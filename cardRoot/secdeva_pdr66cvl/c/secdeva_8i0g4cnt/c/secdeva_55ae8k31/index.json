@@ -1,0 +1,12 @@
+{
+    "title": "Testing - solution structure",
+    "cardType": "base/cardTypes/page",
+    "workflowState": "Draft",
+    "base/fieldTypes/informationClassification": "internal",
+    "rank": "0|0",
+    "lastUpdated": "2026-08-26T11:26:16.548Z",
+    "links": [],
+    "templateCardKey": "base_2",
+    "createdAt": "2026-08-26T11:07:42.753Z",
+    "base/fieldTypes/owner": "test.owner@example.com"
+}

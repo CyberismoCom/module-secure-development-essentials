@@ -1,0 +1,12 @@
+{
+    "cardType": "secdeva/cardTypes/interface",
+    "title": "Interface 3.2",
+    "workflowState": "Draft",
+    "rank": "0|b",
+    "lastUpdated": "2026-08-16T20:28:21.141Z",
+    "links": [],
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/identifier": "secdeva_document_interface",
+    "templateCardKey": "secdeva_7",
+    "secdeva/fieldTypes/interfaceType": "logical"
+}

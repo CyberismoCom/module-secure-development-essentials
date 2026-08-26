@@ -1,0 +1,19 @@
+{
+    "title": "TC07 Third-party product the customer provides",
+    "cardType": "secdeva/cardTypes/product",
+    "workflowState": "Draft",
+    "rank": "0|e",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/externalComponentOf",
+            "cardKey": "secdeva_7lzviey5"
+        }
+    ],
+    "secdeva/fieldTypes/productOrigin": "thirdPartyCommercial",
+    "lastUpdated": "2026-08-26T11:26:04.298Z",
+    "templateCardKey": "secdeva_thirdpar01",
+    "createdAt": "2026-08-26T11:04:09.116Z",
+    "base/fieldTypes/identifier": "secdeva_test_ss_customer",
+    "secdeva/fieldTypes/deliveryModel": "customerProvides",
+    "secdeva/fieldTypes/productVendor": "Example Vendor Ltd"
+}

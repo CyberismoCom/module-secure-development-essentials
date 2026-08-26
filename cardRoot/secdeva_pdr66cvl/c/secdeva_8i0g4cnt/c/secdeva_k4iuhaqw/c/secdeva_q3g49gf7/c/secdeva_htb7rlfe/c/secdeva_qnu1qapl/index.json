@@ -1,0 +1,12 @@
+{
+    "title": "TC02 Own product with no delivery model",
+    "cardType": "secdeva/cardTypes/product",
+    "workflowState": "Draft",
+    "rank": "0|c",
+    "links": [],
+    "secdeva/fieldTypes/productOrigin": "own",
+    "lastUpdated": "2026-08-26T11:25:59.576Z",
+    "templateCardKey": "secdeva_thirdpar01",
+    "createdAt": "2026-08-26T11:04:02.689Z",
+    "base/fieldTypes/identifier": "secdeva_test_ss_own_nodelivery"
+}

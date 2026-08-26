@@ -1,0 +1,19 @@
+{
+    "title": "TC11 Contradiction: consumed service bundled alongside",
+    "cardType": "secdeva/cardTypes/product",
+    "workflowState": "Draft",
+    "rank": "0|i",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/installedWith",
+            "cardKey": "secdeva_7lzviey5"
+        }
+    ],
+    "secdeva/fieldTypes/productOrigin": "thirdPartyCommercial",
+    "lastUpdated": "2026-08-26T11:26:08.032Z",
+    "templateCardKey": "secdeva_thirdpar01",
+    "createdAt": "2026-08-26T11:04:14.294Z",
+    "base/fieldTypes/identifier": "secdeva_test_ss_bad_consumed_bundled",
+    "secdeva/fieldTypes/deliveryModel": "weConsumeAsService",
+    "secdeva/fieldTypes/productVendor": "Example Vendor Ltd"
+}

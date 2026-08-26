@@ -1,0 +1,15 @@
+{
+    "cardType": "ismsa/cardTypes/internalControl",
+    "title": "Scan for known vulnerabilities",
+    "workflowState": "Open",
+    "rank": "0|e",
+    "lastUpdated": "2026-08-26T11:18:46.282Z",
+    "links": [],
+    "base/fieldTypes/adoptionStep": "step1",
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/internalControlReviewPeriod": "12months",
+    "base/fieldTypes/reviewMonth": "october",
+    "base/fieldTypes/identifier": "secdeva_control_known-vulnerability-scanning",
+    "templateCardKey": "secdeva_6ivlxb6t",
+    "createdAt": "2026-08-26T11:18:46.279Z"
+}

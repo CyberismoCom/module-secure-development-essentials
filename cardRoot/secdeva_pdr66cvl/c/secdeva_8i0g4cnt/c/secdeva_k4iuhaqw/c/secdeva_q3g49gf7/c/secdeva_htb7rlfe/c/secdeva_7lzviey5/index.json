@@ -1,0 +1,13 @@
+{
+    "title": "TC00 Umbrella: own product we develop and deliver",
+    "cardType": "secdeva/cardTypes/product",
+    "workflowState": "Draft",
+    "rank": "0|a",
+    "links": [],
+    "secdeva/fieldTypes/productOrigin": "own",
+    "lastUpdated": "2026-08-26T11:25:57.792Z",
+    "templateCardKey": "secdeva_thirdpar01",
+    "createdAt": "2026-08-26T11:04:00.093Z",
+    "base/fieldTypes/identifier": "secdeva_test_ss_umbrella",
+    "secdeva/fieldTypes/deliveryModel": "weDevelopAndDeliver"
+}

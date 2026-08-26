@@ -1,0 +1,15 @@
+{
+    "title": "Test error handling",
+    "cardType": "ismsa/cardTypes/internalControl",
+    "workflowState": "In scope",
+    "rank": "0|d",
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/internalControlReviewPeriod": "12months",
+    "base/fieldTypes/adoptionStep": "step2",
+    "base/fieldTypes/identifier": "secdeva_control_error-handling-testing",
+    "links": [],
+    "lastUpdated": "2026-08-26T11:18:47.550Z",
+    "templateCardKey": "secdeva_uovbyi17",
+    "createdAt": "2026-08-26T11:18:46.279Z",
+    "lastTransitioned": "2026-08-26T11:18:47.550Z"
+}

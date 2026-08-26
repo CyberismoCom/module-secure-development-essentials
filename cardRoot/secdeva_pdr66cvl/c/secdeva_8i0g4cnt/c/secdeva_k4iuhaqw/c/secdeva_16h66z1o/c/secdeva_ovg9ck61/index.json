@@ -1,0 +1,13 @@
+{
+    "title": "Design",
+    "cardType": "ismsa/cardTypes/register",
+    "workflowState": "Draft",
+    "rank": "0|c",
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/progress": "secdeva_internal-control-progress",
+    "base/fieldTypes/identifier": "secdeva_register_design-controls",
+    "lastUpdated": "2026-08-26T11:18:46.282Z",
+    "links": [],
+    "templateCardKey": "secdeva_uyuvsxoo",
+    "createdAt": "2026-08-26T11:18:46.279Z"
+}

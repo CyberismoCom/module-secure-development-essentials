@@ -1,0 +1,11 @@
+{
+    "title": "Solution structure",
+    "cardType": "secdeva/cardTypes/register",
+    "workflowState": "None",
+    "rank": "0|cn",
+    "base/fieldTypes/identifier": "secdeva_register_solution-structure",
+    "links": [],
+    "templateCardKey": "secdeva_solstruct1",
+    "createdAt": "2026-08-26T11:18:46.279Z",
+    "lastUpdated": "2026-08-26T11:18:46.281Z"
+}

@@ -1,0 +1,45 @@
+This page runs the solution structure test fixture and compares the derived economic
+operator roles and policy check failures against the expected results. The expectations
+live in the report query, keyed by the `base/fieldTypes/identifier` of each test card, so
+the fixture can be deleted and recreated without touching the report.
+
+== How the fixture stays out of the real project
+
+The test cards sit under their own *Solution structure test project*, created from the
+same `project2` template as a real project. Isolation does not come from the fixture
+lacking a project — it comes from every register, policy check and cross-reference query
+joining on a *shared* project:
+
+[source]
+----
+secdeva_closestProject(Card, Project),
+secdeva_closestProject({{cardKey}}, Project).
+----
+
+Two different projects never satisfy that join, so the fixture is invisible to the real
+project's views while behaving exactly like real content inside its own. Reusing the
+project template also means the identifiers it defines, such as
+`secdeva_group_own-products`, exist in both projects; every lookup of those identifiers
+in this module is project-scoped, so that is safe.
+
+Because the fixture has a real project, checks gated on the project — the adoption step,
+and everything reached through `secdeva_closestProject` — can be exercised here. That was
+not possible while the test content sat directly under a plain page.
+
+== Where the test cards live
+
+The test products sit under the *Own products* and *Third-party products* groups of this
+project's Solution structure register, exactly where a real product would. Placement is
+for browsing only: `secdeva_productGroup` derives group membership from the origin field,
+not from the tree. TC16 demonstrates this — it has no origin recorded, so it is filed
+under Third-party products but appears in neither group listing.
+
+== Workflow states
+
+Most cases are in *Draft*. The TC16 to TC19 cases are *Active*, because the required-field
+checks are gated on the card leaving the initial workflow state. TC18 and TC19 are the
+negative cases that prove being Active does not by itself raise a failure.
+
+{{#report}}
+  "name": "secdeva/reports/testingSolutionStructure"
+{{/report}}

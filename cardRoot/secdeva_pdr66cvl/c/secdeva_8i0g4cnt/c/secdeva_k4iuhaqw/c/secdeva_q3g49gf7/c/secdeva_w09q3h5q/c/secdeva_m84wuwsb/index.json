@@ -1,0 +1,21 @@
+{
+    "title": "TC19 Negative: complete active third-party product",
+    "cardType": "secdeva/cardTypes/product",
+    "workflowState": "Active",
+    "rank": "0|n",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/externalComponentOf",
+            "cardKey": "secdeva_7lzviey5"
+        }
+    ],
+    "secdeva/fieldTypes/productOrigin": "thirdPartyCommercial",
+    "lastUpdated": "2026-08-26T11:26:15.609Z",
+    "templateCardKey": "secdeva_thirdpar01",
+    "createdAt": "2026-08-26T11:19:17.715Z",
+    "base/fieldTypes/identifier": "secdeva_test_ss_active_complete_third",
+    "secdeva/fieldTypes/deliveryModel": "weDeliver",
+    "base/fieldTypes/informationClassification": "internal",
+    "secdeva/fieldTypes/productVendor": "Example Vendor Ltd",
+    "lastTransitioned": "2026-08-26T11:19:21.419Z"
+}

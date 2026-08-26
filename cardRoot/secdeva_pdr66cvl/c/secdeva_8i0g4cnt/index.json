@@ -1,0 +1,14 @@
+{
+    "title": "Test project",
+    "cardType": "secdeva/cardTypes/project2",
+    "workflowState": "Draft",
+    "rank": "0|c",
+    "base/fieldTypes/adoptionStep": "step1",
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/identifier": "secdeva_project",
+    "links": [],
+    "lastUpdated": "2026-08-26T20:56:27.771Z",
+    "templateCardKey": "secdeva_hfh3g4u2",
+    "createdAt": "2026-08-26T11:18:46.278Z",
+    "base/fieldTypes/owner": "test.owner@example.com"
+}

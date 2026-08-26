@@ -1,0 +1,13 @@
+{
+    "title": "Assets",
+    "cardType": "secdeva/cardTypes/register",
+    "workflowState": "None",
+    "rank": "0|b",
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/progress": "asset-progress",
+    "base/fieldTypes/identifier": "secdeva_register_assets",
+    "lastUpdated": "2026-08-26T11:18:46.281Z",
+    "links": [],
+    "templateCardKey": "secdeva_02tv3hbo",
+    "createdAt": "2026-08-26T11:18:46.279Z"
+}

@@ -1,0 +1,19 @@
+{
+    "title": "TC13 Contradiction: third-party product we develop ourselves",
+    "cardType": "secdeva/cardTypes/product",
+    "workflowState": "Draft",
+    "rank": "0|k",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/externalComponentOf",
+            "cardKey": "secdeva_7lzviey5"
+        }
+    ],
+    "secdeva/fieldTypes/productOrigin": "thirdPartyCommercial",
+    "lastUpdated": "2026-08-26T11:26:09.956Z",
+    "templateCardKey": "secdeva_thirdpar01",
+    "createdAt": "2026-08-26T11:04:16.827Z",
+    "base/fieldTypes/identifier": "secdeva_test_ss_bad_thirdparty_developed",
+    "secdeva/fieldTypes/deliveryModel": "weDevelopAndDeliver",
+    "secdeva/fieldTypes/productVendor": "Example Vendor Ltd"
+}

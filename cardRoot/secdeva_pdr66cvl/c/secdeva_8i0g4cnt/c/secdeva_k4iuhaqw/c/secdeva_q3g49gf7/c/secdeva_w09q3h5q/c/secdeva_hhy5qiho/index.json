@@ -1,0 +1,18 @@
+{
+    "title": "TC09 Third-party product with no delivery model",
+    "cardType": "secdeva/cardTypes/product",
+    "workflowState": "Draft",
+    "rank": "0|g",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/externalComponentOf",
+            "cardKey": "secdeva_7lzviey5"
+        }
+    ],
+    "secdeva/fieldTypes/productOrigin": "thirdPartyCommercial",
+    "lastUpdated": "2026-08-26T11:26:06.171Z",
+    "templateCardKey": "secdeva_thirdpar01",
+    "createdAt": "2026-08-26T11:04:11.703Z",
+    "base/fieldTypes/identifier": "secdeva_test_ss_nodelivery",
+    "secdeva/fieldTypes/productVendor": "Example Vendor Ltd"
+}

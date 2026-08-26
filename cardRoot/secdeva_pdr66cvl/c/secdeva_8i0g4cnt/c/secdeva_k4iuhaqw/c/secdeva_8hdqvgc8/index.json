@@ -1,0 +1,13 @@
+{
+    "title": "Risks",
+    "cardType": "secdeva/cardTypes/riskRegister",
+    "workflowState": "None",
+    "rank": "0|bn",
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/acceptableRiskLevel": "low",
+    "base/fieldTypes/identifier": "secdeva_register_risks",
+    "lastUpdated": "2026-08-26T11:18:46.281Z",
+    "links": [],
+    "templateCardKey": "secdeva_266nlbuz",
+    "createdAt": "2026-08-26T11:18:46.279Z"
+}

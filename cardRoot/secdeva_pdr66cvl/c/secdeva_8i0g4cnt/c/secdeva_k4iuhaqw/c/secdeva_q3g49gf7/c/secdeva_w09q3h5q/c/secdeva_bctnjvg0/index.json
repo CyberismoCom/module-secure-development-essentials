@@ -1,0 +1,19 @@
+{
+    "title": "TC14 Negative: operated service as a built-in component",
+    "cardType": "secdeva/cardTypes/product",
+    "workflowState": "Draft",
+    "rank": "0|l",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/defaultComponentOf",
+            "cardKey": "secdeva_7lzviey5"
+        }
+    ],
+    "secdeva/fieldTypes/productOrigin": "thirdPartyCommercial",
+    "lastUpdated": "2026-08-26T11:26:10.923Z",
+    "templateCardKey": "secdeva_thirdpar01",
+    "createdAt": "2026-08-26T11:04:18.125Z",
+    "base/fieldTypes/identifier": "secdeva_test_ss_neg_operated_builtin",
+    "secdeva/fieldTypes/deliveryModel": "weOperateAsService",
+    "secdeva/fieldTypes/productVendor": "Example Vendor Ltd"
+}
