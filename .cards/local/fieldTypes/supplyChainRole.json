@@ -1,6 +1,6 @@
 {
-    "name": "secdeva/fieldTypes/economicOperatorRole",
-    "displayName": "Planned economic operator role",
+    "name": "secdeva/fieldTypes/supplyChainRole",
+    "displayName": "Planned supply chain role",
     "dataType": "enum",
     "enumValues": [
         {
@@ -18,13 +18,13 @@
         {
             "enumValue": "integratedComponent",
             "enumDisplayValue": "Integrated component",
-            "enumDescription": "Absorbed into one of our products as a built-in component, so our manufacturer obligations cover it and no separate economic operator role arises."
+            "enumDescription": "Absorbed into one of our products as a built-in component, so our responsibilities for that product cover it and no separate supply chain role arises."
         },
         {
             "enumValue": "none",
             "enumDisplayValue": "No role"
         }
     ],
-    "description": "The economic operator role we plan to take for this product. An input to a legal review, not its output.",
+    "description": "The role we plan to take for this product in its supply chain. A statement of intent, not a verified conclusion.",
     "category": "Solution structure"
 }

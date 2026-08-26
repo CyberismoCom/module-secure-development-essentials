@@ -25,13 +25,13 @@
             "isCalculated": false
         },
         {
-            "name": "secdeva/fieldTypes/economicOperatorRole",
+            "name": "secdeva/fieldTypes/supplyChainRole",
             "displayName": "",
             "isCalculated": true,
             "enableOverride": true
         },
         {
-            "name": "secdeva/fieldTypes/economicOperatorRoleJustification",
+            "name": "secdeva/fieldTypes/supplyChainRoleJustification",
             "displayName": "",
             "isCalculated": true,
             "enableOverride": true
@@ -77,8 +77,8 @@
         "secdeva/fieldTypes/productOrigin",
         "secdeva/fieldTypes/productVendor",
         "secdeva/fieldTypes/deliveryModel",
-        "secdeva/fieldTypes/economicOperatorRole",
-        "secdeva/fieldTypes/economicOperatorRoleJustification"
+        "secdeva/fieldTypes/supplyChainRole",
+        "secdeva/fieldTypes/supplyChainRoleJustification"
     ],
     "optionallyVisibleFields": [
         "base/fieldTypes/informationClassification",

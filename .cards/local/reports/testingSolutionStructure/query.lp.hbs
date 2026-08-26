@@ -1,7 +1,7 @@
 % Expectations for the solution structure test fixture under Test content.
 %
 % secdeva_expect(Identifier, ExpectedRole, ExpectedFailure) where ExpectedRole is the
-% economic operator role the rules should derive, or "-" when no role should be derived
+% supply chain role the rules should derive, or "-" when no role should be derived
 % at all, and ExpectedFailure is "yes" or "no" for policy check failures on the card.
 %
 % Test cards are matched by their identifier, never by card key, so the fixture survives
@@ -38,7 +38,7 @@ secdeva_testCard(Id, Card) :-
 
 secdeva_actualRole(Card, Role) :-
     secdeva_testCard(_, Card),
-    fieldCalculated(Card, "secdeva/fieldTypes/economicOperatorRole", Role).
+    fieldCalculated(Card, "secdeva/fieldTypes/supplyChainRole", Role).
 
 secdeva_roleCount(Card, N) :-
     secdeva_testCard(_, Card),

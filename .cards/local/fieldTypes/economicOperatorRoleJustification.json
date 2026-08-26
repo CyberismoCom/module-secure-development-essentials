@@ -1,7 +1,0 @@
-{
-    "name": "secdeva/fieldTypes/economicOperatorRoleJustification",
-    "displayName": "Economic operator role justification",
-    "dataType": "longText",
-    "description": "Why this economic operator role applies. Derived together with the role, and overridden whenever the role is set by hand.",
-    "category": "Solution structure"
-}

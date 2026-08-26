@@ -21,7 +21,7 @@
         {
             "enumValue": "weRebrandAndDeliver",
             "enumDisplayValue": "We deliver it under our own name, or substantially modified",
-            "enumDescription": "Placing a product on the market under your own name or trademark, or modifying it substantially, makes you its manufacturer under EU product legislation."
+            "enumDescription": "Placing a product on the market under your own name or trademark, or modifying it substantially, makes you its manufacturer."
         },
         {
             "enumValue": "customerProvides",
@@ -39,6 +39,6 @@
             "enumDescription": "A third party operates it and we use it over the network, such as a managed database, an identity provider or a payment API. We depend on it but never run or ship it, so it is not placed on the market."
         }
     ],
-    "description": "What we actually do with this product, including who is responsible for operating it. Determines the planned economic operator role, where EU product legislation applies.",
+    "description": "What we actually do with this product, including who is responsible for operating it. Determines the planned supply chain role.",
     "category": "Solution structure"
 }

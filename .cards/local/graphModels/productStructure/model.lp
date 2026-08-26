@@ -14,8 +14,8 @@ origin(X, Origin) :- product(X), field(X, "secdeva/fieldTypes/productOrigin", Or
 % Show the display name of the planned role rather than the stored enum value.
 role(X, Display) :-
     product(X),
-    field(X, "secdeva/fieldTypes/economicOperatorRole", Role),
-    field(("secdeva/fieldTypes/economicOperatorRole", Role), "enumDisplayValue", Display).
+    field(X, "secdeva/fieldTypes/supplyChainRole", Role),
+    field(("secdeva/fieldTypes/supplyChainRole", Role), "enumDisplayValue", Display).
 
 % composition
 %
