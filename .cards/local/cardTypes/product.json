@@ -37,11 +37,6 @@
             "enableOverride": true
         },
         {
-            "name": "secdeva/fieldTypes/craProductCategory",
-            "displayName": "",
-            "isCalculated": false
-        },
-        {
             "name": "base/fieldTypes/informationClassification",
             "displayName": "",
             "isCalculated": false
@@ -86,7 +81,6 @@
         "secdeva/fieldTypes/economicOperatorRoleJustification"
     ],
     "optionallyVisibleFields": [
-        "secdeva/fieldTypes/craProductCategory",
         "base/fieldTypes/informationClassification",
         "secdeva/fieldTypes/sbomComponentType",
         "secdeva/fieldTypes/sbomComponentGroup",

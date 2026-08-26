@@ -175,24 +175,6 @@ policyCheckFailure(
         fieldOverride(P, "secdeva/fieldTypes/economicOperatorRole", _),
         not fieldOverride(P, "secdeva/fieldTypes/economicOperatorRoleJustification", _).
 
-policyCheckFailure(
-    P, "Solution structure", "A distributor or importer needs a known vendor",
-    "Both roles carry obligations to verify conformity marking and to reach the manufacturer. Record the vendor.") :-
-        base_projectCardType(P, "secdeva/cardTypes/product"),
-        fieldCalculated(P, "secdeva/fieldTypes/economicOperatorRole", Role),
-        secdeva_roleNeedsVendor(Role),
-        not field(P, "secdeva/fieldTypes/productVendor", _).
-
-secdeva_roleNeedsVendor("distributor").
-secdeva_roleNeedsVendor("importer").
-
-policyCheckFailure(
-    P, "Solution structure", "Placing a product under our own name makes us its manufacturer",
-    "This product is delivered under our own name or substantially modified, which makes us the manufacturer. Assign an owner who is accountable for the manufacturer obligations.") :-
-        base_projectCardType(P, "secdeva/cardTypes/product"),
-        field(P, "secdeva/fieldTypes/deliveryModel", "weRebrandAndDeliver"),
-        not field(P, "base/fieldTypes/owner", _).
-
 %
 % Policy checks: the delivery model and the product relationships must agree
 %
