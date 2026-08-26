@@ -1,0 +1,19 @@
+{
+    "title": "TC03 Third-party product we deliver",
+    "cardType": "secdeva/cardTypes/product",
+    "workflowState": "Draft",
+    "rank": "0|a",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/externalComponentOf",
+            "cardKey": "secdeva_7lzviey5"
+        }
+    ],
+    "secdeva/fieldTypes/productOrigin": "thirdPartyCommercial",
+    "lastUpdated": "2026-08-26T11:26:00.495Z",
+    "templateCardKey": "secdeva_thirdpar01",
+    "createdAt": "2026-08-26T11:04:03.971Z",
+    "base/fieldTypes/identifier": "secdeva_test_ss_delivered",
+    "secdeva/fieldTypes/deliveryModel": "weDeliver",
+    "secdeva/fieldTypes/productVendor": "Example Vendor Ltd"
+}

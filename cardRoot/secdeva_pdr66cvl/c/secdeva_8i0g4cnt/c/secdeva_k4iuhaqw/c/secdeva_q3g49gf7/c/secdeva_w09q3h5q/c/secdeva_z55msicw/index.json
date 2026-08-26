@@ -1,0 +1,19 @@
+{
+    "title": "TC08 Third-party service we consume",
+    "cardType": "secdeva/cardTypes/product",
+    "workflowState": "Draft",
+    "rank": "0|f",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/externalComponentOf",
+            "cardKey": "secdeva_7lzviey5"
+        }
+    ],
+    "secdeva/fieldTypes/productOrigin": "thirdPartyCommercial",
+    "lastUpdated": "2026-08-26T11:26:05.212Z",
+    "templateCardKey": "secdeva_thirdpar01",
+    "createdAt": "2026-08-26T11:04:10.438Z",
+    "base/fieldTypes/identifier": "secdeva_test_ss_consumed",
+    "secdeva/fieldTypes/deliveryModel": "weConsumeAsService",
+    "secdeva/fieldTypes/productVendor": "Example Vendor Ltd"
+}

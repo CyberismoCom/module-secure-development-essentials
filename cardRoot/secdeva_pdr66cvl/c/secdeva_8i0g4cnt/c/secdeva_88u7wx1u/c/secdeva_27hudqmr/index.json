@@ -1,0 +1,12 @@
+{
+    "cardType": "secdeva/cardTypes/threatModel",
+    "title": "Threat model - Test project",
+    "workflowState": "Draft",
+    "rank": "0|b",
+    "lastUpdated": "2026-08-26T20:45:05.405Z",
+    "links": [],
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/identifier": "secdeva_document_threat-model",
+    "templateCardKey": "secdeva_ncnm6dgu",
+    "createdAt": "2026-08-26T20:45:05.302Z"
+}

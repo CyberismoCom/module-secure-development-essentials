@@ -1,0 +1,20 @@
+{
+    "title": "TC05 Third-party product under our own name",
+    "cardType": "secdeva/cardTypes/product",
+    "workflowState": "Draft",
+    "rank": "0|c",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/externalComponentOf",
+            "cardKey": "secdeva_7lzviey5"
+        }
+    ],
+    "secdeva/fieldTypes/productOrigin": "thirdPartyCommercial",
+    "lastUpdated": "2026-08-26T11:26:02.404Z",
+    "templateCardKey": "secdeva_thirdpar01",
+    "createdAt": "2026-08-26T11:04:06.566Z",
+    "base/fieldTypes/identifier": "secdeva_test_ss_rebranded",
+    "secdeva/fieldTypes/deliveryModel": "weRebrandAndDeliver",
+    "secdeva/fieldTypes/productVendor": "Example Vendor Ltd",
+    "base/fieldTypes/owner": "test.owner@example.com"
+}

@@ -1,0 +1,13 @@
+{
+    "title": "TC01 Own product operated as a service",
+    "cardType": "secdeva/cardTypes/product",
+    "workflowState": "Draft",
+    "rank": "0|b",
+    "links": [],
+    "secdeva/fieldTypes/productOrigin": "own",
+    "lastUpdated": "2026-08-26T11:25:58.677Z",
+    "templateCardKey": "secdeva_thirdpar01",
+    "createdAt": "2026-08-26T11:04:01.403Z",
+    "base/fieldTypes/identifier": "secdeva_test_ss_own_operated",
+    "secdeva/fieldTypes/deliveryModel": "weOperateAsService"
+}

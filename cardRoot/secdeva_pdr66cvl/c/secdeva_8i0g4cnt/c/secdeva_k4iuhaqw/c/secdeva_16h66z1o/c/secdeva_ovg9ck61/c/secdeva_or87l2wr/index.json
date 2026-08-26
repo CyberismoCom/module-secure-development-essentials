@@ -1,0 +1,14 @@
+{
+    "cardType": "ismsa/cardTypes/internalControl",
+    "title": "Write security requirements",
+    "workflowState": "Open",
+    "rank": "0|e",
+    "lastUpdated": "2026-08-26T11:18:46.282Z",
+    "links": [],
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/internalControlReviewPeriod": "12months",
+    "base/fieldTypes/reviewMonth": "may",
+    "base/fieldTypes/identifier": "secdeva_control_security-requirements",
+    "templateCardKey": "secdeva_6sqftr3m",
+    "createdAt": "2026-08-26T11:18:46.279Z"
+}

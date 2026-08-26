@@ -1,0 +1,19 @@
+{
+    "title": "TC04 Third-party product we import and deliver",
+    "cardType": "secdeva/cardTypes/product",
+    "workflowState": "Draft",
+    "rank": "0|b",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/externalComponentOf",
+            "cardKey": "secdeva_7lzviey5"
+        }
+    ],
+    "secdeva/fieldTypes/productOrigin": "thirdPartyCommercial",
+    "lastUpdated": "2026-08-26T11:26:01.449Z",
+    "templateCardKey": "secdeva_thirdpar01",
+    "createdAt": "2026-08-26T11:04:05.286Z",
+    "base/fieldTypes/identifier": "secdeva_test_ss_imported",
+    "secdeva/fieldTypes/deliveryModel": "weImportAndDeliver",
+    "secdeva/fieldTypes/productVendor": "Example Vendor Ltd"
+}

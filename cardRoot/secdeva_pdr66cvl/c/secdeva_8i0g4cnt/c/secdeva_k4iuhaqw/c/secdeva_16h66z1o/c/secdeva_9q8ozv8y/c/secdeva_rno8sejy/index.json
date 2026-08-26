@@ -1,0 +1,16 @@
+{
+    "cardType": "ismsa/cardTypes/internalControl",
+    "title": "Test input validation",
+    "workflowState": "In scope",
+    "rank": "0|c",
+    "lastUpdated": "2026-08-26T11:18:47.423Z",
+    "links": [],
+    "base/fieldTypes/adoptionStep": "step2",
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/internalControlReviewPeriod": "12months",
+    "base/fieldTypes/reviewMonth": "may",
+    "base/fieldTypes/identifier": "secdeva_control_basic-input-validation-testing",
+    "templateCardKey": "secdeva_hm5obl63",
+    "createdAt": "2026-08-26T11:18:46.279Z",
+    "lastTransitioned": "2026-08-26T11:18:47.423Z"
+}

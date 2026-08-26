@@ -1,0 +1,11 @@
+{
+    "cardType": "secdeva/cardTypes/page",
+    "title": "Meetings",
+    "workflowState": "None",
+    "rank": "0|z",
+    "lastUpdated": "2026-08-26T11:18:46.280Z",
+    "links": [],
+    "base/fieldTypes/identifier": "secdeva_phase_meetings",
+    "templateCardKey": "secdeva_373bqs38",
+    "createdAt": "2026-08-26T11:18:46.278Z"
+}

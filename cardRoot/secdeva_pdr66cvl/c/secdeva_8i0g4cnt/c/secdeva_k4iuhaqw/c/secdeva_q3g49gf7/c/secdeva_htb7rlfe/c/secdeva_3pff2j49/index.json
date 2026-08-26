@@ -1,0 +1,15 @@
+{
+    "title": "TC18 Negative: complete active own product",
+    "cardType": "secdeva/cardTypes/product",
+    "workflowState": "Active",
+    "rank": "0|f",
+    "links": [],
+    "secdeva/fieldTypes/productOrigin": "own",
+    "lastUpdated": "2026-08-26T11:26:14.667Z",
+    "templateCardKey": "secdeva_thirdpar01",
+    "createdAt": "2026-08-26T11:19:16.804Z",
+    "base/fieldTypes/identifier": "secdeva_test_ss_active_complete_own",
+    "secdeva/fieldTypes/deliveryModel": "weDevelopAndDeliver",
+    "base/fieldTypes/informationClassification": "internal",
+    "lastTransitioned": "2026-08-26T11:19:20.486Z"
+}

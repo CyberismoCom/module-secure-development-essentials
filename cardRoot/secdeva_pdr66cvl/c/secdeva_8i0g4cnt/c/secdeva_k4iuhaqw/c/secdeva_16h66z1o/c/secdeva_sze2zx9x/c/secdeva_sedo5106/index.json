@@ -1,0 +1,16 @@
+{
+    "title": "Protect environments",
+    "cardType": "ismsa/cardTypes/internalControl",
+    "workflowState": "In scope",
+    "rank": "0|c",
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/internalControlReviewPeriod": "12months",
+    "base/fieldTypes/reviewMonth": "october",
+    "base/fieldTypes/adoptionStep": "step2",
+    "base/fieldTypes/identifier": "secdeva_control_protect-environments",
+    "links": [],
+    "lastUpdated": "2026-08-26T11:18:47.923Z",
+    "templateCardKey": "secdeva_xzveu9b2",
+    "createdAt": "2026-08-26T11:18:46.279Z",
+    "lastTransitioned": "2026-08-26T11:18:47.923Z"
+}
