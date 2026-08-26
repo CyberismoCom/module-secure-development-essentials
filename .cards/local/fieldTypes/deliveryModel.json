@@ -10,13 +10,13 @@
         },
         {
             "enumValue": "weDeliver",
-            "enumDisplayValue": "We deliver it (already on the EU market)",
-            "enumDescription": "We include a product that is already available on the Union market, whether from an EU manufacturer or through an importer who brought it in before us."
+            "enumDisplayValue": "We deliver it (already on the market)",
+            "enumDescription": "We include a product that is already available on the market"
         },
         {
             "enumValue": "weImportAndDeliver",
-            "enumDisplayValue": "We import it into the EU and deliver it",
-            "enumDescription": "We are the first to place this product on the Union market, from a manufacturer established outside the Union."
+            "enumDisplayValue": "We import it into the market and deliver it",
+            "enumDescription": "We are the first to place this product on the market, from a manufacturer established outside the market."
         },
         {
             "enumValue": "weRebrandAndDeliver",

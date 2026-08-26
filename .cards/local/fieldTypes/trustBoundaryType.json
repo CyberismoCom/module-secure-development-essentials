@@ -35,7 +35,7 @@
         },
         {
             "enumValue": "process",
-            "enumDisplayValue": "Process or privilege level",
+            "enumDisplayValue": "Operating system process or privilege level",
             "enumDescription": "Operating system process isolation, or a change of privilege such as unprivileged to administrator, or user space to kernel."
         },
         {

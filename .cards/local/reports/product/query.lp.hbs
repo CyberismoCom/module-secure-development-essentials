@@ -29,12 +29,6 @@ field((A, B, Label), "secdeva/fieldTypes/relatedTitle", Title) :-
     secdeva_csafRelationship(A, B, _, Label), B = {{cardKey}}, field(A, "title", Title).
 field((A, B, Label), "secdeva/fieldTypes/relatedTitle", Title) :-
     secdeva_csafRelationship(A, B, _, Label), A = {{cardKey}}, field(B, "title", Title).
-field((A, B, Label), "secdeva/fieldTypes/relatedVersion", V) :-
-    secdeva_csafRelationship(A, B, _, Label), B = {{cardKey}},
-    field(A, "secdeva/fieldTypes/productVersion", V).
-field((A, B, Label), "secdeva/fieldTypes/relatedVersion", V) :-
-    secdeva_csafRelationship(A, B, _, Label), A = {{cardKey}},
-    field(B, "secdeva/fieldTypes/productVersion", V).
 
 childResult(result, Element, "implements") :-
     link(Element, {{cardKey}}, "secdeva/linkTypes/implementedBy").

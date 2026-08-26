@@ -10,7 +10,6 @@ product(X) :- field(X, "cardType", "secdeva/cardTypes/product").
 % attributes
 
 title(X, Title) :- product(X), field(X, "title", Title).
-version(X, Version) :- product(X), field(X, "secdeva/fieldTypes/productVersion", Version).
 origin(X, Origin) :- product(X), field(X, "secdeva/fieldTypes/productOrigin", Origin).
 % Show the display name of the planned role rather than the stored enum value.
 role(X, Display) :-
@@ -60,25 +59,12 @@ title((A, B, Label), Label) :- edge((A, B, Label), _).
 attr(node, X, label, @concatenate(
     "<<font point-size='30'><b> ", @wrap(Title), " </b></font><br/>>")) :-
         node(X, _), title(X, Title),
-        not version(X, _), not role(X, _).
-
-attr(node, X, label, @concatenate(
-    "<<font point-size='30'><b> ", @wrap(Title), " </b></font><br/>",
-    "<font point-size='20'>", Version, "</font>>")) :-
-        node(X, _), title(X, Title), version(X, Version),
         not role(X, _).
 
 attr(node, X, label, @concatenate(
     "<<font point-size='30'><b> ", @wrap(Title), " </b></font><br/>",
     "<font point-size='20'>[", Role, "]</font>>")) :-
-        node(X, _), title(X, Title), role(X, Role),
-        not version(X, _).
-
-attr(node, X, label, @concatenate(
-    "<<font point-size='30'><b> ", @wrap(Title), " </b></font><br/>",
-    "<font point-size='20'>", Version, "</font><br/>",
-    "<font point-size='20'>[", Role, "]</font>>")) :-
-        node(X, _), title(X, Title), version(X, Version), role(X, Role).
+        node(X, _), title(X, Title), role(X, Role).
 
 attr(edge, (A, B, Label), label, @concatenate(
     "<<font point-size='22'> ", Label, " </font>>")) :- edge((A, B, Label), _).

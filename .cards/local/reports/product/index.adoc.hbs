@@ -28,14 +28,13 @@ These are the relationship categories defined by the CSAF standard, so the secur
 {{#if components}}
 
 .What this product is made of
-[cols="3,3,2"]
+[cols="3,5"]
 |===
-| Relationship | Product | Version
+| Relationship | Product
 
 {{#each components}}
 | {{this.[secdeva/fieldTypes/relationshipLabel]}}
 | xref:{{this.[secdeva/fieldTypes/relatedKey]}}.adoc[{{this.[secdeva/fieldTypes/relatedTitle]}}]
-| {{this.[secdeva/fieldTypes/relatedVersion]}}
 {{/each}}
 
 |===

@@ -20,11 +20,6 @@
             "isCalculated": false
         },
         {
-            "name": "secdeva/fieldTypes/productVersion",
-            "displayName": "",
-            "isCalculated": false
-        },
-        {
             "name": "secdeva/fieldTypes/deliveryModel",
             "displayName": "",
             "isCalculated": false
@@ -43,11 +38,6 @@
         },
         {
             "name": "secdeva/fieldTypes/craProductCategory",
-            "displayName": "",
-            "isCalculated": false
-        },
-        {
-            "name": "secdeva/fieldTypes/supportPeriodEnd",
             "displayName": "",
             "isCalculated": false
         },
@@ -91,14 +81,12 @@
         "base/fieldTypes/owner",
         "secdeva/fieldTypes/productOrigin",
         "secdeva/fieldTypes/productVendor",
-        "secdeva/fieldTypes/productVersion",
         "secdeva/fieldTypes/deliveryModel",
         "secdeva/fieldTypes/economicOperatorRole",
         "secdeva/fieldTypes/economicOperatorRoleJustification"
     ],
     "optionallyVisibleFields": [
         "secdeva/fieldTypes/craProductCategory",
-        "secdeva/fieldTypes/supportPeriodEnd",
         "base/fieldTypes/informationClassification",
         "secdeva/fieldTypes/sbomComponentType",
         "secdeva/fieldTypes/sbomComponentGroup",

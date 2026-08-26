@@ -25,6 +25,6 @@
             "enumDisplayValue": "No role"
         }
     ],
-    "description": "The economic operator role we plan to take for this product under EU product legislation such as the Cyber Resilience Act. An input to a legal review, not its output.",
+    "description": "The economic operator role we plan to take for this product. An input to a legal review, not its output.",
     "category": "Solution structure"
 }

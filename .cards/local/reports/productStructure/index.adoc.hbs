@@ -1,14 +1,13 @@
 {{#each results}}
 {{#if products}}
 
-[cols="3,2,2,3,2"]
+[cols="3,2,3,2"]
 |===
-| Product | Origin | Version | Planned economic operator role | Part of
+| Product | Origin | Planned economic operator role | Part of
 
 {{#each products}}
 | xref:{{this.key}}.adoc[{{this.title}}] [*{{this.workflowState}}*]
 | {{this.[secdeva/fieldTypes/productOrigin].displayValue}}
-| {{this.[secdeva/fieldTypes/productVersion]}}
 | {{this.[secdeva/fieldTypes/economicOperatorRole].displayValue}}
 {{#if this.partOf}}
 a|
