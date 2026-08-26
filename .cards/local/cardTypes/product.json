@@ -80,6 +80,11 @@
             "name": "secdeva/fieldTypes/sbomComponentPurl",
             "displayName": "",
             "isCalculated": false
+        },
+        {
+            "name": "base/fieldTypes/identifier",
+            "displayName": "",
+            "isCalculated": false
         }
     ],
     "alwaysVisibleFields": [
@@ -99,7 +104,8 @@
         "secdeva/fieldTypes/sbomComponentGroup",
         "secdeva/fieldTypes/sbomComponentName",
         "secdeva/fieldTypes/sbomComponentCpe",
-        "secdeva/fieldTypes/sbomComponentPurl"
+        "secdeva/fieldTypes/sbomComponentPurl",
+        "base/fieldTypes/identifier"
     ],
     "description": "A product or component that is part of the solution, whether developed in-house or obtained from a third party",
     "category": "Solution structure"

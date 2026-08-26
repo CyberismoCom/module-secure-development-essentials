@@ -25,15 +25,15 @@ secdeva_productInScope(Product) :-
 secdeva_groupingCard(Card) :- field(Card, "base/fieldTypes/identifier", "secdeva_group_own-products").
 secdeva_groupingCard(Card) :- field(Card, "base/fieldTypes/identifier", "secdeva_group_third-party-products").
 
-childResult(Product, @concatenate(Product, Parent, Label), "partOf") :-
+childResult(Product, (Product, Parent, Label), "partOf") :-
     childResult(result, Product, "products"),
     secdeva_csafRelationship(Product, Parent, _, Label).
 
-field(@concatenate(Product, Parent, Label), "secdeva/fieldTypes/relationshipLabel", Label) :-
+field((Product, Parent, Label), "secdeva/fieldTypes/relationshipLabel", Label) :-
     secdeva_csafRelationship(Product, Parent, _, Label).
-field(@concatenate(Product, Parent, Label), "secdeva/fieldTypes/relatedKey", Parent) :-
+field((Product, Parent, Label), "secdeva/fieldTypes/relatedKey", Parent) :-
     secdeva_csafRelationship(Product, Parent, _, Label).
-field(@concatenate(Product, Parent, Label), "secdeva/fieldTypes/relatedTitle", Title) :-
+field((Product, Parent, Label), "secdeva/fieldTypes/relatedTitle", Title) :-
     secdeva_csafRelationship(Product, Parent, _, Label),
     field(Parent, "title", Title).
 
