@@ -34,7 +34,7 @@ secdeva_distributableRelationship(P) :-
     Kind != "defaultComponentOf".
 
 %
-% The planned CRA role
+% The planned economic operator role
 %
 
 secdeva_placedOnMarketByUs(P) :-
@@ -46,43 +46,63 @@ secdeva_placedOnMarketByUs(P) :-
 % The role is a calculated field with an override, so it is emitted as fieldCalculated
 % and the runtime suppresses it whenever the user has set a value by hand.
 
-secdeva_craRoleIsCalculated(P) :-
+secdeva_economicOperatorRoleIsCalculated(P) :-
     base_projectCardType(P, CardType),
-    calculatedField(CardType, "secdeva/fieldTypes/craRole"),
-    overridableField(CardType, "secdeva/fieldTypes/craRole").
+    calculatedField(CardType, "secdeva/fieldTypes/economicOperatorRole"),
+    overridableField(CardType, "secdeva/fieldTypes/economicOperatorRole").
 
 secdeva_roleForDelivery("weDeliver", "distributor").
 secdeva_roleForDelivery("weImportAndDeliver", "importer").
 secdeva_roleForDelivery("weRebrandAndDeliver", "manufacturer").
 
-fieldCalculated(P, "secdeva/fieldTypes/craRole", Role) :-
+fieldCalculated(P, "secdeva/fieldTypes/economicOperatorRole", Role) :-
     secdeva_placedOnMarketByUs(P),
-    secdeva_craRoleIsCalculated(P),
+    secdeva_economicOperatorRoleIsCalculated(P),
     field(P, "secdeva/fieldTypes/deliveryModel", Delivery),
     secdeva_roleForDelivery(Delivery, Role).
 
-fieldCalculated(P, "secdeva/fieldTypes/craRole", "manufacturer") :-
-    base_projectCardType(P, "secdeva/cardTypes/product"),
-    secdeva_craRoleIsCalculated(P),
-    field(P, "secdeva/fieldTypes/productOrigin", "own").
+% Delivery models under which the product is never placed on the market, so no economic
+% operator role arises. weOperateAsService and weConsumeAsService differ in who runs the
+% software, which matters a great deal for security management but not for the CRA.
 
-fieldCalculated(P, "secdeva/fieldTypes/craRole", "integratedComponent") :-
+secdeva_notPlacedOnMarket("customerProvides").
+secdeva_notPlacedOnMarket("weOperateAsService").
+secdeva_notPlacedOnMarket("weConsumeAsService").
+
+% Developing a product ourselves makes us its manufacturer only if we actually place it
+% on the market. A service we host is not placed on the market and carries no economic
+% operator role. The role follows from the delivery model, so an own product with none
+% recorded has no role yet, and the policy check below asks for one.
+
+secdeva_ownProductNotPlacedOnMarket(P) :-
     base_projectCardType(P, "secdeva/cardTypes/product"),
-    secdeva_craRoleIsCalculated(P),
+    field(P, "secdeva/fieldTypes/productOrigin", "own"),
+    field(P, "secdeva/fieldTypes/deliveryModel", Delivery),
+    secdeva_notPlacedOnMarket(Delivery).
+
+fieldCalculated(P, "secdeva/fieldTypes/economicOperatorRole", "manufacturer") :-
+    base_projectCardType(P, "secdeva/cardTypes/product"),
+    secdeva_economicOperatorRoleIsCalculated(P),
+    field(P, "secdeva/fieldTypes/productOrigin", "own"),
+    field(P, "secdeva/fieldTypes/deliveryModel", _),
+    not secdeva_ownProductNotPlacedOnMarket(P).
+
+fieldCalculated(P, "secdeva/fieldTypes/economicOperatorRole", "none") :-
+    secdeva_economicOperatorRoleIsCalculated(P),
+    secdeva_ownProductNotPlacedOnMarket(P).
+
+fieldCalculated(P, "secdeva/fieldTypes/economicOperatorRole", "integratedComponent") :-
+    base_projectCardType(P, "secdeva/cardTypes/product"),
+    secdeva_economicOperatorRoleIsCalculated(P),
     not field(P, "secdeva/fieldTypes/productOrigin", "own"),
     link(P, _, "secdeva/linkTypes/defaultComponentOf").
 
-fieldCalculated(P, "secdeva/fieldTypes/craRole", "none") :-
+fieldCalculated(P, "secdeva/fieldTypes/economicOperatorRole", "none") :-
     base_projectCardType(P, "secdeva/cardTypes/product"),
-    secdeva_craRoleIsCalculated(P),
+    secdeva_economicOperatorRoleIsCalculated(P),
     not field(P, "secdeva/fieldTypes/productOrigin", "own"),
-    field(P, "secdeva/fieldTypes/deliveryModel", "customerProvides").
-
-fieldCalculated(P, "secdeva/fieldTypes/craRole", "none") :-
-    base_projectCardType(P, "secdeva/cardTypes/product"),
-    secdeva_craRoleIsCalculated(P),
-    not field(P, "secdeva/fieldTypes/productOrigin", "own"),
-    field(P, "secdeva/fieldTypes/deliveryModel", "weOperateAsService").
+    field(P, "secdeva/fieldTypes/deliveryModel", Delivery),
+    secdeva_notPlacedOnMarket(Delivery).
 
 % Which group a product belongs to follows from its origin field, not from where the
 % card happens to sit in the tree. The grouping cards are browsing containers and a
@@ -110,24 +130,23 @@ policyCheckFailure(
 
 policyCheckFailure(
     P, "Solution structure", "Delivery model is a required field",
-    "Record what we do with this product. The planned CRA role is derived from it.") :-
+    "Record what we do with this product, including who is responsible for operating it. The planned economic operator role is derived from it.") :-
         base_projectCardType(P, "secdeva/cardTypes/product"),
         not field(P, "workflowStateCategory", "initial"),
-        not field(P, "secdeva/fieldTypes/productOrigin", "own"),
         not field(P, "secdeva/fieldTypes/deliveryModel", _).
 
 policyCheckFailure(
-    P, "Solution structure", "An overridden CRA role needs a justification",
-    "The planned CRA role has been set by hand. Record why in the CRA role justification field.") :-
+    P, "Solution structure", "An overridden economic operator role needs a justification",
+    "The planned economic operator role has been set by hand. Record why in the economic operator role justification field.") :-
         base_projectCardType(P, "secdeva/cardTypes/product"),
-        fieldOverride(P, "secdeva/fieldTypes/craRole", _),
-        not field(P, "secdeva/fieldTypes/craRoleJustification", _).
+        fieldOverride(P, "secdeva/fieldTypes/economicOperatorRole", _),
+        not field(P, "secdeva/fieldTypes/economicOperatorRoleJustification", _).
 
 policyCheckFailure(
     P, "Solution structure", "A distributor or importer needs a known vendor",
     "Both roles carry obligations to verify conformity marking and to reach the manufacturer. Record the vendor.") :-
         base_projectCardType(P, "secdeva/cardTypes/product"),
-        fieldCalculated(P, "secdeva/fieldTypes/craRole", Role),
+        fieldCalculated(P, "secdeva/fieldTypes/economicOperatorRole", Role),
         secdeva_roleNeedsVendor(Role),
         not field(P, "secdeva/fieldTypes/productVendor", _).
 

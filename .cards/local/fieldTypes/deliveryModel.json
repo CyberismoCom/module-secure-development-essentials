@@ -16,7 +16,7 @@
         {
             "enumValue": "weRebrandAndDeliver",
             "enumDisplayValue": "We deliver it under our own name, or substantially modified",
-            "enumDescription": "Placing a product on the market under your own name or trademark, or modifying it substantially, makes you its manufacturer under the CRA."
+            "enumDescription": "Placing a product on the market under your own name or trademark, or modifying it substantially, makes you its manufacturer under EU product legislation."
         },
         {
             "enumValue": "customerProvides",
@@ -26,9 +26,14 @@
         {
             "enumValue": "weOperateAsService",
             "enumDisplayValue": "We use it to operate a service",
-            "enumDescription": "We run it ourselves rather than shipping it to anyone, so it is not placed on the market."
+            "enumDescription": "We run it ourselves, on infrastructure we are responsible for, rather than shipping it to anyone, so it is not placed on the market."
+        },
+        {
+            "enumValue": "weConsumeAsService",
+            "enumDisplayValue": "We consume it as a service",
+            "enumDescription": "A third party operates it and we use it over the network, such as a managed database, an identity provider or a payment API. We depend on it but never run or ship it, so it is not placed on the market."
         }
     ],
-    "description": "What we actually do with this product. Determines the planned CRA role.",
+    "description": "What we actually do with this product, including who is responsible for operating it. Determines the planned economic operator role, where EU product legislation applies.",
     "category": "Solution structure"
 }
