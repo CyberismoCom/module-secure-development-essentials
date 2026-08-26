@@ -1,6 +1,6 @@
 {
     "name": "secdeva/linkTypes/externalComponentOf",
-    "outboundDisplayName": "is an external component of",
+    "outboundDisplayName": "external component of",
     "inboundDisplayName": "uses an external component",
     "sourceCardTypes": [
         "secdeva/cardTypes/product"

@@ -1,6 +1,6 @@
 {
     "name": "secdeva/linkTypes/installedWith",
-    "outboundDisplayName": "is installed with",
+    "outboundDisplayName": "installed with",
     "inboundDisplayName": "installed alongside",
     "sourceCardTypes": [
         "secdeva/cardTypes/product"

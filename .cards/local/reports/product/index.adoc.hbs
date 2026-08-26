@@ -12,7 +12,7 @@
 
 [TIP]
 ====
-Record how this product relates to the others in the solution by linking it with the link symbol in the top level tool bar. Always link *from the part to the whole*: open the component and link it to the product it belongs to. Each relationship is then entered once, and the other product shows it from its own side automatically.
+Record how this product relates to the others in the solution by linking it with the link symbol in the top level tool bar. Link *from the part to the whole*: open the component and link it to the product it belongs to.
 
 Choose the link type that matches how this product relates to the other one:
 
@@ -22,7 +22,6 @@ Choose the link type that matches how this product relates to the other one:
 * *installed with* — it is bundled and installed alongside the other product during setup
 * *optional component of* — it is an add-on, plug-in or licensed extra for the other product
 
-These are the relationship categories defined by the CSAF standard, so the security advisories and the SBOM can be generated from them directly.
 ====
 
 {{#if components}}
@@ -71,8 +70,6 @@ This product is not recorded as part of any other product.
 Link this product to the elements of the threat model that it implements: the processes, data stores and trust boundaries that it is the software or hardware behind.
 
 The easiest way is from the element itself, where the products that implement it are listed together with buttons for adding one. You can also do it from here, with the link symbol in the top level tool bar: choose *implements* and pick the element.
-
-The link is what makes impact analysis possible. When a vulnerability is reported against this product, it is what tells you which parts of the system are affected and which interfaces are exposed.
 ====
 
 {{#if implements}}
@@ -85,7 +82,7 @@ Threat model elements:
 
 {{else}}
 
-*This product is not linked to the threat model.* No element is recorded as implemented by it, so a vulnerability reported against this product cannot yet be traced to anything in the system.
+*This product is not linked to the threat model.* No element is recorded as implemented by it.
 
 {{/if}}
 {{/each}}

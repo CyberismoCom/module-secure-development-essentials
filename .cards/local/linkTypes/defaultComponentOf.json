@@ -1,6 +1,6 @@
 {
     "name": "secdeva/linkTypes/defaultComponentOf",
-    "outboundDisplayName": "is a default component of",
+    "outboundDisplayName": "default component of",
     "inboundDisplayName": "contains by default",
     "sourceCardTypes": [
         "secdeva/cardTypes/product"

@@ -1,6 +1,6 @@
 {
     "name": "secdeva/linkTypes/optionalComponentOf",
-    "outboundDisplayName": "is an optional component of",
+    "outboundDisplayName": "optional component of",
     "inboundDisplayName": "contains optionally",
     "sourceCardTypes": [
         "secdeva/cardTypes/product"
