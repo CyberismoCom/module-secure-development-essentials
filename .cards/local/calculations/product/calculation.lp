@@ -22,7 +22,7 @@ secdeva_csafRelationship(A, B, "optionalComponentOf", "optional add-on of") :-
 
 secdeva_csafPartLabel("defaultComponentOf", "built-in component").
 secdeva_csafPartLabel("externalComponentOf", "external dependency").
-secdeva_csafPartLabel("installedOn", "platform").
+secdeva_csafPartLabel("installedOn", "installed on this product").
 secdeva_csafPartLabel("installedWith", "bundled alongside").
 secdeva_csafPartLabel("optionalComponentOf", "optional add-on").
 
@@ -43,31 +43,42 @@ secdeva_placedOnMarketByUs(P) :-
     secdeva_distributableRelationship(P),
     not link(P, _, "secdeva/linkTypes/defaultComponentOf").
 
-% The role is a calculated field with an override, so it is emitted as fieldCalculated
-% and the runtime suppresses it whenever the user has set a value by hand.
+% Both the role and its justification are calculated fields with an override, so they are
+% emitted as fieldCalculated and the runtime suppresses either one as soon as the user
+% sets it by hand.
 
 secdeva_economicOperatorRoleIsCalculated(P) :-
     base_projectCardType(P, CardType),
     calculatedField(CardType, "secdeva/fieldTypes/economicOperatorRole"),
     overridableField(CardType, "secdeva/fieldTypes/economicOperatorRole").
 
-secdeva_roleForDelivery("weDeliver", "distributor").
-secdeva_roleForDelivery("weImportAndDeliver", "importer").
-secdeva_roleForDelivery("weRebrandAndDeliver", "manufacturer").
+secdeva_economicOperatorRoleJustificationIsCalculated(P) :-
+    base_projectCardType(P, CardType),
+    calculatedField(CardType, "secdeva/fieldTypes/economicOperatorRoleJustification"),
+    overridableField(CardType, "secdeva/fieldTypes/economicOperatorRoleJustification").
 
-fieldCalculated(P, "secdeva/fieldTypes/economicOperatorRole", Role) :-
-    secdeva_placedOnMarketByUs(P),
-    secdeva_economicOperatorRoleIsCalculated(P),
-    field(P, "secdeva/fieldTypes/deliveryModel", Delivery),
-    secdeva_roleForDelivery(Delivery, Role).
+% Each delivery model that places the product on the market names the role it produces
+% and the reason for it.
+
+secdeva_roleForDelivery("weDeliver", "distributor",
+    "We deliver a product that is already available on the Union market, which makes us its distributor.").
+secdeva_roleForDelivery("weImportAndDeliver", "importer",
+    "We are the first to place this product on the Union market, from a manufacturer established outside the Union, which makes us its importer.").
+secdeva_roleForDelivery("weRebrandAndDeliver", "manufacturer",
+    "We place this product on the market under our own name, or substantially modified, which makes us its manufacturer.").
 
 % Delivery models under which the product is never placed on the market, so no economic
 % operator role arises. weOperateAsService and weConsumeAsService differ in who runs the
 % software, which matters a great deal for security management but not for the CRA.
 
-secdeva_notPlacedOnMarket("customerProvides").
-secdeva_notPlacedOnMarket("weOperateAsService").
-secdeva_notPlacedOnMarket("weConsumeAsService").
+secdeva_notPlacedOnMarketReason("customerProvides",
+    "The customer provides this product. We depend on it but never place it on the market, so no economic operator role arises.").
+secdeva_notPlacedOnMarketReason("weOperateAsService",
+    "We run this product ourselves to operate a service rather than shipping it to anyone, so it is not placed on the market and no economic operator role arises.").
+secdeva_notPlacedOnMarketReason("weConsumeAsService",
+    "A third party operates this product and we use it over the network. We never run or ship it, so it is not placed on the market and no economic operator role arises.").
+
+secdeva_notPlacedOnMarket(Delivery) :- secdeva_notPlacedOnMarketReason(Delivery, _).
 
 % Developing a product ourselves makes us its manufacturer only if we actually place it
 % on the market. A service we host is not placed on the market and carries no economic
@@ -80,29 +91,49 @@ secdeva_ownProductNotPlacedOnMarket(P) :-
     field(P, "secdeva/fieldTypes/deliveryModel", Delivery),
     secdeva_notPlacedOnMarket(Delivery).
 
-fieldCalculated(P, "secdeva/fieldTypes/economicOperatorRole", "manufacturer") :-
-    base_projectCardType(P, "secdeva/cardTypes/product"),
-    secdeva_economicOperatorRoleIsCalculated(P),
-    field(P, "secdeva/fieldTypes/productOrigin", "own"),
-    field(P, "secdeva/fieldTypes/deliveryModel", _),
-    not secdeva_ownProductNotPlacedOnMarket(P).
+% secdeva_derivedRole(P, Role, Reason) pairs every derived role with the reason for it, so
+% that the role and the justification shown beside it can never drift apart.
 
-fieldCalculated(P, "secdeva/fieldTypes/economicOperatorRole", "none") :-
-    secdeva_economicOperatorRoleIsCalculated(P),
-    secdeva_ownProductNotPlacedOnMarket(P).
-
-fieldCalculated(P, "secdeva/fieldTypes/economicOperatorRole", "integratedComponent") :-
-    base_projectCardType(P, "secdeva/cardTypes/product"),
-    secdeva_economicOperatorRoleIsCalculated(P),
-    not field(P, "secdeva/fieldTypes/productOrigin", "own"),
-    link(P, _, "secdeva/linkTypes/defaultComponentOf").
-
-fieldCalculated(P, "secdeva/fieldTypes/economicOperatorRole", "none") :-
-    base_projectCardType(P, "secdeva/cardTypes/product"),
-    secdeva_economicOperatorRoleIsCalculated(P),
-    not field(P, "secdeva/fieldTypes/productOrigin", "own"),
+secdeva_derivedRole(P, Role, Reason) :-
+    secdeva_placedOnMarketByUs(P),
     field(P, "secdeva/fieldTypes/deliveryModel", Delivery),
-    secdeva_notPlacedOnMarket(Delivery).
+    secdeva_roleForDelivery(Delivery, Role, Reason).
+
+secdeva_derivedRole(P, "manufacturer",
+    "We develop this product ourselves and place it on the market, which makes us its manufacturer.") :-
+        base_projectCardType(P, "secdeva/cardTypes/product"),
+        field(P, "secdeva/fieldTypes/productOrigin", "own"),
+        field(P, "secdeva/fieldTypes/deliveryModel", _),
+        not secdeva_ownProductNotPlacedOnMarket(P).
+
+secdeva_derivedRole(P, "none", Reason) :-
+    secdeva_ownProductNotPlacedOnMarket(P),
+    field(P, "secdeva/fieldTypes/deliveryModel", Delivery),
+    secdeva_notPlacedOnMarketReason(Delivery, Reason).
+
+secdeva_derivedRole(P, "integratedComponent",
+    "This third-party component is built into one of our own products, so our manufacturer obligations for that product cover it and no separate economic operator role arises.") :-
+        base_projectCardType(P, "secdeva/cardTypes/product"),
+        not field(P, "secdeva/fieldTypes/productOrigin", "own"),
+        link(P, _, "secdeva/linkTypes/defaultComponentOf").
+
+% A third-party product we neither run nor ship. Being a built-in component of one of our
+% products takes precedence, so that case is excluded here rather than deriving two roles.
+
+secdeva_derivedRole(P, "none", Reason) :-
+    base_projectCardType(P, "secdeva/cardTypes/product"),
+    not field(P, "secdeva/fieldTypes/productOrigin", "own"),
+    not link(P, _, "secdeva/linkTypes/defaultComponentOf"),
+    field(P, "secdeva/fieldTypes/deliveryModel", Delivery),
+    secdeva_notPlacedOnMarketReason(Delivery, Reason).
+
+fieldCalculated(P, "secdeva/fieldTypes/economicOperatorRole", Role) :-
+    secdeva_economicOperatorRoleIsCalculated(P),
+    secdeva_derivedRole(P, Role, _).
+
+fieldCalculated(P, "secdeva/fieldTypes/economicOperatorRoleJustification", Reason) :-
+    secdeva_economicOperatorRoleJustificationIsCalculated(P),
+    secdeva_derivedRole(P, _, Reason).
 
 % Which group a product belongs to follows from its origin field, not from where the
 % card happens to sit in the tree. The grouping cards are browsing containers and a
@@ -136,11 +167,13 @@ policyCheckFailure(
         not field(P, "secdeva/fieldTypes/deliveryModel", _).
 
 policyCheckFailure(
-    P, "Solution structure", "An overridden economic operator role needs a justification",
-    "The planned economic operator role has been set by hand. Record why in the economic operator role justification field.") :-
+    P, "Solution structure",
+    "Justification not given for an overridden economic operator role",
+    "The economic operator role has been set by hand, so the derived justification no longer describes it. Explain the role by overriding the economic operator role justification field.",
+    "secdeva/fieldTypes/economicOperatorRoleJustification") :-
         base_projectCardType(P, "secdeva/cardTypes/product"),
         fieldOverride(P, "secdeva/fieldTypes/economicOperatorRole", _),
-        not field(P, "secdeva/fieldTypes/economicOperatorRoleJustification", _).
+        not fieldOverride(P, "secdeva/fieldTypes/economicOperatorRoleJustification", _).
 
 policyCheckFailure(
     P, "Solution structure", "A distributor or importer needs a known vendor",
@@ -159,6 +192,60 @@ policyCheckFailure(
         base_projectCardType(P, "secdeva/cardTypes/product"),
         field(P, "secdeva/fieldTypes/deliveryModel", "weRebrandAndDeliver"),
         not field(P, "base/fieldTypes/owner", _).
+
+%
+% Policy checks: the delivery model and the product relationships must agree
+%
+
+% A product that we never hold as an artefact cannot be packaged into our delivery. The
+% customer's own copy and a service that someone else operates are both outside our
+% hands, so neither can be built into a product we ship or bundled alongside one.
+% weOperateAsService is deliberately absent: we do run that software, we just never ship it.
+
+secdeva_neverInOurHands("customerProvides").
+secdeva_neverInOurHands("weConsumeAsService").
+
+secdeva_packagedRelationship("defaultComponentOf", "a built-in component of another product").
+secdeva_packagedRelationship("installedWith", "bundled alongside another product").
+
+policyCheckFailure(
+    A, "Solution structure",
+    "The delivery model contradicts a product relationship",
+    @concatenate(
+        "This product is recorded as ", RelationText,
+        ", which means we ship it, but its delivery model says \"", Display,
+        "\". Correct the delivery model, or record the relationship as an external dependency instead."),
+    "secdeva/fieldTypes/deliveryModel") :-
+        base_projectCardType(A, "secdeva/cardTypes/product"),
+        secdeva_csafRelationship(A, _, Kind, _),
+        secdeva_packagedRelationship(Kind, RelationText),
+        field(A, "secdeva/fieldTypes/deliveryModel", Delivery),
+        secdeva_neverInOurHands(Delivery),
+        field(("secdeva/fieldTypes/deliveryModel", Delivery), "enumDisplayValue", Display).
+
+% A service that a third party operates is not installed by us onto anything. The reverse
+% is the ordinary platform-as-a-service case and must not be flagged: our own product
+% installed on a platform that somebody else runs is exactly right.
+
+policyCheckFailure(
+    A, "Solution structure",
+    "A service we consume cannot be installed on a platform",
+    "This product is recorded as installed on another product, but a third party operates it and we only use it over the network. Record it as an external dependency, or reverse the platform relationship.",
+    "secdeva/fieldTypes/deliveryModel") :-
+        base_projectCardType(A, "secdeva/cardTypes/product"),
+        link(A, _, "secdeva/linkTypes/installedOn"),
+        field(A, "secdeva/fieldTypes/deliveryModel", "weConsumeAsService").
+
+% Developing a product is something only our own organisation does.
+
+policyCheckFailure(
+    P, "Solution structure",
+    "Only an own product can be developed by us",
+    "The delivery model says we develop this product and place it on the market, but its origin says it comes from a third party. Correct the origin, or choose the delivery model that describes what we do with it.",
+    "secdeva/fieldTypes/deliveryModel") :-
+        base_projectCardType(P, "secdeva/cardTypes/product"),
+        field(P, "secdeva/fieldTypes/deliveryModel", "weDevelopAndDeliver"),
+        not field(P, "secdeva/fieldTypes/productOrigin", "own").
 
 % Products are assets of the project.
 

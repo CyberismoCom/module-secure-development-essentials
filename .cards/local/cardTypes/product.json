@@ -38,7 +38,8 @@
         {
             "name": "secdeva/fieldTypes/economicOperatorRoleJustification",
             "displayName": "",
-            "isCalculated": false
+            "isCalculated": true,
+            "enableOverride": true
         },
         {
             "name": "secdeva/fieldTypes/craProductCategory",
@@ -87,10 +88,10 @@
         "secdeva/fieldTypes/productVendor",
         "secdeva/fieldTypes/productVersion",
         "secdeva/fieldTypes/deliveryModel",
-        "secdeva/fieldTypes/economicOperatorRole"
+        "secdeva/fieldTypes/economicOperatorRole",
+        "secdeva/fieldTypes/economicOperatorRoleJustification"
     ],
     "optionallyVisibleFields": [
-        "secdeva/fieldTypes/economicOperatorRoleJustification",
         "secdeva/fieldTypes/craProductCategory",
         "secdeva/fieldTypes/supportPeriodEnd",
         "base/fieldTypes/informationClassification",

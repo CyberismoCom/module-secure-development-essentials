@@ -2,6 +2,6 @@
     "name": "secdeva/fieldTypes/economicOperatorRoleJustification",
     "displayName": "Economic operator role justification",
     "dataType": "longText",
-    "description": "Why the planned economic operator role differs from the derived one, or why the derived role is correct in a borderline case",
+    "description": "Why this economic operator role applies. Derived together with the role, and overridden whenever the role is set by hand.",
     "category": "Solution structure"
 }

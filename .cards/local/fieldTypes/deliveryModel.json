@@ -4,6 +4,11 @@
     "dataType": "enum",
     "enumValues": [
         {
+            "enumValue": "weDevelopAndDeliver",
+            "enumDisplayValue": "We develop it and place it on the market",
+            "enumDescription": "We develop this product ourselves and place it on the market under our own name, which makes us its manufacturer."
+        },
+        {
             "enumValue": "weDeliver",
             "enumDisplayValue": "We deliver it (already on the EU market)",
             "enumDescription": "We include a product that is already available on the Union market, whether from an EU manufacturer or through an importer who brought it in before us."
