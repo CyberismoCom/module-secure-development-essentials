@@ -1,0 +1,7 @@
+{
+    "name": "secdeva/calculations/assetCriticality",
+    "displayName": "Asset criticality",
+    "description": "Derive the overall criticality of the assets of a development project and require the criticality dimensions from adoption step 2 onwards",
+    "calculation": "calculation.lp",
+    "category": "Secure development"
+}

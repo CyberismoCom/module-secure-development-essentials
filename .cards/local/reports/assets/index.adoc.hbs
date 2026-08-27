@@ -1,13 +1,14 @@
 {{#each results}}
 {{#if assets}}
 
-[cols="4,3,3,3,3"]
+[cols="4,2,2,3,3,3"]
 |===
-| Asset | Owner | Related risks | Security requirements | Policy violations
+| Asset | Owner | Criticality | Related risks | Security requirements | Policy violations
 
 {{#each assets}}
 | {{this.type}} xref:{{this.key}}.adoc[{{this.title}}] [*{{this.workflowState}}*]
 | {{this.[base/fieldTypes/owner]}}
+| {{this.[ismsa/fieldTypes/assetCriticalityForOperations].displayValue}}
 {{#if this.risks}}
 a|
 {{#each this.risks}}
