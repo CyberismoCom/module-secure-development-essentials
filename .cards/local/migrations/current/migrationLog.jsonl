@@ -1,0 +1,1 @@
+{"timestamp":"2026-08-27T18:06:33.681Z","operation":"resource_rename","target":"secdeva/calculations/releaseAssessment","parameters":{"type":"calculations","operation":{"name":"change","target":"secdeva/calculations/releaseAssessment","to":"secdeva/calculations/release"}}}

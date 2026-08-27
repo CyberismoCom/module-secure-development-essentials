@@ -62,6 +62,24 @@ If this release is made to address specific security vulnerabilities, then check
 
 Comments, links:
 
+=== Product and technical documentation
+
+Product documentation and technical documentation are reviewed by their own controls: see {{#report}}"name": "secdeva/reports/xref", "identifier": "secdeva_control_product-documentation-review"{{/report}} for the product documentation, and, where the EU Cyber Resilience Act applies, the technical documentation review provided by the EU CRA module. This check does not repeat those reviews. It confirms that their outcome still holds for what is being released now.
+
+Check that
+
+* The product documentation for users, including the security-related instructions, is up to date for this release
+* The internal technical documentation is up to date for this release, if technical documentation is required for this product
+* The documentation reviews cover the changes made in this release, and the reviewed versions of the documents are the ones that this release delivers
+
+// break
+
+* [ ] OK
+* [ ] Not OK
+* [ ] Not Applicable
+
+Comments, links:
+
 === 3rd party component attribution
 
 Check that required license information about used 3rd party components are included in the release.
@@ -94,6 +112,26 @@ Check that
 
 * The software update has been documented to users. The security update documentation template can be used for this.
 * All applicable, including also rejected, security updates and patches have been communicated to the Security operations team
+
+// break
+
+* [ ] OK
+* [ ] Not OK
+* [ ] Not Applicable
+
+Comments, links:
+
+=== EU conformity assessment
+
+The conformity assessment procedure itself is not part of this review. It is managed as its own task, usually on the topmost project level, and the EU CRA module provides it. This check only confirms that it has been carried out and that its evidence exists for this release.
+
+Mark this check as not applicable if the product is not placed on the EU market.
+
+Check that
+
+* The applicable EU conformity assessment procedure has been carried out
+* The conformity assessment has been revisited if this release changes the design or the characteristics of the product in a way that affects conformity
+* The evidence of the assessment, including the EU declaration of conformity, has been archived with the other release artifacts
 
 // break
 

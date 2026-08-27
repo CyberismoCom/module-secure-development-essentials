@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/fieldTypes/releaseDate",
+    "displayName": "Release date",
+    "dataType": "date",
+    "description": "Date when the release was made"
+}

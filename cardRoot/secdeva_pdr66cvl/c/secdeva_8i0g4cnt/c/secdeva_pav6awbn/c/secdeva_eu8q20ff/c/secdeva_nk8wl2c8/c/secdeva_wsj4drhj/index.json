@@ -6,10 +6,10 @@
     "base/fieldTypes/informationClassification": "internal",
     "base/fieldTypes/reviewPeriod": 365,
     "links": [],
-    "lastUpdated": "2026-08-27T10:39:28.165Z",
+    "lastUpdated": "2026-08-27T18:07:28.916Z",
     "templateCardKey": "secdeva_release04",
-    "createdAt": "2026-08-27T10:37:07.131Z",
-    "lastTransitioned": "2026-08-27T10:39:28.101Z",
-    "base/fieldTypes/lastReviewed": "2026-08-27",
-    "base/fieldTypes/owner": "test.reviewer@example.com"
+    "createdAt": "2026-08-27T18:06:54.250Z",
+    "base/fieldTypes/owner": "test.reviewer@example.com",
+    "lastTransitioned": "2026-08-27T18:07:28.820Z",
+    "base/fieldTypes/lastReviewed": "2026-08-27"
 }

@@ -70,16 +70,3 @@ onTransitionSetField(
     secdeva_defaultTitleWithDate(Identifier, Prefix),
     secdeva_closestProject(Card, Project),
     field(Project, "title", ProjectName).
-
-% A release is named after the day it was created. There is no version number, because a
-% release delivers new versions of one or more of our own products, and those versions
-% are recorded on the products themselves.
-
-onTransitionSetField(
-    Card,
-    "Create",
-    Card,
-    "title", @concatenate("Release ", @today)
-) :-
-    base_projectCardType(Card, "secdeva/cardTypes/release"),
-    field(Card, "title", "Untitled release").

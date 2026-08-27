@@ -1,3 +1,11 @@
+% The release date is recorded when the release is actually made, rather than when the
+% release card was created: preparing a release starts well before it ships. The field is
+% stored rather than calculated, so a release made on a different day than the transition
+% can be corrected by hand.
+
+onTransitionSetField(Release, "Release", Release, "secdeva/fieldTypes/releaseDate", @today) :-
+    base_projectCardType(Release, "secdeva/cardTypes/release").
+
 % The assessment of a release rolls up the state of its children: the release review and
 % the release notes. Those cards already carry their own assessment, calculated by
 % ismsa/calculations/reviewAssessment and ismsa/calculations/documentAssessment, so this

@@ -10,6 +10,11 @@
             "enableOverride": true
         },
         {
+            "name": "secdeva/fieldTypes/releaseDate",
+            "displayName": "",
+            "isCalculated": false
+        },
+        {
             "name": "base/fieldTypes/assessment",
             "displayName": "",
             "isCalculated": true,
@@ -29,6 +34,7 @@
     ],
     "alwaysVisibleFields": [
         "base/fieldTypes/owner",
+        "secdeva/fieldTypes/releaseDate",
         "base/fieldTypes/assessment",
         "base/fieldTypes/assessmentExplanation"
     ],

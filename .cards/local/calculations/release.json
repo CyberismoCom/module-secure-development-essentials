@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/calculations/release",
+    "displayName": "Release",
+    "description": "Assesses a release based on its release review and release notes, and records the release date",
+    "calculation": "calculation.lp"
+}

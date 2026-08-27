@@ -3,12 +3,12 @@
     "title": "Internal release notes",
     "workflowState": "Approved",
     "rank": "0|g",
-    "lastUpdated": "2026-08-27T10:39:30.044Z",
+    "lastUpdated": "2026-08-27T18:07:31.656Z",
     "links": [],
     "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/reviewPeriod": 365,
     "templateCardKey": "secdeva_release03",
-    "createdAt": "2026-08-27T10:37:07.131Z",
-    "lastTransitioned": "2026-08-27T10:39:29.980Z",
-    "base/fieldTypes/approvalDate": "2026-08-27",
-    "base/fieldTypes/reviewPeriod": 365
+    "createdAt": "2026-08-27T18:06:54.250Z",
+    "lastTransitioned": "2026-08-27T18:07:31.560Z",
+    "base/fieldTypes/approvalDate": "2026-08-27"
 }
