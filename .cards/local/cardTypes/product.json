@@ -70,6 +70,28 @@
             "name": "base/fieldTypes/identifier",
             "displayName": "",
             "isCalculated": false
+        },
+        {
+            "name": "ismsa/fieldTypes/assetCriticalityForOperations",
+            "displayName": "",
+            "isCalculated": true,
+            "enableOverride": true
+        },
+        {
+            "name": "ismsa/fieldTypes/assetConfidentiality",
+            "isCalculated": false
+        },
+        {
+            "name": "ismsa/fieldTypes/assetIntegrity",
+            "isCalculated": false
+        },
+        {
+            "name": "ismsa/fieldTypes/assetAvailability",
+            "isCalculated": false
+        },
+        {
+            "name": "ismsa/fieldTypes/assetHse",
+            "isCalculated": false
         }
     ],
     "alwaysVisibleFields": [
@@ -78,7 +100,12 @@
         "secdeva/fieldTypes/productVendor",
         "secdeva/fieldTypes/deliveryModel",
         "secdeva/fieldTypes/supplyChainRole",
-        "secdeva/fieldTypes/supplyChainRoleJustification"
+        "secdeva/fieldTypes/supplyChainRoleJustification",
+        "ismsa/fieldTypes/assetCriticalityForOperations",
+        "ismsa/fieldTypes/assetConfidentiality",
+        "ismsa/fieldTypes/assetIntegrity",
+        "ismsa/fieldTypes/assetAvailability",
+        "ismsa/fieldTypes/assetHse"
     ],
     "optionallyVisibleFields": [
         "base/fieldTypes/informationClassification",

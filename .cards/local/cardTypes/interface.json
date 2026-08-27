@@ -82,6 +82,28 @@
             "name": "ismsa/fieldTypes/dataCategories",
             "displayName": "",
             "isCalculated": false
+        },
+        {
+            "name": "ismsa/fieldTypes/assetCriticalityForOperations",
+            "displayName": "",
+            "isCalculated": true,
+            "enableOverride": true
+        },
+        {
+            "name": "ismsa/fieldTypes/assetConfidentiality",
+            "isCalculated": false
+        },
+        {
+            "name": "ismsa/fieldTypes/assetIntegrity",
+            "isCalculated": false
+        },
+        {
+            "name": "ismsa/fieldTypes/assetAvailability",
+            "isCalculated": false
+        },
+        {
+            "name": "ismsa/fieldTypes/assetHse",
+            "isCalculated": false
         }
     ],
     "alwaysVisibleFields": [
@@ -92,7 +114,12 @@
         "secdeva/fieldTypes/port",
         "secdeva/fieldTypes/interfaceAuthentication",
         "secdeva/fieldTypes/transportSecurity",
-        "secdeva/fieldTypes/interfacePurpose"
+        "secdeva/fieldTypes/interfacePurpose",
+        "ismsa/fieldTypes/assetCriticalityForOperations",
+        "ismsa/fieldTypes/assetConfidentiality",
+        "ismsa/fieldTypes/assetIntegrity",
+        "ismsa/fieldTypes/assetAvailability",
+        "ismsa/fieldTypes/assetHse"
     ],
     "optionallyVisibleFields": [
         "ismsa/fieldTypes/dataCategories",
