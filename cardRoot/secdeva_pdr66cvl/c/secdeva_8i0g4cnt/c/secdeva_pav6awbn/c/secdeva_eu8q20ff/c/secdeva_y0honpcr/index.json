@@ -1,0 +1,14 @@
+{
+    "cardType": "base/cardTypes/review",
+    "title": "Release review",
+    "workflowState": "Passed",
+    "rank": "0|a",
+    "base/fieldTypes/identifier": "secdeva_review_release",
+    "base/fieldTypes/informationClassification": "internal",
+    "lastUpdated": "2026-08-27T18:07:27.547Z",
+    "links": [],
+    "templateCardKey": "secdeva_release02",
+    "createdAt": "2026-08-27T18:06:54.250Z",
+    "lastTransitioned": "2026-08-27T18:07:27.453Z",
+    "base/fieldTypes/lastReviewed": "2026-08-27"
+}

@@ -1,6 +1,6 @@
 == Releases
 
-The Releases phase covers the handover from development to the product users. Each version passes a structured security gate, is documented internally for traceability, and is communicated to customers so that they can assess and apply the update safely.
+The Releases phase covers the handover from development to the product users. Each release passes a structured security gate, is documented internally for traceability, and is communicated to customers so that they can assess and apply the update safely.
 
 .*What this phase covers*
 [%collapsible]
@@ -8,14 +8,14 @@ The Releases phase covers the handover from development to the product users. Ea
 [mermaid]
 ----
 flowchart TB
-    G[Security gate] --> R[Version released]
+    G[Security gate] --> R[Release made]
     A[Authenticity and integrity] --> R
     N[Release documentation] --> R
 ----
 
-* *Security gate* — verify before shipping that the secure development tasks for this version are closed, that security issues are resolved or accepted, and that the release is signed off.
+* *Security gate* — verify before shipping that the secure development tasks for this release are closed, that security issues are resolved or accepted, and that the release is signed off.
 * *Authenticity and integrity* — give product users a means to verify that what they received is genuine and unaltered.
-* *Release documentation* — record internally what the version contains and archive its artifacts, and tell customers what security issues were addressed, what the compatibility constraints are, and how to update.
+* *Release documentation* — record internally what the release contains and archive its artifacts, and tell customers what security issues were addressed, what the compatibility constraints are, and how to update.
 
 The controls listed below are the authoritative scope of this phase. Installed extension modules may add further controls here.
 ====
@@ -31,9 +31,30 @@ A release is the handoff point between development and the real world. The secur
   "controls": "secdeva_register_releases-controls"
 {{/report}}
 
-=== Versions
+=== Releases
+
+{{#each results}}
+{{#if this.releases}}
+
+[cols="5,2,3"]
+|===
+| Release | Workflow state | Assessment
+
+{{#each this.releases}}
+|xref:{{this.key}}.adoc[{{this.title}}]
+|{{this.workflowState}}
+|{{this.releaseAssessment}}
+{{/each}}
+|===
+
+{{else}}
+
+This project does not have any releases yet.
+
+{{/if}}
+{{/each}}
 
 {{#createCards}}
-  "template": "secdeva/templates/version",
-  "buttonLabel": "Create a new version"
+  "template": "secdeva/templates/release",
+  "buttonLabel": "Create a new release"
 {{/createCards}}

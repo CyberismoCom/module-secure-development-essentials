@@ -1,0 +1,10 @@
+{
+    "cardType": "base/cardTypes/review",
+    "title": "Release review",
+    "workflowState": "",
+    "rank": "0|a",
+    "base/fieldTypes/identifier": "secdeva_review_release",
+    "base/fieldTypes/informationClassification": "internal",
+    "lastUpdated": "2026-08-27T10:00:00.000Z",
+    "links": []
+}

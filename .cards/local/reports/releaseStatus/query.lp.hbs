@@ -1,0 +1,42 @@
+selectAll.
+
+% The result node is a synthetic term rather than the release card itself. Making the
+% card the result node would put cards from outside its subtree under it as child
+% results, which the query engine cannot lay out. The fields of the release are copied
+% onto the synthetic node instead.
+
+result(result).
+
+field(result, "assessmentIsOk", "void") :-
+    field({{cardKey}}, "base/fieldTypes/assessment", "ok").
+
+field(result, "assessment", Display) :-
+    field({{cardKey}}, "base/fieldTypes/assessment", Value),
+    field(("base/fieldTypes/assessment", Value), "enumDisplayValue", Display).
+
+field(result, "assessmentExplanation", Explanation) :-
+    field({{cardKey}}, "base/fieldTypes/assessmentExplanation", Explanation).
+
+% The release review and the release notes. Any child that carries an assessment is
+% listed, which matches how secdeva/calculations/release rolls them up.
+%
+% The state of the project as a whole is deliberately not reported here. The release
+% review checks the internal controls, the security issues and the automated policy
+% checks, and repeating them on this page would only duplicate that review.
+
+childResult(result, Item, "items") :-
+    parent(Item, {{cardKey}}),
+    field(Item, "base/fieldTypes/assessment", _).
+
+field(Item, "itemAssessment", Display) :-
+    childResult(result, Item, "items"),
+    field(Item, "base/fieldTypes/assessment", Value),
+    field(("base/fieldTypes/assessment", Value), "enumDisplayValue", Display).
+
+field(result, "missingReview", "void") :-
+    secdeva_releaseMissingReview({{cardKey}}).
+
+field(result, "missingNotes", "void") :-
+    secdeva_releaseMissingNotes({{cardKey}}).
+
+order(2, "items", 1, "rank", "ASC").

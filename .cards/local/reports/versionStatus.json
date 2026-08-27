@@ -1,6 +1,6 @@
 {
-    "displayName": "Version status",
-    "description": "A status report of a development project version",
-    "category": "Secure development",
+    "displayName": "Version status (deprecated)",
+    "description": "A status report of a development project version. Replaced by secdeva/reports/releaseStatus and included for backward compatibility",
+    "category": "Deprecated",
     "name": "secdeva/reports/versionStatus"
 }

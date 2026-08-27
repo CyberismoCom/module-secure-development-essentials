@@ -1,0 +1,13 @@
+{
+    "title": "August 2026 release",
+    "cardType": "secdeva/cardTypes/release",
+    "workflowState": "Released",
+    "links": [],
+    "rank": "0|c",
+    "base/fieldTypes/informationClassification": "internal",
+    "lastUpdated": "2026-08-27T18:07:41.124Z",
+    "templateCardKey": "secdeva_release01",
+    "createdAt": "2026-08-27T18:06:54.250Z",
+    "lastTransitioned": "2026-08-27T18:07:41.030Z",
+    "secdeva/fieldTypes/releaseDate": "2026-08-27"
+}

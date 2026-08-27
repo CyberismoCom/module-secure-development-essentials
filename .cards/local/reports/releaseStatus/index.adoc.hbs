@@ -1,0 +1,39 @@
+{{#each results}}
+
+=== Release readiness
+
+{{#if this.assessmentIsOk}}
+* [x] Assessment: *{{this.assessment}}*: {{this.assessmentExplanation}}
+{{else}}
+* [ ] Assessment: *{{this.assessment}}*: {{this.assessmentExplanation}}
+{{/if}}
+
+{{#if this.missingReview}}
+
+❗ This release does not have a release review. A release must be reviewed before it can be made.
+
+{{/if}}
+
+{{#if this.missingNotes}}
+
+❗ This release does not have release notes. A release must be documented before it can be made.
+
+{{/if}}
+
+{{#if this.items}}
+
+.Release review and release notes
+[cols="5,2,3"]
+|===
+| Card | Workflow state | Assessment
+
+{{#each this.items}}
+|xref:{{this.key}}.adoc[{{this.title}}]
+|{{this.workflowState}}
+|{{this.itemAssessment}}: {{this.[base/fieldTypes/assessmentExplanation]}}
+{{/each}}
+|===
+
+{{/if}}
+
+{{/each}}

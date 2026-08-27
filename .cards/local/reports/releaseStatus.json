@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/reports/releaseStatus",
+    "displayName": "Release status",
+    "description": "The readiness of a release, based on its release review and release notes",
+    "category": "Secure development"
+}

@@ -1,5 +1,5 @@
 {
-    "name": "secdeva/workflows/version",
+    "name": "secdeva/workflows/release",
     "states": [
         {
             "name": "Draft",
@@ -37,6 +37,6 @@
             "toState": "Archived"
         }
     ],
-    "displayName": "Version (deprecated)",
-    "description": "Draft → Released → Archived lifecycle for release versions. Replaced by secdeva/workflows/release and included for backward compatibility"
+    "displayName": "Release",
+    "description": "Draft → Released → Archived lifecycle for releases"
 }

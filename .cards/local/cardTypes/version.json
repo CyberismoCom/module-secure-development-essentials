@@ -13,6 +13,6 @@
         "base/fieldTypes/owner"
     ],
     "optionallyVisibleFields": [],
-    "displayName": "Version",
-    "description": "A product release version"
+    "displayName": "Version (deprecated)",
+    "description": "A product release version. Replaced by secdeva/cardTypes/release and included for backward compatibility"
 }
