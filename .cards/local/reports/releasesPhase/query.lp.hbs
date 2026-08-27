@@ -1,0 +1,36 @@
+selectAll.
+
+result(result).
+
+% Every release of this project. Deprecated version cards are listed alongside releases, because a
+% project created before the release card type existed still keeps its releases as
+% version cards under this phase.
+
+secdeva_listedRelease(Release) :-
+    base_projectCardType(Release, "secdeva/cardTypes/release").
+
+secdeva_listedRelease(Release) :-
+    base_projectCardType(Release, "secdeva/cardTypes/version").
+
+childResult(result, Release, "releases") :-
+    secdeva_listedRelease(Release),
+    secdeva_closestProject(Release, Project),
+    secdeva_closestProject({{cardKey}}, Project),
+    not hiddenInTreeView(Release).
+
+secdeva_listedReleaseIsAssessed(Release) :-
+    childResult(result, Release, "releases"),
+    field(Release, "base/fieldTypes/assessment", _).
+
+field(Release, "releaseAssessment", Display) :-
+    childResult(result, Release, "releases"),
+    field(Release, "base/fieldTypes/assessment", Value),
+    field(("base/fieldTypes/assessment", Value), "enumDisplayValue", Display).
+
+% A version card carries no assessment, so say so rather than leaving the cell empty.
+
+field(Release, "releaseAssessment", "Not assessed") :-
+    childResult(result, Release, "releases"),
+    not secdeva_listedReleaseIsAssessed(Release).
+
+order(2, "releases", 1, "rank", "ASC").

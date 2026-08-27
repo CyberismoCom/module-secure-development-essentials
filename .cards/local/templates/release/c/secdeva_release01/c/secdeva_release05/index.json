@@ -1,0 +1,10 @@
+{
+    "cardType": "base/cardTypes/controlledDocument",
+    "title": "External release notes",
+    "workflowState": "",
+    "rank": "0|m",
+    "lastUpdated": "2026-08-27T10:00:00.000Z",
+    "links": [],
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/reviewPeriod": 365
+}

@@ -1,0 +1,10 @@
+{
+    "title": "Document review",
+    "cardType": "base/cardTypes/reviewTask",
+    "workflowState": "",
+    "rank": "0|b",
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/reviewPeriod": 365,
+    "links": [],
+    "lastUpdated": "2026-08-27T10:00:00.000Z"
+}

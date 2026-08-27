@@ -1,0 +1,14 @@
+{
+    "cardType": "base/cardTypes/controlledDocument",
+    "title": "Internal release notes",
+    "workflowState": "Approved",
+    "rank": "0|g",
+    "lastUpdated": "2026-08-27T10:39:30.044Z",
+    "links": [],
+    "base/fieldTypes/informationClassification": "internal",
+    "templateCardKey": "secdeva_release03",
+    "createdAt": "2026-08-27T10:37:07.131Z",
+    "lastTransitioned": "2026-08-27T10:39:29.980Z",
+    "base/fieldTypes/approvalDate": "2026-08-27",
+    "base/fieldTypes/reviewPeriod": 365
+}

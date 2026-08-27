@@ -1,0 +1,15 @@
+{
+    "title": "Document review",
+    "cardType": "base/cardTypes/reviewTask",
+    "workflowState": "Closed as done",
+    "rank": "0|b",
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/reviewPeriod": 365,
+    "links": [],
+    "lastUpdated": "2026-08-27T10:39:28.165Z",
+    "templateCardKey": "secdeva_release04",
+    "createdAt": "2026-08-27T10:37:07.131Z",
+    "lastTransitioned": "2026-08-27T10:39:28.101Z",
+    "base/fieldTypes/lastReviewed": "2026-08-27",
+    "base/fieldTypes/owner": "test.reviewer@example.com"
+}
