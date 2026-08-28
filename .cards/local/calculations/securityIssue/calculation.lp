@@ -91,26 +91,76 @@ secdeva_severityLessThan("medium", "high").
 secdeva_severityLessThan("medium", "critical").
 secdeva_severityLessThan("high", "critical").
 
+% Thresholds for deferring a fix and for accepting the risk.
+% In the current project structure the thresholds are defined on the security
+% issue register; in the deprecated structure they are defined on the project card.
+
+secdeva_deferrableSeverity(Issue, DeferrableSeverity) :-
+        secdeva_registerMember(Issue, Register),
+        base_projectCardType(Register, "secdeva/cardTypes/securityIssueRegister"),
+        field(Register, "secdeva/fieldTypes/deferrableSeverity", DeferrableSeverity).
+
+secdeva_deferrableSeverity(Issue, DeferrableSeverity) :-
+        secdeva_closestProject(Issue, Project),
+        base_projectCardType(Project, "secdeva/cardTypes/project"),
+        field(Project, "secdeva/fieldTypes/deferrableSeverity", DeferrableSeverity).
+
+secdeva_acceptableSeverity(Issue, AcceptableSeverity) :-
+        secdeva_registerMember(Issue, Register),
+        base_projectCardType(Register, "secdeva/cardTypes/securityIssueRegister"),
+        field(Register, "secdeva/fieldTypes/acceptableSeverity", AcceptableSeverity).
+
+secdeva_acceptableSeverity(Issue, AcceptableSeverity) :-
+        secdeva_closestProject(Issue, Project),
+        base_projectCardType(Project, "secdeva/cardTypes/project"),
+        field(Project, "secdeva/fieldTypes/acceptableSeverity", AcceptableSeverity).
+
+% The severity of the issue exceeds the threshold for deferring the fix
+
+secdeva_severityExceedsDeferrable(Issue, DeferrableSeverityDisplayValue) :-
+        base_projectCardType(Issue, "secdeva/cardTypes/securityIssue"),
+        field(Issue, "secdeva/fieldTypes/severity", Severity),
+        secdeva_deferrableSeverity(Issue, DeferrableSeverity),
+        field(("secdeva/fieldTypes/deferrableSeverity", DeferrableSeverity), "enumDisplayValue", DeferrableSeverityDisplayValue),
+        secdeva_severityLessThan(DeferrableSeverity, Severity).
+
+% The severity of the issue exceeds the threshold for accepting the risk
+
+secdeva_severityExceedsAcceptable(Issue, AcceptableSeverityDisplayValue) :-
+        base_projectCardType(Issue, "secdeva/cardTypes/securityIssue"),
+        field(Issue, "secdeva/fieldTypes/severity", Severity),
+        secdeva_acceptableSeverity(Issue, AcceptableSeverity),
+        field(("secdeva/fieldTypes/acceptableSeverity", AcceptableSeverity), "enumDisplayValue", AcceptableSeverityDisplayValue),
+        secdeva_severityLessThan(AcceptableSeverity, Severity).
+
 transitionDenied(
     Issue,
     "Defer fix",
     @concatenate("Cannot defer fix, because severity is not ", DeferrableSeverityDisplayValue, " or lower.")
     ) :-
-        base_projectCardType(Issue, "secdeva/cardTypes/securityIssue"),
-        field(Issue, "secdeva/fieldTypes/severity", Severity),
-        secdeva_closestProject(Issue, Project),
-        field(Project, "secdeva/fieldTypes/deferrableSeverity", DeferrableSeverity),
-        field(("secdeva/fieldTypes/severity", DeferrableSeverity), "enumDisplayValue", DeferrableSeverityDisplayValue),
-        secdeva_severityLessThan(DeferrableSeverity, Severity).
+        secdeva_severityExceedsDeferrable(Issue, DeferrableSeverityDisplayValue).
 
 transitionDenied(
     Issue,
     "Accept risk",
     @concatenate("Cannot close as accepted, because severity is not ", AcceptableSeverityDisplayValue, " or lower." )
     ) :-
-        base_projectCardType(Issue, "secdeva/cardTypes/securityIssue"),
-        field(Issue, "secdeva/fieldTypes/severity", Severity),
-        secdeva_closestProject(Issue, Project),
-        field(Project, "secdeva/fieldTypes/acceptableSeverity", AcceptableSeverity),
-        field(("secdeva/fieldTypes/severity", AcceptableSeverity), "enumDisplayValue", AcceptableSeverityDisplayValue),
-        secdeva_severityLessThan(AcceptableSeverity, Severity).
+        secdeva_severityExceedsAcceptable(Issue, AcceptableSeverityDisplayValue).
+
+policyCheckFailure(
+    Issue,
+    "Secure development",
+    "Fix cannot be deferred",
+    @concatenate("The fix of this issue has been deferred, but the severity is not ", DeferrableSeverityDisplayValue, " or lower. Either fix the issue or raise the deferrable severity threshold.")
+    ) :-
+        field(Issue, "workflowState", "Fix deferred"),
+        secdeva_severityExceedsDeferrable(Issue, DeferrableSeverityDisplayValue).
+
+policyCheckFailure(
+    Issue,
+    "Secure development",
+    "Risk cannot be accepted",
+    @concatenate("The risk of this issue has been accepted, but the severity is not ", AcceptableSeverityDisplayValue, " or lower. Either reopen and fix the issue or raise the acceptable severity threshold.")
+    ) :-
+        field(Issue, "workflowState", "Closed as risk accepted"),
+        secdeva_severityExceedsAcceptable(Issue, AcceptableSeverityDisplayValue).

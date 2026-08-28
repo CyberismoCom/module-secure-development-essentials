@@ -4,24 +4,24 @@
     "dataType": "enum",
     "enumValues": [
         {
-            "enumValue": "critical",
-            "enumDisplayValue": "Critical"
-        },
-        {
-            "enumValue": "high",
-            "enumDisplayValue": "High"
-        },
-        {
-            "enumValue": "medium",
-            "enumDisplayValue": "Medium"
+            "enumValue": "none",
+            "enumDisplayValue": "None"
         },
         {
             "enumValue": "low",
             "enumDisplayValue": "Low"
         },
         {
-            "enumValue": "none",
-            "enumDisplayValue": "None"
+            "enumValue": "medium",
+            "enumDisplayValue": "Medium"
+        },
+        {
+            "enumValue": "high",
+            "enumDisplayValue": "High"
+        },
+        {
+            "enumValue": "critical",
+            "enumDisplayValue": "Critical"
         }
     ],
     "description": "If the severity of a security issue is higher than acceptable severity, then risk cannot be accepted."
