@@ -4,7 +4,7 @@
     "workflowState": "",
     "rank": "0|a",
     "links": [],
-    "secdeva/fieldTypes/productOrigin": "thirdPartyCommercial",
-    "lastUpdated": "2026-08-26T11:38:24.710Z",
+    "secdeva/fieldTypes/productOrigin": "thirdParty",
+    "lastUpdated": "2026-08-28T20:47:14.645Z",
     "base/fieldTypes/informationClassification": "internal"
 }

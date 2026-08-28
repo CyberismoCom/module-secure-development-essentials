@@ -9,8 +9,8 @@
             "cardKey": "secdeva_7lzviey5"
         }
     ],
-    "secdeva/fieldTypes/productOrigin": "thirdPartyCommercial",
-    "lastUpdated": "2026-08-26T11:26:15.609Z",
+    "secdeva/fieldTypes/productOrigin": "thirdParty",
+    "lastUpdated": "2026-08-28T20:47:14.643Z",
     "templateCardKey": "secdeva_thirdpar01",
     "createdAt": "2026-08-26T11:19:17.715Z",
     "base/fieldTypes/identifier": "secdeva_test_ss_active_complete_third",

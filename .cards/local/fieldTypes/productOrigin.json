@@ -9,14 +9,9 @@
             "enumDescription": "A product developed by your own organisation."
         },
         {
-            "enumValue": "thirdPartyCommercial",
-            "enumDisplayValue": "Third-party commercial",
-            "enumDescription": "A commercial product from another manufacturer."
-        },
-        {
-            "enumValue": "thirdPartyOpenSource",
-            "enumDisplayValue": "Third-party open source",
-            "enumDescription": "An open source product or component maintained outside your organisation."
+            "enumValue": "thirdParty",
+            "enumDisplayValue": "Third party",
+            "enumDescription": "A product or component that comes from another manufacturer or maintainer rather than from your own organisation."
         }
     ],
     "description": "Whether the product is developed by your own organisation or comes from a third party",
