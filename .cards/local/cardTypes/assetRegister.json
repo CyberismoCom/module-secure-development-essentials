@@ -1,0 +1,55 @@
+{
+    "name": "secdeva/cardTypes/assetRegister",
+    "displayName": "Asset register",
+    "workflow": "secdeva/workflows/void",
+    "customFields": [
+        {
+            "name": "base/fieldTypes/owner",
+            "displayName": "",
+            "isCalculated": true,
+            "enableOverride": true
+        },
+        {
+            "name": "base/fieldTypes/informationClassification",
+            "displayName": "",
+            "isCalculated": false
+        },
+        {
+            "name": "ismsa/fieldTypes/progress",
+            "displayName": "",
+            "isCalculated": false
+        },
+        {
+            "name": "base/fieldTypes/identifier",
+            "displayName": "",
+            "isCalculated": false
+        },
+        {
+            "name": "base/fieldTypes/assessment",
+            "displayName": "",
+            "isCalculated": true
+        },
+        {
+            "name": "base/fieldTypes/assessmentExplanation",
+            "displayName": "",
+            "isCalculated": true
+        },
+        {
+            "name": "secdeva/fieldTypes/assetCriticalityRequirement",
+            "displayName": "",
+            "isCalculated": false
+        }
+    ],
+    "alwaysVisibleFields": [
+        "base/fieldTypes/owner",
+        "base/fieldTypes/assessment",
+        "base/fieldTypes/assessmentExplanation",
+        "secdeva/fieldTypes/assetCriticalityRequirement",
+        "base/fieldTypes/informationClassification"
+    ],
+    "optionallyVisibleFields": [
+        "base/fieldTypes/identifier"
+    ],
+    "description": "A register of the assets of a development project. Defines which criticality fields are required for the assets.",
+    "category": "Secure development"
+}

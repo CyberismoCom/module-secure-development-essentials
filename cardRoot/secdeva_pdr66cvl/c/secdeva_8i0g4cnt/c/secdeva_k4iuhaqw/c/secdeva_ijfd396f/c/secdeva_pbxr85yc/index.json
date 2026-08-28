@@ -1,0 +1,11 @@
+{
+    "title": "TC23 Information system from an ISMS template",
+    "cardType": "ismsa/cardTypes/assetInformationSystem",
+    "workflowState": "Draft",
+    "rank": "0|e",
+    "base/fieldTypes/informationClassification": "internal",
+    "lastUpdated": "2026-08-28T20:16:18.128Z",
+    "links": [],
+    "templateCardKey": "secdeva_v638amne",
+    "createdAt": "2026-08-28T20:16:18.127Z"
+}

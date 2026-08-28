@@ -1,6 +1,7 @@
 
 % secdeva_register(Register) means that Register is a register in a development project
 secdeva_register(Register) :- base_projectCardType(Register, "secdeva/cardTypes/register").
+secdeva_register(Register) :- base_projectCardType(Register, "secdeva/cardTypes/assetRegister").
 secdeva_register(Register) :- base_projectCardType(Register, "secdeva/cardTypes/riskRegister").
 secdeva_register(Register) :- base_projectCardType(Register, "secdeva/cardTypes/securityIssueRegister").
 secdeva_register(Register) :- base_projectCardType(Register, "secdeva/cardTypes/periodicReviewRegister").

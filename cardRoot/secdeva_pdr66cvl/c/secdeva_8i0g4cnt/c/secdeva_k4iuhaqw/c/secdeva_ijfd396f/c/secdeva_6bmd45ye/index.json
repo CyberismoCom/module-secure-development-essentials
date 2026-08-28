@@ -1,0 +1,11 @@
+{
+    "title": "TC22 Device from an ISMS template",
+    "cardType": "ismsa/cardTypes/assetDevice",
+    "workflowState": "Draft",
+    "rank": "0|d",
+    "base/fieldTypes/informationClassification": "internal",
+    "lastUpdated": "2026-08-28T20:16:16.818Z",
+    "links": [],
+    "templateCardKey": "secdeva_jkn3pytf",
+    "createdAt": "2026-08-28T20:16:16.817Z"
+}

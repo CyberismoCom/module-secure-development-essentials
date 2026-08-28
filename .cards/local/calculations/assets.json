@@ -1,7 +1,7 @@
 {
     "name": "secdeva/calculations/assets",
     "displayName": "Assets",
-    "description": "Hide assets that have been directly added in the asset register in the navigation",
+    "description": "Hide assets that have been directly added in the asset register in the navigation, and apply the asset model of a development project to the asset cards of the ISMS essentials module",
     "calculation": "calculation.lp",
     "category": "Secure development"
 }

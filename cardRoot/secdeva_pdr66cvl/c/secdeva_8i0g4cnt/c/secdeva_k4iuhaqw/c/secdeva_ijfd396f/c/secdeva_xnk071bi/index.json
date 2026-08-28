@@ -1,0 +1,10 @@
+{
+    "title": "TC20 Generic asset from an ISMS template",
+    "cardType": "ismsa/cardTypes/asset",
+    "workflowState": "Draft",
+    "rank": "0|b",
+    "lastUpdated": "2026-08-28T20:16:14.169Z",
+    "links": [],
+    "templateCardKey": "secdeva_wofd2kg4",
+    "createdAt": "2026-08-28T20:16:14.167Z"
+}

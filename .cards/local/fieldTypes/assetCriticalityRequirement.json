@@ -1,0 +1,23 @@
+{
+    "name": "secdeva/fieldTypes/assetCriticalityRequirement",
+    "displayName": "Asset criticality requirement",
+    "dataType": "enum",
+    "enumValues": [
+        {
+            "enumValue": "notRequired",
+            "enumDisplayValue": "Not required",
+            "enumDescription": "Setting the criticality of an asset is not required"
+        },
+        {
+            "enumValue": "overallRequired",
+            "enumDisplayValue": "Overall criticality required",
+            "enumDescription": "The overall criticality is required for each asset. It can also be derived from the criticality of confidentiality, integrity, availability or health, safety and the environment"
+        },
+        {
+            "enumValue": "allRequired",
+            "enumDisplayValue": "All criticality fields required",
+            "enumDescription": "The criticality of confidentiality, integrity, availability and health, safety and the environment is required for each asset, in addition to the overall criticality"
+        }
+    ],
+    "description": "Defines which criticality fields are required for the assets of a development project"
+}
