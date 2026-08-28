@@ -1,6 +1,6 @@
 {
     "title": "Technology assessments",
-    "cardType": "secdeva/cardTypes/register",
+    "cardType": "secdeva/cardTypes/technologyAssessmentRegister",
     "workflowState": "None",
     "rank": "0|cq",
     "base/fieldTypes/identifier": "secdeva_register_technology-assessments",

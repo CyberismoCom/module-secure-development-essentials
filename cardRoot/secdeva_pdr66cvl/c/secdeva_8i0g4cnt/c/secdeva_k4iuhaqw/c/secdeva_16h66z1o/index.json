@@ -1,6 +1,6 @@
 {
     "title": "Internal controls",
-    "cardType": "secdeva/cardTypes/register",
+    "cardType": "secdeva/cardTypes/internalControlRegister",
     "workflowState": "None",
     "rank": "0|eo",
     "base/fieldTypes/informationClassification": "internal",

@@ -1,0 +1,44 @@
+{
+    "name": "secdeva/cardTypes/technologyAssessmentRegister",
+    "displayName": "Technology assessment register",
+    "workflow": "secdeva/workflows/void",
+    "customFields": [
+        {
+            "name": "base/fieldTypes/owner",
+            "displayName": "",
+            "isCalculated": true,
+            "enableOverride": true
+        },
+        {
+            "name": "base/fieldTypes/informationClassification",
+            "displayName": "",
+            "isCalculated": false
+        },
+        {
+            "name": "base/fieldTypes/identifier",
+            "displayName": "",
+            "isCalculated": false
+        },
+        {
+            "name": "base/fieldTypes/assessment",
+            "displayName": "",
+            "isCalculated": true
+        },
+        {
+            "name": "base/fieldTypes/assessmentExplanation",
+            "displayName": "",
+            "isCalculated": true
+        }
+    ],
+    "alwaysVisibleFields": [
+        "base/fieldTypes/owner",
+        "base/fieldTypes/assessment",
+        "base/fieldTypes/assessmentExplanation",
+        "base/fieldTypes/informationClassification"
+    ],
+    "optionallyVisibleFields": [
+        "base/fieldTypes/identifier"
+    ],
+    "description": "A register of the assessments of the technologies used in a development project.",
+    "category": "Secure development"
+}

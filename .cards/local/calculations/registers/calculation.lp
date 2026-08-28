@@ -4,7 +4,12 @@ secdeva_register(Register) :- base_projectCardType(Register, "secdeva/cardTypes/
 secdeva_register(Register) :- base_projectCardType(Register, "secdeva/cardTypes/assetRegister").
 secdeva_register(Register) :- base_projectCardType(Register, "secdeva/cardTypes/riskRegister").
 secdeva_register(Register) :- base_projectCardType(Register, "secdeva/cardTypes/securityIssueRegister").
+secdeva_register(Register) :- base_projectCardType(Register, "secdeva/cardTypes/securityRequirementRegister").
 secdeva_register(Register) :- base_projectCardType(Register, "secdeva/cardTypes/periodicReviewRegister").
+secdeva_register(Register) :- base_projectCardType(Register, "secdeva/cardTypes/complianceControlRegister").
+secdeva_register(Register) :- base_projectCardType(Register, "secdeva/cardTypes/internalControlRegister").
+secdeva_register(Register) :- base_projectCardType(Register, "secdeva/cardTypes/solutionStructureRegister").
+secdeva_register(Register) :- base_projectCardType(Register, "secdeva/cardTypes/technologyAssessmentRegister").
 
 
 % secdeva_registerMember(Item, Register) means that Item belongs to the register Register

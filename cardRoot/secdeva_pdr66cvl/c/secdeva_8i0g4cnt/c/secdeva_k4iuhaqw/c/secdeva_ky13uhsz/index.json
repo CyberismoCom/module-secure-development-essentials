@@ -1,6 +1,6 @@
 {
     "title": "Compliance controls",
-    "cardType": "secdeva/cardTypes/register",
+    "cardType": "secdeva/cardTypes/complianceControlRegister",
     "workflowState": "None",
     "rank": "0|d",
     "base/fieldTypes/informationClassification": "internal",

@@ -1,6 +1,6 @@
 {
     "title": "Security requirements",
-    "cardType": "secdeva/cardTypes/register",
+    "cardType": "secdeva/cardTypes/securityRequirementRegister",
     "workflowState": "",
     "rank": "0|cg",
     "base/fieldTypes/informationClassification": "internal",
