@@ -17,13 +17,8 @@ This control is always required, because persons need to be assigned to roles to
 
 Assign people to the security-related roles by editing the child cards. Add new role assignments, as needed.
 
-{{#createCards}}
-  "template": "base/templates/roleAssignment",
-  "buttonLabel": "Add a role assignment"
-{{/createCards}}
-
 {{#report}}
-  "name": "base/reports/roleAssignments"
+  "name": "secdeva/reports/reportRoleAssignment"
 {{/report}}
 
 == How to review this task

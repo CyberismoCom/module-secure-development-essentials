@@ -50,12 +50,6 @@ Note that individual security requirements do not need to be ready and reviewed 
 
 == Reviews
 
-{{#createCards}}
-    "template": "base/templates/reviewTask",
-    "buttonLabel": "Add new review task"
-{{/createCards}}
-
 {{#report}}
-  "name": "base/reports/childrenTable",
-  "cardType": "base/cardTypes/reviewTask"
+  "name": "secdeva/reports/reportReviewTask"
 {{/report}}

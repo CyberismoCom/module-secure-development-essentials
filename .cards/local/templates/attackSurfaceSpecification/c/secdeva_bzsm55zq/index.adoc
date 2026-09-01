@@ -30,12 +30,6 @@ The threat model defines the following interfaces, physical connections, and oth
 
 == Reviews
 
-{{#createCards}}
-    "template": "base/templates/reviewTask",
-    "buttonLabel": "Add new review task"
-{{/createCards}}
-
 {{#report}}
-  "name": "base/reports/childrenTable",
-  "cardType": "base/cardTypes/reviewTask"
+  "name": "secdeva/reports/reportReviewTask"
 {{/report}}

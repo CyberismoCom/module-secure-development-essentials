@@ -4,11 +4,6 @@
 
 == Reviews
 
-{{#createCards}}
-    "template": "base/templates/reviewTask",
-    "buttonLabel": "Add a new review task"
-{{/createCards}}
-
 {{#report}}
-  "name": "base/reports/childrenTable"
+  "name": "secdeva/reports/reportReviewTask"
 {{/report}}
