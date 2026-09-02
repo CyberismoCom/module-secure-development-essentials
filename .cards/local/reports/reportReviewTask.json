@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/reports/reportReviewTask",
+    "displayName": "Review tasks",
+    "category": "Secure development",
+    "description": "Shows how to add a review task, and lists the review tasks of this card"
+}

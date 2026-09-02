@@ -42,13 +42,8 @@ In this use case, cryptography is used properly and effectively, and the algorit
 
 == Identified security issues from this review
 
-{{#createCards}}
-  "template": "secdeva/templates/securityIssue",
-  "buttonLabel": "Create a new security issue"
-{{/createCards}}
-
 {{#report}}
-  "name": "secdeva/reports/securityIssueList"
+  "name": "secdeva/reports/reportSecurityIssue"
 {{/report}}
 
 

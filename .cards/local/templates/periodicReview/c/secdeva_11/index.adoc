@@ -76,11 +76,6 @@ TIP: Document here what went well in this period, and what could be improved in 
 
 == Security issues identified from this review
 
-{{#createCards}}
-  "template": "secdeva/templates/securityIssue",
-  "buttonLabel": "Create a new security issue"
-{{/createCards}}
-
 {{#report}}
-  "name": "secdeva/reports/securityIssueList"
+  "name": "secdeva/reports/reportSecurityIssue"
 {{/report}}

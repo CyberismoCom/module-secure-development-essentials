@@ -32,13 +32,8 @@ Unexpected inputs exercised using equivalence class selection of invalid values:
 
 === Identified security issues
 
-{{#createCards}}
-  "template": "secdeva/templates/securityIssue",
-  "buttonLabel": "Create a new security issue"
-{{/createCards}}
-
 {{#report}}
-  "name": "secdeva/reports/securityIssueList"
+  "name": "secdeva/reports/reportSecurityIssue"
 {{/report}}
 
 === Notes

@@ -222,12 +222,6 @@ Comments, links:
 
 == Reviews of this document
 
-{{#createCards}}
-    "template": "base/templates/reviewTask",
-    "buttonLabel": "Add a new review task"
-{{/createCards}}
-
 {{#report}}
-  "name": "base/reports/childrenTable",
-  "cardType": "base/cardTypes/reviewTask"
+  "name": "secdeva/reports/reportReviewTask"
 {{/report}}

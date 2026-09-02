@@ -25,11 +25,6 @@ Check that the trainings have not expired according to the requirements of the s
 
 == Identified security issues
 
-{{#createCards}}
-  "template": "secdeva/templates/securityIssue",
-  "buttonLabel": "Create a new security issue"
-{{/createCards}}
-
 {{#report}}
-  "name": "secdeva/reports/securityIssueList"
+  "name": "secdeva/reports/reportSecurityIssue"
 {{/report}}

@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/reports/reportSecurityIssue",
+    "displayName": "Report a security issue",
+    "category": "Secure development",
+    "description": "Shows how to report a security issue, and lists the security issues that have been reported from this card"
+}

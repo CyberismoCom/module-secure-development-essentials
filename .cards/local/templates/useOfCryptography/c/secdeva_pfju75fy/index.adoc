@@ -42,25 +42,14 @@ In this use case, cryptography is used properly and effectively, and the algorit
 
 == Reviews
 
-{{#createCards}}
-    "template": "base/templates/reviewTask",
-    "buttonLabel": "Add new review task"
-{{/createCards}}
-
 {{#report}}
-  "name": "base/reports/childrenTable",
-  "cardType": "base/cardTypes/reviewTask"
+  "name": "secdeva/reports/reportReviewTask"
 {{/report}}
 
 == Identified security issues from this review
 
-{{#createCards}}
-  "template": "secdeva/templates/securityIssue",
-  "buttonLabel": "Create a new security issue"
-{{/createCards}}
-
 {{#report}}
-  "name": "secdeva/reports/securityIssueList"
+  "name": "secdeva/reports/reportSecurityIssue"
 {{/report}}
 
 
