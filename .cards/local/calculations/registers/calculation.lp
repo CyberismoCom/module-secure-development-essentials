@@ -105,6 +105,18 @@ secdeva_registerMember(Asset, Register) :-
   secdeva_closestProject(Asset, Project),
   base_projectCardType(Asset, "base/cardTypes/decision").
 
+% members of the compliance control register
+%
+% Compliance requirements are installed under this register from framework modules,
+% such as the EU CRA module, so membership follows the card type rather than a fixed
+% set of identifiers.
+
+secdeva_registerMember(Requirement, Register) :-
+  secdeva_closestProject(Register, Project),
+  field(Register, "base/fieldTypes/identifier", "secdeva_register_compliance-controls"),
+  secdeva_closestProject(Requirement, Project),
+  secdeva_complianceRequirement(Requirement).
+
 % members of the periodic review register
 
 secdeva_registerMember(Asset, Register) :-

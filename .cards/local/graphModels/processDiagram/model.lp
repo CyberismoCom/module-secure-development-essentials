@@ -3,13 +3,13 @@ graph(toplevelGraph).
 % drawableCard(X) means that X is a supported type of card in process diagrams.
 
 % compliance requirement
-drawableCard(Requirement) :- field(Requirement, "cardType", "ismsa/cardTypes/complianceRequirement").
+drawableCard(Requirement) :- secdeva_complianceRequirement(Requirement).
 node(Requirement, toplevelGraph) :-
-    field(Requirement, "cardType", "ismsa/cardTypes/complianceRequirement"),
+    secdeva_complianceRequirement(Requirement),
     visible(Requirement).
 
 attr(node, Requirement, label, @concatenate("<<font point-size='32'> <b>", @wrap(Title), "</b> </font> <br/> <font point-size='19'>Compliance requirement</font>>")) :-
-    field(Requirement, "cardType", "ismsa/cardTypes/complianceRequirement"),
+    secdeva_complianceRequirement(Requirement),
     field(Requirement, "title", Title),
     visible(Requirement).
 
@@ -158,8 +158,8 @@ attr(edge, (X, Y, N), pendwidth, "3") :- edge((X, Y, N), _).
 attr(edge, (X, Y, N), arrowsize, "2") :- edge((X, Y, N), _).
 
 % shapes of nodes
-attr(node, X, shape, rectangle) :- node(X, _), field(X, "cardType", "ismsa/cardTypes/complianceRequirement").
-attr(node, X, style, rounded) :- node(X, _), field(X, "cardType", "ismsa/cardTypes/complianceRequirement").
+attr(node, X, shape, rectangle) :- node(X, _), secdeva_complianceRequirement(X).
+attr(node, X, style, rounded) :- node(X, _), secdeva_complianceRequirement(X).
 attr(node, X, shape, rectangle) :- node(X, _), internalControl(X).
 attr(node, X, style, rounded) :- node(X, _), internalControl(X).
 attr(node, X, shape, note) :- node(X, _), evidence(X).

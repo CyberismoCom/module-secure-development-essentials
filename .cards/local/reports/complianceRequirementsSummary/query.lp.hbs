@@ -1,7 +1,7 @@
 selectAll.
 result(Requirement) :-
     ancestor(Requirement, {{cardKey}}),
-    field(Requirement, "cardType", "ismsa/cardTypes/complianceRequirement").
+    secdeva_complianceRequirement(Requirement).
 
 childResult(Requirement, Implementation, "implementedBy") :-
     result(Requirement),

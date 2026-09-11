@@ -1,0 +1,21 @@
+CRA requires that the manufacturer shall notify the relevant authorities of:
+
+* any severe incident having an impact on the security of the product with digital elements
+
+* any actively exploited vulnerability contained in the product with digital elements
+
+without undue delay after becoming aware of it.
+
+Incident having an impact on the security of the product with digital elements shall be considered to be severe where:
+
+* (a) it negatively affects or is capable of negatively affecting the ability of a product with digital elements to protect the availability, authenticity, integrity or confidentiality of sensitive or important data or functions; or
+
+* (b) it has led or is capable of leading to the introduction or execution of malicious code in a product with digital elements or in the network and information systems of a user of the product with digital elements.
+
+Communication consists of the following steps
+
+* Early warning within 24 hours of becoming aware
+* Incident/vulnerability notification without undue delay (within 72 hours)
+* Final report in according to CRA requirements
+
+More guidelines: link:https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp[ENISA: Single Reporting Platform (SRP)]

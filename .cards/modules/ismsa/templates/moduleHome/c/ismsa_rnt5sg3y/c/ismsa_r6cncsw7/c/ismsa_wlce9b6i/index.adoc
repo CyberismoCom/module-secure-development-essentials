@@ -59,6 +59,11 @@ By NIS2 directive, Article 23 paragraph 3, an incident shall be considered to be
 
 * (b) it has affected or is capable of affecting other natural or legal persons by causing considerable material or non-material damage.
 
+By CRA, Article 15 paragraph 5, an incident having an impact on the security of the product with digital elements shall be considered to be *severe* where:
+
+* (a) it negatively affects or is capable of negatively affecting the ability of a product with digital elements to protect the availability, authenticity, integrity or confidentiality of sensitive or important data or functions; or
+
+* (b) it has led or is capable of leading to the introduction or execution of malicious code in a product with digital elements or in the network and information systems of a user of the product with digital elements.
 
 == Process description
 
@@ -70,11 +75,11 @@ Security events are detected based on internal user reporting, external party re
 
 Security events are reported to Cybersecurity Incident Response Team (CSIRT) Lead by email, Teams, Signal or in urgent cases by a phone call.
 
-Incident are recorded to Company Incident Register using incident-template.
+Incidents are recorded in the Company Incident Register using the _Cybersecurity incident_ template. Near misses can be recorded in the Company Incident Register using the _Cybersecurity near miss_ template.
 
 === STEP 2: Analyse potential incidents
 
-Security events are classified as incidents, if they are compromising the availability, authenticity, integrity or confidentiality of stored, transmitted or processed data or of the services offered by, or accessible via, network and information systems. Security events that are not incidents, are handled as part of normal operations in accordance with the relevant processes (e.g. vulnerability management process).
+Security events are classified as incidents, if they are compromising the availability, authenticity, integrity or confidentiality of stored, transmitted or processed data or of the services offered by, or accessible via, network and information systems. Also actively exploited vulnerabilities in Company products are considered incidents. Near miss is a security event that could have lead to incident, but no actual compromise happened. Security events that are not incidents or near misses, are handled as part of normal operations in accordance with the relevant processes (e.g. vulnerability management process).
 
 In order to determine the significance of the impact of an incident, the following parameters shall be taken into account [4]:
 
@@ -93,6 +98,8 @@ Cybersecurity Incident Response Team Lead prioritises incidents using the follow
 * Functional impact: High, Medium, Low, None
 
 * Expected financial impact: High, Medium, Low
+
+* Impact on security of the products with digital elements: High, Medium, Low, None
 
 * Impact on other natural or legal persons: High, Medium, Low, None
 
@@ -152,13 +159,15 @@ Completed steps are documented in the "Incident Response" task that is created u
 
 === STEP 3.2: Communicate incidents
 
-Significant incidents are reported by #Board of Directors# without undue delay to relevant authorities as follows:
+Significant incidents, severe incidents and actively exploited vulnerabilities in Company products are reported by #Board of Directors# without undue delay to relevant authorities as follows:
 
-* Early warning: within 24 hours of becoming aware of significant incident
+* Early warning: within 24 hours of becoming aware of reportable incident/vulnerability
 
-* Incident notification:  within 72 hours of becoming aware of significant incident
+* Incident notification:  within 72 hours of becoming aware of reportable incident/vulnerability
 
-* Final or progress report: not later than one month after the submission of the incident notification.
+* Final or progress report: according to CRA/NIS2 guidance.
+
+Also incidents that are not significant/severe and vulnerabilities that are not actively exploited can be reported to authorities if it benefits the community.
 
 Privacy breaches are reported by Board of Directors without undue delay to relevant authorities.
 
@@ -180,6 +189,10 @@ Incident rehearsals are organised at least yearly and Incident management proces
 
 == Related documents/processes
 
+* Risk management process
+
+* Vulnerability management process
+
 == Relevant requirements/controls
 
 DIRECTIVE (EU) 2022/2555 [1] on measures for a high common level of cybersecurity across the Union
@@ -195,6 +208,7 @@ NIS2 Directive Article 23 requires that significant incidents are reported witho
 
 * Final or progress report: not later than one month after the submission of the incident notification.
 
+REGULATION (EU) 2024/2847 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 23 October 2024 on horizontal cybersecurity requirements for products with digital elements and amending Regulations (EU) No 168/2013 and (EU) No 2019/1020 and Directive (EU) 2020/1828 (Cyber Resilience Act)
 
 Most relevant ISO27001 requirements and controls [2] are:  
 

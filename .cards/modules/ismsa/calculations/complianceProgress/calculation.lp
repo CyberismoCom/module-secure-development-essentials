@@ -42,3 +42,29 @@ field(X, "base/fieldTypes/progress", (100 * (Ok + NotRequired) + 95 * ToBeVerifi
         field(Requirement, "workflowState", "Closed as not applicable"),
         not hiddenInTreeView(Requirement)
     }.
+
+%
+% The compliance score of a card whose progress label is "compliance-score" is the
+% share of the assessed compliance requirements below it that have been assessed as OK.
+%
+% Requirements that have been marked out of scope are left out of the calculation
+% altogether, rather than counted as compliant: descoping a requirement must not raise
+% the score. Requirements that are still open are counted in the denominator only.
+%
+
+field(X, "base/fieldTypes/progress", 100 * Ok / InScope) :-
+    field(X, "ismsa/fieldTypes/progress", "compliance-score"),
+    InScope = #count {
+        card(Requirement):
+        ismsa_assessedRequirementInScope(Requirement),
+        ancestor(Requirement, X),
+        not hiddenInTreeView(Requirement)
+    },
+    InScope > 0,
+    Ok = #count {
+        card(Requirement):
+        ismsa_assessedRequirementInScope(Requirement),
+        ancestor(Requirement, X),
+        field(Requirement, "base/fieldTypes/assessment", "ok"),
+        not hiddenInTreeView(Requirement)
+    }.

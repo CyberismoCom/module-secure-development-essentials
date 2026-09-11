@@ -1,7 +1,7 @@
 {
     "name": "ismsa/cardTypes/assessedComplianceRequirement",
     "displayName": "Compliance requirement (assessed)",
-    "workflow": "ismsa/workflows/internalControl",
+    "workflow": "ismsa/workflows/complianceScoping",
     "customFields": [
         {
             "name": "base/fieldTypes/owner",
@@ -12,6 +12,12 @@
         {
             "name": "base/fieldTypes/informationClassification",
             "displayName": "",
+            "isCalculated": false,
+            "enableOverride": false
+        },
+        {
+            "name": "base/fieldTypes/justification",
+            "displayName": "Scoping justification",
             "isCalculated": false,
             "enableOverride": false
         },
@@ -54,6 +60,7 @@
     ],
     "alwaysVisibleFields": [
         "base/fieldTypes/owner",
+        "base/fieldTypes/justification",
         "ismsa/fieldTypes/requirementImplementationStrategy",
         "base/fieldTypes/assessment",
         "base/fieldTypes/assessmentExplanation"

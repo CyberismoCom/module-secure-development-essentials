@@ -1,8 +1,6 @@
 == Task description
 
-Companies within NIS2 scope need to, without undue delay, 
-communicate to the recipients of their services that are 
-potentially affected by a significant cyber threat any measures 
-or remedies that those recipients are able to take in response to that threat. 
-Where appropriate, the entities shall also inform those recipients of 
-the significant cyber threat itself.
+Companies within NIS2 scope need to, without undue delay, communicate to the recipients of their services that are potentially affected by a significant cyber threat any measures 
+or remedies that those recipients are able to take in response to that threat. Where appropriate, the entities shall also inform those recipients of the significant cyber threat itself.
+
+Additionally, CRA requires that after becoming aware of an actively exploited vulnerability or a severe incident having an impact on the security of the product with digital elements, the manufacturer shall inform the impacted users of the product with digital elements,and where appropriate all users, of that vulnerability or incident and, where necessary, of any risk mitigation and corrective measures that the users can deploy to mitigate the impact of that vulnerability or incident, where appropriate in a structured, machine-readable format that is easily automatically processable.

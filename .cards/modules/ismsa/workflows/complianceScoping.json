@@ -1,0 +1,38 @@
+{
+    "name": "ismsa/workflows/complianceScoping",
+    "displayName": "Compliance scoping",
+    "states": [
+        {
+            "name": "In scope",
+            "category": "initial"
+        },
+        {
+            "name": "Out of scope",
+            "category": "closed"
+        }
+    ],
+    "transitions": [
+        {
+            "name": "Create",
+            "fromState": [
+                ""
+            ],
+            "toState": "In scope"
+        },
+        {
+            "name": "Mark out of scope",
+            "toState": "Out of scope",
+            "fromState": [
+                "In scope"
+            ]
+        },
+        {
+            "name": "Mark in scope",
+            "toState": "In scope",
+            "fromState": [
+                "Out of scope"
+            ]
+        }
+    ],
+    "description": "In scope (default) - Out of scope lifecycle for scoping compliance requirements"
+}

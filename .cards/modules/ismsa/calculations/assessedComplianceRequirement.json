@@ -1,0 +1,6 @@
+{
+    "name": "ismsa/calculations/assessedComplianceRequirement",
+    "displayName": "Assessed compliance requirement",
+    "description": "Basic enforcement and automation for assessed compliance requirements",
+    "calculation": "calculation.lp"
+}
