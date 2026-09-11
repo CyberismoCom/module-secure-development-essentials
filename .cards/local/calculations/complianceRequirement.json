@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/calculations/complianceRequirement",
+    "displayName": "Compliance requirement",
+    "description": "Recognises both kinds of compliance requirement card",
+    "calculation": "calculation.lp"
+}
