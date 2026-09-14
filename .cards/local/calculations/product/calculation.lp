@@ -165,6 +165,29 @@ policyCheckFailure(
         not field(P, "workflowStateCategory", "initial"),
         not field(P, "secdeva/fieldTypes/deliveryModel", _).
 
+% A safety net for the rules drifting apart from the delivery model enum. Every branch
+% above is expected to leave the product with a role, so this should never fire; if a
+% delivery model is added to the enum and nobody classifies it, it fires on the first
+% card that uses it rather than leaving the role silently blank.
+%
+% weDevelopAndDeliver is excluded because it decides the role on its own for an own
+% product and is reported by its own check when the origin contradicts it, so including
+% it here would report the same problem twice.
+
+secdeva_deliveryModelHandledSeparately("weDevelopAndDeliver").
+
+policyCheckFailure(
+    P, "Solution structure",
+    "No supply chain role could be derived",
+    "The origin and the delivery model are both recorded, but no supply chain role follows from them, which means the rules do not cover this combination. Set the planned supply chain role by hand and explain it in the justification, and report this as a defect in the secure development module.",
+    "secdeva/fieldTypes/supplyChainRole") :-
+        base_projectCardType(P, "secdeva/cardTypes/product"),
+        not field(P, "workflowStateCategory", "initial"),
+        field(P, "secdeva/fieldTypes/productOrigin", _),
+        field(P, "secdeva/fieldTypes/deliveryModel", Delivery),
+        not secdeva_deliveryModelHandledSeparately(Delivery),
+        not field(P, "secdeva/fieldTypes/supplyChainRole", _).
+
 policyCheckFailure(
     P, "Solution structure",
     "Justification not given for an overridden supply chain role",
