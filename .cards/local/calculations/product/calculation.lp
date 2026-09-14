@@ -26,21 +26,19 @@ secdeva_csafPartLabel("installedOn", "installed on this product").
 secdeva_csafPartLabel("installedWith", "bundled alongside").
 secdeva_csafPartLabel("optionalComponentOf", "optional add-on").
 
-% A relationship that makes us responsible for placing a distinct product on the market.
-% A default component is absorbed into the product that contains it, so it is excluded.
-
-secdeva_distributableRelationship(P) :-
-    secdeva_csafRelationship(P, _, Kind, _),
-    Kind != "defaultComponentOf".
-
 %
 % The planned supply chain role
 %
 
+% Whether we place a third-party product on the market is stated by its delivery model,
+% not by the relationship graph. A product that stands on its own in the solution has no
+% relationship link to any other product, and requiring one here left every such product
+% without a role at all. Being a built-in component is the one relationship that does
+% decide the question, because it absorbs the product into the one that contains it.
+
 secdeva_placedOnMarketByUs(P) :-
     base_projectCardType(P, "secdeva/cardTypes/product"),
     not field(P, "secdeva/fieldTypes/productOrigin", "own"),
-    secdeva_distributableRelationship(P),
     not link(P, _, "secdeva/linkTypes/defaultComponentOf").
 
 % Both the role and its justification are calculated fields with an override, so they are
