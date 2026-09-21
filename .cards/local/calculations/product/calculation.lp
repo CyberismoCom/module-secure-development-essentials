@@ -172,9 +172,8 @@ policyCheckFailure(
 %
 % weDevelopAndDeliver is excluded because it decides the role on its own for an own
 % product and is reported by its own check when the origin contradicts it, so including
-% it here would report the same problem twice.
-
-secdeva_deliveryModelHandledSeparately("weDevelopAndDeliver").
+% it here would report the same problem twice. It is the one exclusion there should ever
+% be: anything else left out here is a delivery model this check exists to catch.
 
 policyCheckFailure(
     P, "Solution structure",
@@ -185,7 +184,7 @@ policyCheckFailure(
         not field(P, "workflowStateCategory", "initial"),
         field(P, "secdeva/fieldTypes/productOrigin", _),
         field(P, "secdeva/fieldTypes/deliveryModel", Delivery),
-        not secdeva_deliveryModelHandledSeparately(Delivery),
+        Delivery != "weDevelopAndDeliver",
         not field(P, "secdeva/fieldTypes/supplyChainRole", _).
 
 policyCheckFailure(
