@@ -2,60 +2,51 @@
 % products are links, never parent and child cards: product composition is a graph,
 % and a component that belongs to two products cannot have two parents.
 
+% The link types that compose products, and how each of them reads in a report. A product
+% also carries links that are not composition at all, such as implements and relates to,
+% so everything below works from this table rather than from link/3 directly.
+%
+% A relationship reads differently from each end. The relationship label describes the
+% part ("optional add-on of X"); the part label names what the part *is*, for tables that
+% list what a product is made of. Both sit on one row, so a link type cannot be given the
+% one and not the other and quietly lose its label in a report.
+
+secdeva_compositionLink("secdeva/linkTypes/defaultComponentOf", "defaultComponentOf",
+    "built-in component of", "built-in component").
+secdeva_compositionLink("secdeva/linkTypes/externalComponentOf", "externalComponentOf",
+    "external dependency of", "external dependency").
+secdeva_compositionLink("secdeva/linkTypes/installedOn", "installedOn",
+    "installed on", "installed on this product").
+secdeva_compositionLink("secdeva/linkTypes/installedWith", "installedWith",
+    "installed alongside", "bundled alongside").
+secdeva_compositionLink("secdeva/linkTypes/optionalComponentOf", "optionalComponentOf",
+    "optional add-on of", "optional add-on").
+
 % secdeva_csafRelationship(Component, Product, Kind, Label) means that Component relates
-% to Product in the way named by Kind. Label is the human-readable form used in reports.
+% to Product in the way named by Kind. It and secdeva_csafPartLabel are what the reports
+% read.
 
-secdeva_csafRelationship(A, B, "defaultComponentOf", "built-in component of") :-
-    link(A, B, "secdeva/linkTypes/defaultComponentOf").
-secdeva_csafRelationship(A, B, "externalComponentOf", "external dependency of") :-
-    link(A, B, "secdeva/linkTypes/externalComponentOf").
-secdeva_csafRelationship(A, B, "installedOn", "installed on") :-
-    link(A, B, "secdeva/linkTypes/installedOn").
-secdeva_csafRelationship(A, B, "installedWith", "installed alongside") :-
-    link(A, B, "secdeva/linkTypes/installedWith").
-secdeva_csafRelationship(A, B, "optionalComponentOf", "optional add-on of") :-
-    link(A, B, "secdeva/linkTypes/optionalComponentOf").
+secdeva_csafRelationship(A, B, Kind, Label) :-
+    secdeva_compositionLink(LinkType, Kind, Label, _),
+    link(A, B, LinkType).
 
-% The same relationship reads differently from each end. The label in
-% secdeva_csafRelationship describes the part ("optional add-on of X"); this one names
-% what the part *is*, for tables that list the components of a product.
-
-secdeva_csafPartLabel("defaultComponentOf", "built-in component").
-secdeva_csafPartLabel("externalComponentOf", "external dependency").
-secdeva_csafPartLabel("installedOn", "installed on this product").
-secdeva_csafPartLabel("installedWith", "bundled alongside").
-secdeva_csafPartLabel("optionalComponentOf", "optional add-on").
-
-% A relationship that makes us responsible for placing a distinct product on the market.
-% A default component is absorbed into the product that contains it, so it is excluded.
-
-secdeva_distributableRelationship(P) :-
-    secdeva_csafRelationship(P, _, Kind, _),
-    Kind != "defaultComponentOf".
+secdeva_csafPartLabel(Kind, PartLabel) :-
+    secdeva_compositionLink(_, Kind, _, PartLabel).
 
 %
 % The planned supply chain role
 %
 
-secdeva_placedOnMarketByUs(P) :-
+% A third-party product that is not absorbed into one of our own products, and so stands
+% in the supply chain in its own right. Its delivery model decides which role that is.
+% Being a built-in component is the one relationship that settles the question by itself,
+% because the product containing it answers for it.
+
+secdeva_distinctThirdPartyProduct(P) :-
     base_projectCardType(P, "secdeva/cardTypes/product"),
-    not field(P, "secdeva/fieldTypes/productOrigin", "own"),
-    secdeva_distributableRelationship(P),
+    field(P, "secdeva/fieldTypes/productOrigin", Origin),
+    Origin != "own",
     not link(P, _, "secdeva/linkTypes/defaultComponentOf").
-
-% Both the role and its justification are calculated fields with an override, so they are
-% emitted as fieldCalculated and the runtime suppresses either one as soon as the user
-% sets it by hand.
-
-secdeva_supplyChainRoleIsCalculated(P) :-
-    base_projectCardType(P, CardType),
-    calculatedField(CardType, "secdeva/fieldTypes/supplyChainRole"),
-    overridableField(CardType, "secdeva/fieldTypes/supplyChainRole").
-
-secdeva_supplyChainRoleJustificationIsCalculated(P) :-
-    base_projectCardType(P, CardType),
-    calculatedField(CardType, "secdeva/fieldTypes/supplyChainRoleJustification"),
-    overridableField(CardType, "secdeva/fieldTypes/supplyChainRoleJustification").
 
 % Each delivery model that places the product on the market names the role it produces
 % and the reason for it.
@@ -79,8 +70,6 @@ secdeva_notPlacedOnMarketReason("weOperateAsService",
 secdeva_notPlacedOnMarketReason("weConsumeAsService",
     "A third party operates this product and we use it over the network. We never run or ship it, so it is not placed on the market and no supply chain role arises.").
 
-secdeva_notPlacedOnMarket(Delivery) :- secdeva_notPlacedOnMarketReason(Delivery, _).
-
 % Developing a product ourselves makes us its manufacturer only if we actually place it
 % on the market. A service we host is not placed on the market and carries no supply
 % chain role. The role follows from the delivery model, so an own product with none
@@ -90,13 +79,13 @@ secdeva_ownProductNotPlacedOnMarket(P) :-
     base_projectCardType(P, "secdeva/cardTypes/product"),
     field(P, "secdeva/fieldTypes/productOrigin", "own"),
     field(P, "secdeva/fieldTypes/deliveryModel", Delivery),
-    secdeva_notPlacedOnMarket(Delivery).
+    secdeva_notPlacedOnMarketReason(Delivery, _).
 
 % secdeva_derivedRole(P, Role, Reason) pairs every derived role with the reason for it, so
 % that the role and the justification shown beside it can never drift apart.
 
 secdeva_derivedRole(P, Role, Reason) :-
-    secdeva_placedOnMarketByUs(P),
+    secdeva_distinctThirdPartyProduct(P),
     field(P, "secdeva/fieldTypes/deliveryModel", Delivery),
     secdeva_roleForDelivery(Delivery, Role, Reason).
 
@@ -115,25 +104,25 @@ secdeva_derivedRole(P, "none", Reason) :-
 secdeva_derivedRole(P, "integratedComponent",
     "This third-party component is built into one of our own products, so our manufacturer obligations for that product cover it and no separate supply chain role arises.") :-
         base_projectCardType(P, "secdeva/cardTypes/product"),
-        not field(P, "secdeva/fieldTypes/productOrigin", "own"),
+        field(P, "secdeva/fieldTypes/productOrigin", Origin),
+        Origin != "own",
         link(P, _, "secdeva/linkTypes/defaultComponentOf").
 
-% A third-party product we neither run nor ship. Being a built-in component of one of our
-% products takes precedence, so that case is excluded here rather than deriving two roles.
+% The same product under a delivery model that never places it on the market.
 
 secdeva_derivedRole(P, "none", Reason) :-
-    base_projectCardType(P, "secdeva/cardTypes/product"),
-    not field(P, "secdeva/fieldTypes/productOrigin", "own"),
-    not link(P, _, "secdeva/linkTypes/defaultComponentOf"),
+    secdeva_distinctThirdPartyProduct(P),
     field(P, "secdeva/fieldTypes/deliveryModel", Delivery),
     secdeva_notPlacedOnMarketReason(Delivery, Reason).
 
+% Emitted as fieldCalculated rather than field, so that the runtime drops ours the moment
+% the user sets either one by hand. It also ignores a fieldCalculated for a field the card
+% type does not declare calculated, so there is nothing to check before emitting.
+
 fieldCalculated(P, "secdeva/fieldTypes/supplyChainRole", Role) :-
-    secdeva_supplyChainRoleIsCalculated(P),
     secdeva_derivedRole(P, Role, _).
 
 fieldCalculated(P, "secdeva/fieldTypes/supplyChainRoleJustification", Reason) :-
-    secdeva_supplyChainRoleJustificationIsCalculated(P),
     secdeva_derivedRole(P, _, Reason).
 
 % Which group a product belongs to follows from its origin field, not from where the
@@ -166,6 +155,28 @@ policyCheckFailure(
         base_projectCardType(P, "secdeva/cardTypes/product"),
         not field(P, "workflowStateCategory", "initial"),
         not field(P, "secdeva/fieldTypes/deliveryModel", _).
+
+% A safety net for the rules drifting apart from the delivery model enum. Every branch
+% above is expected to leave the product with a role, so this should never fire; if a
+% delivery model is added to the enum and nobody classifies it, it fires on the first
+% card that uses it rather than leaving the role silently blank.
+%
+% weDevelopAndDeliver is excluded because it decides the role on its own for an own
+% product, and on any other product the origin it requires is reported below, so
+% including it here would report the same problem twice. It is the one exclusion there
+% should ever be: anything else left out is a delivery model this check exists to catch.
+
+policyCheckFailure(
+    P, "Solution structure",
+    "No supply chain role could be derived",
+    "The origin and the delivery model are both recorded, but no supply chain role follows from them, which means the rules do not cover this combination. Set the planned supply chain role by hand and explain it in the justification, and report this as a defect in the secure development module.",
+    "secdeva/fieldTypes/supplyChainRole") :-
+        base_projectCardType(P, "secdeva/cardTypes/product"),
+        not field(P, "workflowStateCategory", "initial"),
+        field(P, "secdeva/fieldTypes/productOrigin", _),
+        field(P, "secdeva/fieldTypes/deliveryModel", Delivery),
+        Delivery != "weDevelopAndDeliver",
+        not field(P, "secdeva/fieldTypes/supplyChainRole", _).
 
 policyCheckFailure(
     P, "Solution structure",
@@ -219,16 +230,32 @@ policyCheckFailure(
         link(A, _, "secdeva/linkTypes/installedOn"),
         field(A, "secdeva/fieldTypes/deliveryModel", "weConsumeAsService").
 
-% Developing a product is something only our own organisation does.
+% Three delivery models describe something that can only be done to one kind of product,
+% so each of them requires a particular origin and names the mismatch in its own words.
+% Every row carries its own title and message rather than composing either from the enum
+% display values, which are only emitted where somebody has filled them in and would take
+% the whole check down with them if one were missing.
+
+secdeva_deliveryModelRequiresOrigin("weDevelopAndDeliver", "own",
+    "Only an own product can be developed by us",
+    "The delivery model says we develop this product and place it on the market, but its origin says it comes from a third party. Correct the origin, or choose the delivery model that describes what we do with it.").
+secdeva_deliveryModelRequiresOrigin("weImportAndDeliver", "thirdParty",
+    "Only a third-party product can be imported by us",
+    "The delivery model says we bring this product into the market from a manufacturer established outside it, but its origin says it is our own product, and we are its manufacturer ourselves. Correct the origin, or choose the delivery model that describes what we do with it.").
+secdeva_deliveryModelRequiresOrigin("weRebrandAndDeliver", "thirdParty",
+    "Only a third-party product can be rebranded by us",
+    "The delivery model says we place this product on the market under our own name or substantially modified, which is what makes us the manufacturer of a product somebody else made, but its origin says it is already our own. Correct the origin, or choose the delivery model that describes what we do with it.").
 
 policyCheckFailure(
     P, "Solution structure",
-    "Only an own product can be developed by us",
-    "The delivery model says we develop this product and place it on the market, but its origin says it comes from a third party. Correct the origin, or choose the delivery model that describes what we do with it.",
+    Title,
+    Message,
     "secdeva/fieldTypes/deliveryModel") :-
         base_projectCardType(P, "secdeva/cardTypes/product"),
-        field(P, "secdeva/fieldTypes/deliveryModel", "weDevelopAndDeliver"),
-        not field(P, "secdeva/fieldTypes/productOrigin", "own").
+        field(P, "secdeva/fieldTypes/deliveryModel", Delivery),
+        secdeva_deliveryModelRequiresOrigin(Delivery, Required, Title, Message),
+        field(P, "secdeva/fieldTypes/productOrigin", Origin),
+        Origin != Required.
 
 % Products are assets of the project.
 
