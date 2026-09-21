@@ -2,29 +2,36 @@
 % products are links, never parent and child cards: product composition is a graph,
 % and a component that belongs to two products cannot have two parents.
 
+% The link types that compose products, and how each of them reads in a report. A product
+% also carries links that are not composition at all, such as implements and relates to,
+% so everything below works from this table rather than from link/3 directly.
+%
+% A relationship reads differently from each end. The relationship label describes the
+% part ("optional add-on of X"); the part label names what the part *is*, for tables that
+% list what a product is made of. Both sit on one row, so a link type cannot be given the
+% one and not the other and quietly lose its label in a report.
+
+secdeva_compositionLink("secdeva/linkTypes/defaultComponentOf", "defaultComponentOf",
+    "built-in component of", "built-in component").
+secdeva_compositionLink("secdeva/linkTypes/externalComponentOf", "externalComponentOf",
+    "external dependency of", "external dependency").
+secdeva_compositionLink("secdeva/linkTypes/installedOn", "installedOn",
+    "installed on", "installed on this product").
+secdeva_compositionLink("secdeva/linkTypes/installedWith", "installedWith",
+    "installed alongside", "bundled alongside").
+secdeva_compositionLink("secdeva/linkTypes/optionalComponentOf", "optionalComponentOf",
+    "optional add-on of", "optional add-on").
+
 % secdeva_csafRelationship(Component, Product, Kind, Label) means that Component relates
-% to Product in the way named by Kind. Label is the human-readable form used in reports.
+% to Product in the way named by Kind. It and secdeva_csafPartLabel are what the reports
+% read.
 
-secdeva_csafRelationship(A, B, "defaultComponentOf", "built-in component of") :-
-    link(A, B, "secdeva/linkTypes/defaultComponentOf").
-secdeva_csafRelationship(A, B, "externalComponentOf", "external dependency of") :-
-    link(A, B, "secdeva/linkTypes/externalComponentOf").
-secdeva_csafRelationship(A, B, "installedOn", "installed on") :-
-    link(A, B, "secdeva/linkTypes/installedOn").
-secdeva_csafRelationship(A, B, "installedWith", "installed alongside") :-
-    link(A, B, "secdeva/linkTypes/installedWith").
-secdeva_csafRelationship(A, B, "optionalComponentOf", "optional add-on of") :-
-    link(A, B, "secdeva/linkTypes/optionalComponentOf").
+secdeva_csafRelationship(A, B, Kind, Label) :-
+    secdeva_compositionLink(LinkType, Kind, Label, _),
+    link(A, B, LinkType).
 
-% The same relationship reads differently from each end. The label in
-% secdeva_csafRelationship describes the part ("optional add-on of X"); this one names
-% what the part *is*, for tables that list the components of a product.
-
-secdeva_csafPartLabel("defaultComponentOf", "built-in component").
-secdeva_csafPartLabel("externalComponentOf", "external dependency").
-secdeva_csafPartLabel("installedOn", "installed on this product").
-secdeva_csafPartLabel("installedWith", "bundled alongside").
-secdeva_csafPartLabel("optionalComponentOf", "optional add-on").
+secdeva_csafPartLabel(Kind, PartLabel) :-
+    secdeva_compositionLink(_, Kind, _, PartLabel).
 
 %
 % The planned supply chain role
