@@ -30,30 +30,27 @@ secdeva_csafPartLabel("optionalComponentOf", "optional add-on").
 % The planned supply chain role
 %
 
-% Whether we place a third-party product on the market is stated by its delivery model,
-% not by the relationship graph. A product that stands on its own in the solution has no
-% relationship link to any other product, and requiring one here left every such product
-% without a role at all. Being a built-in component is the one relationship that does
-% decide the question, because it absorbs the product into the one that contains it.
+% A third-party product that is not absorbed into one of our own products, and so stands
+% in the supply chain in its own right. Its delivery model decides which role that is.
+% Being a built-in component is the one relationship that settles the question by itself,
+% because the product containing it answers for it.
 
-secdeva_placedOnMarketByUs(P) :-
+secdeva_distinctThirdPartyProduct(P) :-
     base_projectCardType(P, "secdeva/cardTypes/product"),
-    not field(P, "secdeva/fieldTypes/productOrigin", "own"),
+    field(P, "secdeva/fieldTypes/productOrigin", Origin),
+    Origin != "own",
     not link(P, _, "secdeva/linkTypes/defaultComponentOf").
 
-% Both the role and its justification are calculated fields with an override, so they are
-% emitted as fieldCalculated and the runtime suppresses either one as soon as the user
-% sets it by hand.
+% The role and its justification are emitted as fieldCalculated so that the runtime
+% suppresses either one as soon as the user sets it by hand.
 
 secdeva_supplyChainRoleIsCalculated(P) :-
     base_projectCardType(P, CardType),
-    calculatedField(CardType, "secdeva/fieldTypes/supplyChainRole"),
-    overridableField(CardType, "secdeva/fieldTypes/supplyChainRole").
+    calculatedField(CardType, "secdeva/fieldTypes/supplyChainRole").
 
 secdeva_supplyChainRoleJustificationIsCalculated(P) :-
     base_projectCardType(P, CardType),
-    calculatedField(CardType, "secdeva/fieldTypes/supplyChainRoleJustification"),
-    overridableField(CardType, "secdeva/fieldTypes/supplyChainRoleJustification").
+    calculatedField(CardType, "secdeva/fieldTypes/supplyChainRoleJustification").
 
 % Each delivery model that places the product on the market names the role it produces
 % and the reason for it.
@@ -77,8 +74,6 @@ secdeva_notPlacedOnMarketReason("weOperateAsService",
 secdeva_notPlacedOnMarketReason("weConsumeAsService",
     "A third party operates this product and we use it over the network. We never run or ship it, so it is not placed on the market and no supply chain role arises.").
 
-secdeva_notPlacedOnMarket(Delivery) :- secdeva_notPlacedOnMarketReason(Delivery, _).
-
 % Developing a product ourselves makes us its manufacturer only if we actually place it
 % on the market. A service we host is not placed on the market and carries no supply
 % chain role. The role follows from the delivery model, so an own product with none
@@ -88,13 +83,13 @@ secdeva_ownProductNotPlacedOnMarket(P) :-
     base_projectCardType(P, "secdeva/cardTypes/product"),
     field(P, "secdeva/fieldTypes/productOrigin", "own"),
     field(P, "secdeva/fieldTypes/deliveryModel", Delivery),
-    secdeva_notPlacedOnMarket(Delivery).
+    secdeva_notPlacedOnMarketReason(Delivery, _).
 
 % secdeva_derivedRole(P, Role, Reason) pairs every derived role with the reason for it, so
 % that the role and the justification shown beside it can never drift apart.
 
 secdeva_derivedRole(P, Role, Reason) :-
-    secdeva_placedOnMarketByUs(P),
+    secdeva_distinctThirdPartyProduct(P),
     field(P, "secdeva/fieldTypes/deliveryModel", Delivery),
     secdeva_roleForDelivery(Delivery, Role, Reason).
 
@@ -113,16 +108,14 @@ secdeva_derivedRole(P, "none", Reason) :-
 secdeva_derivedRole(P, "integratedComponent",
     "This third-party component is built into one of our own products, so our manufacturer obligations for that product cover it and no separate supply chain role arises.") :-
         base_projectCardType(P, "secdeva/cardTypes/product"),
-        not field(P, "secdeva/fieldTypes/productOrigin", "own"),
+        field(P, "secdeva/fieldTypes/productOrigin", Origin),
+        Origin != "own",
         link(P, _, "secdeva/linkTypes/defaultComponentOf").
 
-% A third-party product we neither run nor ship. Being a built-in component of one of our
-% products takes precedence, so that case is excluded here rather than deriving two roles.
+% The same product under a delivery model that never places it on the market.
 
 secdeva_derivedRole(P, "none", Reason) :-
-    base_projectCardType(P, "secdeva/cardTypes/product"),
-    not field(P, "secdeva/fieldTypes/productOrigin", "own"),
-    not link(P, _, "secdeva/linkTypes/defaultComponentOf"),
+    secdeva_distinctThirdPartyProduct(P),
     field(P, "secdeva/fieldTypes/deliveryModel", Delivery),
     secdeva_notPlacedOnMarketReason(Delivery, Reason).
 
