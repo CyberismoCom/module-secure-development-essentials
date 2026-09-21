@@ -48,17 +48,6 @@ secdeva_distinctThirdPartyProduct(P) :-
     Origin != "own",
     not link(P, _, "secdeva/linkTypes/defaultComponentOf").
 
-% The role and its justification are emitted as fieldCalculated so that the runtime
-% suppresses either one as soon as the user sets it by hand.
-
-secdeva_supplyChainRoleIsCalculated(P) :-
-    base_projectCardType(P, CardType),
-    calculatedField(CardType, "secdeva/fieldTypes/supplyChainRole").
-
-secdeva_supplyChainRoleJustificationIsCalculated(P) :-
-    base_projectCardType(P, CardType),
-    calculatedField(CardType, "secdeva/fieldTypes/supplyChainRoleJustification").
-
 % Each delivery model that places the product on the market names the role it produces
 % and the reason for it.
 
@@ -126,12 +115,14 @@ secdeva_derivedRole(P, "none", Reason) :-
     field(P, "secdeva/fieldTypes/deliveryModel", Delivery),
     secdeva_notPlacedOnMarketReason(Delivery, Reason).
 
+% Emitted as fieldCalculated rather than field, so that the runtime drops ours the moment
+% the user sets either one by hand. It also ignores a fieldCalculated for a field the card
+% type does not declare calculated, so there is nothing to check before emitting.
+
 fieldCalculated(P, "secdeva/fieldTypes/supplyChainRole", Role) :-
-    secdeva_supplyChainRoleIsCalculated(P),
     secdeva_derivedRole(P, Role, _).
 
 fieldCalculated(P, "secdeva/fieldTypes/supplyChainRoleJustification", Reason) :-
-    secdeva_supplyChainRoleJustificationIsCalculated(P),
     secdeva_derivedRole(P, _, Reason).
 
 % Which group a product belongs to follows from its origin field, not from where the
