@@ -164,9 +164,9 @@ policyCheckFailure(
 % card that uses it rather than leaving the role silently blank.
 %
 % weDevelopAndDeliver is excluded because it decides the role on its own for an own
-% product and is reported by its own check when the origin contradicts it, so including
-% it here would report the same problem twice. It is the one exclusion there should ever
-% be: anything else left out here is a delivery model this check exists to catch.
+% product, and on any other product the origin it requires is reported below, so
+% including it here would report the same problem twice. It is the one exclusion there
+% should ever be: anything else left out is a delivery model this check exists to catch.
 
 policyCheckFailure(
     P, "Solution structure",
@@ -232,16 +232,28 @@ policyCheckFailure(
         link(A, _, "secdeva/linkTypes/installedOn"),
         field(A, "secdeva/fieldTypes/deliveryModel", "weConsumeAsService").
 
-% Developing a product is something only our own organisation does.
+% Three delivery models describe something that can only be done to one kind of product,
+% so each of them requires a particular origin. Every row carries its own message rather
+% than composing one from the enum display values, which are only emitted when somebody
+% has filled them in and would take the whole check down with them if one were missing.
+
+secdeva_deliveryModelRequiresOrigin("weDevelopAndDeliver", "own",
+    "The delivery model says we develop this product and place it on the market, but its origin says it comes from a third party. Correct the origin, or choose the delivery model that describes what we do with it.").
+secdeva_deliveryModelRequiresOrigin("weImportAndDeliver", "thirdParty",
+    "The delivery model says we bring this product into the market from a manufacturer established outside it, but its origin says it is our own product, and we are its manufacturer ourselves. Correct the origin, or choose the delivery model that describes what we do with it.").
+secdeva_deliveryModelRequiresOrigin("weRebrandAndDeliver", "thirdParty",
+    "The delivery model says we place this product on the market under our own name or substantially modified, which is what makes us the manufacturer of a product somebody else made, but its origin says it is already our own. Correct the origin, or choose the delivery model that describes what we do with it.").
 
 policyCheckFailure(
     P, "Solution structure",
-    "Only an own product can be developed by us",
-    "The delivery model says we develop this product and place it on the market, but its origin says it comes from a third party. Correct the origin, or choose the delivery model that describes what we do with it.",
+    "The delivery model does not fit the origin",
+    Message,
     "secdeva/fieldTypes/deliveryModel") :-
         base_projectCardType(P, "secdeva/cardTypes/product"),
-        field(P, "secdeva/fieldTypes/deliveryModel", "weDevelopAndDeliver"),
-        not field(P, "secdeva/fieldTypes/productOrigin", "own").
+        field(P, "secdeva/fieldTypes/deliveryModel", Delivery),
+        secdeva_deliveryModelRequiresOrigin(Delivery, Required, Message),
+        field(P, "secdeva/fieldTypes/productOrigin", Origin),
+        Origin != Required.
 
 % Products are assets of the project.
 
