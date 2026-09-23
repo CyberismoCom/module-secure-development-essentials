@@ -1,0 +1,6 @@
+{
+    "displayName": "Bar widget",
+    "description": "A horizontal bar chart comparing values across categories",
+    "category": "General",
+    "name": "base/reports/barWidget"
+}

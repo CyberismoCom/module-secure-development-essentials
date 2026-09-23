@@ -1,0 +1,6 @@
+{
+    "displayName": "Percentage widget",
+    "description": "A donut chart showing a percentage value, with a title and a legend",
+    "category": "General",
+    "name": "base/reports/percentageWidget"
+}

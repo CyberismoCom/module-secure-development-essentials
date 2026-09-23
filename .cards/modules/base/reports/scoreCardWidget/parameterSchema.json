@@ -1,0 +1,30 @@
+{
+  "$id": "scoreCardWidgetReportSchema",
+  "additionalProperties": false,
+  "description": "A single headline number shown on a card, with an optional title, unit and legend",
+  "properties": {
+    "name": {
+      "description": "The name of the report",
+      "type": "string"
+    },
+    "title": {
+      "description": "Title text on top of the card (optional)",
+      "type": "string"
+    },
+    "value": {
+      "description": "Value shown as content of the card",
+      "type": "number"
+    },
+    "unit": {
+      "description": "Unit shown after the value (optional). It is rendered inline with the value, at the same size; a space is inserted before it unless it is a percent sign.",
+      "type": "string"
+    },
+    "legend": {
+      "description": "Description text shown below the value (optional)",
+      "type": "string"
+    }
+  },
+  "required": ["name", "value"],
+  "title": "Report",
+  "type": "object"
+}

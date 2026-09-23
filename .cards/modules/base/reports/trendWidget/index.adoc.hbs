@@ -1,0 +1,174 @@
+{{#vegaLite}}
+  "spec": {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 260,
+    "height": 120,
+    "background": "transparent",
+    "view": {"stroke": null},
+    "title": {
+      "text": "{{{jsonEscape title}}}",
+      "fontSize": 22,
+      "fontWeight": "bold",
+      "color": "currentColor",
+      "anchor": "start"
+    },
+    "data": {
+      "values": [
+        {{#each points}}
+        {"index": {{@index}}, "value": {{#if (eq this.value null)}}null{{else}}{{this.value}}{{/if}}, {{#if (eq ../scale "time")}}"date": "{{{jsonEscape this.date}}}"{{else}}{{#if (eq ../scale "number")}}"x": {{this.x}}{{else}}"label": "{{{jsonEscape this.label}}}"{{/if}}{{/if}} }{{#unless @last}},{{/unless}}
+        {{/each}}
+      ]
+    },
+    "transform": [
+      {
+        "calculate": "'{{#if (eq colour "green")}}light-dark(#008300,#008300){{else}}{{#if (eq colour "yellow")}}light-dark(#eda100,#c98500){{else}}{{#if (eq colour "red")}}light-dark(#e34948,#e66767){{else}}{{#if (eq colour "orange")}}light-dark(#eb6834,#d95926){{else}}{{#if (eq colour "purple")}}light-dark(#4a3aa7,#9085e9){{else}}light-dark(#2a78d6,#3987e5){{/if}}{{/if}}{{/if}}{{/if}}{{/if}}'",
+        "as": "fill"
+      }
+    ],
+    "layer": [
+      {
+        "mark": {"type": "line", "strokeWidth": 2},
+        "encoding": {
+          "x": {
+            {{#if (eq scale "time")}}"field": "date", "type": "temporal",{{else}}{{#if (eq scale "number")}}"field": "x", "type": "quantitative",{{else}}"field": "label", "type": "nominal", "sort": null,{{/if}}{{/if}}
+            "axis": {
+              "title": null,
+              "domain": false,
+              "ticks": false,
+              "grid": false,
+              "labelAngle": 0,
+              "labelOverlap": "greedy",
+              "labelSeparation": 8,
+              "labelFontSize": 12,
+              "labelColor": "currentColor"
+            }
+          },
+          "y": {
+            "field": "value",
+            "type": "quantitative",
+            "axis": {
+              "title": null,
+              "domain": false,
+              "ticks": false,
+              "grid": true,
+              "gridColor": "currentColor",
+              "gridOpacity": 0.12,
+              "tickCount": 4,
+              "labelFontSize": 11,
+              "labelColor": "currentColor",
+              "labelOpacity": 0.7
+            }
+          },
+          "color": {"field": "fill", "type": "nominal", "scale": null, "legend": null}
+        }
+      },
+      {
+        "mark": {"type": "point", "filled": true, "size": 60},
+        "encoding": {
+          "x": {
+            {{#if (eq scale "time")}}"field": "date", "type": "temporal",{{else}}{{#if (eq scale "number")}}"field": "x", "type": "quantitative",{{else}}"field": "label", "type": "nominal", "sort": null,{{/if}}{{/if}}
+            "axis": {
+              "title": null,
+              "domain": false,
+              "ticks": false,
+              "grid": false,
+              "labelAngle": 0,
+              "labelOverlap": "greedy",
+              "labelSeparation": 8,
+              "labelFontSize": 12,
+              "labelColor": "currentColor"
+            }
+          },
+          "y": {
+            "field": "value",
+            "type": "quantitative",
+            "axis": {
+              "title": null,
+              "domain": false,
+              "ticks": false,
+              "grid": true,
+              "gridColor": "currentColor",
+              "gridOpacity": 0.12,
+              "tickCount": 4,
+              "labelFontSize": 11,
+              "labelColor": "currentColor",
+              "labelOpacity": 0.7
+            }
+          },
+          "color": {"field": "fill", "type": "nominal", "scale": null, "legend": null}
+        }
+      },
+      {
+        "transform": [
+          {"filter": "datum.value != null"},
+          {"joinaggregate": [{"op": "max", "field": "index", "as": "lastIndex"}]},
+          {"filter": "datum.index === datum.lastIndex"}
+        ],
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "middle",
+          "dx": 8,
+          "fontSize": 14,
+          "fontWeight": "bold",
+          "color": "currentColor"
+        },
+        "encoding": {
+          "x": {
+            {{#if (eq scale "time")}}"field": "date", "type": "temporal",{{else}}{{#if (eq scale "number")}}"field": "x", "type": "quantitative",{{else}}"field": "label", "type": "nominal", "sort": null,{{/if}}{{/if}}
+            "axis": {
+              "title": null,
+              "domain": false,
+              "ticks": false,
+              "grid": false,
+              "labelAngle": 0,
+              "labelOverlap": "greedy",
+              "labelSeparation": 8,
+              "labelFontSize": 12,
+              "labelColor": "currentColor"
+            }
+          },
+          "y": {
+            "field": "value",
+            "type": "quantitative",
+            "axis": {
+              "title": null,
+              "domain": false,
+              "ticks": false,
+              "grid": true,
+              "gridColor": "currentColor",
+              "gridOpacity": 0.12,
+              "tickCount": 4,
+              "labelFontSize": 11,
+              "labelColor": "currentColor",
+              "labelOpacity": 0.7
+            }
+          },
+          "text": {"field": "value", "type": "quantitative"}
+        }
+      }{{#if legend}},
+      {
+        "data": {"values": [{"legend": "{{{jsonEscape legend}}}"}]},
+        "transform": [
+          {
+            "calculate": "split(replace(replace(datum.legend, /(.{1,44})(\\s+|$)/g, '$1\\n'), /\\n$/, ''), '\\n')",
+            "as": "lines"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "align": "center",
+          "baseline": "top",
+          "x": {"expr": "width / 2"},
+          "y": {"expr": "height + 34"},
+          "fontSize": 14,
+          "color": "currentColor",
+          "opacity": 0.7
+        },
+        "encoding": {
+          "text": {"field": "lines"}
+        }
+      }{{/if}}
+    ]
+  }
+{{/vegaLite}}

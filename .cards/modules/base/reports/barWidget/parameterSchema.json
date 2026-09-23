@@ -1,0 +1,48 @@
+{
+  "$id": "barWidgetReportSchema",
+  "additionalProperties": false,
+  "description": "A horizontal bar chart comparing a value across categories",
+  "properties": {
+    "name": {
+      "description": "The name of the report",
+      "type": "string"
+    },
+    "title": {
+      "description": "Title text on top of the chart",
+      "type": "string"
+    },
+    "legend": {
+      "description": "Description text shown below the chart (optional)",
+      "type": "string"
+    },
+    "bars": {
+      "description": "The categories to compare. Bar length carries the magnitude, so every bar uses the same colour by default; there is no limit on how many categories you can show.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "label": {
+            "description": "Name of this category, shown to the left of its bar",
+            "type": "string"
+          },
+          "value": {
+            "description": "Value of this category, shown at the end of its bar",
+            "type": "number",
+            "minimum": 0
+          },
+          "colour": {
+            "description": "Colour of this bar (optional). Leave it out for the default; set it on a single bar to pick that one out from the rest.",
+            "type": "string",
+            "enum": ["blue", "green", "yellow", "red", "orange", "purple"]
+          }
+        },
+        "required": ["label", "value"]
+      }
+    }
+  },
+  "required": ["name", "title", "bars"],
+  "title": "Report",
+  "type": "object"
+}

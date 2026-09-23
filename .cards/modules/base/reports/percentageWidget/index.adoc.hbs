@@ -1,0 +1,86 @@
+{{#vegaLite}}
+  "spec": {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 200,
+    "height": 200,
+    "background": "transparent",
+    "title": {
+      "text": "{{{jsonEscape title}}}",
+      "fontSize": 22,
+      "fontWeight": "bold",
+      "color": "currentColor"
+    },
+    "data": {
+      "values": [
+        {"category": "completed", "value": {{value}}, "order": 0},
+        {"category": "remaining", "value": {{subtract 100 value}}, "order": 1}
+      ]
+    },
+    "layer": [
+      {
+        "mark": {
+          "type": "arc",
+          "innerRadius": 54,
+          "outerRadius": 70
+        },
+        "encoding": {
+          "theta": {"field": "value", "type": "quantitative", "stack": true},
+          "color": {
+            "field": "category",
+            "type": "nominal",
+            "scale": {
+              "domain": ["completed", "remaining"],
+              "range": ["{{#if (eq colour "green")}}light-dark(#008300,#008300){{else}}{{#if (eq colour "yellow")}}light-dark(#eda100,#c98500){{else}}{{#if (eq colour "red")}}light-dark(#e34948,#e66767){{else}}{{#if (eq colour "orange")}}light-dark(#eb6834,#d95926){{else}}{{#if (eq colour "purple")}}light-dark(#4a3aa7,#9085e9){{else}}light-dark(#2a78d6,#3987e5){{/if}}{{/if}}{{/if}}{{/if}}{{/if}}", "currentColor"]
+            },
+            "legend": null
+          },
+          "opacity": {
+            "field": "category",
+            "type": "nominal",
+            "scale": {
+              "domain": ["completed", "remaining"],
+              "range": [1, 0.15]
+            },
+            "legend": null
+          },
+          "order": {"field": "order", "type": "quantitative"}
+        }
+      },
+      {
+        "data": {"values": [{}]},
+        "mark": {
+          "type": "text",
+          "align": "center",
+          "baseline": "middle",
+          "fontSize": 32,
+          "fontWeight": "bold",
+          "color": "currentColor"
+        },
+        "encoding": {
+          "text": {"value": "{{value}}%"}
+        }
+      },
+      {
+        "data": {"values": [{"legend": "{{{jsonEscape legend}}}"}]},
+        "transform": [
+          {
+            "calculate": "split(replace(replace(datum.legend, /(.{1,24})(\\s+|$)/g, '$1\\n'), /\\n$/, ''), '\\n')",
+            "as": "lines"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "align": "center",
+          "baseline": "middle",
+          "dy": 88,
+          "fontSize": 18,
+          "color": "currentColor",
+          "opacity": 0.7
+        },
+        "encoding": {
+          "text": {"field": "lines"}
+        }
+      }
+    ]
+  }
+{{/vegaLite}}

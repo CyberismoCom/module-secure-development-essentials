@@ -1,0 +1,111 @@
+{
+  "$id": "riskMatrixWidgetReportSchema",
+  "additionalProperties": false,
+  "description": "A risk matrix showing how many risks fall into each likelihood and impact combination",
+  "properties": {
+    "name": {
+      "description": "The name of the report",
+      "type": "string"
+    },
+    "title": {
+      "description": "Title text on top of the matrix",
+      "type": "string"
+    },
+    "legend": {
+      "description": "Description text shown below the matrix (optional)",
+      "type": "string"
+    },
+    "likelihood": {
+      "description": "Names of the likelihood levels, lowest first. Three to five levels are supported; the number given sets the height of the matrix.",
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 5,
+      "items": {"type": "string"}
+    },
+    "impact": {
+      "description": "Names of the impact levels, lowest first. Three to five levels are supported; the number given sets the width of the matrix.",
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 5,
+      "items": {"type": "string"}
+    },
+    "likelihoodTitle": {
+      "description": "Axis title for the likelihood scale (optional, defaults to 'Likelihood')",
+      "type": "string"
+    },
+    "impactTitle": {
+      "description": "Axis title for the impact scale (optional, defaults to 'Impact')",
+      "type": "string"
+    },
+    "levels": {
+      "description": "Risk levels of your risk method, lowest first (optional, give together with 'levelGrid'). Each level names a step of a fixed five-step colour scale, so the matrix colours follow your method instead of the position of each cell. The levels are listed in a legend beside the matrix.",
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 5,
+      "items": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Name of this risk level, shown in the legend",
+            "type": "string"
+          },
+          "colour": {
+            "description": "Step of the colour scale: 1 green, 2 light green, 3 amber, 4 red, 5 dark red",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          }
+        },
+        "required": ["name", "colour"]
+      }
+    },
+    "levelGrid": {
+      "description": "The risk level of every cell (optional, give together with 'levels'). One row per likelihood level, lowest first; each row has one entry per impact level, lowest first. Each entry is a 1-based position in 'levels'.",
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 5,
+      "items": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 5,
+        "items": {"type": "integer", "minimum": 1, "maximum": 5}
+      }
+    },
+    "cells": {
+      "description": "How many risks sit in each cell. Likelihood and impact are 1-based positions in the scales above. Cells you leave out are drawn in their risk colour with no count.",
+      "type": "array",
+      "items": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "likelihood": {
+            "description": "Likelihood level, 1 is the lowest",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "impact": {
+            "description": "Impact level, 1 is the lowest",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "count": {
+            "description": "Number of risks in this cell",
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": ["likelihood", "impact", "count"]
+      }
+    }
+  },
+  "required": ["name", "title", "likelihood", "impact"],
+  "dependencies": {
+    "levels": ["levelGrid"],
+    "levelGrid": ["levels"]
+  },
+  "title": "Report",
+  "type": "object"
+}
