@@ -1,0 +1,33 @@
+{
+  "$id": "percentageWidgetReportSchema",
+  "additionalProperties": false,
+  "description": "A percentage widget rendered as a donut chart with a Vega-Lite specification",
+  "properties": {
+    "name": {
+      "description": "The name of the report",
+      "type": "string"
+    },
+    "title": {
+      "description": "Title text on top of the widget",
+      "type": "string"
+    },
+    "value": {
+      "description": "Percentage value (0-100)",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "legend": {
+      "description": "Description text shown below the value",
+      "type": "string"
+    },
+    "colour": {
+      "description": "Colour of the progress arc (optional, defaults to blue)",
+      "type": "string",
+      "enum": ["blue", "green", "yellow", "red", "orange", "purple"]
+    }
+  },
+  "required": ["name", "title", "value", "legend"],
+  "title": "Report",
+  "type": "object"
+}

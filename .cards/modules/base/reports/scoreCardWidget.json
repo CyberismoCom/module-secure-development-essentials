@@ -1,0 +1,6 @@
+{
+    "displayName": "Score card widget",
+    "description": "A single headline number on a card, with an optional title, unit and legend",
+    "category": "General",
+    "name": "base/reports/scoreCardWidget"
+}

@@ -32,4 +32,36 @@ childResult(Risk, Requirement, "securityRequirements") :-
   link(Requirement, Risk, "ismsa/linkTypes/mitigates"),
   field(Requirement, "cardType", "secdeva/cardTypes/requirement").
 
-orderBy("title", "ASC").
+% Current risk level: residual once assessed, otherwise initial
+secdeva_currentRisk(Risk, Level) :-
+  secdeva_riskResult(Risk),
+  field(Risk, "ismsa/fieldTypes/riskResidualRisk", Level).
+secdeva_currentRisk(Risk, Level) :-
+  secdeva_riskResult(Risk),
+  field(Risk, "ismsa/fieldTypes/riskInitialRisk", Level),
+  not field(Risk, "ismsa/fieldTypes/riskResidualRisk", _).
+
+secdeva_riskIndex("veryLow", 1, "Very Low").
+secdeva_riskIndex("low", 2, "Low").
+secdeva_riskIndex("moderate", 3, "Moderate").
+secdeva_riskIndex("high", 4, "High").
+secdeva_riskIndex("veryHigh", 5, "Very High").
+
+resultField(Risk, "currentRisk", Display, "shortText") :-
+  secdeva_currentRisk(Risk, Level),
+  secdeva_riskIndex(Level, _, Display).
+
+resultField(Risk, "currentRiskIndex", Index, "integer") :-
+  secdeva_currentRisk(Risk, Level),
+  secdeva_riskIndex(Level, Index, _).
+resultField(Risk, "initialRiskIndex", Index, "integer") :-
+  secdeva_riskResult(Risk),
+  field(Risk, "ismsa/fieldTypes/riskInitialRisk", Level),
+  secdeva_riskIndex(Level, Index, _).
+
+% Highest current risk level first; risks that have not been assessed come last
+order(2, "risks", 1, "currentRiskIndex", "DESC").
+order(2, "risks", 2, "initialRiskIndex", "DESC").
+order(2, "risks", 3, "title", "ASC").
+order(3, "affectedAssets", 1, "title", "ASC").
+order(3, "securityRequirements", 1, "title", "ASC").

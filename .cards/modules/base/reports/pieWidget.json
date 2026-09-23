@@ -1,0 +1,6 @@
+{
+    "displayName": "Pie widget",
+    "description": "A donut chart of part-to-whole values, falling back to a table when there are more than six slices",
+    "category": "General",
+    "name": "base/reports/pieWidget"
+}

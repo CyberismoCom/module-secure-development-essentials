@@ -1,0 +1,73 @@
+{{#vegaLite}}
+  "spec": {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 240,
+    "height": {{#if title}}{{#if legend}}180{{else}}140{{/if}}{{else}}{{#if legend}}150{{else}}100{{/if}}{{/if}},
+    "background": "transparent",
+    "view": {
+      "stroke": "currentColor",
+      "strokeOpacity": 0.25,
+      "strokeWidth": 1,
+      "cornerRadius": 8,
+      "fill": "transparent"
+    },
+    "layer": [
+      {
+        "data": {"values": [{}]},
+        "mark": {
+          "type": "text",
+          "align": "center",
+          "baseline": "middle",
+          "y": {{#if title}}{{#if legend}}90{{else}}92{{/if}}{{else}}{{#if legend}}62{{else}}50{{/if}}{{/if}},
+          "fontSize": 40,
+          "fontWeight": "bold",
+          "color": "currentColor"
+        },
+        "encoding": {
+          "text": {"value": "{{value}}{{#if unit}}{{#if (eq unit "%")}}{{{jsonEscape unit}}}{{else}} {{{jsonEscape unit}}}{{/if}}{{/if}}"}
+        }
+      }{{#if title}},
+      {
+        "data": {"values": [{"title": "{{{jsonEscape title}}}"}]},
+        "transform": [
+          {
+            "calculate": "split(replace(replace(datum.title, /(.{1,30})(\\s+|$)/g, '$1\\n'), /\\n$/, ''), '\\n')",
+            "as": "lines"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "align": "center",
+          "baseline": "top",
+          "y": 18,
+          "fontSize": 16,
+          "color": "currentColor"
+        },
+        "encoding": {
+          "text": {"field": "lines"}
+        }
+      }{{/if}}{{#if legend}},
+      {
+        "data": {"values": [{"legend": "{{{jsonEscape legend}}}"}]},
+        "transform": [
+          {
+            "calculate": "split(replace(replace(datum.legend, /(.{1,34})(\\s+|$)/g, '$1\\n'), /\\n$/, ''), '\\n')",
+            "as": "lines"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "align": "center",
+          "baseline": "bottom",
+          "y": {"expr": "height - 18"},
+          "fontSize": 14,
+          "color": "currentColor",
+          "opacity": 0.7
+        },
+        "encoding": {
+          "text": {"field": "lines"}
+        }
+      }{{/if}}
+    ]
+  }
+{{/vegaLite}}

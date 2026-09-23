@@ -1,0 +1,107 @@
+{{#vegaLite}}
+  "spec": {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 220,
+    "height": {"step": 26},
+    "background": "transparent",
+    "view": {"stroke": null},
+    "title": {
+      "text": "{{{jsonEscape title}}}",
+      "fontSize": 22,
+      "fontWeight": "bold",
+      "color": "currentColor",
+      "anchor": "start"
+    },
+    "data": {
+      "values": [
+        {{#each bars}}
+        {"label": "{{{jsonEscape this.label}}}", "value": {{this.value}}{{#if this.colour}}, "colour": "{{this.colour}}"{{/if}} }{{#unless @last}},{{/unless}}
+        {{/each}}
+      ]
+    },
+    "transform": [
+      {
+        "calculate": "datum.colour ? {blue:'light-dark(#2a78d6,#3987e5)',green:'light-dark(#008300,#008300)',yellow:'light-dark(#eda100,#c98500)',red:'light-dark(#e34948,#e66767)',orange:'light-dark(#eb6834,#d95926)',purple:'light-dark(#4a3aa7,#9085e9)'}[datum.colour] : 'light-dark(#2a78d6,#3987e5)'",
+        "as": "fill"
+      }
+    ],
+    "layer": [
+      {
+        "mark": {
+          "type": "bar",
+          "cornerRadiusEnd": 4,
+          "height": {"band": 0.62}
+        },
+        "encoding": {
+          "y": {
+            "field": "label",
+            "type": "nominal",
+            "sort": null,
+            "axis": {
+              "title": null,
+              "domain": false,
+              "ticks": false,
+              "grid": false,
+              "labelFontSize": 13,
+              "labelColor": "currentColor",
+              "labelLimit": 0
+            }
+          },
+          "x": {"field": "value", "type": "quantitative", "axis": null},
+          "color": {"field": "fill", "type": "nominal", "scale": null, "legend": null}
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "middle",
+          "dx": 6,
+          "fontSize": 12,
+          "color": "currentColor",
+          "opacity": 0.8
+        },
+        "encoding": {
+          "y": {
+            "field": "label",
+            "type": "nominal",
+            "sort": null,
+            "axis": {
+              "title": null,
+              "domain": false,
+              "ticks": false,
+              "grid": false,
+              "labelFontSize": 13,
+              "labelColor": "currentColor",
+              "labelLimit": 0
+            }
+          },
+          "x": {"field": "value", "type": "quantitative", "axis": null},
+          "text": {"field": "value", "type": "quantitative"}
+        }
+      }{{#if legend}},
+      {
+        "data": {"values": [{"legend": "{{{jsonEscape legend}}}"}]},
+        "transform": [
+          {
+            "calculate": "split(replace(replace(datum.legend, /(.{1,40})(\\s+|$)/g, '$1\\n'), /\\n$/, ''), '\\n')",
+            "as": "lines"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "align": "center",
+          "baseline": "top",
+          "x": {"expr": "width / 2"},
+          "y": {"expr": "height + 24"},
+          "fontSize": 14,
+          "color": "currentColor",
+          "opacity": 0.7
+        },
+        "encoding": {
+          "text": {"field": "lines"}
+        }
+      }{{/if}}
+    ]
+  }
+{{/vegaLite}}

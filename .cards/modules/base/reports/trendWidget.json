@@ -1,0 +1,6 @@
+{
+    "displayName": "Trend widget",
+    "description": "A line chart showing how a single value moves over time",
+    "category": "General",
+    "name": "base/reports/trendWidget"
+}

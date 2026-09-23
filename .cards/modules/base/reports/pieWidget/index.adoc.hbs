@@ -1,0 +1,126 @@
+{{#vegaLite}}
+  "spec": {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 200,
+    "height": 200,
+    "background": "transparent",
+    "title": {
+      "text": "{{{jsonEscape title}}}",
+      "fontSize": 22,
+      "fontWeight": "bold",
+      "color": "currentColor"
+    },
+    "data": {
+      "values": [
+        {{#each slices}}
+        {"label": "{{{jsonEscape this.label}}}", "value": {{this.value}}, "index": {{@index}}{{#if this.colour}}, "colour": "{{this.colour}}"{{/if}} }{{#unless @last}},{{/unless}}
+        {{/each}}
+      ]
+    },
+    "transform": [
+      {
+        "calculate": "datum.colour ? {blue:'light-dark(#2a78d6,#3987e5)',green:'light-dark(#008300,#008300)',yellow:'light-dark(#eda100,#c98500)',red:'light-dark(#e34948,#e66767)',orange:'light-dark(#eb6834,#d95926)',purple:'light-dark(#4a3aa7,#9085e9)'}[datum.colour] : ['light-dark(#2a78d6,#3987e5)','light-dark(#eb6834,#d95926)','light-dark(#1baf7a,#199e70)','light-dark(#eda100,#c98500)','light-dark(#e87ba4,#d55181)','light-dark(#008300,#008300)'][datum.index % 6]",
+        "as": "fill"
+      },
+      {
+        "window": [{"op": "sum", "field": "value", "as": "cumulative"}],
+        "sort": [{"field": "index", "order": "ascending"}]
+      },
+      {"joinaggregate": [{"op": "sum", "field": "value", "as": "grandTotal"}]},
+      {"calculate": "datum.grandTotal > 0 ? (datum.cumulative - datum.value / 2) / datum.grandTotal : 0", "as": "fraction"},
+      {"calculate": "datum.fraction * 2 * PI", "as": "midAngle"}
+    ],
+    "layer": [
+      {
+        "data": {"values": [{}]},
+        "mark": {
+          "type": "arc",
+          "innerRadius": 54,
+          "outerRadius": 70,
+          "theta": 0,
+          "theta2": 6.283185307179586,
+          "color": "currentColor",
+          "opacity": 0.15
+        }
+      },
+      {
+        "mark": {
+          "type": "arc",
+          "innerRadius": 54,
+          "outerRadius": 70,
+          "padAngle": 0.02
+        },
+        "encoding": {
+          "theta": {"field": "value", "type": "quantitative", "stack": true},
+          "color": {"field": "fill", "type": "nominal", "scale": null, "legend": null},
+          "order": {"field": "index", "type": "quantitative"}
+        }
+      },
+      {
+        "transform": [{"filter": "datum.value > 0 && datum.fraction < 0.5"}],
+        "mark": {
+          "type": "text",
+          "radius": 76,
+          "align": "left",
+          "baseline": "middle",
+          "fontSize": 13,
+          "color": "currentColor"
+        },
+        "encoding": {
+          "theta": {"field": "midAngle", "type": "quantitative", "scale": null},
+          "text": {"field": "label"}
+        }
+      },
+      {
+        "transform": [{"filter": "datum.value > 0 && datum.fraction >= 0.5"}],
+        "mark": {
+          "type": "text",
+          "radius": 76,
+          "align": "right",
+          "baseline": "middle",
+          "fontSize": 13,
+          "color": "currentColor"
+        },
+        "encoding": {
+          "theta": {"field": "midAngle", "type": "quantitative", "scale": null},
+          "text": {"field": "label"}
+        }
+      },
+      {
+        "transform": [{"aggregate": [{"op": "sum", "field": "value", "as": "total"}]}],
+        "mark": {
+          "type": "text",
+          "align": "center",
+          "baseline": "middle",
+          "fontSize": 28,
+          "fontWeight": "bold",
+          "color": "currentColor"
+        },
+        "encoding": {
+          "text": {"field": "total", "type": "quantitative"}
+        }
+      },
+      {
+        "data": {"values": [{"legend": "{{{jsonEscape legend}}}"}]},
+        "transform": [
+          {
+            "calculate": "split(replace(replace(datum.legend, /(.{1,24})(\\s+|$)/g, '$1\\n'), /\\n$/, ''), '\\n')",
+            "as": "lines"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "align": "center",
+          "baseline": "middle",
+          "dy": 105,
+          "fontSize": 18,
+          "color": "currentColor",
+          "opacity": 0.7
+        },
+        "encoding": {
+          "text": {"field": "lines"}
+        }
+      }
+    ]
+  }
+{{/vegaLite}}

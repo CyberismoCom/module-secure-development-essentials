@@ -1,0 +1,6 @@
+{
+    "displayName": "Risk matrix widget",
+    "description": "A likelihood by impact risk matrix, banded green, amber and red, or coloured by the risk levels of your own method",
+    "category": "General",
+    "name": "base/reports/riskMatrixWidget"
+}
