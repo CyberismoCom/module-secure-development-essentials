@@ -450,27 +450,66 @@ attr(node, N, fontname, "helvetica") :- node(N, _), not invisible(N).
 attr(edge, (X, Y, N), fontname, "helvetica") :- edge((X, Y, N), _).
 
 %
-% Layout rows
+% Layered layout
 %
-% An element may define the row in which it is drawn, using the field
-% secdeva/fieldTypes/layoutRow. Row 1 is the top row. An element without a row
-% inherits the row of its nearest ancestor that has one. Elements without any
-% row are placed freely by Graphviz, as before.
+% When the field secdeva/fieldTypes/diagramLayout of a dataflow model or threat
+% model is "zoneLayers", its diagrams are drawn in rows that follow the
+% navigation tree:
+% - A zone is an outermost technical trust boundary: it may only be inside
+%   physical or organisational trust boundaries, such as a site. The zones are
+%   stacked from top to bottom in tree order, one row per zone. To draw zones
+%   side by side, nest them in a common zone, such as a control network that
+%   contains one zone per production cell.
+% - Everything inside a zone is in the row of the zone.
+% - Other elements, such as persons and external entities, are placed in the
+%   highest row of the zoned elements that they exchange dataflows with.
+% Otherwise Graphviz arranges the elements by the direction of the dataflows.
 %
 % Rows are enforced with an invisible marker node per row and invisible edges
 % marker(R) -> member -> marker(next row), so that every member of a row is
-% ranked below the members of the previous row. Dataflows that point upwards
-% (to a lower row number) are drawn reversed with dir=back, so that they
-% follow the rows instead of contradicting them.
+% ranked below the members of the previous row. Within its row, an element can
+% still be placed below another one, for example a PLC below its HMI.
+% Dataflows that point upwards (to a lower row number) are drawn reversed with
+% dir=back, so that they follow the rows instead of contradicting them.
 %
 % Rows only fix the vertical position. Graphviz decides the horizontal order
 % to minimise edge crossings; it follows the navigation tree order only when
 % that does not add crossings.
 
-layoutRow(X, R) :- entity(X), field(X, "secdeva/fieldTypes/layoutRow", R).
-hasLayoutRow(X) :- layoutRow(X, _).
-effectiveRow(X, R) :- layoutRow(X, R).
-effectiveRow(X, R) :- entity(X), not hasLayoutRow(X), consistsOf(P, X), effectiveRow(P, R).
+% modelOf(X, M): entity X belongs to the dataflow model or threat model M
+modelOf(X, M) :- entity(X), not consistsOf(_, X), parent(X, M), not entity(M).
+modelOf(X, M) :- consistsOf(P, X), modelOf(P, M).
+zoneLayers(M) :- modelOf(_, M), field(M, "secdeva/fieldTypes/diagramLayout", "zoneLayers").
+
+% treeOrder(X, T): T orders the entities in the order of the navigation tree
+treeOrder(X, R) :- entity(X), not consistsOf(_, X), field(X, "rank", R).
+treeOrder(X, @concatenate(T, " - ", R)) :- consistsOf(P, X), treeOrder(P, T), field(X, "rank", R).
+
+technicalBoundary(B) :- trustBoundary(B), not enclosingBoundary(B).
+layerOpenBoundary(B) :- enclosingBoundary(B), not consistsOf(_, B).
+layerOpenBoundary(B) :- enclosingBoundary(B), consistsOf(P, B), layerOpenBoundary(P).
+layerZone(Z, M) :- technicalBoundary(Z), modelOf(Z, M), zoneLayers(M), not consistsOf(_, Z).
+layerZone(Z, M) :- technicalBoundary(Z), modelOf(Z, M), zoneLayers(M), consistsOf(P, Z), layerOpenBoundary(P).
+
+zoneRow(Z, N) :-
+    layerZone(Z, M), treeOrder(Z, T),
+    C = #count { Z2 : layerZone(Z2, M), treeOrder(Z2, T2), T2 < T }, N = C + 1.
+zoneRow(X, R) :- entity(X), consistsOf(P, X), zoneRow(P, R).
+
+% elements outside the zones follow the zoned elements they exchange dataflows with
+partnerRow(X, R) :-
+    entity(X), not trustBoundary(X), modelOf(X, M), zoneLayers(M), not zoneRow(X, _),
+    dataflow(X, Y, _), zoneRow(Y, R).
+partnerRow(X, R) :-
+    entity(X), not trustBoundary(X), modelOf(X, M), zoneLayers(M), not zoneRow(X, _),
+    dataflow(Y, X, _), zoneRow(Y, R).
+derivedRow(X, R) :- partnerRow(X, _), R = #min { RY : partnerRow(X, RY) }.
+
+effectiveRow(X, R) :- zoneRow(X, R).
+effectiveRow(X, R) :- derivedRow(X, R).
+effectiveRow(X, R) :-
+    entity(X), not zoneRow(X, _), not derivedRow(X, _),
+    consistsOf(P, X), effectiveRow(P, R).
 
 % drawn nodes in each row, including the invisible anchor points of clusters
 rowMember(X, R) :- node(X, _), entity(X), effectiveRow(X, R).
@@ -511,16 +550,19 @@ upwardEdge(XR, YR) :-
     edge_((XR, YR, _), _, _, _),
     effectiveRow(XR, RX), effectiveRow(YR, RY), RX > RY.
 
-% rowOwner(X, O): O is the element that gives X its row (X itself or an ancestor)
-rowOwner(X, X) :- layoutRow(X, _).
-rowOwner(X, O) :- entity(X), not hasLayoutRow(X), consistsOf(P, X), rowOwner(P, O).
+% rowGroup(X, G): G is the zone or nested zone that X is drawn in. A zone is
+% its own row group, so that nested zones stay side by side.
+rowGroup(B, B) :- technicalBoundary(B).
+rowGroup(X, B) :- entity(X), not technicalBoundary(X), consistsOf(B, X), technicalBoundary(B).
+rowGroup(X, G) :- entity(X), not technicalBoundary(X), consistsOf(P, X), not technicalBoundary(P), rowGroup(P, G).
+sameRowGroup(X, Y) :- rowGroup(X, G), rowGroup(Y, G).
 
-% A dataflow between two different elements of the same row does not constrain
-% the ranking, so that the elements stay aligned side by side.
+% A dataflow between elements of the same row but different row groups does
+% not constrain the ranking, so that the elements stay aligned side by side.
 attr(edge, (XR, YR, N), constraint, false) :-
     edge((XR, YR, N), _), not layoutEdge((XR, YR, N)),
     effectiveRow(XR, R), effectiveRow(YR, R),
-    rowOwner(XR, OX), rowOwner(YR, OY), OX != OY.
+    not sameRowGroup(XR, YR).
 
 % Row skipping: when a view defines highlightRowSkips, dataflows that skip
 % over at least one row are highlighted. When the rows are the levels of a

@@ -1,0 +1,19 @@
+{
+    "name": "secdeva/fieldTypes/diagramLayout",
+    "displayName": "Diagram layout",
+    "dataType": "enum",
+    "enumValues": [
+        {
+            "enumValue": "dataflows",
+            "enumDisplayValue": "Follow the dataflows",
+            "enumDescription": "The elements are arranged by the direction of the dataflows. This is the default."
+        },
+        {
+            "enumValue": "zoneLayers",
+            "enumDisplayValue": "Zones in tree order",
+            "enumDescription": "The zones are stacked from top to bottom in the order of the navigation tree, and zones nested in a common zone are side by side. Persons and external entities are placed in the highest row of the elements they exchange dataflows with. Suits layered architectures such as the Purdue model of OT systems."
+        }
+    ],
+    "description": "How the dataflow diagrams of this model are laid out",
+    "category": "Threat model"
+}

@@ -1,7 +1,0 @@
-{
-    "name": "secdeva/fieldTypes/layoutRow",
-    "displayName": "Diagram row",
-    "dataType": "integer",
-    "description": "Optional row in which the element is drawn in dataflow diagrams. Row 1 is the top row. Elements in the same row are drawn side by side in the order of the navigation tree. Elements inside a trust boundary inherit the row of the trust boundary. For OT systems, use one row per Purdue level, e.g. 1 = enterprise (L4–L5), 2 = DMZ (L3.5), 3 = operations (L3), 4 = control (L0–L2).",
-    "category": "Threat model"
-}

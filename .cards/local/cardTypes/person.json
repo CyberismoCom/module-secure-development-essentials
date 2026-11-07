@@ -5,18 +5,12 @@
         {
             "name": "secdeva/fieldTypes/description",
             "isCalculated": false
-        },
-        {
-            "name": "secdeva/fieldTypes/layoutRow",
-            "isCalculated": false
         }
     ],
     "alwaysVisibleFields": [
         "secdeva/fieldTypes/description"
     ],
-    "optionallyVisibleFields": [
-        "secdeva/fieldTypes/layoutRow"
-    ],
+    "optionallyVisibleFields": [],
     "displayName": "Person",
     "description": "A human stakeholder in a dataflow model"
 }

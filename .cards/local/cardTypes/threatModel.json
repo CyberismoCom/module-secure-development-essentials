@@ -34,12 +34,17 @@
             "displayName": "",
             "isCalculated": true,
             "enableOverride": true
+        },
+        {
+            "name": "secdeva/fieldTypes/diagramLayout",
+            "isCalculated": false
         }
     ],
     "alwaysVisibleFields": [
         "base/fieldTypes/owner",
         "base/fieldTypes/approver",
-        "base/fieldTypes/approvalDate"
+        "base/fieldTypes/approvalDate",
+        "secdeva/fieldTypes/diagramLayout"
     ],
     "optionallyVisibleFields": [
         "base/fieldTypes/informationClassification",

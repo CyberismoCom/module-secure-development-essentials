@@ -2,14 +2,14 @@
 attr(graph, toplevelGraph, rankdir, "{{layout}}").
 {{/if}}
 
-% A zone is an outermost technical trust boundary of the model, such as a
-% network segment. Everything inside a zone is hidden, and the zone is drawn as
-% a single node that represents its contents. Elements outside all zones, such
-% as persons and external entities, are drawn as they are.
+% A zone is an innermost technical trust boundary, such as a network segment.
+% Everything inside a zone is hidden, and the zone is drawn as a single node
+% that represents its contents. Elements outside all zones, such as persons and
+% external entities, are drawn as they are.
 %
-% Physical and organisational trust boundaries, such as a site, are not zones.
-% They are drawn around the zones and elements they contain, so that the
-% diagram shows who has physical or organisational access to which zones.
+% Boundaries that group other boundaries are drawn around them: physical and
+% organisational trust boundaries, such as a site, and zones that contain
+% nested zones, such as a control network with one zone per production cell.
 
 % By default, all dataflow elements in the project are in scope, as in the label
 % view. The optional parameter root limits the scope to the descendants of one
@@ -20,15 +20,18 @@ inScope(X) :- entity(X), ancestor(X, {{root}}).
 inScope(X) :- entity(X), projectCard(X).
 {{/if}}
 
-% enclosingBoundary(B), a physical or organisational boundary, is defined in the model.
-% openBoundary(B): an enclosing boundary that is not inside anything else than
-% other enclosing boundaries. It is drawn as a cluster.
-openBoundary(B) :- enclosingBoundary(B), inScope(B), not consistsOf(_, B).
-openBoundary(B) :- enclosingBoundary(B), consistsOf(P, B), openBoundary(P).
+% openBoundary(B): a boundary that is drawn as a cluster around what it contains.
+% It is a physical or organisational boundary (enclosingBoundary, defined in the
+% model) or a zone with nested zones, and it is not inside anything else than
+% other open boundaries.
+groupingBoundary(B) :- enclosingBoundary(B).
+groupingBoundary(B) :- technicalBoundary(B), consistsOf(B, C), technicalBoundary(C).
+openBoundary(B) :- groupingBoundary(B), inScope(B), not consistsOf(_, B).
+openBoundary(B) :- groupingBoundary(B), consistsOf(P, B), openBoundary(P).
 
 % outermost(X): X is at the top level of the model, or only inside open boundaries
-outermost(X) :- inScope(X), not consistsOf(_, X), not enclosingBoundary(X).
-outermost(X) :- inScope(X), consistsOf(P, X), openBoundary(P), not enclosingBoundary(X).
+outermost(X) :- inScope(X), not consistsOf(_, X), not openBoundary(X).
+outermost(X) :- inScope(X), consistsOf(P, X), openBoundary(P), not openBoundary(X).
 
 % The outermost elements are drawn as single nodes: a zone stands for
 % everything inside it, and so does a process outside all zones.

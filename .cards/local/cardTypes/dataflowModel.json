@@ -5,10 +5,15 @@
         {
             "name": "secdeva/fieldTypes/description",
             "isCalculated": false
+        },
+        {
+            "name": "secdeva/fieldTypes/diagramLayout",
+            "isCalculated": false
         }
     ],
     "alwaysVisibleFields": [
-        "secdeva/fieldTypes/description"
+        "secdeva/fieldTypes/description",
+        "secdeva/fieldTypes/diagramLayout"
     ],
     "optionallyVisibleFields": [],
     "displayName": "Dataflow model (deprecated)",
