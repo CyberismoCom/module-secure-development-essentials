@@ -13,6 +13,11 @@ entity(X) :- external(X).
 % trust boundary
 trustBoundary(X) :- field(X, "cardType", "secdeva/cardTypes/trustBoundary").
 entity(X) :- trustBoundary(X).
+% Physical and organisational trust boundaries enclose people and equipment
+% rather than separate networks or software. Persons and external entities may
+% be inside them. They are drawn differently from other trust boundaries.
+enclosingBoundary(X) :- trustBoundary(X), field(X, "secdeva/fieldTypes/trustBoundaryType", "physical").
+enclosingBoundary(X) :- trustBoundary(X), field(X, "secdeva/fieldTypes/trustBoundaryType", "organisational").
 
 % person
 person(X) :- field(X, "cardType", "secdeva/cardTypes/person").
@@ -401,7 +406,8 @@ attr(graph, X, shape, cylinder) :- datastore(X), graph(X, _).
 
 attr(graph, X, shape, rectangle) :- trustBoundary(X), graph(X, _).
 attr(graph, X, style, dashed) :- trustBoundary(X), graph(X, _).
-attr(graph, X, color, "#aa0000") :- trustBoundary(X), graph(X, _).
+attr(graph, X, color, "#aa0000") :- trustBoundary(X), not enclosingBoundary(X), graph(X, _).
+attr(graph, X, color, "#666666") :- enclosingBoundary(X), graph(X, _).
 attr(graph, X, color, "#000000") :- not trustBoundary(X), graph(X, _).
 
 % shapes of nodes
@@ -410,7 +416,8 @@ attr(node, X, style, rounded) :- process(X), node(X, _), not invisible(X).
 
 attr(node, X, shape, rectangle) :- trustBoundary(X), node(X, _), not invisible(X).
 attr(node, X, style, dashed) :- trustBoundary(X), node(X, _), not invisible(X).
-attr(node, X, color, "#aa0000") :- trustBoundary(X), node(X, _), not invisible(X).
+attr(node, X, color, "#aa0000") :- trustBoundary(X), not enclosingBoundary(X), node(X, _), not invisible(X).
+attr(node, X, color, "#666666") :- enclosingBoundary(X), node(X, _), not invisible(X).
 attr(node, X, color, "#000000") :- not trustBoundary(X), node(X, _), not invisible(X).
 
 attr(node, X, shape, rectangle) :- external(X), node(X, _), not invisible(X).
@@ -447,6 +454,15 @@ effectiveRow(X, R) :- entity(X), not hasLayoutRow(X), consistsOf(P, X), effectiv
 
 % drawn nodes in each row, including the invisible anchor points of clusters
 rowMember(X, R) :- node(X, _), entity(X), effectiveRow(X, R).
+
+% A cluster without a row of its own, such as a site that contains zones of
+% several rows, has its invisible anchor point in the top row of its contents.
+% Otherwise Graphviz may put the anchor point above all rows, and the cluster
+% would extend to the top of the diagram.
+containedRow(X, R) :- graph(X, _), contains(X, C), node(C, _), effectiveRow(C, R).
+rowMember(X, R) :-
+    node(X, X), invisible(X), not effectiveRow(X, _), containedRow(X, _),
+    R = #min { RC : containedRow(X, RC) }.
 usedRow(R) :- rowMember(_, R).
 nextRow(R1, R2) :-
     usedRow(R1), usedRow(R2), R1 < R2,

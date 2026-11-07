@@ -2,10 +2,14 @@
 attr(graph, toplevelGraph, rankdir, "{{layout}}").
 {{/if}}
 
-% A zone is an outermost trust boundary of the model. Everything inside a zone
-% is hidden, and the zone is drawn as a single node that represents its
-% contents. Entities outside all zones, such as persons and external entities,
-% are drawn as they are.
+% A zone is an outermost technical trust boundary of the model, such as a
+% network segment. Everything inside a zone is hidden, and the zone is drawn as
+% a single node that represents its contents. Elements outside all zones, such
+% as persons and external entities, are drawn as they are.
+%
+% Physical and organisational trust boundaries, such as a site, are not zones.
+% They are drawn around the zones and elements they contain, so that the
+% diagram shows who has physical or organisational access to which zones.
 
 % By default, all dataflow elements in the project are in scope, as in the label
 % view. The optional parameter root limits the scope to the descendants of one
@@ -16,17 +20,27 @@ inScope(X) :- entity(X), ancestor(X, {{root}}).
 inScope(X) :- entity(X), projectCard(X).
 {{/if}}
 
-zone(Z) :- trustBoundary(Z), inScope(Z), not innerBoundary(Z).
-innerBoundary(Z) :- trustBoundary(Z), consistsOf(P, Z), trustBoundary(P).
-insideZone(X) :- zone(Z), contains(Z, X).
+% enclosingBoundary(B), a physical or organisational boundary, is defined in the model.
+% openBoundary(B): an enclosing boundary that is not inside anything else than
+% other enclosing boundaries. It is drawn as a cluster.
+openBoundary(B) :- enclosingBoundary(B), inScope(B), not consistsOf(_, B).
+openBoundary(B) :- enclosingBoundary(B), consistsOf(P, B), openBoundary(P).
 
-visible(Z) :- zone(Z).
-visible(X) :- inScope(X), not trustBoundary(X), not insideZone(X), not consistsOf(_, X).
-hide(X) :- insideZone(X).
+% outermost(X): X is at the top level of the model, or only inside open boundaries
+outermost(X) :- inScope(X), not consistsOf(_, X), not enclosingBoundary(X).
+outermost(X) :- inScope(X), consistsOf(P, X), openBoundary(P), not enclosingBoundary(X).
+
+% The outermost elements are drawn as single nodes: a zone stands for
+% everything inside it, and so does a process outside all zones.
+zone(Z) :- outermost(Z), trustBoundary(Z).
+drawn(X) :- outermost(X).
+visible(X) :- drawn(X).
+hide(X) :- drawn(A), contains(A, X).
+% open boundaries become visible through the visible elements they contain
 
 % the drawn element that stands for each entity
-conduitEnd(X, X) :- visible(X), not trustBoundary(X).
-conduitEnd(X, Z) :- zone(Z), contains(Z, X).
+conduitEnd(A, A) :- drawn(A).
+conduitEnd(X, A) :- drawn(A), contains(A, X).
 
 % A conduit merges all dataflows between two drawn elements. Dataflows inside
 % one zone are not shown.
