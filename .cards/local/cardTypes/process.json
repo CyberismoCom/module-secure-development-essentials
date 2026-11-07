@@ -42,6 +42,10 @@
         {
             "name": "ismsa/fieldTypes/assetHse",
             "isCalculated": false
+        },
+        {
+            "name": "secdeva/fieldTypes/layoutRow",
+            "isCalculated": false
         }
     ],
     "alwaysVisibleFields": [
@@ -55,7 +59,8 @@
         "ismsa/fieldTypes/assetHse"
     ],
     "optionallyVisibleFields": [
-        "base/fieldTypes/owner"
+        "base/fieldTypes/owner",
+        "secdeva/fieldTypes/layoutRow"
     ],
     "displayName": "Process",
     "description": "A process element in a dataflow model"

@@ -1,0 +1,43 @@
+{{#if layout}}
+attr(graph, toplevelGraph, rankdir, "{{layout}}").
+{{/if}}
+
+% A zone is an outermost trust boundary of the model. Everything inside a zone
+% is hidden, and the zone is drawn as a single node that represents its
+% contents. Entities outside all zones, such as persons and external entities,
+% are drawn as they are.
+
+% By default, all dataflow elements in the project are in scope, as in the label
+% view. The optional parameter root limits the scope to the descendants of one
+% card, such as a threat model.
+{{#if root}}
+inScope(X) :- entity(X), ancestor(X, {{root}}).
+{{else}}
+inScope(X) :- entity(X), projectCard(X).
+{{/if}}
+
+zone(Z) :- trustBoundary(Z), inScope(Z), not innerBoundary(Z).
+innerBoundary(Z) :- trustBoundary(Z), consistsOf(P, Z), trustBoundary(P).
+insideZone(X) :- zone(Z), contains(Z, X).
+
+visible(Z) :- zone(Z).
+visible(X) :- inScope(X), not trustBoundary(X), not insideZone(X), not consistsOf(_, X).
+hide(X) :- insideZone(X).
+
+% the drawn element that stands for each entity
+conduitEnd(X, X) :- visible(X), not trustBoundary(X).
+conduitEnd(X, Z) :- zone(Z), contains(Z, X).
+
+% A conduit merges all dataflows between two drawn elements. Dataflows inside
+% one zone are not shown.
+conduit(A, B, N) :-
+    conduitEnd(_, A), conduitEnd(_, B), A != B,
+    N = #count { X, Y, T : dataflow(X, Y, T), conduitEnd(X, A), conduitEnd(Y, B) },
+    N > 0.
+
+conduitTitle(A, B, "1 dataflow") :- conduit(A, B, 1).
+conduitTitle(A, B, @concatenate(N, " dataflows")) :- conduit(A, B, N), N > 1.
+
+edge_((A, B, T), toplevelGraph, A, B) :- conduitTitle(A, B, T).
+
+highlightRowSkips.

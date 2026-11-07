@@ -1,0 +1,5 @@
+{
+    "name": "secdeva/graphViews/zones",
+    "displayName": "Zones and conduits",
+    "description": "A dataflow diagram where each outermost trust boundary is collapsed to a single box and the dataflows between two boxes are merged into one conduit"
+}

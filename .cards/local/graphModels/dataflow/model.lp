@@ -29,8 +29,9 @@ hide(X) :- interface(X).
 
 % attributes of entities
 title(X, Title) :- entity(X), field(X, "title", Title).
-description(X, Description) :- entity(X), field(X, "secdeva/fieldTypes/description", Description).
-technology(X, Technology) :- entity(X), field(X, "secdeva/fieldTypes/technology", Technology).
+% empty values are ignored, as an empty HTML element is not valid in a Graphviz label
+description(X, Description) :- entity(X), field(X, "secdeva/fieldTypes/description", Description), Description != "".
+technology(X, Technology) :- entity(X), field(X, "secdeva/fieldTypes/technology", Technology), Technology != "".
 
 % recursive composition rules
 % we use consistsOf and contains instead of parent and ancestor, because
@@ -266,14 +267,20 @@ edge_((XR, YR, N), toplevelGraph, X, Y) :-
     node(YR, toplevelGraph),
     XR != YR.
 
-edge((XR, YR, N), G) :- edge_((XR, YR, N), G, _, _).
+edge((XR, YR, N), G) :- edge_((XR, YR, N), G, _, _), not upwardEdge(XR, YR).
+
+% An edge that points upwards in the layout rows (see below) is drawn reversed
+% with dir=back, so that its arrow still points to the destination but it
+% follows the rows instead of fighting them.
+edge((YR, XR, N), G) :- edge_((XR, YR, N), G, _, _), upwardEdge(XR, YR).
+attr(edge, (YR, XR, N), dir, back) :- edge_((XR, YR, N), _, _, _), upwardEdge(XR, YR).
 
 % edges that have a graph as an endpoint
 attr(graph, X, compound, true) :- graph(X).
 attr(graph, X, compound, true) :- graph(X, _).
 
-attr(edge, (XR, YR, N), ltail, @concatenate("cluster_", XR)) :- edge((XR, YR, N), _), graph(XR, _).
-attr(edge, (XR, YR, N), lhead, @concatenate("cluster_", YR)) :- edge((XR, YR, N), _), graph(YR, _).
+attr(edge, (XR, YR, N), ltail, @concatenate("cluster_", XR)) :- edge((XR, YR, N), _), graph(XR, _), not layoutEdge((XR, YR, N)).
+attr(edge, (XR, YR, N), lhead, @concatenate("cluster_", YR)) :- edge((XR, YR, N), _), graph(YR, _), not layoutEdge((XR, YR, N)).
 
 % edge "inherits" title from the original dataflow
 title((XR, YR, Title), Title) :- dataflow(X, Y, Title), edge_((XR, YR, Title), _, X, Y).
@@ -289,7 +296,7 @@ attr(graph, X, margin, "25") :- graph(X, _).
 attr(graph, X, penwidth, "3") :- graph(X).
 attr(graph, X, penwidth, "3") :- graph(X, _).
 attr(node, X, penwidth, "3") :- node(X, _).
-attr(edge, (X, Y, N), penwidth, "2") :- edge((X, Y, N), _).
+attr(edge, (X, Y, N), penwidth, "2") :- edge((X, Y, N), _), not rowSkipEdge((X, Y, N)).
 attr(edge, (X, Y, N), arrowsize, "2") :- edge((X, Y, N), _).
 
 % node labels and descriptions
@@ -382,7 +389,8 @@ attr(graph, X, labeljust, l) :- entity(X), graph(X, _).
 % notice the extra spaces, as for compatibility reasons, we have to use at least a whitespace the label
 attr(edge, (X, Y, Title), label, @concatenate(
     "<<font point-size='24'> ", Title, " </font>>")) :-
-        edge((X, Y, Title), _).
+        edge((X, Y, Title), _),
+        not layoutEdge((X, Y, Title)).
 
 % shapes of graphs
 attr(graph, X, shape, rectangle) :- process(X), graph(X, _).
@@ -413,3 +421,89 @@ attr(graph, G, fontname, "helvetica") :- graph(G).
 attr(graph, G, fontname, "helvetica") :- graph(G, _).
 attr(node, N, fontname, "helvetica") :- node(N, _), not invisible(N).
 attr(edge, (X, Y, N), fontname, "helvetica") :- edge((X, Y, N), _).
+
+%
+% Layout rows
+%
+% An element may define the row in which it is drawn, using the field
+% secdeva/fieldTypes/layoutRow. Row 1 is the top row. An element without a row
+% inherits the row of its nearest ancestor that has one. Elements without any
+% row are placed freely by Graphviz, as before.
+%
+% Rows are enforced with an invisible marker node per row and invisible edges
+% marker(R) -> member -> marker(next row), so that every member of a row is
+% ranked below the members of the previous row. Dataflows that point upwards
+% (to a lower row number) are drawn reversed with dir=back, so that they
+% follow the rows instead of contradicting them.
+%
+% Rows only fix the vertical position. Graphviz decides the horizontal order
+% to minimise edge crossings; it follows the navigation tree order only when
+% that does not add crossings.
+
+layoutRow(X, R) :- entity(X), field(X, "secdeva/fieldTypes/layoutRow", R).
+hasLayoutRow(X) :- layoutRow(X, _).
+effectiveRow(X, R) :- layoutRow(X, R).
+effectiveRow(X, R) :- entity(X), not hasLayoutRow(X), consistsOf(P, X), effectiveRow(P, R).
+
+% drawn nodes in each row, including the invisible anchor points of clusters
+rowMember(X, R) :- node(X, _), entity(X), effectiveRow(X, R).
+usedRow(R) :- rowMember(_, R).
+nextRow(R1, R2) :-
+    usedRow(R1), usedRow(R2), R1 < R2,
+    #count { R : usedRow(R), R1 < R, R < R2 } = 0.
+
+rowMarker(@concatenate("rowMarker_", R)) :- usedRow(R).
+rowMarkerOf(R, @concatenate("rowMarker_", R)) :- usedRow(R).
+node(M, toplevelGraph) :- rowMarker(M).
+invisible(M) :- rowMarker(M).
+attr(node, M, shape, point) :- rowMarker(M).
+attr(node, M, style, invis) :- rowMarker(M).
+
+layoutEdge((M1, M2, layout)) :- nextRow(R1, R2), rowMarkerOf(R1, M1), rowMarkerOf(R2, M2).
+layoutEdge((M, X, layout)) :- rowMember(X, R), rowMarkerOf(R, M).
+layoutEdge((X, M, layout)) :- rowMember(X, R1), nextRow(R1, R2), rowMarkerOf(R2, M).
+
+edge(E, toplevelGraph) :- layoutEdge(E).
+attr(edge, E, style, invis) :- layoutEdge(E).
+attr(edge, E, weight, "0") :- layoutEdge(E).
+
+% global ranking keeps the rows aligned across trust boundaries
+attr(graph, toplevelGraph, newrank, true) :- usedRow(_).
+
+% upward dataflows are drawn reversed, see the edge rules above
+upwardEdge(XR, YR) :-
+    edge_((XR, YR, _), _, _, _),
+    effectiveRow(XR, RX), effectiveRow(YR, RY), RX > RY.
+
+% rowOwner(X, O): O is the element that gives X its row (X itself or an ancestor)
+rowOwner(X, X) :- layoutRow(X, _).
+rowOwner(X, O) :- entity(X), not hasLayoutRow(X), consistsOf(P, X), rowOwner(P, O).
+
+% A dataflow between two different elements of the same row does not constrain
+% the ranking, so that the elements stay aligned side by side.
+attr(edge, (XR, YR, N), constraint, false) :-
+    edge((XR, YR, N), _), not layoutEdge((XR, YR, N)),
+    effectiveRow(XR, R), effectiveRow(YR, R),
+    rowOwner(XR, OX), rowOwner(YR, OY), OX != OY.
+
+% Row skipping: when a view defines highlightRowSkips, dataflows that skip
+% over at least one row are highlighted. When the rows are the levels of a
+% layered architecture, such as the Purdue model in OT systems, these are the
+% dataflows that bypass a layer, for example a remote connection directly from
+% outside to a control network without passing through a DMZ.
+rowSkip(XR, YR, N) :-
+    highlightRowSkips,
+    edge_((XR, YR, N), _, _, _),
+    effectiveRow(XR, RX), effectiveRow(YR, RY),
+    usedRow(R), RX < R, R < RY.
+rowSkip(XR, YR, N) :-
+    highlightRowSkips,
+    edge_((XR, YR, N), _, _, _),
+    effectiveRow(XR, RX), effectiveRow(YR, RY),
+    usedRow(R), RY < R, R < RX.
+rowSkipEdge((XR, YR, N)) :- rowSkip(XR, YR, N), not upwardEdge(XR, YR).
+rowSkipEdge((YR, XR, N)) :- rowSkip(XR, YR, N), upwardEdge(XR, YR).
+attr(edge, E, color, "#cc0000") :- rowSkipEdge(E).
+attr(edge, E, fontcolor, "#cc0000") :- rowSkipEdge(E).
+attr(edge, E, penwidth, "5") :- rowSkipEdge(E).
+

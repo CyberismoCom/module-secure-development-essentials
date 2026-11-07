@@ -20,12 +20,17 @@
             "name": "secdeva/fieldTypes/trustBoundaryType",
             "displayName": "",
             "isCalculated": false
+        },
+        {
+            "name": "secdeva/fieldTypes/layoutRow",
+            "isCalculated": false
         }
     ],
     "alwaysVisibleFields": [
         "secdeva/fieldTypes/description",
         "secdeva/fieldTypes/trustBoundaryType",
-        "secdeva/fieldTypes/technology"
+        "secdeva/fieldTypes/technology",
+        "secdeva/fieldTypes/layoutRow"
     ],
     "optionallyVisibleFields": [
         "base/fieldTypes/owner"

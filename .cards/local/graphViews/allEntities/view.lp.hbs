@@ -3,3 +3,6 @@ attr(graph, toplevelGraph, rankdir, "{{layout}}").
 {{/if}}
 
 view(TopLevelEntity) :- ancestor(TopLevelEntity, {{cardKey}}).
+{{#if highlightRowSkips}}
+highlightRowSkips.
+{{/if}}
