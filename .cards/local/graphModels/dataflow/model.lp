@@ -27,6 +27,11 @@ external(X) :- person(X).
 datastore(X) :- field(X, "cardType", "secdeva/cardTypes/dataStore").
 entity(X) :- datastore(X).
 
+% A group organises elements in the navigation tree and in the layered layout.
+% It is not an entity: it is never drawn, and its elements are treated as if
+% they were directly inside the parent of the group.
+group(X) :- field(X, "cardType", "secdeva/cardTypes/group").
+
 % interfaces and physical ports and connections (always hidden)
 interface(X) :- field(X, "cardType", "secdeva/cardTypes/interface").
 entity(X) :- interface(X).
@@ -41,7 +46,11 @@ technology(X, Technology) :- entity(X), field(X, "secdeva/fieldTypes/technology"
 % recursive composition rules
 % we use consistsOf and contains instead of parent and ancestor, because
 % composition may be indicated either by ancestorship or by links
-consistsOf(Y, X) :- parent(X, Y), entity(X), entity(Y).
+% entityParent(X, Y): Y is the nearest ancestor of X that is an entity, when
+% there are only groups in between
+entityParent(X, Y) :- parent(X, Y), entity(Y).
+entityParent(X, Y) :- parent(X, G), group(G), entityParent(G, Y).
+consistsOf(Y, X) :- entityParent(X, Y), entity(X), entity(Y).
 contains(X, Y) :- consistsOf(X, Y), entity(X), entity(Y).
 contains(X, Z) :- consistsOf(X, Y), contains(Y, Z), entity(X), entity(Y), entity(Z).
 % effectiveParent(X, Y) means Y is the nearest non-trust-boundary ancestor of X
@@ -459,7 +468,8 @@ attr(edge, (X, Y, N), fontname, "helvetica") :- edge((X, Y, N), _).
 %   physical or organisational trust boundaries, such as a site. The zones are
 %   stacked from top to bottom in tree order, one row per zone. To draw zones
 %   side by side, nest them in a common zone, such as a control network that
-%   contains one zone per production cell.
+%   contains one zone per production cell, or in a group, if there is no
+%   common zone.
 % - Everything inside a zone is in the row of the zone.
 % - Other elements, such as persons and external entities, are placed in the
 %   highest row of the zoned elements that they exchange dataflows with.
@@ -476,25 +486,35 @@ attr(edge, (X, Y, N), fontname, "helvetica") :- edge((X, Y, N), _).
 % to minimise edge crossings; it follows the navigation tree order only when
 % that does not add crossings.
 
-% modelOf(X, M): entity X belongs to the dataflow model or threat model M
-modelOf(X, M) :- entity(X), not consistsOf(_, X), parent(X, M), not entity(M).
-modelOf(X, M) :- consistsOf(P, X), modelOf(P, M).
+% The layout follows the cards themselves, including groups.
+layoutItem(X) :- entity(X).
+layoutItem(X) :- group(X).
+layoutParent(X, P) :- layoutItem(X), parent(X, P), layoutItem(P).
+
+% modelOf(X, M): X belongs to the dataflow model or threat model M
+modelOf(X, M) :- layoutItem(X), parent(X, M), not layoutItem(M).
+modelOf(X, M) :- layoutParent(X, P), modelOf(P, M).
 zoneLayers(M) :- modelOf(_, M), field(M, "secdeva/fieldTypes/diagramLayout", "zoneLayers").
 
-% treeOrder(X, T): T orders the entities in the order of the navigation tree
-treeOrder(X, R) :- entity(X), not consistsOf(_, X), field(X, "rank", R).
-treeOrder(X, @concatenate(T, " - ", R)) :- consistsOf(P, X), treeOrder(P, T), field(X, "rank", R).
+% treeOrder(X, T): T orders the cards in the order of the navigation tree
+treeOrder(X, R) :- layoutItem(X), not layoutParent(X, _), field(X, "rank", R).
+treeOrder(X, @concatenate(T, " - ", R)) :- layoutParent(X, P), treeOrder(P, T), field(X, "rank", R).
 
+% A layer is drawn as one row. Layers are the zones and the groups that contain
+% zones, at the top level of the model or only inside physical or
+% organisational trust boundaries. The zones of a group are side by side.
 technicalBoundary(B) :- trustBoundary(B), not enclosingBoundary(B).
-layerOpenBoundary(B) :- enclosingBoundary(B), not consistsOf(_, B).
-layerOpenBoundary(B) :- enclosingBoundary(B), consistsOf(P, B), layerOpenBoundary(P).
-layerZone(Z, M) :- technicalBoundary(Z), modelOf(Z, M), zoneLayers(M), not consistsOf(_, Z).
-layerZone(Z, M) :- technicalBoundary(Z), modelOf(Z, M), zoneLayers(M), consistsOf(P, Z), layerOpenBoundary(P).
+groupWithZones(G) :- group(G), parent(B, G), technicalBoundary(B).
+groupWithZones(G) :- group(G), parent(G2, G), groupWithZones(G2).
+layerLevel(X) :- layoutItem(X), not layoutParent(X, _).
+layerLevel(X) :- layoutParent(X, P), enclosingBoundary(P), layerLevel(P).
+layer(L, M) :- layerLevel(L), technicalBoundary(L), modelOf(L, M), zoneLayers(M).
+layer(L, M) :- layerLevel(L), groupWithZones(L), modelOf(L, M), zoneLayers(M).
 
-zoneRow(Z, N) :-
-    layerZone(Z, M), treeOrder(Z, T),
-    C = #count { Z2 : layerZone(Z2, M), treeOrder(Z2, T2), T2 < T }, N = C + 1.
-zoneRow(X, R) :- entity(X), consistsOf(P, X), zoneRow(P, R).
+zoneRow(L, N) :-
+    layer(L, M), treeOrder(L, T),
+    C = #count { L2 : layer(L2, M), treeOrder(L2, T2), T2 < T }, N = C + 1.
+zoneRow(X, R) :- layoutParent(X, P), zoneRow(P, R).
 
 % elements outside the zones follow the zoned elements they exchange dataflows with
 partnerRow(X, R) :-

@@ -11,6 +11,13 @@
   "template": "secdeva/templates/trustBoundary2"
 {{/createCards}}
 
+{{#if (eq variant "trustBoundary")}}
+{{#createCards}}
+  "buttonLabel": "Create a group",
+  "template": "secdeva/templates/group"
+{{/createCards}}
+{{/if}}
+
 {{#createCards}}
   "buttonLabel": "Create an external entity",
   "template": "secdeva/templates/external2"
