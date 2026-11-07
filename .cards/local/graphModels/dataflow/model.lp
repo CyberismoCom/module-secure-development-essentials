@@ -250,7 +250,7 @@ visible(Y) :-
 % edge_ is a helper predicate to keep track of both the original entities and the representatives of the dataflow
 % the edge is placed on the toplevel graph
 
-edge_((XR, YR, N), toplevelGraph, X, Y) :-
+dataflowEdge((XR, YR, N), toplevelGraph, X, Y) :-
     representative(XR, X),
     representative(YR, Y),
     visible(dataflow(X, Y, N)),
@@ -258,19 +258,39 @@ edge_((XR, YR, N), toplevelGraph, X, Y) :-
     consistsOf(GY, YR),
     XR != YR.
 
-edge_((XR, YR, N), toplevelGraph, X, Y) :-
+dataflowEdge((XR, YR, N), toplevelGraph, X, Y) :-
     representative(XR, X),
     representative(YR, Y),
     visible(dataflow(X, Y, N)),
     node(XR, toplevelGraph),
     XR != YR.
 
-edge_((XR, YR, N), toplevelGraph, X, Y) :-
+dataflowEdge((XR, YR, N), toplevelGraph, X, Y) :-
     representative(XR, X),
     representative(YR, Y),
     visible(dataflow(X, Y, N)),
     node(YR, toplevelGraph),
     XR != YR.
+
+% dataflowEdge is a dataflow drawn between two representatives. Normally each
+% dataflow is drawn as its own edge.
+edge_(E, G, X, Y) :- dataflowEdge(E, G, X, Y), not mergeDataflows.
+
+% When a view defines mergeDataflows, all the dataflows from one representative
+% to another are drawn as one edge, whose label lists the dataflows one per
+% line in alphabetical order. This keeps overview diagrams readable when many
+% dataflows run between the same two elements.
+mergedFlow(XR, YR, N) :- dataflowEdge((XR, YR, N), _, _, _), mergeDataflows.
+nextMergedFlow(XR, YR, N1, N2) :-
+    mergedFlow(XR, YR, N1), mergedFlow(XR, YR, N2), N1 < N2,
+    #count { N : mergedFlow(XR, YR, N), N1 < N, N < N2 } = 0.
+hasPreviousMergedFlow(XR, YR, N2) :- nextMergedFlow(XR, YR, _, N2).
+hasNextMergedFlow(XR, YR, N1) :- nextMergedFlow(XR, YR, N1, _).
+mergedLabel(XR, YR, N, N) :- mergedFlow(XR, YR, N), not hasPreviousMergedFlow(XR, YR, N).
+mergedLabel(XR, YR, N2, @concatenate(L, "<br/>", N2)) :-
+    mergedLabel(XR, YR, N1, L), nextMergedFlow(XR, YR, N1, N2).
+edge_((XR, YR, L), toplevelGraph, XR, YR) :-
+    mergedLabel(XR, YR, N, L), not hasNextMergedFlow(XR, YR, N).
 
 edge((XR, YR, N), G) :- edge_((XR, YR, N), G, _, _), not upwardEdge(XR, YR).
 

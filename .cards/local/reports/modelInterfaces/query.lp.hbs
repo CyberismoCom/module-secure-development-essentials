@@ -1,15 +1,23 @@
 selectAll.
 
+% Physical and organisational trust boundaries, such as a site, may contain
+% persons and external entities. Only the other, technical trust boundaries
+% decide whether an entity is inside or outside the system.
+secdeva_technicalTrustBoundary(TrustBoundary) :-
+    field(TrustBoundary, "cardType", "secdeva/cardTypes/trustBoundary"),
+    not field(TrustBoundary, "secdeva/fieldTypes/trustBoundaryType", "physical"),
+    not field(TrustBoundary, "secdeva/fieldTypes/trustBoundaryType", "organisational").
+
 secdeva_entityOutsideTrustBoundaries(Entity, Model) :-
     ancestor(Entity, Model),
-    not field(Ancestor, "cardType", "secdeva/cardTypes/trustBoundary") :
+    not secdeva_technicalTrustBoundary(Ancestor) :
     ancestor(Entity, Ancestor).
 
 secdeva_entityWithinTrustBoundary(Entity, Model) :-
      ancestor(Entity, Model),
      ancestor(TrustBoundary, Model),
      ancestor(Entity, TrustBoundary),
-     field(TrustBoundary, "cardType", "secdeva/cardTypes/trustBoundary").
+     secdeva_technicalTrustBoundary(TrustBoundary).
 
 result(result).
 

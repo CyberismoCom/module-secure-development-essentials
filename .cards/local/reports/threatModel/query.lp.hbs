@@ -8,16 +8,36 @@ result(result).
 % Helper predicates
 % ----------------------------------------------------------------------------
 
+% Physical and organisational trust boundaries, such as a site, may contain
+% persons and external entities. Only the other, technical trust boundaries
+% decide whether an entity is inside or outside the system.
+secdeva_technicalTrustBoundary(TrustBoundary) :-
+    field(TrustBoundary, "cardType", "secdeva/cardTypes/trustBoundary"),
+    not field(TrustBoundary, "secdeva/fieldTypes/trustBoundaryType", "physical"),
+    not field(TrustBoundary, "secdeva/fieldTypes/trustBoundaryType", "organisational").
+
 secdeva_entityOutsideTrustBoundaries(Entity, Model) :-
     ancestor(Entity, Model),
-    not field(Ancestor, "cardType", "secdeva/cardTypes/trustBoundary") :
+    not secdeva_technicalTrustBoundary(Ancestor) :
     ancestor(Entity, Ancestor).
 
 secdeva_entityWithinTrustBoundary(Entity, Model) :-
      ancestor(Entity, Model),
      ancestor(TrustBoundary, Model),
      ancestor(Entity, TrustBoundary),
-     field(TrustBoundary, "cardType", "secdeva/cardTypes/trustBoundary").
+     secdeva_technicalTrustBoundary(TrustBoundary).
+
+% The title of a dataflow endpoint. An interface is shown with the element that
+% owns it, such as "Jump host: Remote Desktop".
+secdeva_endpointTitle(Card, @concatenate(OwnerTitle, ": ", Title)) :-
+    field(Card, "cardType", "secdeva/cardTypes/interface"),
+    field(Card, "title", Title),
+    parent(Card, Owner),
+    field(Owner, "title", OwnerTitle).
+
+secdeva_endpointTitle(Card, Title) :-
+    field(Card, "title", Title),
+    not field(Card, "cardType", "secdeva/cardTypes/interface").
 
 secdeva_threatModelEntity(Card) :-
     ancestor(Card, {{cardKey}}).
@@ -110,7 +130,7 @@ field((A, B, Title), "secdeva/fieldTypes/externalTitle", External) :-
      link(A, B, "secdeva/linkTypes/dataflow", Title),
      secdeva_entityWithinTrustBoundary(A, {{cardKey}}),
      secdeva_entityOutsideTrustBoundaries(B, {{cardKey}}),
-     field(B, "title", External).
+     secdeva_endpointTitle(B, External).
 
 field((A, B, Title), "secdeva/fieldTypes/externalCardKey", B) :-
      link(A, B, "secdeva/linkTypes/dataflow", Title),
@@ -121,7 +141,7 @@ field((A, B, Title), "secdeva/fieldTypes/internalTitle", Internal) :-
      link(A, B, "secdeva/linkTypes/dataflow", Title),
      secdeva_entityWithinTrustBoundary(A, {{cardKey}}),
      secdeva_entityOutsideTrustBoundaries(B, {{cardKey}}),
-     field(A, "title", Internal).
+     secdeva_endpointTitle(A, Internal).
 
 field((A, B, Title), "secdeva/fieldTypes/internalCardKey", A) :-
      link(A, B, "secdeva/linkTypes/dataflow", Title),
@@ -148,7 +168,7 @@ field((A, B, Title), "secdeva/fieldTypes/externalTitle", External) :-
      link(A, B, "secdeva/linkTypes/dataflow", Title),
      secdeva_entityOutsideTrustBoundaries(A, {{cardKey}}),
      secdeva_entityWithinTrustBoundary(B, {{cardKey}}),
-     field(A, "title", External).
+     secdeva_endpointTitle(A, External).
 
 field((A, B, Title), "secdeva/fieldTypes/externalCardKey", A) :-
      link(A, B, "secdeva/linkTypes/dataflow", Title),
@@ -160,7 +180,7 @@ field((A, B, Title), "secdeva/fieldTypes/internalTitle", Internal) :-
      link(A, B, "secdeva/linkTypes/dataflow", Title),
      secdeva_entityOutsideTrustBoundaries(A, {{cardKey}}),
      secdeva_entityWithinTrustBoundary(B, {{cardKey}}),
-     field(B, "title", Internal).
+     secdeva_endpointTitle(B, Internal).
 
 field((A, B, Title), "secdeva/fieldTypes/internalCardKey", B) :-
      link(A, B, "secdeva/linkTypes/dataflow", Title),
@@ -182,13 +202,13 @@ field((A, B, Title), "secdeva/fieldTypes/source", Source) :-
      link(A, B, "secdeva/linkTypes/dataflow", Title),
      secdeva_entityWithinTrustBoundary(A, {{cardKey}}),
      secdeva_entityWithinTrustBoundary(B, {{cardKey}}),
-     field(A, "title", Source).
+     secdeva_endpointTitle(A, Source).
 
 field((A, B, Title), "secdeva/fieldTypes/destination", Destination) :-
      link(A, B, "secdeva/linkTypes/dataflow", Title),
      secdeva_entityWithinTrustBoundary(A, {{cardKey}}),
      secdeva_entityWithinTrustBoundary(B, {{cardKey}}),
-     field(B, "title", Destination).
+     secdeva_endpointTitle(B, Destination).
 
 field((A, B, Title), "secdeva/fieldTypes/destinationCardKey", B) :-
      link(A, B, "secdeva/linkTypes/dataflow", Title),
