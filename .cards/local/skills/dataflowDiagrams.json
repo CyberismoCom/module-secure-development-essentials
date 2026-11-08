@@ -1,0 +1,7 @@
+{
+    "name": "secdeva/skills/dataflowDiagrams",
+    "displayName": "Dataflow diagrams and views",
+    "category": "threat modelling",
+    "description": "Make the dataflow diagrams of a threat model readable: the diagram layout (following the dataflows, or zones in tree order for layered architectures such as the Purdue model), the context, detailed, zones-and-conduits and label views, merged dataflows, highlighting dataflows that bypass a layer, labels and the Targeted views page. Lists the labels in use and the elements without labels.",
+    "relatedTools": ["get_card", "edit_card_metadata", "edit_card_content", "create_card", "create_label", "list_labels", "remove_label", "rank_card_after", "run_graph"]
+}

@@ -1,0 +1,7 @@
+{
+    "name": "secdeva/skills/interfaces",
+    "displayName": "Document interfaces",
+    "category": "threat modelling",
+    "description": "Document the attack surface of a threat model with interface cards: listening ports, authentication, transport security, purpose (operational, maintenance, debug) and physical ports such as front panels and USB. Lists the elements that receive dataflows across trust boundaries without interfaces, dataflows that bypass existing interfaces, and interfaces with missing security details.",
+    "relatedTools": ["get_card", "create_card", "edit_card_metadata", "edit_card_content", "create_link", "remove_link", "remove_card"]
+}

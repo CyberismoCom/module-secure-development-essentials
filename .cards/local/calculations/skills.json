@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/calculations/skills",
+    "displayName": "Threat modelling skills",
+    "description": "Enables the threat modelling skills and defines the helper predicates that their queries use",
+    "calculation": "calculation.lp"
+}
