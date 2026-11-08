@@ -1,0 +1,22 @@
+{
+    "rank": "0|b",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T20:07:10.049Z",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_ij98ks6q",
+            "linkDescription": "Browse [HTTPS]"
+        },
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_hmsoe7b5",
+            "linkDescription": "Use app"
+        }
+    ],
+    "cardType": "secdeva/cardTypes/person",
+    "title": "User",
+    "templateCardKey": "secdeva_o5jlgqkl",
+    "lastUpdated": "2026-11-08T20:07:32.019Z",
+    "secdeva/fieldTypes/description": "Uses the service"
+}

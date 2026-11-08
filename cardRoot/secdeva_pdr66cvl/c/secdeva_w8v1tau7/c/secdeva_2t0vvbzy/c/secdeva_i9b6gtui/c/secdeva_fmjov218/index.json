@@ -1,0 +1,11 @@
+{
+    "rank": "0|l",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T20:07:25.022Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/group",
+    "title": "Partners",
+    "templateCardKey": "secdeva_4la1ihw8",
+    "lastUpdated": "2026-11-08T20:07:25.024Z",
+    "secdeva/fieldTypes/description": "Group with a nested group"
+}

@@ -1,0 +1,11 @@
+{
+    "rank": "0|b",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T20:07:28.557Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/external",
+    "title": "Payment provider",
+    "templateCardKey": "secdeva_rd2v7o60",
+    "lastUpdated": "2026-11-08T20:07:28.558Z",
+    "secdeva/fieldTypes/description": "Card payments"
+}

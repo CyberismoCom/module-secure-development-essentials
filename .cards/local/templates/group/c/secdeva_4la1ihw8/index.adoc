@@ -1,6 +1,8 @@
 [TIP]
 ====
-A group organises the elements of a dataflow model in the navigation tree. It is not an asset and not a trust boundary, and it is not drawn in the diagrams: its elements are drawn as if they were directly inside the parent of the group.
+A group organises the elements of a dataflow model in the navigation tree and arranges the diagrams. It is not an asset and not a trust boundary, and it has no box or frame of its own: its elements are drawn as if they were directly inside the parent of the group.
+
+When the diagram layout of the model is _Follow the dataflows_, the elements of a group are kept together in the diagrams.
 
 When the diagram layout of the model is _Zones in tree order_, a group that contains zones is one row of the diagram, and its zones are drawn side by side in tree order.
 

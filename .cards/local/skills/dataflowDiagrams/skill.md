@@ -30,12 +30,13 @@ There is no page under the threat model yet. Create a "Targeted views" page (see
 
 The field `secdeva/fieldTypes/diagramLayout` of the threat model card selects how the diagrams are laid out:
 
-- **`dataflows` — follow the dataflows (the default).** Elements are placed by the direction of the dataflows, so the elements that start connections are above the ones they connect to. The navigation tree order sets the left-to-right order. This suits typical software and IT models, where data mostly flows one way, from users inwards.
+- **`dataflows` — follow the dataflows (the default).** Elements are placed by the direction of the dataflows, so the elements that start connections are above the ones they connect to. The navigation tree order sets the left-to-right order. The elements of a group are kept together, as if inside an invisible frame. This suits typical software and IT models, where data mostly flows one way, from users inwards.
 - **`zoneLayers` — zones in tree order.** For layered architectures, such as the Purdue model or ISA-95 in OT systems, or tiered networks. The card tree dictates the layout:
   - **Zones are stacked from top to bottom in tree order.** A zone is an outermost technical trust boundary; physical and organisational boundaries around it, such as a site, do not count. Rank the zones from the top level down with `rank_card_after`: enterprise (L4–L5), DMZ (L3.5), operations (L3), control (L0–L2).
   - **Zones side by side need a common parent**: a zone that really exists, such as a control network behind the L3 firewall with one zone per production cell, or else a group. Do not create a trust boundary or a process only for the layout.
   - **Persons and external entities** are placed automatically in the highest row of the elements they exchange dataflows with.
   - **Within a zone, the dataflows decide the order**, so an HMI is usually drawn above its PLC.
+  - **Groups set rows only.** They don't keep their elements together in this layout, so that persons and external entities stay in the rows of the elements they connect to.
 
 Do not switch an existing model to `zoneLayers` unless its zones really are layers: peer zones, such as a user's computer, a code hosting service and a CI pipeline, are drawn worse when they are stacked.
 

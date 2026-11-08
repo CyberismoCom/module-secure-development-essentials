@@ -27,9 +27,10 @@ external(X) :- person(X).
 datastore(X) :- field(X, "cardType", "secdeva/cardTypes/dataStore").
 entity(X) :- datastore(X).
 
-% A group organises elements in the navigation tree and in the layered layout.
-% It is not an entity: it is never drawn, and its elements are treated as if
-% they were directly inside the parent of the group.
+% A group organises elements in the navigation tree and in the diagrams. It is
+% not an entity: it has no box of its own, and its elements are treated as if
+% they were directly inside the parent of the group. In the layered layout a
+% group sets rows; otherwise it keeps its elements together (see "Groups" below).
 group(X) :- field(X, "cardType", "secdeva/cardTypes/group").
 
 % interfaces and physical ports and connections (always hidden)
@@ -150,7 +151,7 @@ graph(toplevelGraph).
 % graphTopLevelEntity(X) means that X is a top-level entity that must be drawn as a graph,
 % because it has visible "children"
 graphTopLevelEntity(X) :- entity(X), visible(X), not consistsOf(_, X), contains(X, Y), visible(Y).
-graph(X, toplevelGraph) :- graphTopLevelEntity(X).
+entityGraphIn(X, toplevelGraph) :- graphTopLevelEntity(X).
 node(X, X) :- graphTopLevelEntity(X).
 invisible(X) :- graphTopLevelEntity(X).
 attr(node, X, shape, point) :- graphTopLevelEntity(X).
@@ -160,8 +161,8 @@ attr(node, X, style, invis) :- graphTopLevelEntity(X).
 % because it has visible "children", and its own parent is not visible.
 % If a nearest visible ancestor exists, X is placed inside it; otherwise at the top level.
 graphEntityHiddenAncestors(X) :-  visible(X), not visible(P), consistsOf(P, X), entity(X), contains(X, Y), visible(Y).
-graph(X, G) :- graphEntityHiddenAncestors(X), nearestVisibleAncestor(X, G).
-graph(X, toplevelGraph) :- graphEntityHiddenAncestors(X), not nearestVisibleAncestor(X, _).
+entityGraphIn(X, G) :- graphEntityHiddenAncestors(X), nearestVisibleAncestor(X, G).
+entityGraphIn(X, toplevelGraph) :- graphEntityHiddenAncestors(X), not nearestVisibleAncestor(X, _).
 node(X, X) :- graphEntityHiddenAncestors(X).
 invisible(X) :- graphEntityHiddenAncestors(X).
 attr(node, X, shape, point) :- graphEntityHiddenAncestors(X).
@@ -170,7 +171,7 @@ attr(node, X, style, invis) :- graphEntityHiddenAncestors(X).
 % graphLowerLevel(X, P) means that X has visible children and a visible parent,
 % so it must be drawn as a subgraph of P
 graphLowerLevel(X, P) :- visible(X), entity(X), visible(P), consistsOf(P, X), contains(X, Y), visible(Y).
-graph(X, P) :- graphLowerLevel(X, P).
+entityGraphIn(X, P) :- graphLowerLevel(X, P).
 node(X, X) :- graphLowerLevel(X, P).
 invisible(X) :- graphLowerLevel(X, P).
 attr(node, X, shape, point) :- graphLowerLevel(X, P).
@@ -181,10 +182,38 @@ attr(node, X, style, invis) :- graphLowerLevel(X, P).
 % if an entity is visible, but it's not a graph (= does not have visible children), then it is a node.
 % if the immediate parent is not visible, the node is placed in the nearest visible ancestor graph,
 % or at the top level if no such ancestor exists.
-node(X, toplevelGraph) :- entity(X), visible(X), not consistsOf(_, X), not graph(X, toplevelGraph).
-node(X, Y) :- entity(X), visible(X), consistsOf(Y, X), not graph(X, _), visible(Y).
-node(X, G) :- entity(X), visible(X), consistsOf(Y, X), not graph(X, _), not visible(Y), nearestVisibleAncestor(X, G).
-node(X, toplevelGraph) :- entity(X), visible(X), consistsOf(Y, X), not graph(X, _), not visible(Y), not nearestVisibleAncestor(X, _).
+entityNodeIn(X, toplevelGraph) :- entity(X), visible(X), not consistsOf(_, X), not entityGraphIn(X, toplevelGraph).
+entityNodeIn(X, Y) :- entity(X), visible(X), consistsOf(Y, X), not entityGraphIn(X, _), visible(Y).
+entityNodeIn(X, G) :- entity(X), visible(X), consistsOf(Y, X), not entityGraphIn(X, _), not visible(Y), nearestVisibleAncestor(X, G).
+entityNodeIn(X, toplevelGraph) :- entity(X), visible(X), consistsOf(Y, X), not entityGraphIn(X, _), not visible(Y), not nearestVisibleAncestor(X, _).
+
+% Groups
+%
+% entityGraphIn and entityNodeIn place the elements as if there were no groups.
+% Outside the layered layout, a group whose elements are drawn becomes an
+% invisible cluster inside its nearest drawn container, so that Graphviz keeps
+% its elements together. The group has no frame and no label. In the layered
+% layout, groups set rows instead (see "Layered layout" below), and a cluster
+% would pull elements out of their rows.
+groupItemParent(X, P) :- parent(X, P), layoutItem(X), layoutItem(P).
+groupDescendant(G, X) :- group(G), groupItemParent(X, G).
+groupDescendant(G, X) :- groupDescendant(G, P), groupItemParent(X, P).
+layeredGroup(G) :- group(G), modelOf(G, M), zoneLayers(M).
+framedGroup(G) :- groupDescendant(G, X), entity(X), visible(X), not layeredGroup(G).
+drawnContainer(P) :- framedGroup(P).
+drawnContainer(P) :- entity(P), visible(P).
+nearestContainer(X, P) :- groupItemParent(X, P), drawnContainer(P).
+nearestContainer(X, C) :- groupItemParent(X, P), not drawnContainer(P), nearestContainer(P, C).
+inGroup(X, G) :- nearestContainer(X, G), framedGroup(G).
+
+graph(X, G) :- entityGraphIn(X, G), not inGroup(X, _).
+graph(X, G) :- entityGraphIn(X, _), inGroup(X, G).
+node(X, G) :- entityNodeIn(X, G), not inGroup(X, _).
+node(X, G) :- entityNodeIn(X, _), inGroup(X, G).
+
+graph(G, C) :- framedGroup(G), nearestContainer(G, C).
+graph(G, toplevelGraph) :- framedGroup(G), not nearestContainer(G, _).
+attr(graph, G, style, invis) :- framedGroup(G).
 
 % edges and representatives of entities when drawing dataflows
 
@@ -271,14 +300,14 @@ dataflowEdge((XR, YR, N), toplevelGraph, X, Y) :-
     representative(XR, X),
     representative(YR, Y),
     visible(dataflow(X, Y, N)),
-    node(XR, toplevelGraph),
+    entityNodeIn(XR, toplevelGraph),
     XR != YR.
 
 dataflowEdge((XR, YR, N), toplevelGraph, X, Y) :-
     representative(XR, X),
     representative(YR, Y),
     visible(dataflow(X, Y, N)),
-    node(YR, toplevelGraph),
+    entityNodeIn(YR, toplevelGraph),
     XR != YR.
 
 % dataflowEdge is a dataflow drawn between two representatives. Normally each

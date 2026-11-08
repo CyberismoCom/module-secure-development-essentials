@@ -1,0 +1,11 @@
+{
+    "rank": "0|d",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T20:07:14.601Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/process",
+    "title": "Admin portal",
+    "templateCardKey": "secdeva_yye0ku8v",
+    "lastUpdated": "2026-11-08T20:07:14.603Z",
+    "secdeva/fieldTypes/description": "System with components, in a group"
+}

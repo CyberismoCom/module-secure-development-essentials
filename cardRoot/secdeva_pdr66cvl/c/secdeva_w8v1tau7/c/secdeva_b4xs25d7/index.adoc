@@ -20,10 +20,12 @@ node tests/run-graph-tests.mjs
 
 The runner prints PASS or FAIL for each test case and exits with an error if any test fails. It covers:
 
-* `layered-layout`: rows from the card tree, rows of persons and external entities, groups as rows and as navigation only, reversed upward dataflows, highlighted dataflows that bypass a layer, same-row dataflows, interface ports in labels, and the colours of physical and network boundaries.
+* `layered-layout`: rows from the card tree, rows of persons and external entities, groups as rows and as navigation only, no group clusters in this layout, reversed upward dataflows, highlighted dataflows that bypass a layer, same-row dataflows, interface ports in labels, and the colours of physical and network boundaries.
 * `layered-context-merged`: systems as single boxes, and merged parallel dataflows.
 * `layered-zones`: zones as boxes, nested zones and the site as frames, conduits and their counts, and a highlighted bypass.
 * `layered-label-view`: the label view with highlighted bypasses.
+* `grouped-all-entities`: in the layout _Follow the dataflows_, groups are invisible clusters inside their nearest drawn container, nested groups are nested clusters, an empty group is not drawn, and no dataflow into or out of a group is lost.
+* `grouped-context`: a system in a group is one box inside the group, and merged dataflows to its components go to the system.
 * `default-layout`: the deep test model of the _Test project_, which has no diagram layout, is drawn as before: no rows, no reversed or highlighted dataflows, no merged dataflows.
 
-The rendered diagrams are checked by eye on the page _Testing - layered diagrams_.
+The rendered diagrams are checked by eye on the page _Testing - dataflow diagrams_.

@@ -1,7 +1,7 @@
 {
     "name": "secdeva/cardTypes/group",
     "displayName": "Group",
-    "description": "Groups elements of a dataflow model in the navigation tree and in the layered diagram layout. A group is not an asset, not a trust boundary and not drawn in the diagrams",
+    "description": "Groups elements of a dataflow model in the navigation tree and in the diagrams. A group is not an asset and not a trust boundary, and it has no box or frame of its own",
     "workflow": "secdeva/workflows/entity",
     "customFields": [
         {

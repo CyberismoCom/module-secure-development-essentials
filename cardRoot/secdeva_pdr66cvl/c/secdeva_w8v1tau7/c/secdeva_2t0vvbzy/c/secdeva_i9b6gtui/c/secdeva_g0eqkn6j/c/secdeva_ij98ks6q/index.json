@@ -1,0 +1,17 @@
+{
+    "rank": "0|d",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T20:07:22.629Z",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_j513fg3m",
+            "linkDescription": "Web API calls [HTTPS]"
+        }
+    ],
+    "cardType": "secdeva/cardTypes/process",
+    "title": "Web app",
+    "templateCardKey": "secdeva_yye0ku8v",
+    "lastUpdated": "2026-11-08T20:07:34.207Z",
+    "secdeva/fieldTypes/description": "Runs in the browser"
+}

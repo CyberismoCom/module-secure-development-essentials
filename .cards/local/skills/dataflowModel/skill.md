@@ -50,7 +50,7 @@ The threat model card is the dataflow model. Its children are the elements of th
 | Data store | `secdeva/cardTypes/dataStore` | `secdeva/templates/dataStore2` | Cylinder |
 | External entity | `secdeva/cardTypes/external` | `secdeva/templates/external2` | Rectangle |
 | Person | `secdeva/cardTypes/person` | `secdeva/templates/person2` | Rectangle |
-| Group (not a DFD element) | `secdeva/cardTypes/group` | `secdeva/templates/group` | Not drawn |
+| Group (not a DFD element) | `secdeva/cardTypes/group` | `secdeva/templates/group` | No box; keeps its elements together |
 | Interface (see `secdeva/skills/interfaces`) | `secdeva/cardTypes/interface` | `secdeva/templates/interface2` | Not drawn; its port is added to the dataflow labels |
 
 Do not use the deprecated templates without the suffix 2 (`secdeva/templates/process` and so on).
@@ -146,14 +146,17 @@ A person inside a boundary is still not trusted: its dataflows still cross a tru
 
 **Systems.** To get an overview diagram, group the components of a real system under a parent process, such as "SCADA system" containing the SCADA server, the historian and its archive. The context diagram then shows the system as one box. Group only real systems with a name and an owner, and only inside one zone. Keep security-critical elements, such as jump hosts, remote access gateways and modems, visible. Link dataflows to the components, not to the system.
 
-**Groups.** A group (`secdeva/templates/group`) organises elements in the navigation tree and in the layered layout, and nothing else. It is not an asset, not a trust boundary, not drawn, and never the end of a dataflow.
+**Groups.** A group (`secdeva/templates/group`) organises elements in the navigation tree and arranges the diagrams, and nothing else. It is not an asset, not a trust boundary, has no box or frame of its own, and is never the end of a dataflow. Its effect on the diagrams depends on the diagram layout of the model:
+
+- **Follow the dataflows** (the default): the elements of a group are kept together, as if inside an invisible frame. Use a group for elements that belong together but share no trust boundary or system, such as the clients of a service or a set of partner services.
+- **Zones in tree order**: a group that contains zones is one row, and its zones are drawn side by side. Groups draw no invisible frame in this layout, because a frame would pull persons and external entities out of the rows they are placed in.
 
 | If the container… | Use |
 |---|---|
 | changes the level of trust when crossed | a trust boundary |
 | is a site or the edge of an organisation | a trust boundary of type `physical` or `organisational` |
 | is a real system with a name and an owner | a process |
-| only organises the tree, or puts zones side by side in a layered diagram | a group |
+| only organises the tree, keeps related elements together in a diagram, or puts zones side by side in a layered diagram | a group |
 
 Never use a group to avoid modelling a trust boundary that exists.
 

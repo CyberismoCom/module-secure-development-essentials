@@ -1,0 +1,17 @@
+{
+    "rank": "0|e",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T20:07:23.806Z",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_j513fg3m",
+            "linkDescription": "Mobile API calls [HTTPS]"
+        }
+    ],
+    "cardType": "secdeva/cardTypes/process",
+    "title": "Mobile app",
+    "templateCardKey": "secdeva_yye0ku8v",
+    "lastUpdated": "2026-11-08T20:07:35.300Z",
+    "secdeva/fieldTypes/description": "Runs on the phone"
+}

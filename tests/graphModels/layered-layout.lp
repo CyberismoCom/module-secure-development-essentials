@@ -44,6 +44,8 @@ testCase("groups are not drawn").
 testPass("groups are not drawn") :-
     k("Safety and field level", G1), k("Off-site parties", G2),
     not graph(G1, _), not node(G1, _), not graph(G2, _), not node(G2, _).
+testCase("groups are not clusters in the layered layout").
+testPass("groups are not clusters in the layered layout") :- #count { G : group(G), graph(G, _) } = 0, #count { G : framedGroup(G) } = 0.
 testCase("a zone in a group belongs to the group's parent").
 testPass("a zone in a group belongs to the group's parent") :- k("Plant site", S), k("Safety zone", Z), consistsOf(S, Z).
 
