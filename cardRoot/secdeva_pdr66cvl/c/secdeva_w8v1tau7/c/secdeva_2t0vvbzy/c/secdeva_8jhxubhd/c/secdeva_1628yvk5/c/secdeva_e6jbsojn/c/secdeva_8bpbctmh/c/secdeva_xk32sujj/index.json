@@ -1,0 +1,17 @@
+{
+    "rank": "0|b",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T18:00:10.076Z",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_ci9f6ooa",
+            "linkDescription": "Trip [hardwired]"
+        }
+    ],
+    "cardType": "secdeva/cardTypes/process",
+    "title": "Safety controller",
+    "templateCardKey": "secdeva_yye0ku8v",
+    "lastUpdated": "2026-11-08T18:00:39.089Z",
+    "secdeva/fieldTypes/description": "Safety instrumented system"
+}

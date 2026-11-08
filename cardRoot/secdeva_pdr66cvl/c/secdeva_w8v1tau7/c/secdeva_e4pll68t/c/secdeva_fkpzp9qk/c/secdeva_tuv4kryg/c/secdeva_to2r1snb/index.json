@@ -1,0 +1,15 @@
+{
+    "rank": "0|b",
+    "workflowState": "Open",
+    "createdAt": "2026-11-08T17:59:44.563Z",
+    "links": [],
+    "cardType": "ismsa/cardTypes/internalControl",
+    "title": "Review code changes manually",
+    "templateCardKey": "secdeva_iotqroii",
+    "base/fieldTypes/adoptionStep": "step2",
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/internalControlReviewPeriod": "12months",
+    "base/fieldTypes/reviewMonth": "september",
+    "base/fieldTypes/identifier": "secdeva_control_manual-code-review",
+    "lastUpdated": "2026-11-08T17:59:44.601Z"
+}

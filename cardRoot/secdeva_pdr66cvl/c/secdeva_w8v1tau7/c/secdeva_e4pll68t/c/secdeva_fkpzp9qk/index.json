@@ -1,0 +1,13 @@
+{
+    "rank": "0|eo",
+    "workflowState": "None",
+    "createdAt": "2026-11-08T17:59:44.563Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/internalControlRegister",
+    "title": "Internal controls",
+    "templateCardKey": "secdeva_mg2ld1fl",
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/progress": "secdeva_internal-control-progress",
+    "base/fieldTypes/identifier": "secdeva_register_internal-controls",
+    "lastUpdated": "2026-11-08T17:59:44.576Z"
+}

@@ -1,0 +1,16 @@
+{
+    "rank": "0|c",
+    "workflowState": "In scope",
+    "createdAt": "2026-11-08T17:59:44.563Z",
+    "links": [],
+    "cardType": "ismsa/cardTypes/internalControl",
+    "title": "Manage security issues",
+    "templateCardKey": "secdeva_0sv2tx7l",
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/internalControlReviewPeriod": "3months",
+    "base/fieldTypes/reviewMonth": "february",
+    "base/fieldTypes/adoptionStep": "step1",
+    "base/fieldTypes/identifier": "secdeva_control_manage-defects",
+    "lastUpdated": "2026-11-08T17:59:45.463Z",
+    "lastTransitioned": "2026-11-08T17:59:45.463Z"
+}

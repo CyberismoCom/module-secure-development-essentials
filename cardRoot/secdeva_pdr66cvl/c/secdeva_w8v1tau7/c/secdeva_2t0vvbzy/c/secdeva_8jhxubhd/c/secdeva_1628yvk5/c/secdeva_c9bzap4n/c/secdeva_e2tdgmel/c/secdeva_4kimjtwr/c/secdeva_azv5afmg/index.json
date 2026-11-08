@@ -1,0 +1,20 @@
+{
+    "rank": "0|b",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T18:00:22.809Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/interface",
+    "title": "Modbus TCP server",
+    "templateCardKey": "secdeva_rnbvi5d5",
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/identifier": "secdeva_document_interface",
+    "secdeva/fieldTypes/interfaceType": "logical",
+    "lastUpdated": "2026-11-08T18:00:22.811Z",
+    "secdeva/fieldTypes/port": "502/tcp",
+    "secdeva/fieldTypes/interfaceAuthentication": "no",
+    "secdeva/fieldTypes/transportSecurity": "no",
+    "secdeva/fieldTypes/interfacePurpose": [
+        "operational",
+        "maintenance"
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "rank": "0|f",
+    "workflowState": "In scope",
+    "createdAt": "2026-11-08T17:59:44.563Z",
+    "links": [],
+    "cardType": "ismsa/cardTypes/internalControl",
+    "title": "Analyse the attack surface",
+    "templateCardKey": "secdeva_0dgfj5bb",
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/adoptionStep": "step2",
+    "base/fieldTypes/identifier": "secdeva_control_attack-surface-analysis",
+    "ismsa/fieldTypes/internalControlReviewPeriod": "12months",
+    "base/fieldTypes/reviewMonth": "september",
+    "lastUpdated": "2026-11-08T17:59:45.753Z",
+    "lastTransitioned": "2026-11-08T17:59:45.753Z"
+}

@@ -1,0 +1,17 @@
+{
+    "rank": "0|b",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T17:59:47.130Z",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_tnlae8ol",
+            "linkDescription": "Use ERP [HTTPS]"
+        }
+    ],
+    "cardType": "secdeva/cardTypes/person",
+    "title": "Corporate user",
+    "templateCardKey": "secdeva_o5jlgqkl",
+    "lastUpdated": "2026-11-08T18:00:25.131Z",
+    "secdeva/fieldTypes/description": "Uses business systems"
+}

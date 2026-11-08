@@ -1,0 +1,11 @@
+{
+    "rank": "0|b",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T17:59:56.257Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/process",
+    "title": "SCADA system",
+    "templateCardKey": "secdeva_yye0ku8v",
+    "lastUpdated": "2026-11-08T17:59:56.259Z",
+    "secdeva/fieldTypes/description": "Supervision and process history"
+}

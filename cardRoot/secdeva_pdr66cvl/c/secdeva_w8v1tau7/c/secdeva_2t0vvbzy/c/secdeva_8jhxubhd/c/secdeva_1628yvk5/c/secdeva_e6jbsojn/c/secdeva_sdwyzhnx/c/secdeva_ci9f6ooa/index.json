@@ -1,0 +1,11 @@
+{
+    "rank": "0|b",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T18:00:12.393Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/process",
+    "title": "Field devices",
+    "templateCardKey": "secdeva_yye0ku8v",
+    "lastUpdated": "2026-11-08T18:00:12.394Z",
+    "secdeva/fieldTypes/description": "Sensors and actuators"
+}

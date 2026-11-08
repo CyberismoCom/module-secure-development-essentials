@@ -1,0 +1,11 @@
+{
+    "rank": "0|c",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T18:00:11.239Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/trustBoundary",
+    "title": "Field zone",
+    "templateCardKey": "secdeva_3e4v272u",
+    "lastUpdated": "2026-11-08T18:00:11.240Z",
+    "secdeva/fieldTypes/trustBoundaryType": "networkFiltered"
+}

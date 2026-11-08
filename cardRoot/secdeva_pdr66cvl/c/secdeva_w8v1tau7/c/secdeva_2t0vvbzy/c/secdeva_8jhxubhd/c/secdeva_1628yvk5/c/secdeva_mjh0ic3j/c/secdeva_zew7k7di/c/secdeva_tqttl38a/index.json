@@ -1,0 +1,30 @@
+{
+    "rank": "0|b",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T17:59:57.395Z",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_yx9tukqj",
+            "linkDescription": "Collect data [OPC UA]"
+        },
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_azv5afmg",
+            "linkDescription": "Commands [Modbus TCP]"
+        },
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_au99vw1w",
+            "linkDescription": "Commands to cell B [Modbus TCP]"
+        }
+    ],
+    "cardType": "secdeva/cardTypes/process",
+    "title": "SCADA server",
+    "templateCardKey": "secdeva_yye0ku8v",
+    "lastUpdated": "2026-11-08T18:05:25.402Z",
+    "secdeva/fieldTypes/description": "Supervisory control",
+    "labels": [
+        "remote-access"
+    ]
+}

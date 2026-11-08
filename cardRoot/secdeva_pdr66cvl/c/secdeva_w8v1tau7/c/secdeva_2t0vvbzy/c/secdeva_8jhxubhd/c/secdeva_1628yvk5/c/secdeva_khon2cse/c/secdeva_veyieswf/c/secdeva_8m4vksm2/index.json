@@ -1,0 +1,19 @@
+{
+    "rank": "0|b",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T18:00:21.657Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/interface",
+    "title": "Remote Desktop",
+    "templateCardKey": "secdeva_rnbvi5d5",
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/identifier": "secdeva_document_interface",
+    "secdeva/fieldTypes/interfaceType": "logical",
+    "lastUpdated": "2026-11-08T18:00:21.658Z",
+    "secdeva/fieldTypes/port": "3389/tcp",
+    "secdeva/fieldTypes/interfaceAuthentication": "required",
+    "secdeva/fieldTypes/transportSecurity": "required",
+    "secdeva/fieldTypes/interfacePurpose": [
+        "maintenance"
+    ]
+}

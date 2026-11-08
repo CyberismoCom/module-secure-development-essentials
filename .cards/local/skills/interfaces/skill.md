@@ -1,7 +1,7 @@
 # Document interfaces
 
 {{#each results}}
-This skill is for the threat model **{{this.title}}** (`{{this.key}}`), which has {{this.interfaceCount}} interfaces.
+This skill is for the threat model **{{this.title}}** (`{{this.key}}`). Number of interfaces: {{this.interfaceCount}}.
 
 {{#if this.needInterfaces}}
 **Elements that receive dataflows across a trust boundary but have no interfaces** — the attack surface that is not documented yet:

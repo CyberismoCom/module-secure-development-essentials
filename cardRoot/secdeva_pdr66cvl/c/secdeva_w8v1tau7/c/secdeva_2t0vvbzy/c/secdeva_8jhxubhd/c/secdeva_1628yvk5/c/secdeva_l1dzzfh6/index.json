@@ -1,0 +1,22 @@
+{
+    "rank": "0|g",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T18:00:14.692Z",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_cr9rjlz7",
+            "linkDescription": "Local programming [maintenance laptop]"
+        },
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_zcjgg9a4",
+            "linkDescription": "Badge in [RFID]"
+        }
+    ],
+    "cardType": "secdeva/cardTypes/person",
+    "title": "Field technician",
+    "templateCardKey": "secdeva_y83ovmvi",
+    "lastUpdated": "2026-11-08T18:04:52.412Z",
+    "secdeva/fieldTypes/description": "Maintains the PLCs on site"
+}

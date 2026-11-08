@@ -1,0 +1,22 @@
+{
+    "rank": "0|c",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T18:00:04.296Z",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_au99vw1w",
+            "linkDescription": "Interlock [PROFINET]"
+        },
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_xk32sujj",
+            "linkDescription": "Trip request [hardwired]"
+        }
+    ],
+    "cardType": "secdeva/cardTypes/process",
+    "title": "PLC A",
+    "templateCardKey": "secdeva_yye0ku8v",
+    "lastUpdated": "2026-11-08T18:00:38.015Z",
+    "secdeva/fieldTypes/description": "Controls cell A"
+}

@@ -1,0 +1,24 @@
+{
+    "rank": "0|c",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T18:00:23.980Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/interface",
+    "title": "Local maintenance port",
+    "templateCardKey": "secdeva_tev0dnhe",
+    "secdeva/fieldTypes/physicalConnectionCount": 1,
+    "secdeva/fieldTypes/interfaceType": "physical",
+    "secdeva/fieldTypes/interfaceTestingScopingJustification": "Physical interface",
+    "secdeva/fieldTypes/networkTrafficLoadTestingRequired": false,
+    "secdeva/fieldTypes/capacityTestingRequired": false,
+    "secdeva/fieldTypes/fuzzTestingRequired": false,
+    "secdeva/fieldTypes/basicStressTestingRequired": false,
+    "secdeva/fieldTypes/basicInputValidationTestingRequired": false,
+    "base/fieldTypes/informationClassification": "internal",
+    "lastUpdated": "2026-11-08T18:00:23.981Z",
+    "secdeva/fieldTypes/port": "102/tcp",
+    "secdeva/fieldTypes/interfaceAuthentication": "optional",
+    "secdeva/fieldTypes/interfacePurpose": [
+        "maintenance"
+    ]
+}

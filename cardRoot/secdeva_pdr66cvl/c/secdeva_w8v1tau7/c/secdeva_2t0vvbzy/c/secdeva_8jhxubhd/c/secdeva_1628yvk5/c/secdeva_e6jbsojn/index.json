@@ -1,0 +1,11 @@
+{
+    "rank": "0|e",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T18:00:07.776Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/group",
+    "title": "Safety and field level",
+    "templateCardKey": "secdeva_4la1ihw8",
+    "lastUpdated": "2026-11-08T18:00:07.778Z",
+    "secdeva/fieldTypes/description": "Zones without a common network zone"
+}

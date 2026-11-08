@@ -1,0 +1,29 @@
+This page runs the tests of the threat modelling features against the layered test model of this project, *Threat model - Layered test project*. The model uses the diagram layout _Zones in tree order_, and it contains the cases that the tests need: a physical site around network zones, a control network with two cell zones, a group of zones without a common zone, a navigation group, persons inside and outside the site, a system with components, interfaces, a dataflow upwards, and a remote vendor connection that bypasses the DMZ.
+
+The test cards are found by their titles inside the test model, never by card key, so the fixture survives being recreated.
+
+== Threat modelling logic
+
+The threat modelling skills use the helper predicates and enable rules of the calculation `secdeva/calculations/skills`. This report compares which dataflows cross a trust boundary, where the skills are enabled, and which model an element belongs to against the expected results.
+
+{{#report}}
+  "name": "secdeva/reports/testingThreatModelling"
+{{/report}}
+
+== Graph models
+
+The graph models are not part of the project's calculations, so a report cannot test them. They are tested with assertion programs in the folder `tests/graphModels` of the module repository. Each program runs the graph model `secdeva/graphModels/dataflow` with one graph view against this test content, in the same way as the `graph` macro does, and states the expected results. Run them in the module repository:
+
+----
+node tests/run-graph-tests.mjs
+----
+
+The runner prints PASS or FAIL for each test case and exits with an error if any test fails. It covers:
+
+* `layered-layout`: rows from the card tree, rows of persons and external entities, groups as rows and as navigation only, reversed upward dataflows, highlighted dataflows that bypass a layer, same-row dataflows, interface ports in labels, and the colours of physical and network boundaries.
+* `layered-context-merged`: systems as single boxes, and merged parallel dataflows.
+* `layered-zones`: zones as boxes, nested zones and the site as frames, conduits and their counts, and a highlighted bypass.
+* `layered-label-view`: the label view with highlighted bypasses.
+* `default-layout`: the deep test model of the _Test project_, which has no diagram layout, is drawn as before: no rows, no reversed or highlighted dataflows, no merged dataflows.
+
+The rendered diagrams are checked by eye on the page _Testing - layered diagrams_.

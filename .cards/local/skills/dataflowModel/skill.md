@@ -1,7 +1,7 @@
 # Build a dataflow model
 
 {{#each results}}
-This skill is for the threat model **{{this.title}}** (`{{this.key}}`). It has {{this.boundaryCount}} trust boundaries, {{this.processCount}} processes, {{this.dataStoreCount}} data stores, {{this.outsidePartyCount}} persons and external entities, {{this.interfaceCount}} interfaces and {{this.dataflowCount}} dataflows.
+This skill is for the threat model **{{this.title}}** (`{{this.key}}`). Number of elements: trust boundaries {{this.boundaryCount}}, processes {{this.processCount}}, data stores {{this.dataStoreCount}}, persons and external entities {{this.outsidePartyCount}}, interfaces {{this.interfaceCount}}, dataflows {{this.dataflowCount}}.
 
 {{#if this.missingDescription}}
 **Elements without a description** — add one with `edit_card_metadata(field="secdeva/fieldTypes/description")`:

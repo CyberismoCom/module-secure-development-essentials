@@ -1,0 +1,13 @@
+{
+    "rank": "0|b",
+    "workflowState": "None",
+    "createdAt": "2026-11-08T17:59:44.563Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/phase",
+    "title": "Foundation",
+    "templateCardKey": "secdeva_k9stj3fy",
+    "base/fieldTypes/identifier": "secdeva_phase_foundation",
+    "ismsa/fieldTypes/progress": "secdeva_phase-progress",
+    "base/fieldTypes/adoptionStep": "step1",
+    "lastUpdated": "2026-11-08T17:59:44.569Z"
+}

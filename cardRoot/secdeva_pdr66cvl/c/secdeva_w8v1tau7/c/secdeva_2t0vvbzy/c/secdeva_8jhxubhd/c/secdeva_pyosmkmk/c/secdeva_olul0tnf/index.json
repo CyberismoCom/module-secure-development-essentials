@@ -1,0 +1,25 @@
+{
+    "rank": "0|c",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T18:00:18.171Z",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_caz6snuh",
+            "linkDescription": "Remote access [TLS VPN]"
+        },
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_au99vw1w",
+            "linkDescription": "Remote support [4G VPN]"
+        }
+    ],
+    "cardType": "secdeva/cardTypes/person",
+    "title": "Remote vendor engineer",
+    "templateCardKey": "secdeva_y83ovmvi",
+    "lastUpdated": "2026-11-08T18:05:22.362Z",
+    "secdeva/fieldTypes/description": "Supports the PLCs",
+    "labels": [
+        "remote-access"
+    ]
+}

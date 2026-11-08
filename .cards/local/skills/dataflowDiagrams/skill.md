@@ -41,49 +41,78 @@ Do not switch an existing model to `zoneLayers` unless its zones really are laye
 
 ## Views
 
-Show a diagram on any card with the `graph` macro (edit the content with `edit_card_content`):
+Show a diagram on any card with the `graph` macro (edit the content with `edit_card_content`). The model is always `secdeva/graphModels/dataflow`:
 
 ```
 \{{#graph}}
   "model": "secdeva/graphModels/dataflow",
   "view": "secdeva/graphViews/context",
+  "cardKey": "<threat model key>",
   "mergeDataflows": true
 \{{/graph}}
 ```
 
-| View | Shows | Parameters |
+| View | Shows | Use it for |
 |---|---|---|
-| `secdeva/graphViews/context` | The top-level elements of the card's model; systems (processes with components) as single boxes | `show`: list of card keys to expand |
-| `secdeva/graphViews/allEntities` | All elements under the card | |
-| `secdeva/graphViews/entity` | One element and its contents | `show` |
-| `secdeva/graphViews/label` | Only the elements with the given labels, and the dataflows between them | `labels`: list of labels |
-| `secdeva/graphViews/zones` | Zones and conduits (IEC 62443-3-2): each innermost zone as one box, nested zones and physical boundaries as frames, and all dataflows between two boxes merged into one conduit | `root`: card key that limits the scope, such as the threat model |
+| `secdeva/graphViews/context` | The top-level elements under `cardKey`. A system (a process with components) is one box. Trust boundaries are drawn around what they contain | The overview. The threat model report shows it |
+| `secdeva/graphViews/allEntities` | Every element under `cardKey`, nested inside its trust boundaries and systems | The detailed diagram. The threat model report shows it |
+| `secdeva/graphViews/entity` | The card `cardKey` with everything inside it, and the elements it exchanges dataflows with | One system or one zone in detail. Element pages show it |
+| `secdeva/graphViews/label` | Only the elements that carry one of `labels`, inside their trust boundaries, and the dataflows between them | Targeted views |
+| `secdeva/graphViews/zones` | Zones and conduits (IEC 62443-3-2): each innermost zone as one box, nested zones and physical boundaries as frames, persons and external entities on their own, and all dataflows between two boxes merged into one conduit labelled with their number | The zone-level overview of an OT model |
 
-Parameters that every view accepts:
+### Parameters
 
-- `"mergeDataflows": true` draws all dataflows between the same two boxes as one arrow, with one line per dataflow in the label. Use it for overview diagrams. The threat model report uses it for its context diagram.
-- `"highlightRowSkips": true` (with the layered layout) draws in red every dataflow that skips a layer, such as a vendor's remote connection directly into a control zone that bypasses the DMZ. The zones view always highlights them.
-- `"layout"`: Graphviz direction, such as `"LR"` for left to right. Not needed with the layered layout.
+| Parameter | Views | Value and effect |
+|---|---|---|
+| `model`, `view` | all | Required: `secdeva/graphModels/dataflow` and one of the views above |
+| `cardKey` | `context`, `allEntities`, `entity` | The card whose elements are drawn. It defaults to the card that contains the macro, so **on a page, set it to the threat model's key** (or to a trust boundary or system for a part of the model); otherwise the diagram is empty |
+| `show` | `context`, `entity` | A list of card keys of further elements to draw as boxes, such as a component inside a system in the context view, or a neighbour in the entity view: `"show": ["<key>", "<key>"]` |
+| `labels` | `label` | A list of labels; an element is shown if it has any of them: `"labels": ["remote-access", "engineering"]` |
+| `root` | `zones` | The card key that limits the scope, normally the threat model. Without it, the zones of every model in the project are drawn |
+| `mergeDataflows` | `context`, `allEntities`, `entity`, `label` | `true` draws all dataflows between the same two boxes as one arrow, with one line per dataflow in its label. Use it for overviews. The zones view always merges dataflows into conduits |
+| `highlightRowSkips` | `context`, `allEntities`, `entity`, `label` | `true` draws in red, and thicker, every dataflow that skips a row, such as a remote connection straight into a control zone that bypasses the DMZ. It needs the layered layout; without rows nothing is highlighted. The zones view always highlights |
+| `layout` | all | The Graphviz direction: `"TB"` (top to bottom, the default), `"LR"`, `"BT"` or `"RL"`. With the layered layout, `"LR"` turns the rows into columns |
 
-The threat model report already shows the context and detailed diagrams. For OT models, add the zones view and highlighted views to a page under the threat model.
+**The label view is not limited to one threat model:** it shows every element in the project that has the label. If the project has several threat models, use labels that are distinct for each model, such as `plant-a-remote-access`.
 
-## Labels and targeted views
+## Labels
 
 Labels slice a large diagram into focused views, one per concern area.
 
-- Label **every** process, data store, external entity and person (not trust boundaries, interfaces or groups) with at least one label: `create_label(cardKey, label)`. Use `list_labels` to see the labels in use. Labels are case-sensitive.
+- Label **every** process, data store, external entity and person (not trust boundaries, interfaces or groups) with at least one label: `create_label(cardKey, label)`. Use `list_labels` to see the labels in use, and `remove_label` to fix mistakes. Labels are case-sensitive; use lowercase words joined with hyphens.
+- A system (a process with components) does not need labels of its own: its labelled components are shown inside it.
 - Derive labels from the architecture, not from the organisation:
   - Software: `production`, `authentication`, `operations`, `monitoring`.
   - OT: `remote-access`, `engineering`, `supervisory-control`, one label per production cell (`unit-control`, `dam-safety`), `grid-interface`, `business-data`, `patching`.
-- **Each view must be self-contained.** If an element takes part in a flow of the concern, it needs the label too: a user who logs in belongs to `authentication` as well as `production`. Overlap is expected.
+- **Each view must be self-contained.** If an element takes part in a flow of the concern, it needs the label too: a user who logs in belongs to `authentication` as well as `production`. Overlap is expected; an element can have several labels.
 - Aim for 3 to 8 elements per label. A label with one or two elements is too narrow; one with nearly the whole diagram is too broad.
+- An element without labels appears in no targeted view, only in the full diagrams.
 
-Put all targeted views on **one page** under the threat model: `create_card(template="base/templates/page", parentKey="<threat model>")`, titled "Targeted views". Give it one section per label:
+## The Targeted views page
+
+Put all label-based views of a threat model on **one page** under the threat model card. Do not create a card per label.
+
+1. `create_card(template="base/templates/page", parentKey="<threat model>")`, and set its title to "Targeted views".
+2. Write its content with `edit_card_content`: one section per concern. Each section has a heading, one sentence that says what the view shows, and a `graph` macro with the label view. For a layered model, add `"highlightRowSkips": true` to every view.
+3. For an OT model, start the page with the zones-and-conduits overview, and optionally the context view with merged dataflows.
+4. Read the page with `get_card` and check that each view is self-contained, and that its elements carry the right labels.
+
+Example content:
 
 ```
+== Zones and conduits
+
+The zones of the plant and the conduits between them.
+
+\{{#graph}}
+  "model": "secdeva/graphModels/dataflow",
+  "view": "secdeva/graphViews/zones",
+  "root": "<threat model key>"
+\{{/graph}}
+
 == Remote access
 
-Remote connections of vendors and engineers into the plant.
+Remote connections of vendors and engineers into the plant. Red dataflows bypass the DMZ.
 
 \{{#graph}}
   "model": "secdeva/graphModels/dataflow",
@@ -91,19 +120,20 @@ Remote connections of vendors and engineers into the plant.
   "labels": ["remote-access"],
   "highlightRowSkips": true
 \{{/graph}}
-```
 
-For an OT model, start the page with the zones-and-conduits overview:
+== Unit control system
 
-```
-== Zones and conduits
+The control system of one generating unit and its connections.
 
 \{{#graph}}
   "model": "secdeva/graphModels/dataflow",
-  "view": "secdeva/graphViews/zones",
-  "root": "<threat model key>"
+  "view": "secdeva/graphViews/entity",
+  "cardKey": "<unit control system key>",
+  "highlightRowSkips": true
 \{{/graph}}
 ```
+
+When the model changes, update the labels of new elements, so that the targeted views stay complete.
 
 ## Checking the result
 

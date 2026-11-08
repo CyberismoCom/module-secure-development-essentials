@@ -1,0 +1,11 @@
+{
+    "rank": "0|c",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T17:59:53.991Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/process",
+    "title": "Historian mirror",
+    "templateCardKey": "secdeva_yye0ku8v",
+    "lastUpdated": "2026-11-08T17:59:53.993Z",
+    "secdeva/fieldTypes/description": "Read-only copy of process history"
+}

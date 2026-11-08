@@ -1,0 +1,13 @@
+{
+    "rank": "0|bw",
+    "workflowState": "None",
+    "createdAt": "2026-11-08T17:59:44.563Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/securityIssueRegister",
+    "title": "Security issues",
+    "templateCardKey": "secdeva_0tzf7su5",
+    "base/fieldTypes/identifier": "secdeva_register_security-issues",
+    "secdeva/fieldTypes/deferrableSeverity": "medium",
+    "secdeva/fieldTypes/acceptableSeverity": "low",
+    "lastUpdated": "2026-11-08T17:59:44.574Z"
+}

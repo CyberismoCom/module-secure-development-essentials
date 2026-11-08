@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/reports/testingThreatModelling",
+    "displayName": "Testing - threat modelling",
+    "description": "Runs the layered threat model test fixture under Test content and compares which dataflows cross a trust boundary and where the threat modelling skills are enabled against the expected results",
+    "category": "Test content"
+}

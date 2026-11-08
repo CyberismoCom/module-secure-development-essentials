@@ -1,0 +1,66 @@
+This page renders the diagrams of the layered test model, *Threat model - Layered test project*. Compare each diagram with the checklist below it. The logic behind the diagrams is tested with assertions (see _Testing - threat modelling_); this page checks what only a picture can show.
+
+== Detailed diagram with highlighted bypasses
+
+{{#graph}}
+  "model": "secdeva/graphModels/dataflow",
+  "view": "secdeva/graphViews/allEntities",
+  "cardKey": "secdeva_8jhxubhd",
+  "highlightRowSkips": true
+{{/graph}}
+
+What correct looks like:
+
+* Five rows from top to bottom: _Enterprise zone_; _DMZ_; _Operations zone_; _Control network_ with _Cell A zone_ and _Cell B zone_ side by side; _Safety zone_ and _Field zone_ side by side.
+* _Plant site_ is a grey dashed frame around rows 2 to 5. It does not reach up into the enterprise row. The other boundaries are red.
+* _Corporate user_ and _Remote vendor engineer_ are in the top row, _Vendor cloud_ in the DMZ row, _Control room operator_ in the operations row and _Field technician_ in the control row.
+* _Remote support [4G VPN]_ from the remote vendor engineer to _PLC B_ is a thick red line. No other dataflow is red.
+* _Replicate history [PI-to-PI]_ points up from _Historian_ to _Historian mirror_, without a long loop.
+* Labels of dataflows to interfaces end with the port, such as _Commands [Modbus TCP] (502/tcp)_.
+* The groups _Safety and field level_ and _Off-site parties_ are not drawn.
+
+== Context diagram with merged dataflows
+
+{{#graph}}
+  "model": "secdeva/graphModels/dataflow",
+  "view": "secdeva/graphViews/context",
+  "cardKey": "secdeva_8jhxubhd",
+  "mergeDataflows": true,
+  "highlightRowSkips": true
+{{/graph}}
+
+What correct looks like:
+
+* _SCADA system_ is one box; its components are not shown.
+* One arrow from _SCADA system_ to _PLC A_, with two lines in its label: _Commands [Modbus TCP] (502/tcp)_ and _Read status [Modbus TCP] (502/tcp)_.
+* The rows are the same as in the detailed diagram.
+
+== Zones and conduits
+
+{{#graph}}
+  "model": "secdeva/graphModels/dataflow",
+  "view": "secdeva/graphViews/zones",
+  "root": "secdeva_8jhxubhd"
+{{/graph}}
+
+What correct looks like:
+
+* Each innermost zone is one box. _Control network_ is a red frame around the two cell zones, and _Plant site_ is a grey frame.
+* The conduit from _Operations zone_ to _Cell A zone_ says _2 dataflows_.
+* The conduit from the remote vendor engineer to _Cell B zone_ is red.
+* The persons and the vendor cloud are drawn on their own.
+
+== Targeted view: remote access
+
+{{#graph}}
+  "model": "secdeva/graphModels/dataflow",
+  "view": "secdeva/graphViews/label",
+  "cardKey": "secdeva_8jhxubhd",
+  "labels": ["remote-access"],
+  "highlightRowSkips": true
+{{/graph}}
+
+What correct looks like:
+
+* Only the remote vendor engineer, the remote access gateway, the jump host, the SCADA server and PLC B, inside their zones.
+* The bypass to PLC B is red.

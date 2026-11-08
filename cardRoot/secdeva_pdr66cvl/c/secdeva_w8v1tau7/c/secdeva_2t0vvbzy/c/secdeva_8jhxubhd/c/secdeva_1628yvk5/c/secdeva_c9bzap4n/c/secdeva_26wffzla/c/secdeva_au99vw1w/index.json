@@ -1,0 +1,14 @@
+{
+    "rank": "0|b",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T18:00:06.617Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/process",
+    "title": "PLC B",
+    "templateCardKey": "secdeva_yye0ku8v",
+    "lastUpdated": "2026-11-08T18:05:26.411Z",
+    "secdeva/fieldTypes/description": "Controls cell B",
+    "labels": [
+        "remote-access"
+    ]
+}
