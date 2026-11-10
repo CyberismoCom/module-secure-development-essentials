@@ -1,0 +1,14 @@
+{
+    "rank": "0|f",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T17:59:44.563Z",
+    "links": [],
+    "cardType": "ismsa/cardTypes/register",
+    "title": "Operations",
+    "templateCardKey": "secdeva_o49jcxhb",
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/adoptionStep": "step1",
+    "ismsa/fieldTypes/progress": "secdeva_internal-control-progress",
+    "base/fieldTypes/identifier": "secdeva_register_operations-controls",
+    "lastUpdated": "2026-11-08T17:59:44.583Z"
+}

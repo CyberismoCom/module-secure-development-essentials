@@ -26,3 +26,17 @@ This module defines basic workflows, card types, and templates for managing secu
 
 
 See https://docs.cyberismo.com/cards/docs_krxdf4ke.html[Cyberismo documentation].
+
+== Testing
+
+The test content is under the page _Test content_ in `cardRoot`. It has two test projects:
+
+* _Test project_, with a deep dataflow model and the solution structure test fixture.
+* _Layered test project_, for the threat modelling features. It has two threat models: _Threat model - Layered test project_ uses the diagram layout _Zones in tree order_, and _Threat model - Grouped test project_ uses the default layout _Follow the dataflows_ with groups.
+
+To run the tests:
+
+. `cyberismo validate`
+. Render the assertion reports and check that they report no failed test cases. Their pages are _Testing - solution structure_ and _Testing - threat modelling_; for example, with the CLI, `cyberismo report <parameters file>`, where the parameters file is `{"name": "secdeva/reports/testingThreatModelling", "parameters": {"name": "secdeva/reports/testingThreatModelling", "cardKey": "secdeva_b4xs25d7"}}`, where the card key is the page that shows the report.
+. Run the assertion tests of the graph models: `node tests/run-graph-tests.mjs`. The graph models are not part of the project's calculations, so assertion reports cannot test them; see `tests/run-graph-tests.mjs` for how the test cases in `tests/graphModels` are written.
+. Check the rendered diagrams on the page _Testing - dataflow diagrams_ against the checklists on the page.

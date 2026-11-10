@@ -1,0 +1,15 @@
+{
+    "rank": "0|f",
+    "workflowState": "Open",
+    "createdAt": "2026-11-08T17:59:44.563Z",
+    "links": [],
+    "cardType": "ismsa/cardTypes/internalControl",
+    "title": "Protect the integrity of releases",
+    "templateCardKey": "secdeva_8nil3vzn",
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/adoptionStep": "step2",
+    "base/fieldTypes/identifier": "secdeva_control_integrity-protection-of-release",
+    "ismsa/fieldTypes/internalControlReviewPeriod": "12months",
+    "base/fieldTypes/reviewMonth": "june",
+    "lastUpdated": "2026-11-08T17:59:44.599Z"
+}

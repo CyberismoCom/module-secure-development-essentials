@@ -1,0 +1,11 @@
+{
+    "rank": "0|d",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T17:59:59.679Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/dataStore",
+    "title": "Process history",
+    "templateCardKey": "secdeva_pvzfnwam",
+    "lastUpdated": "2026-11-08T17:59:59.681Z",
+    "secdeva/fieldTypes/description": "Measurements and alarms"
+}

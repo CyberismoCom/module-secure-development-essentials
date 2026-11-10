@@ -1,0 +1,45 @@
+[TIP]
+====
+A group organises the elements of a dataflow model in the navigation tree. It is not an asset and not a trust boundary, and it is not drawn in the diagrams: its elements are drawn as if they were directly inside the parent of the group.
+
+When the diagram layout of the model is _Zones in tree order_, a group that contains zones is one row of the diagram, and its zones are drawn side by side in tree order.
+
+Use a trust boundary instead, if crossing the boundary changes the level of trust, and a process, if the group is a real system with an owner.
+====
+
+{{#graph}}
+  "model": "secdeva/graphModels/dataflow",
+  "view": "secdeva/graphViews/allEntities"
+{{/graph}}
+
+== Elements
+
+{{#createCards}}
+  "buttonLabel": "Create a trust boundary",
+  "template": "secdeva/templates/trustBoundary2"
+{{/createCards}}
+
+{{#createCards}}
+  "buttonLabel": "Create a group",
+  "template": "secdeva/templates/group"
+{{/createCards}}
+
+{{#createCards}}
+  "buttonLabel": "Create an external entity",
+  "template": "secdeva/templates/external2"
+{{/createCards}}
+
+{{#createCards}}
+  "buttonLabel": "Create a person",
+  "template": "secdeva/templates/person2"
+{{/createCards}}
+
+{{#createCards}}
+  "buttonLabel": "Create a process",
+  "template": "secdeva/templates/process2"
+{{/createCards}}
+
+{{#createCards}}
+  "buttonLabel": "Create a data store",
+  "template": "secdeva/templates/dataStore2"
+{{/createCards}}

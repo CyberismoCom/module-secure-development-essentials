@@ -1,0 +1,15 @@
+{
+    "rank": "0|an",
+    "workflowState": "In scope",
+    "createdAt": "2026-11-08T17:59:44.563Z",
+    "links": [],
+    "cardType": "ismsa/cardTypes/internalControl",
+    "title": "Document product security context",
+    "templateCardKey": "secdeva_1l2bv8k8",
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/internalControlReviewPeriod": "12months",
+    "base/fieldTypes/reviewMonth": "april",
+    "base/fieldTypes/identifier": "secdeva_control_security-context",
+    "lastUpdated": "2026-11-08T17:59:44.810Z",
+    "lastTransitioned": "2026-11-08T17:59:44.810Z"
+}

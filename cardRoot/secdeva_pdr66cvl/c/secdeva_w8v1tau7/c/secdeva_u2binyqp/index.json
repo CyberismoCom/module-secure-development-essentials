@@ -1,0 +1,13 @@
+{
+    "rank": "0|g",
+    "workflowState": "None",
+    "createdAt": "2026-11-08T17:59:44.563Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/phase",
+    "title": "Releases",
+    "templateCardKey": "secdeva_tvze3ck0",
+    "base/fieldTypes/identifier": "secdeva_phase_releases",
+    "ismsa/fieldTypes/progress": "secdeva_phase-progress",
+    "base/fieldTypes/adoptionStep": "step1",
+    "lastUpdated": "2026-11-08T17:59:44.570Z"
+}

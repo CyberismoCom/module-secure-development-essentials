@@ -1,130 +1,32 @@
 selectAll.
 
-secdeva_entityOutsideTrustBoundaries(Entity, Model) :-
-    ancestor(Entity, Model),
-    not field(Ancestor, "cardType", "secdeva/cardTypes/trustBoundary") :
-    ancestor(Entity, Ancestor).
-
-secdeva_entityWithinTrustBoundary(Entity, Model) :-
-     ancestor(Entity, Model),
-     ancestor(TrustBoundary, Model),
-     ancestor(Entity, TrustBoundary),
-     field(TrustBoundary, "cardType", "secdeva/cardTypes/trustBoundary").
-
 result(result).
 
-% external dataflows
+% The dataflows of the model are classified by trust boundaries in the
+% calculation secdeva/calculations/dataflows.
+secdeva_modelDataflow((A, B, Title)) :-
+     secdeva_dataflow((A, B, Title)), ancestor(A, {{cardKey}}), ancestor(B, {{cardKey}}).
 
-% outbound external dataflow
-childResult(result, (A, B, Title), "externalDataflows") :-
-     link(A, B, "secdeva/linkTypes/dataflow", Title),
-     secdeva_entityWithinTrustBoundary(A, {{cardKey}}),
-     secdeva_entityOutsideTrustBoundaries(B, {{cardKey}}).
+% External dataflows connect an element inside a technical trust boundary with
+% an element outside all of them
 
-field((A, B, Title), "secdeva/fieldTypes/direction", "Outbound") :-
-     link(A, B, "secdeva/linkTypes/dataflow", Title),
-     secdeva_entityWithinTrustBoundary(A, {{cardKey}}),
-     secdeva_entityOutsideTrustBoundaries(B, {{cardKey}}).
+childResult(result, D, "externalDataflows") :- secdeva_modelDataflow(D), secdeva_externalDataflow(D, _, _, _).
+field((A, B, Title), "secdeva/fieldTypes/title", Title) :- childResult(result, (A, B, Title), "externalDataflows").
+field(D, "secdeva/fieldTypes/direction", Direction) :- childResult(result, D, "externalDataflows"), secdeva_externalDataflow(D, Direction, _, _).
+field(D, "secdeva/fieldTypes/internalCardKey", Inside) :- childResult(result, D, "externalDataflows"), secdeva_externalDataflow(D, _, Inside, _).
+field(D, "secdeva/fieldTypes/internalTitle", Title) :- childResult(result, D, "externalDataflows"), secdeva_externalDataflow(D, _, Inside, _), field(Inside, "title", Title).
+field(D, "secdeva/fieldTypes/externalCardKey", Outside) :- childResult(result, D, "externalDataflows"), secdeva_externalDataflow(D, _, _, Outside).
+field(D, "secdeva/fieldTypes/externalTitle", Title) :- childResult(result, D, "externalDataflows"), secdeva_externalDataflow(D, _, _, Outside), field(Outside, "title", Title).
 
-field((A, B, Title), "secdeva/fieldTypes/title", Title) :-
-     link(A, B, "secdeva/linkTypes/dataflow", Title),
-     secdeva_entityWithinTrustBoundary(A, {{cardKey}}),
-     secdeva_entityOutsideTrustBoundaries(B, {{cardKey}}).
+% Internal dataflows are the other dataflows whose ends are both inside a trust
+% boundary of any type
 
-field((A, B, Title), "secdeva/fieldTypes/externalTitle", External) :-
-     link(A, B, "secdeva/linkTypes/dataflow", Title),
-     secdeva_entityWithinTrustBoundary(A, {{cardKey}}),
-     secdeva_entityOutsideTrustBoundaries(B, {{cardKey}}),
-     field(B, "title", External).
-
-field((A, B, Title), "secdeva/fieldTypes/externalCardKey", B) :-
-     link(A, B, "secdeva/linkTypes/dataflow", Title),
-     secdeva_entityWithinTrustBoundary(A, {{cardKey}}),
-     secdeva_entityOutsideTrustBoundaries(B, {{cardKey}}).
-
-field((A, B, Title), "secdeva/fieldTypes/internalTitle", Internal) :-
-     link(A, B, "secdeva/linkTypes/dataflow", Title),
-     secdeva_entityWithinTrustBoundary(A, {{cardKey}}),
-     secdeva_entityOutsideTrustBoundaries(B, {{cardKey}}),
-     field(A, "title", Internal).
-
-field((A, B, Title), "secdeva/fieldTypes/internalCardKey", A) :-
-     link(A, B, "secdeva/linkTypes/dataflow", Title),
-     secdeva_entityWithinTrustBoundary(A, {{cardKey}}),
-     secdeva_entityOutsideTrustBoundaries(B, {{cardKey}}).
-
-% inbound external dataflow
-childResult(result, (A, B, Title), "externalDataflows") :-
-     link(A, B, "secdeva/linkTypes/dataflow", Title),
-     secdeva_entityOutsideTrustBoundaries(A, {{cardKey}}),
-     secdeva_entityWithinTrustBoundary(B, {{cardKey}}).
-
-field((A, B, Title), "secdeva/fieldTypes/direction", "Inbound") :-
-     link(A, B, "secdeva/linkTypes/dataflow", Title),
-     secdeva_entityOutsideTrustBoundaries(A, {{cardKey}}),
-     secdeva_entityWithinTrustBoundary(B, {{cardKey}}).
-
-field((A, B, Title), "secdeva/fieldTypes/title", Title) :-
-     link(A, B, "secdeva/linkTypes/dataflow", Title),
-     secdeva_entityOutsideTrustBoundaries(A, {{cardKey}}),
-     secdeva_entityWithinTrustBoundary(B, {{cardKey}}).
-
-field((A, B, Title), "secdeva/fieldTypes/externalTitle", External) :-
-     link(A, B, "secdeva/linkTypes/dataflow", Title),
-     secdeva_entityOutsideTrustBoundaries(A, {{cardKey}}),
-     secdeva_entityWithinTrustBoundary(B, {{cardKey}}),
-     field(A, "title", External).
-
-field((A, B, Title), "secdeva/fieldTypes/externalCardKey", A) :-
-     link(A, B, "secdeva/linkTypes/dataflow", Title),
-     secdeva_entityOutsideTrustBoundaries(A, {{cardKey}}),
-     secdeva_entityWithinTrustBoundary(B, {{cardKey}}),
-     field(B, "title", External).
-
-field((A, B, Title), "secdeva/fieldTypes/internalTitle", Internal) :-
-     link(A, B, "secdeva/linkTypes/dataflow", Title),
-     secdeva_entityOutsideTrustBoundaries(A, {{cardKey}}),
-     secdeva_entityWithinTrustBoundary(B, {{cardKey}}),
-     field(B, "title", Internal).
-
-field((A, B, Title), "secdeva/fieldTypes/internalCardKey", B) :-
-     link(A, B, "secdeva/linkTypes/dataflow", Title),
-     secdeva_entityOutsideTrustBoundaries(A, {{cardKey}}),
-     secdeva_entityWithinTrustBoundary(B, {{cardKey}}).
-
-% Internal dataflows
-
-childResult(result, (A, B, Title), "internalDataflows") :-
-     link(A, B, "secdeva/linkTypes/dataflow", Title),
-     secdeva_entityWithinTrustBoundary(A, {{cardKey}}),
-     secdeva_entityWithinTrustBoundary(B, {{cardKey}}).
-
-field((A, B, Title), "secdeva/fieldTypes/title", Title) :-
-     link(A, B, "secdeva/linkTypes/dataflow", Title),
-     secdeva_entityWithinTrustBoundary(A, {{cardKey}}),
-     secdeva_entityWithinTrustBoundary(B, {{cardKey}}).
-
-field((A, B, Title), "secdeva/fieldTypes/source", Source) :-
-     link(A, B, "secdeva/linkTypes/dataflow", Title),
-     secdeva_entityWithinTrustBoundary(A, {{cardKey}}),
-     secdeva_entityWithinTrustBoundary(B, {{cardKey}}),
-     field(A, "title", Source).
-
-field((A, B, Title), "secdeva/fieldTypes/destination", Destination) :-
-     link(A, B, "secdeva/linkTypes/dataflow", Title),
-     secdeva_entityWithinTrustBoundary(A, {{cardKey}}),
-     secdeva_entityWithinTrustBoundary(B, {{cardKey}}),
-     field(B, "title", Destination).
-
-field((A, B, Title), "secdeva/fieldTypes/destinationCardKey", B) :-
-     link(A, B, "secdeva/linkTypes/dataflow", Title),
-     secdeva_entityWithinTrustBoundary(A, {{cardKey}}),
-     secdeva_entityWithinTrustBoundary(B, {{cardKey}}).
-
-field((A, B, Title), "secdeva/fieldTypes/sourceCardKey", A) :-
-     link(A, B, "secdeva/linkTypes/dataflow", Title),
-     secdeva_entityWithinTrustBoundary(A, {{cardKey}}),
-     secdeva_entityWithinTrustBoundary(B, {{cardKey}}).
+childResult(result, D, "internalDataflows") :- secdeva_modelDataflow(D), secdeva_internalDataflow(D).
+field((A, B, Title), "secdeva/fieldTypes/title", Title) :- childResult(result, (A, B, Title), "internalDataflows").
+field((A, B, Title), "secdeva/fieldTypes/sourceCardKey", A) :- childResult(result, (A, B, Title), "internalDataflows").
+field((A, B, Title), "secdeva/fieldTypes/source", Source) :- childResult(result, (A, B, Title), "internalDataflows"), field(A, "title", Source).
+field((A, B, Title), "secdeva/fieldTypes/destinationCardKey", B) :- childResult(result, (A, B, Title), "internalDataflows").
+field((A, B, Title), "secdeva/fieldTypes/destination", Destination) :- childResult(result, (A, B, Title), "internalDataflows"), field(B, "title", Destination).
 
 % Interfaces
 

@@ -1,0 +1,15 @@
+{
+    "rank": "0|bn",
+    "workflowState": "Open",
+    "createdAt": "2026-11-08T17:59:44.563Z",
+    "links": [],
+    "cardType": "ismsa/cardTypes/internalControl",
+    "title": "Test risk mitigations",
+    "templateCardKey": "secdeva_b7tayct7",
+    "base/fieldTypes/adoptionStep": "step2",
+    "base/fieldTypes/informationClassification": "internal",
+    "ismsa/fieldTypes/internalControlReviewPeriod": "12months",
+    "base/fieldTypes/reviewMonth": "november",
+    "base/fieldTypes/identifier": "secdeva_control_risk-mitigation-testing",
+    "lastUpdated": "2026-11-08T17:59:44.587Z"
+}

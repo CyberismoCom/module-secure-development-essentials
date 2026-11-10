@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/calculations/dataflows",
+    "displayName": "Dataflows",
+    "description": "Classifies the dataflows of dataflow models by trust boundaries, for the reports and skills",
+    "calculation": "calculation.lp"
+}

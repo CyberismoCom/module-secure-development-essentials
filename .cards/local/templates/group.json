@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/templates/group",
+    "displayName": "Group",
+    "category": "Threat model",
+    "description": "Groups elements of a threat model in the navigation tree and in the layered diagram layout, without making the group an asset or a trust boundary."
+}

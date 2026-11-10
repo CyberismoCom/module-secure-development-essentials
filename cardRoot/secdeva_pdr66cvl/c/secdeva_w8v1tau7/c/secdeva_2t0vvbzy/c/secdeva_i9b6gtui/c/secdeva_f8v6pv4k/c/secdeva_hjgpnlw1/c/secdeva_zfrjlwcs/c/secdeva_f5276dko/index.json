@@ -1,0 +1,17 @@
+{
+    "rank": "0|c",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T20:07:16.937Z",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_18sjv1tk",
+            "linkDescription": "Manage data [SQL]"
+        }
+    ],
+    "cardType": "secdeva/cardTypes/process",
+    "title": "Admin API",
+    "templateCardKey": "secdeva_yye0ku8v",
+    "lastUpdated": "2026-11-08T20:07:40.717Z",
+    "secdeva/fieldTypes/description": "Administration operations"
+}

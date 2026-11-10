@@ -1,0 +1,12 @@
+{
+    "rank": "0|an",
+    "workflowState": "None",
+    "createdAt": "2026-11-08T17:59:44.563Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/page",
+    "title": "Status & next steps",
+    "templateCardKey": "secdeva_v44z65xs",
+    "base/fieldTypes/adoptionStep": "step1",
+    "base/fieldTypes/identifier": "secdeva_status-and-next-steps",
+    "lastUpdated": "2026-11-08T17:59:44.570Z"
+}

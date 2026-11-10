@@ -1,0 +1,20 @@
+{
+    "rank": "0|c",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T17:59:49.437Z",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_8m4vksm2",
+            "linkDescription": "Remote desktop [RDP]"
+        }
+    ],
+    "cardType": "secdeva/cardTypes/process",
+    "title": "Remote access gateway",
+    "templateCardKey": "secdeva_yye0ku8v",
+    "lastUpdated": "2026-11-08T18:05:23.374Z",
+    "secdeva/fieldTypes/description": "VPN for remote users",
+    "labels": [
+        "remote-access"
+    ]
+}

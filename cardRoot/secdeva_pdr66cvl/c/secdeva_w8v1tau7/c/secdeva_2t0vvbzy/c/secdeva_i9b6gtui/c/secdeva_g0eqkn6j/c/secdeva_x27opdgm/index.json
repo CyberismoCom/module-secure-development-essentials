@@ -1,0 +1,17 @@
+{
+    "rank": "0|c",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T20:07:21.476Z",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_ypi6wqn8",
+            "linkDescription": "Administer [HTTPS]"
+        }
+    ],
+    "cardType": "secdeva/cardTypes/person",
+    "title": "Administrator",
+    "templateCardKey": "secdeva_y83ovmvi",
+    "lastUpdated": "2026-11-08T20:07:33.097Z",
+    "secdeva/fieldTypes/description": "Manages the service"
+}

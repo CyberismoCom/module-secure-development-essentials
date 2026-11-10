@@ -1,0 +1,11 @@
+{
+    "rank": "0|b",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T20:07:26.236Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/external",
+    "title": "Email service",
+    "templateCardKey": "secdeva_rd2v7o60",
+    "lastUpdated": "2026-11-08T20:07:26.238Z",
+    "secdeva/fieldTypes/description": "Sends email"
+}

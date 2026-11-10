@@ -1,0 +1,27 @@
+{
+    "rank": "0|b",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T20:07:12.355Z",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_r2o7my18",
+            "linkDescription": "Queue jobs [AMQP]"
+        },
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_18sjv1tk",
+            "linkDescription": "Read and write [SQL]"
+        },
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_852v9syd",
+            "linkDescription": "Charge [HTTPS]"
+        }
+    ],
+    "cardType": "secdeva/cardTypes/process",
+    "title": "API service",
+    "templateCardKey": "secdeva_yye0ku8v",
+    "lastUpdated": "2026-11-08T20:07:41.794Z",
+    "secdeva/fieldTypes/description": "Serves the clients"
+}

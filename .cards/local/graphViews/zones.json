@@ -1,0 +1,5 @@
+{
+    "name": "secdeva/graphViews/zones",
+    "displayName": "Zones and conduits",
+    "description": "A dataflow diagram where each outermost technical trust boundary (zone) is collapsed to a single box and the dataflows between two boxes are merged into one conduit. Physical and organisational trust boundaries are drawn around the zones and elements they contain"
+}

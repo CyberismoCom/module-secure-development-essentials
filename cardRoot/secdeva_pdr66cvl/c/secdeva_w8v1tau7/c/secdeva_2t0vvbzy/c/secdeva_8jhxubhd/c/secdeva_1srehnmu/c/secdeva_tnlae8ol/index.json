@@ -1,0 +1,17 @@
+{
+    "rank": "0|b",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T17:59:48.299Z",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_4qol4u1e",
+            "linkDescription": "Read history [HTTPS]"
+        }
+    ],
+    "cardType": "secdeva/cardTypes/process",
+    "title": "ERP system",
+    "templateCardKey": "secdeva_yye0ku8v",
+    "lastUpdated": "2026-11-08T18:00:30.497Z",
+    "secdeva/fieldTypes/description": "Business system"
+}

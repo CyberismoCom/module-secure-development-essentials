@@ -1,0 +1,12 @@
+{
+    "rank": "0|aj",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T20:07:10.050Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/trustBoundary",
+    "title": "Cloud platform",
+    "templateCardKey": "secdeva_wxdm5iyo",
+    "lastUpdated": "2026-11-08T20:07:10.053Z",
+    "secdeva/fieldTypes/trustBoundaryType": "networkFiltered",
+    "secdeva/fieldTypes/description": "Hosted services"
+}

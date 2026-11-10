@@ -1,0 +1,11 @@
+{
+    "rank": "0|en",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T18:04:50.305Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/process",
+    "title": "Badge reader",
+    "templateCardKey": "secdeva_yye0ku8v",
+    "lastUpdated": "2026-11-08T18:04:50.307Z",
+    "secdeva/fieldTypes/description": "Site access control, outside the network zones"
+}

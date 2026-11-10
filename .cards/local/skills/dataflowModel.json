@@ -1,0 +1,7 @@
+{
+    "name": "secdeva/skills/dataflowModel",
+    "displayName": "Build a dataflow model",
+    "category": "threat modelling",
+    "description": "Create or change the dataflow diagram of a threat model: trust boundaries, processes, data stores, external entities, persons, groups and dataflows. Covers templates, naming, descriptions, dataflow labels and protocols, trust boundary types, persons inside physical boundaries, and grouping components into systems. Lists the gaps in the current model.",
+    "relatedTools": ["get_card", "list_cards", "create_card", "edit_card_metadata", "move_card", "rank_card_after", "remove_card", "create_link", "remove_link"]
+}

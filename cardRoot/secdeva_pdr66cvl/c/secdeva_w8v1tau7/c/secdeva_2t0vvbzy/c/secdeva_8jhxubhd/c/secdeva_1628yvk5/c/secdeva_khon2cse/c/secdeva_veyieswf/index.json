@@ -1,0 +1,25 @@
+{
+    "rank": "0|b",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T17:59:52.851Z",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_tqttl38a",
+            "linkDescription": "Administer [RDP]"
+        },
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_fdomrbqg",
+            "linkDescription": "Download updates [HTTPS]"
+        }
+    ],
+    "cardType": "secdeva/cardTypes/process",
+    "title": "Jump host",
+    "templateCardKey": "secdeva_yye0ku8v",
+    "lastUpdated": "2026-11-08T18:05:24.390Z",
+    "secdeva/fieldTypes/description": "Entry point to OT",
+    "labels": [
+        "remote-access"
+    ]
+}

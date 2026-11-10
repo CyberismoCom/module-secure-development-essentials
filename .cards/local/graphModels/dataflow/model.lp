@@ -13,6 +13,11 @@ entity(X) :- external(X).
 % trust boundary
 trustBoundary(X) :- field(X, "cardType", "secdeva/cardTypes/trustBoundary").
 entity(X) :- trustBoundary(X).
+% Physical and organisational trust boundaries enclose people and equipment
+% rather than separate networks or software. Persons and external entities may
+% be inside them. They are drawn differently from other trust boundaries.
+enclosingBoundary(X) :- trustBoundary(X), field(X, "secdeva/fieldTypes/trustBoundaryType", "physical").
+enclosingBoundary(X) :- trustBoundary(X), field(X, "secdeva/fieldTypes/trustBoundaryType", "organisational").
 
 % person
 person(X) :- field(X, "cardType", "secdeva/cardTypes/person").
@@ -22,6 +27,13 @@ external(X) :- person(X).
 datastore(X) :- field(X, "cardType", "secdeva/cardTypes/dataStore").
 entity(X) :- datastore(X).
 
+% A group organises elements in the navigation tree and in the diagrams. It is
+% not an entity: it is never the end of a dataflow, and its elements are treated
+% as if they were directly inside the parent of the group. It keeps its elements
+% together, and it can be shown as a grey rectangle (see "Groups" below). In the
+% layered layout it also sets rows.
+group(X) :- field(X, "cardType", "secdeva/cardTypes/group").
+
 % interfaces and physical ports and connections (always hidden)
 interface(X) :- field(X, "cardType", "secdeva/cardTypes/interface").
 entity(X) :- interface(X).
@@ -29,13 +41,18 @@ hide(X) :- interface(X).
 
 % attributes of entities
 title(X, Title) :- entity(X), field(X, "title", Title).
-description(X, Description) :- entity(X), field(X, "secdeva/fieldTypes/description", Description).
-technology(X, Technology) :- entity(X), field(X, "secdeva/fieldTypes/technology", Technology).
+% empty values are ignored, as an empty HTML element is not valid in a Graphviz label
+description(X, Description) :- entity(X), field(X, "secdeva/fieldTypes/description", Description), Description != "".
+technology(X, Technology) :- entity(X), field(X, "secdeva/fieldTypes/technology", Technology), Technology != "".
 
 % recursive composition rules
 % we use consistsOf and contains instead of parent and ancestor, because
 % composition may be indicated either by ancestorship or by links
-consistsOf(Y, X) :- parent(X, Y), entity(X), entity(Y).
+% entityParent(X, Y): Y is the nearest ancestor of X that is an entity, when
+% there are only groups in between
+entityParent(X, Y) :- parent(X, Y), entity(Y).
+entityParent(X, Y) :- parent(X, G), group(G), entityParent(G, Y).
+consistsOf(Y, X) :- entityParent(X, Y), entity(X), entity(Y).
 contains(X, Y) :- consistsOf(X, Y), entity(X), entity(Y).
 contains(X, Z) :- consistsOf(X, Y), contains(Y, Z), entity(X), entity(Y), entity(Z).
 % effectiveParent(X, Y) means Y is the nearest non-trust-boundary ancestor of X
@@ -123,8 +140,16 @@ view(X, N) :- entity(X), entityLevel(X, 1), viewAll(N), not hide(X).
 nearestVisibleAncestor(X, A) :- consistsOf(A, X), visible(A).
 nearestVisibleAncestor(X, A) :- consistsOf(P, X), entity(P), not visible(P), nearestVisibleAncestor(P, A).
 
-% top level graph is for top level entities and enties whose parent is not visible
+% The diagram is drawn inside one invisible cluster, diagramFrame. It holds the
+% top-level entities and the entities whose parent is not visible. Graphviz
+% keeps sibling clusters apart by the margin of their parent graph, but the
+% margin of the root graph is the margin of the canvas in inches. Without the
+% frame, top-level clusters would be only 8 points apart.
+% Clusters inherit the attributes of their parent graph, so every drawn
+% cluster sets its own style.
 graph(toplevelGraph).
+graph(diagramFrame, toplevelGraph).
+attr(graph, diagramFrame, style, invis).
 
 % if a visible entity has visible children, then it is a graph.
 % let's also create an invisible point node to act as an endpoint of any edges of each graph.
@@ -135,7 +160,7 @@ graph(toplevelGraph).
 % graphTopLevelEntity(X) means that X is a top-level entity that must be drawn as a graph,
 % because it has visible "children"
 graphTopLevelEntity(X) :- entity(X), visible(X), not consistsOf(_, X), contains(X, Y), visible(Y).
-graph(X, toplevelGraph) :- graphTopLevelEntity(X).
+entityGraphIn(X, diagramFrame) :- graphTopLevelEntity(X).
 node(X, X) :- graphTopLevelEntity(X).
 invisible(X) :- graphTopLevelEntity(X).
 attr(node, X, shape, point) :- graphTopLevelEntity(X).
@@ -143,10 +168,10 @@ attr(node, X, style, invis) :- graphTopLevelEntity(X).
 
 % graphEntityHiddenAncestors(X) means that X is an entity that must be drawn as a graph,
 % because it has visible "children", and its own parent is not visible.
-% If a nearest visible ancestor exists, X is placed inside it; otherwise at the top level.
+% If a nearest visible ancestor exists, X is placed inside it; otherwise in the frame.
 graphEntityHiddenAncestors(X) :-  visible(X), not visible(P), consistsOf(P, X), entity(X), contains(X, Y), visible(Y).
-graph(X, G) :- graphEntityHiddenAncestors(X), nearestVisibleAncestor(X, G).
-graph(X, toplevelGraph) :- graphEntityHiddenAncestors(X), not nearestVisibleAncestor(X, _).
+entityGraphIn(X, G) :- graphEntityHiddenAncestors(X), nearestVisibleAncestor(X, G).
+entityGraphIn(X, diagramFrame) :- graphEntityHiddenAncestors(X), not nearestVisibleAncestor(X, _).
 node(X, X) :- graphEntityHiddenAncestors(X).
 invisible(X) :- graphEntityHiddenAncestors(X).
 attr(node, X, shape, point) :- graphEntityHiddenAncestors(X).
@@ -155,7 +180,7 @@ attr(node, X, style, invis) :- graphEntityHiddenAncestors(X).
 % graphLowerLevel(X, P) means that X has visible children and a visible parent,
 % so it must be drawn as a subgraph of P
 graphLowerLevel(X, P) :- visible(X), entity(X), visible(P), consistsOf(P, X), contains(X, Y), visible(Y).
-graph(X, P) :- graphLowerLevel(X, P).
+entityGraphIn(X, P) :- graphLowerLevel(X, P).
 node(X, X) :- graphLowerLevel(X, P).
 invisible(X) :- graphLowerLevel(X, P).
 attr(node, X, shape, point) :- graphLowerLevel(X, P).
@@ -165,11 +190,50 @@ attr(node, X, style, invis) :- graphLowerLevel(X, P).
 
 % if an entity is visible, but it's not a graph (= does not have visible children), then it is a node.
 % if the immediate parent is not visible, the node is placed in the nearest visible ancestor graph,
-% or at the top level if no such ancestor exists.
-node(X, toplevelGraph) :- entity(X), visible(X), not consistsOf(_, X), not graph(X, toplevelGraph).
-node(X, Y) :- entity(X), visible(X), consistsOf(Y, X), not graph(X, _), visible(Y).
-node(X, G) :- entity(X), visible(X), consistsOf(Y, X), not graph(X, _), not visible(Y), nearestVisibleAncestor(X, G).
-node(X, toplevelGraph) :- entity(X), visible(X), consistsOf(Y, X), not graph(X, _), not visible(Y), not nearestVisibleAncestor(X, _).
+% or in the frame if no such ancestor exists.
+entityNodeIn(X, diagramFrame) :- entity(X), visible(X), not consistsOf(_, X), not entityGraphIn(X, diagramFrame).
+entityNodeIn(X, Y) :- entity(X), visible(X), consistsOf(Y, X), not entityGraphIn(X, _), visible(Y).
+entityNodeIn(X, G) :- entity(X), visible(X), consistsOf(Y, X), not entityGraphIn(X, _), not visible(Y), nearestVisibleAncestor(X, G).
+entityNodeIn(X, diagramFrame) :- entity(X), visible(X), consistsOf(Y, X), not entityGraphIn(X, _), not visible(Y), not nearestVisibleAncestor(X, _).
+
+% Groups
+%
+% entityGraphIn and entityNodeIn place the elements as if there were no groups.
+% A group whose elements are drawn becomes a cluster inside its nearest drawn
+% container, so that Graphviz keeps its elements together:
+% - A group whose field secdeva/fieldTypes/showInDiagrams is true is shown: it
+%   is drawn as a grey rectangle with its title, in every layout.
+% - Other groups are invisible clusters without a frame or a label, except in
+%   the layered layout. There they set rows only (see "Layered layout" below),
+%   because an invisible cluster would pull elements out of their rows.
+groupDescendant(G, X) :- group(G), layoutParent(X, G).
+groupDescendant(G, X) :- groupDescendant(G, P), layoutParent(X, P).
+layeredGroup(G) :- group(G), modelOf(G, M), zoneLayers(M).
+shownGroup(G) :- group(G), field(G, "secdeva/fieldTypes/showInDiagrams", "true").
+groupWithDrawnElements(G) :- groupDescendant(G, X), entity(X), visible(X).
+framedGroup(G) :- groupWithDrawnElements(G), not layeredGroup(G).
+framedGroup(G) :- groupWithDrawnElements(G), shownGroup(G).
+drawnContainer(P) :- framedGroup(P).
+drawnContainer(P) :- entity(P), visible(P).
+nearestContainer(X, P) :- layoutParent(X, P), drawnContainer(P).
+nearestContainer(X, C) :- layoutParent(X, P), not drawnContainer(P), nearestContainer(P, C).
+inGroup(X, G) :- nearestContainer(X, G), framedGroup(G).
+
+graph(X, G) :- entityGraphIn(X, G), not inGroup(X, _).
+graph(X, G) :- entityGraphIn(X, _), inGroup(X, G).
+node(X, G) :- entityNodeIn(X, G), not inGroup(X, _).
+node(X, G) :- entityNodeIn(X, _), inGroup(X, G).
+
+graph(G, C) :- framedGroup(G), nearestContainer(G, C).
+graph(G, diagramFrame) :- framedGroup(G), not nearestContainer(G, _).
+hiddenGroup(G) :- framedGroup(G), not shownGroup(G).
+attr(graph, G, style, invis) :- hiddenGroup(G).
+attr(graph, G, style, solid) :- framedGroup(G), shownGroup(G).
+attr(graph, G, color, "#999999") :- framedGroup(G), shownGroup(G).
+attr(graph, G, label, @concatenate("<<font point-size='24'><b> ", @wrap(Title), " </b></font><br/>>")) :-
+    framedGroup(G), shownGroup(G), field(G, "title", Title).
+attr(graph, G, labelloc, b) :- framedGroup(G), shownGroup(G).
+attr(graph, G, labeljust, l) :- framedGroup(G), shownGroup(G).
 
 % edges and representatives of entities when drawing dataflows
 
@@ -244,7 +308,7 @@ visible(Y) :-
 % edge_ is a helper predicate to keep track of both the original entities and the representatives of the dataflow
 % the edge is placed on the toplevel graph
 
-edge_((XR, YR, N), toplevelGraph, X, Y) :-
+dataflowEdge((XR, YR, N), toplevelGraph, X, Y) :-
     representative(XR, X),
     representative(YR, Y),
     visible(dataflow(X, Y, N)),
@@ -252,38 +316,80 @@ edge_((XR, YR, N), toplevelGraph, X, Y) :-
     consistsOf(GY, YR),
     XR != YR.
 
-edge_((XR, YR, N), toplevelGraph, X, Y) :-
+dataflowEdge((XR, YR, N), toplevelGraph, X, Y) :-
     representative(XR, X),
     representative(YR, Y),
     visible(dataflow(X, Y, N)),
-    node(XR, toplevelGraph),
+    entityNodeIn(XR, diagramFrame),
     XR != YR.
 
-edge_((XR, YR, N), toplevelGraph, X, Y) :-
+dataflowEdge((XR, YR, N), toplevelGraph, X, Y) :-
     representative(XR, X),
     representative(YR, Y),
     visible(dataflow(X, Y, N)),
-    node(YR, toplevelGraph),
+    entityNodeIn(YR, diagramFrame),
     XR != YR.
 
-edge((XR, YR, N), G) :- edge_((XR, YR, N), G, _, _).
+% dataflowEdge is a dataflow drawn between two representatives. Normally each
+% dataflow is drawn as its own edge. A view that draws its own edges, such as
+% the conduits of the zones view, defines ownEdges.
+edge_(E, G, X, Y) :- dataflowEdge(E, G, X, Y), not mergeDataflows, not ownEdges.
+
+% When a view defines mergeDataflows, all the dataflows from one representative
+% to another are drawn as one edge, whose label lists the dataflows one per
+% line in alphabetical order. This keeps overview diagrams readable when many
+% dataflows run between the same two elements.
+mergedFlow(XR, YR, N) :- dataflowEdge((XR, YR, N), _, _, _), mergeDataflows, not ownEdges.
+nextMergedFlow(XR, YR, N1, N2) :-
+    mergedFlow(XR, YR, N1), mergedFlow(XR, YR, N2), N1 < N2,
+    #count { N : mergedFlow(XR, YR, N), N1 < N, N < N2 } = 0.
+hasPreviousMergedFlow(XR, YR, N2) :- nextMergedFlow(XR, YR, _, N2).
+hasNextMergedFlow(XR, YR, N1) :- nextMergedFlow(XR, YR, N1, _).
+mergedLabel(XR, YR, N, N) :- mergedFlow(XR, YR, N), not hasPreviousMergedFlow(XR, YR, N).
+mergedLabel(XR, YR, N2, @concatenate(L, "<br/>", N2)) :-
+    mergedLabel(XR, YR, N1, L), nextMergedFlow(XR, YR, N1, N2).
+edge_((XR, YR, L), toplevelGraph, XR, YR) :-
+    mergedLabel(XR, YR, N, L), not hasNextMergedFlow(XR, YR, N).
+
+% An edge that points upwards in the layout rows (see below) is drawn reversed
+% with dir=back, so that its arrow still points to the destination but it
+% follows the rows instead of fighting them. If an edge with the same title
+% already runs the other way, the reversed edge would get its identifier, so
+% the edge is drawn upwards instead, without constraining the ranking.
+reversedEdge((XR, YR, N)) :-
+    edge_((XR, YR, N), _, _, _), upwardEdge(XR, YR), not edge_((YR, XR, N), _, _, _).
+edge((XR, YR, N), G) :- edge_((XR, YR, N), G, _, _), not reversedEdge((XR, YR, N)).
+edge((YR, XR, N), G) :- edge_((XR, YR, N), G, _, _), reversedEdge((XR, YR, N)).
+attr(edge, (YR, XR, N), dir, back) :- reversedEdge((XR, YR, N)).
+attr(edge, (XR, YR, N), constraint, false) :-
+    edge_((XR, YR, N), _, _, _), upwardEdge(XR, YR), not reversedEdge((XR, YR, N)).
 
 % edges that have a graph as an endpoint
 attr(graph, X, compound, true) :- graph(X).
 attr(graph, X, compound, true) :- graph(X, _).
 
-attr(edge, (XR, YR, N), ltail, @concatenate("cluster_", XR)) :- edge((XR, YR, N), _), graph(XR, _).
-attr(edge, (XR, YR, N), lhead, @concatenate("cluster_", YR)) :- edge((XR, YR, N), _), graph(YR, _).
+attr(edge, (XR, YR, N), ltail, @concatenate("cluster_", XR)) :- edge((XR, YR, N), _), graph(XR, _), not layoutEdge((XR, YR, N)).
+attr(edge, (XR, YR, N), lhead, @concatenate("cluster_", YR)) :- edge((XR, YR, N), _), graph(YR, _), not layoutEdge((XR, YR, N)).
 
 % edge "inherits" title from the original dataflow
 title((XR, YR, Title), Title) :- dataflow(X, Y, Title), edge_((XR, YR, Title), _, X, Y).
 
 % margins
-attr(graph, toplevelGraph, pad, "0.2").
+attr(graph, toplevelGraph, pad, "0").
 attr(graph, toplevelGraph, nodesep, "2").
 attr(graph, toplevelGraph, ranksep, "3").
 attr(node, X, margin, "0.4") :- node(X, _).
-attr(graph, X, margin, "25") :- graph(X, _).
+% A cluster margin of 40 points leaves the arrowhead (20 points with arrowsize 2)
+% clear of the border when a dataflow crosses into a cluster, also when
+% clusters are nested. Graphviz does not support separate x and y margins
+% for clusters. The margin of a cluster also keeps the clusters inside it
+% apart, and the frame gives the diagram its outer margin.
+% A hidden group that contains only nodes has no margin, as it draws nothing:
+% otherwise it would make its shown parent cluster larger than its neighbours.
+% A hidden group that contains clusters keeps the margin to keep them apart.
+noMargin(G) :- hiddenGroup(G), not graph(_, G).
+attr(graph, X, margin, "40") :- graph(X, _), not noMargin(X).
+attr(graph, G, margin, "0") :- noMargin(G).
 
 % penwidth
 attr(graph, X, penwidth, "3") :- graph(X).
@@ -382,7 +488,21 @@ attr(graph, X, labeljust, l) :- entity(X), graph(X, _).
 % notice the extra spaces, as for compatibility reasons, we have to use at least a whitespace the label
 attr(edge, (X, Y, Title), label, @concatenate(
     "<<font point-size='24'> ", Title, " </font>>")) :-
-        edge((X, Y, Title), _).
+        edge((X, Y, Title), _),
+        not layoutEdge((X, Y, Title)),
+        not externalLabel((X, Y, Title)).
+
+% When a view defines sideEdgeExternalLabels, an edge between two elements of
+% the same row has an external label (xlabel). Graphviz puts the normal label
+% of such an edge in an extra rank above the row, and the edges that come down
+% into the row then have to weave around it. An external label is placed after
+% the layout, so it needs no rank, but it may overlap other parts of the
+% diagram. Views with short labels, such as the zones view, use it.
+externalLabel(E) :- sideEdge(E), sideEdgeExternalLabels.
+attr(edge, (X, Y, Title), xlabel, @concatenate(
+    "<<font point-size='24'> ", Title, " </font>>")) :-
+        edge((X, Y, Title), _),
+        externalLabel((X, Y, Title)).
 
 % shapes of graphs
 attr(graph, X, shape, rectangle) :- process(X), graph(X, _).
@@ -393,8 +513,10 @@ attr(graph, X, shape, cylinder) :- datastore(X), graph(X, _).
 
 attr(graph, X, shape, rectangle) :- trustBoundary(X), graph(X, _).
 attr(graph, X, style, dashed) :- trustBoundary(X), graph(X, _).
-attr(graph, X, color, "#aa0000") :- trustBoundary(X), graph(X, _).
-attr(graph, X, color, "#000000") :- not trustBoundary(X), graph(X, _).
+attr(graph, X, color, "#aa0000") :- trustBoundary(X), not enclosingBoundary(X), graph(X, _).
+attr(graph, X, color, "#666666") :- enclosingBoundary(X), graph(X, _).
+attr(graph, X, color, "#000000") :- entity(X), not trustBoundary(X), graph(X, _).
+attr(graph, X, style, solid) :- entity(X), not process(X), not trustBoundary(X), graph(X, _).
 
 % shapes of nodes
 attr(node, X, shape, rectangle) :- process(X), node(X, _), not invisible(X).
@@ -402,7 +524,8 @@ attr(node, X, style, rounded) :- process(X), node(X, _), not invisible(X).
 
 attr(node, X, shape, rectangle) :- trustBoundary(X), node(X, _), not invisible(X).
 attr(node, X, style, dashed) :- trustBoundary(X), node(X, _), not invisible(X).
-attr(node, X, color, "#aa0000") :- trustBoundary(X), node(X, _), not invisible(X).
+attr(node, X, color, "#aa0000") :- trustBoundary(X), not enclosingBoundary(X), node(X, _), not invisible(X).
+attr(node, X, color, "#666666") :- enclosingBoundary(X), node(X, _), not invisible(X).
 attr(node, X, color, "#000000") :- not trustBoundary(X), node(X, _), not invisible(X).
 
 attr(node, X, shape, rectangle) :- external(X), node(X, _), not invisible(X).
@@ -413,3 +536,131 @@ attr(graph, G, fontname, "helvetica") :- graph(G).
 attr(graph, G, fontname, "helvetica") :- graph(G, _).
 attr(node, N, fontname, "helvetica") :- node(N, _), not invisible(N).
 attr(edge, (X, Y, N), fontname, "helvetica") :- edge((X, Y, N), _).
+
+%
+% Layered layout
+%
+% When the field secdeva/fieldTypes/diagramLayout of a dataflow model or threat
+% model is "zoneLayers", its diagrams are drawn in rows that follow the
+% navigation tree:
+% - A zone is an outermost technical trust boundary: it may only be inside
+%   physical or organisational trust boundaries, such as a site. The zones are
+%   stacked from top to bottom in tree order, one row per zone. To draw zones
+%   side by side, nest them in a common zone, such as a control network that
+%   contains one zone per production cell, or in a group, if there is no
+%   common zone.
+% - Everything inside a zone is in the row of the zone.
+% - Other elements, such as persons and external entities, are placed in the
+%   highest row of the zoned elements that they exchange dataflows with.
+% Otherwise Graphviz arranges the elements by the direction of the dataflows.
+%
+% Rows are enforced with an invisible marker node per row and invisible edges
+% marker(R) -> member -> marker(next row), so that every member of a row is
+% ranked below the members of the previous row. Within its row, an element can
+% still be placed below another one, for example a PLC below its HMI.
+% Dataflows that point upwards (to a lower row number) are drawn reversed with
+% dir=back, so that they follow the rows instead of contradicting them.
+%
+% Rows only fix the vertical position. Graphviz decides the horizontal order
+% to minimise edge crossings; it follows the navigation tree order only when
+% that does not add crossings.
+
+% The layout follows the cards themselves, including groups (see also "Groups"
+% above).
+layoutItem(X) :- entity(X).
+layoutItem(X) :- group(X).
+layoutParent(X, P) :- layoutItem(X), parent(X, P), layoutItem(P).
+
+% modelOf(X, M): X belongs to the dataflow model or threat model M
+modelOf(X, M) :- layoutItem(X), parent(X, M), not layoutItem(M).
+modelOf(X, M) :- layoutParent(X, P), modelOf(P, M).
+zoneLayers(M) :- modelOf(_, M), field(M, "secdeva/fieldTypes/diagramLayout", "zoneLayers").
+
+% treeOrder(X, T): T orders the cards in the order of the navigation tree
+treeOrder(X, R) :- layoutItem(X), not layoutParent(X, _), field(X, "rank", R).
+treeOrder(X, @concatenate(T, " - ", R)) :- layoutParent(X, P), treeOrder(P, T), field(X, "rank", R).
+
+% A layer is drawn as one row. Layers are the zones and the groups that contain
+% zones, at the top level of the model or only inside physical or
+% organisational trust boundaries. The zones of a group are side by side.
+technicalBoundary(B) :- trustBoundary(B), not enclosingBoundary(B).
+groupWithZones(G) :- group(G), parent(B, G), technicalBoundary(B).
+groupWithZones(G) :- group(G), parent(G2, G), groupWithZones(G2).
+layerLevel(X) :- layoutItem(X), not layoutParent(X, _).
+layerLevel(X) :- layoutParent(X, P), enclosingBoundary(P), layerLevel(P).
+layer(L, M) :- layerLevel(L), technicalBoundary(L), modelOf(L, M), zoneLayers(M).
+layer(L, M) :- layerLevel(L), groupWithZones(L), modelOf(L, M), zoneLayers(M).
+
+zoneRow(L, N) :-
+    layer(L, M), treeOrder(L, T),
+    C = #count { L2 : layer(L2, M), treeOrder(L2, T2), T2 < T }, N = C + 1.
+zoneRow(X, R) :- layoutParent(X, P), zoneRow(P, R).
+
+% elements outside the zones follow the zoned elements they exchange dataflows with
+partnerRow(X, R) :-
+    entity(X), not trustBoundary(X), modelOf(X, M), zoneLayers(M), not zoneRow(X, _),
+    dataflow(X, Y, _), zoneRow(Y, R).
+partnerRow(X, R) :-
+    entity(X), not trustBoundary(X), modelOf(X, M), zoneLayers(M), not zoneRow(X, _),
+    dataflow(Y, X, _), zoneRow(Y, R).
+derivedRow(X, R) :- partnerRow(X, _), R = #min { RY : partnerRow(X, RY) }.
+
+effectiveRow(X, R) :- zoneRow(X, R).
+effectiveRow(X, R) :- derivedRow(X, R).
+effectiveRow(X, R) :-
+    entity(X), not zoneRow(X, _), not derivedRow(X, _),
+    consistsOf(P, X), effectiveRow(P, R).
+
+% drawn nodes in each row, including the invisible anchor points of clusters
+rowMember(X, R) :- node(X, _), entity(X), effectiveRow(X, R).
+
+% A cluster without a row of its own, such as a site that contains zones of
+% several rows, has its invisible anchor point in the top row of its contents.
+% Otherwise Graphviz may put the anchor point above all rows, and the cluster
+% would extend to the top of the diagram.
+containedRow(X, R) :- graph(X, _), contains(X, C), node(C, _), effectiveRow(C, R).
+rowMember(X, R) :-
+    node(X, X), invisible(X), not effectiveRow(X, _), containedRow(X, _),
+    R = #min { RC : containedRow(X, RC) }.
+usedRow(R) :- rowMember(_, R).
+nextRow(R1, R2) :-
+    usedRow(R1), usedRow(R2), R1 < R2,
+    #count { R : usedRow(R), R1 < R, R < R2 } = 0.
+
+rowMarker(@concatenate("rowMarker_", R)) :- usedRow(R).
+rowMarkerOf(R, @concatenate("rowMarker_", R)) :- usedRow(R).
+node(M, diagramFrame) :- rowMarker(M).
+invisible(M) :- rowMarker(M).
+attr(node, M, shape, point) :- rowMarker(M).
+attr(node, M, style, invis) :- rowMarker(M).
+
+layoutEdge((M1, M2, layout)) :- nextRow(R1, R2), rowMarkerOf(R1, M1), rowMarkerOf(R2, M2).
+layoutEdge((M, X, layout)) :- rowMember(X, R), rowMarkerOf(R, M).
+layoutEdge((X, M, layout)) :- rowMember(X, R1), nextRow(R1, R2), rowMarkerOf(R2, M).
+
+edge(E, toplevelGraph) :- layoutEdge(E).
+attr(edge, E, style, invis) :- layoutEdge(E).
+attr(edge, E, weight, "0") :- layoutEdge(E).
+
+% global ranking keeps the rows aligned across trust boundaries
+attr(graph, toplevelGraph, newrank, true) :- usedRow(_).
+
+% upward dataflows are drawn reversed, see the edge rules above
+upwardEdge(XR, YR) :-
+    edge_((XR, YR, _), _, _, _),
+    effectiveRow(XR, RX), effectiveRow(YR, RY), RX > RY.
+
+% rowGroup(X, G): G is the zone or nested zone that X is drawn in. A zone is
+% its own row group, so that nested zones stay side by side.
+rowGroup(B, B) :- technicalBoundary(B).
+rowGroup(X, B) :- entity(X), not technicalBoundary(X), consistsOf(B, X), technicalBoundary(B).
+rowGroup(X, G) :- entity(X), not technicalBoundary(X), consistsOf(P, X), not technicalBoundary(P), rowGroup(P, G).
+sameRowGroup(X, Y) :- rowGroup(X, G), rowGroup(Y, G).
+
+% A dataflow between elements of the same row but different row groups does
+% not constrain the ranking, so that the elements stay aligned side by side.
+sideEdge((XR, YR, N)) :-
+    edge((XR, YR, N), _), not layoutEdge((XR, YR, N)),
+    effectiveRow(XR, R), effectiveRow(YR, R),
+    not sameRowGroup(XR, YR).
+attr(edge, E, constraint, false) :- sideEdge(E).

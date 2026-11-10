@@ -1,0 +1,11 @@
+{
+    "rank": "0|b",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T20:07:11.225Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/group",
+    "title": "Backend services",
+    "templateCardKey": "secdeva_4la1ihw8",
+    "lastUpdated": "2026-11-08T20:07:11.227Z",
+    "secdeva/fieldTypes/description": "Group inside a trust boundary"
+}

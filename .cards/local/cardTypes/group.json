@@ -1,0 +1,21 @@
+{
+    "name": "secdeva/cardTypes/group",
+    "displayName": "Group",
+    "description": "Groups elements of a dataflow model in the navigation tree and in the diagrams. A group is not an asset and not a trust boundary. If it is shown in the diagrams, it is drawn as a grey frame around its elements",
+    "workflow": "secdeva/workflows/entity",
+    "customFields": [
+        {
+            "name": "secdeva/fieldTypes/description",
+            "isCalculated": false
+        },
+        {
+            "name": "secdeva/fieldTypes/showInDiagrams",
+            "isCalculated": false
+        }
+    ],
+    "alwaysVisibleFields": [
+        "secdeva/fieldTypes/description",
+        "secdeva/fieldTypes/showInDiagrams"
+    ],
+    "optionallyVisibleFields": []
+}

@@ -1,0 +1,11 @@
+{
+    "rank": "0|b",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T18:00:08.908Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/trustBoundary",
+    "title": "Safety zone",
+    "templateCardKey": "secdeva_3e4v272u",
+    "lastUpdated": "2026-11-08T18:00:08.909Z",
+    "secdeva/fieldTypes/trustBoundaryType": "networkFiltered"
+}

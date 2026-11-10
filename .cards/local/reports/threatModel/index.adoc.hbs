@@ -86,7 +86,8 @@ You can evaluate whether the DFD describes the system with sufficient detail by 
 
 {{#graph}}
   "model": "secdeva/graphModels/dataflow",
-  "view": "secdeva/graphViews/context"
+  "view": "secdeva/graphViews/context",
+  "mergeDataflows": true
 {{/graph}}
 
 == Detailed diagram
@@ -105,6 +106,12 @@ a| A *trust boundary* is a boundary between different trust zone levels.
 a| {{#createCards}}
     "buttonLabel": "Create a trust boundary",
     "template": "secdeva/templates/trustBoundary2"
+{{/createCards}}
+
+| A *group* organises elements in the navigation tree and keeps them together in the diagrams, where it is drawn as a grey rectangle unless you hide it. It is not an asset or a trust boundary.
+a| {{#createCards}}
+  "buttonLabel": "Create a group",
+  "template": "secdeva/templates/group"
 {{/createCards}}
 
 | An *external entity* is a source from which information flows into the system, or a recipient of information leaving the system
@@ -244,13 +251,17 @@ When reviewing this section, check that all internal and external interfaces, su
 {{#if interfaces}}
 
 .Interfaces
-[cols="3,3,2,2"]
+[cols="3,3,2,2,2,2,1,2"]
 |===
-| Asset | Interface | External? | Crosses trust boundary?
+| Asset | Interface | Port | Authentication | Transport security | Purpose | External? | Crosses trust boundary?
 
 {{#each interfaces}}
 |xref:{{this.[secdeva/fieldTypes/interfaceElementCardKey]}}.adoc[{{this.[secdeva/fieldTypes/interfaceElementTitle]}}]
 |xref:{{this.key}}.adoc[{{this.title}}]
+|{{this.[secdeva/fieldTypes/port]}}
+|{{this.[secdeva/fieldTypes/interfaceAuthentication].displayValue}}
+|{{this.[secdeva/fieldTypes/transportSecurity].displayValue}}
+|{{#each this.[secdeva/fieldTypes/interfacePurpose]}}{{this.displayName}}{{#unless @last}}, {{/unless}}{{/each}}
 |{{this.[secdeva/fieldTypes/isExternal].displayValue}}
 |{{this.[secdeva/fieldTypes/crossesTrustBoundary].displayValue}}
 
@@ -281,13 +292,16 @@ When reviewing this section, check that all physical ports and connections are l
 {{#if physicalConnections}}
 
 .Physical ports and connections
-[cols="3,3,1"]
+[cols="3,3,2,2,2,1"]
 |===
-| Asset | Physical connection | Count 
+| Asset | Physical connection | Port | Authentication | Purpose | Count
 
 {{#each physicalConnections}}
 |xref:{{this.[secdeva/fieldTypes/physicalConnectionElementCardKey]}}.adoc[{{this.[secdeva/fieldTypes/physicalConnectionElementTitle]}}]
 |xref:{{this.key}}.adoc[{{this.title}}]
+|{{this.[secdeva/fieldTypes/port]}}
+|{{this.[secdeva/fieldTypes/interfaceAuthentication].displayValue}}
+|{{#each this.[secdeva/fieldTypes/interfacePurpose]}}{{this.displayName}}{{#unless @last}}, {{/unless}}{{/each}}
 |{{this.[secdeva/fieldTypes/physicalConnectionCount]}}
 
 {{/each}}

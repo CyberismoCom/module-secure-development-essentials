@@ -1,0 +1,47 @@
+[TIP]
+====
+A group organises the elements of a dataflow model in the navigation tree and arranges the diagrams. It is not an asset and not a trust boundary.
+
+When _Show in diagrams_ is set, the group is drawn as a grey rectangle with its title around its elements. Clear it if the group only organises the navigation tree. A hidden group still keeps its elements together when the diagram layout of the model is _Follow the dataflows_.
+
+When the diagram layout of the model is _Zones in tree order_, a group that contains zones is one row of the diagram, and its zones are drawn side by side in tree order.
+
+Use a trust boundary instead, if crossing the boundary changes the level of trust, and a process, if the group is a real system with an owner.
+====
+
+{{#graph}}
+  "model": "secdeva/graphModels/dataflow",
+  "view": "secdeva/graphViews/allEntities"
+{{/graph}}
+
+== Elements
+
+{{#createCards}}
+  "buttonLabel": "Create a trust boundary",
+  "template": "secdeva/templates/trustBoundary2"
+{{/createCards}}
+
+{{#createCards}}
+  "buttonLabel": "Create a group",
+  "template": "secdeva/templates/group"
+{{/createCards}}
+
+{{#createCards}}
+  "buttonLabel": "Create an external entity",
+  "template": "secdeva/templates/external2"
+{{/createCards}}
+
+{{#createCards}}
+  "buttonLabel": "Create a person",
+  "template": "secdeva/templates/person2"
+{{/createCards}}
+
+{{#createCards}}
+  "buttonLabel": "Create a process",
+  "template": "secdeva/templates/process2"
+{{/createCards}}
+
+{{#createCards}}
+  "buttonLabel": "Create a data store",
+  "template": "secdeva/templates/dataStore2"
+{{/createCards}}

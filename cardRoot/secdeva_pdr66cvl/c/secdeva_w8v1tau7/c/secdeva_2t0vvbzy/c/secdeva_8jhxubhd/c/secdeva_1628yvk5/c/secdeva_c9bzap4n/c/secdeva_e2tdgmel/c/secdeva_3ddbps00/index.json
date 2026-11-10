@@ -1,0 +1,17 @@
+{
+    "rank": "0|b",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T18:00:03.127Z",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_azv5afmg",
+            "linkDescription": "Local commands [Modbus TCP]"
+        }
+    ],
+    "cardType": "secdeva/cardTypes/process",
+    "title": "HMI A",
+    "templateCardKey": "secdeva_yye0ku8v",
+    "lastUpdated": "2026-11-08T18:00:35.860Z",
+    "secdeva/fieldTypes/description": "Local operator panel"
+}

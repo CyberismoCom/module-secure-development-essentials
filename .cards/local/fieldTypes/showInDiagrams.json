@@ -1,0 +1,7 @@
+{
+    "name": "secdeva/fieldTypes/showInDiagrams",
+    "displayName": "Show in diagrams",
+    "dataType": "boolean",
+    "description": "Whether the group is drawn in the dataflow diagrams as a grey frame around its elements. A group that is not shown only organises the navigation tree and arranges the diagrams.",
+    "category": "Threat model"
+}

@@ -11,6 +11,13 @@
   "template": "secdeva/templates/trustBoundary2"
 {{/createCards}}
 
+{{#unless (eq variant "dataStore")}}
+{{#createCards}}
+  "buttonLabel": "Create a group",
+  "template": "secdeva/templates/group"
+{{/createCards}}
+{{/unless}}
+
 {{#createCards}}
   "buttonLabel": "Create an external entity",
   "template": "secdeva/templates/external2"
@@ -34,17 +41,20 @@
 {{/unless}}
 {{#each results}}
 
-{{#unless (eq ../variant "trustBoundary")}}
 == Dataflows
 
 [TIP]
 ====
+{{#if (eq ../variant "trustBoundary")}}
+These are the dataflows that cross this trust boundary. To add a dataflow, open the element inside the boundary that sends or receives it, and click the link symbol in the top level tool bar.
+{{else}}
 To add a dataflow to or from this {{#if (eq ../variant "process")}}process{{/if}}{{#if (eq ../variant "dataStore")}}data store{{/if}}{{#if (eq ../variant "external")}}external entity{{/if}}, click the link symbol in the top level tool bar.{{#unless (eq ../variant "external")}} Optionally, if you want to model interfaces as well, you can create an interface and link any incoming dataflows to the interface.{{/unless}}
+{{/if}}
 ====
 
 {{#if externalDataflows}}
 
-.Dataflows to and from this entity
+.{{#if (eq ../variant "trustBoundary")}}Dataflows that cross this trust boundary{{else}}Dataflows to and from this entity{{/if}}
 [cols="2,2,2,4"]
 |===
 |Direction | Inside element | Outside element | Dataflow
@@ -60,10 +70,15 @@ To add a dataflow to or from this {{#if (eq ../variant "process")}}process{{/if}
 
 {{else}}
 
+{{#if (eq ../variant "trustBoundary")}}
+There are no dataflows that cross this trust boundary.
+{{else}}
 There are no dataflows to or from this entity.
+{{/if}}
 
 {{/if}}
 
+{{#unless (eq ../variant "trustBoundary")}}
 {{#unless (eq ../variant "external")}}
 == Interfaces and physical connections
 

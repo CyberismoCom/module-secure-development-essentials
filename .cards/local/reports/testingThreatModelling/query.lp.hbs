@@ -1,0 +1,135 @@
+% Expectations for the layered threat model under Test content: which dataflows
+% cross a trust boundary, which table of the attack surface reports lists each
+% dataflow, and where the threat modelling skills are enabled. These are the
+% predicates of the calculations secdeva/calculations/skills and
+% secdeva/calculations/dataflows. The layout of the diagrams is tested by the
+% graph model tests in tests/graphModels of the module repository.
+%
+% Test cards are matched by their titles inside the test model, never by card key,
+% so the fixture survives being recreated.
+
+secdeva_testModelTitle("Threat model - Layered test project").
+secdeva_testProjectTitle("Layered test project").
+
+% secdeva_expectCrossing(SourceTitle, DestinationTitle, Expected): whether the
+% dataflow from the source to the destination (or one of its interfaces) crosses
+% a trust boundary.
+secdeva_expectCrossing("Corporate user", "ERP system", "yes").                 % from a person
+secdeva_expectCrossing("Remote vendor engineer", "Remote access gateway", "yes").
+secdeva_expectCrossing("Remote access gateway", "Jump host", "yes").           % enterprise to DMZ, to an interface
+secdeva_expectCrossing("Jump host", "SCADA server", "yes").                    % DMZ to operations
+secdeva_expectCrossing("Historian", "Historian mirror", "yes").                % upwards
+secdeva_expectCrossing("ERP system", "Historian mirror", "yes").
+secdeva_expectCrossing("SCADA server", "Historian", "no").                     % inside one zone and one system
+secdeva_expectCrossing("Historian", "Process history", "no").
+secdeva_expectCrossing("SCADA server", "PLC A", "yes").                        % to an interface
+secdeva_expectCrossing("SCADA server", "PLC B", "yes").
+secdeva_expectCrossing("HMI A", "PLC A", "no").                                % inside one cell, to an interface
+secdeva_expectCrossing("PLC A", "PLC B", "yes").                               % between the cells of a control network
+secdeva_expectCrossing("PLC A", "Safety controller", "yes").                   % into a zone of a group
+secdeva_expectCrossing("Safety controller", "Field devices", "yes").           % between the zones of a group
+secdeva_expectCrossing("Control room operator", "SCADA server", "yes").        % from a person inside the physical site
+secdeva_expectCrossing("Field technician", "PLC A", "yes").                    % from a person, to a physical interface
+secdeva_expectCrossing("Field technician", "Badge reader", "yes").             % from a person, inside one physical boundary only
+secdeva_expectCrossing("Remote vendor engineer", "PLC B", "yes").
+secdeva_expectCrossing("Jump host", "Vendor cloud", "yes").                    % to an external entity in a group
+
+% secdeva_expectTable(SourceTitle, DestinationTitle, Expected): the table of the
+% attack surface reports that lists the dataflow: external dataflows cross a
+% technical trust boundary, and internal dataflows have both ends inside a
+% trust boundary of any type.
+secdeva_expectTable("Corporate user", "ERP system", "external, inbound").
+secdeva_expectTable("Jump host", "Vendor cloud", "external, outbound").
+secdeva_expectTable("Control room operator", "SCADA server", "external, inbound").    % from inside the site only
+secdeva_expectTable("Field technician", "PLC A", "external, inbound").                % to a physical interface
+secdeva_expectTable("Jump host", "SCADA server", "internal").                          % between zones
+secdeva_expectTable("SCADA server", "Historian", "internal").                         % inside one zone
+secdeva_expectTable("Field technician", "Badge reader", "internal").                  % inside the site only
+
+% secdeva_expectSkill(CardTitle, Skill, Expected): whether the skill is enabled for the card.
+secdeva_expectSkill("Threat model - Layered test project", "secdeva/skills/dataflowModel", "yes").
+secdeva_expectSkill("Threat model - Layered test project", "secdeva/skills/interfaces", "yes").
+secdeva_expectSkill("Threat model - Layered test project", "secdeva/skills/dataflowDiagrams", "yes").
+secdeva_expectSkill("Threat model - Layered test project", "secdeva/skills/threatIdentification", "yes").
+secdeva_expectSkill("PLC A", "secdeva/skills/interfaces", "yes").
+secdeva_expectSkill("Modbus TCP server", "secdeva/skills/threatIdentification", "yes").
+secdeva_expectSkill("Off-site parties", "secdeva/skills/dataflowModel", "yes").
+secdeva_expectSkill("Plant site", "secdeva/skills/dataflowDiagrams", "yes").
+secdeva_expectSkill("Layered test project", "secdeva/skills/dataflowModel", "no").    % a project is not a model
+secdeva_expectSkill("Layered test project", "secdeva/skills/threatModelling", "no").  % global, not per card
+
+% Fixture lookup
+secdeva_testModel(Model) :-
+    secdeva_testModelTitle(Title), field(Model, "title", Title), secdeva_dataflowModel(Model).
+secdeva_testCard(Title, Card) :- secdeva_testModel(Model), ancestor(Card, Model), field(Card, "title", Title).
+secdeva_testCard(Title, Model) :- secdeva_testModel(Model), field(Model, "title", Title).
+secdeva_testCard(Title, Project) :-
+    secdeva_testProjectTitle(Title), field(Project, "title", Title),
+    base_projectCardType(Project, "secdeva/cardTypes/project2").
+
+% Actual results from the calculation
+secdeva_flowFound(ST, DT) :-
+    secdeva_expectCrossing(ST, DT, _), secdeva_testCard(ST, S), secdeva_testCard(DT, O),
+    link(S, D, "secdeva/linkTypes/dataflow", _), secdeva_dataflowOwner(D, O).
+secdeva_crossingFound(ST, DT) :-
+    secdeva_expectCrossing(ST, DT, _), secdeva_testCard(ST, S), secdeva_testCard(DT, O),
+    secdeva_crossingDataflow(S, D, _), secdeva_dataflowOwner(D, O).
+secdeva_actualCrossing(ST, DT, "yes") :- secdeva_crossingFound(ST, DT).
+secdeva_actualCrossing(ST, DT, "no") :- secdeva_flowFound(ST, DT), not secdeva_crossingFound(ST, DT).
+
+secdeva_tableFlow(ST, DT, (S, D, T)) :-
+    secdeva_expectTable(ST, DT, _), secdeva_testCard(ST, S), secdeva_testCard(DT, O),
+    link(S, D, "secdeva/linkTypes/dataflow", T), secdeva_dataflowOwner(D, O).
+secdeva_actualTable(ST, DT, "external, inbound") :- secdeva_tableFlow(ST, DT, F), secdeva_externalDataflow(F, "Inbound", _, _).
+secdeva_actualTable(ST, DT, "external, outbound") :- secdeva_tableFlow(ST, DT, F), secdeva_externalDataflow(F, "Outbound", _, _).
+secdeva_actualTable(ST, DT, "internal") :- secdeva_tableFlow(ST, DT, F), secdeva_internalDataflow(F).
+secdeva_actualTable(ST, DT, "none") :-
+    secdeva_tableFlow(ST, DT, F), not secdeva_externalDataflow(F, _, _, _), not secdeva_internalDataflow(F).
+
+secdeva_skillFound(CT, Skill) :-
+    secdeva_expectSkill(CT, Skill, _), secdeva_testCard(CT, Card), enableSkill(Skill, Card).
+secdeva_actualSkill(CT, Skill, "yes") :- secdeva_skillFound(CT, Skill).
+secdeva_actualSkill(CT, Skill, "no") :-
+    secdeva_expectSkill(CT, Skill, _), secdeva_testCard(CT, _), not secdeva_skillFound(CT, Skill).
+
+% Test cases
+secdeva_case(("Crossing", ST, DT), Expected) :- secdeva_expectCrossing(ST, DT, Expected).
+secdeva_case(("Table", ST, DT), Expected) :- secdeva_expectTable(ST, DT, Expected).
+secdeva_case(("Skill", CT, Skill), Expected) :- secdeva_expectSkill(CT, Skill, Expected).
+secdeva_case(("Skill", "global", "secdeva/skills/threatModelling"), "yes").
+secdeva_case(("Model", "Modbus TCP server", "Threat model - Layered test project"), "yes").
+
+secdeva_actual(("Crossing", ST, DT), A) :- secdeva_actualCrossing(ST, DT, A).
+secdeva_actual(("Table", ST, DT), A) :- secdeva_actualTable(ST, DT, A).
+secdeva_actual(("Skill", CT, Skill), A) :- secdeva_actualSkill(CT, Skill, A).
+secdeva_actual(("Skill", "global", "secdeva/skills/threatModelling"), "yes") :- enableSkill("secdeva/skills/threatModelling").
+secdeva_actual(("Model", CT, MT), "yes") :-
+    secdeva_case(("Model", CT, MT), _), secdeva_testCard(CT, Card), secdeva_testCard(MT, Model), secdeva_modelOf(Card, Model).
+
+% a case passes when its only actual value is the expected one; a test pair
+% with several dataflows that are classified differently fails
+secdeva_pass(Case) :-
+    secdeva_case(Case, Expected), secdeva_actual(Case, Expected), #count { A : secdeva_actual(Case, A) } = 1.
+secdeva_found(Case) :- secdeva_actual(Case, _).
+
+%
+% Report output
+%
+
+selectAll.
+result(result).
+
+childResult(result, Case, "tests") :- secdeva_case(Case, _).
+field((Kind, A, B), "kind", Kind) :- secdeva_case((Kind, A, B), _).
+field((Kind, A, B), "subject", A) :- secdeva_case((Kind, A, B), _).
+field((Kind, A, B), "object", B) :- secdeva_case((Kind, A, B), _).
+field(Case, "expected", E) :- secdeva_case(Case, E).
+field(Case, "actual", A) :- secdeva_actual(Case, A).
+field(Case, "actual", "not found") :- secdeva_case(Case, _), not secdeva_found(Case).
+field(Case, "verdict", "PASS") :- secdeva_pass(Case).
+field(Case, "verdict", "FAIL") :- secdeva_case(Case, _), not secdeva_pass(Case).
+
+field(result, "total",   N) :- N = #count { C : secdeva_case(C, _) }.
+field(result, "passed",  N) :- N = #count { C : secdeva_pass(C) }.
+field(result, "failed",  N) :- N = #count { C : secdeva_case(C, _), not secdeva_pass(C) }.
+field(result, "missing", N) :- N = #count { C : secdeva_case(C, _), not secdeva_found(C) }, N > 0.

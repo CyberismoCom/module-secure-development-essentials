@@ -1,0 +1,22 @@
+{
+    "rank": "0|c",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T20:07:13.465Z",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_18sjv1tk",
+            "linkDescription": "Process jobs [SQL]"
+        },
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_dtcn3b2q",
+            "linkDescription": "Send email [SMTP]"
+        }
+    ],
+    "cardType": "secdeva/cardTypes/process",
+    "title": "Worker",
+    "templateCardKey": "secdeva_yye0ku8v",
+    "lastUpdated": "2026-11-08T20:07:42.850Z",
+    "secdeva/fieldTypes/description": "Runs background jobs"
+}

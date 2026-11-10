@@ -1,0 +1,11 @@
+{
+    "rank": "0|a",
+    "workflowState": "None",
+    "createdAt": "2026-11-08T17:59:44.563Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/register",
+    "title": "Own products",
+    "templateCardKey": "secdeva_solstruct2",
+    "base/fieldTypes/identifier": "secdeva_group_own-products",
+    "lastUpdated": "2026-11-08T17:59:44.579Z"
+}

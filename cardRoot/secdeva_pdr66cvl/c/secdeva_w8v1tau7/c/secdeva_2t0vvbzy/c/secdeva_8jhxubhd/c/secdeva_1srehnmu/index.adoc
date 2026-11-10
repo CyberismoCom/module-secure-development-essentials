@@ -1,0 +1,4 @@
+{{#report}}
+  "name": "secdeva/reports/threatModelEntity",
+  "variant": "trustBoundary"
+{{/report}}

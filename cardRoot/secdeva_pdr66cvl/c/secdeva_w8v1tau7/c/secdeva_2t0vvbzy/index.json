@@ -1,0 +1,12 @@
+{
+    "rank": "0|d",
+    "workflowState": "None",
+    "createdAt": "2026-11-08T17:59:44.563Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/phase",
+    "title": "Design",
+    "templateCardKey": "secdeva_e8on5yg4",
+    "base/fieldTypes/identifier": "secdeva_phase_design",
+    "ismsa/fieldTypes/progress": "secdeva_phase-progress",
+    "lastUpdated": "2026-11-08T17:59:44.569Z"
+}

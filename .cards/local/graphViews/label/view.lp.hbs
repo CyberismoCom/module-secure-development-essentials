@@ -6,3 +6,6 @@ attr(graph, toplevelGraph, rankdir, "{{layout}}").
 {{#each this.labels}}
 visible(Entity) :- label(Entity, "{{this}}").
 {{/each}}
+{{#if mergeDataflows}}
+mergeDataflows.
+{{/if}}

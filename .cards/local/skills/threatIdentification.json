@@ -1,0 +1,7 @@
+{
+    "name": "secdeva/skills/threatIdentification",
+    "displayName": "Identify threats",
+    "category": "threat modelling",
+    "description": "Identify threats in a threat model with STRIDE, focusing on the dataflows that cross trust boundaries, and record the results in the project: risks, security issues, security requirements, the products that implement the elements, and decisions. Lists the crossing dataflows, what has already been recorded, and the card keys of the project's registers.",
+    "relatedTools": ["get_card", "list_cards", "create_card", "edit_card_metadata", "edit_card_content", "create_link", "transition_card"]
+}

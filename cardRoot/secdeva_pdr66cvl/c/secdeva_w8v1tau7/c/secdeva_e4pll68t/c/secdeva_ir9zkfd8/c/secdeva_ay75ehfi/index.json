@@ -1,0 +1,11 @@
+{
+    "rank": "0|b",
+    "workflowState": "None",
+    "createdAt": "2026-11-08T17:59:44.563Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/register",
+    "title": "Third-party products",
+    "templateCardKey": "secdeva_solstruct3",
+    "base/fieldTypes/identifier": "secdeva_group_third-party-products",
+    "lastUpdated": "2026-11-08T17:59:44.580Z"
+}

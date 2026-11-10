@@ -1,0 +1,17 @@
+{
+    "rank": "0|f",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T18:00:13.544Z",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_tqttl38a",
+            "linkDescription": "Monitor and control [SCADA client]"
+        }
+    ],
+    "cardType": "secdeva/cardTypes/person",
+    "title": "Control room operator",
+    "templateCardKey": "secdeva_y83ovmvi",
+    "lastUpdated": "2026-11-08T18:00:40.163Z",
+    "secdeva/fieldTypes/description": "Operates the plant"
+}

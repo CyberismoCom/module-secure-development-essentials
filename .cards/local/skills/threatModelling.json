@@ -1,0 +1,7 @@
+{
+    "name": "secdeva/skills/threatModelling",
+    "displayName": "Threat modelling",
+    "category": "threat modelling",
+    "description": "Start here for threat modelling, dataflow diagrams (DFD), STRIDE, OT security assessments and Purdue model diagrams in a Cyberismo project. Explains where threat models live (inside a project), the end-to-end workflow, and which card-specific skills to load next. Lists the projects and threat models in this project.",
+    "relatedTools": ["list_cards", "get_card", "create_card", "edit_card_metadata", "move_card", "list_skills", "get_skill"]
+}

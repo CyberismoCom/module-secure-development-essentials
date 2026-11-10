@@ -1,0 +1,11 @@
+{
+    "rank": "0|c",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T20:07:27.381Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/group",
+    "title": "Payment partners",
+    "templateCardKey": "secdeva_4la1ihw8",
+    "lastUpdated": "2026-11-08T20:07:27.383Z",
+    "secdeva/fieldTypes/description": "Nested group"
+}

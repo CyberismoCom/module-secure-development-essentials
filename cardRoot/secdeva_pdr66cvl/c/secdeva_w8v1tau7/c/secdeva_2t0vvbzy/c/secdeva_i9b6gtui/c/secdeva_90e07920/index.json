@@ -1,0 +1,11 @@
+{
+    "rank": "0|m",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T20:07:29.688Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/group",
+    "title": "Empty group",
+    "templateCardKey": "secdeva_4la1ihw8",
+    "lastUpdated": "2026-11-08T20:07:29.690Z",
+    "secdeva/fieldTypes/description": "Has no elements, so nothing is drawn"
+}

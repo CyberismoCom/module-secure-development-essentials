@@ -1,0 +1,12 @@
+{
+    "rank": "0|k",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T17:59:50.568Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/trustBoundary",
+    "title": "Plant site",
+    "templateCardKey": "secdeva_3e4v272u",
+    "lastUpdated": "2026-11-08T17:59:50.569Z",
+    "secdeva/fieldTypes/trustBoundaryType": "physical",
+    "secdeva/fieldTypes/description": "Fenced site"
+}

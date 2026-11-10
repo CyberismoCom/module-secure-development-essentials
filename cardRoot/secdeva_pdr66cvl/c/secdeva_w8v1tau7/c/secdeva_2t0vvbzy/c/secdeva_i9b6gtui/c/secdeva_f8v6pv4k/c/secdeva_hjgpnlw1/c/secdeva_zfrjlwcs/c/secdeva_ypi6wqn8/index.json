@@ -1,0 +1,17 @@
+{
+    "rank": "0|b",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T20:07:15.731Z",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_f5276dko",
+            "linkDescription": "Admin calls"
+        }
+    ],
+    "cardType": "secdeva/cardTypes/process",
+    "title": "Admin UI",
+    "templateCardKey": "secdeva_yye0ku8v",
+    "lastUpdated": "2026-11-08T20:07:39.614Z",
+    "secdeva/fieldTypes/description": "Administration pages"
+}

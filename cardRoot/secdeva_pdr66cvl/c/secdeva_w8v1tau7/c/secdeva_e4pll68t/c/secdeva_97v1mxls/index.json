@@ -1,0 +1,12 @@
+{
+    "rank": "0|cg",
+    "workflowState": "None",
+    "createdAt": "2026-11-08T17:59:44.563Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/securityRequirementRegister",
+    "title": "Security requirements",
+    "templateCardKey": "secdeva_0jwydi01",
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/identifier": "secdeva_register_security-requirements",
+    "lastUpdated": "2026-11-08T17:59:44.573Z"
+}

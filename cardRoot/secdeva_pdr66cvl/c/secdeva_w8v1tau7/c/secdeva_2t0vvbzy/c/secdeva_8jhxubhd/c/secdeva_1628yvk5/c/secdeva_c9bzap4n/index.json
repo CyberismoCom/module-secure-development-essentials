@@ -1,0 +1,11 @@
+{
+    "rank": "0|d",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T18:00:00.837Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/trustBoundary",
+    "title": "Control network",
+    "templateCardKey": "secdeva_3e4v272u",
+    "lastUpdated": "2026-11-08T18:00:00.838Z",
+    "secdeva/fieldTypes/trustBoundaryType": "networkFiltered"
+}

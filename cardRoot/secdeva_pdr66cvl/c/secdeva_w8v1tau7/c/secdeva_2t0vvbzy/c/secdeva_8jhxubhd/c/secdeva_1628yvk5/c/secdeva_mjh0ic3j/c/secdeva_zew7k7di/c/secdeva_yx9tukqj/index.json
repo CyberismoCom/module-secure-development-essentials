@@ -1,0 +1,27 @@
+{
+    "rank": "0|c",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-08T17:59:58.516Z",
+    "links": [
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_4qol4u1e",
+            "linkDescription": "Replicate history [PI-to-PI]"
+        },
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_a6p5zdvt",
+            "linkDescription": "Write history"
+        },
+        {
+            "linkType": "secdeva/linkTypes/dataflow",
+            "cardKey": "secdeva_azv5afmg",
+            "linkDescription": "Read status [Modbus TCP]"
+        }
+    ],
+    "cardType": "secdeva/cardTypes/process",
+    "title": "Historian",
+    "templateCardKey": "secdeva_yye0ku8v",
+    "lastUpdated": "2026-11-08T18:01:47.878Z",
+    "secdeva/fieldTypes/description": "Collects process data"
+}
