@@ -1,7 +1,8 @@
 % Expectations for the layered threat model under Test content: which dataflows
-% cross a trust boundary, and where the threat modelling skills are enabled.
-% These are the helper predicates and enable rules of the calculation
-% secdeva/calculations/skills. The layout of the diagrams is tested by the
+% cross a trust boundary, which table of the attack surface reports lists each
+% dataflow, and where the threat modelling skills are enabled. These are the
+% predicates of the calculations secdeva/calculations/skills and
+% secdeva/calculations/dataflows. The layout of the diagrams is tested by the
 % graph model tests in tests/graphModels of the module repository.
 %
 % Test cards are matched by their titles inside the test model, never by card key,
@@ -32,6 +33,18 @@ secdeva_expectCrossing("Field technician", "PLC A", "yes").                    %
 secdeva_expectCrossing("Field technician", "Badge reader", "yes").             % from a person, inside one physical boundary only
 secdeva_expectCrossing("Remote vendor engineer", "PLC B", "yes").
 secdeva_expectCrossing("Jump host", "Vendor cloud", "yes").                    % to an external entity in a group
+
+% secdeva_expectTable(SourceTitle, DestinationTitle, Expected): the table of the
+% attack surface reports that lists the dataflow: external dataflows cross a
+% technical trust boundary, and internal dataflows have both ends inside a
+% trust boundary of any type.
+secdeva_expectTable("Corporate user", "ERP system", "external, inbound").
+secdeva_expectTable("Jump host", "Vendor cloud", "external, outbound").
+secdeva_expectTable("Control room operator", "SCADA server", "external, inbound").    % from inside the site only
+secdeva_expectTable("Field technician", "PLC A", "external, inbound").                % to a physical interface
+secdeva_expectTable("Jump host", "SCADA server", "internal").                          % between zones
+secdeva_expectTable("SCADA server", "Historian", "internal").                         % inside one zone
+secdeva_expectTable("Field technician", "Badge reader", "internal").                  % inside the site only
 
 % secdeva_expectSkill(CardTitle, Skill, Expected): whether the skill is enabled for the card.
 secdeva_expectSkill("Threat model - Layered test project", "secdeva/skills/dataflowModel", "yes").
@@ -64,6 +77,15 @@ secdeva_crossingFound(ST, DT) :-
 secdeva_actualCrossing(ST, DT, "yes") :- secdeva_crossingFound(ST, DT).
 secdeva_actualCrossing(ST, DT, "no") :- secdeva_flowFound(ST, DT), not secdeva_crossingFound(ST, DT).
 
+secdeva_tableFlow(ST, DT, (S, D, T)) :-
+    secdeva_expectTable(ST, DT, _), secdeva_testCard(ST, S), secdeva_testCard(DT, O),
+    link(S, D, "secdeva/linkTypes/dataflow", T), secdeva_dataflowOwner(D, O).
+secdeva_actualTable(ST, DT, "external, inbound") :- secdeva_tableFlow(ST, DT, F), secdeva_externalDataflow(F, "Inbound", _, _).
+secdeva_actualTable(ST, DT, "external, outbound") :- secdeva_tableFlow(ST, DT, F), secdeva_externalDataflow(F, "Outbound", _, _).
+secdeva_actualTable(ST, DT, "internal") :- secdeva_tableFlow(ST, DT, F), secdeva_internalDataflow(F).
+secdeva_actualTable(ST, DT, "none") :-
+    secdeva_tableFlow(ST, DT, F), not secdeva_externalDataflow(F, _, _, _), not secdeva_internalDataflow(F).
+
 secdeva_skillFound(CT, Skill) :-
     secdeva_expectSkill(CT, Skill, _), secdeva_testCard(CT, Card), enableSkill(Skill, Card).
 secdeva_actualSkill(CT, Skill, "yes") :- secdeva_skillFound(CT, Skill).
@@ -72,11 +94,13 @@ secdeva_actualSkill(CT, Skill, "no") :-
 
 % Test cases
 secdeva_case(("Crossing", ST, DT), Expected) :- secdeva_expectCrossing(ST, DT, Expected).
+secdeva_case(("Table", ST, DT), Expected) :- secdeva_expectTable(ST, DT, Expected).
 secdeva_case(("Skill", CT, Skill), Expected) :- secdeva_expectSkill(CT, Skill, Expected).
 secdeva_case(("Skill", "global", "secdeva/skills/threatModelling"), "yes").
 secdeva_case(("Model", "Modbus TCP server", "Threat model - Layered test project"), "yes").
 
 secdeva_actual(("Crossing", ST, DT), A) :- secdeva_actualCrossing(ST, DT, A).
+secdeva_actual(("Table", ST, DT), A) :- secdeva_actualTable(ST, DT, A).
 secdeva_actual(("Skill", CT, Skill), A) :- secdeva_actualSkill(CT, Skill, A).
 secdeva_actual(("Skill", "global", "secdeva/skills/threatModelling"), "yes") :- enableSkill("secdeva/skills/threatModelling").
 secdeva_actual(("Model", CT, MT), "yes") :-

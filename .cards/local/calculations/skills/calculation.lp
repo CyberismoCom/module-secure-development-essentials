@@ -39,14 +39,8 @@ secdeva_modelBetween(Card, Model) :-
 
 % Trust boundary crossings
 
-% Physical and organisational trust boundaries may contain persons and external
-% entities. Only the other, technical trust boundaries separate the system.
-secdeva_technicalBoundary(Boundary) :-
-    base_projectCardType(Boundary, "secdeva/cardTypes/trustBoundary"),
-    not field(Boundary, "secdeva/fieldTypes/trustBoundaryType", "physical"),
-    not field(Boundary, "secdeva/fieldTypes/trustBoundaryType", "organisational").
-secdeva_insideTechnicalBoundary(Card, Boundary) :-
-    ancestor(Card, Boundary), secdeva_technicalBoundary(Boundary).
+% secdeva_technicalBoundary and secdeva_insideTechnicalBoundary are defined in
+% the calculation secdeva/calculations/dataflows.
 
 secdeva_outsideParty(Card) :- base_projectCardType(Card, "secdeva/cardTypes/person").
 secdeva_outsideParty(Card) :- base_projectCardType(Card, "secdeva/cardTypes/external").
