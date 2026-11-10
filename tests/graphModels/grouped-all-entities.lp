@@ -13,7 +13,7 @@ testPass("the model follows the dataflows") :- testModel(M), not zoneLayers(M), 
 
 % clusters for groups, in their nearest drawn container
 testCase("a top-level group is a cluster").
-testPass("a top-level group is a cluster") :- k("Clients", G), graph(G, toplevelGraph).
+testPass("a top-level group is a cluster") :- k("Clients", G), graph(G, diagramFrame).
 testCase("a group in a trust boundary is a cluster inside it").
 testPass("a group in a trust boundary is a cluster inside it") :- k("Backend services", G), k("Cloud platform", B), graph(G, B).
 testCase("a nested group is a cluster inside its group").
@@ -34,11 +34,34 @@ testPass("hidden groups have no label") :-
 % a shown group is a grey rectangle with its title
 testCase("a shown group is a grey rectangle").
 testPass("a shown group is a grey rectangle") :-
-    k("Partners", G), graph(G, toplevelGraph), attr(graph, G, color, "#999999"),
-    not attr(graph, G, style, _), not attr(graph, G, color, "#000000").
+    k("Partners", G), graph(G, diagramFrame), attr(graph, G, color, "#999999"),
+    attr(graph, G, style, solid), not attr(graph, G, style, rounded), not attr(graph, G, color, "#000000").
 testCase("a shown group has its title as the label").
 testPass("a shown group has its title as the label") :-
     k("Partners", G), attr(graph, G, label, "<<font point-size='24'><b> Partners </b></font><br/>>").
+
+% the frame and the margins
+testCase("everything is drawn inside the frame").
+testPass("everything is drawn inside the frame") :-
+    graph(diagramFrame, toplevelGraph), attr(graph, diagramFrame, style, invis),
+    #count { X : node(X, toplevelGraph) } = 0,
+    #count { X : graph(X, toplevelGraph), X != diagramFrame } = 0.
+testCase("every drawn cluster sets its own style").
+testPass("every drawn cluster sets its own style") :-
+    #count { X : graph(X, _), not attr(graph, X, style, _) } = 0,
+    #count { X : graph(X, _), attr(graph, X, style, S1), attr(graph, X, style, S2), S1 != S2 } = 0.
+testCase("a hidden group with only nodes has no margin").
+testPass("a hidden group with only nodes has no margin") :-
+    k("Payment partners", P), attr(graph, P, margin, "0"), k("Clients", C), attr(graph, C, margin, "0").
+testCase("a hidden group with clusters keeps its margin").
+testPass("a hidden group with clusters keeps its margin") :- k("Backend services", B), attr(graph, B, margin, "40").
+testCase("shown groups, boundaries and the frame have a margin").
+testPass("shown groups, boundaries and the frame have a margin") :-
+    k("Partners", P), attr(graph, P, margin, "40"), k("Cloud platform", B), attr(graph, B, margin, "40"),
+    attr(graph, diagramFrame, margin, "40").
+testCase("each cluster has one margin").
+testPass("each cluster has one margin") :-
+    #count { X : graph(X, _), attr(graph, X, margin, M1), attr(graph, X, margin, M2), M1 != M2 } = 0.
 
 % elements are placed in their group
 testCase("elements are in their group").

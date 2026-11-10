@@ -140,8 +140,16 @@ view(X, N) :- entity(X), entityLevel(X, 1), viewAll(N), not hide(X).
 nearestVisibleAncestor(X, A) :- consistsOf(A, X), visible(A).
 nearestVisibleAncestor(X, A) :- consistsOf(P, X), entity(P), not visible(P), nearestVisibleAncestor(P, A).
 
-% top level graph is for top level entities and enties whose parent is not visible
+% The diagram is drawn inside one invisible cluster, diagramFrame. It holds the
+% top-level entities and the entities whose parent is not visible. Graphviz
+% keeps sibling clusters apart by the margin of their parent graph, but the
+% margin of the root graph is the margin of the canvas in inches. Without the
+% frame, top-level clusters would be only 8 points apart.
+% Clusters inherit the attributes of their parent graph, so every drawn
+% cluster sets its own style.
 graph(toplevelGraph).
+graph(diagramFrame, toplevelGraph).
+attr(graph, diagramFrame, style, invis).
 
 % if a visible entity has visible children, then it is a graph.
 % let's also create an invisible point node to act as an endpoint of any edges of each graph.
@@ -152,7 +160,7 @@ graph(toplevelGraph).
 % graphTopLevelEntity(X) means that X is a top-level entity that must be drawn as a graph,
 % because it has visible "children"
 graphTopLevelEntity(X) :- entity(X), visible(X), not consistsOf(_, X), contains(X, Y), visible(Y).
-entityGraphIn(X, toplevelGraph) :- graphTopLevelEntity(X).
+entityGraphIn(X, diagramFrame) :- graphTopLevelEntity(X).
 node(X, X) :- graphTopLevelEntity(X).
 invisible(X) :- graphTopLevelEntity(X).
 attr(node, X, shape, point) :- graphTopLevelEntity(X).
@@ -160,10 +168,10 @@ attr(node, X, style, invis) :- graphTopLevelEntity(X).
 
 % graphEntityHiddenAncestors(X) means that X is an entity that must be drawn as a graph,
 % because it has visible "children", and its own parent is not visible.
-% If a nearest visible ancestor exists, X is placed inside it; otherwise at the top level.
+% If a nearest visible ancestor exists, X is placed inside it; otherwise in the frame.
 graphEntityHiddenAncestors(X) :-  visible(X), not visible(P), consistsOf(P, X), entity(X), contains(X, Y), visible(Y).
 entityGraphIn(X, G) :- graphEntityHiddenAncestors(X), nearestVisibleAncestor(X, G).
-entityGraphIn(X, toplevelGraph) :- graphEntityHiddenAncestors(X), not nearestVisibleAncestor(X, _).
+entityGraphIn(X, diagramFrame) :- graphEntityHiddenAncestors(X), not nearestVisibleAncestor(X, _).
 node(X, X) :- graphEntityHiddenAncestors(X).
 invisible(X) :- graphEntityHiddenAncestors(X).
 attr(node, X, shape, point) :- graphEntityHiddenAncestors(X).
@@ -182,11 +190,11 @@ attr(node, X, style, invis) :- graphLowerLevel(X, P).
 
 % if an entity is visible, but it's not a graph (= does not have visible children), then it is a node.
 % if the immediate parent is not visible, the node is placed in the nearest visible ancestor graph,
-% or at the top level if no such ancestor exists.
-entityNodeIn(X, toplevelGraph) :- entity(X), visible(X), not consistsOf(_, X), not entityGraphIn(X, toplevelGraph).
+% or in the frame if no such ancestor exists.
+entityNodeIn(X, diagramFrame) :- entity(X), visible(X), not consistsOf(_, X), not entityGraphIn(X, diagramFrame).
 entityNodeIn(X, Y) :- entity(X), visible(X), consistsOf(Y, X), not entityGraphIn(X, _), visible(Y).
 entityNodeIn(X, G) :- entity(X), visible(X), consistsOf(Y, X), not entityGraphIn(X, _), not visible(Y), nearestVisibleAncestor(X, G).
-entityNodeIn(X, toplevelGraph) :- entity(X), visible(X), consistsOf(Y, X), not entityGraphIn(X, _), not visible(Y), not nearestVisibleAncestor(X, _).
+entityNodeIn(X, diagramFrame) :- entity(X), visible(X), consistsOf(Y, X), not entityGraphIn(X, _), not visible(Y), not nearestVisibleAncestor(X, _).
 
 % Groups
 %
@@ -217,8 +225,10 @@ node(X, G) :- entityNodeIn(X, G), not inGroup(X, _).
 node(X, G) :- entityNodeIn(X, _), inGroup(X, G).
 
 graph(G, C) :- framedGroup(G), nearestContainer(G, C).
-graph(G, toplevelGraph) :- framedGroup(G), not nearestContainer(G, _).
-attr(graph, G, style, invis) :- framedGroup(G), not shownGroup(G).
+graph(G, diagramFrame) :- framedGroup(G), not nearestContainer(G, _).
+hiddenGroup(G) :- framedGroup(G), not shownGroup(G).
+attr(graph, G, style, invis) :- hiddenGroup(G).
+attr(graph, G, style, solid) :- framedGroup(G), shownGroup(G).
 attr(graph, G, color, "#999999") :- framedGroup(G), shownGroup(G).
 attr(graph, G, label, @concatenate("<<font point-size='24'><b> ", @wrap(Title), " </b></font><br/>>")) :-
     framedGroup(G), shownGroup(G), field(G, "title", Title).
@@ -310,14 +320,14 @@ dataflowEdge((XR, YR, N), toplevelGraph, X, Y) :-
     representative(XR, X),
     representative(YR, Y),
     visible(dataflow(X, Y, N)),
-    entityNodeIn(XR, toplevelGraph),
+    entityNodeIn(XR, diagramFrame),
     XR != YR.
 
 dataflowEdge((XR, YR, N), toplevelGraph, X, Y) :-
     representative(XR, X),
     representative(YR, Y),
     visible(dataflow(X, Y, N)),
-    entityNodeIn(YR, toplevelGraph),
+    entityNodeIn(YR, diagramFrame),
     XR != YR.
 
 % dataflowEdge is a dataflow drawn between two representatives. Normally each
@@ -365,15 +375,21 @@ attr(edge, (XR, YR, N), lhead, @concatenate("cluster_", YR)) :- edge((XR, YR, N)
 title((XR, YR, Title), Title) :- dataflow(X, Y, Title), edge_((XR, YR, Title), _, X, Y).
 
 % margins
-attr(graph, toplevelGraph, pad, "0.2").
+attr(graph, toplevelGraph, pad, "0").
 attr(graph, toplevelGraph, nodesep, "2").
 attr(graph, toplevelGraph, ranksep, "3").
 attr(node, X, margin, "0.4") :- node(X, _).
 % A cluster margin of 40 points leaves the arrowhead (20 points with arrowsize 2)
 % clear of the border when a dataflow crosses into a cluster, also when
 % clusters are nested. Graphviz does not support separate x and y margins
-% for clusters.
-attr(graph, X, margin, "40") :- graph(X, _).
+% for clusters. The margin of a cluster also keeps the clusters inside it
+% apart, and the frame gives the diagram its outer margin.
+% A hidden group that contains only nodes has no margin, as it draws nothing:
+% otherwise it would make its shown parent cluster larger than its neighbours.
+% A hidden group that contains clusters keeps the margin to keep them apart.
+noMargin(G) :- hiddenGroup(G), not graph(_, G).
+attr(graph, X, margin, "40") :- graph(X, _), not noMargin(X).
+attr(graph, G, margin, "0") :- noMargin(G).
 
 % penwidth
 attr(graph, X, penwidth, "3") :- graph(X).
@@ -499,7 +515,8 @@ attr(graph, X, shape, rectangle) :- trustBoundary(X), graph(X, _).
 attr(graph, X, style, dashed) :- trustBoundary(X), graph(X, _).
 attr(graph, X, color, "#aa0000") :- trustBoundary(X), not enclosingBoundary(X), graph(X, _).
 attr(graph, X, color, "#666666") :- enclosingBoundary(X), graph(X, _).
-attr(graph, X, color, "#000000") :- not trustBoundary(X), not group(X), graph(X, _).
+attr(graph, X, color, "#000000") :- entity(X), not trustBoundary(X), graph(X, _).
+attr(graph, X, style, solid) :- entity(X), not process(X), not trustBoundary(X), graph(X, _).
 
 % shapes of nodes
 attr(node, X, shape, rectangle) :- process(X), node(X, _), not invisible(X).
@@ -612,7 +629,7 @@ nextRow(R1, R2) :-
 
 rowMarker(@concatenate("rowMarker_", R)) :- usedRow(R).
 rowMarkerOf(R, @concatenate("rowMarker_", R)) :- usedRow(R).
-node(M, toplevelGraph) :- rowMarker(M).
+node(M, diagramFrame) :- rowMarker(M).
 invisible(M) :- rowMarker(M).
 attr(node, M, shape, point) :- rowMarker(M).
 attr(node, M, style, invis) :- rowMarker(M).

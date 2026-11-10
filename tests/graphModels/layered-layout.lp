@@ -49,7 +49,7 @@ testPass("only the shown group is a cluster in the layered layout") :-
 testCase("a shown group is a grey rectangle in its boundary").
 testPass("a shown group is a grey rectangle in its boundary") :-
     k("Safety and field level", G), k("Plant site", S), graph(G, S),
-    attr(graph, G, color, "#999999"), not attr(graph, G, style, _),
+    attr(graph, G, color, "#999999"), attr(graph, G, style, solid), not attr(graph, G, style, rounded),
     k("Safety zone", Z), graph(Z, G), k("Field zone", F), graph(F, G).
 testCase("a zone in a group belongs to the group's parent").
 testPass("a zone in a group belongs to the group's parent") :- k("Plant site", S), k("Safety zone", Z), consistsOf(S, Z).
