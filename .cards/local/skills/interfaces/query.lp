@@ -13,10 +13,11 @@ childResult(Model, E, "needInterfaces") :-
     result(Model), secdevaSkill_receiver(E), not secdevaSkill_hasInterface(E),
     secdeva_crossingDataflow(_, E, _).
 
-% elements that have interfaces but still receive dataflows directly
+% elements that have interfaces but still receive dataflows across a trust
+% boundary directly
 childResult(Model, (S, E, T), "bypassingDataflows") :-
     result(Model), secdevaSkill_receiver(E), secdevaSkill_hasInterface(E),
-    link(S, E, "secdeva/linkTypes/dataflow", T).
+    secdeva_crossingDataflow(S, E, T).
 field((S, E, T), "sourceTitle", Title) :- childResult(_, (S, E, T), "bypassingDataflows"), field(S, "title", Title).
 field((S, E, T), "destinationTitle", Title) :- childResult(_, (S, E, T), "bypassingDataflows"), field(E, "title", Title).
 field((S, E, T), "dataflow", T) :- childResult(_, (S, E, T), "bypassingDataflows").

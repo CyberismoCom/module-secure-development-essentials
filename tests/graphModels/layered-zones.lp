@@ -59,3 +59,9 @@ testCase("other conduits have normal labels").
 testPass("other conduits have normal labels") :-
     k("Operations zone", O), k("Cell A zone", A),
     attr(edge, (O, A, "2 dataflows"), label, _), not attr(edge, (O, A, "2 dataflows"), xlabel, _).
+
+% a dataflow between two elements outside the zones is drawn once, as a conduit
+testCase("a dataflow between two boxes is drawn once, as a conduit").
+testPass("a dataflow between two boxes is drawn once, as a conduit") :-
+    k("Field technician", T), k("Badge reader", B), edge((T, B, "1 dataflow"), _),
+    #count { N : edge((T, B, N), _) ; N : edge((B, T, N), _) } = 1.

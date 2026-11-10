@@ -16,8 +16,11 @@ field((Model, L), "label", L) :- childResult(Model, (Model, L), "labels").
 field((Model, L), "count", N) :- childResult(Model, (Model, L), "labels"), N = #count { E : secdevaSkill_label(E, L) }.
 
 secdevaSkill_labelled(E) :- secdevaSkill_label(E, _).
-% a system (a process with components) is shown through its labelled components
-secdevaSkill_system(E) :- secdevaSkill_entity(E), parent(C, E), secdevaSkill_entity(C).
+% a system (a process with components, possibly inside groups) is shown through
+% its labelled components
+secdevaSkill_under(C, E) :- parent(C, E).
+secdevaSkill_under(C, E) :- parent(C, G), base_projectCardType(G, "secdeva/cardTypes/group"), secdevaSkill_under(G, E).
+secdevaSkill_system(E) :- secdevaSkill_entity(E), secdevaSkill_under(C, E), secdevaSkill_entity(C).
 childResult(Model, E, "unlabelled") :-
     result(Model), secdevaSkill_entity(E), not secdevaSkill_labelled(E), not secdevaSkill_system(E).
 

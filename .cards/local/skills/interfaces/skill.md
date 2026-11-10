@@ -11,7 +11,7 @@ This skill is for the threat model **{{this.title}}** (`{{this.key}}`). Number o
 
 {{/if}}
 {{#if this.bypassingDataflows}}
-**Dataflows that go to an element instead of one of its interfaces** — reroute them to an interface:
+**Dataflows across a trust boundary that go to an element instead of one of its interfaces** — reroute them to an interface:
 {{#each this.bypassingDataflows}}
 - {{this.sourceTitle}} → {{this.destinationTitle}}: "{{this.dataflow}}"
 {{/each}}

@@ -106,7 +106,10 @@ secdeva_actual(("Skill", "global", "secdeva/skills/threatModelling"), "yes") :- 
 secdeva_actual(("Model", CT, MT), "yes") :-
     secdeva_case(("Model", CT, MT), _), secdeva_testCard(CT, Card), secdeva_testCard(MT, Model), secdeva_modelOf(Card, Model).
 
-secdeva_pass(Case) :- secdeva_case(Case, Expected), secdeva_actual(Case, Expected).
+% a case passes when its only actual value is the expected one; a test pair
+% with several dataflows that are classified differently fails
+secdeva_pass(Case) :-
+    secdeva_case(Case, Expected), secdeva_actual(Case, Expected), #count { A : secdeva_actual(Case, A) } = 1.
 secdeva_found(Case) :- secdeva_actual(Case, _).
 
 %

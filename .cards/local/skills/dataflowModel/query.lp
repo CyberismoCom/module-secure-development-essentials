@@ -26,7 +26,7 @@ childResult(Model, E, "boundaryWithoutType") :-
     not field(E, "secdeva/fieldTypes/trustBoundaryType", _).
 
 childResult(Model, E, "outsidePartyInTechnicalBoundary") :-
-    result(Model), secdevaSkill_element(E, Model), secdeva_outsideParty(E),
+    result(Model), secdevaSkill_element(E, Model), secdeva_externalEntity(E),
     secdeva_insideTechnicalBoundary(E, _).
 
 secdevaSkill_dataflowEnd(E) :- link(E, _, "secdeva/linkTypes/dataflow", _), secdevaSkill_element(E, _).

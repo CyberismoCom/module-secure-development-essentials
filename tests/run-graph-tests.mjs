@@ -110,6 +110,7 @@ for (const file of cases) {
     params,
   );
   const testModel = params.cardKey ?? params.root;
+  if (!testModel) throw new Error(`${file}: the params need a cardKey or a root, so that k() can find the cards`);
   const program = `${model}\n${view}\ntestModel(${testModel}).\n${harness}\n${source}`;
   const programFile = join(work, file);
   writeFileSync(programFile, program);

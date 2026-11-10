@@ -55,6 +55,9 @@ conduit(A, B, N) :-
 conduitTitle(A, B, "1 dataflow") :- conduit(A, B, 1).
 conduitTitle(A, B, @concatenate(N, " dataflows")) :- conduit(A, B, N), N > 1.
 
+% The conduits are the only edges: the dataflows themselves are not drawn, not
+% even between two elements outside the zones.
+ownEdges.
 edge_((A, B, T), toplevelGraph, A, B) :- conduitTitle(A, B, T).
 
 % Conduit labels are short, so conduits between zones of the same row get

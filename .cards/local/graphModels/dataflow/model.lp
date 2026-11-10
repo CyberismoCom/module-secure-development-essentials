@@ -198,9 +198,8 @@ entityNodeIn(X, toplevelGraph) :- entity(X), visible(X), consistsOf(Y, X), not e
 % - Other groups are invisible clusters without a frame or a label, except in
 %   the layered layout. There they set rows only (see "Layered layout" below),
 %   because an invisible cluster would pull elements out of their rows.
-groupItemParent(X, P) :- parent(X, P), layoutItem(X), layoutItem(P).
-groupDescendant(G, X) :- group(G), groupItemParent(X, G).
-groupDescendant(G, X) :- groupDescendant(G, P), groupItemParent(X, P).
+groupDescendant(G, X) :- group(G), layoutParent(X, G).
+groupDescendant(G, X) :- groupDescendant(G, P), layoutParent(X, P).
 layeredGroup(G) :- group(G), modelOf(G, M), zoneLayers(M).
 shownGroup(G) :- group(G), field(G, "secdeva/fieldTypes/showInDiagrams", "true").
 groupWithDrawnElements(G) :- groupDescendant(G, X), entity(X), visible(X).
@@ -208,8 +207,8 @@ framedGroup(G) :- groupWithDrawnElements(G), not layeredGroup(G).
 framedGroup(G) :- groupWithDrawnElements(G), shownGroup(G).
 drawnContainer(P) :- framedGroup(P).
 drawnContainer(P) :- entity(P), visible(P).
-nearestContainer(X, P) :- groupItemParent(X, P), drawnContainer(P).
-nearestContainer(X, C) :- groupItemParent(X, P), not drawnContainer(P), nearestContainer(P, C).
+nearestContainer(X, P) :- layoutParent(X, P), drawnContainer(P).
+nearestContainer(X, C) :- layoutParent(X, P), not drawnContainer(P), nearestContainer(P, C).
 inGroup(X, G) :- nearestContainer(X, G), framedGroup(G).
 
 graph(X, G) :- entityGraphIn(X, G), not inGroup(X, _).
@@ -322,14 +321,15 @@ dataflowEdge((XR, YR, N), toplevelGraph, X, Y) :-
     XR != YR.
 
 % dataflowEdge is a dataflow drawn between two representatives. Normally each
-% dataflow is drawn as its own edge.
-edge_(E, G, X, Y) :- dataflowEdge(E, G, X, Y), not mergeDataflows.
+% dataflow is drawn as its own edge. A view that draws its own edges, such as
+% the conduits of the zones view, defines ownEdges.
+edge_(E, G, X, Y) :- dataflowEdge(E, G, X, Y), not mergeDataflows, not ownEdges.
 
 % When a view defines mergeDataflows, all the dataflows from one representative
 % to another are drawn as one edge, whose label lists the dataflows one per
 % line in alphabetical order. This keeps overview diagrams readable when many
 % dataflows run between the same two elements.
-mergedFlow(XR, YR, N) :- dataflowEdge((XR, YR, N), _, _, _), mergeDataflows.
+mergedFlow(XR, YR, N) :- dataflowEdge((XR, YR, N), _, _, _), mergeDataflows, not ownEdges.
 nextMergedFlow(XR, YR, N1, N2) :-
     mergedFlow(XR, YR, N1), mergedFlow(XR, YR, N2), N1 < N2,
     #count { N : mergedFlow(XR, YR, N), N1 < N, N < N2 } = 0.
@@ -341,13 +341,18 @@ mergedLabel(XR, YR, N2, @concatenate(L, "<br/>", N2)) :-
 edge_((XR, YR, L), toplevelGraph, XR, YR) :-
     mergedLabel(XR, YR, N, L), not hasNextMergedFlow(XR, YR, N).
 
-edge((XR, YR, N), G) :- edge_((XR, YR, N), G, _, _), not upwardEdge(XR, YR).
-
 % An edge that points upwards in the layout rows (see below) is drawn reversed
 % with dir=back, so that its arrow still points to the destination but it
-% follows the rows instead of fighting them.
-edge((YR, XR, N), G) :- edge_((XR, YR, N), G, _, _), upwardEdge(XR, YR).
-attr(edge, (YR, XR, N), dir, back) :- edge_((XR, YR, N), _, _, _), upwardEdge(XR, YR).
+% follows the rows instead of fighting them. If an edge with the same title
+% already runs the other way, the reversed edge would get its identifier, so
+% the edge is drawn upwards instead, without constraining the ranking.
+reversedEdge((XR, YR, N)) :-
+    edge_((XR, YR, N), _, _, _), upwardEdge(XR, YR), not edge_((YR, XR, N), _, _, _).
+edge((XR, YR, N), G) :- edge_((XR, YR, N), G, _, _), not reversedEdge((XR, YR, N)).
+edge((YR, XR, N), G) :- edge_((XR, YR, N), G, _, _), reversedEdge((XR, YR, N)).
+attr(edge, (YR, XR, N), dir, back) :- reversedEdge((XR, YR, N)).
+attr(edge, (XR, YR, N), constraint, false) :-
+    edge_((XR, YR, N), _, _, _), upwardEdge(XR, YR), not reversedEdge((XR, YR, N)).
 
 % edges that have a graph as an endpoint
 attr(graph, X, compound, true) :- graph(X).
@@ -539,7 +544,8 @@ attr(edge, (X, Y, N), fontname, "helvetica") :- edge((X, Y, N), _).
 % to minimise edge crossings; it follows the navigation tree order only when
 % that does not add crossings.
 
-% The layout follows the cards themselves, including groups.
+% The layout follows the cards themselves, including groups (see also "Groups"
+% above).
 layoutItem(X) :- entity(X).
 layoutItem(X) :- group(X).
 layoutParent(X, P) :- layoutItem(X), parent(X, P), layoutItem(P).

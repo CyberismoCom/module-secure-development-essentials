@@ -42,8 +42,8 @@ secdeva_modelBetween(Card, Model) :-
 % secdeva_technicalBoundary and secdeva_insideTechnicalBoundary are defined in
 % the calculation secdeva/calculations/dataflows.
 
-secdeva_outsideParty(Card) :- base_projectCardType(Card, "secdeva/cardTypes/person").
-secdeva_outsideParty(Card) :- base_projectCardType(Card, "secdeva/cardTypes/external").
+% Persons and external entities are secdeva_externalEntity, defined in the
+% calculation secdeva/calculations/interface.
 
 % secdeva_dataflowOwner(Card, Element): a dataflow to Card is a dataflow to
 % Element. An interface belongs to the element above it.
@@ -58,10 +58,10 @@ secdeva_dataflowOwner(Interface, Owner) :-
 % or when the ends are not inside the same technical trust boundaries.
 secdeva_crossingDataflow(Source, Destination, Title) :-
     link(Source, Destination, "secdeva/linkTypes/dataflow", Title),
-    secdeva_outsideParty(Source).
+    secdeva_externalEntity(Source).
 secdeva_crossingDataflow(Source, Destination, Title) :-
     link(Source, Destination, "secdeva/linkTypes/dataflow", Title),
-    secdeva_dataflowOwner(Destination, Owner), secdeva_outsideParty(Owner).
+    secdeva_dataflowOwner(Destination, Owner), secdeva_externalEntity(Owner).
 secdeva_crossingDataflow(Source, Destination, Title) :-
     link(Source, Destination, "secdeva/linkTypes/dataflow", Title),
     secdeva_insideTechnicalBoundary(Source, Boundary),

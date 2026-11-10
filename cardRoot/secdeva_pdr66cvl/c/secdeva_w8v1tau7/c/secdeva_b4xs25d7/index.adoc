@@ -21,8 +21,9 @@ node tests/run-graph-tests.mjs
 The runner prints PASS or FAIL for each test case and exits with an error if any test fails. It covers:
 
 * `layered-layout`: rows from the card tree, rows of persons and external entities, groups as rows and as navigation only, a shown group as a grey rectangle and a hidden group not drawn, reversed upward dataflows, uncoloured dataflows, same-row dataflows with normal labels, interface ports in labels, and the colours of physical and network boundaries.
+* `layered-opposite-dataflows`: an upward dataflow with the same title as a dataflow in the opposite direction is drawn upwards, so that neither is lost.
 * `layered-context-merged`: systems as single boxes, and merged parallel dataflows.
-* `layered-zones`: zones as boxes, nested zones and the site as frames, a shown group as a frame, conduits and their counts, uncoloured conduits, and external labels on conduits between zones of the same row.
+* `layered-zones`: zones as boxes, nested zones and the site as frames, a shown group as a frame, conduits and their counts, uncoloured conduits, external labels on conduits between zones of the same row, and a dataflow between two elements outside the zones drawn only as a conduit.
 * `layered-label-view`: the label view of one label, with zones and rows.
 * `grouped-all-entities`: in the layout _Follow the dataflows_, hidden groups are invisible clusters and a shown group is a grey rectangle with its title, inside their nearest drawn container; nested groups are nested clusters, an empty group is not drawn, and no dataflow into or out of a group is lost.
 * `grouped-context`: a system in a group is one box inside the group, and merged dataflows to its components go to the system.
