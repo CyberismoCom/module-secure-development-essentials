@@ -49,3 +49,13 @@ testCase("a shown group is a frame around its zones").
 testPass("a shown group is a frame around its zones") :-
     k("Safety and field level", G), k("Safety zone", Z), k("Field zone", F),
     node(Z, G), node(F, G), attr(graph, G, color, "#999999").
+
+% conduits between zones of the same row have external labels, the others normal labels
+testCase("a same-row conduit has an external label").
+testPass("a same-row conduit has an external label") :-
+    k("Cell A zone", A), k("Cell B zone", B),
+    attr(edge, (A, B, "1 dataflow"), xlabel, _), not attr(edge, (A, B, "1 dataflow"), label, _).
+testCase("other conduits have normal labels").
+testPass("other conduits have normal labels") :-
+    k("Operations zone", O), k("Cell A zone", A),
+    attr(edge, (O, A, "2 dataflows"), label, _), not attr(edge, (O, A, "2 dataflows"), xlabel, _).

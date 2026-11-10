@@ -45,6 +45,7 @@ What correct looks like:
 
 * Each innermost zone is one box. _Control network_ is a red frame around the two cell zones, and _Plant site_ is a grey frame.
 * The conduit from _Operations zone_ to _Cell A zone_ says _2 dataflows_.
+* The conduit from _Cell A zone_ to _Cell B zone_ runs sideways between the boxes, with its label next to it. The conduits that come down into the control row are not bent around it.
 * _Safety and field level_ is a grey rectangle around _Safety zone_ and _Field zone_.
 * The persons and the vendor cloud are drawn on their own.
 

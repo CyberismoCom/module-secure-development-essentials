@@ -464,7 +464,20 @@ attr(graph, X, labeljust, l) :- entity(X), graph(X, _).
 attr(edge, (X, Y, Title), label, @concatenate(
     "<<font point-size='24'> ", Title, " </font>>")) :-
         edge((X, Y, Title), _),
-        not layoutEdge((X, Y, Title)).
+        not layoutEdge((X, Y, Title)),
+        not externalLabel((X, Y, Title)).
+
+% When a view defines sideEdgeExternalLabels, an edge between two elements of
+% the same row has an external label (xlabel). Graphviz puts the normal label
+% of such an edge in an extra rank above the row, and the edges that come down
+% into the row then have to weave around it. An external label is placed after
+% the layout, so it needs no rank, but it may overlap other parts of the
+% diagram. Views with short labels, such as the zones view, use it.
+externalLabel(E) :- sideEdge(E), sideEdgeExternalLabels.
+attr(edge, (X, Y, Title), xlabel, @concatenate(
+    "<<font point-size='24'> ", Title, " </font>>")) :-
+        edge((X, Y, Title), _),
+        externalLabel((X, Y, Title)).
 
 % shapes of graphs
 attr(graph, X, shape, rectangle) :- process(X), graph(X, _).
@@ -619,7 +632,8 @@ sameRowGroup(X, Y) :- rowGroup(X, G), rowGroup(Y, G).
 
 % A dataflow between elements of the same row but different row groups does
 % not constrain the ranking, so that the elements stay aligned side by side.
-attr(edge, (XR, YR, N), constraint, false) :-
+sideEdge((XR, YR, N)) :-
     edge((XR, YR, N), _), not layoutEdge((XR, YR, N)),
     effectiveRow(XR, R), effectiveRow(YR, R),
     not sameRowGroup(XR, YR).
+attr(edge, E, constraint, false) :- sideEdge(E).

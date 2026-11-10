@@ -57,3 +57,8 @@ conduitTitle(A, B, @concatenate(N, " dataflows")) :- conduit(A, B, N), N > 1.
 
 edge_((A, B, T), toplevelGraph, A, B) :- conduitTitle(A, B, T).
 
+% Conduit labels are short, so conduits between zones of the same row get
+% external labels, which keep them from tangling with the conduits that come
+% down into the row.
+sideEdgeExternalLabels.
+

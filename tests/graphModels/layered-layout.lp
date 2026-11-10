@@ -96,3 +96,8 @@ testCase("physical boundary is grey").
 testPass("physical boundary is grey") :- k("Plant site", K), attr(graph, K, color, "#666666").
 testCase("network zone is red").
 testPass("network zone is red") :- k("DMZ", K), attr(graph, K, color, "#aa0000"), not attr(graph, K, color, "#666666").
+
+% only the zones view uses external labels; same-row dataflows here keep normal labels
+testCase("same-row dataflows keep normal labels outside the zones view").
+testPass("same-row dataflows keep normal labels outside the zones view") :-
+    sideEdge(_), #count { E : attr(edge, E, xlabel, _) } = 0.
