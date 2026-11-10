@@ -369,7 +369,11 @@ attr(graph, toplevelGraph, pad, "0.2").
 attr(graph, toplevelGraph, nodesep, "2").
 attr(graph, toplevelGraph, ranksep, "3").
 attr(node, X, margin, "0.4") :- node(X, _).
-attr(graph, X, margin, "25") :- graph(X, _).
+% A cluster margin of 40 points leaves the arrowhead (20 points with arrowsize 2)
+% clear of the border when a dataflow crosses into a cluster, also when
+% clusters are nested. Graphviz does not support separate x and y margins
+% for clusters.
+attr(graph, X, margin, "40") :- graph(X, _).
 
 % penwidth
 attr(graph, X, penwidth, "3") :- graph(X).
