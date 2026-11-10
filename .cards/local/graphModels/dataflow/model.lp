@@ -28,9 +28,10 @@ datastore(X) :- field(X, "cardType", "secdeva/cardTypes/dataStore").
 entity(X) :- datastore(X).
 
 % A group organises elements in the navigation tree and in the diagrams. It is
-% not an entity: it has no box of its own, and its elements are treated as if
-% they were directly inside the parent of the group. In the layered layout a
-% group sets rows; otherwise it keeps its elements together (see "Groups" below).
+% not an entity: it is never the end of a dataflow, and its elements are treated
+% as if they were directly inside the parent of the group. It keeps its elements
+% together, and it can be shown as a grey rectangle (see "Groups" below). In the
+% layered layout it also sets rows.
 group(X) :- field(X, "cardType", "secdeva/cardTypes/group").
 
 % interfaces and physical ports and connections (always hidden)
@@ -190,16 +191,21 @@ entityNodeIn(X, toplevelGraph) :- entity(X), visible(X), consistsOf(Y, X), not e
 % Groups
 %
 % entityGraphIn and entityNodeIn place the elements as if there were no groups.
-% Outside the layered layout, a group whose elements are drawn becomes an
-% invisible cluster inside its nearest drawn container, so that Graphviz keeps
-% its elements together. The group has no frame and no label. In the layered
-% layout, groups set rows instead (see "Layered layout" below), and a cluster
-% would pull elements out of their rows.
+% A group whose elements are drawn becomes a cluster inside its nearest drawn
+% container, so that Graphviz keeps its elements together:
+% - A group whose field secdeva/fieldTypes/showInDiagrams is true is shown: it
+%   is drawn as a grey rectangle with its title, in every layout.
+% - Other groups are invisible clusters without a frame or a label, except in
+%   the layered layout. There they set rows only (see "Layered layout" below),
+%   because an invisible cluster would pull elements out of their rows.
 groupItemParent(X, P) :- parent(X, P), layoutItem(X), layoutItem(P).
 groupDescendant(G, X) :- group(G), groupItemParent(X, G).
 groupDescendant(G, X) :- groupDescendant(G, P), groupItemParent(X, P).
 layeredGroup(G) :- group(G), modelOf(G, M), zoneLayers(M).
-framedGroup(G) :- groupDescendant(G, X), entity(X), visible(X), not layeredGroup(G).
+shownGroup(G) :- group(G), field(G, "secdeva/fieldTypes/showInDiagrams", "true").
+groupWithDrawnElements(G) :- groupDescendant(G, X), entity(X), visible(X).
+framedGroup(G) :- groupWithDrawnElements(G), not layeredGroup(G).
+framedGroup(G) :- groupWithDrawnElements(G), shownGroup(G).
 drawnContainer(P) :- framedGroup(P).
 drawnContainer(P) :- entity(P), visible(P).
 nearestContainer(X, P) :- groupItemParent(X, P), drawnContainer(P).
@@ -213,7 +219,12 @@ node(X, G) :- entityNodeIn(X, _), inGroup(X, G).
 
 graph(G, C) :- framedGroup(G), nearestContainer(G, C).
 graph(G, toplevelGraph) :- framedGroup(G), not nearestContainer(G, _).
-attr(graph, G, style, invis) :- framedGroup(G).
+attr(graph, G, style, invis) :- framedGroup(G), not shownGroup(G).
+attr(graph, G, color, "#999999") :- framedGroup(G), shownGroup(G).
+attr(graph, G, label, @concatenate("<<font point-size='24'><b> ", @wrap(Title), " </b></font><br/>>")) :-
+    framedGroup(G), shownGroup(G), field(G, "title", Title).
+attr(graph, G, labelloc, b) :- framedGroup(G), shownGroup(G).
+attr(graph, G, labeljust, l) :- framedGroup(G), shownGroup(G).
 
 % edges and representatives of entities when drawing dataflows
 
@@ -359,7 +370,7 @@ attr(graph, X, margin, "25") :- graph(X, _).
 attr(graph, X, penwidth, "3") :- graph(X).
 attr(graph, X, penwidth, "3") :- graph(X, _).
 attr(node, X, penwidth, "3") :- node(X, _).
-attr(edge, (X, Y, N), penwidth, "2") :- edge((X, Y, N), _), not rowSkipEdge((X, Y, N)).
+attr(edge, (X, Y, N), penwidth, "2") :- edge((X, Y, N), _).
 attr(edge, (X, Y, N), arrowsize, "2") :- edge((X, Y, N), _).
 
 % node labels and descriptions
@@ -466,7 +477,7 @@ attr(graph, X, shape, rectangle) :- trustBoundary(X), graph(X, _).
 attr(graph, X, style, dashed) :- trustBoundary(X), graph(X, _).
 attr(graph, X, color, "#aa0000") :- trustBoundary(X), not enclosingBoundary(X), graph(X, _).
 attr(graph, X, color, "#666666") :- enclosingBoundary(X), graph(X, _).
-attr(graph, X, color, "#000000") :- not trustBoundary(X), graph(X, _).
+attr(graph, X, color, "#000000") :- not trustBoundary(X), not group(X), graph(X, _).
 
 % shapes of nodes
 attr(node, X, shape, rectangle) :- process(X), node(X, _), not invisible(X).
@@ -612,25 +623,3 @@ attr(edge, (XR, YR, N), constraint, false) :-
     edge((XR, YR, N), _), not layoutEdge((XR, YR, N)),
     effectiveRow(XR, R), effectiveRow(YR, R),
     not sameRowGroup(XR, YR).
-
-% Row skipping: when a view defines highlightRowSkips, dataflows that skip
-% over at least one row are highlighted. When the rows are the levels of a
-% layered architecture, such as the Purdue model in OT systems, these are the
-% dataflows that bypass a layer, for example a remote connection directly from
-% outside to a control network without passing through a DMZ.
-rowSkip(XR, YR, N) :-
-    highlightRowSkips,
-    edge_((XR, YR, N), _, _, _),
-    effectiveRow(XR, RX), effectiveRow(YR, RY),
-    usedRow(R), RX < R, R < RY.
-rowSkip(XR, YR, N) :-
-    highlightRowSkips,
-    edge_((XR, YR, N), _, _, _),
-    effectiveRow(XR, RX), effectiveRow(YR, RY),
-    usedRow(R), RY < R, R < RX.
-rowSkipEdge((XR, YR, N)) :- rowSkip(XR, YR, N), not upwardEdge(XR, YR).
-rowSkipEdge((YR, XR, N)) :- rowSkip(XR, YR, N), upwardEdge(XR, YR).
-attr(edge, E, color, "#cc0000") :- rowSkipEdge(E).
-attr(edge, E, fontcolor, "#cc0000") :- rowSkipEdge(E).
-attr(edge, E, penwidth, "5") :- rowSkipEdge(E).
-

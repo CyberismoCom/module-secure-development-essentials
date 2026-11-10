@@ -4,7 +4,7 @@
 % The layered layout ("Zones in tree order") of the layered test model.
 % model: secdeva/graphModels/dataflow
 % view: secdeva/graphViews/allEntities
-% params: {"cardKey": "@Threat model - Layered test project", "highlightRowSkips": true}
+% params: {"cardKey": "@Threat model - Layered test project"}
 
 % Rows follow the tree: one row per outermost zone, and one for the group
 % that contains zones. Elements inside a zone are in its row.
@@ -39,13 +39,18 @@ testPass("site cluster is anchored in its top row") :- k("Plant site", K), rowMe
 testCase("global ranking is on").
 testPass("global ranking is on") :- attr(graph, toplevelGraph, newrank, true).
 
-% groups are transparent: never drawn, and their elements belong to the group's parent
-testCase("groups are not drawn").
-testPass("groups are not drawn") :-
-    k("Safety and field level", G1), k("Off-site parties", G2),
-    not graph(G1, _), not node(G1, _), not graph(G2, _), not node(G2, _).
-testCase("groups are not clusters in the layered layout").
-testPass("groups are not clusters in the layered layout") :- #count { G : group(G), graph(G, _) } = 0, #count { G : framedGroup(G) } = 0.
+% groups are transparent: their elements belong to the group's parent. A hidden
+% group is not drawn at all in this layout; a shown group is a grey rectangle.
+testCase("a hidden group is not drawn").
+testPass("a hidden group is not drawn") :- k("Off-site parties", G), not graph(G, _), not node(G, _).
+testCase("only the shown group is a cluster in the layered layout").
+testPass("only the shown group is a cluster in the layered layout") :-
+    #count { G : group(G), graph(G, _) } = 1, k("Safety and field level", G), framedGroup(G).
+testCase("a shown group is a grey rectangle in its boundary").
+testPass("a shown group is a grey rectangle in its boundary") :-
+    k("Safety and field level", G), k("Plant site", S), graph(G, S),
+    attr(graph, G, color, "#999999"), not attr(graph, G, style, _),
+    k("Safety zone", Z), graph(Z, G), k("Field zone", F), graph(F, G).
 testCase("a zone in a group belongs to the group's parent").
 testPass("a zone in a group belongs to the group's parent") :- k("Plant site", S), k("Safety zone", Z), consistsOf(S, Z).
 
@@ -60,18 +65,11 @@ testPass("downward dataflow is not reversed") :-
     k("Jump host", J), k("SCADA server", S),
     edge((J, S, "Administer [RDP]"), _), not attr(edge, (J, S, "Administer [RDP]"), dir, back).
 
-% a dataflow that skips a row is highlighted, and only such a dataflow
-testCase("dataflow that bypasses layers is red").
-testPass("dataflow that bypasses layers is red") :-
-    k("Remote vendor engineer", V), k("PLC B", P),
-    attr(edge, (V, P, "Remote support [4G VPN]"), color, "#cc0000").
-testCase("dataflows between adjacent rows are not red").
-testPass("dataflows between adjacent rows are not red") :-
-    k("Jump host", J), k("SCADA server", S), k("PLC A", A), k("Safety controller", C),
-    not rowSkipEdge((J, S, "Administer [RDP]")),
-    not rowSkipEdge((A, C, "Trip request [hardwired]")).
-testCase("exactly one dataflow is highlighted").
-testPass("exactly one dataflow is highlighted") :- #count { E : rowSkipEdge(E) } = 1.
+% dataflows that skip rows are drawn like the others
+testCase("dataflows are not coloured").
+testPass("dataflows are not coloured") :-
+    #count { E : attr(edge, E, color, _) } = 0,
+    k("Remote vendor engineer", V), k("PLC B", P), edge((V, P, "Remote support [4G VPN]"), _).
 
 % dataflows between different zones of one row do not push either zone down;
 % dataflows within one zone still order its elements

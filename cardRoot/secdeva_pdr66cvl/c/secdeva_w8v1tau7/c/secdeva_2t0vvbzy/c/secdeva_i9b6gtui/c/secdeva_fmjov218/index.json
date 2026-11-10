@@ -7,5 +7,6 @@
     "title": "Partners",
     "templateCardKey": "secdeva_4la1ihw8",
     "lastUpdated": "2026-11-08T20:07:25.024Z",
-    "secdeva/fieldTypes/description": "Group with a nested group"
+    "secdeva/fieldTypes/description": "Group with a nested group",
+    "secdeva/fieldTypes/showInDiagrams": true
 }

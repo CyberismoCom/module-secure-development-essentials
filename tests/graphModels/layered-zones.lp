@@ -38,7 +38,14 @@ testPass("conduit with one dataflow") :-
 testCase("dataflows inside one zone are not conduits").
 testPass("dataflows inside one zone are not conduits") :- k("Operations zone", O), not edge((O, O, _), _).
 
-% the zones view highlights dataflows that bypass layers
-testCase("bypass conduit is red").
-testPass("bypass conduit is red") :-
-    k("Remote vendor engineer", V), k("Cell B zone", B), attr(edge, (V, B, "1 dataflow"), color, "#cc0000").
+% conduits that skip rows are drawn like the others
+testCase("conduits are not coloured").
+testPass("conduits are not coloured") :-
+    #count { E : attr(edge, E, color, _) } = 0,
+    k("Remote vendor engineer", V), k("Cell B zone", B), edge((V, B, "1 dataflow"), _).
+
+% a shown group is drawn around its zones
+testCase("a shown group is a frame around its zones").
+testPass("a shown group is a frame around its zones") :-
+    k("Safety and field level", G), k("Safety zone", Z), k("Field zone", F),
+    node(Z, G), node(F, G), attr(graph, G, color, "#999999").

@@ -1,12 +1,11 @@
 This page renders the diagrams of the test models *Threat model - Layered test project*, which uses the layout _Zones in tree order_, and *Threat model - Grouped test project*, which uses the default layout _Follow the dataflows_ with groups. Compare each diagram with the checklist below it. The logic behind the diagrams is tested with assertions (see _Testing - threat modelling_); this page checks what only a picture can show.
 
-== Detailed diagram with highlighted bypasses
+== Detailed diagram
 
 {{#graph}}
   "model": "secdeva/graphModels/dataflow",
   "view": "secdeva/graphViews/allEntities",
-  "cardKey": "secdeva_8jhxubhd",
-  "highlightRowSkips": true
+  "cardKey": "secdeva_8jhxubhd"
 {{/graph}}
 
 What correct looks like:
@@ -14,10 +13,10 @@ What correct looks like:
 * Five rows from top to bottom: _Enterprise zone_; _DMZ_; _Operations zone_; _Control network_ with _Cell A zone_ and _Cell B zone_ side by side; _Safety zone_ and _Field zone_ side by side.
 * _Plant site_ is a grey dashed frame around rows 2 to 5. It does not reach up into the enterprise row. The other boundaries are red.
 * _Corporate user_ and _Remote vendor engineer_ are in the top row, _Vendor cloud_ in the DMZ row, _Control room operator_ in the operations row and _Field technician_ in the control row.
-* _Remote support [4G VPN]_ from the remote vendor engineer to _PLC B_ is a thick red line. No other dataflow is red.
+* All dataflows are black, including _Remote support [4G VPN]_ from the remote vendor engineer to _PLC B_, which skips rows.
 * _Replicate history [PI-to-PI]_ points up from _Historian_ to _Historian mirror_, without a long loop.
 * Labels of dataflows to interfaces end with the port, such as _Commands [Modbus TCP] (502/tcp)_.
-* The groups _Safety and field level_ and _Off-site parties_ are not drawn.
+* _Safety and field level_ is a grey rectangle with its title around _Safety zone_ and _Field zone_, in the bottom row. The hidden group _Off-site parties_ is not drawn, and its members stay in their own rows.
 
 == Context diagram with merged dataflows
 
@@ -25,8 +24,7 @@ What correct looks like:
   "model": "secdeva/graphModels/dataflow",
   "view": "secdeva/graphViews/context",
   "cardKey": "secdeva_8jhxubhd",
-  "mergeDataflows": true,
-  "highlightRowSkips": true
+  "mergeDataflows": true
 {{/graph}}
 
 What correct looks like:
@@ -47,7 +45,7 @@ What correct looks like:
 
 * Each innermost zone is one box. _Control network_ is a red frame around the two cell zones, and _Plant site_ is a grey frame.
 * The conduit from _Operations zone_ to _Cell A zone_ says _2 dataflows_.
-* The conduit from the remote vendor engineer to _Cell B zone_ is red.
+* _Safety and field level_ is a grey rectangle around _Safety zone_ and _Field zone_.
 * The persons and the vendor cloud are drawn on their own.
 
 == Targeted view: remote access
@@ -56,14 +54,12 @@ What correct looks like:
   "model": "secdeva/graphModels/dataflow",
   "view": "secdeva/graphViews/label",
   "cardKey": "secdeva_8jhxubhd",
-  "labels": ["remote-access"],
-  "highlightRowSkips": true
+  "labels": ["remote-access"]
 {{/graph}}
 
 What correct looks like:
 
 * Only the remote vendor engineer, the remote access gateway, the jump host, the SCADA server and PLC B, inside their zones.
-* The bypass to PLC B is red.
 
 == Groups in the layout Follow the dataflows
 
@@ -75,9 +71,8 @@ What correct looks like:
 
 What correct looks like:
 
-* No frames or labels are drawn for the groups.
+* _Partners_ is a grey rectangle with its title, a solid line and square corners, around the email service and the payment provider. No other group has a frame or a title.
 * The user, the administrator, the web app and the mobile app are next to each other.
 * The API service, the worker and the _Admin portal_ frame are next to each other inside _Cloud platform_; the database is also inside it.
-* The email service and the payment provider are next to each other.
 * All 12 dataflows are drawn, including the dataflows into and out of groups.
 * _Empty group_ appears nowhere.

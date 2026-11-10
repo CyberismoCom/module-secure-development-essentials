@@ -30,13 +30,13 @@ There is no page under the threat model yet. Create a "Targeted views" page (see
 
 The field `secdeva/fieldTypes/diagramLayout` of the threat model card selects how the diagrams are laid out:
 
-- **`dataflows` — follow the dataflows (the default).** Elements are placed by the direction of the dataflows, so the elements that start connections are above the ones they connect to. The navigation tree order sets the left-to-right order. The elements of a group are kept together, as if inside an invisible frame. This suits typical software and IT models, where data mostly flows one way, from users inwards.
+- **`dataflows` — follow the dataflows (the default).** Elements are placed by the direction of the dataflows, so the elements that start connections are above the ones they connect to. The navigation tree order sets the left-to-right order. The elements of a group are kept together; a shown group is drawn as a grey rectangle around them. This suits typical software and IT models, where data mostly flows one way, from users inwards.
 - **`zoneLayers` — zones in tree order.** For layered architectures, such as the Purdue model or ISA-95 in OT systems, or tiered networks. The card tree dictates the layout:
   - **Zones are stacked from top to bottom in tree order.** A zone is an outermost technical trust boundary; physical and organisational boundaries around it, such as a site, do not count. Rank the zones from the top level down with `rank_card_after`: enterprise (L4–L5), DMZ (L3.5), operations (L3), control (L0–L2).
   - **Zones side by side need a common parent**: a zone that really exists, such as a control network behind the L3 firewall with one zone per production cell, or else a group. Do not create a trust boundary or a process only for the layout.
   - **Persons and external entities** are placed automatically in the highest row of the elements they exchange dataflows with.
   - **Within a zone, the dataflows decide the order**, so an HMI is usually drawn above its PLC.
-  - **Groups set rows only.** They don't keep their elements together in this layout, so that persons and external entities stay in the rows of the elements they connect to.
+  - **Hidden groups set rows only.** They don't keep their elements together in this layout, so that persons and external entities stay in the rows of the elements they connect to. A shown group is drawn as a grey rectangle around its elements, so show only groups whose elements share a row, such as zones side by side.
 
 Do not switch an existing model to `zoneLayers` unless its zones really are layers: peer zones, such as a user's computer, a code hosting service and a CI pipeline, are drawn worse when they are stacked.
 
@@ -71,7 +71,6 @@ Show a diagram on any card with the `graph` macro (edit the content with `edit_c
 | `labels` | `label` | A list of labels; an element is shown if it has any of them: `"labels": ["remote-access", "engineering"]` |
 | `root` | `zones` | The card key that limits the scope, normally the threat model. Without it, the zones of every model in the project are drawn |
 | `mergeDataflows` | `context`, `allEntities`, `entity`, `label` | `true` draws all dataflows between the same two boxes as one arrow, with one line per dataflow in its label. Use it for overviews. The zones view always merges dataflows into conduits |
-| `highlightRowSkips` | `context`, `allEntities`, `entity`, `label` | `true` draws in red, and thicker, every dataflow that skips a row, such as a remote connection straight into a control zone that bypasses the DMZ. It needs the layered layout; without rows nothing is highlighted. The zones view always highlights |
 | `layout` | all | The Graphviz direction: `"TB"` (top to bottom, the default), `"LR"`, `"BT"` or `"RL"`. With the layered layout, `"LR"` turns the rows into columns |
 
 **The label view is not limited to one threat model:** it shows every element in the project that has the label. If the project has several threat models, use labels that are distinct for each model, such as `plant-a-remote-access`.
@@ -94,7 +93,7 @@ Labels slice a large diagram into focused views, one per concern area.
 Put all label-based views of a threat model on **one page** under the threat model card. Do not create a card per label.
 
 1. `create_card(template="base/templates/page", parentKey="<threat model>")`, and set its title to "Targeted views".
-2. Write its content with `edit_card_content`: one section per concern. Each section has a heading, one sentence that says what the view shows, and a `graph` macro with the label view. For a layered model, add `"highlightRowSkips": true` to every view.
+2. Write its content with `edit_card_content`: one section per concern. Each section has a heading, one sentence that says what the view shows, and a `graph` macro with the label view.
 3. For an OT model, start the page with the zones-and-conduits overview, and optionally the context view with merged dataflows.
 4. Read the page with `get_card` and check that each view is self-contained, and that its elements carry the right labels.
 
@@ -113,13 +112,12 @@ The zones of the plant and the conduits between them.
 
 == Remote access
 
-Remote connections of vendors and engineers into the plant. Red dataflows bypass the DMZ.
+Remote connections of vendors and engineers into the plant.
 
 \{{#graph}}
   "model": "secdeva/graphModels/dataflow",
   "view": "secdeva/graphViews/label",
-  "labels": ["remote-access"],
-  "highlightRowSkips": true
+  "labels": ["remote-access"]
 \{{/graph}}
 
 == Unit control system
@@ -129,8 +127,7 @@ The control system of one generating unit and its connections.
 \{{#graph}}
   "model": "secdeva/graphModels/dataflow",
   "view": "secdeva/graphViews/entity",
-  "cardKey": "<unit control system key>",
-  "highlightRowSkips": true
+  "cardKey": "<unit control system key>"
 \{{/graph}}
 ```
 

@@ -7,5 +7,6 @@
     "title": "Safety and field level",
     "templateCardKey": "secdeva_4la1ihw8",
     "lastUpdated": "2026-11-08T18:00:07.778Z",
-    "secdeva/fieldTypes/description": "Zones without a common network zone"
+    "secdeva/fieldTypes/description": "Zones without a common network zone",
+    "secdeva/fieldTypes/showInDiagrams": true
 }

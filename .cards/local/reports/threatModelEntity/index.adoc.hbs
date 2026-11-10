@@ -11,12 +11,12 @@
   "template": "secdeva/templates/trustBoundary2"
 {{/createCards}}
 
-{{#if (eq variant "trustBoundary")}}
+{{#unless (eq variant "dataStore")}}
 {{#createCards}}
   "buttonLabel": "Create a group",
   "template": "secdeva/templates/group"
 {{/createCards}}
-{{/if}}
+{{/unless}}
 
 {{#createCards}}
   "buttonLabel": "Create an external entity",

@@ -13,7 +13,7 @@
 //
 //   % model: secdeva/graphModels/dataflow
 //   % view: secdeva/graphViews/allEntities
-//   % params: {"cardKey": "@Threat model - Layered test project", "highlightRowSkips": true}
+//   % params: {"cardKey": "@Threat model - Layered test project", "mergeDataflows": true}
 //
 // A parameter value "@<title>" is replaced with the key of the card that has
 // that title. The case declares testCase("name") facts and the testPass("name")

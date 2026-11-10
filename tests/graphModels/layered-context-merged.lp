@@ -4,7 +4,7 @@
 % The context view of the layered test model, with merged dataflows.
 % model: secdeva/graphModels/dataflow
 % view: secdeva/graphViews/context
-% params: {"cardKey": "@Threat model - Layered test project", "mergeDataflows": true, "highlightRowSkips": true}
+% params: {"cardKey": "@Threat model - Layered test project", "mergeDataflows": true}
 
 % a system (a process with components) is one box in the context view
 testCase("system is drawn as one node").
@@ -25,9 +25,6 @@ testCase("a single dataflow keeps its own label").
 testPass("a single dataflow keeps its own label") :-
     k("SCADA system", S), k("PLC B", B), edge((S, B, "Commands to cell B [Modbus TCP]"), _).
 
-% the layout and the highlighting work in the context view too
+% the layout works in the context view too
 testCase("context view keeps the rows").
 testPass("context view keeps the rows") :- k("SCADA system", S), effectiveRow(S, 3), k("PLC B", B), effectiveRow(B, 4).
-testCase("bypass is red in the context view").
-testPass("bypass is red in the context view") :-
-    k("Remote vendor engineer", V), k("PLC B", P), attr(edge, (V, P, "Remote support [4G VPN]"), color, "#cc0000").
