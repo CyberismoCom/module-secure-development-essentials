@@ -103,7 +103,7 @@ A dataflow is a link of type `secdeva/linkTypes/dataflow`:
 | `Notifications [SMTP]` | `Outbound notifications: webhook HTTP POST (JSON payload), SMTP email (JavaMail), Slack webhooks...` |
 
 - **One arrow per connection.** Responses do not need an arrow of their own. Create arrows in both directions only if both ends initiate connections independently.
-- `remove_link` cannot remove a link that has a description. To change a dataflow, create the new link, and ask the user to remove the old one in the Cyberismo app. Do not edit the project files directly.
+- To change a dataflow, create the new link, then remove the old one with `remove_link`. Pass the old label as `linkDescription`, and match it exactly, because `remove_link` needs it to find a link that has a description. Do not edit the project files directly.
 
 ## Model the whole system
 

@@ -72,7 +72,7 @@ The template also creates a document review task under the interface. Keep it: i
 
 ## Rerouting a dataflow to an interface
 
-Create the new link to the interface with the same label: `create_link(sourceKey, destinationKey="<interface>", linkType="secdeva/linkTypes/dataflow", description="<same label>")`. Then the old link to the element must go. `remove_link` cannot remove a link that has a description, so ask the user to remove it in the Cyberismo app. Do not edit the project files directly.
+Create the new link to the interface with the same label: `create_link(sourceKey, destinationKey="<interface>", linkType="secdeva/linkTypes/dataflow", description="<same label>")`. Then remove the old link to the element with `remove_link`, and pass its label as `linkDescription` so that it matches exactly. Do not edit the project files directly.
 
 ## Common OT protocols
 
