@@ -1,0 +1,15 @@
+{
+    "rank": "0|k",
+    "workflowState": "Approved",
+    "createdAt": "2026-11-19T20:00:00.000Z",
+    "links": [],
+    "lastUpdated": "2026-11-19T20:00:00.000Z",
+    "cardType": "secdeva/cardTypes/technology",
+    "title": "Technology: approved with a current review",
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/identifier": "secdeva_test_tech_current",
+    "base/fieldTypes/owner": "owner@example.com",
+    "base/fieldTypes/approver": "approver@example.com",
+    "base/fieldTypes/approvalDate": "2026-11-02",
+    "lastTransitioned": "2026-11-19T20:00:00.000Z"
+}

@@ -1,0 +1,13 @@
+{
+    "rank": "0|h",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-19T20:00:00.000Z",
+    "links": [],
+    "lastUpdated": "2026-11-19T20:00:00.000Z",
+    "cardType": "secdeva/cardTypes/technology",
+    "title": "Technology: draft with a closed review",
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/identifier": "secdeva_test_tech_ready",
+    "base/fieldTypes/owner": "owner@example.com",
+    "base/fieldTypes/approver": "approver@example.com"
+}

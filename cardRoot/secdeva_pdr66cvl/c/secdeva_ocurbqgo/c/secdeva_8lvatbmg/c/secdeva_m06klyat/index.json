@@ -1,0 +1,12 @@
+{
+    "rank": "0|a",
+    "workflowState": "Closed as done",
+    "createdAt": "2026-11-19T20:00:00.000Z",
+    "links": [],
+    "lastUpdated": "2026-11-19T20:00:00.000Z",
+    "cardType": "base/cardTypes/reviewTask",
+    "title": "Review",
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/owner": "reviewer@example.com",
+    "base/fieldTypes/lastReviewed": "2020-01-01"
+}
