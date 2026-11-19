@@ -1,0 +1,1 @@
+Fixtures for `tests/document-review.lp`. Each card is a threat model or a technology assessment, with or without review tasks. Do not change them without changing the tests.
