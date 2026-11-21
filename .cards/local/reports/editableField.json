@@ -1,6 +1,0 @@
-{
-    "name": "secdeva/reports/editableField",
-    "displayName": "Editable field",
-    "description": "Shows a field of a card. In the application, the user can edit the field. In static and PDF output, the report shows the value as text, with the display name of an enum value.",
-    "category": "Secure development"
-}

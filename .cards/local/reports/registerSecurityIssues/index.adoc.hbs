@@ -6,17 +6,15 @@ TIP: If a security issue is related to a specific element of the threat model or
 
 The following settings apply to the security issues in this register. The fix of an issue can be deferred only when its severity is the deferrable severity or lower. The risk of an issue can be accepted only when its severity is the acceptable severity or lower.
 
-{{#report}}
-  "name": "secdeva/reports/editableField",
+{{#field}}
   "field": "secdeva/fieldTypes/deferrableSeverity",
   "display": "row"
-{{/report}}
+{{/field}}
 
-{{#report}}
-  "name": "secdeva/reports/editableField",
+{{#field}}
   "field": "secdeva/fieldTypes/acceptableSeverity",
   "display": "row"
-{{/report}}
+{{/field}}
 
 {{#createCards}}
   "template": "secdeva/templates/securityIssue",

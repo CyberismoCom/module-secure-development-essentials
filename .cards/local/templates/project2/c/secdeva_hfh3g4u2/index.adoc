@@ -34,11 +34,10 @@ How will we measure if the security integration was successful?
 
 The secure development process has three adoption steps. Step 1 has the most fundamental internal controls. Move to the next step when you have completed the internal controls of the current step.
 
-{{#report}}
-  "name": "secdeva/reports/editableField",
+{{#field}}
   "field": "base/fieldTypes/adoptionStep",
   "display": "row"
-{{/report}}
+{{/field}}
 
 The secure development process may not be necessary for some development projects, for example research prototypes, sales demonstrations, and products that are being phased out. In this case, clear the adoption step and explain why in the justification.
 
