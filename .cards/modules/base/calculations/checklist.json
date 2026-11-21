@@ -1,0 +1,6 @@
+{
+    "name": "base/calculations/checklist",
+    "displayName": "Checklist",
+    "calculation": "calculation.lp",
+    "description": "Shared checklist predicates, the comment rule for checklist items, and the status indicator of checklist items"
+}

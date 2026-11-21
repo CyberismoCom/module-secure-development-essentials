@@ -1,0 +1,1 @@
+If user consent is used as a legal basis for processing personal data, then the product shall record the consent for storing personal data.

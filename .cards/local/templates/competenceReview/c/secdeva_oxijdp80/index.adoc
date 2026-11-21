@@ -4,18 +4,18 @@ This document records a review of the competencies in a development project.
 
 == Review checklist
 
-Check that all nominated persons have completed the security training that is required in the organisation. Alternatively, check that the nominated persons have sufficient competence from previous experience.
+Set the result of each item in the table. A Deviation or Not applicable result needs a comment. Put links to the evidence in the comment.
 
-Different trainings are often provided for different roles, see roles assignments {{#report}}"name": "secdeva/reports/xref", "identifier": "secdeva_review_role-assignments"{{/report}}.
+{{#report}}
+  "name": "base/reports/checklist"
+{{/report}}
 
-* [ ] OK
-* [ ] Not OK
+You can add your own items to the checklist.
 
-
-Check that the trainings have not expired according to the requirements of the secure development training plan of the organisation.
-
-* [ ] OK
-* [ ] Not OK
+{{#createCards}}
+  "template": "base/templates/checklistItem",
+  "buttonLabel": "Add a checklist item"
+{{/createCards}}
 
 == Review notes
 

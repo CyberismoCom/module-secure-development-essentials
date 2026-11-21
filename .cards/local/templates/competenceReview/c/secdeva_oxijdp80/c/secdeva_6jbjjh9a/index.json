@@ -1,0 +1,9 @@
+{
+    "title": "Required security training",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|b",
+    "lastUpdated": "2026-11-21T09:09:55.774Z",
+    "base/fieldTypes/checklistResult": "open"
+}

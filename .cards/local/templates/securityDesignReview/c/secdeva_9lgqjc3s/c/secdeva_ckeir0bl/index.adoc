@@ -1,0 +1,1 @@
+If issues were found regarding how either design or the implementation addresses security threats, then check that the threat model is up to date.

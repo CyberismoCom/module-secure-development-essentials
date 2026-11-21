@@ -1,0 +1,7 @@
+Include the following instructions and rationale in the hardening guidelines: How to configure and use the product's security options/capabilities in support of local security policies.
+
+For each security option/capability, document:
+
+. The contribution of the feature to the product's defence in depth strategy
+. Descriptions of configurable and default values. Explain how the values may affect security and impact work practices.
+. How to set, change or delete its value

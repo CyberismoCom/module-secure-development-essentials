@@ -1,0 +1,6 @@
+Document user account management and recommendations
+
+* Access control and required privileges for users
+* Software accounts, such as control system accounts and database accounts
+* Which default accounts are included in the product
+* Instructions for changing the default account names and passwords

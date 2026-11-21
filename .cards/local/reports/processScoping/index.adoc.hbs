@@ -1,7 +1,7 @@
 {{#each results}}
-The current adoption step of this project is *{{this.project.[base/fieldTypes/adoptionStep].displayValue}}*. 
+The current adoption step of this project is {{#field}}"cardKey": "{{this.project.key}}", "field": "base/fieldTypes/adoptionStep", "display": "inline"{{/field}}.
 {{#unless (eq this.project.[base/fieldTypes/adoptionStep].value "step3")}}
-The following tables do not include internal controls on higher adoption steps. You can change the target adoption step field in {{#report}}"name":"secdeva/reports/xref", "identifier":"secdeva_project"{{/report}}.
+The following tables do not include internal controls on higher adoption steps. To include them, change the adoption step above.
 {{/unless}}
 
 

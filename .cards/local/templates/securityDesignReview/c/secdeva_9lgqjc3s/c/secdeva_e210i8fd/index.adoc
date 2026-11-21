@@ -1,0 +1,1 @@
+Debug and development features must be removed or disabled before the product is released.

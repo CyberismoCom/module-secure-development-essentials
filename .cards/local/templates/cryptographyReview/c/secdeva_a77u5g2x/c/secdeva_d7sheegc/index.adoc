@@ -1,0 +1,9 @@
+Use case:: #TODO: describe the use case#
+Expected usage period:: #TODO: describe the expected usage period of the protected information#
+References:: #TODO: add references that justify the use of cryptography and the selected algorithms, key lengths, key management arrangements#
+Algorithms:: #TODO: describe the cryptographic algorithms#
+Key length:: #TODO: describe the length of cryptographic keys#
+Roles and responsibilities:: #TODO: describe any human user roles and their responsibilities related to this use case#
+Key management:: #TODO: add a link or a description of how keys are managed. This includes how they are created, exchanged, stored, access controlled, protected, renewed, revoked, and deleted.#
+
+In this use case, cryptography is used properly and effectively, and the algorithms, key lengths and key management arrangements are up to date and suitable for the use case and the expected usage period.

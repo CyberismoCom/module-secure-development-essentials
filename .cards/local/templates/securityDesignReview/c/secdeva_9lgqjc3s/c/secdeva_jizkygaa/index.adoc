@@ -1,0 +1,1 @@
+Only collect and process the minimum amount of data needed for the intended purpose.

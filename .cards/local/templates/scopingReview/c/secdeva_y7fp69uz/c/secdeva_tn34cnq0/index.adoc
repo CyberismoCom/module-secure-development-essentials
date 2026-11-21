@@ -1,0 +1,1 @@
+Check that each internal control has been assessed and marked as either in scope or out of scope in the internal control register.

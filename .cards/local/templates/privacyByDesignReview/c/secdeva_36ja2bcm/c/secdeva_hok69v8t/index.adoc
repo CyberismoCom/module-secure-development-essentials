@@ -1,0 +1,3 @@
+Product shall implement sufficient monitoring capabilities ensuring security breaches related to personal information can be acted upon timely.
+
+How to review: Review product documentation or design documentation.

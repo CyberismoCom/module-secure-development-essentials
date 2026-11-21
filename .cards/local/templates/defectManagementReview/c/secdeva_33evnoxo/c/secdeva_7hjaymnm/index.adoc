@@ -1,0 +1,1 @@
+Check that security issues in the issue tracker (backlog tool) that affect this product have been 1) analysed and 2) addressed, either tracked to closure or justifiably deferred to a future resolution. Examine at least the recent security-related issues (since the last review).

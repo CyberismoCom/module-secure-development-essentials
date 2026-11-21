@@ -1,0 +1,9 @@
+{
+    "title": "Users",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|f",
+    "lastUpdated": "2026-11-21T09:11:44.385Z",
+    "base/fieldTypes/checklistResult": "open"
+}

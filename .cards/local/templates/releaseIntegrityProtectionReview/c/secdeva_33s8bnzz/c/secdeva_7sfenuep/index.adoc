@@ -1,0 +1,1 @@
+If any form of cryptography is used, then the use case has been included in the cryptography review - see the task *Use cryptography properly and effectively*.

@@ -4,47 +4,26 @@ This is a review of the use of cryptography in a development project to ensure t
 
 == Use cases for cryptography
 
-#TODO: Describe the use cases here, or add a link to documentation.#
+Each use case of cryptography is one item in the checklist below. Open an item to give the use case a name and to describe it. To add a use case, click "Add a checklist item".
 
-NOTE: Notice that the use of cryptograpy must be planned in the light of the expected usage period. Select such algorithms and key lengths that are expected to be applicable during the usage period and as new technologies such as quantum computing become available.
+NOTE: Notice that the use of cryptography must be planned in the light of the expected usage period. Select such algorithms and key lengths that are expected to be applicable during the usage period and as new technologies such as quantum computing become available.
 
-=== #TODO: Title of use case 1#
+Set the result of each item in the table. A Deviation or Not applicable result needs a comment. Put links to the evidence in the comment.
 
-Use case:: #TODO: describe the use case#
-Expected usage period:: #TODO: describe the expected usage period of the protected information#
-References:: #TODO: add references that justify the use of cryptography and the selected algorithms, key lengths, key management arrangements#
-Algorithms:: #TODO: describe the cryptographic algorithms#
-Key length:: #TODO: describe the length of cryptographic keys#
-Roles and responsibilities:: #TODO: describe any human user roles and their responsibilities related to this use case#
-Key management:: #TODO: add a link or a description of how keys are managed. This includes how they are created, exchanged, stored, access controlled, protected, renewed, revoked, and deleted.#
+{{#report}}
+  "name": "base/reports/checklist"
+{{/report}}
 
-In this use case, cryptography is used properly and effectively, and the algorithms, key lengths and key management arrangements are up to date and suitable for the use case and the expected usage period:
+You can add your own items to the checklist.
 
-* [ ] OK
-* [ ] Not OK
-* [ ] Not applicable
-
-=== #TODO: Title of use case 2#
-
-Use case:: #TODO: describe the use case#
-Expected usage period:: #TODO: describe the expected usage period of the protected information#
-References:: #TODO: add references that justify the use of cryptography and the selected algorithms, key lengths, key management arrangements#
-Algorithms:: #TODO: describe the cryptographic algorithms#
-Key length:: #TODO: describe the length of cryptographic keys#
-Roles and responsibilities:: #TODO: describe any human user roles and their responsibilities related to this use case#
-Key management:: #TODO: add a link or a description of how keys are managed. This includes how they are created, exchanged, stored, access controlled, protected, renewed, revoked, and deleted.#
-
-In this use case, cryptography is used properly and effectively, and the algorithms, key lengths and key management arrangements are up to date and suitable for the use case and the expected usage period:
-
-* [ ] OK
-* [ ] Not OK
-* [ ] Not applicable
+{{#createCards}}
+  "template": "base/templates/checklistItem",
+  "buttonLabel": "Add a checklist item"
+{{/createCards}}
 
 == Identified security issues from this review
 
 {{#report}}
   "name": "secdeva/reports/reportSecurityIssue"
 {{/report}}
-
-
 

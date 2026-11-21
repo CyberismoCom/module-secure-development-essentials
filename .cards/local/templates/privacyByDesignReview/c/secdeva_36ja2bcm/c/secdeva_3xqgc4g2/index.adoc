@@ -1,0 +1,5 @@
+Product shall implement capabilities to support an individual's right to export their personal data.
+
+How to review: Data records must be available in commonly used format(s).
+
+This requirement may be inapplicable, if the personal data stored on applications is deeply related to the application and thereby not useful outside the context of the application.

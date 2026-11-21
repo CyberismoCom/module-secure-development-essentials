@@ -1,0 +1,6 @@
+{
+    "name": "base/fieldTypes/comment",
+    "displayName": "Comment",
+    "dataType": "longText",
+    "description": "A comment on the card"
+}

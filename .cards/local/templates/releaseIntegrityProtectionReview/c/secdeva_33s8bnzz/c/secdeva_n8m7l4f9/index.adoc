@@ -1,0 +1,1 @@
+If a project-specific file integrity protection mechanism is needed, then the mechanism has been properly documented in a design specification, the specification is up to date and that the mechanisms cover all applicable files of product releases.

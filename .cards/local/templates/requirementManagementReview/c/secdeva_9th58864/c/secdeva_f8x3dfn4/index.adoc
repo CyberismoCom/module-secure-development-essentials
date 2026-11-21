@@ -1,0 +1,1 @@
+The security requirements register {{#report}} "name": "secdeva/reports/xref", "identifier": "secdeva_register_security-requirements" {{/report}} includes an up-to-date description about the scope and boundaries of the product or system, and the required IEC 62443 security capability level (SL-C).

@@ -1,0 +1,9 @@
+{
+    "title": "Security context",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|b",
+    "lastUpdated": "2026-11-21T09:11:30.468Z",
+    "base/fieldTypes/checklistResult": "open"
+}

@@ -1,0 +1,1 @@
+Include in the end-user documentation instructions on how to report vulnerabilities about the product back to the product manufacturer.
