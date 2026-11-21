@@ -1,0 +1,25 @@
+This page runs the acceptable risk level test fixture and compares the policy check
+failures on the risks against the expected results. The expectations are in the report
+query, keyed by the title of each test risk, so the fixture can be
+deleted and created again without changes to the report.
+
+== What the fixture tests
+
+The risk register of a development project (`secdeva/cardTypes/riskRegister`) has the
+field "Acceptable risk level". The risk register of this test project sets it to "low".
+secdeva applies two checks with this level to the risks of the project:
+
+* *Controls must be identified unless risk level is acceptable*: the initial risk is
+  above the acceptable level, and no control or task is linked to the risk with
+  "is mitigated by".
+* *Risks can only be accepted if the risk level is acceptable*: the risk is "Closed as
+  accepted", and the residual risk is above the acceptable level.
+
+ARL1 to ARL5 are risks in the risk register of this project. The task "Mitigating task
+for the acceptable risk level test" mitigates ARL2, ARL4, and ARL5. ARL6 is directly
+under Test content, outside a development project, and is the negative case: no
+acceptable risk level applies to it, so neither check fails.
+
+{{#report}}
+  "name": "secdeva/reports/testingAcceptableRiskLevel"
+{{/report}}
