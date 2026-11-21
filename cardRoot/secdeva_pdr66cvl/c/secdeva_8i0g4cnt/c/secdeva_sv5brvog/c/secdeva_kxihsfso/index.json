@@ -1,0 +1,26 @@
+{
+    "rank": "0|b",
+    "workflowState": "Open",
+    "createdAt": "2026-11-21T11:39:05.526Z",
+    "links": [
+        {
+            "linkType": "ismsa/linkTypes/mitigates",
+            "cardKey": "secdeva_vb9ery35"
+        },
+        {
+            "linkType": "ismsa/linkTypes/mitigates",
+            "cardKey": "secdeva_9pjncd7a"
+        },
+        {
+            "linkType": "ismsa/linkTypes/mitigates",
+            "cardKey": "secdeva_rd15zggq"
+        }
+    ],
+    "cardType": "base/cardTypes/task",
+    "title": "Mitigating task for the acceptable risk level test",
+    "templateCardKey": "base_3",
+    "base/fieldTypes/informationClassification": "internal",
+    "lastUpdated": "2026-11-21T11:39:25.098Z",
+    "base/fieldTypes/identifier": "secdeva_test_arl_mitigation",
+    "base/fieldTypes/owner": "test.owner@example.com"
+}

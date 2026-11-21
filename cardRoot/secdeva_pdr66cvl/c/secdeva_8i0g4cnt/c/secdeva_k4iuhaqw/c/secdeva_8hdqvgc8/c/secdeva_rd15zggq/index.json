@@ -1,0 +1,17 @@
+{
+    "rank": "0|f",
+    "workflowState": "Closed as accepted",
+    "createdAt": "2026-11-21T11:39:10.837Z",
+    "links": [],
+    "cardType": "ismsa/cardTypes/risk",
+    "title": "ARL5 Accepted with residual risk at the acceptable level",
+    "templateCardKey": "secdeva_zw1zyota",
+    "base/fieldTypes/informationClassification": "internal",
+    "lastUpdated": "2026-11-21T11:39:10.838Z",
+    "ismsa/fieldTypes/riskInitialLikelihood": "high",
+    "ismsa/fieldTypes/riskInitialImpact": "high",
+    "ismsa/fieldTypes/riskMitigationStrategy": "accept",
+    "ismsa/fieldTypes/riskResidualLikelihood": "low",
+    "ismsa/fieldTypes/riskResidualImpact": "low",
+    "base/fieldTypes/owner": "test.owner@example.com"
+}

@@ -1,0 +1,31 @@
+{{#each results}}
+
+Fixture: *{{this.total}}* test cases, *{{this.passed}}* passed, *{{this.failed}}* failed{{#if this.missing}}, *{{this.missing}}* expected test cards not found{{/if}}.
+
+{{#if this.tests}}
+
+.Acceptable risk level test cases
+[cols="4,2,1,1,1,1,1,1,1"]
+|===
+| Test case | State | Initial risk | Residual risk | Controls failure expected | Controls failure raised | Acceptance failure expected | Acceptance failure raised | Verdict
+
+{{#each this.tests}}
+| xref:{{this.key}}.adoc[{{this.title}}]
+| {{this.state}}
+| {{this.initialRisk}}
+| {{this.residualRisk}}
+| {{this.expectedControls}}
+| {{this.actualControls}}
+| {{this.expectedAccept}}
+| {{this.actualAccept}}
+| {{this.verdict}}
+{{/each}}
+
+|===
+
+{{else}}
+
+No test cards found. The fixture is identified by the risk titles listed in the report query.
+
+{{/if}}
+{{/each}}

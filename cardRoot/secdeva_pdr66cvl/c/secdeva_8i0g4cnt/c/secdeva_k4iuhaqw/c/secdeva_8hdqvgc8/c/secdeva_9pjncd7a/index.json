@@ -1,0 +1,17 @@
+{
+    "rank": "0|e",
+    "workflowState": "Closed as accepted",
+    "createdAt": "2026-11-21T11:39:09.779Z",
+    "links": [],
+    "cardType": "ismsa/cardTypes/risk",
+    "title": "ARL4 Accepted with residual risk above the acceptable level",
+    "templateCardKey": "secdeva_zw1zyota",
+    "base/fieldTypes/informationClassification": "internal",
+    "lastUpdated": "2026-11-21T11:39:09.780Z",
+    "ismsa/fieldTypes/riskInitialLikelihood": "high",
+    "ismsa/fieldTypes/riskInitialImpact": "high",
+    "ismsa/fieldTypes/riskMitigationStrategy": "accept",
+    "ismsa/fieldTypes/riskResidualLikelihood": "moderate",
+    "ismsa/fieldTypes/riskResidualImpact": "moderate",
+    "base/fieldTypes/owner": "test.owner@example.com"
+}

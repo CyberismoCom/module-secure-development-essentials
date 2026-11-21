@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/reports/testingAcceptableRiskLevel",
+    "displayName": "Testing - acceptable risk level",
+    "description": "Runs the acceptable risk level test fixture under Test content and compares the policy check failures on the risks against the expected results",
+    "category": "Test content"
+}
