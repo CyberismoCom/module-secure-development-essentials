@@ -6,7 +6,19 @@ This document is a review of threat mitigation testing.
 
 The scope of threat mitigation testing includes the security issues that have been linked to this card with 'tests' links.
 
-#TODO: Link the threats that are in scope to this card with 'tests' links#
+#TODO: Link the security issues that are in scope to this card.#
+
+{{#createLinks}}
+  "buttonLabel": "Link security issues",
+  "linkType": "secdeva/linkTypes/tests",
+  "direction": "outbound",
+  "query": {{#quoted}}
+result(X) :- secdeva_closestProject({{{@root.cardKey}}}, Project), secdeva_closestProject(X, Project), base_projectCardType(X, "secdeva/cardTypes/securityIssue").
+select(1, "results", "title").
+select(1, "results", "cardType").
+order(1, "results", 1, "title", "ASC").
+{{/quoted}}
+{{/createLinks}}
 
 === Goal of testing
 

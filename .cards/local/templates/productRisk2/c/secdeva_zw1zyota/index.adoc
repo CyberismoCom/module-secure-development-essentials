@@ -9,7 +9,20 @@
 
 This risk is related to the development project or its results.
 
-#TODO: If necessary, add links to related more detailed assets in the threat model or the asset register using the 'affects asset' link type.#
+#TODO: If necessary, link the more detailed assets in the threat model or the asset register that this risk affects.#
+
+{{#createLinks}}
+  "buttonLabel": "Link affected assets",
+  "linkType": "ismsa/linkTypes/presentsRisk",
+  "direction": "inbound",
+  "query": {{#quoted}}
+result(X) :- secdeva_closestProject({{{@root.cardKey}}}, Project), secdeva_closestProject(X, Project), secdeva_dataflowElement(X).
+result(X) :- secdeva_closestProject({{{@root.cardKey}}}, Project), secdeva_closestProject(X, Project), base_projectCardType(X, ("secdeva/cardTypes/threatModel"; "ismsa/cardTypes/asset"; "ismsa/cardTypes/assetData"; "ismsa/cardTypes/assetDevice"; "ismsa/cardTypes/assetInformationSystem"; "ismsa/cardTypes/assetSupplier")).
+select(1, "results", "title").
+select(1, "results", "cardType").
+order(1, "results", 1, "title", "ASC").
+{{/quoted}}
+{{/createLinks}}
 
 === Threat
 
@@ -17,7 +30,19 @@ This risk is related to the development project or its results.
 
 === Potential vulnerabilities
 
-#TODO:# Link to the Security issues that may increase this risk with an 'is increased by' link.
+#TODO:# Link the security issues that may increase this risk.
+
+{{#createLinks}}
+  "buttonLabel": "Link security issues",
+  "linkType": "secdeva/linkTypes/increasesRisk",
+  "direction": "inbound",
+  "query": {{#quoted}}
+result(X) :- secdeva_closestProject({{{@root.cardKey}}}, Project), secdeva_closestProject(X, Project), base_projectCardType(X, "secdeva/cardTypes/securityIssue").
+select(1, "results", "title").
+select(1, "results", "cardType").
+order(1, "results", 1, "title", "ASC").
+{{/quoted}}
+{{/createLinks}}
 
 === Consequences
 
@@ -31,7 +56,19 @@ This risk is related to the development project or its results.
 
 === Existing risk mitigations
 
-#TODO:# Describe possible existing security requirements, tasks, and controls. Add 'is mitigated by' links, if applicable.
+#TODO:# Describe possible existing security requirements, tasks, and controls. Link the security requirements and tasks that mitigate this risk, if applicable.
+
+{{#createLinks}}
+  "buttonLabel": "Link existing mitigations",
+  "linkType": "ismsa/linkTypes/mitigates",
+  "direction": "inbound",
+  "query": {{#quoted}}
+result(X) :- secdeva_closestProject({{{@root.cardKey}}}, Project), secdeva_closestProject(X, Project), base_projectCardType(X, ("secdeva/cardTypes/requirement"; "base/cardTypes/task"; "base/cardTypes/monthlyTask"; "base/cardTypes/quarterlyTask"; "base/cardTypes/annualTask")).
+select(1, "results", "title").
+select(1, "results", "cardType").
+order(1, "results", 1, "title", "ASC").
+{{/quoted}}
+{{/createLinks}}
 
 === Justification for initial risk level
 
