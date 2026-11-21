@@ -1,0 +1,15 @@
+{
+    "rank": "0|b",
+    "workflowState": "Analysed",
+    "createdAt": "2026-11-21T11:39:06.594Z",
+    "links": [],
+    "cardType": "ismsa/cardTypes/risk",
+    "title": "ARL1 High initial risk, no controls",
+    "templateCardKey": "secdeva_zw1zyota",
+    "base/fieldTypes/informationClassification": "internal",
+    "lastUpdated": "2026-11-21T11:39:06.596Z",
+    "ismsa/fieldTypes/riskInitialLikelihood": "high",
+    "ismsa/fieldTypes/riskInitialImpact": "high",
+    "ismsa/fieldTypes/riskMitigationStrategy": "mitigate",
+    "base/fieldTypes/owner": "test.owner@example.com"
+}

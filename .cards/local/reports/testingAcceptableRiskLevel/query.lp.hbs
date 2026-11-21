@@ -1,0 +1,86 @@
+% Expectations for the acceptable risk level test fixture under Test content.
+%
+% secdeva_arlExpect(Title, Check, Expected) where Check is "controls" for the
+% check "Controls must be identified unless risk level is acceptable", or "accept"
+% for the check "Risks can only be accepted if the risk level is acceptable", and
+% Expected is "yes" when the check must fail on the card and "no" when it must not.
+%
+% The risk register of the test project has the acceptable risk level "low".
+% Test cards are matched by their title, never by card key, so the fixture
+% survives being recreated. The risk card type of ismsa has no identifier field.
+
+secdeva_arlExpect("ARL1 High initial risk, no controls", "controls", "yes").
+secdeva_arlExpect("ARL1 High initial risk, no controls", "accept",   "no").
+secdeva_arlExpect("ARL2 High initial risk, mitigated", "controls", "no").
+secdeva_arlExpect("ARL2 High initial risk, mitigated", "accept",   "no").
+secdeva_arlExpect("ARL3 Initial risk at the acceptable level, no controls", "controls", "no").
+secdeva_arlExpect("ARL3 Initial risk at the acceptable level, no controls", "accept",   "no").
+secdeva_arlExpect("ARL4 Accepted with residual risk above the acceptable level", "controls", "no").
+secdeva_arlExpect("ARL4 Accepted with residual risk above the acceptable level", "accept",   "yes").
+secdeva_arlExpect("ARL5 Accepted with residual risk at the acceptable level", "controls", "no").
+secdeva_arlExpect("ARL5 Accepted with residual risk at the acceptable level", "accept",   "no").
+
+% Negative case: a risk outside a development project has no acceptable risk
+% level, so neither check applies, even though the risk is high and accepted.
+
+secdeva_arlExpect("ARL6 High risk outside a development project", "controls", "no").
+secdeva_arlExpect("ARL6 High risk outside a development project", "accept",   "no").
+
+secdeva_arlCheckTitle("controls", "Controls must be identified unless risk level is acceptable").
+secdeva_arlCheckTitle("accept",   "Risks can only be accepted if the risk level is acceptable").
+
+secdeva_arlTestCard(Id, Card) :-
+    secdeva_arlExpect(Id, _, _),
+    base_projectCardType(Card, "ismsa/cardTypes/risk"),
+    field(Card, "title", Id).
+
+secdeva_arlActual(Card, Check, "yes") :-
+    secdeva_arlTestCard(Id, Card),
+    secdeva_arlExpect(Id, Check, _),
+    secdeva_arlCheckTitle(Check, Title),
+    base_policyCheckFailure(Card, _, Title, _).
+
+secdeva_arlActual(Card, Check, "no") :-
+    secdeva_arlTestCard(Id, Card),
+    secdeva_arlExpect(Id, Check, _),
+    secdeva_arlCheckTitle(Check, Title),
+    not base_policyCheckFailure(Card, _, Title, _).
+
+secdeva_arlCheckOk(Card, Check) :-
+    secdeva_arlTestCard(Id, Card),
+    secdeva_arlExpect(Id, Check, Expected),
+    secdeva_arlActual(Card, Check, Expected).
+
+secdeva_arlPass(Card) :-
+    secdeva_arlTestCard(_, Card),
+    secdeva_arlCheckOk(Card, Check) : secdeva_arlTestCard(Id, Card), secdeva_arlExpect(Id, Check, _).
+
+%
+% Report output
+%
+
+selectAll.
+select(2, "tests", "policyChecks").
+
+result(result).
+
+childResult(result, Card, "tests") :- secdeva_arlTestCard(_, Card).
+
+field(Card, "initialRisk", R)  :- secdeva_arlTestCard(_, Card), field(Card, "ismsa/fieldTypes/riskInitialRisk", R).
+field(Card, "initialRisk", "-") :- secdeva_arlTestCard(_, Card), not field(Card, "ismsa/fieldTypes/riskInitialRisk", _).
+field(Card, "residualRisk", R) :- secdeva_arlTestCard(_, Card), field(Card, "ismsa/fieldTypes/riskResidualRisk", R).
+field(Card, "residualRisk", "-") :- secdeva_arlTestCard(_, Card), not field(Card, "ismsa/fieldTypes/riskResidualRisk", _).
+field(Card, "state", S)        :- secdeva_arlTestCard(_, Card), field(Card, "workflowState", S).
+field(Card, "expectedControls", E) :- secdeva_arlTestCard(Id, Card), secdeva_arlExpect(Id, "controls", E).
+field(Card, "actualControls", A)   :- secdeva_arlActual(Card, "controls", A).
+field(Card, "expectedAccept", E)   :- secdeva_arlTestCard(Id, Card), secdeva_arlExpect(Id, "accept", E).
+field(Card, "actualAccept", A)     :- secdeva_arlActual(Card, "accept", A).
+field(Card, "verdict", "PASS") :- secdeva_arlPass(Card).
+field(Card, "verdict", "FAIL") :- secdeva_arlTestCard(_, Card), not secdeva_arlPass(Card).
+
+field(result, "total",   N) :- N = #count { C : secdeva_arlTestCard(_, C) }.
+field(result, "passed",  N) :- N = #count { C : secdeva_arlPass(C) }.
+field(result, "failed",  N) :- N = #count { C : secdeva_arlTestCard(_, C), not secdeva_arlPass(C) }.
+field(result, "missing", N) :- N = #count { Id : secdeva_arlExpect(Id, _, _), not secdeva_arlTestCard(Id, _) }.
+
+orderBy("title", "ASC").

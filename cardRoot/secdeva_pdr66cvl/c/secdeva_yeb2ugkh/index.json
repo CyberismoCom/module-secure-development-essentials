@@ -1,0 +1,17 @@
+{
+    "rank": "0|e",
+    "workflowState": "Closed as accepted",
+    "createdAt": "2026-11-21T11:39:11.878Z",
+    "links": [],
+    "cardType": "ismsa/cardTypes/risk",
+    "title": "ARL6 High risk outside a development project",
+    "templateCardKey": "secdeva_zw1zyota",
+    "base/fieldTypes/informationClassification": "internal",
+    "lastUpdated": "2026-11-21T11:39:11.879Z",
+    "ismsa/fieldTypes/riskInitialLikelihood": "high",
+    "ismsa/fieldTypes/riskInitialImpact": "high",
+    "ismsa/fieldTypes/riskMitigationStrategy": "accept",
+    "ismsa/fieldTypes/riskResidualLikelihood": "high",
+    "ismsa/fieldTypes/riskResidualImpact": "high",
+    "base/fieldTypes/owner": "test.owner@example.com"
+}
