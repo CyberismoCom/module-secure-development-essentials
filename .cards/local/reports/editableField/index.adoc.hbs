@@ -1,0 +1,5 @@
+{{#each results}}{{#if this.editable}}{{#field}}"cardKey": "{{this.key}}", "field": "{{this.field}}", "display": "{{this.display}}"{{/field}}{{else}}{{#if (eq this.display "row")}}
+
+*{{this.label}}*: {{#if this.text}}{{this.text}}{{else}}—{{/if}}
+
+{{else}}{{#if this.text}}{{this.text}}{{else}}—{{/if}}{{/if}}{{/if}}{{/each}}

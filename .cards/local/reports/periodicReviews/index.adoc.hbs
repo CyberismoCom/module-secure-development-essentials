@@ -1,6 +1,9 @@
 {{#each results}}
-{{#if this.register.[base/fieldTypes/reviewPeriod]}}
-The review period in the periodic review register has been set to *{{this.register.[base/fieldTypes/reviewPeriod]}} days*.
+{{#if this.register}}
+The review period of the periodic review register is the number of days between periodic reviews.
+
+{{#field}}"cardKey": "{{this.register.key}}", "field": "base/fieldTypes/reviewPeriod", "display": "row"{{/field}}
+
 {{/if}}
 {{#if reviews}}
 {{#if (eq this.daysSincePreviousReview 0)}}

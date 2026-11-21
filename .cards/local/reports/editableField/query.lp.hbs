@@ -1,0 +1,46 @@
+%* Editable field
+
+In the application, the report shows a field macro, so that the user can edit
+the field. In static and PDF output, the field macro writes the value of an
+enum field and not its display name (a limit of the field macro), so the report
+shows the value as text, with the display name of an enum value.
+
+When the field macro writes display names, this report can be replaced with the
+field macro.
+*%
+
+{{#if identifier}}
+secdeva_editableFieldCard(Card) :-
+    secdeva_closestProject(Card, Project),
+    secdeva_closestProject({{cardKey}}, Project),
+    field(Card, "base/fieldTypes/identifier", "{{identifier}}").
+{{else}}
+secdeva_editableFieldCard({{cardKey}}).
+{{/if}}
+
+result(Card) :-
+    secdeva_editableFieldCard(Card).
+
+resultField(Card, "field", "{{field}}", "shortText") :-
+    result(Card).
+
+resultField(Card, "display", "{{#if display}}{{display}}{{else}}inline{{/if}}", "shortText") :-
+    result(Card).
+
+resultField(Card, "editable", "yes", "shortText") :-
+    result(Card),
+    localApp.
+
+resultField(Card, "label", Label, "shortText") :-
+    result(Card),
+    field("{{field}}", "displayName", Label).
+
+resultField(Card, "text", Display, "shortText") :-
+    result(Card),
+    field(Card, "{{field}}", Value),
+    field(("{{field}}", Value), "enumDisplayValue", Display).
+
+resultField(Card, "text", Value, "shortText") :-
+    result(Card),
+    field(Card, "{{field}}", Value),
+    not field(("{{field}}", Value), "enumDisplayValue", _).
