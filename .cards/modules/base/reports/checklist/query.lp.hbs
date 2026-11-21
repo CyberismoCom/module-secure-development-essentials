@@ -1,0 +1,71 @@
+% The items of the checklist are the children of the card that are checklist
+% items and not archived. These rules use plain field lookups, so that the
+% report also shows the items of template cards. The result of the checklist
+% comes from base_checklistResult, which is only for project cards.
+
+select("title"; "rank"; "editable").
+
+base_checklistReportItem(Item) :-
+    parent(Item, {{cardKey}}),
+    field(Item, "cardType", "base/cardTypes/checklistItem"),
+    not field(Item, "workflowState", "Archived").
+
+base_checklistReportItemResult(Item, Result) :-
+    base_checklistReportItem(Item),
+    field(Item, "base/fieldTypes/checklistResult", Result).
+
+base_checklistReportItemResult(Item, "open") :-
+    base_checklistReportItem(Item),
+    not field(Item, "base/fieldTypes/checklistResult", _).
+
+base_checklistReportDisplay("open", "Open").
+base_checklistReportDisplay("ok", "OK").
+base_checklistReportDisplay("deviation", "Deviation").
+base_checklistReportDisplay("notApplicable", "Not applicable").
+
+result(result).
+
+% In the application, the result is an editable field macro, and the title of
+% an item links to the item. In static and PDF output, the report shows the
+% display name of the result, and the title as text: the items are hidden, so
+% an export does not have them as pages to link to.
+field(result, "editable", "void") :- localApp.
+
+resultField(Item, "resultDisplay", Display, "shortText") :-
+    base_checklistReportItemResult(Item, Result),
+    base_checklistReportDisplay(Result, Display).
+
+childResultCollection(result, "items").
+childResult(result, Item, "items") :-
+    base_checklistReportItem(Item).
+order(2, "items", 1, "rank", "ASC").
+
+% The items are hidden in the navigation tree, so the table shows the policy
+% check failures of each item. Failure keys have their own tag, so that they do
+% not collide with other result keys.
+childResultCollection(Item, "failures") :-
+    base_checklistReportItem(Item).
+childResult(Item, ("failure", Item, Title), "failures") :-
+    base_checklistReportItem(Item),
+    base_policyCheckFailure(Item, _, Title, _).
+resultField(("failure", Item, Title), "title", Title, "shortText") :-
+    base_checklistReportItem(Item),
+    base_policyCheckFailure(Item, _, Title, _).
+
+resultField(result, "total", Count, "integer") :-
+    Count = #count { Item : base_checklistReportItem(Item) }.
+
+resultField(result, Result, Count, "integer") :-
+    base_checklistReportDisplay(Result, _),
+    Count = #count { Item : base_checklistReportItemResult(Item, Result) }.
+
+resultField(result, "commentsMissing", Count, "integer") :-
+    Count = #count {
+        Item : base_checklistReportItemResult(Item, Result),
+               base_checklistCommentRequired(Result),
+               not field(Item, "base/fieldTypes/comment", _)
+    }.
+
+resultField(result, "checklistResult", Display, "shortText") :-
+    base_checklistResult({{cardKey}}, Result),
+    base_checklistReportDisplay(Result, Display).

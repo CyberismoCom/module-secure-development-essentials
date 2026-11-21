@@ -1,9 +1,9 @@
 {
-    "schemaVersion": 5,
+    "schemaVersion": 7,
     "cardKeyPrefix": "base",
     "name": "Base",
     "description": "",
-    "version": "1.6.0",
+    "version": "1.8.0",
     "modules": [],
     "hubs": []
 }

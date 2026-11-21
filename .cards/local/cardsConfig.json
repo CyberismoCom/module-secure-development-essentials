@@ -1,5 +1,5 @@
 {
-    "schemaVersion": 6,
+    "schemaVersion": 7,
     "cardKeyPrefix": "secdeva",
     "name": "Secure Development Essentials",
     "description": "",
@@ -9,7 +9,7 @@
             "name": "base",
             "location": "https://github.com/CyberismoCom/module-base.git",
             "private": false,
-            "version": "^1.4.0"
+            "version": "^1.8.0"
         },
         {
             "name": "ismsa",

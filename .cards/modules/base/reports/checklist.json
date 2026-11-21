@@ -1,0 +1,6 @@
+{
+    "name": "base/reports/checklist",
+    "displayName": "Checklist",
+    "description": "A table of the checklist items under a card, with the text of each item and editable result and comment fields",
+    "category": "General"
+}
