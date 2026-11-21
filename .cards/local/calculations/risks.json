@@ -1,7 +1,7 @@
 {
     "name": "secdeva/calculations/risks",
     "displayName": "Risks",
-    "description": "Hide the child cards of the risk register",
+    "description": "Hide the closed risks of the risk register, and check the risks of a development project against the acceptable risk level of its risk register",
     "calculation": "calculation.lp",
     "category": "Secure development"
 }
