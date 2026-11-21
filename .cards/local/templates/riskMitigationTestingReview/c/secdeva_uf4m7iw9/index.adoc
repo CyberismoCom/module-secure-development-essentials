@@ -17,7 +17,20 @@ Security requirement testing verifies that a security requirement has been imple
 
 The scope of this review includes all the security requirements and security issues that have been linked to a risk in this development project. They are listed in the review checklist below.
 
-#TODO: Link the tests that you have executed to the security requirements and security issues that they test with 'tests' links#
+#TODO: Link this card to the security requirements and security issues that you have tested.#
+
+{{#createLinks}}
+  "buttonLabel": "Link tested mitigations",
+  "linkType": "secdeva/linkTypes/tests",
+  "direction": "outbound",
+  "query": {{#quoted}}
+result(X) :- secdeva_closestProject({{{@root.cardKey}}}, Project), secdeva_closestProject(X, Project), base_projectCardType(X, "secdeva/cardTypes/requirement"), link(X, _, "ismsa/linkTypes/mitigates").
+result(X) :- secdeva_closestProject({{{@root.cardKey}}}, Project), secdeva_closestProject(X, Project), base_projectCardType(X, "secdeva/cardTypes/securityIssue"), link(X, _, "secdeva/linkTypes/increasesRisk").
+select(1, "results", "title").
+select(1, "results", "cardType").
+order(1, "results", 1, "title", "ASC").
+{{/quoted}}
+{{/createLinks}}
 
 === Documentation and reporting
 

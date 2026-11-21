@@ -12,15 +12,13 @@
 
 [TIP]
 ====
-Record how this product relates to the others in the solution by linking it with the link symbol in the top level tool bar. Link *from the part to the whole*: open the component and link it to the product it belongs to.
+Record how this product relates to the other products in the solution. Link *from the part to the whole*. If this product is a part of another product, use the button that matches the relationship, and pick the other product:
 
-Choose the link type that matches how this product relates to the other one:
-
-* *default component of* — it ships as a built-in part of the other product, not as a distinct product
-* *external component of* — the other product needs it as an external dependency or library
-* *installed on* — it runs on top of the other product, such as an operating system or hardware platform
-* *installed with* — it is bundled and installed alongside the other product during setup
-* *optional component of* — it is an add-on, plug-in or licensed extra for the other product
+* *Default component of*: it ships as a built-in part of the other product, not as a distinct product.
+* *Optional component of*: it is an add-on, a plug-in, or a licensed extra for the other product.
+* *External component of*: the other product needs it as an external dependency or library.
+* *Installed on*: it runs on top of the other product, such as an operating system or a hardware platform.
+* *Installed with*: it is bundled and installed together with the other product.
 
 ====
 
@@ -63,13 +61,72 @@ This product is not recorded as part of any other product.
 
 {{/if}}
 
+{{#createLinks}}
+  "buttonLabel": "Default component of",
+  "linkType": "secdeva/linkTypes/defaultComponentOf",
+  "direction": "outbound",
+  "query": {{#quoted}}
+result(X) :- secdeva_closestProject({{{@root.cardKey}}}, Project), secdeva_closestProject(X, Project), base_projectCardType(X, "secdeva/cardTypes/product").
+select(1, "results", "title").
+select(1, "results", "cardType").
+order(1, "results", 1, "title", "ASC").
+{{/quoted}}
+{{/createLinks}}
+
+{{#createLinks}}
+  "buttonLabel": "Optional component of",
+  "linkType": "secdeva/linkTypes/optionalComponentOf",
+  "direction": "outbound",
+  "query": {{#quoted}}
+result(X) :- secdeva_closestProject({{{@root.cardKey}}}, Project), secdeva_closestProject(X, Project), base_projectCardType(X, "secdeva/cardTypes/product").
+select(1, "results", "title").
+select(1, "results", "cardType").
+order(1, "results", 1, "title", "ASC").
+{{/quoted}}
+{{/createLinks}}
+
+{{#createLinks}}
+  "buttonLabel": "External component of",
+  "linkType": "secdeva/linkTypes/externalComponentOf",
+  "direction": "outbound",
+  "query": {{#quoted}}
+result(X) :- secdeva_closestProject({{{@root.cardKey}}}, Project), secdeva_closestProject(X, Project), base_projectCardType(X, "secdeva/cardTypes/product").
+select(1, "results", "title").
+select(1, "results", "cardType").
+order(1, "results", 1, "title", "ASC").
+{{/quoted}}
+{{/createLinks}}
+
+{{#createLinks}}
+  "buttonLabel": "Installed on",
+  "linkType": "secdeva/linkTypes/installedOn",
+  "direction": "outbound",
+  "query": {{#quoted}}
+result(X) :- secdeva_closestProject({{{@root.cardKey}}}, Project), secdeva_closestProject(X, Project), base_projectCardType(X, "secdeva/cardTypes/product").
+select(1, "results", "title").
+select(1, "results", "cardType").
+order(1, "results", 1, "title", "ASC").
+{{/quoted}}
+{{/createLinks}}
+
+{{#createLinks}}
+  "buttonLabel": "Installed with",
+  "linkType": "secdeva/linkTypes/installedWith",
+  "direction": "outbound",
+  "query": {{#quoted}}
+result(X) :- secdeva_closestProject({{{@root.cardKey}}}, Project), secdeva_closestProject(X, Project), base_projectCardType(X, "secdeva/cardTypes/product").
+select(1, "results", "title").
+select(1, "results", "cardType").
+order(1, "results", 1, "title", "ASC").
+{{/quoted}}
+{{/createLinks}}
+
+
 == Where this product appears in the threat model
 
 [TIP]
 ====
-Link this product to the elements of the threat model that it implements: the processes, data stores and trust boundaries that it is the software or hardware behind.
-
-The easiest way is from the element itself, where the products that implement it are listed together with buttons for adding one. You can also do it from here, with the link symbol in the top level tool bar: choose *implements* and pick the element.
+Link this product to the elements of the threat model that it implements. These are the processes, data stores, trust boundaries, and interfaces that it is the software or hardware behind. You can also link products on the element itself.
 ====
 
 {{#if implements}}
@@ -85,6 +142,18 @@ Threat model elements:
 *This product is not linked to the threat model.* No element is recorded as implemented by it.
 
 {{/if}}
+
+{{#createLinks}}
+  "buttonLabel": "Link threat model elements",
+  "linkType": "secdeva/linkTypes/implementedBy",
+  "direction": "inbound",
+  "query": {{#quoted}}
+result(X) :- secdeva_closestProject({{{@root.cardKey}}}, Project), secdeva_closestProject(X, Project), secdeva_dataflowElement(X).
+select(1, "results", "title").
+select(1, "results", "cardType").
+order(1, "results", 1, "title", "ASC").
+{{/quoted}}
+{{/createLinks}}
 {{/each}}
 
 == Technology assessment

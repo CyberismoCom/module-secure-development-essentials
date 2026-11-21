@@ -46,9 +46,9 @@
 [TIP]
 ====
 {{#if (eq ../variant "trustBoundary")}}
-These are the dataflows that cross this trust boundary. To add a dataflow, open the element inside the boundary that sends or receives it, and click the link symbol in the top level tool bar.
+These are the dataflows that cross this trust boundary. To add a dataflow, open the element inside the boundary that sends or receives it.
 {{else}}
-To add a dataflow to or from this {{#if (eq ../variant "process")}}process{{/if}}{{#if (eq ../variant "dataStore")}}data store{{/if}}{{#if (eq ../variant "external")}}external entity{{/if}}, click the link symbol in the top level tool bar.{{#unless (eq ../variant "external")}} Optionally, if you want to model interfaces as well, you can create an interface and link any incoming dataflows to the interface.{{/unless}}
+Use the buttons in this section to add dataflows to and from other elements of this threat model. Give each dataflow a short description of the data, such as "Sensor readings".{{#unless (eq ../variant "external")}} If you model interfaces, add incoming dataflows on the interface and not on this {{#if (eq ../variant "process")}}process{{/if}}{{#if (eq ../variant "dataStore")}}data store{{/if}}.{{/unless}}
 {{/if}}
 ====
 
@@ -77,6 +77,34 @@ There are no dataflows to or from this entity.
 {{/if}}
 
 {{/if}}
+
+{{#unless (eq ../variant "trustBoundary")}}
+{{#createLinks}}
+  "buttonLabel": "Add outbound dataflows",
+  "linkType": "secdeva/linkTypes/dataflow",
+  "direction": "outbound",
+  "cardKey": "{{../cardKey}}",
+  "query": {{#quoted}}
+result(X) :- secdeva_modelOf({{{../cardKey}}}, Model), secdeva_modelOf(X, Model), secdeva_dataflowElement(X).
+select(1, "results", "title").
+select(1, "results", "cardType").
+order(1, "results", 1, "title", "ASC").
+{{/quoted}}
+{{/createLinks}}
+
+{{#createLinks}}
+  "buttonLabel": "Add inbound dataflows",
+  "linkType": "secdeva/linkTypes/dataflow",
+  "direction": "inbound",
+  "cardKey": "{{../cardKey}}",
+  "query": {{#quoted}}
+result(X) :- secdeva_modelOf({{{../cardKey}}}, Model), secdeva_modelOf(X, Model), secdeva_dataflowElement(X).
+select(1, "results", "title").
+select(1, "results", "cardType").
+order(1, "results", 1, "title", "ASC").
+{{/quoted}}
+{{/createLinks}}
+{{/unless}}
 
 {{#unless (eq ../variant "trustBoundary")}}
 {{#unless (eq ../variant "external")}}
@@ -145,7 +173,7 @@ There are no physical connections.
 
 [TIP]
 ====
-Create a risk if you identify a cyber threat — something that can cause harm by exploiting one or more vulnerabilities.
+Create a risk if you identify a cyber threat — something that can cause harm by exploiting one or more vulnerabilities. If the risk is already in the risk register, link it instead.
 ====
 
 {{#if risks}}
@@ -163,10 +191,23 @@ Create a risk if you identify a cyber threat — something that can cause harm b
 
 |===
 
-Create another risk, if needed:
+Link or create another risk, if needed:
 {{else}}
 You have not yet created or linked any risks.
 {{/if}}
+
+{{#createLinks}}
+  "buttonLabel": "Link risks",
+  "linkType": "ismsa/linkTypes/presentsRisk",
+  "direction": "outbound",
+  "cardKey": "{{../cardKey}}",
+  "query": {{#quoted}}
+result(X) :- secdeva_closestProject({{{../cardKey}}}, Project), secdeva_closestProject(X, Project), base_projectCardType(X, "ismsa/cardTypes/risk").
+select(1, "results", "title").
+select(1, "results", "cardType").
+order(1, "results", 1, "title", "ASC").
+{{/quoted}}
+{{/createLinks}}
 
 {{#createCards}}
     "template": "secdeva/templates/productRisk2",
@@ -183,7 +224,7 @@ You have not yet created or linked any risks.
 
 [TIP]
 ====
-Create a security issue if you identify a vulnerability — a weakness that a threat could exploit.
+Create a security issue if you identify a vulnerability — a weakness that a threat could exploit. If the security issue is already in the security issue register, link it instead.
 ====
 
 {{#if issues}}
@@ -201,10 +242,23 @@ Create a security issue if you identify a vulnerability — a weakness that a th
 
 |===
 
-Create another issue, if needed:
+Link or create another issue, if needed:
 {{else}}
 You have not yet created or linked any security issues.
 {{/if}}
+
+{{#createLinks}}
+  "buttonLabel": "Link security issues",
+  "linkType": "ismsa/linkTypes/presentsRisk",
+  "direction": "outbound",
+  "cardKey": "{{../cardKey}}",
+  "query": {{#quoted}}
+result(X) :- secdeva_closestProject({{{../cardKey}}}, Project), secdeva_closestProject(X, Project), base_projectCardType(X, "secdeva/cardTypes/securityIssue").
+select(1, "results", "title").
+select(1, "results", "cardType").
+order(1, "results", 1, "title", "ASC").
+{{/quoted}}
+{{/createLinks}}
 
 {{#createCards}}
     "template": "secdeva/templates/securityIssue",
@@ -235,10 +289,23 @@ You have not yet created or linked any security issues.
 
 |===
 
-Create another requirement, if needed:
+Link or create another requirement, if needed:
 {{else}}
 You have not yet created or linked any requirements.
 {{/if}}
+
+{{#createLinks}}
+  "buttonLabel": "Link security requirements",
+  "linkType": "secdeva/linkTypes/appliesTo",
+  "direction": "inbound",
+  "cardKey": "{{../cardKey}}",
+  "query": {{#quoted}}
+result(X) :- secdeva_closestProject({{{../cardKey}}}, Project), secdeva_closestProject(X, Project), base_projectCardType(X, "secdeva/cardTypes/requirement").
+select(1, "results", "title").
+select(1, "results", "cardType").
+order(1, "results", 1, "title", "ASC").
+{{/quoted}}
+{{/createLinks}}
 
 {{#createCards}}
     "template": "secdeva/templates/securityRequirement",
@@ -252,11 +319,12 @@ You have not yet created or linked any requirements.
 {{/createCards}}
 {{/unless}}
 
+{{#unless (eq ../variant "external")}}
 == Related products
 
 [TIP]
 ====
-Record what implements this element: your own products, commercial or open source third-party products, and services someone else operates. Link a product that is already in the solution structure register; create one only if it is not there yet, so the same component does not end up as two cards.
+Record what implements this element: your own products, commercial or open source third-party products, and services someone else operates. If the product is already in the solution structure register, link it. Create a product only if it is not there yet. Then the same component does not become two cards.
 ====
 
 {{#if products}}
@@ -278,6 +346,19 @@ Link or create another product, if needed:
 {{else}}
 You have not yet linked any products to this element.
 {{/if}}
+
+{{#createLinks}}
+  "buttonLabel": "Link products",
+  "linkType": "secdeva/linkTypes/implementedBy",
+  "direction": "outbound",
+  "cardKey": "{{../cardKey}}",
+  "query": {{#quoted}}
+result(X) :- secdeva_closestProject({{{../cardKey}}}, Project), secdeva_closestProject(X, Project), base_projectCardType(X, "secdeva/cardTypes/product").
+select(1, "results", "title").
+select(1, "results", "cardType").
+order(1, "results", 1, "title", "ASC").
+{{/quoted}}
+{{/createLinks}}
 
 {{#if thirdPartyGroup}}
 {{#createCards}}
@@ -306,6 +387,8 @@ You have not yet linked any products to this element.
 NOTE: This project has no solution structure register yet, so there is nowhere to put a product. Add one to the project before recording which products implement this element.
 
 {{/if}}
+{{/unless}}
+
 == Related decisions
 
 {{#if decisions}}
