@@ -15,10 +15,23 @@
 
 |===
 
-Create another requirement, if needed:
+Link or create another requirement, if needed:
 {{else}}
 You have not yet created or linked any requirements.
 {{/if}}
+
+{{#createLinks}}
+  "buttonLabel": "Link security requirements",
+  "linkType": "ismsa/linkTypes/mitigates",
+  "direction": "inbound",
+  "cardKey": "{{../cardKey}}",
+  "query": {{#quoted}}
+result(X) :- secdeva_closestProject({{{../cardKey}}}, Project), secdeva_closestProject(X, Project), base_projectCardType(X, "secdeva/cardTypes/requirement").
+select(1, "results", "title").
+select(1, "results", "cardType").
+order(1, "results", 1, "title", "ASC").
+{{/quoted}}
+{{/createLinks}}
 
 {{#createCards}}
     "template": "secdeva/templates/securityRequirement",
