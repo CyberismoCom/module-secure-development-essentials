@@ -1,0 +1,3 @@
+For each known security issue that cannot be tracked to closure in this release, check that the issue and possible user mitigation strategies and associated risks have been documented to users, or that there is a justified reason not to communicate the issue to product users.
+
+Check that all such Security Issues that identify a vulnerability in a component, including in an open source component, which is integrated in the product, have been reported to the person or entity maintaining the component.

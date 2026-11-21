@@ -1,0 +1,1 @@
+The testing to defeat the mitigation has been executed for every mitigation where such testing is applicable, the test results have been recorded, and the mitigations could not be defeated.

@@ -1,0 +1,1 @@
+Document security guidelines for users and administrators, including the functions and interfaces available to different user roles, user and administrator responsibilities regarding the secure operation of the product.

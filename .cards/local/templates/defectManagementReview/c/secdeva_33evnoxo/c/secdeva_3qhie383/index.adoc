@@ -1,0 +1,1 @@
+Review the security-related issue management process in general. Examine the recent security-related issues (since the last review) to determine if the defect management process was efficient. If the process was not complete or did not lead to the resolution of each issue, consider how the practices need to be improved.

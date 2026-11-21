@@ -6,65 +6,18 @@ NOTE: You do not need to get a perfect score to close the review as passed, but 
 
 == Review checklist
 
-=== Internal controls
+Set the result of each item in the table. A Deviation or Not applicable result needs a comment. Put links to the evidence in the comment.
 
-Check the status of internal controls in {{#report}}"name":"secdeva/reports/xref","identifier":"secdeva_status-and-next-steps"{{/report}}. Your goal is to have no internal controls that would require attention.
+{{#report}}
+  "name": "base/reports/checklist"
+{{/report}}
 
-This can be marked as OK if the missing actions are planned.
+You can add your own items to the checklist.
 
-* [ ] OK
-* [ ] Not OK
-
-Comments, links:
-
-=== Security issue status
-
-Check the table of security issues in that need attention in {{#report}}"name":"secdeva/reports/xref","identifier":"secdeva_status-and-next-steps"{{/report}}.
-
-* [ ] OK
-* [ ] Not OK
-
-Comments, links:
-
-=== Security tool status
-
-Check that the security issues in all the security testing tools such as static code analysers and vulnerability tracking tools have been managed.
-
-The issues from these tools should be reported as security issues and managed according to the secure development process.
-
-* [ ] OK
-* [ ] Not OK
-
-Comments, links:
-
-=== Security issue communication
-
-For each known security issue that has not yet been tracked to closure but that affects a released product version or a product version that is currently in use, check that the issue and possible user mitigation strategies and associated risks have been documented to users, or that there is a justified reason not to communicate the issue to product users.
-
-Check that all such security issues that identify a vulnerability in a component, including in an open source component, which is integrated in the product, have been reported to the person or entity maintaining the component.
-
-* [ ] OK
-* [ ] Not OK
-
-Comments, links:
-
-=== Automated policy checks
-
-Check the status of automated policy checks in {{#report}}"name":"secdeva/reports/xref","identifier":"secdeva_status-and-next-steps"{{/report}}.
-
-This can be marked as OK if the missing actions are planned.
-
-* [ ] OK
-* [ ] Not OK
-
-=== Subprojects
-
-Check that a similar periodic review has been successfully conducted for any subproject recently enough.
-
-* [ ] OK or Not Applicable
-* [ ] Not OK
-
-Comments, links:
+{{#createCards}}
+  "template": "base/templates/checklistItem",
+  "buttonLabel": "Add a checklist item"
+{{/createCards}}
 
 === Retrospective
 

@@ -1,0 +1,9 @@
+{
+    "title": "Handling of findings",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|g",
+    "lastUpdated": "2026-11-21T09:11:26.148Z",
+    "base/fieldTypes/checklistResult": "open"
+}

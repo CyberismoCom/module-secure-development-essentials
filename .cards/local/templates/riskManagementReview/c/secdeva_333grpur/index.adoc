@@ -2,17 +2,20 @@
 
 This document is a review of the cybersecurity risk management.
 
-
 == Risk identification
 
-Risks have been identified in sufficient level of detail and recorded in the risk register:
+Set the result of each item in the table. A Deviation or Not applicable result needs a comment. Put links to the evidence in the comment.
 
-* [ ] OK
-* [ ] Not OK
+{{#report}}
+  "name": "base/reports/checklist"
+{{/report}}
 
-Review notes about the overall status of risk identification:
+You can add your own items to the checklist.
 
-#TODO: Describe any notes and remarks about the review here#
+{{#createCards}}
+  "template": "base/templates/checklistItem",
+  "buttonLabel": "Add a checklist item"
+{{/createCards}}
 
 You can cross check your identified risks against the checklists in the appendix to ensure that you did not miss anything important.
 
@@ -31,7 +34,6 @@ Review notes about the overall status of risk treatment:
 {{#report}}
   "name": "secdeva/reports/reportSecurityIssue"
 {{/report}}
-
 
 '''
 

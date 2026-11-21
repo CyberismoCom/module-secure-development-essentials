@@ -1,0 +1,9 @@
+{
+    "title": "Architect approval",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|h",
+    "lastUpdated": "2026-11-21T09:11:46.539Z",
+    "base/fieldTypes/checklistResult": "open"
+}

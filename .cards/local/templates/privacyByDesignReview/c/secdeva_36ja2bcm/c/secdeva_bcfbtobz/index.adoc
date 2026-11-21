@@ -1,0 +1,3 @@
+Product shall have the capability for an individual to review the personal data collected by the product.
+
+How to review: Review the product documentation or user interface.

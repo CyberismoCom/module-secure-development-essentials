@@ -1,0 +1,3 @@
+Document known security risks. Consider both the intended use of the product and any reasonably foreseeable misuse, which may lead to significant cybersecurity risks. Include threats that the product addresses by the defense in depth strategy. Include how changes to the product can affect the security of data.
+
+For risks that the users of the product can mitigate themselves, document the mitigation instructions. For all known security risks, document possible recommendations for compensating controls.

@@ -1,0 +1,5 @@
+Document uninstallation procedures which ensure that
+
+* any sensitive data is securely deleted
+* any dangling references and configuration data is removed
+* product can be securely disposed to prevent data disclosure

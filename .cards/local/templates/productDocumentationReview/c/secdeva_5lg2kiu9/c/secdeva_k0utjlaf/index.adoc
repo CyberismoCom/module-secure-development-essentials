@@ -1,0 +1,1 @@
+Document any environmental requirements that must be satisfied before the product is installed, and the possible security environment provided by the manufacturer.

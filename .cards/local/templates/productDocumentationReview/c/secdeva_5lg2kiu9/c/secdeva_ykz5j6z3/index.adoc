@@ -1,0 +1,1 @@
+Document if, and where applicable, where the software bill of materials (SBOM) can be accessed.

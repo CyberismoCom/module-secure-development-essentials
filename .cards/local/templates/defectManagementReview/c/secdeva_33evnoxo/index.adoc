@@ -4,34 +4,18 @@ This document records a review of security issue management in the development p
 
 == Review checklist
 
-Check that security issues in this tool that affect this product have been 1) analysed and 2) addressed, either tracked to closure or justifiably deferred to a future resolution. Examine at least the recent security-related issues (since the last review). Please refer to a list of security issues in the parent card.
+Set the result of each item in the table. A Deviation or Not applicable result needs a comment. Put links to the evidence in the comment.
 
-* [ ] OK
-* [ ] Not OK
+{{#report}}
+  "name": "base/reports/checklist"
+{{/report}}
 
-Check that security issues in the issue tracker (backlog tool) that affect this product have been 1) analysed and 2) addressed, either tracked to closure or justifiably deferred to a future resolution. Examine at least the recent security-related issues (since the last review).
+You can add your own items to the checklist.
 
-* [ ] OK
-* [ ] Not OK
-* [ ] Not applicable
-
-Check that findings from vulnerability tracking tools have not been 1) analysed and 2) tracked to closure, or justifiably deferred to a future release. Notice that there must be no known exploitable vulnerabilities. Examine at least the recent security-related issues (since the last review).
-
-* [ ] OK
-* [ ] Not OK
-* [ ] Not applicable
-
-Check that security isseus from any source have been disclosed to stakeholders, if applicable. Examine at least the recent security-related issues (since the last review).
-
-* [ ] OK
-* [ ] Not OK
-* [ ] Not applicable
-
-Review the security-related issue management process in general. Examine the recent security-related issues (since the last review) to determine if the defect management process was efficient. If the process was not complete or did not lead to the resolution of each issue, consider how the practices need to be improved.
-
-* [ ] OK
-* [ ] Not OK
-* [ ] Not applicable
+{{#createCards}}
+  "template": "base/templates/checklistItem",
+  "buttonLabel": "Add a checklist item"
+{{/createCards}}
 
 == Review notes
 

@@ -1,0 +1,9 @@
+{
+    "title": "User consent",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|f",
+    "lastUpdated": "2026-11-21T09:10:25.281Z",
+    "base/fieldTypes/checklistResult": "open"
+}

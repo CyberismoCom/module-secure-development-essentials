@@ -1,0 +1,3 @@
+Document the type of technical security support offered by the manufacturer, and until when it will be provided. Document at the very least until when users can expect to receive security updates.
+
+Document or provide a reference as to how security-related software updates can be installed.

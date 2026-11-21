@@ -1,0 +1,1 @@
+Use proven security mechanisms instead of designing your own. For example, use established authentication protocols and cryptographic libraries.
