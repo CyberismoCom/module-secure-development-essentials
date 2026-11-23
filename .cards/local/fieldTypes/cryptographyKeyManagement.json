@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/fieldTypes/cryptographyKeyManagement",
+    "displayName": "Key management",
+    "dataType": "longText",
+    "description": "How the keys are created, exchanged, stored, access controlled, protected, renewed, revoked, and deleted, or a link to a description"
+}

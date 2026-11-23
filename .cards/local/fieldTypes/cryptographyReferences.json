@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/fieldTypes/cryptographyReferences",
+    "displayName": "References",
+    "dataType": "longText",
+    "description": "References that justify the use of cryptography, and the selected algorithms, key lengths, and key management arrangements"
+}

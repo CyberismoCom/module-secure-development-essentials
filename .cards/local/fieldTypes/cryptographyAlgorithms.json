@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/fieldTypes/cryptographyAlgorithms",
+    "displayName": "Algorithms",
+    "dataType": "longText",
+    "description": "The cryptographic algorithms of the use case"
+}

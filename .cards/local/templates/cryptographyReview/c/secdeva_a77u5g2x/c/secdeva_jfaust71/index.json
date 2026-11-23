@@ -1,9 +1,0 @@
-{
-    "title": "Use case 1 (name of the use case)",
-    "cardType": "base/cardTypes/checklistItem",
-    "workflowState": "",
-    "links": [],
-    "rank": "0|b",
-    "lastUpdated": "2026-11-21T09:09:57.998Z",
-    "base/fieldTypes/checklistResult": "open"
-}

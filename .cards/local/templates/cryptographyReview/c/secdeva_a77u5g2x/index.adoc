@@ -4,21 +4,17 @@ This is a review of the use of cryptography in a development project to ensure t
 
 == Use cases for cryptography
 
-Each use case of cryptography is one item in the checklist below. Open an item to give the use case a name and to describe it. To add a use case, click "Add a checklist item".
+Document each use case of cryptography below. Fill in the details of the use case, and set the result. A Deviation or Not applicable result needs a comment. Give the use case a name in its Title field. To add a use case, click "Add a use case".
 
-NOTE: Notice that the use of cryptography must be planned in the light of the expected usage period. Select such algorithms and key lengths that are expected to be applicable during the usage period and as new technologies such as quantum computing become available.
-
-Set the result of each item in the table. A Deviation or Not applicable result needs a comment. Put links to the evidence in the comment.
+NOTE: Plan the use of cryptography for the expected usage period. Select algorithms and key lengths that will still be suitable at the end of the usage period, also when new technologies such as quantum computing become available.
 
 {{#report}}
-  "name": "base/reports/checklist"
+  "name": "secdeva/reports/cryptographyUseCases"
 {{/report}}
 
-You can add your own items to the checklist.
-
 {{#createCards}}
-  "template": "base/templates/checklistItem",
-  "buttonLabel": "Add a checklist item"
+  "template": "secdeva/templates/cryptographyUseCase",
+  "buttonLabel": "Add a use case"
 {{/createCards}}
 
 == Identified security issues from this review

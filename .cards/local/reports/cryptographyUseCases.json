@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/reports/cryptographyUseCases",
+    "displayName": "Cryptography use cases",
+    "description": "The use cases of a cryptography review, with editable fields for the details, the result, and the comment of each use case",
+    "category": "Secure development"
+}

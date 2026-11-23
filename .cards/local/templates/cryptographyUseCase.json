@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/templates/cryptographyUseCase",
+    "displayName": "Cryptography use case",
+    "description": "One use case of cryptography in a cryptography review",
+    "category": "Secure development reviews"
+}

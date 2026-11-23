@@ -1,0 +1,40 @@
+% The use cases are the children of the card that are cryptography use cases
+% and not archived. These rules use plain field lookups, so that the report
+% also shows the use cases of template cards.
+
+select("title"; "rank"; "app").
+
+secdeva_cryptographyReportItem(Item) :-
+    parent(Item, {{cardKey}}),
+    field(Item, "cardType", "secdeva/cardTypes/cryptographyUseCase"),
+    not field(Item, "workflowState", "Archived").
+
+result(result).
+
+% In the application, the title of a use case links to the card. In static and
+% PDF output, the title is text, because an export does not have the hidden
+% use cases as pages.
+field(result, "app", "void") :- localApp.
+
+childResultCollection(result, "useCases").
+childResult(result, Item, "useCases") :-
+    secdeva_cryptographyReportItem(Item).
+order(2, "useCases", 1, "rank", "ASC").
+
+% The policy check failures of each use case. Failure keys have their own tag,
+% so that they do not collide with other result keys.
+childResultCollection(Item, "failures") :-
+    secdeva_cryptographyReportItem(Item).
+childResult(Item, ("failure", Item, Title), "failures") :-
+    secdeva_cryptographyReportItem(Item),
+    base_policyCheckFailure(Item, _, Title, _).
+resultField(("failure", Item, Title), "title", Title, "shortText") :-
+    secdeva_cryptographyReportItem(Item),
+    base_policyCheckFailure(Item, _, Title, _).
+
+resultField(result, "total", Count, "integer") :-
+    Count = #count { Item : secdeva_cryptographyReportItem(Item) }.
+
+resultField(result, Result, Count, "integer") :-
+    base_checklistResultValue(Result),
+    base_checklistItemCount({{cardKey}}, Result, Count).

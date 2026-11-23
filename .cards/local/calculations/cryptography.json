@@ -1,0 +1,7 @@
+{
+    "name": "secdeva/calculations/cryptography",
+    "displayName": "Cryptography use cases",
+    "calculation": "calculation.lp",
+    "description": "The use cases of a cryptography review are checklist items of the review, with fields for the details of each use case",
+    "category": "Secure development"
+}

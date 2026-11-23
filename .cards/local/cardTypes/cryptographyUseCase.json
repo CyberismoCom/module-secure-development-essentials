@@ -1,0 +1,62 @@
+{
+    "name": "secdeva/cardTypes/cryptographyUseCase",
+    "displayName": "Cryptography use case",
+    "description": "One use case of cryptography in a cryptography review. It is a checklist item of the review: the result says whether the cryptography of the use case is used properly and effectively. A Deviation or Not applicable result needs a comment.",
+    "workflow": "base/workflows/checklistItem",
+    "customFields": [
+        {
+            "name": "secdeva/fieldTypes/cryptographyUseCase",
+            "isCalculated": false
+        },
+        {
+            "name": "secdeva/fieldTypes/cryptographyUsagePeriod",
+            "isCalculated": false
+        },
+        {
+            "name": "secdeva/fieldTypes/cryptographyReferences",
+            "isCalculated": false
+        },
+        {
+            "name": "secdeva/fieldTypes/cryptographyAlgorithms",
+            "isCalculated": false
+        },
+        {
+            "name": "secdeva/fieldTypes/cryptographyKeyLength",
+            "isCalculated": false
+        },
+        {
+            "name": "secdeva/fieldTypes/cryptographyRoles",
+            "isCalculated": false
+        },
+        {
+            "name": "secdeva/fieldTypes/cryptographyKeyManagement",
+            "isCalculated": false
+        },
+        {
+            "name": "base/fieldTypes/checklistResult",
+            "isCalculated": false
+        },
+        {
+            "name": "base/fieldTypes/comment",
+            "isCalculated": false
+        },
+        {
+            "name": "base/fieldTypes/identifier",
+            "isCalculated": false
+        }
+    ],
+    "alwaysVisibleFields": [
+        "secdeva/fieldTypes/cryptographyUseCase",
+        "secdeva/fieldTypes/cryptographyUsagePeriod",
+        "secdeva/fieldTypes/cryptographyReferences",
+        "secdeva/fieldTypes/cryptographyAlgorithms",
+        "secdeva/fieldTypes/cryptographyKeyLength",
+        "secdeva/fieldTypes/cryptographyRoles",
+        "secdeva/fieldTypes/cryptographyKeyManagement",
+        "base/fieldTypes/checklistResult",
+        "base/fieldTypes/comment"
+    ],
+    "optionallyVisibleFields": [
+        "base/fieldTypes/identifier"
+    ]
+}
