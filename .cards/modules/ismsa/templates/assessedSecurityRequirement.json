@@ -1,0 +1,6 @@
+{
+    "name": "ismsa/templates/assessedSecurityRequirement",
+    "displayName": "Security requirement (assessed)",
+    "description": "A technical security requirement for a product, solution, or service, with an automatic assessment from its reviews and verifications",
+    "category": "Cybersecurity management"
+}

@@ -1,0 +1,82 @@
+{
+    "name": "ismsa/cardTypes/assessedSecurityRequirement",
+    "displayName": "Security requirement (assessed)",
+    "workflow": "ismsa/workflows/complianceScoping",
+    "customFields": [
+        {
+            "name": "base/fieldTypes/owner",
+            "displayName": "",
+            "isCalculated": true,
+            "enableOverride": true
+        },
+        {
+            "name": "base/fieldTypes/identifier",
+            "displayName": "",
+            "isCalculated": false,
+            "enableOverride": false
+        },
+        {
+            "name": "base/fieldTypes/justification",
+            "displayName": "Scoping justification",
+            "isCalculated": false,
+            "enableOverride": false
+        },
+        {
+            "name": "ismsa/fieldTypes/architectureReview",
+            "displayName": "",
+            "isCalculated": false,
+            "enableOverride": false
+        },
+        {
+            "name": "ismsa/fieldTypes/testReview",
+            "displayName": "",
+            "isCalculated": false,
+            "enableOverride": false
+        },
+        {
+            "name": "ismsa/fieldTypes/securityReview",
+            "displayName": "",
+            "isCalculated": false,
+            "enableOverride": false
+        },
+        {
+            "name": "ismsa/fieldTypes/productOwnerReview",
+            "displayName": "",
+            "isCalculated": false,
+            "enableOverride": false
+        },
+        {
+            "name": "base/fieldTypes/assessment",
+            "displayName": "",
+            "isCalculated": true,
+            "enableOverride": true
+        },
+        {
+            "name": "base/fieldTypes/assessmentExplanation",
+            "displayName": "",
+            "isCalculated": true,
+            "enableOverride": true
+        },
+        {
+            "name": "base/fieldTypes/informationClassification",
+            "displayName": "",
+            "isCalculated": false,
+            "enableOverride": false
+        }
+    ],
+    "alwaysVisibleFields": [
+        "base/fieldTypes/owner",
+        "base/fieldTypes/justification",
+        "ismsa/fieldTypes/architectureReview",
+        "ismsa/fieldTypes/testReview",
+        "ismsa/fieldTypes/securityReview",
+        "ismsa/fieldTypes/productOwnerReview",
+        "base/fieldTypes/assessment",
+        "base/fieldTypes/assessmentExplanation"
+    ],
+    "optionallyVisibleFields": [
+        "base/fieldTypes/identifier",
+        "base/fieldTypes/informationClassification"
+    ],
+    "description": "A technical security requirement for a product, solution, or service, with automatic assessment from its reviews and verifications"
+}

@@ -1,0 +1,28 @@
+{
+    "name": "ismsa/fieldTypes/securityReview",
+    "displayName": "Security review",
+    "dataType": "enum",
+    "enumValues": [
+        {
+            "enumValue": "open",
+            "enumDisplayValue": "Not reviewed",
+            "enumDescription": ""
+        },
+        {
+            "enumValue": "ok",
+            "enumDisplayValue": "Approved",
+            "enumDescription": ""
+        },
+        {
+            "enumValue": "deviation",
+            "enumDisplayValue": "Changes needed",
+            "enumDescription": ""
+        },
+        {
+            "enumValue": "notApplicable",
+            "enumDisplayValue": "Not applicable",
+            "enumDescription": ""
+        }
+    ],
+    "description": "The review of the requirement by a security advisor: the requirement is correct and complete for the risks that it treats"
+}

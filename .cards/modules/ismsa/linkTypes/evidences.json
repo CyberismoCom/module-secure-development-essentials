@@ -13,7 +13,8 @@
         "base/cardTypes/annualTask",
         "base/cardTypes/quarterlyTask",
         "base/cardTypes/task",
-        "base/cardTypes/monthlyTask"
+        "base/cardTypes/monthlyTask",
+        "ismsa/cardTypes/assessedSecurityRequirement"
     ],
     "enableLinkDescription": false,
     "category": "Cybersecurity management",

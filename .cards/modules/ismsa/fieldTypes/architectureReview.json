@@ -1,0 +1,28 @@
+{
+    "name": "ismsa/fieldTypes/architectureReview",
+    "displayName": "Architecture review",
+    "dataType": "enum",
+    "enumValues": [
+        {
+            "enumValue": "open",
+            "enumDisplayValue": "Not reviewed",
+            "enumDescription": ""
+        },
+        {
+            "enumValue": "ok",
+            "enumDisplayValue": "Approved",
+            "enumDescription": ""
+        },
+        {
+            "enumValue": "deviation",
+            "enumDisplayValue": "Changes needed",
+            "enumDescription": ""
+        },
+        {
+            "enumValue": "notApplicable",
+            "enumDisplayValue": "Not applicable",
+            "enumDescription": ""
+        }
+    ],
+    "description": "The review of the requirement by the architect or a developer: the requirement is clear and can be implemented"
+}
