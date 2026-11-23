@@ -4,9 +4,19 @@ This document is a review of basic input validation testing.
 
 === Scope of testing
 
-The interface that is being tested:
+#TODO: Link the interface that you test to this card.#
 
-* #TODO: add a link to the interface#
+{{#createLinks}}
+  "buttonLabel": "Link interfaces",
+  "linkType": "secdeva/linkTypes/tests",
+  "direction": "outbound",
+  "query": {{#quoted}}
+result(X) :- secdeva_closestProject({{{@root.cardKey}}}, Project), secdeva_closestProject(X, Project), base_projectCardType(X, "secdeva/cardTypes/interface").
+select(1, "results", "title").
+select(1, "results", "cardType").
+order(1, "results", 1, "title", "ASC").
+{{/quoted}}
+{{/createLinks}}
 
 This input validation test plan concerns the parser that processes the following input
 

@@ -6,7 +6,19 @@ This document is a review of security requirement testing.
 
 The scope of security requirement testing includes the security security requirements that have been linked to this card with 'tests' links.
 
-#TODO: Link the security requirements that are in scope to this card with 'tests' links#
+#TODO: Link the security requirements that are in scope to this card.#
+
+{{#createLinks}}
+  "buttonLabel": "Link security requirements",
+  "linkType": "secdeva/linkTypes/tests",
+  "direction": "outbound",
+  "query": {{#quoted}}
+result(X) :- secdeva_closestProject({{{@root.cardKey}}}, Project), secdeva_closestProject(X, Project), base_projectCardType(X, "secdeva/cardTypes/requirement").
+select(1, "results", "title").
+select(1, "results", "cardType").
+order(1, "results", 1, "title", "ASC").
+{{/quoted}}
+{{/createLinks}}
 
 === Goal of testing
 

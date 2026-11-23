@@ -12,7 +12,19 @@ When a security requirement mitigates a cyber risk, the testing must also attemp
 
 The scope of this review includes the security requirements of this development project. They are listed in the security requirement register {{#report}} "name": "secdeva/reports/xref", "identifier": "secdeva_register_security-requirements" {{/report}}.
 
-#TODO: Link the security requirements that you have tested to this card with 'tests' links#
+#TODO: Link the security requirements that you have tested to this card.#
+
+{{#createLinks}}
+  "buttonLabel": "Link security requirements",
+  "linkType": "secdeva/linkTypes/tests",
+  "direction": "outbound",
+  "query": {{#quoted}}
+result(X) :- secdeva_closestProject({{{@root.cardKey}}}, Project), secdeva_closestProject(X, Project), base_projectCardType(X, "secdeva/cardTypes/requirement").
+select(1, "results", "title").
+select(1, "results", "cardType").
+order(1, "results", 1, "title", "ASC").
+{{/quoted}}
+{{/createLinks}}
 
 === Documentation and reporting
 
