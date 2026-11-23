@@ -4,12 +4,18 @@ result(result).
 
 % secdeva_template(Card, Template) means that Card was instantiated from Template
 
+% secdeva_templateCardKey(Template, Key) means that the "templateCardKey" field value
+% of a card instantiated from Template is Key.
+
 % TODO: Before INTDEV-1398 is fixed, the "templateCardKey" field value is a string,
-% while card keys in ancestor/2 are constants, so the template card key must be converted first.
-% secdeva_templateCardKey(Template, Key) converts each template card key once, so that
-% the cards are looked up by the key instead of comparing every card with every template card.
-% This conversion can be removed once the bug has been fixed.
+% while card keys in ancestor/2 are constants, so this rule converts the template card key to a string.
+% This rule can be removed once the fix for INTDEV-1398 has been released everywhere.
 secdeva_templateCardKey(Template, @concatenate(TemplateCard, "")) :-
+  template(Template),
+  ancestor(TemplateCard, Template).
+
+% This rule matches the key stored as a constant, which is what the fix for INTDEV-1398 will store.
+secdeva_templateCardKey(Template, TemplateCard) :-
   template(Template),
   ancestor(TemplateCard, Template).
 
