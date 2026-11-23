@@ -1,0 +1,15 @@
+{
+    "name": "secdeva/linkTypes/refines",
+    "displayName": "Refines",
+    "outboundDisplayName": "refines",
+    "inboundDisplayName": "is refined by",
+    "sourceCardTypes": [
+        "ismsa/cardTypes/assessedSecurityRequirement",
+        "secdeva/cardTypes/requirement"
+    ],
+    "destinationCardTypes": [
+        "ismsa/cardTypes/assessedSecurityRequirement"
+    ],
+    "enableLinkDescription": false,
+    "description": "Links a detailed security requirement to the more general security requirement that it refines, for example an own component capability to an essential security requirement"
+}
