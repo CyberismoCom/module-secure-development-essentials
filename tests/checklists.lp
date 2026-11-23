@@ -12,9 +12,9 @@ The tests cover:
 - the identifiers of the checklist items in the templates,
 - the rule that a technology assessment needs an answered checklist before
   approval (secdeva/calculations/technology),
-- the cryptography use cases, which are checklist items of the cryptography
-  review, and the rule that a review cannot pass while a use case misses its
-  details (secdeva/calculations/cryptography).
+- the cryptography use cases, which are checklist items of the document about
+  the use of cryptography, and the rules that deny "Approve" until the use
+  cases are complete (secdeva/calculations/cryptography).
 *%
 
 secdeva_test_card(Title, Card) :-
@@ -105,91 +105,103 @@ secdeva_test_failure(Title, "unexpected unanswered checks failure") :-
 
 % Cryptography use cases
 %
-% secdeva_test_expectReview(Title, Complete, Progress): whether the checklist of
-% the review is complete, and the progress of the review.
+% The document about the use of cryptography (a controlled document) has the
+% use cases as checklist items.
+% secdeva_test_expectDocument(Title, Complete, ApproveDenied, ApprovedFailure):
+% whether the checklist of the document is complete, whether "Approve" is
+% denied, and whether the document has the failure "Incomplete use cases in an
+% approved document".
 
-secdeva_test_expectReview("CHK4 Cryptography review with an open use case", "no", 0).
-secdeva_test_expectReview("CHK5 Cryptography review with a use case that is OK without details", "yes", 100).
-secdeva_test_expectReview("CHK6 Cryptography review with a use case that is OK with details", "yes", 100).
+secdeva_test_expectDocument("CHK4 Cryptography document with an open use case", "no", "yes", "no").
+secdeva_test_expectDocument("CHK5 Cryptography document with a use case that is OK without details", "yes", "yes", "no").
+secdeva_test_expectDocument("CHK6 Cryptography document with a use case that is OK with details", "yes", "no", "no").
+secdeva_test_expectDocument("CHK7 Approved cryptography document with an open use case", "no", "yes", "yes").
 
-secdeva_test_useCase(Review, Item) :-
-    secdeva_test_expectReview(Title, _, _),
-    secdeva_test_card(Title, Review),
-    parent(Item, Review),
+secdeva_test_useCase(Document, Item) :-
+    secdeva_test_expectDocument(Title, _, _, _),
+    secdeva_test_card(Title, Document),
+    parent(Item, Document),
     base_projectCardType(Item, "secdeva/cardTypes/cryptographyUseCase").
 
+secdeva_test_useCaseApproveDenied(Document) :-
+    transitionDenied(Document, "Approve", Message),
+    Message = @concatenate("Complete the use cases before approving: ",
+        Open, " open, ", Missing, " comment(s) missing, ",
+        Details, " use case(s) with missing details."),
+    base_checklistItemCount(Document, "open", Open),
+    base_checklistCommentMissingCount(Document, Missing),
+    secdeva_cryptographyDetailsMissingCount(Document, Details).
+
 secdeva_test_failure(Title, "fixture not found") :-
-    secdeva_test_expectReview(Title, _, _),
+    secdeva_test_expectDocument(Title, _, _, _),
     not secdeva_test_card(Title, _).
 
-secdeva_test_failure(Title, "use case is not a checklist item of the review") :-
-    secdeva_test_expectReview(Title, _, _),
-    secdeva_test_card(Title, Review),
-    secdeva_test_useCase(Review, Item),
-    not base_checklistItem(Item, Review).
+secdeva_test_failure(Title, "the document has no use case") :-
+    secdeva_test_expectDocument(Title, _, _, _),
+    secdeva_test_card(Title, Document),
+    not secdeva_test_useCase(Document, _).
+
+secdeva_test_failure(Title, "use case is not a checklist item of the document") :-
+    secdeva_test_expectDocument(Title, _, _, _),
+    secdeva_test_card(Title, Document),
+    secdeva_test_useCase(Document, Item),
+    not base_checklistItem(Item, Document).
 
 secdeva_test_failure(Title, "use case is not hidden in the tree") :-
-    secdeva_test_expectReview(Title, _, _),
-    secdeva_test_card(Title, Review),
-    secdeva_test_useCase(Review, Item),
+    secdeva_test_expectDocument(Title, _, _, _),
+    secdeva_test_card(Title, Document),
+    secdeva_test_useCase(Document, Item),
     not hiddenInTreeView(Item).
 
 secdeva_test_failure(Title, "checklist is not complete") :-
-    secdeva_test_expectReview(Title, "yes", _),
-    secdeva_test_card(Title, Review),
-    not base_checklistComplete(Review).
+    secdeva_test_expectDocument(Title, "yes", _, _),
+    secdeva_test_card(Title, Document),
+    not base_checklistComplete(Document).
 
 secdeva_test_failure(Title, "checklist is complete") :-
-    secdeva_test_expectReview(Title, "no", _),
-    secdeva_test_card(Title, Review),
-    base_checklistComplete(Review).
+    secdeva_test_expectDocument(Title, "no", _, _),
+    secdeva_test_card(Title, Document),
+    base_checklistComplete(Document).
 
-secdeva_test_failure(Title, "progress") :-
-    secdeva_test_expectReview(Title, _, Progress),
-    secdeva_test_card(Title, Review),
-    not field(Review, "progress", Progress).
+secdeva_test_failure(Title, "Approve is not denied for the use cases") :-
+    secdeva_test_expectDocument(Title, _, "yes", _),
+    secdeva_test_card(Title, Document),
+    not secdeva_test_useCaseApproveDenied(Document).
 
-secdeva_test_failure(Title, "Mark as passed is not denied") :-
-    secdeva_test_expectReview(Title, "no", _),
-    secdeva_test_card(Title, Review),
-    not transitionDenied(Review, "Mark as passed", _).
+secdeva_test_failure(Title, "Approve is denied for the use cases") :-
+    secdeva_test_expectDocument(Title, _, "no", _),
+    secdeva_test_card(Title, Document),
+    secdeva_test_useCaseApproveDenied(Document).
+
+secdeva_test_failure(Title, "approved document failure missing") :-
+    secdeva_test_expectDocument(Title, _, _, "yes"),
+    secdeva_test_card(Title, Document),
+    not base_policyCheckFailure(Document, "Cryptography", "Incomplete use cases in an approved document", _).
+
+secdeva_test_failure(Title, "unexpected approved document failure") :-
+    secdeva_test_expectDocument(Title, _, _, "no"),
+    secdeva_test_card(Title, Document),
+    base_policyCheckFailure(Document, "Cryptography", "Incomplete use cases in an approved document", _).
 
 % Details of a use case with the result OK: five required fields are missing in
-% CHK5, and none in CHK6. The review shows the failures of its use cases.
+% CHK5, and none in CHK6. The document shows the failures of its use cases.
 
 secdeva_test_detailFailure(Item, Title) :-
     base_policyCheckFailure(Item, "Cryptography", Title, _),
     base_projectCardType(Item, "secdeva/cardTypes/cryptographyUseCase").
 
 secdeva_test_failure("CHK5", "expected 5 missing details on the use case") :-
-    secdeva_test_card("CHK5 Cryptography review with a use case that is OK without details", Review),
-    secdeva_test_useCase(Review, Item),
+    secdeva_test_card("CHK5 Cryptography document with a use case that is OK without details", Document),
+    secdeva_test_useCase(Document, Item),
     not 5 #count { Title : secdeva_test_detailFailure(Item, Title) } 5.
 
-secdeva_test_failure("CHK5", "the review does not show the failures of the use case") :-
-    secdeva_test_card("CHK5 Cryptography review with a use case that is OK without details", Review),
-    not base_policyCheckFailure(Review, "Checklist", "Key length is a required field", _).
-
-% A review with a use case that misses its details cannot pass. CHK5 has the
-% result OK and no details, and CHK6 has the details.
-
-secdeva_test_detailsDenied(Review) :-
-    transitionDenied(Review, "Mark as passed", Message),
-    Message = @concatenate(
-        "Fill in the details of each use case with the result OK or Deviation before passing the review: ",
-        1, " use case(s) with missing details.").
-
-secdeva_test_failure("CHK5", "Mark as passed is not denied for the missing details") :-
-    secdeva_test_card("CHK5 Cryptography review with a use case that is OK without details", Review),
-    not secdeva_test_detailsDenied(Review).
-
-secdeva_test_failure("CHK6", "Mark as passed is denied") :-
-    secdeva_test_card("CHK6 Cryptography review with a use case that is OK with details", Review),
-    transitionDenied(Review, "Mark as passed", _).
+secdeva_test_failure("CHK5", "the document does not show the failures of the use case") :-
+    secdeva_test_card("CHK5 Cryptography document with a use case that is OK without details", Document),
+    not base_policyCheckFailure(Document, "Cryptography", "Key length is a required field", _).
 
 secdeva_test_failure("CHK6", "unexpected failures on the use case") :-
-    secdeva_test_card("CHK6 Cryptography review with a use case that is OK with details", Review),
-    secdeva_test_useCase(Review, Item),
+    secdeva_test_card("CHK6 Cryptography document with a use case that is OK with details", Document),
+    secdeva_test_useCase(Document, Item),
     base_policyCheckFailure(Item, _, _, _).
 
 % Results

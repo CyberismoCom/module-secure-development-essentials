@@ -1,1 +1,0 @@
-Check that a similar release review has been successfully conducted for any subprojects.

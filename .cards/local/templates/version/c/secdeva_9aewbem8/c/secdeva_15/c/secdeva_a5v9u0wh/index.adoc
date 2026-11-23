@@ -1,4 +1,0 @@
-Check that
-
-* The software update has been documented to users. The security update documentation template can be used for this.
-* All applicable, including also rejected, security updates and patches have been communicated to the Security operations team

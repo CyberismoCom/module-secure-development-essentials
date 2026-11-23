@@ -1,1 +1,0 @@
-Check the status of automated policy checks in the project. See {{#report}}"name": "secdeva/reports/xref", "identifier": "secdeva_status-and-next-steps"{{/report}}.

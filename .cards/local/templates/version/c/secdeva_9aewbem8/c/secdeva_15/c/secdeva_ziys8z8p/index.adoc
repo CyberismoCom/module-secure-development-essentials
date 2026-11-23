@@ -1,3 +1,0 @@
-Check that the release has been verified not to introduce regressions. Note that this check needs to be done also for software updates of 3rd party components and platforms that the release depends on.
-
-If this release is made to address specific security vulnerabilities, then check that the release addresses the intended vulnerabilities.

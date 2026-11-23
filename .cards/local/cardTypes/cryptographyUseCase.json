@@ -1,7 +1,7 @@
 {
     "name": "secdeva/cardTypes/cryptographyUseCase",
     "displayName": "Cryptography use case",
-    "description": "One use case of cryptography in a cryptography review. It is a checklist item of the review: the result says whether the cryptography of the use case is used properly and effectively. A Deviation or Not applicable result needs a comment.",
+    "description": "One use case of cryptography in the document about the use of cryptography. It is a checklist item of the document: the result says whether the cryptography of the use case is used properly and effectively. A Deviation or Not applicable result needs a comment.",
     "workflow": "base/workflows/checklistItem",
     "customFields": [
         {

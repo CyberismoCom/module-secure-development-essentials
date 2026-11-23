@@ -4,30 +4,47 @@ This is a review of the use of cryptography in a development project to ensure t
 
 == Use cases for cryptography
 
-Document each use case of cryptography in a table below. To add a use case, click "Add a use case" under the tables.
+#TODO: Describe the use cases here, or add a link to documentation.#
 
-For each use case:
+NOTE: Notice that the use of cryptograpy must be planned in the light of the expected usage period. Select such algorithms and key lengths that are expected to be applicable during the usage period and as new technologies such as quantum computing become available.
 
-. Type the name of the use case in the Title row.
-. Fill in the details. When the result is OK or Deviation, these rows are required: Use case, Expected usage period, Algorithms, Key length, and Key management.
-. Set the Result. A Deviation or Not applicable result needs a comment.
+=== #TODO: Title of use case 1#
 
-The review can pass when each use case has a result, and the required details and comments are filled in.
+Use case:: #TODO: describe the use case#
+Expected usage period:: #TODO: describe the expected usage period of the protected information#
+References:: #TODO: add references that justify the use of cryptography and the selected algorithms, key lengths, key management arrangements#
+Algorithms:: #TODO: describe the cryptographic algorithms#
+Key length:: #TODO: describe the length of cryptographic keys#
+Roles and responsibilities:: #TODO: describe any human user roles and their responsibilities related to this use case#
+Key management:: #TODO: add a link or a description of how keys are managed. This includes how they are created, exchanged, stored, access controlled, protected, renewed, revoked, and deleted.#
 
-NOTE: Plan the use of cryptography for the expected usage period. Select algorithms and key lengths that will still be suitable at the end of the usage period, also when new technologies such as quantum computing become available.
+In this use case, cryptography is used properly and effectively, and the algorithms, key lengths and key management arrangements are up to date and suitable for the use case and the expected usage period:
 
-{{#report}}
-  "name": "secdeva/reports/cryptographyUseCases"
-{{/report}}
+* [ ] OK
+* [ ] Not OK
+* [ ] Not applicable
 
-{{#createCards}}
-  "template": "secdeva/templates/cryptographyUseCase",
-  "buttonLabel": "Add a use case"
-{{/createCards}}
+=== #TODO: Title of use case 2#
+
+Use case:: #TODO: describe the use case#
+Expected usage period:: #TODO: describe the expected usage period of the protected information#
+References:: #TODO: add references that justify the use of cryptography and the selected algorithms, key lengths, key management arrangements#
+Algorithms:: #TODO: describe the cryptographic algorithms#
+Key length:: #TODO: describe the length of cryptographic keys#
+Roles and responsibilities:: #TODO: describe any human user roles and their responsibilities related to this use case#
+Key management:: #TODO: add a link or a description of how keys are managed. This includes how they are created, exchanged, stored, access controlled, protected, renewed, revoked, and deleted.#
+
+In this use case, cryptography is used properly and effectively, and the algorithms, key lengths and key management arrangements are up to date and suitable for the use case and the expected usage period:
+
+* [ ] OK
+* [ ] Not OK
+* [ ] Not applicable
 
 == Identified security issues from this review
 
 {{#report}}
   "name": "secdeva/reports/reportSecurityIssue"
 {{/report}}
+
+
 
