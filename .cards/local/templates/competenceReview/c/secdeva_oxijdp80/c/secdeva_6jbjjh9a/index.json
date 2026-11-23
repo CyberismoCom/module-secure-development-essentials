@@ -5,5 +5,6 @@
     "links": [],
     "rank": "0|b",
     "lastUpdated": "2026-11-21T09:09:55.774Z",
-    "base/fieldTypes/checklistResult": "open"
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_competence_required-security-training"
 }

@@ -5,5 +5,6 @@
     "links": [],
     "rank": "0|s",
     "lastUpdated": "2026-11-21T09:10:50.866Z",
-    "base/fieldTypes/checklistResult": "open"
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_product-documentation_no-insecure-practices"
 }

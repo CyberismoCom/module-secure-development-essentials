@@ -5,5 +5,6 @@
     "links": [],
     "rank": "0|b",
     "lastUpdated": "2026-11-21T09:11:19.618Z",
-    "base/fieldTypes/checklistResult": "open"
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_manual-code-review_manual-code-reviews"
 }

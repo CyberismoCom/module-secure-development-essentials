@@ -5,5 +5,6 @@
     "links": [],
     "rank": "0|c",
     "lastUpdated": "2026-11-20T19:01:28.676Z",
-    "base/fieldTypes/checklistResult": "open"
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_security-design_design-of-risk-mitigations"
 }
