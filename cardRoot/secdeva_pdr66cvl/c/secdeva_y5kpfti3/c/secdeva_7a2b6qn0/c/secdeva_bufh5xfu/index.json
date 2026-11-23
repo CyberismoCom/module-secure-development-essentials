@@ -1,0 +1,12 @@
+{
+    "rank": "0|n",
+    "workflowState": "Active",
+    "createdAt": "2026-11-23T10:31:20.237Z",
+    "links": [],
+    "cardType": "base/cardTypes/checklistItem",
+    "title": "Secure implementation",
+    "templateCardKey": "secdeva_aszde5e6",
+    "base/fieldTypes/checklistResult": "ok",
+    "base/fieldTypes/identifier": "secdeva_check_technology_secure-implementation",
+    "lastUpdated": "2026-11-23T10:31:20.242Z"
+}

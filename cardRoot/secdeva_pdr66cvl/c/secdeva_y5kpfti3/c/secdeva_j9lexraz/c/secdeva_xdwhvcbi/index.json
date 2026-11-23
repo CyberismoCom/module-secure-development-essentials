@@ -1,0 +1,12 @@
+{
+    "rank": "0|t",
+    "workflowState": "Active",
+    "createdAt": "2026-11-23T10:31:19.057Z",
+    "links": [],
+    "cardType": "base/cardTypes/checklistItem",
+    "title": "Support and maintenance",
+    "templateCardKey": "secdeva_qdmo4c68",
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_technology_support-and-maintenance",
+    "lastUpdated": "2026-11-23T10:31:19.071Z"
+}

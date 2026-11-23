@@ -1,0 +1,47 @@
+== Introduction
+
+This document is a technology assessment for the purpose of #TODO: document the purpose of the techology#.
+
+.Instructions
+[%collapsible]
+====
+When adopting 3rd party solutions, the risks and justifications for the selection must be documented. Such solutions include:
+
+* Commercial off-the-shelf (COTS) with support
+* Free/libre open source software (FLOSS, FOSS, OSS), with or without paid support — see https://www.gnu.org/philosophy/floss-and-foss.en.html[FLOSS and FOSS]
+* Software of unknown provenance (SOUP): any of the above, or any binary solution without a proven pedigree in this field of industry
+
+Consider business compliance, intellectual property rights, user acceptance and risks across the full life cycle: acquisition, integration, testing, maintenance and end-of-life. An asset need not meet every criterion — those falling short can still be adopted with proper justification for accepting the related risk or with compensating security controls.
+
+The decision must involve the responsible architect, and any business implications must also involve a business responsible person. If you (as the technology selection responsible, business responsible or responsible architect) are not entitled to accept the risks, escalate to the architect team or product management per the technology selection process.
+
+Technology can be adopted once:
+
+* The technology assessment checklist is filled and any required escalations are concluded;
+* Identified risks can be accepted;
+* A maintenance responsible is nominated;
+* Vulnerability management and software update management are planned and documented.
+
+Remember to inform all impacted product stakeholders of the decision.
+====
+
+== Technology assessment checklist
+
+Set the result of each item in the table. A Deviation or Not applicable result needs a comment. Put links to the evidence in the comment.
+
+{{#report}}
+  "name": "base/reports/checklist"
+{{/report}}
+
+You can add your own items to the checklist.
+
+{{#createCards}}
+  "template": "base/templates/checklistItem",
+  "buttonLabel": "Add a checklist item"
+{{/createCards}}
+
+== Reviews of this document
+
+{{#report}}
+  "name": "secdeva/reports/reportReviewTask"
+{{/report}}

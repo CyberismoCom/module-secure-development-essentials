@@ -1,0 +1,12 @@
+{
+    "rank": "0|k",
+    "workflowState": "Active",
+    "createdAt": "2026-11-23T10:31:20.237Z",
+    "links": [],
+    "cardType": "base/cardTypes/checklistItem",
+    "title": "No lock-in",
+    "templateCardKey": "secdeva_jxkgvkq6",
+    "base/fieldTypes/checklistResult": "ok",
+    "base/fieldTypes/identifier": "secdeva_check_technology_no-lock-in",
+    "lastUpdated": "2026-11-23T10:31:20.247Z"
+}

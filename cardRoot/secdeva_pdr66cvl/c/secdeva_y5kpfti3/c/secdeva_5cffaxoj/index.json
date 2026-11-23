@@ -1,0 +1,12 @@
+{
+    "rank": "0|g",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-23T10:31:24.879Z",
+    "links": [],
+    "cardType": "base/cardTypes/review",
+    "title": "CHK6 Cryptography review with a use case that is OK with details",
+    "templateCardKey": "secdeva_a77u5g2x",
+    "base/fieldTypes/identifier": "secdeva_review_use-of-cryptography",
+    "base/fieldTypes/informationClassification": "internal",
+    "lastUpdated": "2026-11-23T10:31:24.881Z"
+}

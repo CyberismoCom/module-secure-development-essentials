@@ -1,0 +1,12 @@
+{
+    "rank": "0|s",
+    "workflowState": "Active",
+    "createdAt": "2026-11-23T10:31:19.057Z",
+    "links": [],
+    "cardType": "base/cardTypes/checklistItem",
+    "title": "Long-term viability",
+    "templateCardKey": "secdeva_c60pmt1o",
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_technology_long-term-viability",
+    "lastUpdated": "2026-11-23T10:31:19.063Z"
+}

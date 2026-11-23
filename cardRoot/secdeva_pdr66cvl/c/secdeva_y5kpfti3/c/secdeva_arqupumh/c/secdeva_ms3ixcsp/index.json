@@ -1,0 +1,12 @@
+{
+    "rank": "0|p",
+    "workflowState": "Active",
+    "createdAt": "2026-11-23T10:31:21.388Z",
+    "links": [],
+    "cardType": "base/cardTypes/checklistItem",
+    "title": "Security updates",
+    "templateCardKey": "secdeva_4x2a6syz",
+    "base/fieldTypes/checklistResult": "ok",
+    "base/fieldTypes/identifier": "secdeva_check_technology_security-updates",
+    "lastUpdated": "2026-11-23T10:31:21.391Z"
+}

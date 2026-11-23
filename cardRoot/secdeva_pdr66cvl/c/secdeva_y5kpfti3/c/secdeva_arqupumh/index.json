@@ -1,0 +1,12 @@
+{
+    "rank": "0|d",
+    "workflowState": "Approved",
+    "createdAt": "2026-11-23T10:31:21.387Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/technology",
+    "title": "CHK3 Approved technology with an open check",
+    "templateCardKey": "secdeva_37",
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/identifier": "secdeva_document_technology",
+    "lastUpdated": "2026-11-23T10:31:21.389Z"
+}

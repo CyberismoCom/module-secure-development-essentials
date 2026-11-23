@@ -1,0 +1,12 @@
+{
+    "rank": "0|e",
+    "workflowState": "Active",
+    "createdAt": "2026-11-23T10:31:21.388Z",
+    "links": [],
+    "cardType": "base/cardTypes/checklistItem",
+    "title": "Patent risks",
+    "templateCardKey": "secdeva_urtu0vr2",
+    "base/fieldTypes/checklistResult": "ok",
+    "base/fieldTypes/identifier": "secdeva_check_technology_patent-risks",
+    "lastUpdated": "2026-11-23T10:31:21.402Z"
+}
