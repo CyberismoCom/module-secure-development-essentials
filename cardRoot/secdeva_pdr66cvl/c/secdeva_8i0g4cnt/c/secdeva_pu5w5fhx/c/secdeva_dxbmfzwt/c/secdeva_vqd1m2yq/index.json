@@ -1,0 +1,12 @@
+{
+    "rank": "0|b",
+    "workflowState": "Open",
+    "createdAt": "2026-11-23T11:01:28.018Z",
+    "links": [],
+    "cardType": "base/cardTypes/task",
+    "title": "Requirement review by developer or architect",
+    "templateCardKey": "secdeva_tgmhwkjy",
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/adoptionStep": "step1",
+    "lastUpdated": "2026-11-23T11:01:28.021Z"
+}

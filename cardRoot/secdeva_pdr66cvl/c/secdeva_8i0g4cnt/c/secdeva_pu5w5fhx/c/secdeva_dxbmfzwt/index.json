@@ -1,0 +1,12 @@
+{
+    "rank": "0|f",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-23T11:01:28.017Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/requirement",
+    "title": "Mapping test: refinement A2, draft",
+    "templateCardKey": "secdeva_t4mbumzb",
+    "base/fieldTypes/identifier": "secdeva_test_map_refinement-a2",
+    "lastUpdated": "2026-11-23T11:01:28.019Z",
+    "base/fieldTypes/owner": "owner@example.com"
+}

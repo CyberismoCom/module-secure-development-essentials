@@ -1,0 +1,17 @@
+{
+    "rank": "0|c",
+    "workflowState": "In scope",
+    "createdAt": "2026-11-23T11:01:24.699Z",
+    "links": [],
+    "cardType": "ismsa/cardTypes/assessedSecurityRequirement",
+    "title": "Mapping test: refinement A1",
+    "templateCardKey": "ismsa_zp2gja5c",
+    "ismsa/fieldTypes/architectureReview": "ok",
+    "ismsa/fieldTypes/testReview": "ok",
+    "ismsa/fieldTypes/securityReview": "ok",
+    "ismsa/fieldTypes/productOwnerReview": "ok",
+    "base/fieldTypes/informationClassification": "internal",
+    "lastUpdated": "2026-11-23T11:01:24.701Z",
+    "base/fieldTypes/identifier": "secdeva_test_map_refinement-a1",
+    "base/fieldTypes/owner": "owner@example.com"
+}

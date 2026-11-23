@@ -1,0 +1,13 @@
+{
+    "rank": "0|g",
+    "workflowState": "In scope",
+    "createdAt": "2026-11-23T11:01:29.120Z",
+    "links": [],
+    "cardType": "ismsa/cardTypes/assessedComplianceRequirement",
+    "title": "Mapping test: compliance requirement C",
+    "templateCardKey": "ismsa_q7ilpcij",
+    "base/fieldTypes/informationClassification": "internal",
+    "lastUpdated": "2026-11-23T11:01:29.122Z",
+    "base/fieldTypes/identifier": "secdeva_test_map_compliance-c",
+    "base/fieldTypes/owner": "owner@example.com"
+}

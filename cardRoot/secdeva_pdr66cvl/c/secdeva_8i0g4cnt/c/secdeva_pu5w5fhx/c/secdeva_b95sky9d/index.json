@@ -1,0 +1,17 @@
+{
+    "rank": "0|d",
+    "workflowState": "In scope",
+    "createdAt": "2026-11-23T11:01:25.830Z",
+    "links": [],
+    "cardType": "ismsa/cardTypes/assessedSecurityRequirement",
+    "title": "Mapping test: essential B",
+    "templateCardKey": "ismsa_zp2gja5c",
+    "ismsa/fieldTypes/architectureReview": "ok",
+    "ismsa/fieldTypes/testReview": "ok",
+    "ismsa/fieldTypes/securityReview": "ok",
+    "ismsa/fieldTypes/productOwnerReview": "ok",
+    "base/fieldTypes/informationClassification": "internal",
+    "lastUpdated": "2026-11-23T11:01:25.831Z",
+    "base/fieldTypes/identifier": "secdeva_test_map_essential-b",
+    "base/fieldTypes/owner": "owner@example.com"
+}
