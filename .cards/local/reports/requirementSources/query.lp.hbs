@@ -1,0 +1,34 @@
+selectAll.
+
+result({{cardKey}}).
+
+% Compliance requirements that this requirement implements, for example a CRA
+% item or an ENISA playbook. The description comes from the mapping fact, when
+% there is one.
+
+secdeva_sourceComplianceType("ismsa/cardTypes/assessedComplianceRequirement").
+secdeva_sourceComplianceType("ismsa/cardTypes/complianceRequirement").
+
+childResult({{cardKey}}, Requirement, "complianceRequirements") :-
+  link({{cardKey}}, Requirement, "ismsa/linkTypes/implements"),
+  field(Requirement, "cardType", CardType),
+  secdeva_sourceComplianceType(CardType).
+
+resultField(Requirement, "mappingDescription", Description, "shortText") :-
+  childResult({{cardKey}}, Requirement, "complianceRequirements"),
+  field({{cardKey}}, "base/fieldTypes/identifier", ImplementationIdentifier),
+  field(Requirement, "base/fieldTypes/identifier", RequirementIdentifier),
+  secdeva_implements(ImplementationIdentifier, RequirementIdentifier, Description),
+  Description != "".
+
+% The more general requirements that this requirement refines
+
+childResult({{cardKey}}, Requirement, "refines") :-
+  link({{cardKey}}, Requirement, "secdeva/linkTypes/refines").
+
+% The detailed requirements that refine this requirement
+
+childResult({{cardKey}}, Refinement, "refinements") :-
+  link(Refinement, {{cardKey}}, "secdeva/linkTypes/refines").
+
+orderBy("title", "ASC").
