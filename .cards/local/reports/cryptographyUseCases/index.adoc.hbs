@@ -3,9 +3,11 @@
 {{#each useCases}}
 === {{#if ../app}}{{#xref}}"cardKey": "{{this.key}}"{{/xref}}{{else}}{{this.title}}{{/if}}
 
+{{#if ../app}}
 {{#each this.failures}}
 * *{{this.title}}*
 {{/each}}
+{{/if}}
 
 {{#include}}"cardKey": "{{this.key}}", "title": "exclude"{{/include}}
 

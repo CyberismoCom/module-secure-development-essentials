@@ -11,7 +11,8 @@ base/cardTypes/checklistItem. The rule below adds the use cases, so that the
 review rules of base apply to them: "Mark as passed" is denied until each use
 case has a result and the comments that are required, the review shows the
 policy check failures of the use cases, and the progress of the review counts
-them. If base gets a way to register other card types as checklist items,
+them. This calculation also denies "Mark as passed" while a use case with the
+result OK or Deviation misses its details. If base gets a way to register other card types as checklist items,
 use it here.
 *%
 
@@ -52,3 +53,26 @@ policyCheckFailure(
         secdeva_cryptographyDetailsRequired(Item),
         secdeva_cryptographyRequiredField(Field, Name),
         not field(Item, Field, _).
+
+% The review passes only when each use case with the result OK or Deviation
+% has its details. Without this rule, the review could pass with the failures
+% above, and a passed review with failures counts as failed evidence.
+
+secdeva_cryptographyDetailsMissing(Item) :-
+    secdeva_cryptographyDetailsRequired(Item),
+    secdeva_cryptographyRequiredField(Field, _),
+    not field(Item, Field, _).
+
+transitionDenied(
+    Review,
+    "Mark as passed",
+    @concatenate(
+        "Fill in the details of each use case with the result OK or Deviation before passing the review: ",
+        Count, " use case(s) with missing details.")
+    ) :-
+        base_checklistReview(Review),
+        Count = #count {
+            Item : base_checklistItem(Item, Review),
+                   secdeva_cryptographyDetailsMissing(Item)
+        },
+        Count > 0.

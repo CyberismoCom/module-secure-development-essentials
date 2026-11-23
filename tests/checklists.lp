@@ -13,7 +13,8 @@ The tests cover:
 - the rule that a technology assessment needs an answered checklist before
   approval (secdeva/calculations/technology),
 - the cryptography use cases, which are checklist items of the cryptography
-  review (secdeva/calculations/cryptography).
+  review, and the rule that a review cannot pass while a use case misses its
+  details (secdeva/calculations/cryptography).
 *%
 
 secdeva_test_card(Title, Card) :-
@@ -168,6 +169,23 @@ secdeva_test_failure("CHK5", "expected 5 missing details on the use case") :-
 secdeva_test_failure("CHK5", "the review does not show the failures of the use case") :-
     secdeva_test_card("CHK5 Cryptography review with a use case that is OK without details", Review),
     not base_policyCheckFailure(Review, "Checklist", "Key length is a required field", _).
+
+% A review with a use case that misses its details cannot pass. CHK5 has the
+% result OK and no details, and CHK6 has the details.
+
+secdeva_test_detailsDenied(Review) :-
+    transitionDenied(Review, "Mark as passed", Message),
+    Message = @concatenate(
+        "Fill in the details of each use case with the result OK or Deviation before passing the review: ",
+        1, " use case(s) with missing details.").
+
+secdeva_test_failure("CHK5", "Mark as passed is not denied for the missing details") :-
+    secdeva_test_card("CHK5 Cryptography review with a use case that is OK without details", Review),
+    not secdeva_test_detailsDenied(Review).
+
+secdeva_test_failure("CHK6", "Mark as passed is denied") :-
+    secdeva_test_card("CHK6 Cryptography review with a use case that is OK with details", Review),
+    transitionDenied(Review, "Mark as passed", _).
 
 secdeva_test_failure("CHK6", "unexpected failures on the use case") :-
     secdeva_test_card("CHK6 Cryptography review with a use case that is OK with details", Review),
