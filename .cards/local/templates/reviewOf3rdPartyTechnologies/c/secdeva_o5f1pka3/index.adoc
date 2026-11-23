@@ -10,7 +10,7 @@ The following major third-party technologies have been identified:
   "name": "secdeva/reports/projectTechnologies"
 {{/report}}
 
-== Technology assessments
+== Review checklist
 
 Set the result of each item in the table. A Deviation or Not applicable result needs a comment. Put links to the evidence in the comment.
 

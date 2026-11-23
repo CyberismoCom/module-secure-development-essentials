@@ -1,1 +1,1 @@
-Check that the static code analysis tools have been documented either as an organization development tool or a project-specific development tool.
+Check that the static code analysis tools have been documented either as an organisation development tool or a project-specific development tool.

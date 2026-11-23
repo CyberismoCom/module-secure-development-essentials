@@ -1,7 +1,5 @@
-Product documentation and technical documentation are reviewed by their own controls: see {{#report}}"name": "secdeva/reports/xref", "identifier": "secdeva_control_product-documentation-review"{{/report}} for the product documentation, and, where the EU Cyber Resilience Act applies, the technical documentation review provided by the EU CRA module. This check does not repeat those reviews. It confirms that their outcome still holds for what is being released now.
+Check that the product documentation and the technical documentation are up to date for this release. Their own reviews check the content: {{#report}}"name": "secdeva/reports/xref", "identifier": "secdeva_control_product-documentation-review"{{/report}}, and the technical documentation review of the EU CRA module, if the EU Cyber Resilience Act applies.
 
-Check that
-
-* The product documentation for users, including the security-related instructions, is up to date for this release
-* The internal technical documentation is up to date for this release, if technical documentation is required for this product
-* The documentation reviews cover the changes made in this release, and the reviewed versions of the documents are the ones that this release delivers
+* The product documentation for users, with the security instructions, is up to date.
+* The internal technical documentation is up to date, if the product needs it.
+* The documentation reviews cover the changes of this release, and this release delivers the reviewed versions.

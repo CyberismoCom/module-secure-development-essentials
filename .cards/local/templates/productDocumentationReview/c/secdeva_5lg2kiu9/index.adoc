@@ -9,13 +9,10 @@ This document is a product documentation review for the product or solution. Thi
 [NOTE]
 .Review instructions
 ====
+Set the result of each item in the table. A Deviation or Not applicable result needs a comment. Put links to the evidence in the comment. On the next reviews, make sure that the results are still up to date.
 
-On first review, fill in the checklist below. On subsequent reviews, ensure that the information is up to date.
-
-If you discover security related issues, then report a new Security Issue in the issue tracker and add a link in this document.
+If you find security issues, report them with the button in the section "Security issues".
 ====
-
-Set the result of each item in the table. A Deviation or Not applicable result needs a comment. Put links to the evidence in the comment.
 
 {{#report}}
   "name": "base/reports/checklist"

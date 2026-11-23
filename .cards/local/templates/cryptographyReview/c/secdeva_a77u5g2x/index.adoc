@@ -4,7 +4,15 @@ This is a review of the use of cryptography in a development project to ensure t
 
 == Use cases for cryptography
 
-Document each use case of cryptography below. Fill in the details of the use case, and set the result. A Deviation or Not applicable result needs a comment. Give the use case a name in its Title field. To add a use case, click "Add a use case".
+Document each use case of cryptography in a table below. To add a use case, click "Add a use case" under the tables.
+
+For each use case:
+
+. Type the name of the use case in the Title row.
+. Fill in the details. When the result is OK or Deviation, these rows are required: Use case, Expected usage period, Algorithms, Key length, and Key management.
+. Set the Result. A Deviation or Not applicable result needs a comment.
+
+The review can pass when each use case has a result, and the required details and comments are filled in.
 
 NOTE: Plan the use of cryptography for the expected usage period. Select algorithms and key lengths that will still be suitable at the end of the usage period, also when new technologies such as quantum computing become available.
 

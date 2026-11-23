@@ -1,1 +1,1 @@
-Check that required license information about used 3rd party components are included in the release.
+Check that required license information about used 3rd party components is included in the release.

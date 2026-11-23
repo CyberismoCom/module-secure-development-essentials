@@ -1,1 +1,1 @@
-Include the following instructions and rationale in the hardening guidelines: How to integrate the product's application programming interfaces (APIs) and protocols with user applications securely.
+Check that the hardening guidelines tell, with the rationale, how to integrate the application programming interfaces (APIs) and protocols of the product with user applications securely.

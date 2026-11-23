@@ -17,7 +17,7 @@ You can add your own items to the checklist.
   "buttonLabel": "Add a checklist item"
 {{/createCards}}
 
-You can cross check your identified risks against the checklists in the appendix to ensure that you did not miss anything important.
+You can cross check your identified risks against the risk identification checklist in the appendix of this review to ensure that you did not miss anything important.
 
 == Risk treatment
 

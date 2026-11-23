@@ -1,1 +1,1 @@
-No lock-in: It is possible to replace the selected technology with another technology, if needed.
+It is possible to replace the selected technology with another technology, if needed.

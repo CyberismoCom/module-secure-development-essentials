@@ -1,1 +1,1 @@
-Check that all third-party software updates and the information provided by the third-party suppliers have been processed.
+Check that all third-party software updates and the information provided by the third-party suppliers has been processed.

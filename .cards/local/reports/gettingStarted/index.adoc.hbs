@@ -57,7 +57,7 @@ flowchart LR
     D --> Next[Scope secure development activities]
 ----
 
-* {{this.projectCheckbox}} Fill in the project scope and objectives on the card *{{#xref}}"cardKey": "{{this.project}}"{{/xref}}*, set the owner ({{#field}}"cardKey": "{{this.project}}", "field": "base/fieldTypes/owner", "display": "inline"{{/field}}), and then mark the page ready by using the "Activate" workflow transition.
+* {{this.projectCheckbox}} Fill in the project scope and objectives on the card *{{#xref}}"cardKey": "{{this.project}}"{{/xref}}*, and then mark the page ready by using the "Activate" workflow transition. Set the owner of the project here: {{#field}}"cardKey": "{{this.project}}", "field": "base/fieldTypes/owner", "display": "inline"{{/field}}
 * {{this.assignPeopleCheckbox}} *{{#xref}}"cardKey": "{{this.assignPeople}}"{{/xref}}* — Define who is responsible for security in the project. Without clear ownership, tasks will not get done.
 * {{this.ensureCompetenceCheckbox}} *{{#xref}}"cardKey": "{{this.ensureCompetence}}"{{/xref}}* — Verify that assigned people have adequate cybersecurity knowledge, and arrange training where needed.
 * {{this.documentSecurityContextCheckbox}} *{{#xref}}"cardKey": "{{this.documentSecurityContext}}"{{/xref}}* — Describe the product's operating environment, trust boundaries, and key security assumptions. This context guides threat modeling and requirements work.

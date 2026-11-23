@@ -1,7 +1,3 @@
-Project shall determine whether a Data Protection Impact Assessment (DPIA) is required for the product. A DPIA is required if the data processing is likely to result a high risk to individuals.
+Check that the project has decided whether the product needs a Data Protection Impact Assessment (DPIA). A DPIA is required if the data processing is likely to result in a high risk to individuals. The screening checklist in the appendix of this review helps you decide. If a DPIA is required, contact a security specialist of your organisation.
 
-How to decide: See the screening checklist in the appendix of this review for advice on how to determine whether DPIA is required.
-
-If a DPIA is required, then contact a security specialist of your organization.
-
-Set the result to OK when the decision is made. Put the justification for requiring or not requiring a DPIA in the comment.
+Set the result to OK when the decision is made. Put the justification of the decision in the comment.

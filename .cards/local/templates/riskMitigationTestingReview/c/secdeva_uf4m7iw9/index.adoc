@@ -15,7 +15,7 @@ Security requirement testing verifies that a security requirement has been imple
 
 === Scope of testing
 
-The scope of this review includes all the security requirements and security issues that have been linked to a risk in this development project. They are listed in the review checklist below.
+The scope of this review includes all the security requirements and security issues that have been linked to a risk in this development project. They are listed in the test coverage table in the section "Review checklist" below.
 
 #TODO: Link this card to the security requirements and security issues that you have tested.#
 

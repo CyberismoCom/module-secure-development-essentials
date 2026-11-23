@@ -18,7 +18,7 @@ End users: #TODO: Description of the user base#
 
 Internal stakeholders: #TODO: e.g., Legal, Compliance, CTO#
 
-The owner of this card is the person who is responsible for the cybersecurity of this development project.
+Set the owner of this card to the person who is responsible for the cybersecurity of this development project.
 
 {{#field}}
   "field": "base/fieldTypes/owner",
@@ -39,7 +39,7 @@ The secure development process has three adoption steps. Step 1 has the most fun
   "display": "row"
 {{/field}}
 
-The secure development process may not be necessary for some development projects, for example research prototypes, sales demonstrations, and products that are being phased out. In this case, clear the adoption step and explain why in the justification.
+The secure development process may not be necessary for some development projects, for example research prototypes, sales demonstrations, and products that are being phased out. In this case, clear the adoption step and explain why in the adoption step justification.
 
 {{#field}}
   "field": "secdeva/fieldTypes/adoptionStepJustification",
