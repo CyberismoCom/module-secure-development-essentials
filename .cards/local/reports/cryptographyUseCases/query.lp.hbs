@@ -32,6 +32,29 @@ resultField(("failure", Item, Title), "title", Title, "shortText") :-
     secdeva_cryptographyReportItem(Item),
     base_policyCheckFailure(Item, _, Title, _).
 
+% The failures are in the order of the rows of the table. A failure without a
+% field comes last.
+secdeva_cryptographyRowRank("secdeva/fieldTypes/cryptographyUseCase", 1).
+secdeva_cryptographyRowRank("secdeva/fieldTypes/cryptographyUsagePeriod", 2).
+secdeva_cryptographyRowRank("secdeva/fieldTypes/cryptographyReferences", 3).
+secdeva_cryptographyRowRank("secdeva/fieldTypes/cryptographyAlgorithms", 4).
+secdeva_cryptographyRowRank("secdeva/fieldTypes/cryptographyKeyLength", 5).
+secdeva_cryptographyRowRank("secdeva/fieldTypes/cryptographyRoles", 6).
+secdeva_cryptographyRowRank("secdeva/fieldTypes/cryptographyKeyManagement", 7).
+secdeva_cryptographyRowRank("base/fieldTypes/checklistResult", 8).
+secdeva_cryptographyRowRank("base/fieldTypes/comment", 9).
+
+secdeva_cryptographyFailureRank(Item, Title, Rank) :-
+    secdeva_cryptographyReportItem(Item),
+    policyCheckFailure(Item, _, Title, _, Field),
+    secdeva_cryptographyRowRank(Field, Rank).
+
+resultField(("failure", Item, Title), "rank", Rank, "integer") :-
+    secdeva_cryptographyReportItem(Item),
+    base_policyCheckFailure(Item, _, Title, _),
+    Rank = #min { R : secdeva_cryptographyFailureRank(Item, Title, R); 10 }.
+order(3, "failures", 1, "rank", "ASC").
+
 resultField(result, "total", Count, "integer") :-
     Count = #count { Item : secdeva_cryptographyReportItem(Item) }.
 

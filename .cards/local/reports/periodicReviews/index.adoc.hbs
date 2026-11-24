@@ -1,8 +1,6 @@
 {{#each results}}
 {{#if this.register}}
-The review period of the periodic review register is the number of days between periodic reviews.
-
-{{#field}}"cardKey": "{{this.register.key}}", "field": "base/fieldTypes/reviewPeriod", "display": "row"{{/field}}
+The review period is the number of days between periodic reviews. Review period of this project (you can change it here): {{#field}}"cardKey": "{{this.register.key}}", "field": "base/fieldTypes/reviewPeriod", "display": "inline"{{/field}} days.
 
 {{/if}}
 {{#if reviews}}
