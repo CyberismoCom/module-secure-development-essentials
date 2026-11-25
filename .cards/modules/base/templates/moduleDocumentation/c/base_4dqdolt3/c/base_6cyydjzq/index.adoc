@@ -1,0 +1,5 @@
+The pages under this page are for authors of other modules that build on this module.
+
+{{#report}}
+  "name": "base/reports/childrenList"
+{{/report}}

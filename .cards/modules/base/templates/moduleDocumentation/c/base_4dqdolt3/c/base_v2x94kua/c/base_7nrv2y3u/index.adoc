@@ -1,0 +1,17 @@
+#TODO: Change the title to the name of a main concept, for example "Checklists". Copy this page for each concept. Do not link to the test content. If the page needs an example, make a small example card under this page from a template of the module.#
+
+== What it is for
+
+#TODO: Say what the concept is for.#
+
+== How the cards work together
+
+#TODO: Say which cards make up the concept and how they relate to each other.#
+
+== What the rules check
+
+#TODO: List the policy checks, the denied transitions, and the side effects of transitions.#
+
+== What you see
+
+#TODO: Describe the status indicators, the progress, the notifications, and the hidden cards.#

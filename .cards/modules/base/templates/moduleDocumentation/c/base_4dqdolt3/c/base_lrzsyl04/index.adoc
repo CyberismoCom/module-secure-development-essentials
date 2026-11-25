@@ -1,0 +1,9 @@
+The changes in each version, newest first.
+
+== Unreleased
+
+#TODO: Each pull request adds its changes here. When a new version is created, change this heading to the version number, and add a new "Unreleased" section above it.#
+
+== 1.0.0
+
+#TODO: Say what changed for users, and what a user or an extension module must change.#

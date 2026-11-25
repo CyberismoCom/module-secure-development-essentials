@@ -1,0 +1,6 @@
+{
+    "name": "base/templates/moduleDocumentation",
+    "displayName": "Module documentation",
+    "description": "The documentation of a module: an overview, getting started, concepts, a generated reference, a section for module authors, and release notes",
+    "category": "Documentation"
+}

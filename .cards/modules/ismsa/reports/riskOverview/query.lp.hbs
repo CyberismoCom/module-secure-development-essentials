@@ -1,0 +1,154 @@
+% Risk levels in ascending order, with display names
+riskLevel("veryLow", 1, "Very Low").
+riskLevel("low", 2, "Low").
+riskLevel("moderate", 3, "Moderate").
+riskLevel("high", 4, "High").
+riskLevel("veryHigh", 5, "Very High").
+
+% Risks in these states are left out of the overview
+excludedState("Closed as duplicate").
+excludedState("Closed as avoided").
+excludedState("Closed as transferred").
+excludedState("Closed as not applicable").
+
+% Workflow states shown in the risks by state chart, in lifecycle order
+shownState("Open", 1).
+shownState("Analysed", 2).
+shownState("Treatment planned", 3).
+shownState("Treatment in progress", 4).
+shownState("Treatment complete", 5).
+shownState("Needs monitoring", 6).
+shownState("Closed as accepted", 7).
+
+inScope(Risk) :-
+    ismsa_closestHome(Risk, Home),
+    ismsa_closestHome({{cardKey}}, Home),
+    field(Risk, "cardType", "ismsa/cardTypes/risk"),
+    field(Risk, "workflowState", State),
+    not excludedState(State).
+
+acceptableRiskLevel(Level) :-
+    ismsa_closestHome(RiskRegister, Home),
+    ismsa_closestHome({{cardKey}}, Home),
+    field(RiskRegister, "cardType", "ismsa/cardTypes/riskRegister"),
+    field(RiskRegister, "ismsa/fieldTypes/acceptableRiskLevel", Level).
+
+initialPosition(Risk, L, I) :-
+    inScope(Risk),
+    field(Risk, "ismsa/fieldTypes/riskInitialLikelihood", Likelihood),
+    field(Risk, "ismsa/fieldTypes/riskInitialImpact", Impact),
+    riskLevel(Likelihood, L, _),
+    riskLevel(Impact, I, _).
+
+residualPosition(Risk, L, I) :-
+    inScope(Risk),
+    field(Risk, "ismsa/fieldTypes/riskResidualLikelihood", Likelihood),
+    field(Risk, "ismsa/fieldTypes/riskResidualImpact", Impact),
+    riskLevel(Likelihood, L, _),
+    riskLevel(Impact, I, _).
+
+% The current position is the residual one once it has been assessed. Like the
+% residual risk level calculation, a residual assessment needs both likelihood and
+% impact, so a partial one leaves the risk at its initial position.
+currentPosition(Risk, L, I) :- residualPosition(Risk, L, I).
+currentPosition(Risk, L, I) :-
+    initialPosition(Risk, L, I),
+    not residualPosition(Risk, _, _).
+
+currentRisk(Risk, Level) :-
+    inScope(Risk),
+    field(Risk, "ismsa/fieldTypes/riskResidualRisk", Level).
+currentRisk(Risk, Level) :-
+    inScope(Risk),
+    field(Risk, "ismsa/fieldTypes/riskInitialRisk", Level),
+    not field(Risk, "ismsa/fieldTypes/riskResidualRisk", _).
+
+aboveAcceptable(Risk) :-
+    currentRisk(Risk, Level),
+    acceptableRiskLevel(Acceptable),
+    ismsa_riskLessThan(Acceptable, Level).
+
+result({{cardKey}}).
+
+resultField({{cardKey}}, "riskCount", N, "integer") :-
+    N = #count { Risk : inScope(Risk) }.
+resultField({{cardKey}}, "unassessedCount", N, "integer") :-
+    N = #count { Risk : inScope(Risk), not initialPosition(Risk, _, _) }.
+resultField({{cardKey}}, "acceptableRiskLevel", Display, "shortText") :-
+    acceptableRiskLevel(Level),
+    riskLevel(Level, _, Display).
+
+% Matrix cells for initial and current risk levels. Result keys are serialised
+% without a function name, so each collection needs a distinct tag in its keys.
+childResult({{cardKey}}, ("initial", L, I), "initialCells") :- initialPosition(_, L, I).
+resultField(("initial", L, I), "likelihood", L, "integer") :- initialPosition(_, L, I).
+resultField(("initial", L, I), "impact", I, "integer") :- initialPosition(_, L, I).
+resultField(("initial", L, I), "count", N, "integer") :-
+    initialPosition(_, L, I),
+    N = #count { Risk : initialPosition(Risk, L, I) }.
+
+childResult({{cardKey}}, ("current", L, I), "currentCells") :- currentPosition(_, L, I).
+resultField(("current", L, I), "likelihood", L, "integer") :- currentPosition(_, L, I).
+resultField(("current", L, I), "impact", I, "integer") :- currentPosition(_, L, I).
+resultField(("current", L, I), "count", N, "integer") :-
+    currentPosition(_, L, I),
+    N = #count { Risk : currentPosition(Risk, L, I) }.
+
+% Risk level of every matrix cell, from the risk level calculation, so that the
+% matrix colours follow it: one row per likelihood level, one entry per impact level
+childResult({{cardKey}}, ("gridRow", L), "levelGrid") :- riskLevel(_, L, _).
+resultField(("gridRow", L), "likelihood", L, "integer") :- riskLevel(_, L, _).
+childResult(("gridRow", L), ("gridEntry", L, I), "entries") :-
+    ismsa_riskLevel(Impact, Likelihood, _),
+    riskLevel(Likelihood, L, _),
+    riskLevel(Impact, I, _).
+resultField(("gridEntry", L, I), "impact", I, "integer") :-
+    ismsa_riskLevel(Impact, Likelihood, _),
+    riskLevel(Likelihood, L, _),
+    riskLevel(Impact, I, _).
+resultField(("gridEntry", L, I), "level", Index, "integer") :-
+    ismsa_riskLevel(Impact, Likelihood, Level),
+    riskLevel(Likelihood, L, _),
+    riskLevel(Impact, I, _),
+    riskLevel(Level, Index, _).
+
+% Risks by workflow state
+childResult({{cardKey}}, ("state", Index), "states") :- shownState(_, Index).
+resultField(("state", Index), "label", State, "shortText") :- shownState(State, Index).
+resultField(("state", Index), "index", Index, "integer") :- shownState(_, Index).
+resultField(("state", Index), "count", N, "integer") :-
+    shownState(State, Index),
+    N = #count { Risk : inScope(Risk), field(Risk, "workflowState", State) }.
+
+% Risks above the acceptable risk level, highest current risk level first
+childResult({{cardKey}}, Risk, "highestRisks") :- aboveAcceptable(Risk).
+resultField(Risk, "currentRisk", Display, "shortText") :-
+    aboveAcceptable(Risk),
+    currentRisk(Risk, Level),
+    riskLevel(Level, _, Display).
+resultField(Risk, "currentRiskIndex", Index, "integer") :-
+    aboveAcceptable(Risk),
+    currentRisk(Risk, Level),
+    riskLevel(Level, Index, _).
+resultField(Risk, "initialRiskIndex", Index, "integer") :-
+    aboveAcceptable(Risk),
+    field(Risk, "ismsa/fieldTypes/riskInitialRisk", Level),
+    riskLevel(Level, Index, _).
+
+% Card fields shown in the table of highest risks
+select(2, "highestRisks", "title").
+select(2, "highestRisks", "workflowState").
+select(2, "highestRisks", "base/fieldTypes/owner").
+select(2, "highestRisks", "ismsa/fieldTypes/riskInitialRisk").
+select(2, "highestRisks", "ismsa/fieldTypes/riskResidualRisk").
+
+childResultCollection({{cardKey}}, "initialCells").
+childResultCollection({{cardKey}}, "currentCells").
+childResultCollection({{cardKey}}, "highestRisks").
+
+order(2, "states", 1, "index", "ASC").
+order(2, "levelGrid", 1, "likelihood", "ASC").
+order(3, "entries", 1, "impact", "ASC").
+order(2, "highestRisks", 1, "currentRiskIndex", "DESC").
+order(2, "highestRisks", 2, "initialRiskIndex", "DESC").
+order(2, "highestRisks", 3, "title", "ASC").

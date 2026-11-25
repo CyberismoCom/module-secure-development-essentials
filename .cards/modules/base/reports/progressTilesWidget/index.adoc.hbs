@@ -1,0 +1,100 @@
+{{#vegaLite}}
+  "spec": {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "{{#if title}}{{{jsonEscape title}}}{{else}}Progress tiles{{/if}}",
+    "width": {"step": 116},
+    "height": 150,
+    "background": "transparent",
+    "view": {"stroke": null},
+{{#if title}}
+    "title": {
+      "text": "{{{jsonEscape title}}}",{{#if legend}}
+      "subtitle": "{{{jsonEscape legend}}}",
+      "subtitleFontSize": 14,
+      "subtitleColor": "currentColor",{{/if}}
+      "fontSize": 22,
+      "fontWeight": "bold",
+      "color": "currentColor",
+      "anchor": "start",
+      "offset": 14
+    },
+{{else}}{{#if legend}}
+    "title": {
+      "text": "{{{jsonEscape legend}}}",
+      "fontSize": 14,
+      "fontWeight": "normal",
+      "color": "currentColor",
+      "anchor": "start",
+      "offset": 14
+    },
+{{/if}}{{/if}}
+    "data": {
+      "values": [
+        {{#each tiles}}
+        {"order": {{@index}}, "label": "{{{jsonEscape this.label}}}"{{#if (eq this.value 0)}}, "value": 0{{else}}{{#if this.value}}, "value": {{this.value}}{{/if}}{{/if}}{{#if this.text}}, "text": "{{{jsonEscape this.text}}}"{{/if}}{{#if this.colour}}, "colour": "{{this.colour}}"{{/if}}{{#if this.cardKey}}, "cardKey": "{{{jsonEscape this.cardKey}}}"{{/if}} }{{#unless @last}},{{/unless}}
+        {{/each}}
+      ]
+    },
+    "transform": [
+      {"calculate": "isValid(datum.value) ? datum.value : 0", "as": "fill"},
+      {
+        "calculate": "datum.colour ? datum.colour : (!isValid(datum.value) || datum.value == 0 ? 'none' : (datum.value >= 100 ? 'green' : 'yellow'))",
+        "as": "tone"
+      },
+      {
+        "calculate": "{blue:'light-dark(#2a78d6,#3987e5)',green:'light-dark(#008300,#008300)',yellow:'light-dark(#eda100,#c98500)',red:'light-dark(#e34948,#e66767)',orange:'light-dark(#eb6834,#d95926)',purple:'light-dark(#4a3aa7,#9085e9)',none:'transparent'}[datum.tone]",
+        "as": "fillColour"
+      },
+      {
+        "calculate": "datum.text ? datum.text : (isValid(datum.value) ? datum.value + '%' : '-')",
+        "as": "centre"
+      },
+      {"calculate": "datum.cardKey ? datum.cardKey : null", "as": "link"},
+      {"calculate": "datum.label + ': ' + datum.centre", "as": "ariaText"}
+    ],
+    "encoding": {
+      "x": {
+        "field": "order",
+        "type": "ordinal",
+        "axis": null,
+        "scale": {"paddingInner": 0.08, "paddingOuter": 0}
+      }
+    },
+    "layer": [
+      {
+        "mark": {"type": "bar", "cornerRadius": 10, "color": "currentColor", "opacity": 0.1, "cursor": {"expr": "datum.link ? 'pointer' : 'default'"}},
+        "encoding": {
+          "description": {"field": "ariaText"},
+          "y": {"datum": 100, "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
+          "href": {"field": "link"},
+          "tooltip": {"field": "label"}
+        }
+      },
+      {
+        "mark": {"type": "bar", "cornerRadius": 10, "opacity": 0.5, "aria": false, "cursor": {"expr": "datum.link ? 'pointer' : 'default'"}},
+        "encoding": {
+          "y": {"field": "fill", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
+          "color": {"field": "fillColour", "type": "nominal", "scale": null, "legend": null},
+          "href": {"field": "link"},
+          "tooltip": {"field": "label"}
+        }
+      },
+      {
+        "mark": {"type": "text", "fontSize": 30, "fontWeight": "bold", "baseline": "middle", "color": "currentColor", "aria": false, "cursor": {"expr": "datum.link ? 'pointer' : 'default'"}},
+        "encoding": {
+          "y": {"datum": 50, "type": "quantitative"},
+          "text": {"field": "centre"},
+          "href": {"field": "link"}
+        }
+      },
+      {
+        "mark": {"type": "text", "fontSize": 14, "baseline": "top", "dy": 10, "color": "currentColor", "aria": false, "cursor": {"expr": "datum.link ? 'pointer' : 'default'"}},
+        "encoding": {
+          "y": {"datum": 100, "type": "quantitative"},
+          "text": {"field": "label"},
+          "href": {"field": "link"}
+        }
+      }
+    ]
+  }
+{{/vegaLite}}

@@ -1,56 +1,14 @@
 %* Checklists
 
-A checklist is a card that has checklist items as its children. Any card can be
-a checklist, for example a review, a delivery, or a release gate. Archived
-checklist items are not part of the checklist.
+A checklist is a card that has checklist items as its children. The base
+documentation describes the rules of this calculation, under "Using the base
+module" > "Checklists".
 
-Shared predicates that other modules can use:
-
-base_checklistItem(Item, Checklist)
-    Item is a checklist item of Checklist.
-
-base_checklist(Checklist)
-    Checklist has at least one checklist item.
-
-base_checklistItemResult(Item, Result)
-    The result of the item: "open", "ok", "deviation", or "notApplicable".
-    An item without a result is "open".
-
-base_checklistItemComplete(Item)
-    The item has a result that is not "open". If the result is "deviation" or
-    "notApplicable", the item also has a comment.
-
-base_checklistComplete(Checklist)
-    All items of the checklist are complete. A complete checklist can have
-    deviations.
-
-base_checklistResult(Checklist, Result)
-    The result of the checklist:
-    - "deviation" if one or more items are deviations, also when some items
-      are not complete,
-    - else "open" if one or more items are not complete,
-    - else "notApplicable" if all items are not applicable,
-    - else "ok".
-
-base_checklistItemCount(Checklist, Result, Count)
-    The number of items of the checklist that have the result. There is a
-    fact for each result, also when the count is zero.
-
-base_checklistReview(Checklist)
-    Checklist is a review (base/cardTypes/review) with checklist items.
-
-In the navigation tree, checklist items are hidden: the checklist report shows
-them as a table, with the text of each item and a link to it. A review that is a checklist shows
-the policy check failures of its items, and its progress is the percentage of
-complete items.
-
-A review that is a checklist can pass only when its checklist is complete. It
-can pass with deviations: that is a judgement of the reviewer, and the review
-shows a notification, not a policy check failure. A policy check failure would
-make the review count as failed evidence (see the reviewAssessment calculation
-of ismsa). A review can fail at any time.
-
-These predicates are only for project cards. Template cards do not get them.
+Shared predicates: base_checklistItem/2, base_checklist/1,
+base_checklistItemResult/2, base_checklistItemComplete/1,
+base_checklistComplete/1, base_checklistResult/2, base_checklistItemCount/3,
+and base_checklistReview/1. Each one has a predicate card in the base
+documentation, under "For module authors" > "Shared predicates".
 *%
 
 base_checklistResultValue("open"; "ok"; "deviation"; "notApplicable").
@@ -186,7 +144,9 @@ transitionDenied(
         base_checklistItemCount(Review, "open", Open),
         base_checklistCommentMissingCount(Review, Missing).
 
-% A review that passed with deviations shows them as a notification
+% A review that passed with deviations shows them as a notification, not as a
+% policy check failure. A policy check failure would make the review count as
+% failed evidence (see the reviewAssessment calculation of ismsa).
 
 notification(
     Review,

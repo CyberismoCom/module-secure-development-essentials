@@ -1,0 +1,46 @@
+{
+    "title": "Report",
+    "$id": "reportMacroDefaultSchema",
+    "description": "A report object provides supplemental information about a report",
+    "type": "object",
+    "properties": {
+        "name": {
+            "description": "The name of the report",
+            "type": "string"
+        },
+        "cardKey": {
+            "description": "Used to override the default cardKey, which is the cardKey of the card, in which the report macro is used",
+            "type": "string"
+        },
+        "type": {
+            "description": "The kind of resource to list: cardTypes, templates, reports, workflows, fieldTypes, linkTypes, or skills",
+            "type": "string",
+            "enum": [
+                "cardTypes",
+                "templates",
+                "reports",
+                "workflows",
+                "fieldTypes",
+                "linkTypes",
+                "skills"
+            ]
+        },
+        "module": {
+            "description": "The prefix of the module, for example base. If not given, the prefix of the current project",
+            "type": "string"
+        },
+        "category": {
+            "description": "List only the resources that have this category (templates, reports, and skills)",
+            "type": "string"
+        },
+        "fields": {
+            "description": "For card types, also list the visible fields in their order",
+            "type": "boolean"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "name",
+        "type"
+    ]
+}

@@ -1,0 +1,1 @@
+#TODO: List the extension points that the module offers: the identifiers or card types, and what an extension adds there. List the extensions that the module registers in other modules. If the module has no extension points, say what other modules can extend instead.#

@@ -1,0 +1,8 @@
+The predicates that other modules can use in their calculations and reports. Each predicate has its own card under this page. Create the cards from the template "Predicate" (`base/templates/predicate`).
+
+#TODO: Give each predicate card a category. In the calculation that defines the predicates, keep a one-line list of the predicates and a pointer to this page.#
+
+{{#report}}
+  "name": "base/reports/predicates",
+  "descendants": true
+{{/report}}

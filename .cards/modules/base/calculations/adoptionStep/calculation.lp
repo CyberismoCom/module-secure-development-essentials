@@ -1,3 +1,6 @@
+% Shared predicate: base_greaterAdoptionStep/2. It has a predicate card in the
+% base documentation, under "For module authors" > "Shared predicates".
+%
 % base_greaterAdoptionStep(Card1, Card2) means that Card1 is on a higher adoption step than Card2
 % These rules are a bit complex for performance reasons, so that we do not generate too much results
 % we generate base_greaterAdoptionStep only for project cards that have an ancestor relationship

@@ -1,3 +1,7 @@
+% Shared predicates: base_documentReview/2, base_documentHasReview/1, and
+% base_documentReviewed/1. Each one has a predicate card in the base
+% documentation, under "For module authors" > "Shared predicates".
+
 % The review tasks of a controlled document, and the documents that have one.
 % The rules over "all review tasks" below need at least one review task, or
 % they would be true for a document without review tasks.

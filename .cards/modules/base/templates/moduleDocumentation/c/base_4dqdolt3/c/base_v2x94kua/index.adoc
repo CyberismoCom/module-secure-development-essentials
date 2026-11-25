@@ -1,0 +1,5 @@
+#TODO: Change the title to "Using the" and the name of the module, for example "Using the base module". Make one page under this page for each main concept of the module.#
+
+{{#report}}
+  "name": "base/reports/childrenList"
+{{/report}}

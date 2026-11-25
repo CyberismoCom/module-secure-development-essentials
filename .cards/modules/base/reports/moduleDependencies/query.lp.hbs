@@ -1,0 +1,8 @@
+% The modules that the current project uses directly. Core gives facts only for
+% the direct dependencies in cardsConfig.json, and not for their versions.
+
+result(M) :- module(M).
+resultField(M, "displayName", N, "shortText") :- result(M), field(M, "name", N).
+resultField(M, "displayName", M, "shortText") :- result(M), not field(M, "name", _).
+
+orderBy("displayName", "ASC").

@@ -1,0 +1,57 @@
+{
+  "$id": "progressTilesWidgetReportSchema",
+  "additionalProperties": false,
+  "description": "A row of tiles that fill up from the bottom with the progress of each item, for example the phases of a project",
+  "properties": {
+    "name": {
+      "description": "The name of the report",
+      "type": "string"
+    },
+    "title": {
+      "description": "Title text above the tiles (optional)",
+      "type": "string"
+    },
+    "legend": {
+      "description": "Description text under the title, above the tiles (optional)",
+      "type": "string"
+    },
+    "tiles": {
+      "description": "The tiles, from left to right. Keep the number small, about 3 to 8, because the tiles do not wrap.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "label": {
+            "description": "Name of the tile, shown at the top of the tile",
+            "type": "string"
+          },
+          "value": {
+            "description": "Progress from 0 to 100. Leave it out, or use null, when the item has nothing to measure. The tile is then empty and shows the text, or \"-\".",
+            "type": ["number", "null"],
+            "minimum": 0,
+            "maximum": 100
+          },
+          "text": {
+            "description": "Text shown in the middle of the tile in place of the percentage (optional)",
+            "type": "string"
+          },
+          "colour": {
+            "description": "Colour of the fill (optional). By default, 100 is green, a value between 0 and 100 is yellow, and 0 has no fill.",
+            "type": "string",
+            "enum": ["blue", "green", "yellow", "red", "orange", "purple"]
+          },
+          "cardKey": {
+            "description": "Key of the card that opens when the user clicks the tile (optional). The link works in the app and in exported sites. In exported documents (AsciiDoc and PDF), the widget is an image, so the tile is not a link.",
+            "type": "string"
+          }
+        },
+        "required": ["label"]
+      }
+    }
+  },
+  "required": ["name", "tiles"],
+  "title": "Report",
+  "type": "object"
+}

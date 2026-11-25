@@ -1,0 +1,6 @@
+{
+    "displayName": "Progress tiles widget",
+    "description": "A row of tiles that fill up with progress, for example one tile for each phase. A tile can open a card",
+    "category": "General",
+    "name": "base/reports/progressTilesWidget"
+}
