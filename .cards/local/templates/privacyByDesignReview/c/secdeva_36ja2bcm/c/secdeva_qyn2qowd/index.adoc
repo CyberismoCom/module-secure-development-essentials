@@ -1,0 +1,3 @@
+Product logs shall not contain any _unnecessary_ personal information such as usernames.
+
+How to review: Review the logs

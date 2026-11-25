@@ -1,0 +1,10 @@
+{
+    "title": "Logs",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|i",
+    "lastUpdated": "2026-11-21T09:10:28.418Z",
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_privacy-by-design_logs"
+}

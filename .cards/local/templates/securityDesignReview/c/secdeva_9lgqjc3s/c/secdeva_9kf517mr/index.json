@@ -1,0 +1,10 @@
+{
+    "title": "Keep it simple (KISS)",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|e",
+    "lastUpdated": "2026-11-20T19:01:30.811Z",
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_security-design_keep-it-simple"
+}

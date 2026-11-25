@@ -1,0 +1,10 @@
+{
+    "title": "Requirement identification",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|c",
+    "lastUpdated": "2026-11-21T09:11:15.261Z",
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_requirement-management_requirement-identification"
+}

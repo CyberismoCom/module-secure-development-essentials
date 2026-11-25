@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/fieldTypes/cryptographyUsagePeriod",
+    "displayName": "Expected usage period",
+    "dataType": "shortText",
+    "description": "How long the protected information must stay protected"
+}

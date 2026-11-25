@@ -1,0 +1,3 @@
+Check that the security issues in all the security testing tools such as static code analysers and vulnerability tracking tools have been managed.
+
+The issues from these tools should be reported as security issues and managed according to the secure development process.

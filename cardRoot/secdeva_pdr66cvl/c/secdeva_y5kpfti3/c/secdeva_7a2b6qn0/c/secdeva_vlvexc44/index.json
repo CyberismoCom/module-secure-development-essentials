@@ -1,0 +1,12 @@
+{
+    "rank": "0|h",
+    "workflowState": "Active",
+    "createdAt": "2026-11-23T10:31:20.237Z",
+    "links": [],
+    "cardType": "base/cardTypes/checklistItem",
+    "title": "Architect approval",
+    "templateCardKey": "secdeva_e59f2obc",
+    "base/fieldTypes/checklistResult": "ok",
+    "base/fieldTypes/identifier": "secdeva_check_technology_architect-approval",
+    "lastUpdated": "2026-11-23T10:31:20.245Z"
+}

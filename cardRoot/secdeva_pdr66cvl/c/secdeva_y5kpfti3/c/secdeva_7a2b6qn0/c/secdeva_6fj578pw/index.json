@@ -1,0 +1,13 @@
+{
+    "rank": "0|e",
+    "workflowState": "Active",
+    "createdAt": "2026-11-23T10:31:20.237Z",
+    "links": [],
+    "cardType": "base/cardTypes/checklistItem",
+    "title": "Patent risks",
+    "templateCardKey": "secdeva_urtu0vr2",
+    "base/fieldTypes/checklistResult": "deviation",
+    "base/fieldTypes/identifier": "secdeva_check_technology_patent-risks",
+    "lastUpdated": "2026-11-23T10:31:20.252Z",
+    "base/fieldTypes/comment": "The patent risks have not been assessed. Accepted for the pilot."
+}

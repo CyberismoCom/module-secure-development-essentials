@@ -15,20 +15,18 @@ The goal of the third-party software update management of a technology is to ide
 
 == Review checklist
 
-Check that the third-party software update management covers all such technologies where third-party software update management is required.
+Set the result of each item in the table. A Deviation or Not applicable result needs a comment. Put links to the evidence in the comment.
 
-* [ ] OK
-* [ ] Not OK
+{{#report}}
+  "name": "base/reports/checklist"
+{{/report}}
 
-Check that third-party software update management has been executed.
+You can add your own items to the checklist.
 
-* [ ] OK
-* [ ] Not OK
-
-Check that all third-party software updates and the information provided by the third-party suppliers have been processed.
-
-* [ ] OK
-* [ ] Not OK
+{{#createCards}}
+  "template": "base/templates/checklistItem",
+  "buttonLabel": "Add a checklist item"
+{{/createCards}}
 
 == Review notes
 

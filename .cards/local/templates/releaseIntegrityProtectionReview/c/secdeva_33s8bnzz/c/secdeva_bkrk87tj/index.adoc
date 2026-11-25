@@ -1,0 +1,1 @@
+If common install package and/or code signing mechanisms are available in the organisation, then they are used for all applicable files of product releases.

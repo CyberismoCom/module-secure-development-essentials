@@ -1,0 +1,1 @@
+Ensure that the system has sufficient capacity to handle expected and unexpected load, preventing denial-of-service situations.

@@ -1,0 +1,7 @@
+{
+    "name": "secdeva/calculations/cryptography",
+    "displayName": "Cryptography use cases",
+    "calculation": "calculation.lp",
+    "description": "The use cases in the document about the use of cryptography are checklist items of the document, with fields for the details of each use case. Approval of the document is denied until the use cases are complete",
+    "category": "Secure development"
+}

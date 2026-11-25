@@ -1,0 +1,12 @@
+{
+    "rank": "0|i",
+    "workflowState": "Active",
+    "createdAt": "2026-11-23T10:31:21.388Z",
+    "links": [],
+    "cardType": "base/cardTypes/checklistItem",
+    "title": "Existing usage",
+    "templateCardKey": "secdeva_lsd2gomy",
+    "base/fieldTypes/checklistResult": "ok",
+    "base/fieldTypes/identifier": "secdeva_check_technology_existing-usage",
+    "lastUpdated": "2026-11-23T10:31:21.398Z"
+}

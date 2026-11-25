@@ -1,0 +1,5 @@
+Check that the product documentation and the technical documentation are up to date for this release. Their own reviews check the content: {{#report}}"name": "secdeva/reports/xref", "identifier": "secdeva_control_product-documentation-review"{{/report}}, and the technical documentation review of the EU CRA module, if the EU Cyber Resilience Act applies.
+
+* The product documentation for users, with the security instructions, is up to date.
+* The internal technical documentation is up to date, if the product needs it.
+* The documentation reviews cover the changes of this release, and this release delivers the reviewed versions.

@@ -1,0 +1,1 @@
+Check that the scoping is consistent with the risk level of the product. High-risk products should not have an excessive number of controls scoped out.

@@ -1,0 +1,10 @@
+{
+    "title": "No overlapping technologies",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|j",
+    "lastUpdated": "2026-11-21T09:11:48.700Z",
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_technology_no-overlapping-technologies"
+}

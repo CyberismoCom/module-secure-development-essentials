@@ -1,0 +1,1 @@
+For libraries and packages, where separate technology assessments are not necessary, check that the team's code review practice includes review of new third-party dependencies.

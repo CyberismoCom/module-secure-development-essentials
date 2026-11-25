@@ -1,0 +1,10 @@
+{
+    "title": "Threat model status",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|d",
+    "lastUpdated": "2026-11-20T19:01:29.732Z",
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_security-design_threat-model-status"
+}

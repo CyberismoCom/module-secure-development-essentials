@@ -1,0 +1,1 @@
+There is sufficient security documentation for the technology/component.

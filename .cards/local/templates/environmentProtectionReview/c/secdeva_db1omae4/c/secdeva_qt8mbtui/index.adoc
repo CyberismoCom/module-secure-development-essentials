@@ -1,0 +1,1 @@
+Check that any integrations to other systems are not used inappropriately in development, testing, or demonstration environments. Examples of potentially dangerous integrations include email services and integrations to important enterprise systems such as enterprise resource planning (ERP).

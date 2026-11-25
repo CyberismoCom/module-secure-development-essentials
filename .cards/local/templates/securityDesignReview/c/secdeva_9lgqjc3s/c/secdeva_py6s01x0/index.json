@@ -1,0 +1,10 @@
+{
+    "title": "No single points of failure",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|k",
+    "lastUpdated": "2026-11-20T19:01:37.194Z",
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_security-design_no-single-points-of-failure"
+}

@@ -1,0 +1,3 @@
+Product shall record all accesses to personal data in an audit trail.
+
+How to review: Manual testing using the product and observing the audit trail

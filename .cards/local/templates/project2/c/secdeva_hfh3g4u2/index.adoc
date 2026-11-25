@@ -18,12 +18,33 @@ End users: #TODO: Description of the user base#
 
 Internal stakeholders: #TODO: e.g., Legal, Compliance, CTO#
 
-NOTE: Set the owner field of this card to denote the person who is responsible for the cybersecurity of this development project. 
+Set the owner of this card to the person who is responsible for the cybersecurity of this development project.
+
+{{#field}}
+  "field": "base/fieldTypes/owner",
+  "display": "row"
+{{/field}}
 
 == Success metrics (KPIs)
 How will we measure if the security integration was successful?
 
 #TODO: document or link to documentation about how the compliance, cybersecurity management and vulnerability management are measured#
+
+== Adoption step
+
+The secure development process has three adoption steps. Step 1 has the most fundamental internal controls. Move to the next step when you have completed the internal controls of the current step.
+
+{{#field}}
+  "field": "base/fieldTypes/adoptionStep",
+  "display": "row"
+{{/field}}
+
+The secure development process may not be necessary for some development projects, for example research prototypes, sales demonstrations, and products that are being phased out. In this case, clear the adoption step and explain why in the adoption step justification.
+
+{{#field}}
+  "field": "secdeva/fieldTypes/adoptionStepJustification",
+  "display": "row"
+{{/field}}
 
 == Milestones and checkpoints
 
@@ -46,4 +67,4 @@ It is recommended to have 2–6 checkpoints per year to keep secure development 
 
 == Activation
 
-Once you have filled in this template, set the owner field and use the "Activate" workflow transition to mark this card ready.
+Once you have filled in this template and set the owner, use the "Activate" workflow transition to mark this card ready.

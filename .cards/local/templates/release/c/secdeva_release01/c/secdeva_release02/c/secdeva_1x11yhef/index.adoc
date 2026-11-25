@@ -1,0 +1,3 @@
+Check that Security issues affecting this release have been tracked to closure or deferred to a future release with a justified reason. See {{#report}}"name": "secdeva/reports/xref", "identifier": "secdeva_status-and-next-steps"{{/report}}.
+
+Notice that products must not be released if there are any known exploitable vulnerabilities.

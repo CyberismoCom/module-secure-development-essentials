@@ -1,4 +1,5 @@
 {
     "name": "secdeva/templates/cryptographyReview",
-    "displayName": "Review of cryptography (Deprecated)"
+    "displayName": "Review of cryptography (Deprecated)",
+    "category": "Deprecated"
 }

@@ -1,0 +1,3 @@
+Check the status of internal controls in {{#report}}"name":"secdeva/reports/xref","identifier":"secdeva_status-and-next-steps"{{/report}}. Your goal is to have no internal controls that would require attention.
+
+This can be marked as OK if the missing actions are planned.
