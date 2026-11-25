@@ -1,0 +1,200 @@
+selectAll.
+
+result(result).
+
+% The project and its phases
+
+secdeva_dashboardProject(Project) :-
+  secdeva_closestProject({{cardKey}}, Project).
+
+childObject(result, Project, "project") :-
+  secdeva_dashboardProject(Project).
+
+childResult(result, Phase, "phases") :-
+  secdeva_dashboardProject(Project),
+  secdeva_closestProject(Phase, Project),
+  field(Phase, "cardType", "secdeva/cardTypes/phase"),
+  parent(Phase, Project).
+
+order(2, "phases", 1, "rank", "ASC").
+
+resultField(result, "statusNextSteps", Card, "shortText") :-
+  secdeva_dashboardProject(Project),
+  secdeva_closestProject(Card, Project),
+  field(Card, "base/fieldTypes/identifier", "secdeva_status-and-next-steps").
+
+% The first steps
+%
+% secdeva_dashboardStep(Order, Control identifier, Label, Next action,
+%   Template of the evidence, Button label, Phase identifier)
+%
+% Step 0 sets up the project. It has no control.
+
+secdeva_dashboardStep(1, "secdeva_control_assign-people-to-project-roles",
+  "Assign security roles",
+  "Decide who is responsible for security in the project. Without an owner, the work does not get done.",
+  "secdeva/templates/roleAssignments", "Create role assignments", "secdeva_phase_foundation").
+secdeva_dashboardStep(2, "secdeva_control_ensure-competence",
+  "Check the competence of the team",
+  "Check that the people in the security roles know enough about cybersecurity, and plan training where needed.",
+  "secdeva/templates/competenceReview", "Create a competence review", "secdeva_phase_foundation").
+secdeva_dashboardStep(3, "secdeva_control_security-context",
+  "Describe the security context",
+  "Describe where the product is used, what it must protect, and what it expects from its environment.",
+  "secdeva/templates/securityContext", "Create a security context document", "secdeva_phase_design").
+secdeva_dashboardStep(4, "secdeva_control_threat-models",
+  "Model the threats",
+  "Draw the parts of the system and the data that flows between them, and find out how an attacker could use them.",
+  "secdeva/templates/threatModel2", "Create a threat model", "secdeva_phase_design").
+secdeva_dashboardStep(5, "secdeva_control_high-level-risks",
+  "Assess the risks",
+  "Write down the risks of the product and decide how to treat each of them.",
+  "secdeva/templates/riskManagementReview", "Create a review of risk management", "secdeva_phase_design").
+secdeva_dashboardStep(6, "secdeva_control_security-requirements",
+  "Write the security requirements",
+  "Turn the risks into security requirements that guide the implementation and the tests.",
+  "secdeva/templates/requirementManagementReview", "Create a review of security requirement management", "secdeva_phase_design").
+secdeva_dashboardStep(7, "secdeva_control_scope-secure-development-activities",
+  "Choose the practices for the project",
+  "Go through the practices of each phase and decide which of them the project needs.",
+  "secdeva/templates/scopingReview", "Create a review of process scoping", "secdeva_phase_design").
+
+secdeva_dashboardDoneAssessment("ok").
+secdeva_dashboardDoneAssessment("notApplicable").
+
+secdeva_dashboardStepCard(N, Card) :-
+  secdeva_dashboardProject(Project),
+  secdeva_dashboardStep(N, Identifier, _, _, _, _, _),
+  field(Card, "base/fieldTypes/identifier", Identifier),
+  field(Card, "cardType", "ismsa/cardTypes/internalControl"),
+  secdeva_closestProject(Card, Project).
+
+secdeva_dashboardStepExists(0) :-
+  secdeva_dashboardProject(_).
+
+secdeva_dashboardStepExists(N) :-
+  secdeva_dashboardStepCard(N, _).
+
+% The project is set up when it has an owner and a name of its own.
+secdeva_dashboardStepDone(0) :-
+  secdeva_dashboardProject(Project),
+  field(Project, "base/fieldTypes/owner", _),
+  not field(Project, "title", "Untitled development project").
+
+secdeva_dashboardStepDone(N) :-
+  secdeva_dashboardStepCard(N, Card),
+  field(Card, "base/fieldTypes/assessment", Assessment),
+  secdeva_dashboardDoneAssessment(Assessment).
+
+secdeva_dashboardStepOpen(N) :-
+  secdeva_dashboardStepExists(N),
+  not secdeva_dashboardStepDone(N).
+
+secdeva_dashboardNextStep(N) :-
+  secdeva_dashboardStepOpen(N),
+  not secdeva_dashboardStepOpen(M) : secdeva_dashboardStepOpen(M), M < N.
+
+secdeva_dashboardStepStatus(N, "done") :-
+  secdeva_dashboardStepDone(N).
+
+secdeva_dashboardStepStatus(N, "next") :-
+  secdeva_dashboardNextStep(N).
+
+secdeva_dashboardStepStatus(N, "open") :-
+  secdeva_dashboardStepOpen(N),
+  not secdeva_dashboardNextStep(N).
+
+resultField(result, "setupStatus", Status, "shortText") :-
+  secdeva_dashboardStepStatus(0, Status).
+
+resultField(result, "firstStepsDone", "true", "shortText") :-
+  secdeva_dashboardProject(_),
+  not secdeva_dashboardStepOpen(_).
+
+childResult(result, Card, "steps") :-
+  secdeva_dashboardStepCard(_, Card).
+
+field(Card, "dashboardStepOrder", N) :-
+  secdeva_dashboardStepCard(N, Card).
+
+field(Card, "dashboardStepLabel", Label) :-
+  secdeva_dashboardStepCard(N, Card),
+  secdeva_dashboardStep(N, _, Label, _, _, _, _).
+
+field(Card, "dashboardStepStatus", Status) :-
+  secdeva_dashboardStepCard(N, Card),
+  secdeva_dashboardStepStatus(N, Status).
+
+order(2, "steps", 1, "dashboardStepOrder", "ASC").
+
+% The next step, when it is a control
+
+resultField(result, "nextStepIsSetup", "true", "shortText") :-
+  secdeva_dashboardNextStep(0).
+
+% The next step has started when its control has evidence that is not ready
+% yet, or that fails.
+secdeva_dashboardStarted("inProgress",
+  "You have started this step, but the evidence is not ready yet. Finish it and get it approved.").
+secdeva_dashboardStarted("notOk",
+  "You have started this step, but the evidence fails a check or has expired. Fix it.").
+
+resultField(result, "nextStarted", Text, "shortText") :-
+  secdeva_dashboardNextStep(N),
+  secdeva_dashboardStepCard(N, Card),
+  field(Card, "base/fieldTypes/assessment", Assessment),
+  secdeva_dashboardStarted(Assessment, Text).
+
+resultField(result, "nextControl", Card, "shortText") :-
+  secdeva_dashboardNextStep(N),
+  secdeva_dashboardStepCard(N, Card).
+
+resultField(result, "nextLabel", Label, "shortText") :-
+  secdeva_dashboardNextStep(N),
+  secdeva_dashboardStep(N, _, Label, _, _, _, _).
+
+resultField(result, "nextAction", Action, "shortText") :-
+  secdeva_dashboardNextStep(N),
+  secdeva_dashboardStep(N, _, _, Action, _, _, _).
+
+resultField(result, "nextTemplate", Template, "shortText") :-
+  secdeva_dashboardNextStep(N),
+  secdeva_dashboardStep(N, _, _, _, Template, _, _).
+
+resultField(result, "nextButtonLabel", ButtonLabel, "shortText") :-
+  secdeva_dashboardNextStep(N),
+  secdeva_dashboardStep(N, _, _, _, _, ButtonLabel, _).
+
+resultField(result, "nextPhase", Phase, "shortText") :-
+  secdeva_dashboardNextStep(N),
+  secdeva_dashboardStep(N, _, _, _, _, _, PhaseIdentifier),
+  secdeva_dashboardProject(Project),
+  field(Phase, "base/fieldTypes/identifier", PhaseIdentifier),
+  secdeva_closestProject(Phase, Project).
+
+% The internal controls of the current adoption step, by assessment
+
+secdeva_dashboardControl(Card, Assessment) :-
+  secdeva_dashboardProject(Project),
+  secdeva_closestProject(Card, Project),
+  field(Card, "cardType", "ismsa/cardTypes/internalControl"),
+  field(Card, "base/fieldTypes/assessment", Assessment),
+  not base_greaterAdoptionStep(Card, Project).
+
+secdeva_dashboardCount("countDone", "ok").
+secdeva_dashboardCount("countInProgress", "inProgress").
+secdeva_dashboardCount("countNotStarted", "notStarted").
+secdeva_dashboardCount("countNotOk", "notOk").
+secdeva_dashboardCount("countNotScoped", "open").
+
+resultField(result, Name, Count, "integer") :-
+  secdeva_dashboardProject(_),
+  secdeva_dashboardCount(Name, Assessment),
+  Count = #count { Card : secdeva_dashboardControl(Card, Assessment) }.
+
+resultField(result, "countOpenIssues", Count, "integer") :-
+  secdeva_dashboardProject(Project),
+  Count = #count { Issue :
+    field(Issue, "cardType", "secdeva/cardTypes/securityIssue"),
+    secdeva_closestProject(Issue, Project),
+    not field(Issue, "workflowStateCategory", "closed") }.

@@ -1,3 +1,0 @@
-{{#report}}
-  "name": "secdeva/reports/gettingStarted"
-{{/report}}
