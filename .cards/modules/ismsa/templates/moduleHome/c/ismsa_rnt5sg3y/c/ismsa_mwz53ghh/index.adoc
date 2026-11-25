@@ -12,5 +12,9 @@ Currently, the following subregisters have been defined for risks:
 {{/report}}
 
 {{#report}}
+  "name": "ismsa/reports/riskOverview"
+{{/report}}
+
+{{#report}}
   "name": "ismsa/reports/risksByOwner"
 {{/report}}

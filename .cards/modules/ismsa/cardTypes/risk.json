@@ -9,16 +9,22 @@
             "enableOverride": true
         },
         {
+            "name": "base/fieldTypes/identifier",
+            "isCalculated": false
+        },
+        {
             "name": "base/fieldTypes/informationClassification",
             "isCalculated": false
         },
         {
             "name": "ismsa/fieldTypes/riskInitialLikelihood",
-            "isCalculated": false
+            "isCalculated": true,
+            "enableOverride": true
         },
         {
             "name": "ismsa/fieldTypes/riskInitialImpact",
-            "isCalculated": false
+            "isCalculated": true,
+            "enableOverride": true
         },
         {
             "name": "ismsa/fieldTypes/riskInitialRisk",
@@ -26,7 +32,8 @@
         },
         {
             "name": "ismsa/fieldTypes/riskMitigationStrategy",
-            "isCalculated": false
+            "isCalculated": true,
+            "enableOverride": true
         },
         {
             "name": "ismsa/fieldTypes/riskResidualLikelihood",
@@ -52,7 +59,9 @@
         "ismsa/fieldTypes/riskResidualImpact",
         "ismsa/fieldTypes/riskResidualRisk"
     ],
-    "optionallyVisibleFields": [],
+    "optionallyVisibleFields": [
+        "base/fieldTypes/identifier"
+    ],
     "displayName": "Risk",
     "description": "A cybersecurity risk with impact, likelihood, and treatment tracking"
 }

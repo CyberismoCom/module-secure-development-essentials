@@ -1,9 +1,25 @@
+% The review tasks of a statement of applicability, and the statements that
+% have one. The rules over "all review tasks" below need at least one review
+% task, or they would be true for a statement without review tasks.
+ismsa_soaReview(Document, ReviewTask) :-
+    base_projectCardType(Document, "ismsa/cardTypes/statementOfApplicability"),
+    parent(ReviewTask, Document),
+    base_projectCardType(ReviewTask, "base/cardTypes/reviewTask").
+
+ismsa_soaHasReview(Document) :-
+    ismsa_soaReview(Document, _).
+
+transitionDenied(Document, "Approve", "Add a review task before approving") :-
+    base_projectCardType(Document, "ismsa/cardTypes/statementOfApplicability"),
+    not ismsa_soaHasReview(Document).
+
 transitionDenied(Document, "Approve", "Fix policy failures before approving" ):-
     base_projectCardType(Document, "ismsa/cardTypes/statementOfApplicability"),
     policyCheckFailure(Document, _, _, _).
 
 transitionDenied(Document, "Approve", "Fix policy failures in at least one of the review subtask(s) before approving" ):-
     base_projectCardType(Document, "ismsa/cardTypes/statementOfApplicability"),
+    ismsa_soaHasReview(Document),
     policyCheckFailure(ReviewTask, _, _, _) :
     base_projectCardType(ReviewTask, "base/cardTypes/reviewTask"),
     parent(ReviewTask, Document).
@@ -20,9 +36,9 @@ transitionDenied(Document, "Approve", "Fill in the information classification fi
     base_projectCardType(Document, "ismsa/cardTypes/statementOfApplicability"),
     not field(Document, "base/fieldTypes/informationClassification", _).
 
-transitionDenied(Document, "Approve", "Fill in the approval date field before approving" ):-
-    base_projectCardType(Document, "ismsa/cardTypes/statementOfApplicability"),
-    not field(Document, "base/fieldTypes/approvalDate", _).
+% Approval sets the approval date, as for controlled documents in base.
+onTransitionSetField(Document, "Approve", Document, "base/fieldTypes/approvalDate", @today) :-
+    base_projectCardType(Document, "ismsa/cardTypes/statementOfApplicability").
 
 transitionDenied(Document, "Approve", "Complete the review task(s) before approving" ):-
     base_projectCardType(Document, "ismsa/cardTypes/statementOfApplicability"),
@@ -33,6 +49,7 @@ transitionDenied(Document, "Approve", "Complete the review task(s) before approv
 policyCheckFailure(Document, "Document control", "Failing policy checks in all review tasks", "Fix policy failures in at least one of the review subtask(s)" ):-
     base_projectCardType(Document, "ismsa/cardTypes/statementOfApplicability"),
     field(Document, "workflowState", "Approved"),
+    ismsa_soaHasReview(Document),
     policyCheckFailure(ReviewTask, _, _, _) :
     base_projectCardType(ReviewTask, "base/cardTypes/reviewTask"),
     parent(ReviewTask, Document).
@@ -67,6 +84,11 @@ policyCheckFailure(Document, "Document control", "Approval date is a mandatory f
     base_projectCardType(Document, "ismsa/cardTypes/statementOfApplicability"),
     not field(Document, "workflowStateCategory", "initial"),
     not field(Document, "base/fieldTypes/approvalDate", _).
+
+policyCheckFailure(Document, "Document control", "Review task missing", "Add a review task and complete it.") :-
+    base_projectCardType(Document, "ismsa/cardTypes/statementOfApplicability"),
+    field(Document, "workflowState", "Approved"),
+    not ismsa_soaHasReview(Document).
 
 policyCheckFailure(Document, "Document control", "The review subtasks of approved documents must be closed", "Complete review task(s)" ):-
     base_projectCardType(Document, "ismsa/cardTypes/statementOfApplicability"),

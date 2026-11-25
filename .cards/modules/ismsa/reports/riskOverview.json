@@ -1,0 +1,6 @@
+{
+    "name": "ismsa/reports/riskOverview",
+    "displayName": "Risk overview",
+    "description": "Risk matrices of initial and current risk levels, risks by state and the risks above the acceptable risk level",
+    "category": "ISMS report"
+}

@@ -94,24 +94,24 @@ ismsa_assessedRequirementAssessment(Requirement, "notOk", "The requirement is in
   not base_policyCheckFailure(Requirement, _, _, _),
   ismsa_requirementImplementationFailing(Requirement, _).
 
-% Open, because nothing has been linked to the requirement yet
+% Not started, because nothing has been linked to the requirement yet
 
-ismsa_assessedRequirementAssessment(Requirement, "open", "The requirement is in scope but nothing has been linked to implement it") :-
+ismsa_assessedRequirementAssessment(Requirement, "notStarted", "The requirement is in scope, but nothing has been linked to implement it yet") :-
   ismsa_assessedRequirementInScope(Requirement),
   not base_policyCheckFailure(Requirement, _, _, _),
   not ismsa_requirementImplementation(Requirement, _).
 
-% Open, because the linked implementation is still in progress
+% In progress, because something has been linked, but it is not ready yet
 
-ismsa_assessedRequirementAssessment(Requirement, "open", "The requirement is in scope but the linked implementation is not ready") :-
+ismsa_assessedRequirementAssessment(Requirement, "inProgress", "The requirement is in scope, but the linked implementation is not ready yet") :-
   ismsa_assessedRequirementInScope(Requirement),
   not base_policyCheckFailure(Requirement, _, _, _),
   not ismsa_requirementImplementationFailing(Requirement, _),
   ismsa_requirementImplementationPending(Requirement, _).
 
-% Open, because everything that was linked to the requirement is out of scope itself
+% Not started, because everything that was linked to the requirement is out of scope itself
 
-ismsa_assessedRequirementAssessment(Requirement, "open", "The requirement is in scope but everything that was linked to it is out of scope") :-
+ismsa_assessedRequirementAssessment(Requirement, "notStarted", "The requirement is in scope, but everything that was linked to it is out of scope") :-
   ismsa_assessedRequirementInScope(Requirement),
   not base_policyCheckFailure(Requirement, _, _, _),
   not ismsa_requirementImplementationFailing(Requirement, _),
