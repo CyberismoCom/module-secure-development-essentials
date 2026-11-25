@@ -25,12 +25,17 @@ ismsa_riskLevel("veryHigh", "moderate", "high").
 ismsa_riskLevel("veryHigh", "high", "veryHigh").
 ismsa_riskLevel("veryHigh", "veryHigh", "veryHigh").
 
-field(Risk, "ismsa/fieldTypes/riskInitialRisk", InitialRisk) :-
+% The initial likelihood and impact are calculated fields that allow an override, so a
+% module above may compute them from a risk assessment method while the user keeps the
+% last word. Reading them through field/3 picks up the override where there is one and
+% the calculated value otherwise.
+
+fieldCalculated(Risk, "ismsa/fieldTypes/riskInitialRisk", InitialRisk) :-
     field(Risk, "ismsa/fieldTypes/riskInitialLikelihood", InitialLikelihood),
     field(Risk, "ismsa/fieldTypes/riskInitialImpact", InitialImpact),
     ismsa_riskLevel(InitialImpact, InitialLikelihood, InitialRisk).
 
-field(Risk, "ismsa/fieldTypes/riskResidualRisk", ResidualRisk) :-
+fieldCalculated(Risk, "ismsa/fieldTypes/riskResidualRisk", ResidualRisk) :-
     field(Risk, "ismsa/fieldTypes/riskResidualLikelihood", ResidualLikelihood),
     field(Risk, "ismsa/fieldTypes/riskResidualImpact", ResidualImpact),
     ismsa_riskLevel(ResidualImpact, ResidualLikelihood, ResidualRisk).

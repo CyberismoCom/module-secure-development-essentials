@@ -58,6 +58,7 @@ policyCheckFailure(Card, "ISMS", "Controls must be identified unless risk level 
     ismsa_closestHome(RiskRegister,Home),
     base_projectCardType(RiskRegister, "ismsa/cardTypes/riskRegister"),
     field(RiskRegister, "ismsa/fieldTypes/acceptableRiskLevel", AcceptableRiskLevel),
+    field(Card, "workflowStateCategory", "active"),
     base_projectCardType(Card, "ismsa/cardTypes/risk"),
     field(Card, "ismsa/fieldTypes/riskInitialRisk", InitialRisk),
     ismsa_riskLessThan(AcceptableRiskLevel, InitialRisk),
@@ -70,6 +71,18 @@ policyCheckFailure(Card, "ISMS", "Lowering residual risk requires that controls 
     field(Card, "ismsa/fieldTypes/riskResidualRisk", ResidualRisk),
     ismsa_riskLessThan(ResidualRisk, InitialRisk),
     not link(_, Card, "ismsa/linkTypes/mitigates").
+
+policyCheckFailure(Card, "ISMS", "Risks can only be accepted if the risk level is acceptable",
+    "This risk has been accepted, even though initial risk is higher than the acceptable risk level and residual risk level has not been assigned. Reopen the risk and implement more controls to lower the residual risk.") :-
+ismsa_closestHome(Card, Home),
+    ismsa_closestHome(RiskRegister, Home),
+    base_projectCardType(RiskRegister, "ismsa/cardTypes/riskRegister"),
+    field(Card, "workflowState", "Closed as accepted"),
+    field(RiskRegister, "ismsa/fieldTypes/acceptableRiskLevel", AcceptableRiskLevel),
+    base_projectCardType(Card, "ismsa/cardTypes/risk"),
+    field(Card, "ismsa/fieldTypes/riskInitialRisk", InitialRisk),
+    not field(Card, "ismsa/fieldTypes/riskResidualRisk", _),
+    ismsa_riskLessThan(AcceptableRiskLevel, InitialRisk).
 
 policyCheckFailure(Card, "ISMS", "Risks can only be accepted if the risk level is acceptable",
     "This risk has been accepted, even though the residual risk is higher than the acceptable risk level. Implement more controls to lower the residual risk or change the risk to the status 'Needs monitoring'.") :-

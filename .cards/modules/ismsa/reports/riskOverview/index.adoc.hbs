@@ -1,0 +1,103 @@
+{{#each results}}
+== Risk overview
+
+{{#if this.riskCount}}
+Risks closed as duplicate, avoided, transferred or not applicable are not included. Risks included: {{this.riskCount}}.
+{{#if this.unassessedCount}}
+Risks that have not been assessed yet ({{this.unassessedCount}}) are not shown in the risk matrices.
+{{/if}}
+
+// The matrices sit side by side when there is room and wrap when there is not;
+// the open block keeps the next widget from joining them.
+--
+{{#report}}
+  "name": "base/reports/riskMatrixWidget",
+  "title": "Initial risk levels",
+  "legend": "Before risk treatment",
+  "likelihood": ["Very Low", "Low", "Moderate", "High", "Very High"],
+  "impact": ["Very Low", "Low", "Moderate", "High", "Very High"],
+  "levels": [
+    {"name": "Very Low", "colour": 1},
+    {"name": "Low", "colour": 2},
+    {"name": "Moderate", "colour": 3},
+    {"name": "High", "colour": 4},
+    {"name": "Very High", "colour": 5}
+  ],
+  "levelGrid": [
+    {{#each this.levelGrid}}
+    [{{#each this.entries}}{{this.level}}{{#unless @last}}, {{/unless}}{{/each}}]{{#unless @last}},{{/unless}}
+    {{/each}}
+  ],
+  "cells": [
+    {{#each this.initialCells}}
+    {"likelihood": {{this.likelihood}}, "impact": {{this.impact}}, "count": {{this.count}} }{{#unless @last}},{{/unless}}
+    {{/each}}
+  ]
+{{/report}}
+
+{{#report}}
+  "name": "base/reports/riskMatrixWidget",
+  "title": "Current risk levels",
+  "legend": "Residual, or initial if not yet assessed",
+  "likelihood": ["Very Low", "Low", "Moderate", "High", "Very High"],
+  "impact": ["Very Low", "Low", "Moderate", "High", "Very High"],
+  "levels": [
+    {"name": "Very Low", "colour": 1},
+    {"name": "Low", "colour": 2},
+    {"name": "Moderate", "colour": 3},
+    {"name": "High", "colour": 4},
+    {"name": "Very High", "colour": 5}
+  ],
+  "levelGrid": [
+    {{#each this.levelGrid}}
+    [{{#each this.entries}}{{this.level}}{{#unless @last}}, {{/unless}}{{/each}}]{{#unless @last}},{{/unless}}
+    {{/each}}
+  ],
+  "cells": [
+    {{#each this.currentCells}}
+    {"likelihood": {{this.likelihood}}, "impact": {{this.impact}}, "count": {{this.count}} }{{#unless @last}},{{/unless}}
+    {{/each}}
+  ]
+{{/report}}
+--
+
+{{#report}}
+  "name": "base/reports/barWidget",
+  "title": "Risks by state",
+  "bars": [
+    {{#each this.states}}
+    {"label": "{{this.label}}", "value": {{this.count}} }{{#unless @last}},{{/unless}}
+    {{/each}}
+  ]
+{{/report}}
+
+=== Risks above the acceptable risk level
+
+{{#if this.acceptableRiskLevel}}
+{{#if this.highestRisks.length}}
+The acceptable risk level is {{this.acceptableRiskLevel}}. The current risk level is the residual risk level if it has been assessed, and otherwise the initial risk level.
+
+[cols="5,3,3,2,2,2"]
+|===
+| Risk | Owner | State | Initial | Residual | Current
+
+{{#each this.highestRisks}}
+|xref:{{this.key}}.adoc[{{this.title}}]
+|{{this.[base/fieldTypes/owner]}}
+|{{this.workflowState}}
+|{{this.[ismsa/fieldTypes/riskInitialRisk].displayValue}}
+|{{this.[ismsa/fieldTypes/riskResidualRisk].displayValue}}
+|*{{this.currentRisk}}*
+{{/each}}
+
+|===
+{{else}}
+NOTE: No risk is above the acceptable risk level ({{this.acceptableRiskLevel}}).
+{{/if}}
+{{else}}
+NOTE: Set the acceptable risk level of the risk register to list the risks above it.
+{{/if}}
+{{else}}
+NOTE: No risks have been identified yet.
+{{/if}}
+{{/each}}

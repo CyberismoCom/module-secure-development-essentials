@@ -1,0 +1,6 @@
+{
+    "name": "base/calculations/moduleDocumentation",
+    "displayName": "Module documentation",
+    "description": "Hides the test content of a module in exported sites and documents",
+    "calculation": "calculation.lp"
+}

@@ -1,0 +1,12 @@
+Set the result of each item in the table. A Deviation or Not applicable result needs a comment.
+
+{{#report}}
+  "name": "base/reports/checklist"
+{{/report}}
+
+The items in this checklist are examples. Replace them with your own.
+
+{{#createCards}}
+  "template": "base/templates/checklistItem",
+  "buttonLabel": "Add a checklist item"
+{{/createCards}}

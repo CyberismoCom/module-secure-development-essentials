@@ -1,0 +1,6 @@
+{
+    "name": "base/reports/moduleResources",
+    "displayName": "Module resources",
+    "description": "A table of the card types, templates, reports, or other resources of a module, with their descriptions",
+    "category": "Documentation"
+}

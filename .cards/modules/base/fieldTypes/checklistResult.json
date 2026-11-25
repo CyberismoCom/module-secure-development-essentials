@@ -1,0 +1,28 @@
+{
+    "name": "base/fieldTypes/checklistResult",
+    "displayName": "Result",
+    "dataType": "enum",
+    "enumValues": [
+        {
+            "enumValue": "open",
+            "enumDisplayValue": "Open",
+            "enumDescription": "The item has not been checked yet."
+        },
+        {
+            "enumValue": "ok",
+            "enumDisplayValue": "OK",
+            "enumDescription": "The item meets the requirement."
+        },
+        {
+            "enumValue": "deviation",
+            "enumDisplayValue": "Deviation",
+            "enumDescription": "The item does not meet the requirement. Describe the deviation in the comment, and link to the deviation record if there is one."
+        },
+        {
+            "enumValue": "notApplicable",
+            "enumDisplayValue": "Not applicable",
+            "enumDescription": "The item does not apply. Explain why in the comment."
+        }
+    ],
+    "description": "The result of a checklist item"
+}

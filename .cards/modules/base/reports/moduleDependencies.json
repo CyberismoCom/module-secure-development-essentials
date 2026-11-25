@@ -1,0 +1,6 @@
+{
+    "name": "base/reports/moduleDependencies",
+    "displayName": "Module dependencies",
+    "description": "A table of the modules that the current project uses directly",
+    "category": "Documentation"
+}

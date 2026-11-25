@@ -1,3 +1,7 @@
+% Shared predicates: base_disableDefaultStatusIndicator/0 and
+% base_disableDefaultStatusIndicator/1. Each one has a predicate card in the
+% base documentation, under "For module authors" > "Shared predicates".
+
 % The default indicator based on workflow state
 
 field(Card, "statusIndicator", "error") :-
@@ -32,6 +36,20 @@ field(Card, "statusIndicator", "initial") :-
   not base_policyCheckFailure(Card, _, _, _),
   not field(Card, "progress", _),
   field(Card, "base/fieldTypes/assessment", "open").
+
+field(Card, "statusIndicator", "initial") :-
+  base_projectCardType(Card, CardType),
+  customField(CardType, "base/fieldTypes/assessment"),
+  not base_policyCheckFailure(Card, _, _, _),
+  not field(Card, "progress", _),
+  field(Card, "base/fieldTypes/assessment", "notStarted").
+
+field(Card, "statusIndicator", "active") :-
+  base_projectCardType(Card, CardType),
+  customField(CardType, "base/fieldTypes/assessment"),
+  not base_policyCheckFailure(Card, _, _, _),
+  not field(Card, "progress", _),
+  field(Card, "base/fieldTypes/assessment", "inProgress").
 
 field(Card, "statusIndicator", "active") :-
   base_projectCardType(Card, CardType),

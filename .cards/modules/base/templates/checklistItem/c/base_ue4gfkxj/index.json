@@ -1,0 +1,9 @@
+{
+    "title": "Untitled checklist item",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|b",
+    "lastUpdated": "2026-11-17T20:30:38.383Z",
+    "base/fieldTypes/checklistResult": "open"
+}

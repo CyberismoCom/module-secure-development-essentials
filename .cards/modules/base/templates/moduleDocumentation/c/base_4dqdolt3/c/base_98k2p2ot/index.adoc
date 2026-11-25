@@ -1,0 +1,7 @@
+The pages under this page list the resources of the module. Reports make the tables from the resources, so the tables change when a resource changes.
+
+#TODO: Delete the pages for the kinds of resources that the module does not have.#
+
+{{#report}}
+  "name": "base/reports/childrenList"
+{{/report}}

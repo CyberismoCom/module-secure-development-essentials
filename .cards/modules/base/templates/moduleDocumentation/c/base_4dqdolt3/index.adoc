@@ -1,0 +1,17 @@
+#TODO: Change the title to the name of the module, for example "Base module". Say what the module is for and who it is for, in a few paragraphs.#
+
+== Status
+
+#TODO: Say if the content is open or closed, give the licence, and say how mature the module is.#
+
+== Dependencies
+
+{{#report}}
+  "name": "base/reports/moduleDependencies"
+{{/report}}
+
+== Start here
+
+{{#report}}
+  "name": "base/reports/childrenList"
+{{/report}}

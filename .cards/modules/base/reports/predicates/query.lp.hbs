@@ -4,12 +4,16 @@ result(Card) :-
 {{#if category}}
     field(Card, "base/fieldTypes/category", "{{category}}"),
 {{/if}}
+{{#if descendants}}
+    ancestor(Card, {{cardKey}}),
+{{/if}}
     field(Card, "cardType", "base/cardTypes/predicate"),
     not template(Parent) :
     parent(Card, Parent).
 
 {{#if orderBy}}
-orderBy("{{orderBy}}", "ASC").
+order(1, "results", 1, "{{orderBy}}", "ASC").
+order(1, "results", 2, "title", "ASC").
 {{else}}
-orderBy("title", "ASC").
+order(1, "results", 1, "title", "ASC").
 {{/if}}
