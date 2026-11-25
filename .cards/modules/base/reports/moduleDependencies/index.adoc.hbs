@@ -1,0 +1,13 @@
+{{#if results}}
+[cols="6,3"]
+|===
+| Module | Prefix
+
+{{#each results}}
+| {{this.displayName}}
+| `{{this.key}}`
+{{/each}}
+|===
+{{else}}
+The module does not use other modules.
+{{/if}}

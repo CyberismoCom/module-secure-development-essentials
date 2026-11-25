@@ -1,0 +1,34 @@
+{{#if results}}
+[cols="3,6,3"]
+|===
+| Name | Description | Identifier
+
+{{#each results}}
+| {{this.displayName}}
+| {{this.description}}
+{{#if this.workflow}}
+
+Workflow: {{this.workflow}}
+{{/if}}
+{{#if this.fields}}
+
+Fields: {{#each this.fields}}{{this.displayName}}{{#unless @last}}, {{/unless}}{{/each}}
+{{/if}}
+{{#if this.cardTypes}}
+
+Creates: {{#each this.cardTypes}}{{this.displayName}}{{#unless @last}}, {{/unless}}{{/each}}
+{{/if}}
+{{#if this.dataType}}
+
+Data type: {{this.dataType}}
+{{/if}}
+{{#if this.outbound}}
+
+Link: {{this.outbound}}{{#if this.inbound}} / {{this.inbound}}{{/if}}
+{{/if}}
+| `{{this.key}}`
+{{/each}}
+|===
+{{else}}
+The module has no resources of this kind.
+{{/if}}

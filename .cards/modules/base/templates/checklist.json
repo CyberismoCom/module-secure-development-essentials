@@ -1,0 +1,6 @@
+{
+    "name": "base/templates/checklist",
+    "displayName": "Checklist",
+    "description": "A checklist page with example checklist items. Replace the example items with your own.",
+    "category": "General"
+}

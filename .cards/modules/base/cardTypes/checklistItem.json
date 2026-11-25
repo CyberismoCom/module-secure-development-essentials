@@ -1,0 +1,27 @@
+{
+    "name": "base/cardTypes/checklistItem",
+    "displayName": "Checklist item",
+    "workflow": "base/workflows/checklistItem",
+    "customFields": [
+        {
+            "name": "base/fieldTypes/checklistResult",
+            "isCalculated": false
+        },
+        {
+            "name": "base/fieldTypes/comment",
+            "isCalculated": false
+        },
+        {
+            "name": "base/fieldTypes/identifier",
+            "isCalculated": false
+        }
+    ],
+    "alwaysVisibleFields": [
+        "base/fieldTypes/checklistResult",
+        "base/fieldTypes/comment"
+    ],
+    "optionallyVisibleFields": [
+        "base/fieldTypes/identifier"
+    ],
+    "description": "One item of a checklist. Put checklist items under the card that they check. A Deviation or Not applicable result needs a comment."
+}

@@ -1,0 +1,6 @@
+{
+    "displayName": "Steps widget",
+    "description": "A vertical path of steps that shows which steps are done and which step is next. A step can open a card",
+    "category": "General",
+    "name": "base/reports/stepsWidget"
+}

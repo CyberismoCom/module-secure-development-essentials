@@ -6,22 +6,32 @@
         {
             "enumValue": "open",
             "enumDisplayValue": "Open",
-            "enumDescription": ""
+            "enumDescription": "Not started, and not scoped yet"
+        },
+        {
+            "enumValue": "notStarted",
+            "enumDisplayValue": "Not started",
+            "enumDescription": "In scope, but no work has been done yet"
+        },
+        {
+            "enumValue": "inProgress",
+            "enumDisplayValue": "In progress",
+            "enumDescription": "Work has started, but it is not ready yet"
         },
         {
             "enumValue": "ok",
             "enumDisplayValue": "OK",
-            "enumDescription": ""
+            "enumDescription": "Done, and acceptable"
         },
         {
             "enumValue": "notOk",
             "enumDisplayValue": "Not OK",
-            "enumDescription": ""
+            "enumDescription": "Something has failed and needs attention"
         },
         {
             "enumValue": "notApplicable",
             "enumDisplayValue": "Not applicable",
-            "enumDescription": ""
+            "enumDescription": "Out of scope, or not required"
         }
     ],
     "description": "An automatic assessment of the card"

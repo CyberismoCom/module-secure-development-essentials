@@ -29,12 +29,18 @@ childResult(result, Card, "open") :-
   field(Card, "base/fieldTypes/assessment", "open"),
   not base_greaterAdoptionStep(Card, Project).
 
+childResult(result, Card, "notStarted") :-
+  secdeva_closestProject(Card, Project),
+  secdeva_closestProject({{cardKey}}, Project),
+  field(Card, "cardType", "ismsa/cardTypes/internalControl"),
+  field(Card, "base/fieldTypes/assessment", "notStarted"),
+  not base_greaterAdoptionStep(Card, Project).
+
 childResult(result, Card, "inProgress") :-
   secdeva_closestProject(Card, Project),
   secdeva_closestProject({{cardKey}}, Project),
   field(Card, "cardType", "ismsa/cardTypes/internalControl"),
-  field(Card, "base/fieldTypes/assessment", "notOk"),
-  field(Card, "base/fieldTypes/assessmentExplanation", "The control is in scope but the linked evidence is not ready"),
+  field(Card, "base/fieldTypes/assessment", "inProgress"),
   not base_greaterAdoptionStep(Card, Project).
 
 childResult(result, Card, "notApplicable") :-
@@ -56,7 +62,6 @@ childResult(result, Card, "notOk") :-
   secdeva_closestProject({{cardKey}}, Project),
   field(Card, "cardType", "ismsa/cardTypes/internalControl"),
   field(Card, "base/fieldTypes/assessment", "notOk"),
-  not field(Card, "base/fieldTypes/assessmentExplanation", "The control is in scope but the linked evidence is not ready"),
   not base_greaterAdoptionStep(Card, Project).
 
 field(Card, "compoundRank", Rank) :-
@@ -70,6 +75,7 @@ field(Card, "compoundRank", @concatenate(ParentRank, " - ", Rank)) :-
   field(Card, "rank", Rank),
   field(Parent, "compoundRank", ParentRank).
 
+order(2, "notStarted", 1, "compoundRank", "ASC").
 order(2, "open", 1, "compoundRank", "ASC").
 order(2, "inScope", 1, "compoundRank", "ASC").
 order(2, "outOfScope", 1, "compoundRank", "ASC").

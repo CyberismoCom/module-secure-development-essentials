@@ -1,0 +1,6 @@
+{
+    "name": "base/templates/checklistItem",
+    "displayName": "Checklist item",
+    "description": "One checklist item. Create it under the card that the checklist is for.",
+    "category": "General"
+}

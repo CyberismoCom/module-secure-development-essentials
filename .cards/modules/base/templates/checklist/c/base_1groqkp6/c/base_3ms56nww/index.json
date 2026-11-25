@@ -1,0 +1,9 @@
+{
+    "title": "Each requirement has a test",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|c",
+    "lastUpdated": "2026-11-17T20:30:05.597Z",
+    "base/fieldTypes/checklistResult": "open"
+}

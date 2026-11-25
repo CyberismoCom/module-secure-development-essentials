@@ -1,0 +1,9 @@
+== Run the tests
+
+#TODO: Say how to run the tests, for example `cyberismo calc run tests/<file>.lp`, and how to read the result.#
+
+== Test content
+
+#TODO: Add the label `test-content` to the top-level card of the test content, and change its title if it is not "Test content". If the module has no test content, delete this section.#
+
+The test content is under the top-level card "Test content", which has the label `test-content`. Exported sites and documents leave out the test content, so this documentation does not link to it. Open the module as a project in the app to see the test content.
