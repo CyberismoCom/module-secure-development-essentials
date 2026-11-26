@@ -1,0 +1,6 @@
+{
+    "name": "ismsa/fieldTypes/architectureReviewDate",
+    "displayName": "Architecture review date",
+    "dataType": "date",
+    "description": "The date of the architecture review"
+}

@@ -3,13 +3,13 @@
     "cardKeyPrefix": "secdeva",
     "name": "Secure Development Essentials",
     "description": "",
-    "version": "1.9.1",
+    "version": "1.10.0",
     "modules": [
         {
             "name": "base",
             "location": "https://github.com/CyberismoCom/module-base.git",
             "private": false,
-            "version": "^1.4.0"
+            "version": "^1.10.0"
         },
         {
             "name": "ismsa",

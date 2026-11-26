@@ -1,0 +1,6 @@
+{
+    "name": "ismsa/fieldTypes/securityReviewDate",
+    "displayName": "Security review date",
+    "dataType": "date",
+    "description": "The date of the security review"
+}

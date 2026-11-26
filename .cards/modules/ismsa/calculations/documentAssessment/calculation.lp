@@ -70,3 +70,19 @@ field(Document, "base/fieldTypes/assessmentExplanation", "The document is approv
     base_projectCardType(Document, "base/cardTypes/controlledDocument"),
     field(Document, "workflowState", "Approved"),
     not base_policyCheckFailure(Document, _, _, _).
+
+% Assessment: "notApplicable" when the document has been archived
+%
+% Without this rule an archived document has no assessment at all. The rules that
+% assess requirements count a closed card without an assessment as complete, so an
+% archived document would verify a requirement on its own.
+
+field(Document, "base/fieldTypes/assessment", "notApplicable") :-
+    base_projectCardType(Document, "base/cardTypes/controlledDocument"),
+    field(Document, "workflowState", "Archived"),
+    not base_policyCheckFailure(Document, _, _, _).
+
+field(Document, "base/fieldTypes/assessmentExplanation", "The document has been archived") :-
+    base_projectCardType(Document, "base/cardTypes/controlledDocument"),
+    field(Document, "workflowState", "Archived"),
+    not base_policyCheckFailure(Document, _, _, _).

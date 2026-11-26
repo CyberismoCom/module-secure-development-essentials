@@ -1,7 +1,7 @@
 {
     "name": "ismsa/cardTypes/assessedSecurityRequirement",
     "displayName": "Security requirement (assessed)",
-    "workflow": "ismsa/workflows/complianceScoping",
+    "workflow": "ismsa/workflows/securityRequirement",
     "customFields": [
         {
             "name": "base/fieldTypes/owner",
@@ -46,14 +46,20 @@
             "enableOverride": false
         },
         {
-            "name": "base/fieldTypes/assessment",
+            "name": "ismsa/fieldTypes/securityRequirementStage",
             "displayName": "",
             "isCalculated": true,
             "enableOverride": true
         },
         {
-            "name": "base/fieldTypes/assessmentExplanation",
+            "name": "base/fieldTypes/assessment",
             "displayName": "",
+            "isCalculated": true,
+            "enableOverride": false
+        },
+        {
+            "name": "base/fieldTypes/assessmentExplanation",
+            "displayName": "Stage explanation",
             "isCalculated": true,
             "enableOverride": true
         },
@@ -62,15 +68,60 @@
             "displayName": "",
             "isCalculated": false,
             "enableOverride": false
+        },
+        {
+            "name": "ismsa/fieldTypes/architectureReviewer",
+            "isCalculated": false
+        },
+        {
+            "name": "ismsa/fieldTypes/architectureReviewDate",
+            "isCalculated": false
+        },
+        {
+            "name": "ismsa/fieldTypes/architectureReviewComment",
+            "isCalculated": false
+        },
+        {
+            "name": "ismsa/fieldTypes/testReviewer",
+            "isCalculated": false
+        },
+        {
+            "name": "ismsa/fieldTypes/testReviewDate",
+            "isCalculated": false
+        },
+        {
+            "name": "ismsa/fieldTypes/testReviewComment",
+            "isCalculated": false
+        },
+        {
+            "name": "ismsa/fieldTypes/securityReviewer",
+            "isCalculated": false
+        },
+        {
+            "name": "ismsa/fieldTypes/securityReviewDate",
+            "isCalculated": false
+        },
+        {
+            "name": "ismsa/fieldTypes/securityReviewComment",
+            "isCalculated": false
+        },
+        {
+            "name": "ismsa/fieldTypes/productOwnerReviewer",
+            "isCalculated": false
+        },
+        {
+            "name": "ismsa/fieldTypes/productOwnerReviewDate",
+            "isCalculated": false
+        },
+        {
+            "name": "ismsa/fieldTypes/productOwnerReviewComment",
+            "isCalculated": false
         }
     ],
     "alwaysVisibleFields": [
         "base/fieldTypes/owner",
         "base/fieldTypes/justification",
-        "ismsa/fieldTypes/architectureReview",
-        "ismsa/fieldTypes/testReview",
-        "ismsa/fieldTypes/securityReview",
-        "ismsa/fieldTypes/productOwnerReview",
+        "ismsa/fieldTypes/securityRequirementStage",
         "base/fieldTypes/assessment",
         "base/fieldTypes/assessmentExplanation"
     ],
@@ -78,5 +129,5 @@
         "base/fieldTypes/identifier",
         "base/fieldTypes/informationClassification"
     ],
-    "description": "A technical security requirement for a product, solution, or service, with automatic assessment from its reviews and verifications"
+    "description": "A technical security requirement for a product, solution, or service, with an automatic life cycle stage and assessment from its reviews, implementation work, and verifications"
 }

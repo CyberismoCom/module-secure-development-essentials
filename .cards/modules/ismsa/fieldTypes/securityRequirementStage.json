@@ -1,0 +1,53 @@
+{
+    "name": "ismsa/fieldTypes/securityRequirementStage",
+    "displayName": "Stage",
+    "dataType": "enum",
+    "enumValues": [
+        {
+            "enumValue": "notStarted",
+            "enumDisplayValue": "Not started",
+            "enumDescription": "In scope, but no review role has answered yet"
+        },
+        {
+            "enumValue": "reviewInProgress",
+            "enumDisplayValue": "Review in progress",
+            "enumDescription": "Some review roles have answered, but not all"
+        },
+        {
+            "enumValue": "contentReady",
+            "enumDisplayValue": "Content ready",
+            "enumDescription": "The reviews are done, and no implementation work or verification has started"
+        },
+        {
+            "enumValue": "implementationInProgress",
+            "enumDisplayValue": "Implementation in progress",
+            "enumDescription": "Implementation work is under way"
+        },
+        {
+            "enumValue": "toBeVerified",
+            "enumDisplayValue": "To be verified",
+            "enumDescription": "The implementation work is done, and nothing verifies the requirement yet"
+        },
+        {
+            "enumValue": "verificationInProgress",
+            "enumDisplayValue": "Verification in progress",
+            "enumDescription": "A verification is under way, but it is not ready"
+        },
+        {
+            "enumValue": "ok",
+            "enumDisplayValue": "OK",
+            "enumDescription": "The requirement has been reviewed and verified"
+        },
+        {
+            "enumValue": "notOk",
+            "enumDisplayValue": "Not OK",
+            "enumDescription": "Something has failed and needs attention"
+        },
+        {
+            "enumValue": "notApplicable",
+            "enumDisplayValue": "Not applicable",
+            "enumDescription": "Out of scope, or not required"
+        }
+    ],
+    "description": "The stage of the requirement in its life cycle, from the reviews through the implementation work to the verification"
+}

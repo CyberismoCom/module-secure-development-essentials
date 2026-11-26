@@ -1,0 +1,49 @@
+% One row for each review role of an assessed security requirement. The roles and
+% their fields come from ismsa_securityRequirementReview in
+% ismsa/calculations/assessedSecurityRequirement. The rules use plain field
+% lookups, so that the report also works on a template card.
+
+select("editable").
+
+result(result).
+
+% In the application the result is an editable field macro. In static and PDF
+% output a field macro shows the raw value of an enum, so the report shows the
+% display name there.
+field(result, "editable", "void") :- localApp.
+
+ismsa_reviewReportDisplay("open", "Not reviewed").
+ismsa_reviewReportDisplay("ok", "Approved").
+ismsa_reviewReportDisplay("deviation", "Changes needed").
+ismsa_reviewReportDisplay("notApplicable", "Not applicable").
+
+ismsa_reviewReportResult(Order, Result) :-
+    ismsa_securityRequirementReview(Order, _, ResultField, _, _, _),
+    field({{cardKey}}, ResultField, Result).
+
+ismsa_reviewReportResult(Order, "open") :-
+    ismsa_securityRequirementReview(Order, _, ResultField, _, _, _),
+    not field({{cardKey}}, ResultField, _).
+
+childResultCollection(result, "reviews").
+childResult(result, ("review", Order), "reviews") :-
+    ismsa_securityRequirementReview(Order, _, _, _, _, _).
+order(2, "reviews", 1, "order", "ASC").
+
+resultField(("review", Order), "order", Order, "integer") :-
+    ismsa_securityRequirementReview(Order, _, _, _, _, _).
+resultField(("review", Order), "card", "{{cardKey}}", "shortText") :-
+    ismsa_securityRequirementReview(Order, _, _, _, _, _).
+resultField(("review", Order), "role", Role, "shortText") :-
+    ismsa_securityRequirementReview(Order, Role, _, _, _, _).
+resultField(("review", Order), "resultField", Field, "shortText") :-
+    ismsa_securityRequirementReview(Order, _, Field, _, _, _).
+resultField(("review", Order), "reviewerField", Field, "shortText") :-
+    ismsa_securityRequirementReview(Order, _, _, Field, _, _).
+resultField(("review", Order), "dateField", Field, "shortText") :-
+    ismsa_securityRequirementReview(Order, _, _, _, Field, _).
+resultField(("review", Order), "commentField", Field, "shortText") :-
+    ismsa_securityRequirementReview(Order, _, _, _, _, Field).
+resultField(("review", Order), "resultDisplay", Display, "shortText") :-
+    ismsa_reviewReportResult(Order, Result),
+    ismsa_reviewReportDisplay(Result, Display).

@@ -1,0 +1,6 @@
+{
+    "name": "ismsa/fieldTypes/testReviewDate",
+    "displayName": "Test review date",
+    "dataType": "date",
+    "description": "The date of the test review"
+}

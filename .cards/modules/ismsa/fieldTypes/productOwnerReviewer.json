@@ -1,0 +1,6 @@
+{
+    "name": "ismsa/fieldTypes/productOwnerReviewer",
+    "displayName": "Product owner reviewer",
+    "dataType": "person",
+    "description": "The person who gives, or is expected to give, the product owner review"
+}

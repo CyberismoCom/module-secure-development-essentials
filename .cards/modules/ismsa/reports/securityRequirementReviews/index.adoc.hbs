@@ -1,0 +1,14 @@
+{{#each results}}
+[cols="3,3,3,2,5"]
+|===
+| Review | Result | Reviewer | Date | Comment
+
+{{#each reviews}}
+| {{this.role}}
+| {{#if ../editable}}{{#field}}"cardKey": "{{this.card}}", "field": "{{this.resultField}}", "display": "inline"{{/field}}{{else}}{{this.resultDisplay}}{{/if}}
+| {{#field}}"cardKey": "{{this.card}}", "field": "{{this.reviewerField}}", "display": "inline"{{/field}}
+| {{#field}}"cardKey": "{{this.card}}", "field": "{{this.dateField}}", "display": "inline"{{/field}}
+| {{#field}}"cardKey": "{{this.card}}", "field": "{{this.commentField}}", "display": "inline"{{/field}}
+{{/each}}
+|===
+{{/each}}

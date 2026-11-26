@@ -1,0 +1,6 @@
+{
+    "name": "ismsa/fieldTypes/securityReviewer",
+    "displayName": "Security reviewer",
+    "dataType": "person",
+    "description": "The person who gives, or is expected to give, the security review"
+}

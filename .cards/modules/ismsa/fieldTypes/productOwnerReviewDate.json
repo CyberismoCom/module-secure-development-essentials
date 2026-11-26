@@ -1,0 +1,6 @@
+{
+    "name": "ismsa/fieldTypes/productOwnerReviewDate",
+    "displayName": "Product owner review date",
+    "dataType": "date",
+    "description": "The date of the product owner review"
+}

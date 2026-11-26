@@ -1,0 +1,45 @@
+{
+    "name": "ismsa/workflows/securityRequirement",
+    "displayName": "Security requirement",
+    "description": "In scope (default) - Out of scope life cycle for security requirements, with a transition that reopens the reviews",
+    "states": [
+        {
+            "name": "In scope",
+            "category": "initial"
+        },
+        {
+            "name": "Out of scope",
+            "category": "closed"
+        }
+    ],
+    "transitions": [
+        {
+            "name": "Create",
+            "fromState": [
+                ""
+            ],
+            "toState": "In scope"
+        },
+        {
+            "name": "Mark out of scope",
+            "fromState": [
+                "In scope"
+            ],
+            "toState": "Out of scope"
+        },
+        {
+            "name": "Mark in scope",
+            "fromState": [
+                "Out of scope"
+            ],
+            "toState": "In scope"
+        },
+        {
+            "name": "Reopen reviews",
+            "fromState": [
+                "In scope"
+            ],
+            "toState": "In scope"
+        }
+    ]
+}

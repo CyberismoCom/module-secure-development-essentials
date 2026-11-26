@@ -74,7 +74,7 @@ policyCheckFailure(Card, "ISMS", "Lowering residual risk requires that controls 
 
 policyCheckFailure(Card, "ISMS", "Risks can only be accepted if the risk level is acceptable",
     "This risk has been accepted, even though initial risk is higher than the acceptable risk level and residual risk level has not been assigned. Reopen the risk and implement more controls to lower the residual risk.") :-
-ismsa_closestHome(Card, Home),
+    ismsa_closestHome(Card, Home),
     ismsa_closestHome(RiskRegister, Home),
     base_projectCardType(RiskRegister, "ismsa/cardTypes/riskRegister"),
     field(Card, "workflowState", "Closed as accepted"),
@@ -86,7 +86,8 @@ ismsa_closestHome(Card, Home),
 
 policyCheckFailure(Card, "ISMS", "Risks can only be accepted if the risk level is acceptable",
     "This risk has been accepted, even though the residual risk is higher than the acceptable risk level. Implement more controls to lower the residual risk or change the risk to the status 'Needs monitoring'.") :-
-    ancestor(Card, RiskRegister),
+    ismsa_closestHome(Card, Home),
+    ismsa_closestHome(RiskRegister, Home),
     base_projectCardType(RiskRegister, "ismsa/cardTypes/riskRegister"),
     field(Card, "workflowState", "Closed as accepted"),
     field(RiskRegister, "ismsa/fieldTypes/acceptableRiskLevel", AcceptableRiskLevel),
