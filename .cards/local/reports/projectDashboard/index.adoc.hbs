@@ -1,76 +1,41 @@
 {{#each results}}
-{{#unless firstStepsDone}}
-== Your next step
-
-{{#if nextStepIsSetup}}
-****
-*Set up the project.* Give the project the name of your product, and set its owner: the person who is responsible for the security of the product.
-
-* Name: change the title of this card{{#if (eq this.project.title "Untitled development project")}}. It is still "Untitled development project"{{/if}}.
-* Owner: {{#field}}"field": "base/fieldTypes/owner", "cardKey": "{{this.project.key}}", "display": "inline"{{/field}}
-
-The owner also becomes the owner of the practices of the project, unless you choose another person for a practice.
-****
-{{else}}
-****
-{{#if nextStarted}}
-*{{nextLabel}}.* {{nextStarted}} Open {{#xref}}"cardKey": "{{nextControl}}"{{/xref}} to see the evidence and what is still missing.
-{{else}}
-*{{nextLabel}}.* {{nextAction}}
-
-{{#createCards}}
-  "template": "{{nextTemplate}}",
-  "buttonLabel": "{{nextButtonLabel}}",
-  "cardKey": "{{nextPhase}}"
-{{/createCards}}
-
-To read more about this step, open {{#xref}}"cardKey": "{{nextControl}}"{{/xref}}.
-{{/if}}
-****
-{{/if}}
-
-== First steps
-
-{{#report}}
-  "name": "base/reports/stepsWidget",
-  "nextLabel": "your next step",
-  "steps": [
-    {"label": "Set up the project", "status": "{{setupStatus}}", "cardKey": "{{this.project.key}}"}{{#each steps}},
-    {"label": "{{this.dashboardStepLabel}}", "status": "{{this.dashboardStepStatus}}", "cardKey": "{{this.key}}"}{{/each}}
-  ]
-{{/report}}
-
-{{else}}
-== Your next step
-
-You have done the first steps. Continue with the practices in {{#xref}}"cardKey": "{{statusNextSteps}}"{{/xref}}.
-
-{{/unless}}
-== Progress
-
+{{#if this.setUp}}
+{{#if this.anyStep}}
 {{#report}}
   "name": "base/reports/progressTilesWidget",
-  "tiles": [
-    {{#each phases}}
-    {"label": "{{this.title}}", "value": {{#if this.progress}}{{this.progress}}{{else}}{{#if (eq this.progress 0)}}0{{else}}null{{/if}}{{/if}}, "cardKey": "{{this.key}}"}{{#unless @last}},{{/unless}}
-    {{/each}}
-  ]
+  "title": "Progress",
+  "legend": "Practices done or not needed in each phase. Click a tile to open the next one.",
+  "tiles": [{{#each this.phases}}{"label": "{{{jsonEscape this.title}}}", "value": {{#if this.dashboardValue}}{{this.dashboardValue}}{{else}}{{#if (eq this.dashboardValue 0)}}0{{else}}null{{/if}}{{/if}}, "cardKey": "{{this.dashboardTarget}}"}{{#unless @last}}, {{/unless}}{{/each}}]
 {{/report}}
 
-[cols="1,1,1,1",frame=none,grid=none]
-|===
-^.^a| {{#scoreCard}} "title": "Done", "value": {{countDone}}, "legend": "practices" {{/scoreCard}}
-^.^a| {{#scoreCard}} "title": "In progress", "value": {{countInProgress}}, "legend": "practices" {{/scoreCard}}
-^.^a| {{#scoreCard}} "title": "Not started", "value": {{countNotStarted}}, "legend": "practices" {{/scoreCard}}
-^.^a| {{#scoreCard}} "title": "Open", "value": {{countOpenIssues}}, "legend": "security issues" {{/scoreCard}}
-|===
+{{#if this.next}}
+{{#report}}
+  "name": "base/reports/stepsWidget",
+  "title": "Your next steps",
+  "legend": "{{#if this.oneLeft}}One step is left.{{else}}{{this.remaining}} steps are left.{{/if}} Click a step to open its practice. The section \"All steps\" below lists every step.",
+  "nextLabel": "next",
+  "steps": [{{#each this.next}}{"label": "{{{jsonEscape this.dashboardLabel}}}", "status": "{{this.dashboardStatus}}", "cardKey": "{{this.key}}"}{{#unless @last}}, {{/unless}}{{/each}}]
+{{/report}}
+{{else}}
+All steps of the current adoption step are done. Keep the practices up to date: {{#xref}}"cardKey": "{{this.statusNextSteps}}"{{/xref}} shows what needs attention. When you are ready, raise the adoption step.
+{{/if}}
 
-{{#if countNotOk}}
-WARNING: {{#if (eq countNotOk 1)}}1 practice needs attention: its evidence fails a check or has expired.{{else}}{{countNotOk}} practices need attention: their evidence fails a check or has expired.{{/if}} See {{#xref}}"cardKey": "{{statusNextSteps}}"{{/xref}}.
+.All steps
+[%collapsible]
+====
+The practices of the current adoption step, *{{this.project.[base/fieldTypes/adoptionStep].displayValue}}*, in the order to do them. A practice is done when it is OK or not needed.
+
+{{#each this.allSteps}}
+* {{#if this.dashboardDone}}[x]{{else}}[ ]{{/if}} {{#xref}}"cardKey": "{{this.key}}"{{/xref}}
+{{/each}}
+====
+{{else}}
+The project has no practices at its adoption step.
+{{/if}}
+
+For the status of every practice, the security issues, the policy checks, and the periodic reviews, see {{#xref}}"cardKey": "{{this.statusNextSteps}}"{{/xref}}.
 
 {{/if}}
-The numbers count the practices of the current adoption step, *{{this.project.[base/fieldTypes/adoptionStep].displayValue}}*.{{#if countNotScoped}} {{#if (eq countNotScoped 1)}}1 more practice has not been scoped yet: decide whether the project needs it.{{else}}{{countNotScoped}} more practices have not been scoped yet: decide whether the project needs them.{{/if}}{{/if}} For the full list, see {{#xref}}"cardKey": "{{statusNextSteps}}"{{/xref}}.
-
 .How this project is organised
 [%collapsible]
 ====
@@ -101,7 +66,5 @@ The practices are grouped in three adoption steps, so that you can start small:
 * *Step 1*: the essential practices. Start here.
 * *Step 2*: strengthened practices, when step 1 is in place.
 * *Step 3*: advanced practices, to meet the standards.
-
-The adoption step of the project is {{#field}}"field": "base/fieldTypes/adoptionStep", "cardKey": "{{this.project.key}}", "display": "inline"{{/field}}. Raise it when you have done the practices of the current step.
 ====
 {{/each}}

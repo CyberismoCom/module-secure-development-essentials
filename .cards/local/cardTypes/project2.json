@@ -4,6 +4,11 @@
     "workflow": "ismsa/workflows/asset",
     "customFields": [
         {
+            "name": "secdeva/fieldTypes/description",
+            "displayName": "",
+            "isCalculated": false
+        },
+        {
             "name": "base/fieldTypes/owner",
             "displayName": "",
             "isCalculated": false
@@ -31,6 +36,7 @@
         }
     ],
     "alwaysVisibleFields": [
+        "secdeva/fieldTypes/description",
         "base/fieldTypes/owner",
         "base/fieldTypes/informationClassification",
         "base/fieldTypes/adoptionStep",

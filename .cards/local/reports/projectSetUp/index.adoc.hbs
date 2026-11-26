@@ -1,0 +1,17 @@
+{{#each results}}
+{{#unless this.setUp}}
+*Set up the project* ({{this.doneCount}} of {{this.stepCount}} done)
+
+[.steps]
+{{#if this.nameDone}}* [x]{{else}}* [ ]{{/if}} *Name:* {{#field}}"field": "title", "display": "inline", "showLabel": false{{/field}}{{#unless this.nameDone}} +
+Click the title and write the name of the product, for example "Acme gateway".{{/unless}}
+{{#if this.descriptionDone}}* [x]{{else}}* [ ]{{/if}} *Description:* {{#field}}"field": "secdeva/fieldTypes/description", "display": "inline", "showLabel": false{{/field}}{{#unless this.descriptionDone}} +
+In one or two sentences: what the product is, who uses it, and what it must protect.{{/unless}}
+{{#if this.ownerDone}}* [x]{{else}}* [ ]{{/if}} *Owner:* {{#field}}"field": "base/fieldTypes/owner", "display": "inline", "showLabel": false{{/field}}{{#unless this.ownerDone}} +
+The person who is responsible for the security of the product. The practices of the project get this owner.{{/unless}}
+{{#if this.levelDone}}* [x]{{else}}* [ ]{{/if}} *Adoption step:* {{#field}}"field": "base/fieldTypes/adoptionStep", "display": "inline", "showLabel": false{{/field}}{{#unless this.levelDone}} +
+Step 1 has the essential practices, and it is recommended to start with it. You can raise the step later.{{/unless}}
+
+When these steps are done, the project shows its dashboard and its phases.
+{{/unless}}
+{{/each}}

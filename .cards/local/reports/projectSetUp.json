@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/reports/projectSetUp",
+    "displayName": "Project set-up",
+    "description": "Produces the set-up checklist of a development project, with the fields of each step in place",
+    "category": "Secure development"
+}

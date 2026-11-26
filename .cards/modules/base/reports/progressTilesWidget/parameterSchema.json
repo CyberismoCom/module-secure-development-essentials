@@ -16,7 +16,7 @@
       "type": "string"
     },
     "tiles": {
-      "description": "The tiles, from left to right. Keep the number small, about 3 to 8, because the tiles do not wrap.",
+      "description": "The tiles, from left to right. Up to eight tiles are in one row. More tiles wrap into rows of the same length.",
       "type": "array",
       "minItems": 1,
       "items": {

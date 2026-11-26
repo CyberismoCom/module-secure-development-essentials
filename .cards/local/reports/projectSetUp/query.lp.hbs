@@ -1,0 +1,27 @@
+result(result).
+
+secdeva_setUpProject(Project) :-
+  secdeva_closestProject({{cardKey}}, Project),
+  secdeva_project2(Project).
+
+resultField(result, "setUp", "true", "shortText") :-
+  secdeva_setUpProject(Project),
+  secdeva_projectSetUp(Project).
+
+resultField(result, "stepCount", N, "integer") :-
+  secdeva_setUpProject(_),
+  N = #count { S : secdeva_projectSetUpStep(S, _) }.
+
+resultField(result, "doneCount", N, "integer") :-
+  secdeva_setUpProject(Project),
+  N = #count { S : secdeva_projectSetUpStepDone(Project, S) }.
+
+secdeva_setUpStepName(1, "nameDone").
+secdeva_setUpStepName(2, "descriptionDone").
+secdeva_setUpStepName(3, "ownerDone").
+secdeva_setUpStepName(4, "levelDone").
+
+resultField(result, Name, "true", "shortText") :-
+  secdeva_setUpProject(Project),
+  secdeva_setUpStepName(S, Name),
+  secdeva_projectSetUpStepDone(Project, S).

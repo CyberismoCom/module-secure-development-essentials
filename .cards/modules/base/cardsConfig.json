@@ -3,7 +3,7 @@
     "cardKeyPrefix": "base",
     "name": "Base",
     "description": "The building blocks that most Cyberismo modules use: pages, tasks, controlled documents, decisions, meeting memos, role assignments, checklists, and dashboard widgets",
-    "version": "1.10.0",
+    "version": "1.11.0",
     "modules": [],
     "hubs": []
 }
