@@ -13,9 +13,10 @@
         "base/cardTypes/annualTask",
         "base/cardTypes/quarterlyTask",
         "base/cardTypes/task",
-        "base/cardTypes/monthlyTask"
+        "base/cardTypes/monthlyTask",
+        "ismsa/cardTypes/assessedSecurityRequirement"
     ],
     "enableLinkDescription": false,
     "category": "Cybersecurity management",
-    "description": "Links a controlled document or a review to a task, an internal control or an assessed compliance requirement that it evidences"
+    "description": "Links a controlled document or a review to a task, an internal control, an assessed compliance requirement, or an assessed security requirement that it evidences"
 }

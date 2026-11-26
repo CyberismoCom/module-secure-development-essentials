@@ -1,0 +1,6 @@
+{
+    "name": "ismsa/fieldTypes/productOwnerReviewComment",
+    "displayName": "Product owner review comment",
+    "dataType": "longText",
+    "description": "A comment on the product owner review. It is needed when the result is Changes needed or Not applicable"
+}

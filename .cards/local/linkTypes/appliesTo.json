@@ -4,7 +4,8 @@
     "outboundDisplayName": "applies to",
     "inboundDisplayName": "is subject to",
     "sourceCardTypes": [
-        "secdeva/cardTypes/requirement"
+        "secdeva/cardTypes/requirement",
+        "ismsa/cardTypes/assessedSecurityRequirement"
     ],
     "destinationCardTypes": [
         "secdeva/cardTypes/dataStore",

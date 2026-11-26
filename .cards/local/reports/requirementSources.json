@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/reports/requirementSources",
+    "displayName": "Sources of a security requirement",
+    "description": "The compliance requirements that a security requirement implements, and the requirements that it refines or that refine it",
+    "category": "Secure development"
+}

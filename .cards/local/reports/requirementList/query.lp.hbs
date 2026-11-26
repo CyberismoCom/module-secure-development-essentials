@@ -19,6 +19,11 @@ childResult(result, Requirement, "requirements") :-
   secdeva_closestProject(Requirement, Project),
   field(Requirement, "cardType", "secdeva/cardTypes/requirement").
 
+childResult(result, Requirement, "requirements") :-
+  secdeva_closestProject({{cardKey}}, Project),
+  secdeva_closestProject(Requirement, Project),
+  field(Requirement, "cardType", "ismsa/cardTypes/assessedSecurityRequirement").
+
 childResult(Requirement, Risk, "risks") :-
   childResult(result, Requirement, "requirements"),
   link(Requirement, Risk, "ismsa/linkTypes/mitigates").

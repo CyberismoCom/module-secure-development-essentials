@@ -81,6 +81,12 @@ secdeva_registerMember(Requirement, Register) :-
   secdeva_closestProject(Requirement, Project),
   base_projectCardType(Requirement, "secdeva/cardTypes/requirement").
 
+secdeva_registerMember(Requirement, Register) :-
+  secdeva_closestProject(Register, Project),
+  field(Register, "base/fieldTypes/identifier", "secdeva_register_security-requirements"),
+  secdeva_closestProject(Requirement, Project),
+  base_projectCardType(Requirement, "ismsa/cardTypes/assessedSecurityRequirement").
+
 % members of the technology assessments register
 
 secdeva_registerMember(Asset, Register) :-

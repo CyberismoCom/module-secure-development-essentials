@@ -13,9 +13,8 @@
         },
         {
             "name": "ismsa",
-            "location": "https://github.com/CyberismoCom/module-isms-essentials.git",
-            "private": false,
-            "version": "^1.10.0"
+            "location": "file:/Users/henryhaverinen/cyberismo/cyberismo-projects/module-isms-essentials/.claude/worktrees/e1-security-requirement",
+            "private": false
         }
     ],
     "hubs": [

@@ -1,0 +1,28 @@
+== Requirement description
+
+#TODO: state the requirement. Write one "shall" sentence for each requirement, so that a person can verify it. Use the pattern below that fits, and remove the others.#
+
+* Ubiquitous: The <system> shall <response>
+* Event-driven: When <trigger>, the <system> shall <response>
+* State-driven: While <in state>, the <system> shall <response>
+* Unwanted behaviour: If <trigger>, then the <system> shall <response>
+* Optional feature: Where <feature is included>, the <system> shall <response>
+* Complex: a combination of the patterns above, in the order While, When, the <system> shall
+
+== Background and rationale
+
+#TODO: explain why the requirement is necessary. Name the risk, the threat, or the compliance requirement behind it.#
+
+== Verification
+
+#TODO: describe how to verify the requirement, for example with a test, an analysis, or an inspection.#
+
+== References
+
+* #TODO: add references and sources#
+
+== Reviews
+
+{{#report}}
+  "name": "ismsa/reports/securityRequirementReviews"
+{{/report}}

@@ -1,0 +1,13 @@
+{
+    "title": "Untitled security requirement",
+    "cardType": "ismsa/cardTypes/assessedSecurityRequirement",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|b",
+    "lastUpdated": "2026-11-23T10:37:00.348Z",
+    "ismsa/fieldTypes/architectureReview": "open",
+    "ismsa/fieldTypes/testReview": "open",
+    "ismsa/fieldTypes/securityReview": "open",
+    "ismsa/fieldTypes/productOwnerReview": "open",
+    "base/fieldTypes/informationClassification": "internal"
+}

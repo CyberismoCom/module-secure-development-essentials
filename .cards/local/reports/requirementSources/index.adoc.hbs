@@ -1,0 +1,33 @@
+{{#each results}}
+{{#if complianceRequirements}}
+This requirement implements these compliance requirements:
+
+{{#each complianceRequirements}}
+* xref:{{this.key}}.adoc[{{this.title}}]{{#if this.mappingDescription}}: {{this.mappingDescription}}{{/if}}
+{{/each}}
+{{else}}
+No compliance requirement in this project is linked to this requirement.
+{{/if}}
+
+{{#if refines}}
+This requirement refines:
+
+{{#each refines}}
+* xref:{{this.key}}.adoc[{{this.title}}]
+{{/each}}
+{{/if}}
+
+{{#if refinements}}
+These requirements refine this requirement:
+
+[cols="3,1"]
+|===
+| Requirement | Assessment
+
+{{#each refinements}}
+| xref:{{this.key}}.adoc[{{this.title}}]
+| {{this.[base/fieldTypes/assessment].displayValue}}
+{{/each}}
+|===
+{{/if}}
+{{/each}}

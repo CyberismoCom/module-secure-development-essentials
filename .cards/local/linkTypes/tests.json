@@ -8,7 +8,8 @@
     "destinationCardTypes": [
         "secdeva/cardTypes/securityIssue",
         "secdeva/cardTypes/requirement",
-        "secdeva/cardTypes/interface"
+        "secdeva/cardTypes/interface",
+        "ismsa/cardTypes/assessedSecurityRequirement"
     ],
     "enableLinkDescription": false,
     "displayName": "Tests",

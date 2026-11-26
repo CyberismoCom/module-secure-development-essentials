@@ -1,0 +1,6 @@
+{
+    "name": "ismsa/fieldTypes/testReviewer",
+    "displayName": "Test reviewer",
+    "dataType": "person",
+    "description": "The person who gives, or is expected to give, the test review"
+}

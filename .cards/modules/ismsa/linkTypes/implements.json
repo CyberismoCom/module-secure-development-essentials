@@ -11,12 +11,14 @@
         "ismsa/cardTypes/internalControl",
         "ismsa/cardTypes/register",
         "ismsa/cardTypes/riskRegister",
-        "secdeva/cardTypes/requirement"
+        "secdeva/cardTypes/requirement",
+        "ismsa/cardTypes/assessedSecurityRequirement"
     ],
     "destinationCardTypes": [
         "ismsa/cardTypes/control",
         "ismsa/cardTypes/complianceRequirement",
-        "ismsa/cardTypes/assessedComplianceRequirement"
+        "ismsa/cardTypes/assessedComplianceRequirement",
+        "ismsa/cardTypes/assessedSecurityRequirement"
     ],
     "enableLinkDescription": false,
     "displayName": "Implements",
