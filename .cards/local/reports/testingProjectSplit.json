@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/reports/testingProjectSplit",
+    "displayName": "Testing - project split",
+    "description": "Checks that project2 creates the core controls and the secure development library templates create the other controls, with their template card keys and install facts",
+    "category": "Test content"
+}

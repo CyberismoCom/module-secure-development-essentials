@@ -38,6 +38,10 @@
             "name": "secdeva/fieldTypes/guidedSetUp",
             "displayName": "",
             "isCalculated": false
+        },
+        {
+            "name": "secdeva/fieldTypes/projectWritesSoftware",
+            "isCalculated": false
         }
     ],
     "alwaysVisibleFields": [

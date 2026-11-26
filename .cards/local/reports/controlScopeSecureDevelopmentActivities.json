@@ -1,6 +1,6 @@
 {
     "name": "secdeva/reports/controlScopeSecureDevelopmentActivities",
-    "displayName": "Control - Scope secure development activities",
-    "description": "The content of the internal control 'Scope secure development activities'",
+    "displayName": "Control - Scope the security activities",
+    "description": "The content of the internal control 'Scope the security activities'",
     "category": "Secure development"
 }

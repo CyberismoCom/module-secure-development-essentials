@@ -1,0 +1,164 @@
+% Checks the split of project2 into the core and the secure development library
+% (E2, decided 2026-11-26).
+%
+% secdeva_splitExpect(Identifier, Template): the control with the identifier
+% is created by the template, and by no other template of secdeva.
+
+secdeva_splitExpect("secdeva_control_assign-people-to-project-roles", "secdeva/templates/project2").
+secdeva_splitExpect("secdeva_control_ensure-competence", "secdeva/templates/project2").
+secdeva_splitExpect("secdeva_control_security-context", "secdeva/templates/project2").
+secdeva_splitExpect("secdeva_control_threat-models", "secdeva/templates/project2").
+secdeva_splitExpect("secdeva_control_high-level-risks", "secdeva/templates/project2").
+secdeva_splitExpect("secdeva_control_security-requirements", "secdeva/templates/project2").
+secdeva_splitExpect("secdeva_control_scope-secure-development-activities", "secdeva/templates/project2").
+secdeva_splitExpect("secdeva_control_3rd-party-technologies", "secdeva/templates/project2").
+secdeva_splitExpect("secdeva_control_manage-defects", "secdeva/templates/project2").
+secdeva_splitExpect("secdeva_control_vulnerability-management", "secdeva/templates/project2").
+secdeva_splitExpect("secdeva_control_software-update-management", "secdeva/templates/project2").
+secdeva_splitExpect("secdeva_control_known-vulnerability-scanning", "secdeva/templates/project2").
+secdeva_splitExpect("secdeva_control_privacy-by-design-review", "secdeva/templates/project2").
+secdeva_splitExpect("secdeva_control_protect-environments", "secdeva/templates/project2").
+secdeva_splitExpect("secdeva_control_security-requirement-testing", "secdeva/templates/project2").
+secdeva_splitExpect("secdeva_control_risk-mitigation-testing", "secdeva/templates/project2").
+secdeva_splitExpect("secdeva_control_penetration-testing", "secdeva/templates/project2").
+secdeva_splitExpect("secdeva_control_document-attack-surface", "secdeva/templates/project2").
+secdeva_splitExpect("secdeva_control_attack-surface-analysis", "secdeva/templates/project2").
+secdeva_splitExpect("secdeva_control_use-of-cryptography", "secdeva/templates/secureDevelopmentDesign").
+secdeva_splitExpect("secdeva_control_security-design-review", "secdeva/templates/secureDevelopmentDesign").
+secdeva_splitExpect("secdeva_control_subprojects", "secdeva/templates/secureDevelopmentDesign").
+secdeva_splitExpect("secdeva_control_static-code-analysis", "secdeva/templates/secureDevelopmentImplementation").
+secdeva_splitExpect("secdeva_control_manual-code-review", "secdeva/templates/secureDevelopmentImplementation").
+secdeva_splitExpect("secdeva_control_product-documentation-review", "secdeva/templates/secureDevelopmentImplementation").
+secdeva_splitExpect("secdeva_control_integrity-protection-of-release", "secdeva/templates/secureDevelopmentReleases").
+secdeva_splitExpect("secdeva_control_basic-input-validation-testing", "secdeva/templates/secureDevelopmentVerification").
+secdeva_splitExpect("secdeva_control_error-handling-testing", "secdeva/templates/secureDevelopmentVerification").
+
+% secdeva_splitKey(Identifier, TemplateCardKey): a control that moved keeps
+% its template card key. Projects created before the split have cards with
+% these keys in templateCardKey, so their library counts as installed.
+
+secdeva_splitKey("secdeva_control_use-of-cryptography", "secdeva_mrpww21s").
+secdeva_splitKey("secdeva_control_security-design-review", "secdeva_2b7juhs8").
+secdeva_splitKey("secdeva_control_subprojects", "secdeva_aw7rt8ow").
+secdeva_splitKey("secdeva_control_static-code-analysis", "secdeva_c0wtj0ci").
+secdeva_splitKey("secdeva_control_manual-code-review", "secdeva_iotqroii").
+secdeva_splitKey("secdeva_control_product-documentation-review", "secdeva_m6kd6mou").
+secdeva_splitKey("secdeva_control_integrity-protection-of-release", "secdeva_8nil3vzn").
+secdeva_splitKey("secdeva_control_basic-input-validation-testing", "secdeva_hm5obl63").
+secdeva_splitKey("secdeva_control_error-handling-testing", "secdeva_uovbyi17").
+
+secdeva_splitTemplate("secdeva/templates/project2").
+secdeva_splitTemplate("secdeva/templates/secureDevelopmentDesign").
+secdeva_splitTemplate("secdeva/templates/secureDevelopmentImplementation").
+secdeva_splitTemplate("secdeva/templates/secureDevelopmentReleases").
+secdeva_splitTemplate("secdeva/templates/secureDevelopmentVerification").
+
+secdeva_splitLibraryTemplate(Template) :-
+    secdeva_splitTemplate(Template),
+    Template != "secdeva/templates/project2".
+
+% Where each control is now
+
+secdeva_splitFound(Identifier, Template, Card) :-
+    secdeva_splitExpect(Identifier, _),
+    secdeva_splitTemplate(Template),
+    ancestor(Card, Template),
+    field(Card, "base/fieldTypes/identifier", Identifier).
+
+secdeva_splitCount(Identifier, N) :-
+    secdeva_splitExpect(Identifier, _),
+    N = #count { Template, Card : secdeva_splitFound(Identifier, Template, Card) }.
+
+secdeva_splitPlacementOk(Identifier) :-
+    secdeva_splitExpect(Identifier, Template),
+    secdeva_splitCount(Identifier, 1),
+    secdeva_splitFound(Identifier, Template, _).
+
+secdeva_splitKeyOk(Identifier) :-
+    secdeva_splitExpect(Identifier, _),
+    not secdeva_splitKey(Identifier, _).
+
+secdeva_splitKeyOk(Identifier) :-
+    secdeva_splitKey(Identifier, Key),
+    secdeva_splitFound(Identifier, _, Card),
+    @concatenate(Card, "") == Key.
+
+% Each library template is installable under a phase register of project2.
+
+secdeva_splitInstallOk(Template) :-
+    secdeva_splitLibraryTemplate(Template),
+    secdeva_installableExtension(RegisterIdentifier, "the secure development library", Template, _),
+    ancestor(Register, "secdeva/templates/project2"),
+    field(Register, "base/fieldTypes/identifier", RegisterIdentifier).
+
+%
+% Report output
+%
+
+result(result).
+
+childResult(result, Identifier, "controls") :-
+    secdeva_splitExpect(Identifier, _).
+
+resultFields(Identifier,
+    "identifier", Identifier, "shortText",
+    "expected", Expected, "shortText") :-
+    secdeva_splitExpect(Identifier, Expected).
+
+resultField(Identifier, "found", Template, "shortText") :-
+    secdeva_splitFound(Identifier, Template, _),
+    secdeva_splitCount(Identifier, 1).
+
+resultField(Identifier, "found", "missing", "shortText") :-
+    secdeva_splitCount(Identifier, 0).
+
+resultField(Identifier, "found", "more than one template card", "shortText") :-
+    secdeva_splitCount(Identifier, N),
+    N > 1.
+
+resultField(Identifier, "verdict", "PASS", "shortText") :-
+    secdeva_splitPlacementOk(Identifier),
+    secdeva_splitKeyOk(Identifier).
+
+resultField(Identifier, "verdict", "FAIL: wrong template", "shortText") :-
+    secdeva_splitExpect(Identifier, _),
+    not secdeva_splitPlacementOk(Identifier).
+
+resultField(Identifier, "verdict", "FAIL: template card key changed", "shortText") :-
+    secdeva_splitPlacementOk(Identifier),
+    not secdeva_splitKeyOk(Identifier).
+
+childResult(result, Template, "libraryTemplates") :-
+    secdeva_splitLibraryTemplate(Template).
+
+resultField(Template, "template", Template, "shortText") :-
+    secdeva_splitLibraryTemplate(Template).
+
+resultField(Template, "verdict", "PASS", "shortText") :-
+    secdeva_splitInstallOk(Template).
+
+resultField(Template, "verdict", "FAIL: no installable extension for a register of project2", "shortText") :-
+    secdeva_splitLibraryTemplate(Template),
+    not secdeva_splitInstallOk(Template).
+
+secdeva_splitPass(Identifier) :-
+    secdeva_splitPlacementOk(Identifier),
+    secdeva_splitKeyOk(Identifier).
+
+secdeva_splitCounts(Total, Passed) :-
+    A = #count { I : secdeva_splitExpect(I, _) },
+    B = #count { T : secdeva_splitLibraryTemplate(T) },
+    C = #count { I : secdeva_splitPass(I) },
+    D = #count { T : secdeva_splitInstallOk(T) },
+    Total = A + B,
+    Passed = C + D.
+
+resultField(result, "total", Total, "integer") :-
+    secdeva_splitCounts(Total, _).
+
+resultField(result, "passed", Passed, "integer") :-
+    secdeva_splitCounts(_, Passed).
+
+resultField(result, "failed", Failed, "integer") :-
+    secdeva_splitCounts(Total, Passed),
+    Failed = Total - Passed.
