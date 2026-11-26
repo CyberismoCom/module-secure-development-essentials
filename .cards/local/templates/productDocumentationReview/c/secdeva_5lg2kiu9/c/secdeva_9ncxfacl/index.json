@@ -1,0 +1,10 @@
+{
+    "title": "Hardening guidelines on integration",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|i",
+    "lastUpdated": "2026-11-21T09:10:40.021Z",
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_product-documentation_hardening-guidelines-on-integration"
+}

@@ -1,0 +1,10 @@
+{
+    "title": "Security documentation",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|o",
+    "lastUpdated": "2026-11-21T09:11:54.064Z",
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_technology_security-documentation"
+}

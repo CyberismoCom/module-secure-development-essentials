@@ -1,3 +1,7 @@
+% Shared predicates: base_task/1 and base_recurringTask/1. Each one has a
+% predicate card in the base documentation, under "For module authors" >
+% "Shared predicates".
+
 base_task(Task) :-
     base_projectCardType(Task, "base/cardTypes/task").
 

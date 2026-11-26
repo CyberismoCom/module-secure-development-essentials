@@ -1,0 +1,10 @@
+{
+    "title": "Consistency with the risk level",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|e",
+    "lastUpdated": "2026-11-21T09:11:33.694Z",
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_process-scoping_consistency-with-the-risk-level"
+}

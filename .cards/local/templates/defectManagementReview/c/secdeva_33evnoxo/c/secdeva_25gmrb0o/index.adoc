@@ -1,0 +1,1 @@
+Check that findings from vulnerability tracking tools have been 1) analysed and 2) tracked to closure, or justifiably deferred to a future release. Notice that there must be no known exploitable vulnerabilities. Examine at least the recent security-related issues (since the last review).

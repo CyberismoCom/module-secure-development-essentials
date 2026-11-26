@@ -1,13 +1,16 @@
 {{#each results}}
-The current adoption step of this project is *{{this.project.[base/fieldTypes/adoptionStep].displayValue}}*. 
+Adoption step of this project (you can change it here): {{#field}}"cardKey": "{{this.project.key}}", "field": "base/fieldTypes/adoptionStep", "display": "inline"{{/field}}
+
 {{#unless (eq this.project.[base/fieldTypes/adoptionStep].value "step3")}}
-The following tables do not include internal controls on higher adoption steps. You can change the target adoption step field in {{#report}}"name":"secdeva/reports/xref", "identifier":"secdeva_project"{{/report}}.
+The following tables do not include internal controls on higher adoption steps. To include them, select a higher adoption step.
 {{#unless inProgress}}
 {{#unless notOk}}
+{{#unless notStarted}}
 {{#unless open}}
 
-TIP: You have completed the internal controls on the current adoption step, so you can begin working on the items on the next adoption step. Change the target adoption step field in {{#report}}"name":"secdeva/reports/xref", "identifier":"secdeva_project"{{/report}}.
+TIP: You have completed the internal controls on the current adoption step, so you can begin working on the items on the next adoption step. Change the adoption step above.
 
+{{/unless}}
 {{/unless}}
 {{/unless}}
 {{/unless}}
@@ -75,12 +78,34 @@ The following controls are not OK and require attention:
 
 {{/if}}
 
-{{#if open}}
+{{#if notStarted}}
 === Internal controls that have not been started
 
 You have not started working on the following internal controls:
 
-.See open controls
+.See controls that have not been started
+[%collapsible]
+=====
+[cols="3,1,4"]
+|===
+| Control | Assessment  | Assessment explanation
+
+{{#each notStarted}}
+| {{#xref}}"cardKey": "{{this.key}}"{{/xref}}
+| {{this.[base/fieldTypes/assessment].displayValue}}
+| {{this.[base/fieldTypes/assessmentExplanation]}}
+
+{{/each}}
+|===
+=====
+{{/if}}
+
+{{#if open}}
+=== Internal controls that have not been scoped
+
+Decide whether the following internal controls are in scope:
+
+.See controls that have not been scoped
 [%collapsible]
 =====
 [cols="3,1,4"]

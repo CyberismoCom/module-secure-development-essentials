@@ -1,0 +1,5 @@
+Check that the EU conformity assessment is done for this release. The EU CRA module manages the assessment procedure itself. Mark this check as Not applicable if the product is not placed on the EU market.
+
+* The applicable EU conformity assessment procedure is done.
+* The assessment is done again if this release changes the design or the characteristics of the product in a way that affects conformity.
+* The evidence of the assessment, with the EU declaration of conformity, is archived with the other release artifacts.

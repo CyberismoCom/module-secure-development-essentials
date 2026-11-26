@@ -1,0 +1,9 @@
+{
+    "title": "Use case (name of the use case)",
+    "cardType": "secdeva/cardTypes/cryptographyUseCase",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|b",
+    "lastUpdated": "2026-11-23T10:30:42.957Z",
+    "base/fieldTypes/checklistResult": "open"
+}

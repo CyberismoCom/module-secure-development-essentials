@@ -4,35 +4,18 @@ This document records a review of static code analysis in the development projec
 
 == Review checklist
 
-Check that the static code analysis tools have been documented either as an organization development tool or a project-specific development tool.
+Set the result of each item in the table. A Deviation or Not applicable result needs a comment. Put links to the evidence in the comment.
 
-* [ ] OK
-* [ ] Not OK
+{{#report}}
+  "name": "base/reports/checklist"
+{{/report}}
 
-Check that static code analysis tools have been used for the programming languages where tools exist.
+You can add your own items to the checklist.
 
-* [ ] OK
-* [ ] Not OK
-
-Check that static code analysis has been set up as part of the build pipeline.
-
-* [ ] OK
-* [ ] Not OK
-
-Check that static code analysis has been configured to detect at least most of the potentially exploitable code constructs that are covered in the applicable secure coding standard.
-
-* [ ] OK
-* [ ] Not OK
-
-Check that static code analysis tool has been run on all source code changes including new source code.
-
-* [ ] OK
-* [ ] Not OK
-
-Check that the identified security-related findings have been analysed and addressed, or reported as security issues in the backlog for future resolution.
-
-* [ ] OK
-* [ ] Not OK
+{{#createCards}}
+  "template": "base/templates/checklistItem",
+  "buttonLabel": "Add a checklist item"
+{{/createCards}}
 
 == Review notes
 

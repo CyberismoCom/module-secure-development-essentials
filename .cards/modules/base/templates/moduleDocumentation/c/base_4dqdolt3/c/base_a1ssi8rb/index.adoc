@@ -1,0 +1,11 @@
+== Install
+
+#TODO: Say how to install the module, or which modules bring it as a dependency.#
+
+== Create your first card
+
+#TODO: Name the template to create first, and say what it creates.#
+
+== Next steps
+
+#TODO: List the first three or four things to do.#

@@ -1,0 +1,1 @@
+Check that third-party software update management has been executed.

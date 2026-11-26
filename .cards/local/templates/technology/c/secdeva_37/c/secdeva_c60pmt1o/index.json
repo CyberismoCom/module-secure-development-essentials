@@ -1,0 +1,10 @@
+{
+    "title": "Long-term viability",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|s",
+    "lastUpdated": "2026-11-21T09:11:58.343Z",
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_technology_long-term-viability"
+}

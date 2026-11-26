@@ -1,0 +1,36 @@
+{
+    "name": "base/workflows/checklistItem",
+    "displayName": "Checklist item",
+    "description": "Active → Archived lifecycle for checklist items. The result field holds the outcome of the item.",
+    "states": [
+        {
+            "name": "Active",
+            "category": "active"
+        },
+        {
+            "name": "Archived",
+            "category": "closed"
+        }
+    ],
+    "transitions": [
+        {
+            "name": "Create",
+            "fromState": [],
+            "toState": "Active"
+        },
+        {
+            "name": "Archive",
+            "fromState": [
+                "Active"
+            ],
+            "toState": "Archived"
+        },
+        {
+            "name": "Restore",
+            "fromState": [
+                "Archived"
+            ],
+            "toState": "Active"
+        }
+    ]
+}

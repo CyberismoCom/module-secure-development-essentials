@@ -94,3 +94,31 @@ policyCheckFailure(Document, "Document control", "Review has expired", "Complete
     base_projectCardType(ReviewTask, "base/cardTypes/reviewTask"),
     field(ReviewTask, "workflowState", "Closed as done"),
     field(ReviewTask, "base/fieldTypes/lastReviewed", LastReviewed).
+
+% The checklist of a technology assessment must be answered before approval.
+% Each check needs a result, and a Deviation or Not applicable result needs a
+% comment. Deviations do not block approval: the approver accepts them.
+
+transitionDenied(
+    Document,
+    "Approve",
+    @concatenate(
+        "Answer all checks of the checklist before approving: ",
+        Open, " open, ", Missing, " comment(s) missing.")
+    ) :-
+        base_projectCardType(Document, "secdeva/cardTypes/technology"),
+        base_checklist(Document),
+        not base_checklistComplete(Document),
+        base_checklistItemCount(Document, "open", Open),
+        base_checklistCommentMissingCount(Document, Missing).
+
+policyCheckFailure(
+    Document,
+    "Document control",
+    "Unanswered checks in an approved technology assessment",
+    "Some checks of the checklist have no result, or a Deviation or Not applicable result has no comment. Answer the checks, or reopen the assessment."
+    ) :-
+        base_projectCardType(Document, "secdeva/cardTypes/technology"),
+        field(Document, "workflowState", "Approved"),
+        base_checklist(Document),
+        not base_checklistComplete(Document).

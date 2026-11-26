@@ -1,0 +1,1 @@
+Check that the third-party software update management covers all such technologies where third-party software update management is required.

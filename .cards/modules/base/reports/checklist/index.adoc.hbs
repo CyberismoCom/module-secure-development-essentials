@@ -1,0 +1,28 @@
+{{#each results}}
+{{#if items}}
+[cols="6,2,4"]
+|===
+| Item | Result | Comment
+
+{{#each items}}
+a|*{{#if ../editable}}{{#xref}}"cardKey": "{{this.key}}"{{/xref}}{{else}}{{this.title}}{{/if}}*{{#each this.failures}} +
+*{{this.title}}*{{/each}}
+
+{{#include}}"cardKey": "{{this.key}}", "title": "exclude"{{/include}}
+|{{#if ../editable}}{{#field}}"cardKey": "{{this.key}}", "field": "base/fieldTypes/checklistResult", "display": "inline"{{/field}}{{else}}{{this.resultDisplay}}{{/if}}
+|{{#field}}"cardKey": "{{this.key}}", "field": "base/fieldTypes/comment", "display": "inline"{{/field}}
+{{/each}}
+|===
+
+{{#if this.checklistResult}}
+*Result: {{this.checklistResult}}*
+{{/if}}
+
+Items: {{this.total}}. OK: {{this.ok}}. Deviation: {{this.deviation}}. Not applicable: {{this.notApplicable}}. Open: {{this.open}}.
+{{#if this.commentsMissing}}
+Comment missing: {{this.commentsMissing}}.
+{{/if}}
+{{else}}
+This card has no checklist items.
+{{/if}}
+{{/each}}

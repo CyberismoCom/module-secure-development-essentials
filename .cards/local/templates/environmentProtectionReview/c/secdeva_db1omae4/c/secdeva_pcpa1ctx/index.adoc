@@ -1,0 +1,1 @@
+Check that basic cybersecurity controls that protect these environments, including for example access control, software updates, hardening and secure configuration, monitoring, network security, and backups, have been implemented.

@@ -6,31 +6,18 @@ TIP: You can see a summary of the scoping decisions in the internal control regi
 
 == Review checklist
 
-Check that the security context of the product has been considered when making scoping decisions (intended use, deployment environment, risk level).
+Set the result of each item in the table. A Deviation or Not applicable result needs a comment. Put links to the evidence in the comment.
 
-* [ ] OK
-* [ ] Not OK
+{{#report}}
+  "name": "base/reports/checklist"
+{{/report}}
 
-Check that each internal control has been assessed and marked as either in scope or out of scope in the internal control register.
+You can add your own items to the checklist.
 
-* [ ] OK
-* [ ] Not OK
-
-Check that controls marked as out of scope have a documented justification that is reasonable and defensible.
-
-* [ ] OK
-* [ ] Not OK
-
-Check that the scoping is consistent with the risk level of the product. High-risk products should not have an excessive number of controls scoped out.
-
-* [ ] OK
-* [ ] Not OK
-
-Check that the scoping has been reviewed or updated since the last significant change in the project scope, architecture, or regulatory environment.
-
-* [ ] OK
-* [ ] Not OK
-* [ ] Not applicable
+{{#createCards}}
+  "template": "base/templates/checklistItem",
+  "buttonLabel": "Add a checklist item"
+{{/createCards}}
 
 == Review notes
 

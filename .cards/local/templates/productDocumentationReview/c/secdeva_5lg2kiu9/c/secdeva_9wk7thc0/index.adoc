@@ -1,0 +1,5 @@
+Check that the hardening guidelines tell how to configure and use the security options and capabilities of the product in support of local security policies. For each security option or capability, the guidelines include:
+
+. How the option contributes to the defence in depth strategy of the product.
+. The configurable values and the default values, and how the values can affect security and work practices.
+. How to set, change, or delete the value.

@@ -1,0 +1,46 @@
+{{#each results}}
+{{#if useCases}}
+{{#each useCases}}
+=== {{#if ../app}}{{#xref}}"cardKey": "{{this.key}}"{{/xref}}{{else}}{{this.title}}{{/if}}
+
+{{#if ../app}}
+{{#each this.failures}}
+* *{{this.title}}*
+{{/each}}
+{{/if}}
+
+{{#include}}"cardKey": "{{this.key}}", "title": "exclude"{{/include}}
+
+[cols="1,3"]
+|===
+| Title
+|{{#field}}"cardKey": "{{this.key}}", "field": "title", "display": "inline"{{/field}}
+| Use case
+|{{#field}}"cardKey": "{{this.key}}", "field": "secdeva/fieldTypes/cryptographyUseCase", "display": "inline"{{/field}}
+| Expected usage period
+|{{#field}}"cardKey": "{{this.key}}", "field": "secdeva/fieldTypes/cryptographyUsagePeriod", "display": "inline"{{/field}}
+| References
+|{{#field}}"cardKey": "{{this.key}}", "field": "secdeva/fieldTypes/cryptographyReferences", "display": "inline"{{/field}}
+| Algorithms
+|{{#field}}"cardKey": "{{this.key}}", "field": "secdeva/fieldTypes/cryptographyAlgorithms", "display": "inline"{{/field}}
+| Key length
+|{{#field}}"cardKey": "{{this.key}}", "field": "secdeva/fieldTypes/cryptographyKeyLength", "display": "inline"{{/field}}
+| Roles and responsibilities
+|{{#field}}"cardKey": "{{this.key}}", "field": "secdeva/fieldTypes/cryptographyRoles", "display": "inline"{{/field}}
+| Key management
+|{{#field}}"cardKey": "{{this.key}}", "field": "secdeva/fieldTypes/cryptographyKeyManagement", "display": "inline"{{/field}}
+| Result
+|{{#field}}"cardKey": "{{this.key}}", "field": "base/fieldTypes/checklistResult", "display": "inline"{{/field}}
+| Comment
+|{{#field}}"cardKey": "{{this.key}}", "field": "base/fieldTypes/comment", "display": "inline"{{/field}}
+|===
+
+{{/each}}
+
+{{#if this.total}}
+Use cases: {{this.total}}.{{#if this.ok includeZero=true}} OK: {{this.ok}}. Deviation: {{this.deviation}}. Not applicable: {{this.notApplicable}}. Open: {{this.open}}.{{/if}}
+{{/if}}
+{{else}}
+This card has no use cases. Add one with the button below.
+{{/if}}
+{{/each}}

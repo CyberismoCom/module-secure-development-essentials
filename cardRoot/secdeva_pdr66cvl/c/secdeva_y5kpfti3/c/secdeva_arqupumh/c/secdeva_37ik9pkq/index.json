@@ -1,0 +1,12 @@
+{
+    "rank": "0|d",
+    "workflowState": "Active",
+    "createdAt": "2026-11-23T10:31:21.388Z",
+    "links": [],
+    "cardType": "base/cardTypes/checklistItem",
+    "title": "License",
+    "templateCardKey": "secdeva_72s000ep",
+    "base/fieldTypes/checklistResult": "ok",
+    "base/fieldTypes/identifier": "secdeva_check_technology_license",
+    "lastUpdated": "2026-11-23T10:31:21.392Z"
+}

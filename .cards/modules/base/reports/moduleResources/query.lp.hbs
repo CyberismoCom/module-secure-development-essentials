@@ -1,0 +1,68 @@
+% The resources of one kind in one module. The kind is the "type" parameter,
+% the name of the resource folder, for example "cardTypes". The module is the
+% "module" parameter, or the prefix of the current project.
+
+base_moduleResource(R) :- cardType(R), @resourceType(R) = "{{type}}".
+base_moduleResource(R) :- template(R), @resourceType(R) = "{{type}}".
+base_moduleResource(R) :- report(R), @resourceType(R) = "{{type}}".
+base_moduleResource(R) :- workflow(R), @resourceType(R) = "{{type}}".
+base_moduleResource(R) :- fieldType(R), @resourceType(R) = "{{type}}".
+base_moduleResource(R) :- linkType(R), @resourceType(R) = "{{type}}".
+base_moduleResource(R) :- skill(R), @resourceType(R) = "{{type}}".
+
+{{#if module}}
+base_documentedModule("{{module}}").
+{{else}}
+base_documentedModule(P) :- project(P).
+{{/if}}
+
+result(R) :-
+    base_moduleResource(R),
+    base_documentedModule(M),
+{{#if category}}
+    field(R, "category", "{{category}}"),
+{{/if}}
+    @resourcePrefix(R) = M.
+
+resultField(R, "displayName", D, "shortText") :- result(R), field(R, "displayName", D).
+resultField(R, "displayName", @resourceIdentifier(R), "shortText") :-
+    result(R), not field(R, "displayName", _).
+resultField(R, "description", D, "shortText") :- result(R), field(R, "description", D).
+resultField(R, "category", C, "shortText") :- result(R), field(R, "category", C).
+
+% Card types: the workflow
+resultField(R, "workflow", WN, "shortText") :-
+    result(R), cardType(R), field(R, "workflow", W), field(W, "displayName", WN).
+resultField(R, "workflow", W, "shortText") :-
+    result(R), cardType(R), field(R, "workflow", W), not field(W, "displayName", _).
+
+{{#if fields}}
+% Card types: the visible fields, in the order of the card type
+childResult(R, ("field", R, F), "fields") :-
+    result(R), cardType(R), field((R, F), "index", _).
+resultField(("field", R, F), "displayName", FN, "shortText") :-
+    childResult(R, ("field", R, F), "fields"), field(F, "displayName", FN).
+resultField(("field", R, F), "displayName", F, "shortText") :-
+    childResult(R, ("field", R, F), "fields"), not field(F, "displayName", _).
+resultField(("field", R, F), "index", I, "integer") :-
+    childResult(R, ("field", R, F), "fields"), field((R, F), "index", I).
+order(2, "fields", 1, "index", "ASC").
+{{/if}}
+
+% Templates: the card types of all cards in the template
+childResult(R, ("cardType", R, CT), "cardTypes") :-
+    result(R), template(R), ancestor(Card, R), field(Card, "cardType", CT).
+resultField(("cardType", R, CT), "displayName", CTN, "shortText") :-
+    childResult(R, ("cardType", R, CT), "cardTypes"), field(CT, "displayName", CTN).
+resultField(("cardType", R, CT), "displayName", CT, "shortText") :-
+    childResult(R, ("cardType", R, CT), "cardTypes"), not field(CT, "displayName", _).
+
+% Field types: the data type
+resultField(R, "dataType", D, "shortText") :- result(R), fieldType(R), field(R, "dataType", D).
+
+% Link types: the names of the link in both directions
+resultField(R, "outbound", D, "shortText") :- result(R), linkType(R), field(R, "outboundDisplayName", D).
+resultField(R, "inbound", D, "shortText") :- result(R), linkType(R), field(R, "inboundDisplayName", D).
+
+order(2, "cardTypes", 1, "displayName", "ASC").
+orderBy("displayName", "ASC").

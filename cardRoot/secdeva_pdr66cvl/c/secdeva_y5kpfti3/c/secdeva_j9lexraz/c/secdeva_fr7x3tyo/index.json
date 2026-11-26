@@ -1,0 +1,12 @@
+{
+    "rank": "0|q",
+    "workflowState": "Active",
+    "createdAt": "2026-11-23T10:31:19.057Z",
+    "links": [],
+    "cardType": "base/cardTypes/checklistItem",
+    "title": "Security-related notifications",
+    "templateCardKey": "secdeva_t36o97of",
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_technology_security-related-notifications",
+    "lastUpdated": "2026-11-23T10:31:19.072Z"
+}

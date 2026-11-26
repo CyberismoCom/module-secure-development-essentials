@@ -1,0 +1,5 @@
+Every security requirement that mitigates a risk and every security issue that increases a risk has the *Testing to defeat the mitigation* field set, and the recorded decision is correct:
+
+* *Required*, when it is practical to test whether the mitigation can be defeated, but the testing has not been executed yet
+* *Not applicable*, when such testing is not possible or not practical. The reasoning has been explained in the card.
+* *Done*, when the testing has been executed and the results have been recorded

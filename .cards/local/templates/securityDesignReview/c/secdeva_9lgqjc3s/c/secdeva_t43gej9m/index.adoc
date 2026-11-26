@@ -1,0 +1,3 @@
+If security requirements have been identified, then check that the _design_ addresses the security requirements adequately.
+
+Check that each significant design change is reviewed to determine that there are no security requirements that are not addressed by the defence in depth strategy.

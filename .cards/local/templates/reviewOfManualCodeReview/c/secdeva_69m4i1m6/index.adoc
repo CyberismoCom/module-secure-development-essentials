@@ -4,10 +4,18 @@ This document records a review of manual code review practices.
 
 == Review checklist
 
-Check that manual code reviews have been performed against secure coding standards.
+Set the result of each item in the table. A Deviation or Not applicable result needs a comment. Put links to the evidence in the comment.
 
-* [ ] OK
-* [ ] Not OK
+{{#report}}
+  "name": "base/reports/checklist"
+{{/report}}
+
+You can add your own items to the checklist.
+
+{{#createCards}}
+  "template": "base/templates/checklistItem",
+  "buttonLabel": "Add a checklist item"
+{{/createCards}}
 
 == Review notes
 

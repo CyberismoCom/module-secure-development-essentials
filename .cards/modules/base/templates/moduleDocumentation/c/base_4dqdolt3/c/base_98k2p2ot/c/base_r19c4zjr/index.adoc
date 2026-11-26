@@ -1,0 +1,4 @@
+{{#report}}
+  "name": "base/reports/moduleResources",
+  "type": "reports"
+{{/report}}

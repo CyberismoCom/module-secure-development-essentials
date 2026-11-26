@@ -1,0 +1,10 @@
+{
+    "title": "Attack surface reduction",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|h",
+    "lastUpdated": "2026-11-20T19:01:34.014Z",
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_security-design_attack-surface-reduction"
+}
