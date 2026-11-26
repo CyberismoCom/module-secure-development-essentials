@@ -1,0 +1,14 @@
+{
+    "rank": "0|a",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-19T20:00:00.000Z",
+    "links": [],
+    "lastUpdated": "2026-11-19T20:00:00.000Z",
+    "cardType": "secdeva/cardTypes/threatModel",
+    "title": "Threat model: draft without review tasks",
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/identifier": "secdeva_test_tm_no_reviews",
+    "base/fieldTypes/owner": "owner@example.com",
+    "base/fieldTypes/approver": "approver@example.com",
+    "base/fieldTypes/reviewPeriod": 36500
+}

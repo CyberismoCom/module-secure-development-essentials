@@ -50,12 +50,34 @@ ismsa_disableAssetControl(Card) :- secdeva_threatModelComponent(Card).
 % Threat model is similar to a controlled document, but it is a separate card type,
 % so we need to include similar rules for it as there are for controlled documents in the base module:
 
+% The review tasks of a threat model, and the threat models that have one.
+% The rules over "all review tasks" below need at least one review task, or
+% they would be true for a threat model without review tasks.
+secdeva_threatModelReview(Document, ReviewTask) :-
+    base_projectCardType(Document, "secdeva/cardTypes/threatModel"),
+    parent(ReviewTask, Document),
+    base_projectCardType(ReviewTask, "base/cardTypes/reviewTask").
+
+secdeva_threatModelHasReview(Document) :-
+    secdeva_threatModelReview(Document, _).
+
+% A threat model that has a closed review with a review date.
+secdeva_threatModelReviewed(Document) :-
+    secdeva_threatModelReview(Document, ReviewTask),
+    field(ReviewTask, "workflowState", "Closed as done"),
+    field(ReviewTask, "base/fieldTypes/lastReviewed", _).
+
+transitionDenied(Document, "Approve", "Add a review task before approving") :-
+    base_projectCardType(Document, "secdeva/cardTypes/threatModel"),
+    not secdeva_threatModelHasReview(Document).
+
 transitionDenied(Document, "Approve", "Fix policy failures before approving") :-
     base_projectCardType(Document, "secdeva/cardTypes/threatModel"),
     policyCheckFailure(Document, _, _, _).
 
 transitionDenied(Document, "Approve", "Fix policy failures in at least one of the review subtask(s) before approving" ):-
     base_projectCardType(Document, "secdeva/cardTypes/threatModel"),
+    secdeva_threatModelHasReview(Document),
     policyCheckFailure(ReviewTask, _, _, _) :
     base_projectCardType(ReviewTask, "base/cardTypes/reviewTask"),
     parent(ReviewTask, Document).
@@ -84,6 +106,7 @@ transitionDenied(Document, "Approve", "Complete the review task(s) before approv
 policyCheckFailure(Document, "Document control", "Failing policy checks in all review tasks", "Fix policy failures in at least one of the review subtask(s)" ):-
     base_projectCardType(Document, "secdeva/cardTypes/threatModel"),
     field(Document, "workflowState", "Approved"),
+    secdeva_threatModelHasReview(Document),
     policyCheckFailure(ReviewTask, _, _, _) :
     base_projectCardType(ReviewTask, "base/cardTypes/reviewTask"),
     parent(ReviewTask, Document).
@@ -134,9 +157,17 @@ policyCheckFailure(ReviewTask, "Threat model control", "Reviewer cannot be the s
     field(ReviewTask, "base/fieldTypes/owner", Reviewer),
     DocumentOwner = Reviewer.
 
+policyCheckFailure(Document, "Document control", "Review task missing", "Add a review task and complete it.") :-
+    base_projectCardType(Document, "secdeva/cardTypes/threatModel"),
+    field(Document, "workflowState", "Approved"),
+    not secdeva_threatModelHasReview(Document).
+
+% Expired when all closed reviews are older than the review period. A threat model
+% without a closed review fails other checks instead.
 policyCheckFailure(Document, "Document control", "Review has expired", "Complete a new review of this document.") :-
     base_projectCardType(Document, "secdeva/cardTypes/threatModel"),
     field(Document, "workflowState", "Approved"),
+    secdeva_threatModelReviewed(Document),
     field(Document, "base/fieldTypes/reviewPeriod", ReviewPeriod),
     @daysSince(LastReviewed) > ReviewPeriod :
     parent(ReviewTask, Document),

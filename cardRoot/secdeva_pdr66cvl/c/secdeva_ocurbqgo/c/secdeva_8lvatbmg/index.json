@@ -1,0 +1,16 @@
+{
+    "rank": "0|f",
+    "workflowState": "Approved",
+    "createdAt": "2026-11-19T20:00:00.000Z",
+    "links": [],
+    "lastUpdated": "2026-11-19T20:00:00.000Z",
+    "cardType": "secdeva/cardTypes/threatModel",
+    "title": "Threat model: approved with an expired review",
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/identifier": "secdeva_test_tm_review_expired",
+    "base/fieldTypes/owner": "owner@example.com",
+    "base/fieldTypes/approver": "approver@example.com",
+    "base/fieldTypes/reviewPeriod": 30,
+    "base/fieldTypes/approvalDate": "2026-11-02",
+    "lastTransitioned": "2026-11-19T20:00:00.000Z"
+}

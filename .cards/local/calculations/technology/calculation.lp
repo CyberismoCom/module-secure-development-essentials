@@ -1,12 +1,34 @@
 % A technology assessment is similar to a controlled document, but it is a separate card type,
 % so we need to include similar rules for it as there are for controlled documents in the base module:
 
+% The review tasks of a technology assessment, and the technology assessments that have one.
+% The rules over "all review tasks" below need at least one review task, or
+% they would be true for a technology assessment without review tasks.
+secdeva_technologyReview(Document, ReviewTask) :-
+    base_projectCardType(Document, "secdeva/cardTypes/technology"),
+    parent(ReviewTask, Document),
+    base_projectCardType(ReviewTask, "base/cardTypes/reviewTask").
+
+secdeva_technologyHasReview(Document) :-
+    secdeva_technologyReview(Document, _).
+
+% A technology assessment that has a closed review with a review date.
+secdeva_technologyReviewed(Document) :-
+    secdeva_technologyReview(Document, ReviewTask),
+    field(ReviewTask, "workflowState", "Closed as done"),
+    field(ReviewTask, "base/fieldTypes/lastReviewed", _).
+
+transitionDenied(Document, "Approve", "Add a review task before approving") :-
+    base_projectCardType(Document, "secdeva/cardTypes/technology"),
+    not secdeva_technologyHasReview(Document).
+
 transitionDenied(Document, "Approve", "Fix policy failures before approving") :-
     base_projectCardType(Document, "secdeva/cardTypes/technology"),
     policyCheckFailure(Document, _, _, _).
 
 transitionDenied(Document, "Approve", "Fix policy failures in at least one of the review subtask(s) before approving" ):-
     base_projectCardType(Document, "secdeva/cardTypes/technology"),
+    secdeva_technologyHasReview(Document),
     policyCheckFailure(ReviewTask, _, _, _) :
     base_projectCardType(ReviewTask, "base/cardTypes/reviewTask"),
     parent(ReviewTask, Document).
@@ -35,6 +57,7 @@ transitionDenied(Document, "Approve", "Complete the review task(s) before approv
 policyCheckFailure(Document, "Document control", "Failing policy checks in all review tasks", "Fix policy failures in at least one of the review subtask(s)" ):-
     base_projectCardType(Document, "secdeva/cardTypes/technology"),
     field(Document, "workflowState", "Approved"),
+    secdeva_technologyHasReview(Document),
     policyCheckFailure(ReviewTask, _, _, _) :
     base_projectCardType(ReviewTask, "base/cardTypes/reviewTask"),
     parent(ReviewTask, Document).
@@ -85,9 +108,17 @@ policyCheckFailure(ReviewTask, "Document control", "Reviewer cannot be the same 
     field(ReviewTask, "base/fieldTypes/owner", Reviewer),
     DocumentOwner = Reviewer.
 
+policyCheckFailure(Document, "Document control", "Review task missing", "Add a review task and complete it.") :-
+    base_projectCardType(Document, "secdeva/cardTypes/technology"),
+    field(Document, "workflowState", "Approved"),
+    not secdeva_technologyHasReview(Document).
+
+% Expired when all closed reviews are older than the review period. A technology assessment
+% without a closed review fails other checks instead.
 policyCheckFailure(Document, "Document control", "Review has expired", "Complete a new review of this document.") :-
     base_projectCardType(Document, "secdeva/cardTypes/technology"),
     field(Document, "workflowState", "Approved"),
+    secdeva_technologyReviewed(Document),
     field(Document, "base/fieldTypes/reviewPeriod", ReviewPeriod),
     @daysSince(LastReviewed) > ReviewPeriod :
     parent(ReviewTask, Document),

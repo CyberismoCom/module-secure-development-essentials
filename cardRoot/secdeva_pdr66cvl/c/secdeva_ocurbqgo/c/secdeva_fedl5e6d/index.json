@@ -1,0 +1,16 @@
+{
+    "rank": "0|e",
+    "workflowState": "Approved",
+    "createdAt": "2026-11-19T20:00:00.000Z",
+    "links": [],
+    "lastUpdated": "2026-11-19T20:00:00.000Z",
+    "cardType": "secdeva/cardTypes/threatModel",
+    "title": "Threat model: approved with a current review",
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/identifier": "secdeva_test_tm_current",
+    "base/fieldTypes/owner": "owner@example.com",
+    "base/fieldTypes/approver": "approver@example.com",
+    "base/fieldTypes/reviewPeriod": 36500,
+    "base/fieldTypes/approvalDate": "2026-11-02",
+    "lastTransitioned": "2026-11-19T20:00:00.000Z"
+}
