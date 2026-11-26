@@ -11,21 +11,20 @@ The fixtures are facts in this file: four development projects, each with
 two phases, the phase registers, and a few internal controls with a given
 assessment.
 
-* secdeva_test_new: a new project. It is not set up, and it has only the
-  evidence that every project has (a risk register). Its children are
-  hidden in the tree.
-* secdeva_test_started: an older project that is not set up, but has a
-  review as evidence. Its children are not hidden.
-* secdeva_test_ready: a project that is set up. It has the controls for
-  the next steps, the phase progress, and the tile targets.
-* secdeva_test_noLevel: a project with every field except the adoption step.
-  It is not set up and has no evidence, so its children are hidden too.
+* secdeva_test_new: a new project with the field "Guided set-up". It is not
+  set up, so its children are hidden in the tree.
+* secdeva_test_old: an older project without the field. It is not set up
+  either, but its tree does not change.
+* secdeva_test_ready: a guided project that is set up. It has the controls
+  for the next steps, the phase progress, and the tile targets.
+* secdeva_test_noLevel: a guided project with every field except the
+  adoption step. It is not set up, so its children are hidden too.
 *%
 
 % The projects
 
 secdeva_test_project(secdeva_test_new, "Untitled development project").
-secdeva_test_project(secdeva_test_started, "Untitled development project").
+secdeva_test_project(secdeva_test_old, "Untitled development project").
 secdeva_test_project(secdeva_test_ready, "Acme gateway").
 secdeva_test_project(secdeva_test_noLevel, "Acme sensor").
 
@@ -33,6 +32,8 @@ secdeva_test_card(P, "secdeva/cardTypes/project2") :- secdeva_test_project(P, _)
 field(P, "title", T) :- secdeva_test_project(P, T).
 field(P, "base/fieldTypes/adoptionStep", "step1") :-
   secdeva_test_project(P, _), P != secdeva_test_noLevel.
+field(P, "secdeva/fieldTypes/guidedSetUp", "true") :-
+  secdeva_test_project(P, _), P != secdeva_test_old.
 
 field(secdeva_test_ready, "secdeva/fieldTypes/description", "A gateway for building automation devices.").
 field(secdeva_test_ready, "base/fieldTypes/owner", "owner@example.com").
@@ -66,7 +67,7 @@ secdeva_test_control(secdeva_test_ready, ready_design, design, "0|b", "secdeva_t
 secdeva_test_control(secdeva_test_ready, ready_notNeeded, design, "0|c", "secdeva_test_control_not-needed", "notApplicable").
 secdeva_test_control(secdeva_test_new, new_roles, foundation, "0|a", "secdeva_control_assign-people-to-project-roles", "notStarted").
 secdeva_test_control(secdeva_test_new, new_risks, design, "0|a", "secdeva_control_high-level-risks", "notStarted").
-secdeva_test_control(secdeva_test_started, started_roles, foundation, "0|a", "secdeva_control_assign-people-to-project-roles", "inProgress").
+secdeva_test_control(secdeva_test_old, old_roles, foundation, "0|a", "secdeva_control_assign-people-to-project-roles", "inProgress").
 
 secdeva_test_card(C, "ismsa/cardTypes/internalControl") :- secdeva_test_control(_, C, _, _, _, _).
 parent(C, Register) :- secdeva_test_control(P, C, Phase, _, _, _), secdeva_test_registerCard(P, Phase, Register).
@@ -74,17 +75,6 @@ field(C, "rank", R) :- secdeva_test_control(_, C, _, R, _, _).
 field(C, "title", I) :- secdeva_test_control(_, C, _, _, I, _).
 field(C, "base/fieldTypes/identifier", I) :- secdeva_test_control(_, C, _, _, I, _).
 field(C, "base/fieldTypes/assessment", A) :- secdeva_test_control(_, C, _, _, _, A).
-
-% Evidence: a risk register in the new project (every project has one), and a
-% review in the started project
-
-secdeva_test_card(new_riskRegister, "secdeva/cardTypes/riskRegister").
-parent(new_riskRegister, secdeva_test_new).
-link(new_riskRegister, new_risks, "ismsa/linkTypes/evidences").
-
-secdeva_test_card(started_review, "base/cardTypes/review").
-parent(started_review, (secdeva_test_started, phase, foundation)).
-link(started_review, started_roles, "ismsa/linkTypes/evidences").
 
 projectCard(Card) :- secdeva_test_card(Card, _).
 field(Card, "cardType", Type) :- secdeva_test_card(Card, Type).
@@ -113,7 +103,7 @@ secdeva_test_failure_((P, N), "set-up step should be done") :-
   secdeva_test_expectSetUpStepDone(P, N), not secdeva_projectSetUpStepDone(P, N).
 secdeva_test_failure_((P, N), "set-up step should not be done") :-
   secdeva_projectSetUpStepDone(P, N),
-  P != secdeva_test_ready, P != secdeva_test_started,
+  P != secdeva_test_ready, P != secdeva_test_old,
   secdeva_test_project(P, _),
   not secdeva_test_expectSetUpStepDone(P, N).
 

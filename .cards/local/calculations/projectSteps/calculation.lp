@@ -205,27 +205,16 @@ secdeva_projectPhaseTarget(Project, Phase, Phase) :-
 % A new project shows only the project card in the tree until it is set up.
 % The children stay reachable by link and by search.
 %
-% A hidden card also hides its descendants, and some calculations leave out
-% hidden cards, for example the progress of ismsa registers. So the rule
-% does not hide anything in a project that has evidence for any of its
-% controls: an existing project that has no owner or no description keeps
-% its tree. The registers that secdeva/calculations/evidence links to their
-% controls automatically do not count as evidence here, because every
-% project has them.
+% Only the projects with the field "Guided set-up" are hidden. New projects
+% get the field from the template. Older projects do not have it, so their
+% tree does not change, even when they have no owner or description.
 %
 
-secdeva_projectAutomaticEvidenceType("secdeva/cardTypes/riskRegister").
-secdeva_projectAutomaticEvidenceType("secdeva/cardTypes/securityRequirementRegister").
-secdeva_projectAutomaticEvidenceType("secdeva/cardTypes/technologyAssessmentRegister").
-
-secdeva_projectHasEvidence(Project) :-
-  secdeva_projectControlPhase(Project, Control, _, _),
-  link(Evidence, Control, "ismsa/linkTypes/evidences"),
-  field(Evidence, "cardType", Type),
-  not secdeva_projectAutomaticEvidenceType(Type).
+secdeva_guidedProject(Project) :-
+  secdeva_project2(Project),
+  field(Project, "secdeva/fieldTypes/guidedSetUp", "true").
 
 hiddenInTreeView(Card) :-
-  secdeva_project2(Project),
+  secdeva_guidedProject(Project),
   parent(Card, Project),
-  not secdeva_projectSetUp(Project),
-  not secdeva_projectHasEvidence(Project).
+  not secdeva_projectSetUp(Project).

@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/fieldTypes/guidedSetUp",
+    "displayName": "Guided set-up",
+    "description": "Yes when the project card guides the set-up of the project and then shows the dashboard. New projects get it from the template. Older projects do not have it, so the rules of the set-up do not change them.",
+    "dataType": "boolean"
+}

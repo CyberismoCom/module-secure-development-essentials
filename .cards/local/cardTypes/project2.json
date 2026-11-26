@@ -33,6 +33,11 @@
             "displayName": "",
             "isCalculated": false,
             "enableOverride": false
+        },
+        {
+            "name": "secdeva/fieldTypes/guidedSetUp",
+            "displayName": "",
+            "isCalculated": false
         }
     ],
     "alwaysVisibleFields": [
@@ -43,7 +48,8 @@
         "secdeva/fieldTypes/adoptionStepJustification"
     ],
     "optionallyVisibleFields": [
-        "base/fieldTypes/identifier"
+        "base/fieldTypes/identifier",
+        "secdeva/fieldTypes/guidedSetUp"
     ],
     "description": "A software or hardware development project"
 }
