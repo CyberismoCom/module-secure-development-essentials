@@ -14,5 +14,13 @@
     "lastUpdated": "2026-11-23T11:01:26.913Z",
     "base/fieldTypes/identifier": "secdeva_test_map_refinement-b1",
     "base/fieldTypes/owner": "owner@example.com",
-    "base/fieldTypes/justification": "Not used in this product."
+    "base/fieldTypes/justification": "Not used in this product.",
+    "ismsa/fieldTypes/architectureReviewer": "reviewer@example.com",
+    "ismsa/fieldTypes/architectureReviewDate": "2026-11-20",
+    "ismsa/fieldTypes/testReviewer": "reviewer@example.com",
+    "ismsa/fieldTypes/testReviewDate": "2026-11-20",
+    "ismsa/fieldTypes/securityReviewer": "reviewer@example.com",
+    "ismsa/fieldTypes/securityReviewDate": "2026-11-20",
+    "ismsa/fieldTypes/productOwnerReviewer": "reviewer@example.com",
+    "ismsa/fieldTypes/productOwnerReviewDate": "2026-11-20"
 }

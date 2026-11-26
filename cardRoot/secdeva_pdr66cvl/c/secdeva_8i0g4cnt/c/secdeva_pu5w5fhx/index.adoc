@@ -1,3 +1,5 @@
-## <Insert title here>
+The cards on this page are the fixtures of `tests/requirement-mapping.lp`. Their identifiers start with `secdeva_test_map_`.
 
-<Insert page content>
+The test file gives the mapping facts and the test evidence. Without the test file, the cards have no links to each other, and no requirement is verified.
+
+One card under "Layered test project" has the same identifier as "Mapping test: refinement A1". The rules must not link that card to this project, and the test evidence must not reach it.
