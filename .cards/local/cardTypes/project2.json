@@ -41,7 +41,8 @@
         },
         {
             "name": "secdeva/fieldTypes/projectWritesSoftware",
-            "isCalculated": false
+            "isCalculated": false,
+            "displayName": "Writes software"
         }
     ],
     "alwaysVisibleFields": [
@@ -53,7 +54,8 @@
     ],
     "optionallyVisibleFields": [
         "base/fieldTypes/identifier",
-        "secdeva/fieldTypes/guidedSetUp"
+        "secdeva/fieldTypes/guidedSetUp",
+        "secdeva/fieldTypes/projectWritesSoftware"
     ],
     "description": "A software or hardware development project"
 }

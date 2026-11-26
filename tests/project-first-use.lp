@@ -19,6 +19,13 @@ assessment.
   for the next steps, the phase progress, and the tile targets.
 * secdeva_test_noLevel: a guided project with every field except the
   adoption step. It is not set up, so its children are hidden too.
+* secdeva_test_yes: a guided project with every field and the answer "yes"
+  to the software question, but without the secure development library. It
+  is not set up, because the library is missing.
+* secdeva_test_lib: like secdeva_test_yes, with one control from each part of
+  the library (the template card keys of secdeva/templates/secureDevelopment*).
+  It is set up.
+* secdeva_test_ready and secdeva_test_noLevel answer "no".
 *%
 
 % The projects
@@ -27,6 +34,8 @@ secdeva_test_project(secdeva_test_new, "Untitled development project").
 secdeva_test_project(secdeva_test_old, "Untitled development project").
 secdeva_test_project(secdeva_test_ready, "Acme gateway").
 secdeva_test_project(secdeva_test_noLevel, "Acme sensor").
+secdeva_test_project(secdeva_test_yes, "Acme controller").
+secdeva_test_project(secdeva_test_lib, "Acme hub").
 
 secdeva_test_card(P, "secdeva/cardTypes/project2") :- secdeva_test_project(P, _).
 field(P, "title", T) :- secdeva_test_project(P, T).
@@ -39,6 +48,35 @@ field(secdeva_test_ready, "secdeva/fieldTypes/description", "A gateway for build
 field(secdeva_test_ready, "base/fieldTypes/owner", "owner@example.com").
 field(secdeva_test_noLevel, "secdeva/fieldTypes/description", "A sensor.").
 field(secdeva_test_noLevel, "base/fieldTypes/owner", "owner@example.com").
+
+secdeva_test_complete(secdeva_test_yes).
+secdeva_test_complete(secdeva_test_lib).
+field(P, "secdeva/fieldTypes/description", "A device.") :- secdeva_test_complete(P).
+field(P, "base/fieldTypes/owner", "owner@example.com") :- secdeva_test_complete(P).
+
+field(secdeva_test_ready, "secdeva/fieldTypes/projectWritesSoftware", "no").
+field(secdeva_test_noLevel, "secdeva/fieldTypes/projectWritesSoftware", "no").
+field(P, "secdeva/fieldTypes/projectWritesSoftware", "yes") :- secdeva_test_complete(P).
+
+% The library registers of secdeva_test_lib, each with one control created
+% from a template card of the library:
+% secdeva_test_library(RegisterIdentifier, TemplateCardKey)
+
+secdeva_test_library("secdeva_register_implementation-controls", "secdeva_c0wtj0ci").
+secdeva_test_library("secdeva_register_releases-controls", "secdeva_8nil3vzn").
+secdeva_test_library("secdeva_register_verification-controls", "secdeva_hm5obl63").
+
+secdeva_test_card((secdeva_test_lib, register, I), "ismsa/cardTypes/register") :- secdeva_test_library(I, _).
+parent((secdeva_test_lib, register, I), secdeva_test_lib) :- secdeva_test_library(I, _).
+field((secdeva_test_lib, register, I), "base/fieldTypes/identifier", I) :- secdeva_test_library(I, _).
+secdeva_test_card((secdeva_test_lib, control, I), "ismsa/cardTypes/internalControl") :- secdeva_test_library(I, _).
+parent((secdeva_test_lib, control, I), (secdeva_test_lib, register, I)) :- secdeva_test_library(I, _).
+field((secdeva_test_lib, control, I), "templateCardKey", K) :- secdeva_test_library(I, K).
+
+% The design register is in the fixtures of every project.
+secdeva_test_card((secdeva_test_lib, control, design), "ismsa/cardTypes/internalControl").
+parent((secdeva_test_lib, control, design), (secdeva_test_lib, register, design)).
+field((secdeva_test_lib, control, design), "templateCardKey", "secdeva_2b7juhs8").
 
 % Two phases and their registers in each project
 
@@ -88,6 +126,7 @@ secdeva_test_failure(Subject, Reason) :- secdeva_test_failure_(Subject, Reason).
 % Set-up
 
 secdeva_test_expectSetUp(secdeva_test_ready).
+secdeva_test_expectSetUp(secdeva_test_lib).
 
 secdeva_test_failure_(P, "is set up, but should not be") :-
   secdeva_test_project(P, _), secdeva_projectSetUp(P), not secdeva_test_expectSetUp(P).
@@ -98,12 +137,14 @@ secdeva_test_expectSetUpStepDone(secdeva_test_new, 4).
 secdeva_test_expectSetUpStepDone(secdeva_test_noLevel, 1).
 secdeva_test_expectSetUpStepDone(secdeva_test_noLevel, 2).
 secdeva_test_expectSetUpStepDone(secdeva_test_noLevel, 3).
+secdeva_test_expectSetUpStepDone(secdeva_test_noLevel, 5).
+secdeva_test_expectSetUpStepDone(secdeva_test_yes, 1..4).
 
 secdeva_test_failure_((P, N), "set-up step should be done") :-
   secdeva_test_expectSetUpStepDone(P, N), not secdeva_projectSetUpStepDone(P, N).
 secdeva_test_failure_((P, N), "set-up step should not be done") :-
   secdeva_projectSetUpStepDone(P, N),
-  P != secdeva_test_ready, P != secdeva_test_old,
+  P != secdeva_test_ready, P != secdeva_test_old, P != secdeva_test_lib,
   secdeva_test_project(P, _),
   not secdeva_test_expectSetUpStepDone(P, N).
 
@@ -111,6 +152,18 @@ secdeva_test_failure_((P, N), "set-up step should not be done") :-
 
 secdeva_test_expectHidden(secdeva_test_new).
 secdeva_test_expectHidden(secdeva_test_noLevel).
+secdeva_test_expectHidden(secdeva_test_yes).
+
+% The library
+
+secdeva_test_failure_(secdeva_test_lib, "the library should be complete") :-
+  not secdeva_projectLibraryComplete(secdeva_test_lib).
+secdeva_test_failure_(secdeva_test_yes, "the library should be missing") :-
+  not secdeva_projectLibraryMissing(secdeva_test_yes).
+secdeva_test_failure_(P, "should not have the library") :-
+  secdeva_test_project(P, _), secdeva_projectHasLibrary(P), P != secdeva_test_lib.
+secdeva_test_failure_(secdeva_test_lib, "the library should have four parts") :-
+  not 4 #count { T : secdeva_projectLibraryAdded(secdeva_test_lib, T) } 4.
 
 secdeva_test_failure_(P, "the children should be hidden") :-
   secdeva_test_expectHidden(P),

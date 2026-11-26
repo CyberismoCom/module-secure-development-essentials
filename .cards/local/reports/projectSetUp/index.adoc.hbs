@@ -11,6 +11,24 @@ In one or two sentences: what the product is, who uses it, and what it must prot
 The person who is responsible for the security of the product. The practices of the project get this owner.{{/unless}}
 {{#if this.levelDone}}* [x]{{else}}* [ ]{{/if}} *Adoption step:* {{#field}}"field": "base/fieldTypes/adoptionStep", "display": "inline", "showLabel": false{{/field}}{{#unless this.levelDone}} +
 Step 1 has the essential practices, and it is recommended to start with it. You can raise the step later.{{/unless}}
+{{#if this.practicesDone}}* [x]{{else}}* [ ]{{/if}} *Does the team write or change software for this product?* {{#field}}"field": "secdeva/fieldTypes/projectWritesSoftware", "display": "inline", "showLabel": false{{/field}}{{#unless this.practicesDone}} +
+The project has the core practices that every product needs. A "yes" adds the secure development library: the practices for teams that write or change software.{{#if (eq this.writesSoftware "yes")}} Add its practices to each phase:{{/if}}{{/unless}}
+{{#if (eq this.writesSoftware "yes")}}{{#unless this.practicesDone}}
+
+{{#each this.libraryParts}}
+{{#if this.added}}
+Added under {{#xref}}"cardKey": "{{this.register}}"{{/xref}}.
+
+{{else}}
+{{#createCards}}
+  "cardKey": "{{this.register}}",
+  "template": "{{this.template}}",
+  "buttonLabel": "{{this.buttonLabel}}"
+{{/createCards}}
+
+{{/if}}
+{{/each}}
+{{/unless}}{{/if}}
 
 When these steps are done, the project shows its dashboard and its phases.
 {{/unless}}
