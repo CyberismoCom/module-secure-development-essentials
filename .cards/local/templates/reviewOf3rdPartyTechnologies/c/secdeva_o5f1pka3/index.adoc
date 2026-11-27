@@ -2,7 +2,7 @@
 
 This document is a review of third-party technologies. This review focuses on the selection and documentation of the technologies. Vulnerabilities are reviewed separately.
 
-== Review 
+== Review
 
 The following major third-party technologies have been identified:
 
@@ -10,26 +10,20 @@ The following major third-party technologies have been identified:
   "name": "secdeva/reports/projectTechnologies"
 {{/report}}
 
-== Technology assessments
+== Review checklist
 
-All major third-party technologies have been identified, and the relevant technology assessments have been approved.
+Set the result of each item in the table. A Deviation or Not applicable result needs a comment. Put links to the evidence in the comment.
 
-* [ ] Not OK
-* [ ] OK
+{{#report}}
+  "name": "base/reports/checklist"
+{{/report}}
 
-== Selection of libraries and packages
+You can add your own items to the checklist.
 
-For libraries and packages, where separate technology assessments are not necessary, check that the team's code review practice includes review of new third-party dependencies.
-
-* [ ] Not OK
-* [ ] OK
-
-== SBOM
-
-A software bill of materials (SBOM) has been drawn up, all third-party dependencies, libraries and packages are included in the software bill of materials (SBOM), and the SBOM is up to date.
-
-* [ ] Not OK
-* [ ] OK
+{{#createCards}}
+  "template": "base/templates/checklistItem",
+  "buttonLabel": "Add a checklist item"
+{{/createCards}}
 
 == Identified security issues from this review
 

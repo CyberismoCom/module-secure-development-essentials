@@ -1,0 +1,7 @@
+The technology is compliant with business goals:
+
+* Are the costs of the technology selection acceptable? +
+You should compare the costs of using 3rd party technology to the costs of implementing and maintaining an in-house implementation.
+* Does the technology selection support meeting the target schedule of the product?
+* Is the technology selection aligned with major business demands (performance, availability, product life cycle)
+* Business responsible accepts the identified major risks

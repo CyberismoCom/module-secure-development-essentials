@@ -1,0 +1,12 @@
+{
+    "rank": "0|c",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-23T10:31:20.236Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/technology",
+    "title": "CHK2 Technology with all checks answered and a deviation",
+    "templateCardKey": "secdeva_37",
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/identifier": "secdeva_document_technology",
+    "lastUpdated": "2026-11-23T10:31:20.239Z"
+}

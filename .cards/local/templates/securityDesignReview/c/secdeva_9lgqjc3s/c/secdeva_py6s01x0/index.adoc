@@ -1,0 +1,1 @@
+Design so that there is no single point of failure which, if compromised, would compromise the security of the system.

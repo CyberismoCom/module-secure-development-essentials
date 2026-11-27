@@ -1,0 +1,10 @@
+{
+    "title": "Proven design",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|j",
+    "lastUpdated": "2026-11-20T19:01:36.125Z",
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_security-design_proven-design"
+}

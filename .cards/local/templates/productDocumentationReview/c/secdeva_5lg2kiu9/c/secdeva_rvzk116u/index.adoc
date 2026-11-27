@@ -1,0 +1,1 @@
+Document the hardening guidelines that the users must follow when installing and maintaining the product.

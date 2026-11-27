@@ -1,0 +1,3 @@
+The technology has an acceptable quality track record and it has been sufficiently tested.
+
+Put the justification for an acceptable quality track record and sufficient testing in the comment.

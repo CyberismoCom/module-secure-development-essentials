@@ -1,0 +1,10 @@
+{
+    "title": "Execution of testing to defeat the mitigation",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|c",
+    "lastUpdated": "2026-11-21T09:11:29.375Z",
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_risk-mitigation-testing_execution-of-defeat-testing"
+}

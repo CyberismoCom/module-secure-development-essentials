@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/fieldTypes/cryptographyRoles",
+    "displayName": "Roles and responsibilities",
+    "dataType": "longText",
+    "description": "The roles of human users in the use case, and their responsibilities"
+}

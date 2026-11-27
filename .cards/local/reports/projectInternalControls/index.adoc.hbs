@@ -1,13 +1,14 @@
 {{#each results}}
-The current adoption step of this project is *{{this.project.[base/fieldTypes/adoptionStep].displayValue}}*. 
+Adoption step of this project (you can change it here): {{#field}}"cardKey": "{{this.project.key}}", "field": "base/fieldTypes/adoptionStep", "display": "inline"{{/field}}
+
 {{#unless (eq this.project.[base/fieldTypes/adoptionStep].value "step3")}}
-The following tables do not include internal controls on higher adoption steps. You can change the target adoption step field in {{#report}}"name":"secdeva/reports/xref", "identifier":"secdeva_project"{{/report}}.
+The following tables do not include internal controls on higher adoption steps. To include them, select a higher adoption step.
 {{#unless inProgress}}
 {{#unless notOk}}
 {{#unless notStarted}}
 {{#unless open}}
 
-TIP: You have completed the internal controls on the current adoption step, so you can begin working on the items on the next adoption step. Change the target adoption step field in {{#report}}"name":"secdeva/reports/xref", "identifier":"secdeva_project"{{/report}}.
+TIP: You have completed the internal controls on the current adoption step, so you can begin working on the items on the next adoption step. Change the adoption step above.
 
 {{/unless}}
 {{/unless}}

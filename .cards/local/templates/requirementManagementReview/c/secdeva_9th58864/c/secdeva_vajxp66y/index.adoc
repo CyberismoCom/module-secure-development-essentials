@@ -1,0 +1,1 @@
+Security requirements have been identified in sufficient level of detail and recorded in the security requirement register.

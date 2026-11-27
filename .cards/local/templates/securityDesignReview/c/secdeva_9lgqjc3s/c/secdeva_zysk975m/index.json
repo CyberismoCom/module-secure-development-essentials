@@ -1,0 +1,10 @@
+{
+    "title": "Sufficient capacity",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|l",
+    "lastUpdated": "2026-11-20T19:01:38.279Z",
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_security-design_sufficient-capacity"
+}

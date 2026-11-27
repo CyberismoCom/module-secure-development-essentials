@@ -1,0 +1,12 @@
+{
+    "rank": "0|l",
+    "workflowState": "Active",
+    "createdAt": "2026-11-23T10:31:19.057Z",
+    "links": [],
+    "cardType": "base/cardTypes/checklistItem",
+    "title": "Competencies",
+    "templateCardKey": "secdeva_c6o6qmas",
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_technology_competencies",
+    "lastUpdated": "2026-11-23T10:31:19.064Z"
+}

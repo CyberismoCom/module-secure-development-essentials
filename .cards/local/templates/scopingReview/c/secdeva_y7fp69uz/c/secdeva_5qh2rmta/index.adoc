@@ -1,0 +1,1 @@
+Check that controls marked as out of scope have a documented justification that is reasonable and defensible.

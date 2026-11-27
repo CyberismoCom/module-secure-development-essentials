@@ -4,6 +4,18 @@ Issues can surface from threat modelling, security testing, code reviews, vulner
 
 TIP: If a security issue is related to a specific element of the threat model or to a specific asset, you can create it directly in the affected card.
 
+The following settings apply to the security issues in this register. The fix of an issue can be deferred only when its severity is the deferrable severity or lower. The risk of an issue can be accepted only when its severity is the acceptable severity or lower.
+
+{{#field}}
+  "field": "secdeva/fieldTypes/deferrableSeverity",
+  "display": "row"
+{{/field}}
+
+{{#field}}
+  "field": "secdeva/fieldTypes/acceptableSeverity",
+  "display": "row"
+{{/field}}
+
 {{#createCards}}
   "template": "secdeva/templates/securityIssue",
   "buttonLabel": "Create a security issue"

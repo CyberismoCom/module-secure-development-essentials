@@ -6,31 +6,18 @@ This document records a review of the subproject structure of a development proj
 
 == Review checklist
 
-=== Subprojects
+Set the result of each item in the table. A Deviation or Not applicable result needs a comment. Put links to the evidence in the comment.
 
-Secure development is being appropriately managed for subprojects:
+{{#report}}
+  "name": "base/reports/checklist"
+{{/report}}
 
-* [ ] OK
-* [ ] Not OK
-* [ ] Not applicable
+You can add your own items to the checklist.
 
-=== Custom-developed supplier components
-
-Secure development is being appropriately managed for any custom-developed third party components:
-
-* [ ] OK
-* [ ] Not OK
-* [ ] Not applicable
-
-=== Modified or rebranded 3rd party components
-
-If the development team makes a substantial modification of a 3rd party product or places a 3rd party product on the market under their own trademark or name, then the development team may have to apply the secure development process for the component, including responsibilities to conform with EU regulations.
-
-Secure development is being appropriately managed for any substantially modified or rebranded 3rd party components:
-
-* [ ] OK
-* [ ] Not OK
-* [ ] Not applicable
+{{#createCards}}
+  "template": "base/templates/checklistItem",
+  "buttonLabel": "Add a checklist item"
+{{/createCards}}
 
 == Review notes
 

@@ -1,0 +1,10 @@
+{
+    "title": "Principle of least privilege",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|f",
+    "lastUpdated": "2026-11-20T19:01:31.835Z",
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_security-design_principle-of-least-privilege"
+}

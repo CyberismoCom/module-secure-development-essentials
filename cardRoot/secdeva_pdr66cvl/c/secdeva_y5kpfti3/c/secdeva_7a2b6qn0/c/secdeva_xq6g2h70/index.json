@@ -1,0 +1,12 @@
+{
+    "rank": "0|c",
+    "workflowState": "Active",
+    "createdAt": "2026-11-23T10:31:20.237Z",
+    "links": [],
+    "cardType": "base/cardTypes/checklistItem",
+    "title": "Business goals",
+    "templateCardKey": "secdeva_tqoe1272",
+    "base/fieldTypes/checklistResult": "ok",
+    "base/fieldTypes/identifier": "secdeva_check_technology_business-goals",
+    "lastUpdated": "2026-11-23T10:31:20.251Z"
+}

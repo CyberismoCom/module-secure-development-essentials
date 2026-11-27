@@ -1,0 +1,1 @@
+Check that the security context of the product has been considered when making scoping decisions (intended use, deployment environment, risk level).

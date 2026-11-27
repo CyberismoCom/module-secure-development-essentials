@@ -1,0 +1,1 @@
+Product shall store personal data in a format supporting permanent removal of the personal data, when there is no longer any legitimate reason to continue storing the data. When personal data is removed, the product shall be able to remove the personal data without compromising the integrity of the product. This extends to the backup data in addition to the live data.

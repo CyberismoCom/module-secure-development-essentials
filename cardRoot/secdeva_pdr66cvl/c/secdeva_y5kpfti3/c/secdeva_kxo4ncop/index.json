@@ -1,0 +1,12 @@
+{
+    "rank": "0|g",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-23T20:11:14.729Z",
+    "links": [],
+    "cardType": "base/cardTypes/controlledDocument",
+    "title": "CHK6 Cryptography document with a use case that is OK with details",
+    "templateCardKey": "secdeva_pfju75fy",
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/identifier": "secdeva_document_use-of-cryptography",
+    "lastUpdated": "2026-11-23T20:11:14.731Z"
+}

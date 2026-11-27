@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/fieldTypes/cryptographyUseCase",
+    "displayName": "Use case",
+    "dataType": "longText",
+    "description": "What the cryptography protects in this use case, and how"
+}

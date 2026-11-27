@@ -1,0 +1,1 @@
+Check that security issues from any source have been disclosed to stakeholders, if applicable. Examine at least the recent security-related issues (since the last review).

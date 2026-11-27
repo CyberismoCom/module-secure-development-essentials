@@ -1,0 +1,10 @@
+{
+    "title": "Monitoring",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|k",
+    "lastUpdated": "2026-11-21T09:10:30.498Z",
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_privacy-by-design_monitoring"
+}

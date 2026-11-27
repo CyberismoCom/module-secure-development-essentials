@@ -1,0 +1,3 @@
+Project shall not use personal data collected from a production environment for testing of the product.
+
+How to review: Interviewing personnel, auditing test systems

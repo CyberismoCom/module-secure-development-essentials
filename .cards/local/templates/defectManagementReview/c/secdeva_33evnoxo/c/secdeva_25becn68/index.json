@@ -1,0 +1,10 @@
+{
+    "title": "Security issue register",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|b",
+    "lastUpdated": "2026-11-21T09:10:00.115Z",
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_manage-defects_security-issue-register"
+}

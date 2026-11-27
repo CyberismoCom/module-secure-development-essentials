@@ -1,0 +1,1 @@
+Protect data and functionality using multiple layers of security. One mistake (by a developer, user, administrator, or operator) should not compromise overall security.

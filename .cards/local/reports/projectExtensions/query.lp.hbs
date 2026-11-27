@@ -4,15 +4,25 @@ result(result).
 
 % secdeva_template(Card, Template) means that Card was instantiated from Template
 
-% TODO: Before INTDEV-1398 is fixed, the "templateCardKey" field value is a string, 
-% while card keys in ancestor/2 are constants, so the template card key must be converted first
-% this conversion can be removed once the bug has been fixed.
-secdeva_template(Card, Template) :-
-  projectCard(Card),
-  field(Card, "templateCardKey", TemplateCardKey),
+% secdeva_templateCardKey(Template, Key) means that the "templateCardKey" field value
+% of a card instantiated from Template is Key.
+
+% TODO: Before INTDEV-1398 is fixed, the "templateCardKey" field value is a string,
+% while card keys in ancestor/2 are constants, so this rule converts the template card key to a string.
+% This rule can be removed once the fix for INTDEV-1398 has been released everywhere.
+secdeva_templateCardKey(Template, @concatenate(TemplateCard, "")) :-
   template(Template),
-  ancestor(TemplateCard, Template),
-  @concatenate(TemplateCard, "") == @concatenate(TemplateCardKey, "").
+  ancestor(TemplateCard, Template).
+
+% This rule matches the key stored as a constant, which is what the fix for INTDEV-1398 will store.
+secdeva_templateCardKey(Template, TemplateCard) :-
+  template(Template),
+  ancestor(TemplateCard, Template).
+
+secdeva_template(Card, Template) :-
+  secdeva_templateCardKey(Template, TemplateCardKey),
+  field(Card, "templateCardKey", TemplateCardKey),
+  projectCard(Card).
 
 childResult(result, (Template, ExtensibleCard), "uninstalledExtensions") :-
   secdeva_closestProject({{cardKey}}, Project),

@@ -15,7 +15,7 @@ Security requirement testing verifies that a security requirement has been imple
 
 === Scope of testing
 
-The scope of this review includes all the security requirements and security issues that have been linked to a risk in this development project. They are listed in the review checklist below.
+The scope of this review includes all the security requirements and security issues that have been linked to a risk in this development project. They are listed in the test coverage table in the section "Review checklist" below.
 
 #TODO: Link this card to the security requirements and security issues that you have tested.#
 
@@ -42,29 +42,20 @@ order(1, "results", 1, "title", "ASC").
   "name": "secdeva/reports/riskMitigationTestCoverage"
 {{/report}}
 
-=== Scoping of testing to defeat the mitigation
+Set the result of each item in the table. A Deviation or Not applicable result needs a comment. Put links to the evidence in the comment.
 
-Every security requirement that mitigates a risk and every security issue that increases a risk has the *Testing to defeat the mitigation* field set, and the recorded decision is correct:
+{{#report}}
+  "name": "base/reports/checklist"
+{{/report}}
 
-* *Required*, when it is practical to test whether the mitigation can be defeated, but the testing has not been executed yet
-* *Not applicable*, when such testing is not possible or not practical. The reasoning has been explained in the card.
-* *Done*, when the testing has been executed and the results have been recorded
+You can add your own items to the checklist.
 
-* [ ] OK
-* [ ] Not OK
+{{#createCards}}
+  "template": "base/templates/checklistItem",
+  "buttonLabel": "Add a checklist item"
+{{/createCards}}
 
-Review notes about the scoping of testing to defeat the mitigation:
-
-#TODO: Describe any notes and remarks about the review here#
-
-=== Execution of testing to defeat the mitigation
-
-The testing to defeat the mitigation has been executed for every mitigation where such testing is applicable, the test results have been recorded, and the mitigations could not be defeated:
-
-* [ ] OK
-* [ ] Not OK
-
-Review notes about the execution of testing to defeat the mitigation:
+== Review notes
 
 #TODO: Describe any notes and remarks about the review here#
 
