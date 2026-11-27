@@ -1,0 +1,3 @@
+Review that no insecure practices have been included in the product documentation. Notice that this review shall be done by a security advisor.
+
+Put the name of the security advisor in the comment.

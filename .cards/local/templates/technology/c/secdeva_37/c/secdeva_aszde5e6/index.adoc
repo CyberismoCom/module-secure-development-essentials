@@ -1,0 +1,5 @@
+The component has been implemented using sufficient rigor, and the security risks related to the vulnerabilities of Technology/component are acceptable.
+
+* The component should have no open vulnerabilities.
+* The vulnerability history of the technology/component is acceptable.
+* You can check the known vulnerabilities by using the vulnerability disclosure channels of the technology/component and the https://web.nvd.nist.gov/view/vuln/search[National Vulnerabilities Database].

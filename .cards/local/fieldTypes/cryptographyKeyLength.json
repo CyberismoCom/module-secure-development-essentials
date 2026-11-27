@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/fieldTypes/cryptographyKeyLength",
+    "displayName": "Key length",
+    "dataType": "shortText",
+    "description": "The length of the cryptographic keys in bits, for example 256 or 3072"
+}

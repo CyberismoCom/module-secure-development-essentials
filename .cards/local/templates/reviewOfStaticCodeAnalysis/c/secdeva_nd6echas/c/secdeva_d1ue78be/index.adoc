@@ -1,0 +1,1 @@
+Check that static code analysis has been set up as part of the build pipeline.

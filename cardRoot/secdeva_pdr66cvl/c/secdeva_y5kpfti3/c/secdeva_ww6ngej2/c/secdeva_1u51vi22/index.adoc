@@ -1,0 +1,1 @@
+In this use case, cryptography is used properly and effectively. The algorithms, key lengths, and key management arrangements are up to date, and suitable for the use case and the expected usage period.

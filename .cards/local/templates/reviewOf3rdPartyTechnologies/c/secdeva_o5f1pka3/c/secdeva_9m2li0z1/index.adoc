@@ -1,0 +1,1 @@
+A software bill of materials (SBOM) has been drawn up, all third-party dependencies, libraries and packages are included in the software bill of materials (SBOM), and the SBOM is up to date.

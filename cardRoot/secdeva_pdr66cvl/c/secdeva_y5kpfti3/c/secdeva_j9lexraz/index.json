@@ -1,0 +1,12 @@
+{
+    "rank": "0|b",
+    "workflowState": "Draft",
+    "createdAt": "2026-11-23T10:31:19.056Z",
+    "links": [],
+    "cardType": "secdeva/cardTypes/technology",
+    "title": "CHK1 Technology with open checks",
+    "templateCardKey": "secdeva_37",
+    "base/fieldTypes/informationClassification": "internal",
+    "base/fieldTypes/identifier": "secdeva_document_technology",
+    "lastUpdated": "2026-11-23T10:31:19.058Z"
+}

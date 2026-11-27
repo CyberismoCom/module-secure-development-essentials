@@ -1,0 +1,3 @@
+Product shall enable an administrator to configure the log-in screen or a welcome screen to include a privacy notice or a link to a privacy notice.
+
+How to review: Review product documentation or the user interface to confirm that the feature exists.

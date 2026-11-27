@@ -1,0 +1,1 @@
+Every module must be able to access only the information and resources that are necessary for its legitimate purpose.

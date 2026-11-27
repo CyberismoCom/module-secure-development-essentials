@@ -1,0 +1,10 @@
+{
+    "title": "Protection of private keys",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|e",
+    "lastUpdated": "2026-11-21T09:11:13.012Z",
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_integrity-protection-of-release_protection-of-private-keys"
+}

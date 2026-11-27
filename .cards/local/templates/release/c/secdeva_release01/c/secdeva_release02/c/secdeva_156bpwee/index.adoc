@@ -1,0 +1,6 @@
+Check that the configuration management process for this release has been completed
+
+* The included configuration items and their versions have been documented. You can use the internal release notes template to document this information
+* Software Bill of Materials (SBOM) has been drawn up and archived
+* Technical documentation, product documentation and other configuration items have been drawn up and archived so that they will be available later when needed
+* The version information is updated to the dependency tracking tools, if manual version management is applicable

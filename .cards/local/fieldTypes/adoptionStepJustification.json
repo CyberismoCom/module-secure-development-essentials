@@ -2,5 +2,5 @@
     "name": "secdeva/fieldTypes/adoptionStepJustification",
     "displayName": "Adoption step justification",
     "dataType": "longText",
-    "description": "Justification for the selected adoption step level"
+    "description": "Why the project uses the selected adoption step, or why the adoption step is not set"
 }

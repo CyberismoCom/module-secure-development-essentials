@@ -1,0 +1,1 @@
+Prefer designs that are simple and transparent. If there is a choice between a simple method and a complex method, use the simple method even if the complex method promises efficiency or elegance.

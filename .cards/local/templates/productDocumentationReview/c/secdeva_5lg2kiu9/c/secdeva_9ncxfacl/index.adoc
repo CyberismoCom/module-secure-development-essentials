@@ -1,0 +1,1 @@
+Check that the hardening guidelines tell, with the rationale, how to integrate the product and its third-party components with its product security context.

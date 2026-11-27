@@ -1,0 +1,3 @@
+The child cards of this page are test fixtures for the checklists of secdeva: the rule that a technology assessment needs an answered checklist before approval, and the cryptography use cases, which are checklist items of the document about the use of cryptography. The assertions are in `tests/checklists.lp`. They find the fixtures by title, so the fixtures can be made again without changes to the tests.
+
+The fixtures were made from the templates of the module. The workflow states of "CHK3" and "CHK7" were set in the files, not with a transition.

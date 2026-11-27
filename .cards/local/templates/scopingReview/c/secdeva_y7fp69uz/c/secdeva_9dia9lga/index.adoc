@@ -1,0 +1,1 @@
+Check that the scoping has been reviewed or updated since the last significant change in the project scope, architecture, or regulatory environment.

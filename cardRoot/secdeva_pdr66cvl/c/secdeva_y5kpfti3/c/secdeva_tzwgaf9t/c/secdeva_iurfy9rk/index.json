@@ -1,0 +1,11 @@
+{
+    "rank": "0|a",
+    "workflowState": "Open",
+    "createdAt": "2026-11-23T20:11:13.584Z",
+    "links": [],
+    "cardType": "base/cardTypes/reviewTask",
+    "title": "Document review - Use of cryptography",
+    "templateCardKey": "secdeva_bjszxudg",
+    "base/fieldTypes/informationClassification": "internal",
+    "lastUpdated": "2026-11-23T20:11:13.587Z"
+}

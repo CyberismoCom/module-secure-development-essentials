@@ -31,11 +31,36 @@ End users: #TODO: Description of the user base#
 
 Internal stakeholders: #TODO: e.g., Legal, Compliance, CTO#
 
+*Owner*
+
+Set the owner of this card to the person who is responsible for the cybersecurity of this development project.
+
+{{#field}}
+  "field": "base/fieldTypes/owner",
+  "display": "row"
+{{/field}}
+
 *Success metrics (KPIs)*
 
 How will we measure if the security integration was successful?
 
 #TODO: document or link to documentation about how the compliance, cybersecurity management and vulnerability management are measured#
+
+*Adoption step*
+
+The secure development process has three adoption steps. Step 1 has the most fundamental internal controls. Move to the next step when you have completed the internal controls of the current step.
+
+{{#field}}
+  "field": "base/fieldTypes/adoptionStep",
+  "display": "row"
+{{/field}}
+
+The secure development process may not be necessary for some development projects, for example research prototypes, sales demonstrations, and products that are being phased out. In this case, clear the adoption step and explain why in the adoption step justification.
+
+{{#field}}
+  "field": "secdeva/fieldTypes/adoptionStepJustification",
+  "display": "row"
+{{/field}}
 
 *Milestones and checkpoints*
 

@@ -1,0 +1,12 @@
+{
+    "rank": "0|r",
+    "workflowState": "Active",
+    "createdAt": "2026-11-23T10:31:21.387Z",
+    "links": [],
+    "cardType": "base/cardTypes/checklistItem",
+    "title": "Quality track record",
+    "templateCardKey": "secdeva_3ktzjyap",
+    "base/fieldTypes/checklistResult": "ok",
+    "base/fieldTypes/identifier": "secdeva_check_technology_quality-track-record",
+    "lastUpdated": "2026-11-23T10:31:21.390Z"
+}

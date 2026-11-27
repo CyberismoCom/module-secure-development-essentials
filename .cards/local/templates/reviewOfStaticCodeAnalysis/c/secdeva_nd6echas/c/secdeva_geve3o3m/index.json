@@ -1,0 +1,10 @@
+{
+    "title": "Documentation of tools",
+    "cardType": "base/cardTypes/checklistItem",
+    "workflowState": "",
+    "links": [],
+    "rank": "0|b",
+    "lastUpdated": "2026-11-21T09:11:20.695Z",
+    "base/fieldTypes/checklistResult": "open",
+    "base/fieldTypes/identifier": "secdeva_check_static-code-analysis_documentation-of-tools"
+}

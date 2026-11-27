@@ -1,0 +1,12 @@
+{
+    "rank": "0|f",
+    "workflowState": "Active",
+    "createdAt": "2026-11-23T10:31:20.237Z",
+    "links": [],
+    "cardType": "base/cardTypes/checklistItem",
+    "title": "Users",
+    "templateCardKey": "secdeva_e8dfufx3",
+    "base/fieldTypes/checklistResult": "ok",
+    "base/fieldTypes/identifier": "secdeva_check_technology_users",
+    "lastUpdated": "2026-11-23T10:31:20.246Z"
+}

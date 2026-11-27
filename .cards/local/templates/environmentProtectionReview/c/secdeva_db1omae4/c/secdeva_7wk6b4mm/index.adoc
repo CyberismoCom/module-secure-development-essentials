@@ -1,0 +1,7 @@
+Check that separate environments are available as required based on risk:
+
+* Development environment
+* Testing environment
+* Staging environment
+* Demonstration environment
+* Production environment
