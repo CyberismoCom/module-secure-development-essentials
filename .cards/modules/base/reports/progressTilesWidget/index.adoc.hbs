@@ -1,11 +1,24 @@
-{{#vegaLite}}
+{{!--
+  The widget is at most 640 pixels wide, so that it fits the content column
+  of the app at 1280 pixels. "width": "container" does not work, because the
+  app shows the chart in an inline-block element that takes the width of the
+  chart. Up to eight tiles are in one row, and more tiles wrap into rows of the
+  same length. Text sizes come from the number of characters, because the
+  widget cannot measure text.
+
+  "measured" is true in a browser (the app and exported sites) and false in
+  exported documents. There, Vega has no canvas and estimates text much wider
+  than it is, so the "limit" of text would cut most labels.
+--}}
+{{#vega}}
   "spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "$schema": "https://vega.github.io/schema/vega/v5.json",
     "description": "{{#if title}}{{{jsonEscape title}}}{{else}}Progress tiles{{/if}}",
-    "width": {"step": 116},
-    "height": 150,
     "background": "transparent",
-    "view": {"stroke": null},
+    "padding": 5,
+    "autosize": "pad",
+    "width": {"signal": "columns * (tileWidth + gap) - gap"},
+    "height": {"signal": "rows * (tileHeight + rowGap) - rowGap"},
 {{#if title}}
     "title": {
       "text": "{{{jsonEscape title}}}",{{#if legend}}
@@ -16,7 +29,8 @@
       "fontWeight": "bold",
       "color": "currentColor",
       "anchor": "start",
-      "offset": 14
+      "offset": 14,
+      "limit": {"signal": "measured ? maxWidth : 0"}
     },
 {{else}}{{#if legend}}
     "title": {
@@ -25,76 +39,165 @@
       "fontWeight": "normal",
       "color": "currentColor",
       "anchor": "start",
-      "offset": 14
+      "offset": 14,
+      "limit": {"signal": "measured ? maxWidth : 0"}
     },
 {{/if}}{{/if}}
-    "data": {
-      "values": [
-        {{#each tiles}}
-        {"order": {{@index}}, "label": "{{{jsonEscape this.label}}}"{{#if (eq this.value 0)}}, "value": 0{{else}}{{#if this.value}}, "value": {{this.value}}{{/if}}{{/if}}{{#if this.text}}, "text": "{{{jsonEscape this.text}}}"{{/if}}{{#if this.colour}}, "colour": "{{this.colour}}"{{/if}}{{#if this.cardKey}}, "cardKey": "{{{jsonEscape this.cardKey}}}"{{/if}} }{{#unless @last}},{{/unless}}
-        {{/each}}
-      ]
-    },
-    "transform": [
-      {"calculate": "isValid(datum.value) ? datum.value : 0", "as": "fill"},
-      {
-        "calculate": "datum.colour ? datum.colour : (!isValid(datum.value) || datum.value == 0 ? 'none' : (datum.value >= 100 ? 'green' : 'yellow'))",
-        "as": "tone"
-      },
-      {
-        "calculate": "{blue:'light-dark(#2a78d6,#3987e5)',green:'light-dark(#008300,#008300)',yellow:'light-dark(#eda100,#c98500)',red:'light-dark(#e34948,#e66767)',orange:'light-dark(#eb6834,#d95926)',purple:'light-dark(#4a3aa7,#9085e9)',none:'transparent'}[datum.tone]",
-        "as": "fillColour"
-      },
-      {
-        "calculate": "datum.text ? datum.text : (isValid(datum.value) ? datum.value + '%' : '-')",
-        "as": "centre"
-      },
-      {"calculate": "datum.cardKey ? datum.cardKey : null", "as": "link"},
-      {"calculate": "datum.label + ': ' + datum.centre", "as": "ariaText"}
+    "signals": [
+      {"name": "measured", "init": "isFinite(containerSize()[0])"},
+      {"name": "count", "value": {{tiles.length}} },
+      {"name": "maxWidth", "value": 630},
+      {"name": "maxTile", "value": 107},
+      {"name": "minTile", "value": 70},
+      {"name": "gap", "value": 9},
+      {"name": "rowGap", "value": 12},
+      {"name": "tileHeight", "value": 150},
+      {"name": "maxColumns", "update": "max(1, floor((maxWidth + gap) / (minTile + gap)))"},
+      {"name": "rows", "update": "ceil(count / maxColumns)"},
+      {"name": "columns", "update": "ceil(count / rows)"},
+      {"name": "tileWidth", "update": "min(maxTile, floor((maxWidth + gap) / columns - gap))"},
+      {"name": "textWidth", "update": "tileWidth - 8"}
     ],
-    "encoding": {
-      "x": {
-        "field": "order",
-        "type": "ordinal",
-        "axis": null,
-        "scale": {"paddingInner": 0.08, "paddingOuter": 0}
+    "data": [
+      {
+        "name": "tiles",
+        "values": [
+          {{#each tiles}}
+          {"order": {{@index}}, "label": "{{{jsonEscape this.label}}}"{{#if (eq this.value 0)}}, "value": 0{{else}}{{#if this.value}}, "value": {{this.value}}{{/if}}{{/if}}{{#if this.text}}, "text": "{{{jsonEscape this.text}}}"{{/if}}{{#if this.colour}}, "colour": "{{this.colour}}"{{/if}}{{#if this.cardKey}}, "cardKey": "{{{jsonEscape this.cardKey}}}"{{/if}} }{{#unless @last}},{{/unless}}
+          {{/each}}
+        ],
+        "transform": [
+          {"type": "formula", "as": "x", "expr": "(datum.order % columns) * (tileWidth + gap)"},
+          {"type": "formula", "as": "y", "expr": "floor(datum.order / columns) * (tileHeight + rowGap)"},
+          {"type": "formula", "as": "fill", "expr": "isValid(datum.value) ? datum.value : 0"},
+          {
+            "type": "formula", "as": "tone",
+            "expr": "datum.colour ? datum.colour : (!isValid(datum.value) || datum.value == 0 ? 'none' : (datum.value >= 100 ? 'green' : 'yellow'))"
+          },
+          {
+            "type": "formula", "as": "fillColour",
+            "expr": "{blue:'light-dark(#2a78d6,#3987e5)',green:'light-dark(#008300,#008300)',yellow:'light-dark(#eda100,#c98500)',red:'light-dark(#e34948,#e66767)',orange:'light-dark(#eb6834,#d95926)',purple:'light-dark(#4a3aa7,#9085e9)',none:'transparent'}[datum.tone]"
+          },
+          {"type": "formula", "as": "centre", "expr": "datum.text ? datum.text : (isValid(datum.value) ? datum.value + '%' : '-')"},
+          {"type": "formula", "as": "centreMiddle", "expr": "floor(length(datum.centre) / 2)"},
+          {"type": "formula", "as": "centreBefore", "expr": "lastindexof(datum.centre, ' ', datum.centreMiddle)"},
+          {"type": "formula", "as": "centreAfter", "expr": "indexof(datum.centre, ' ', datum.centreMiddle)"},
+          {
+            "type": "formula", "as": "centreCut",
+            "expr": "length(datum.centre) * 0.55 * 18 <= textWidth ? -1 : (datum.centreBefore < 0 ? datum.centreAfter : (datum.centreAfter < 0 ? datum.centreBefore : (datum.centreMiddle - datum.centreBefore <= datum.centreAfter - datum.centreMiddle ? datum.centreBefore : datum.centreAfter)))"
+          },
+          {
+            "type": "formula", "as": "centreLines",
+            "expr": "datum.centreCut < 0 ? [datum.centre] : [substring(datum.centre, 0, datum.centreCut), substring(datum.centre, datum.centreCut + 1)]"
+          },
+          {
+            "type": "formula", "as": "centreLongest",
+            "expr": "max(length(datum.centreLines[0]), length(datum.centreLines) > 1 ? length(datum.centreLines[1]) : 0)"
+          },
+          {"type": "formula", "as": "centreSize", "expr": "clamp(floor(textWidth / max(2.8, datum.centreLongest * 0.55)), 12, 30)"},
+          {"type": "formula", "as": "link", "expr": "datum.cardKey ? datum.cardKey : null"},
+          {"type": "formula", "as": "ariaText", "expr": "datum.label + ': ' + datum.centre"},
+          {"type": "formula", "as": "middle", "expr": "floor(length(datum.label) / 2)"},
+          {"type": "formula", "as": "before", "expr": "lastindexof(datum.label, ' ', datum.middle)"},
+          {"type": "formula", "as": "after", "expr": "indexof(datum.label, ' ', datum.middle)"},
+          {
+            "type": "formula", "as": "cut",
+            "expr": "length(datum.label) * 7.7 <= textWidth ? -1 : (datum.before < 0 ? datum.after : (datum.after < 0 ? datum.before : (datum.middle - datum.before <= datum.after - datum.middle ? datum.before : datum.after)))"
+          },
+          {
+            "type": "formula", "as": "labelLines",
+            "expr": "datum.cut < 0 ? [datum.label] : [substring(datum.label, 0, datum.cut), substring(datum.label, datum.cut + 1)]"
+          },
+          {
+            "type": "formula", "as": "longestLine",
+            "expr": "max(length(datum.labelLines[0]), length(datum.labelLines) > 1 ? length(datum.labelLines[1]) : 0)"
+          },
+          {"type": "formula", "as": "labelSize", "expr": "clamp(floor(textWidth / (datum.longestLine * 0.55)), 10, 14)"}
+        ]
       }
-    },
-    "layer": [
+    ],
+    "marks": [
       {
-        "mark": {"type": "bar", "cornerRadius": 10, "color": "currentColor", "opacity": 0.1, "cursor": {"expr": "datum.link ? 'pointer' : 'default'"}},
-        "encoding": {
-          "description": {"field": "ariaText"},
-          "y": {"datum": 100, "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
-          "href": {"field": "link"},
-          "tooltip": {"field": "label"}
+        "type": "rect",
+        "from": {"data": "tiles"},
+        "encode": {
+          "enter": {
+            "x": {"field": "x"},
+            "y": {"field": "y"},
+            "width": {"signal": "tileWidth"},
+            "height": {"signal": "tileHeight"},
+            "cornerRadius": {"value": 10},
+            "fill": {"value": "currentColor"},
+            "fillOpacity": {"value": 0.1},
+            "description": {"field": "ariaText"},
+            "href": {"field": "link"},
+            "tooltip": {"field": "label"},
+            "cursor": {"signal": "datum.link ? 'pointer' : 'default'"}
+          }
         }
       },
       {
-        "mark": {"type": "bar", "cornerRadius": 10, "opacity": 0.5, "aria": false, "cursor": {"expr": "datum.link ? 'pointer' : 'default'"}},
-        "encoding": {
-          "y": {"field": "fill", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
-          "color": {"field": "fillColour", "type": "nominal", "scale": null, "legend": null},
-          "href": {"field": "link"},
-          "tooltip": {"field": "label"}
+        "type": "rect",
+        "from": {"data": "tiles"},
+        "aria": false,
+        "encode": {
+          "enter": {
+            "x": {"field": "x"},
+            "y": {"signal": "datum.y + tileHeight * (1 - datum.fill / 100)"},
+            "width": {"signal": "tileWidth"},
+            "height": {"signal": "tileHeight * datum.fill / 100"},
+            "cornerRadius": {"value": 10},
+            "fill": {"field": "fillColour"},
+            "fillOpacity": {"value": 0.5},
+            "href": {"field": "link"},
+            "tooltip": {"field": "label"},
+            "cursor": {"signal": "datum.link ? 'pointer' : 'default'"}
+          }
         }
       },
       {
-        "mark": {"type": "text", "fontSize": 30, "fontWeight": "bold", "baseline": "middle", "color": "currentColor", "aria": false, "cursor": {"expr": "datum.link ? 'pointer' : 'default'"}},
-        "encoding": {
-          "y": {"datum": 50, "type": "quantitative"},
-          "text": {"field": "centre"},
-          "href": {"field": "link"}
+        "type": "text",
+        "from": {"data": "tiles"},
+        "aria": false,
+        "encode": {
+          "enter": {
+            "x": {"signal": "datum.x + tileWidth / 2"},
+            "y": {"signal": "datum.y + tileHeight / 2"},
+            "align": {"value": "center"},
+            "baseline": {"value": "middle"},
+            "text": {"field": "centreLines"},
+            "fontSize": {"field": "centreSize"},
+            "lineHeight": {"signal": "datum.centreSize + 2"},
+            "fontWeight": {"value": "bold"},
+            "limit": {"signal": "measured ? textWidth : 0"},
+            "fill": {"value": "currentColor"},
+            "href": {"field": "link"},
+            "tooltip": {"field": "label"},
+            "cursor": {"signal": "datum.link ? 'pointer' : 'default'"}
+          }
         }
       },
       {
-        "mark": {"type": "text", "fontSize": 14, "baseline": "top", "dy": 10, "color": "currentColor", "aria": false, "cursor": {"expr": "datum.link ? 'pointer' : 'default'"}},
-        "encoding": {
-          "y": {"datum": 100, "type": "quantitative"},
-          "text": {"field": "label"},
-          "href": {"field": "link"}
+        "type": "text",
+        "from": {"data": "tiles"},
+        "aria": false,
+        "encode": {
+          "enter": {
+            "x": {"signal": "datum.x + tileWidth / 2"},
+            "y": {"signal": "datum.y + 10"},
+            "align": {"value": "center"},
+            "baseline": {"value": "top"},
+            "text": {"field": "labelLines"},
+            "fontSize": {"field": "labelSize"},
+            "lineHeight": {"signal": "datum.labelSize + 2"},
+            "limit": {"signal": "measured ? textWidth : 0"},
+            "fill": {"value": "currentColor"},
+            "href": {"field": "link"},
+            "tooltip": {"field": "label"},
+            "cursor": {"signal": "datum.link ? 'pointer' : 'default'"}
+          }
         }
       }
     ]
   }
-{{/vegaLite}}
+{{/vega}}

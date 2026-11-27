@@ -1,22 +1,37 @@
-== The scope of this secure development project
+{{#report}}
+  "name": "secdeva/reports/projectSetUp"
+{{/report}}
 
-#TODO: Briefly describe what the product or solution is, who it serves, and its primary value proposition in 1-3 sentences.#
+{{#report}}
+  "name": "secdeva/reports/projectDashboard"
+{{/report}}
 
-== Project security objectives & scope
+.Project details
+[%collapsible]
+====
+Fill in these details when you have time. They help the team and the reviewers to understand the goals of the project.
+
+*Scope*
+
+The description field of this card says what the product is. You can see a summary of the scoping of internal controls in {{#report}}"name": "secdeva/reports/xref", "identifier": "secdeva_register_internal-controls"{{/report}}.
+
+*Security objectives*
+
 #TODO: Define what success in cybersecurity looks like#
- 
+
 Primary security goal: #TODO. e.g., Launch the beta version with core authentication features.#
- 
+
 Out of scope (currently): #TODO: what cybersecurity topics are we explicitly NOT doing right now?#
 
-You can see a summary of the scoping of internal controls in {{#report}}"name": "secdeva/reports/xref", "identifier": "secdeva_register_internal-controls"{{/report}}.
- 
-== Target audience & stakeholders
+*Target audience and stakeholders*
+
 The following stakeholders will use this product and/or care about its security.
- 
+
 End users: #TODO: Description of the user base#
 
 Internal stakeholders: #TODO: e.g., Legal, Compliance, CTO#
+
+*Owner*
 
 Set the owner of this card to the person who is responsible for the cybersecurity of this development project.
 
@@ -25,12 +40,13 @@ Set the owner of this card to the person who is responsible for the cybersecurit
   "display": "row"
 {{/field}}
 
-== Success metrics (KPIs)
+*Success metrics (KPIs)*
+
 How will we measure if the security integration was successful?
 
 #TODO: document or link to documentation about how the compliance, cybersecurity management and vulnerability management are measured#
 
-== Adoption step
+*Adoption step*
 
 The secure development process has three adoption steps. Step 1 has the most fundamental internal controls. Move to the next step when you have completed the internal controls of the current step.
 
@@ -46,25 +62,13 @@ The secure development process may not be necessary for some development project
   "display": "row"
 {{/field}}
 
-== Milestones and checkpoints
+*Milestones and checkpoints*
 
-.Instructions
-[%collapsible]
-=====
-[TIP]
-====
-It is recommended to have 2–6 checkpoints per year to keep secure development work on track. You can integrate secure development checkpoints into practices you already have, such as:
-
-* Program increment reviews
-* Quarterly reviews
-* Milestone reviews
-* Gate reviews
-
-====
-=====
+It is recommended to have 2 to 6 checkpoints per year to keep secure development work on track. You can integrate secure development checkpoints into practices you already have, such as program increment reviews, quarterly reviews, milestone reviews, or gate reviews.
 
 #TODO: Add a description or link showing your general milestone/checkpoint practices and how secure development reviews fit into them#
 
-== Activation
+*Activation*
 
-Once you have filled in this template and set the owner, use the "Activate" workflow transition to mark this card ready.
+When you have filled in these details, use the "Activate" workflow transition to mark this card ready. You do not need to activate the project to start working on it.
+====

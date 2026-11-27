@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/reports/projectDashboard",
+    "displayName": "Project dashboard",
+    "description": "Produces the start page of a development project: the next step, the first steps, and the progress of each phase",
+    "category": "Secure development"
+}

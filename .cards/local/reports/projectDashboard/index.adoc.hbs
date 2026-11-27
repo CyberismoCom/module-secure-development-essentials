@@ -1,0 +1,70 @@
+{{#each results}}
+{{#if this.setUp}}
+{{#if this.anyStep}}
+{{#report}}
+  "name": "base/reports/progressTilesWidget",
+  "title": "Progress",
+  "legend": "Practices done or not needed in each phase. Click a tile to open the next one.",
+  "tiles": [{{#each this.phases}}{"label": "{{{jsonEscape this.title}}}", "value": {{#if this.dashboardValue}}{{this.dashboardValue}}{{else}}{{#if (eq this.dashboardValue 0)}}0{{else}}null{{/if}}{{/if}}, "cardKey": "{{this.dashboardTarget}}"}{{#unless @last}}, {{/unless}}{{/each}}]
+{{/report}}
+
+{{#if this.next}}
+{{#report}}
+  "name": "base/reports/stepsWidget",
+  "title": "Your next steps",
+  "legend": "{{#if this.oneLeft}}One step is left.{{else}}{{this.remaining}} steps are left.{{/if}} Click a step to open its practice. The section \"All steps\" below lists every step.",
+  "nextLabel": "next",
+  "steps": [{{#each this.next}}{"label": "{{{jsonEscape this.dashboardLabel}}}", "status": "{{this.dashboardStatus}}", "cardKey": "{{this.key}}"}{{#unless @last}}, {{/unless}}{{/each}}]
+{{/report}}
+{{else}}
+All steps of the current adoption step are done. Keep the practices up to date: {{#xref}}"cardKey": "{{this.statusNextSteps}}"{{/xref}} shows what needs attention. When you are ready, raise the adoption step.
+{{/if}}
+
+.All steps
+[%collapsible]
+====
+The practices of the current adoption step, *{{this.project.[base/fieldTypes/adoptionStep].displayValue}}*, in the order to do them. A practice is done when it is OK or not needed.
+
+{{#each this.allSteps}}
+* {{#if this.dashboardDone}}[x]{{else}}[ ]{{/if}} {{#xref}}"cardKey": "{{this.key}}"{{/xref}}
+{{/each}}
+====
+{{else}}
+The project has no practices at its adoption step.
+{{/if}}
+
+For the status of every practice, the security issues, the policy checks, and the periodic reviews, see {{#xref}}"cardKey": "{{this.statusNextSteps}}"{{/xref}}.
+
+{{/if}}
+.How this project is organised
+[%collapsible]
+====
+The project follows the life cycle of the product. Foundation comes first, and then the development cycle repeats for each release.
+
+[mermaid]
+----
+flowchart LR
+    F[Foundation] --> D[Design]
+    D --> I[Implementation]
+    I --> V[Verification]
+    V --> R[Releases]
+    R --> O[Operations]
+    O --> D
+----
+
+Each phase holds the practices of that stage. A practice (an internal control) tells what to do, and its evidence shows that it is done:
+
+* *Foundation*: assign the security roles, and make sure that the team has the competence for them.
+* *Design*: describe the security context, model the threats and the risks, and write the security requirements.
+* *Implementation*: find security defects as the code is written, and document what is built.
+* *Verification*: test the security, and check that the requirements are met.
+* *Releases*: pass the release security gate, protect the integrity of the release, and document it.
+* *Operations*: track the vulnerabilities and updates of third-party components, and keep the environments protected.
+
+The practices are grouped in three adoption steps, so that you can start small:
+
+* *Step 1*: the essential practices. Start here.
+* *Step 2*: strengthened practices, when step 1 is in place.
+* *Step 3*: advanced practices, to meet the standards.
+====
+{{/each}}

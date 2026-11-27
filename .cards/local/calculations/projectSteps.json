@@ -1,0 +1,6 @@
+{
+    "name": "secdeva/calculations/projectSteps",
+    "displayName": "Project steps",
+    "description": "Holds the set-up steps and the next steps of a development project, for the set-up checklist and the dashboard of the project card",
+    "calculation": "calculation.lp"
+}

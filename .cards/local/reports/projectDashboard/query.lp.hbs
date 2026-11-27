@@ -1,0 +1,92 @@
+selectAll.
+
+result(result).
+
+secdeva_dashboardProject(Project) :-
+  secdeva_closestProject({{cardKey}}, Project),
+  secdeva_project2(Project).
+
+childObject(result, Project, "project") :-
+  secdeva_dashboardProject(Project).
+
+resultField(result, "setUp", "true", "shortText") :-
+  secdeva_dashboardProject(Project),
+  secdeva_projectSetUp(Project).
+
+resultField(result, "statusNextSteps", Card, "shortText") :-
+  secdeva_dashboardProject(Project),
+  secdeva_closestProject(Card, Project),
+  field(Card, "base/fieldTypes/identifier", "secdeva_status-and-next-steps").
+
+% The phases, with the share of their steps that are done
+
+childResult(result, Phase, "phases") :-
+  secdeva_dashboardProject(Project),
+  secdeva_projectPhase(Project, Phase).
+
+field(Phase, "dashboardValue", Value) :-
+  secdeva_dashboardProject(Project),
+  secdeva_projectPhaseProgress(Project, Phase, Value).
+
+field(Phase, "dashboardTarget", Target) :-
+  secdeva_dashboardProject(Project),
+  secdeva_projectPhaseTarget(Project, Phase, Target).
+
+order(2, "phases", 1, "rank", "ASC").
+
+% The next five steps
+
+secdeva_dashboardShown(5).
+
+childResult(result, Control, "next") :-
+  secdeva_dashboardProject(Project),
+  secdeva_projectNextStep(Project, Index, Control),
+  secdeva_dashboardShown(Shown),
+  Index <= Shown.
+
+field(Control, "dashboardIndex", Index) :-
+  secdeva_dashboardProject(Project),
+  secdeva_projectNextStep(Project, Index, Control).
+
+field(Control, "dashboardLabel", Label) :-
+  secdeva_dashboardProject(Project),
+  secdeva_projectStepLabel(Project, Control, Label).
+
+field(Control, "dashboardStatus", "next") :-
+  secdeva_dashboardProject(Project),
+  secdeva_projectNextStep(Project, 1, Control).
+
+field(Control, "dashboardStatus", "open") :-
+  secdeva_dashboardProject(Project),
+  secdeva_projectNextStep(Project, Index, Control),
+  Index > 1.
+
+order(2, "next", 1, "dashboardIndex", "ASC").
+
+resultField(result, "remaining", N, "integer") :-
+  secdeva_dashboardProject(Project),
+  secdeva_projectOpenStepCount(Project, N).
+
+resultField(result, "oneLeft", "true", "shortText") :-
+  secdeva_dashboardProject(Project),
+  secdeva_projectOpenStepCount(Project, 1).
+
+resultField(result, "anyStep", "true", "shortText") :-
+  secdeva_dashboardProject(Project),
+  secdeva_projectStepKey(Project, _, _).
+
+% All steps, for the checklist
+
+childResult(result, Control, "allSteps") :-
+  secdeva_dashboardProject(Project),
+  secdeva_projectStepIndex(Project, _, Control).
+
+field(Control, "dashboardOrder", Index) :-
+  secdeva_dashboardProject(Project),
+  secdeva_projectStepIndex(Project, Index, Control).
+
+field(Control, "dashboardDone", "true") :-
+  secdeva_dashboardProject(Project),
+  secdeva_projectStepDone(Project, Control).
+
+order(2, "allSteps", 1, "dashboardOrder", "ASC").

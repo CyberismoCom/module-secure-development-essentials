@@ -4,6 +4,11 @@
     "workflow": "ismsa/workflows/asset",
     "customFields": [
         {
+            "name": "secdeva/fieldTypes/description",
+            "displayName": "",
+            "isCalculated": false
+        },
+        {
             "name": "base/fieldTypes/owner",
             "displayName": "",
             "isCalculated": false
@@ -28,16 +33,23 @@
             "displayName": "",
             "isCalculated": false,
             "enableOverride": false
+        },
+        {
+            "name": "secdeva/fieldTypes/guidedSetUp",
+            "displayName": "",
+            "isCalculated": false
         }
     ],
     "alwaysVisibleFields": [
+        "secdeva/fieldTypes/description",
         "base/fieldTypes/owner",
         "base/fieldTypes/informationClassification",
         "base/fieldTypes/adoptionStep",
         "secdeva/fieldTypes/adoptionStepJustification"
     ],
     "optionallyVisibleFields": [
-        "base/fieldTypes/identifier"
+        "base/fieldTypes/identifier",
+        "secdeva/fieldTypes/guidedSetUp"
     ],
     "description": "A software or hardware development project"
 }
