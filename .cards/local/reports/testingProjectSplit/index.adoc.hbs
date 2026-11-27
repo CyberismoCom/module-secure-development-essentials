@@ -1,0 +1,29 @@
+{{#each results}}
+
+Fixture: *{{this.total}}* test cases, *{{this.passed}}* passed, *{{this.failed}}* failed.
+
+.Controls of project2 and the secure development library
+[cols="4,3,3,2"]
+|===
+| Identifier | Expected template | Found in | Verdict
+
+{{#each this.controls}}
+| {{this.identifier}}
+| {{this.expected}}
+| {{this.found}}
+| {{this.verdict}}
+{{/each}}
+|===
+
+.Library templates
+[cols="6,4"]
+|===
+| Template | Verdict
+
+{{#each this.libraryTemplates}}
+| {{this.template}}
+| {{this.verdict}}
+{{/each}}
+|===
+
+{{/each}}

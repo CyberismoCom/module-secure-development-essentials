@@ -1,5 +1,19 @@
 {{#each results}}
 
+{{#if this.noControls}}
+
+This project has no practices in this phase yet.{{#if this.extensions}} A library or an extension can add them:{{/if}}
+
+{{#each this.extensions}}
+{{#createCards}}
+  "cardKey": "{{this.register}}",
+  "template": "{{this.template}}",
+  "buttonLabel": "{{this.buttonLabel}}"
+{{/createCards}}
+{{/each}}
+
+{{/if}}
+
 {{#if this.tasks_step1}}
 
 .Adoption step 1. Complete these controls first.

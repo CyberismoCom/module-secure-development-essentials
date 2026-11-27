@@ -1,0 +1,2 @@
+{"timestamp":"2026-11-25T22:35:21.792Z","operation":"resource_update","target":"secdeva/fieldTypes/projectWritesSoftware","parameters":{"type":"fieldTypes","operation":{"name":"remove","target":{"enumValue":"value1"}},"key":"enumValues"}}
+{"timestamp":"2026-11-25T22:35:23.215Z","operation":"resource_update","target":"secdeva/fieldTypes/projectWritesSoftware","parameters":{"type":"fieldTypes","operation":{"name":"remove","target":{"enumValue":"value2"}},"key":"enumValues"}}

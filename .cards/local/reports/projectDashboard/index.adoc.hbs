@@ -56,10 +56,12 @@ Each phase holds the practices of that stage. A practice (an internal control) t
 
 * *Foundation*: assign the security roles, and make sure that the team has the competence for them.
 * *Design*: describe the security context, model the threats and the risks, and write the security requirements.
-* *Implementation*: find security defects as the code is written, and document what is built.
+* *Implementation*: manage the security issues, and document the attack surface of what is built. With the secure development library, also find security defects as the code is written.
 * *Verification*: test the security, and check that the requirements are met.
-* *Releases*: pass the release security gate, protect the integrity of the release, and document it.
+* *Releases*: pass the release security gate, and document each release. With the secure development library, also protect the integrity of each release.
 * *Operations*: track the vulnerabilities and updates of third-party components, and keep the environments protected.
+
+Every project has the core practices. A library adds the practices for one kind of work. The secure development library adds the practices for teams that write or change software.{{#if this.setUp}}{{#unless this.hasLibrary}} This project does not have it. To add it, open "Show more" on this card and set "Writes software" to "Yes". The set-up checklist then shows a button for each phase.{{/unless}}{{/if}}
 
 The practices are grouped in three adoption steps, so that you can start small:
 

@@ -1,0 +1,13 @@
+This page checks the split of `project2` into the core and the secure development library (E2, decided 2026-11-26). The test reads the templates of secdeva, not test cards, so it needs no fixture.
+
+== What the test checks
+
+* Each of the 28 controls of the old `project2` is created by exactly one template. The core controls are in `secdeva/templates/project2`. The other controls are in the four templates of the secure development library: `secureDevelopmentDesign`, `secureDevelopmentImplementation`, `secureDevelopmentReleases`, and `secureDevelopmentVerification`.
+* Each control that moved to the library keeps its template card key. A project created before the split has these keys in the field `templateCardKey` of its controls. secdeva uses the field to find out that the library is installed, so the project does not get copies of the controls.
+* Each library template has a `secdeva_installableExtension` fact for a phase register of `project2`.
+
+Every row must say PASS.
+
+{{#report}}
+  "name": "secdeva/reports/testingProjectSplit"
+{{/report}}

@@ -15,7 +15,7 @@ flowchart LR
 {{#if (eq this.releasesPhase.progress 0)}}
       V --> R[Releases\n0%]
 {{else}}
-      V --> R[Releases\n]
+      V --> R[Releases\nno practices]
 {{/if}}
 {{/if}}
       R --> O[Operations\n{{this.operationsPhase.progress}}%]

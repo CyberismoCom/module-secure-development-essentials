@@ -67,3 +67,47 @@ field(Card, "compoundRank", @concatenate(ParentRank, " - ", Rank)) :-
 order(2, "tasks_step1", 1, "compoundRank", "ASC").
 order(2, "tasks_step2", 1, "compoundRank", "ASC").
 order(2, "tasks_step3", 1, "compoundRank", "ASC").
+% A phase without controls shows the libraries and extensions that add
+% controls to its register (secdeva_installableExtension/4).
+
+secdeva_phaseRegister(Register) :-
+    field(Register, "base/fieldTypes/identifier", "{{controls}}"),
+    secdeva_closestProject(Register, Project),
+    secdeva_closestProject({{cardKey}}, Project).
+
+secdeva_phaseHasControls :-
+    childResult(result, _, "tasks_step1").
+secdeva_phaseHasControls :-
+    childResult(result, _, "tasks_step2").
+secdeva_phaseHasControls :-
+    childResult(result, _, "tasks_step3").
+
+resultField(result, "noControls", "true", "shortText") :-
+    secdeva_phaseRegister(_),
+    not secdeva_phaseHasControls.
+
+% The template card key is a string (INTDEV-1398), so it is converted first.
+secdeva_phaseInstalled(Template) :-
+    secdeva_phaseRegister(Register),
+    secdeva_installableExtension("{{controls}}", _, Template, _),
+    ancestor(Card, Register),
+    field(Card, "templateCardKey", TemplateCardKey),
+    ancestor(TemplateCard, Template),
+    @concatenate(TemplateCard, "") == @concatenate(TemplateCardKey, "").
+
+childResult(result, (Template, Register), "extensions") :-
+    secdeva_phaseRegister(Register),
+    not secdeva_phaseHasControls,
+    secdeva_installableExtension("{{controls}}", _, Template, _),
+    not secdeva_phaseInstalled(Template).
+
+resultFields((Template, Register),
+    "template", Template, "shortText",
+    "register", Register, "shortText") :-
+    childResult(result, (Template, Register), "extensions").
+
+resultFields((Template, Register),
+    "moduleDescription", ModuleDescription, "shortText",
+    "buttonLabel", ButtonLabel, "shortText") :-
+    childResult(result, (Template, Register), "extensions"),
+    secdeva_installableExtension("{{controls}}", ModuleDescription, Template, ButtonLabel).

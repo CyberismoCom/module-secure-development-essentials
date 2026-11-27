@@ -22,6 +22,7 @@ secdeva_projectSetUpStep(1, "Give the project the name of the product").
 secdeva_projectSetUpStep(2, "Describe the product").
 secdeva_projectSetUpStep(3, "Set the owner of the project").
 secdeva_projectSetUpStep(4, "Choose the adoption step").
+secdeva_projectSetUpStep(5, "Choose the practices for the kind of work").
 
 secdeva_projectSetUpStepDone(Project, 1) :-
   secdeva_project2(Project),
@@ -42,9 +43,68 @@ secdeva_projectSetUpStepDone(Project, 4) :-
   secdeva_project2(Project),
   field(Project, "base/fieldTypes/adoptionStep", _).
 
+% Step 5 asks if the team writes or changes software. A "yes" adds the
+% secure development library: one extension template for each phase register
+% (secdeva/calculations/extensions). The step is done when the question has
+% an answer, and after a "yes" when every part of the library is added.
+% Projects made before the split have the library and no answer, so the
+% library counts as the answer.
+
+secdeva_projectSetUpStepDone(Project, 5) :-
+  secdeva_projectSoftwareAnswered(Project),
+  not secdeva_projectLibraryMissing(Project).
+
+secdeva_projectSoftwareAnswered(Project) :-
+  secdeva_project2(Project),
+  field(Project, "secdeva/fieldTypes/projectWritesSoftware", _).
+
+secdeva_projectSoftwareAnswered(Project) :-
+  secdeva_projectHasLibrary(Project).
+
+secdeva_projectLibraryMissing(Project) :-
+  secdeva_project2(Project),
+  field(Project, "secdeva/fieldTypes/projectWritesSoftware", "yes"),
+  not secdeva_projectLibraryComplete(Project).
+
 secdeva_projectSetUp(Project) :-
   secdeva_project2(Project),
   secdeva_projectSetUpStepDone(Project, N) : secdeva_projectSetUpStep(N, _).
+
+%
+% The secure development library
+%
+% secdeva_projectLibraryRegister(Project, Template, Register, ButtonLabel):
+% the phase register of the project that a template of the library adds
+% controls to.
+%
+
+secdeva_projectLibraryTemplate(Template, RegisterIdentifier, ButtonLabel) :-
+  secdeva_installableExtension(RegisterIdentifier, "the secure development library", Template, ButtonLabel).
+
+secdeva_projectLibraryRegister(Project, Template, Register, ButtonLabel) :-
+  secdeva_project2(Project),
+  secdeva_projectLibraryTemplate(Template, RegisterIdentifier, ButtonLabel),
+  field(Register, "base/fieldTypes/identifier", RegisterIdentifier),
+  secdeva_closestProject(Register, Project).
+
+% A template is added when a card under its register was created from it.
+% Projects made before the split have the same template card keys, so their
+% controls count as added. The template card key is a string (INTDEV-1398),
+% so it is converted first.
+
+secdeva_projectLibraryAdded(Project, Template) :-
+  secdeva_projectLibraryRegister(Project, Template, Register, _),
+  ancestor(Card, Register),
+  field(Card, "templateCardKey", TemplateCardKey),
+  ancestor(TemplateCard, Template),
+  @concatenate(TemplateCard, "") == @concatenate(TemplateCardKey, "").
+
+secdeva_projectHasLibrary(Project) :-
+  secdeva_projectLibraryAdded(Project, _).
+
+secdeva_projectLibraryComplete(Project) :-
+  secdeva_project2(Project),
+  secdeva_projectLibraryAdded(Project, Template) : secdeva_projectLibraryTemplate(Template, _, _).
 
 %
 % Control steps

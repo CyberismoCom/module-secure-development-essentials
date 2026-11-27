@@ -18,6 +18,10 @@ resultField(result, "statusNextSteps", Card, "shortText") :-
   secdeva_closestProject(Card, Project),
   field(Card, "base/fieldTypes/identifier", "secdeva_status-and-next-steps").
 
+resultField(result, "hasLibrary", "true", "shortText") :-
+  secdeva_dashboardProject(Project),
+  secdeva_projectHasLibrary(Project).
+
 % The phases, with the share of their steps that are done
 
 childResult(result, Phase, "phases") :-

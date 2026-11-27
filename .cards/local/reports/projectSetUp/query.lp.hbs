@@ -20,8 +20,35 @@ secdeva_setUpStepName(1, "nameDone").
 secdeva_setUpStepName(2, "descriptionDone").
 secdeva_setUpStepName(3, "ownerDone").
 secdeva_setUpStepName(4, "levelDone").
+secdeva_setUpStepName(5, "practicesDone").
 
 resultField(result, Name, "true", "shortText") :-
   secdeva_setUpProject(Project),
   secdeva_setUpStepName(S, Name),
   secdeva_projectSetUpStepDone(Project, S).
+
+% The answer to the software question, and the parts of the library
+
+resultField(result, "writesSoftware", Answer, "shortText") :-
+  secdeva_setUpProject(Project),
+  field(Project, "secdeva/fieldTypes/projectWritesSoftware", Answer).
+
+resultField(result, "hasLibrary", "true", "shortText") :-
+  secdeva_setUpProject(Project),
+  secdeva_projectHasLibrary(Project).
+
+childResult(result, (Template, Register), "libraryParts") :-
+  secdeva_setUpProject(Project),
+  secdeva_projectLibraryRegister(Project, Template, Register, _).
+
+resultFields((Template, Register),
+  "template", Template, "shortText",
+  "register", Register, "shortText",
+  "buttonLabel", ButtonLabel, "shortText") :-
+  secdeva_setUpProject(Project),
+  secdeva_projectLibraryRegister(Project, Template, Register, ButtonLabel).
+
+resultField((Template, Register), "added", "true", "shortText") :-
+  secdeva_setUpProject(Project),
+  secdeva_projectLibraryRegister(Project, Template, Register, _),
+  secdeva_projectLibraryAdded(Project, Template).
